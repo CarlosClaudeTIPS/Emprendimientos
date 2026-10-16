@@ -38,7 +38,15 @@ export default function EstudianteDetalle({ usuario, params }) {
   const cambiarPin = async () => {
     if (!/^\d{4,6}$/.test(pinNuevo)) return alert('El PIN debe tener 4 a 6 dígitos')
     setCambiandoPin(true)
-    try { await cambiarPinEstudiante(e, pinNuevo); setPinNuevo(''); alert(`PIN de ${e.nombre} actualizado. Ya puede entrar con el nuevo PIN.`) }
+    try {
+      const r = await cambiarPinEstudiante(e, pinNuevo)
+      const usuarioReal = r?.usuario ?? e.usuario
+      let msg = `PIN de ${e.nombre} actualizado.\n\nEntra como ESTUDIANTE con:\n  Usuario: ${usuarioReal}\n  PIN: ${pinNuevo}`
+      if (r?.verificado === true) msg += '\n\n✔ Comprobado: el ingreso con estos datos funciona.'
+      else if (r?.verificado === false) msg += `\n\n✖ Atención: el ingreso de prueba falló (${r.detalle ?? 'sin detalle'}). Avísale a quien administra la app.`
+      if (usuarioReal !== e.usuario) msg += `\n\nOjo: el usuario de acceso es "${usuarioReal}", no "${e.usuario}".`
+      setPinNuevo(''); alert(msg)
+    }
     catch (err) { alert('No se cambió el PIN: ' + err.message) }
     finally { setCambiandoPin(false) }
   }

@@ -217,4 +217,5 @@ export async function cambiarPinEstudiante(estudiante, pin) {
   } catch { throw new Error('Sin conexión: el PIN se cambia en línea') }
   const cuerpo = await r.json().catch(() => ({}))
   if (!r.ok) throw new Error(cuerpo.error ?? `No se pudo cambiar el PIN (${r.status})`)
+  return cuerpo // { ok, usuario, verificado, detalle }
 }

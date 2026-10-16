@@ -39,7 +39,23 @@ export default async function handler(req, res) {
     if (!grupo || grupo.docente_id !== quien.user.id) return res.status(403).json({ error: 'El estudiante no está en un grupo tuyo' })
   }
 
+  const { data: cuenta, error: errCuenta } = await admin.auth.admin.getUserById(estudiante_id)
+  if (errCuenta || !cuenta?.user?.email) return res.status(404).json({ error: `${est.nombre} no tiene cuenta en la nube (perfil sin usuario de acceso). Hay que inscribirlo de nuevo.` })
+  const email = cuenta.user.email
+  const usuario = email.split('@')[0]
+
   const { error } = await admin.auth.admin.updateUserById(estudiante_id, { password: claveDePin(pinLimpio) })
   if (error) return res.status(500).json({ error: error.message })
-  return res.status(200).json({ ok: true })
+
+  // Comprobación real: entrar como el estudiante con el PIN nuevo, igual que lo hará él.
+  let verificado = null, detalle = null
+  const anon = process.env.VITE_SUPABASE_ANON_KEY
+  if (anon) {
+    const prueba = createClient(url, anon, { auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false } })
+    const { data: ses, error: errSes } = await prueba.auth.signInWithPassword({ email, password: claveDePin(pinLimpio) })
+    verificado = !errSes && !!ses?.session
+    detalle = errSes?.message ?? null
+    if (ses?.session) await prueba.auth.signOut()
+  }
+  return res.status(200).json({ ok: true, usuario, verificado, detalle })
 }
