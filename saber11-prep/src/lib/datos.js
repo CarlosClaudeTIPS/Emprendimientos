@@ -1,6 +1,6 @@
 import { db, uuid, ahora, encolar } from './db'
 import { evaluar } from './feedback'
-import { crearUsuario, claveDePin, hashPin } from './sesion'
+import { crearUsuario, claveDePin } from './sesion'
 import { supabase, NUBE_DISPONIBLE } from './supabase'
 import { sincronizar } from './sync'
 
@@ -119,33 +119,6 @@ async function inscribirEnNube(grupo, estudiantes) {
     creados.push({ ...fila, pin })
   }
   return { creados, errores }
-}
-
-// Restablecer el PIN de un estudiante. En modo nube el PIN es la contraseña de
-// Supabase Auth, así que hay que cambiarla en el servidor (api/estudiantes.js con
-// SUPABASE_SERVICE_ROLE_KEY); escribir solo el hash local no sirve para entrar.
-// En modo local basta con actualizar el hash en IndexedDB.
-const API_BASE = import.meta.env.VITE_API_BASE ?? ''
-
-export async function restablecerPin(usuario, pin) {
-  const pinLimpio = String(pin ?? '').trim()
-  if (!/^\d{4,8}$/.test(pinLimpio)) throw new Error('El PIN debe tener entre 4 y 8 dígitos')
-  if (!NUBE_DISPONIBLE) {
-    await db.usuarios.update(usuario.id, { pin_hash: await hashPin(pinLimpio) })
-    return
-  }
-  if (usuario.rol && usuario.rol !== 'estudiante') throw new Error('En la nube, docentes y admins cambian su contraseña con "Olvidé mi contraseña" o desde Supabase (Authentication → Users)')
-  const { data } = await supabase.auth.getSession()
-  const token = data.session?.access_token
-  if (!token) throw new Error('Inicia sesión en la nube para restablecer el PIN')
-  let res
-  try {
-    res = await fetch(`${API_BASE}/api/estudiantes`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }, body: JSON.stringify({ accion: 'pin', estudiante_id: usuario.id, pin: pinLimpio }) })
-  } catch {
-    throw new Error('Sin conexión con el servidor; el PIN no se cambió')
-  }
-  const json = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error(json.error ?? `Error ${res.status} al cambiar el PIN`)
 }
 
 // Importación por texto: una línea por estudiante "Nombre Apellido; usuario; pin"

@@ -48,7 +48,7 @@ Para reproducir la configuración en otro proyecto:
 2. Authentication → Sign In / Providers → desactivar **Confirm email** (los estudiantes usan correo sintético + PIN de 6 dígitos y se registran desde el navegador del docente; no hace falta clave secreta).
 3. Invitar al docente/admin desde Authentication → Users y crear su fila en `perfiles` (`rol = 'admin'` o `'docente'`).
 4. Copiar `.env.example` a `.env.local` con `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` (clave *publishable*). En Vercel, las mismas dos variables.
-5. En Vercel agregar también `SUPABASE_SERVICE_ROLE_KEY` (Supabase → Project Settings → API → *service_role*, **sin** prefijo `VITE_`). La usa `api/estudiantes.js` para **restablecer el PIN de un estudiante** (docente → estudiante → Restablecer PIN, o Administración → Usuarios → PIN): en la nube el PIN es la contraseña de Auth y solo el servidor puede cambiarla. Sin esa variable el botón avisa que falta.
+5. `api/estudiantes.js` es opcional (alternativa con clave secreta `SUPABASE_SERVICE_ROLE_KEY`, solo en servidor).
 
 Sin estas variables la app queda en modo local: cada navegador guarda sus propios datos (haz respaldos desde Administración → Datos).
 

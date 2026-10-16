@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { db, getConfig, setConfig } from '../../lib/db'
 import { listarCiclos, guardarCiclo, estadoCiclo, programa, estructuraExamen, formatoFecha, FECHAS_REFERENCIA } from '../../lib/ciclo'
-import { crearUsuario } from '../../lib/sesion'
-import { restablecerPin } from '../../lib/datos'
+import { crearUsuario, hashPin } from '../../lib/sesion'
 import { taxonomia, aplicarExtension } from '../../lib/taxonomia'
 import { borrarDatosDemo } from '../../lib/demo'
 import { REGLAS_POR_DEFECTO } from '../../lib/reglas'
@@ -92,11 +91,7 @@ function Usuarios({ admin }) {
     try { await crearUsuario(nuevo); setNuevo(null); cargar() } catch (e) { alert(e.message) }
   }
   const cambiarRol = async (u, rol) => { await db.usuarios.update(u.id, { rol }); cargar() }
-  const resetPin = async (u) => {
-    const pin = prompt(`Nuevo PIN para ${u.nombre} (4 a 8 dígitos)`)
-    if (!pin) return
-    try { await restablecerPin(u, pin); alert(`PIN actualizado. ${u.nombre} ya entra con el PIN nuevo.`) } catch (e) { alert(e.message) }
-  }
+  const resetPin = async (u) => { const pin = prompt(`Nuevo PIN para ${u.nombre}`); if (pin) { await db.usuarios.update(u.id, { pin_hash: await hashPin(pin) }); alert('PIN actualizado') } }
   const eliminar = async (u) => {
     if (u.id === admin.id) return alert('No puedes eliminar tu propia cuenta')
     if (!confirm(`¿Eliminar a ${u.nombre} y todos sus registros? Esta acción no se puede deshacer.`)) return
