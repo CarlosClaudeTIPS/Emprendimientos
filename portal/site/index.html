@@ -53,11 +53,13 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:40px}
 </main>
 <script src="shared/portal.config.js"></script>
 <script>
-/* Quien ya usaba el ICFES cuando vivía en la raíz (app instalada o marcador viejo) llega aquí
-   sin venir de otra página del sitio: se le lleva a /icfes/ una sola vez por visita. */
+/* La app ICFES instalada en celulares cuando vivía en la raíz del sitio abre aquí (su start_url
+   es /). Solo en ese caso (ventana de app instalada, no navegador) y solo si ya tiene datos del
+   ICFES, se le lleva a /icfes/. Desde el navegador siempre se ve el portal. */
 (function(){
   try {
-    if (sessionStorage.getItem('portal-visto') || (document.referrer && document.referrer.indexOf(location.origin) === 0)) return;
+    var instalada = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+    if (!instalada || sessionStorage.getItem('portal-visto')) return;
     sessionStorage.setItem('portal-visto', '1');
     if (indexedDB.databases) indexedDB.databases().then(function (dbs) {
       if (dbs.some(function (d) { return d.name === 'saber11'; })) location.replace('icfes/' + location.hash);
