@@ -1,5 +1,17 @@
 {
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/portal",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portal/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/icfes/:path((?!.*\\.).*)",
