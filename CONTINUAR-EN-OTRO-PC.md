@@ -7,7 +7,21 @@ git clone https://github.com/CarlosClaudeTIPS/Emprendimientos.git
 cd Emprendimientos
 ```
 
-En Claude Code basta abrir esta carpeta: el archivo `CLAUDE.md` le explica la estructura y las reglas, y un gancho sincroniza con GitHub al iniciar cada sesión.
+En Claude Code basta abrir esta carpeta: el archivo `CLAUDE.md` le explica la estructura y las reglas.
+
+## Trabajar desde dos computadores sin pensar en git
+
+Todo está automatizado en `.claude/settings.json` (viaja con el repositorio, así que aplica en los dos PC):
+
+- **Al abrir un chat** (gancho `SessionStart`): baja lo último de GitHub. Lo que hiciste en el otro PC ya está.
+- **Al terminar cada respuesta de Claude** (gancho `Stop`, `.claude/hooks/subir.sh`): si quedó algo sin subir, lo
+  sube a `main`. Vercel publica solo en 2-3 minutos. Si el otro PC subió algo que choca, el gancho avisa y se le pide
+  a Claude que resuelva el conflicto.
+- **Permisos**: git, npm y la construcción del sitio están preaprobados para que Claude no pregunte.
+- Comandos opcionales: `/iniciar` (resumen de lo nuevo) y `/cerrar` (verificar y subir con un buen mensaje).
+
+Requisitos en cada PC: Git, Node.js LTS y haber clonado el repositorio una vez (arriba). En Windows, Claude Code
+usa Git Bash para los ganchos; viene con Git para Windows.
 
 ## Qué hay
 

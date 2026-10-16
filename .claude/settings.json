@@ -1,4 +1,14 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)", "Bash(git pull:*)", "Bash(git merge:*)", "Bash(git status:*)", "Bash(git diff:*)",
+      "Bash(git log:*)", "Bash(git add:*)", "Bash(git commit:*)", "Bash(git push:*)", "Bash(git rev-parse:*)",
+      "Bash(npm run build:*)", "Bash(npm ci:*)", "Bash(npm test:*)", "Bash(npm install:*)",
+      "Bash(npx vitest:*)", "Bash(node portal/build.mjs:*)", "Bash(node build-sitio.mjs:*)",
+      "Bash(node scripts/*)", "Bash(python -m http.server:*)", "Bash(python3 -m http.server:*)",
+      "Edit", "Write", "Read", "Glob", "Grep"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -6,6 +16,16 @@
           {
             "type": "command",
             "command": "git fetch -q origin main 2>/dev/null && git merge -q --ff-only origin/main 2>/dev/null; echo 'Repositorio sincronizado con origin/main'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh .claude/hooks/subir.sh"
           }
         ]
       }
