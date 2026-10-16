@@ -7,6 +7,16 @@
       "permanent": true
     },
     {
+      "source": "/portal/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portal/:path*/",
+      "destination": "/:path*/",
+      "permanent": true
+    },
+    {
       "source": "/portal/:path*",
       "destination": "/:path*",
       "permanent": true
