@@ -11,7 +11,7 @@ Una portada con pestañas que reúne los proyectos del repositorio bajo un solo 
 
 Cada proyecto se sigue editando en su propia carpeta. El portal solo los **copia y construye** en `portal/dist/`.
 
-> **Publicación actual:** el sitio de Vercel `mundial-2026-motor.vercel.app` publica la rama `master` con `build-sitio.mjs` (en la raíz del repositorio), que arma este portal en `/` y añade el Motor Mundial en `/motor/`. No hace falta crear otro proyecto de Vercel salvo que quieras un dominio aparte.
+> **Publicación actual:** el sitio de Vercel conectado al repositorio `Emprendimientos` publica la rama `main` con `build-sitio.mjs` (en la raíz del repositorio), que arma este portal en `/`, el ICFES en `/icfes/`, Apoyo docente en `/docentes/` y la Tienda en `/tienda/`. El motor del Mundial ya no forma parte de este sitio.
 
 ## Armar el portal
 
@@ -27,11 +27,11 @@ Todo está en `portal/site/shared/portal.config.js`: nombre de la marca, lema y 
 
 ## Publicar en Vercel (gratis) y conectar el dominio
 
-1. Entra a https://vercel.com con tu cuenta de GitHub → **Add New → Project** → elige `mundial-2026-motor`.
+1. Entra a https://vercel.com con tu cuenta de GitHub → **Add New → Project** → elige `Emprendimientos`.
 2. En la configuración del proyecto:
-   - **Root Directory:** `portal`
+   - **Root Directory:** déjalo en la raíz (no cambiar)
    - **Framework Preset:** Other
-   - **Build Command:** `npm run build` (ya viene en `portal/package.json`)
+   - **Build Command:** `npm run build` (ya viene en el `package.json` de la raíz)
    - **Output Directory:** `dist`
    - **Production Branch:** `main`
 3. Variables de entorno (solo si quieres el ICFES con nube; sin ellas funciona en modo local):
