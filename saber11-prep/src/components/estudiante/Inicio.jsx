@@ -9,22 +9,25 @@ import { ir } from '../../lib/nav'
 import { Barra, Badge } from '../ui'
 import { crearMiniPrueba, crearSimulacro, crearSimulacroCompleto, crearDiagnostico, diagnosticoDe } from '../../lib/pruebas'
 import { MATERIAS, ICONO_PRUEBA } from '../Login'
-import { Stethoscope, Compass } from 'lucide-react'
+import { Stethoscope, Compass, FileBarChart, BookOpenCheck } from 'lucide-react'
 import { modoCarreraActivo, prioridadesDeUsuario, carreraPorId, NOMBRE_NIVEL } from '../../lib/carreras'
 import { VistaPrioridades } from './Carreras'
+import { estadoLiberacion, grupoDe } from '../../lib/acceso'
+import { Unlock, Rocket } from 'lucide-react'
+import RutaMejorar from './RutaMejorar'
 
 export default function Inicio({ usuario }) {
   const [datos, setDatos] = useState(null)
 
   useEffect(() => {
     (async () => {
-      const [intentos, ciclo, prog, preguntas, pendientes, diagnostico] = await Promise.all([intentosDe(usuario.id), cicloActivo(), programa(), listarPreguntas(), asignacionesPendientes(usuario), diagnosticoDe(usuario.id)])
+      const [intentos, ciclo, prog, preguntas, pendientes, diagnostico, grupo, todas] = await Promise.all([intentosDe(usuario.id), cicloActivo(), programa(), listarPreguntas({ usuario }), asignacionesPendientes(usuario), diagnosticoDe(usuario.id), grupoDe(usuario), listarPreguntas()])
       const preguntasPorId = Object.fromEntries(preguntas.map(p => [p.id, p]))
       setDatos({
         intentos, ciclo, estado: estadoCiclo(ciclo, prog), pendientes,
         resumen: resumen(intentos, preguntasPorId),
         recs: recomendar(intentos, { preguntasPorId, reglas: await reglasVigentes() }).slice(0, 2),
-        totalBanco: preguntas.length, diagnostico,
+        totalBanco: preguntas.length, diagnostico, liberacion: estadoLiberacion(todas, grupo),
       })
     })()
   }, [usuario.id])
@@ -68,8 +71,10 @@ export default function Inicio({ usuario }) {
       </div>
 
       <TarjetaDiagnostico diagnostico={datos.diagnostico} usuario={usuario} />
+      <RutaMejorar usuario={usuario} modo="hoy" />
 
-      <div className="grid grid-cols-5 gap-2">
+      {/* 3 columnas en celular (para que los nombres no se partan a la mitad), 5 en pantalla ancha */}
+      <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
         {materias.map(m => { const I = ICONO_PRUEBA[m.id]; const nivel = nivelDe[m.id]; return (
           <button key={m.id} onClick={() => ir('materia', { id: m.id })} className={`card !p-3 flex flex-col items-center gap-1.5 hover:-translate-y-0.5 transition-transform ${enModoCarrera && nivel === 'alta' ? 'border-brand-blue' : ''}`}>
             <span className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ background: m.fondo, color: m.color }}><I size={20} /></span>
@@ -79,6 +84,7 @@ export default function Inicio({ usuario }) {
       </div>
 
       <TarjetaCarrera usuario={usuario} prioridades={prioridades} activo={enModoCarrera} />
+      {datos.liberacion && <TarjetaLiberacion e={datos.liberacion} />}
 
       <div className="card">
         <div className="flex justify-between text-sm mb-1">
@@ -113,7 +119,10 @@ export default function Inicio({ usuario }) {
         <Accion icono={AlertCircle} titulo="Mis errores" sub={`${errores} para revisar`} onClick={() => ir('errores')} />
         <Accion icono={BarChart3} titulo="Refuerzo" sub="lo que está flojo, explicado" onClick={() => ir('refuerzo')} />
         <Accion icono={Timer} titulo="Simulacros" sub="por sesión, cronometrados" onClick={() => ir('simulacros')} />
-        <Accion icono={Map} titulo="Mi ruta" sub="programa de 6 meses" onClick={() => ir('ruta')} />
+        <Accion icono={Map} titulo="Mi ruta" sub="tu plan semanal para mejorar" onClick={() => ir('ruta')} />
+        <Accion icono={FileBarChart} titulo="Mi informe" sub="puntajes, niveles y qué mejorar" onClick={() => ir('informe')} />
+        <Accion icono={BookOpenCheck} titulo="Guía ICFES" sub="qué es, para qué sirve, universidades" onClick={() => ir('guia')} />
+        <Accion icono={Rocket} titulo="Mi futuro" sub="intereses, opciones y proyecto de vida" onClick={() => ir('futuro')} />
       </div>
 
       <div className="card">
@@ -140,6 +149,9 @@ export async function lanzarAccion(accion, usuario) {
   if (!accion) return
   if (accion.tipo === 'practica') return ir('practica', { ...accion.filtros, n: accion.n ?? 5, verificacion: accion.verificacion ? '1' : undefined })
   if (accion.tipo === 'ids') return ir('practica', { ids: accion.ids.join(',') })
+  if (accion.tipo === 'errores') return accion.ids?.length ? ir('practica', { ids: accion.ids.join(','), modo: 'refuerzo' }) : ir('errores')
+  if (accion.tipo === 'diagnostico') { const d = await diagnosticoDe(usuario.id); if (d?.estado === 'en_curso') return ir('sesion', { id: d.id }); const s = await crearDiagnostico({ estudiante: usuario }); return ir('sesion', { id: s.id }) }
+  if (accion.tipo === 'simulacro') { const s = await crearSimulacro({ estudiante: usuario, sesion_examen: accion.sesion_examen ?? 1, escala: accion.escala ?? 0.25, titulo: 'Simulacro de mi ruta' }); return ir('sesion', { id: s.id }) }
   if (accion.tipo === 'mini') {
     const s = await crearMiniPrueba({ estudiante: usuario, cantidad: accion.config?.cantidad ?? 8, tiempo_min: accion.config?.cronometro ? Math.round((accion.config?.cantidad ?? 8) * 1.5) : accion.config?.tiempo_min ?? null, filtros: accion.config?.filtros ?? {}, titulo: 'Mini-prueba recomendada' })
     return ir('sesion', { id: s.id })
@@ -183,6 +195,19 @@ function TarjetaCarrera({ usuario, prioridades, activo }) {
   )
 }
 
+// Plan mensual: cuánto material tiene liberado el grupo y cuándo llega el siguiente lote.
+function TarjetaLiberacion({ e }) {
+  return (
+    <div className="card flex items-center gap-3">
+      <span className="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0"><Unlock size={22} /></span>
+      <div className="flex-1 min-w-0">
+        <p className="font-semibold text-brand-navy">Material liberado: {e.liberadas.size} preguntas{e.nuevas.size ? <Badge tono="ambar">{e.nuevas.size} nuevas este mes</Badge> : null}</p>
+        <p className="text-xs text-gray-400">{e.proximo ? `El próximo lote (${e.lote} por asignatura) se libera el ${formatoFecha(e.proximo.toISOString())}.` : 'Ya tienes todo el banco disponible.'}</p>
+      </div>
+    </div>
+  )
+}
+
 function TarjetaDiagnostico({ diagnostico, usuario }) {
   const empezar = async () => {
     try {
@@ -193,11 +218,11 @@ function TarjetaDiagnostico({ diagnostico, usuario }) {
   }
   if (diagnostico?.estado === 'terminada') {
     return (
-      <button onClick={() => ir('sesion', { id: diagnostico.id })} className="card w-full text-left flex items-center gap-3">
+      <div className="card w-full flex items-center gap-3">
         <span className="w-11 h-11 rounded-xl bg-sky-50 text-brand-blue flex items-center justify-center shrink-0"><Stethoscope size={22} /></span>
-        <div className="flex-1"><p className="font-semibold text-brand-navy">Prueba diagnóstica realizada</p><p className="text-xs text-gray-400">Resultado: {diagnostico.resultado?.precision ?? '—'}% de aciertos. Toca para ver el detalle; tu plan está en Refuerzo.</p></div>
-        <button onClick={e => { e.stopPropagation(); crearDiagnostico({ estudiante: usuario }).then(s => ir('sesion', { id: s.id })) }} className="text-xs font-semibold text-brand-blue shrink-0">Repetir</button>
-      </button>
+        <button onClick={() => ir('sesion', { id: diagnostico.id })} className="flex-1 text-left"><p className="font-semibold text-brand-navy">Prueba diagnóstica realizada</p><p className="text-xs text-gray-400">Resultado: {diagnostico.resultado?.precision ?? '—'}% de aciertos. Toca para ver el detalle; tu plan está en Refuerzo.</p></button>
+        <button onClick={() => crearDiagnostico({ estudiante: usuario }).then(s => ir('sesion', { id: s.id }))} className="text-xs font-semibold text-brand-blue shrink-0">Repetir</button>
+      </div>
     )
   }
   return (

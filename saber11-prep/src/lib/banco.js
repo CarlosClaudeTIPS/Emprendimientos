@@ -1,69 +1,85 @@
 import { db, ahora, encolar } from './db'
 
 // ─── Banco de preguntas ──────────────────────────────────────────────────────
-// Los archivos content/banco/*.json se publican como archivos aparte (con hash
-// en el nombre) y se descargan SOLO cuando hay que sembrar IndexedDB: la primera
-// vez y cada vez que cambia su contenido. Así la app arranca liviana y el banco
-// sigue disponible sin conexión desde IndexedDB. Preguntas creadas o editadas en
-// la app quedan marcadas con `editada_local` y no se sobreescriben con la semilla.
-const urls = import.meta.glob('../../content/banco/*.json', { eager: true, query: '?url', import: 'default' })
+// Los archivos content/banco/*.json se empaquetan con la app y se cargan en
+// IndexedDB la primera vez (y cada vez que cambia su contenido). Así el banco
+// está disponible sin conexión. Preguntas creadas o editadas en la app quedan
+// marcadas con `editada_local` y no se sobreescriben con la semilla.
+// Carga PEREZOSA: cada archivo es un trozo que se descarga solo cuando hace falta
+// (primera vez o cuando cambia el banco). Así el paquete inicial no lleva las preguntas.
+const archivos = import.meta.glob('../../content/banco/*.json', { import: 'default' })
+// Huella del contenido del banco calculada al compilar (vite.config.js). En pruebas no existe.
+const VERSION_BANCO = typeof __BANCO_VERSION__ !== 'undefined' ? __BANCO_VERSION__ : 'dev'
 
-export async function preguntasSemilla() {
-  const listas = await Promise.all(Object.values(urls).map(u => fetch(u).then(r => {
-    if (!r.ok) throw new Error(`No se pudo cargar el banco: ${u}`)
-    return r.json()
-  })))
-  return listas.flat()
+export async function preguntasSemilla(onProgreso = null) {
+  const claves = Object.keys(archivos).sort()
+  const lista = []
+  for (const [i, k] of claves.entries()) {
+    const datos = await archivos[k]()
+    lista.push(...(Array.isArray(datos) ? datos : datos?.preguntas ?? []))
+    onProgreso?.({ hechos: i + 1, total: claves.length, archivo: k.split('/').pop() })
+  }
+  return lista
 }
 
-// Conteo de preguntas aprobadas por prueba, leído de IndexedDB (para la portada).
-export async function contarPorPrueba() {
-  const c = {}
-  await db.preguntas.each(p => { if (p.estado === 'aprobada' || !p.estado) c[p.prueba] = (c[p.prueba] ?? 0) + 1 })
-  return c
-}
+// Estado de la siembra, observable desde la interfaz (barra "preparando el banco…").
+let estadoSiembra = { fase: 'pendiente', hechos: 0, total: 0, cargadas: 0, error: null }
+const oyentes = new Set()
+const setSiembra = (c) => { estadoSiembra = { ...estadoSiembra, ...c }; oyentes.forEach(f => f(estadoSiembra)) }
+export const observarSiembra = (f) => { oyentes.add(f); f(estadoSiembra); return () => oyentes.delete(f) }
+export const estadoDeSiembra = () => estadoSiembra
 
-function huella(texto) {
-  let h = 0
-  for (let i = 0; i < texto.length; i++) h = (Math.imul(31, h) + texto.charCodeAt(i)) | 0
-  return String(h)
-}
+let promesaSiembra = null
+// Promesa que se resuelve cuando el banco local está listo (ya estaba al día, o terminó de sembrarse).
+export const esperarBanco = () => promesaSiembra ?? sembrarBanco()
 
+// Siembra el banco en IndexedDB solo si la versión compilada cambió. Descarga los
+// trozos uno a uno e informa el progreso; nunca bloquea el arranque de la app.
 export async function sembrarBanco() {
-  // En producción los nombres de archivo llevan hash de contenido: basta con
-  // ellos para saber si el banco cambió, sin descargar nada. En desarrollo no
-  // hay hash, así que se descarga y se compara el contenido.
-  const previa = await db.config.get('banco_version')
-  let version = huella(JSON.stringify(Object.values(urls).sort()))
-  let lista = null
-  if (import.meta.env.DEV) { lista = await preguntasSemilla(); version = huella(JSON.stringify(lista)) }
-  if (previa?.valor === version) return { cargadas: 0, total: await db.preguntas.count() }
-  lista ??= await preguntasSemilla()
-
-  let cargadas = 0
-  await db.transaction('rw', db.preguntas, db.config, async () => {
-    const editadas = new Set(await db.preguntas.filter(p => !!p.editada_local).primaryKeys())
-    const fecha = ahora()
-    const nuevas = lista.filter(p => !editadas.has(p.id)).map(p => ({ ...p, semilla: true, fecha_carga: fecha }))
-    await db.preguntas.bulkPut(nuevas)
-    cargadas = nuevas.length
-    await db.config.put({ clave: 'banco_version', valor: version })
-  })
-  return { cargadas, total: await db.preguntas.count() }
+  if (promesaSiembra) return promesaSiembra
+  promesaSiembra = (async () => {
+    const previa = await db.config.get('banco_version')
+    const total = await db.preguntas.count()
+    if (previa?.valor === VERSION_BANCO && total > 0) { setSiembra({ fase: 'lista', cargadas: 0 }); return { cargadas: 0, total } }
+    setSiembra({ fase: 'descargando', hechos: 0, total: Object.keys(archivos).length, error: null })
+    try {
+      const lista = await preguntasSemilla(p => setSiembra(p))
+      setSiembra({ fase: 'guardando' })
+      let cargadas = 0
+      await db.transaction('rw', db.preguntas, db.config, async () => {
+        for (const p of lista) {
+          const existente = await db.preguntas.get(p.id)
+          if (existente?.editada_local) continue
+          await db.preguntas.put({ ...p, semilla: true, fecha_carga: ahora() })
+          cargadas++
+        }
+        await db.config.put({ clave: 'banco_version', valor: VERSION_BANCO })
+      })
+      setSiembra({ fase: 'lista', cargadas })
+      return { cargadas, total: await db.preguntas.count() }
+    } catch (e) {
+      // Sin red y sin banco previo: la app sigue funcionando con lo que haya en IndexedDB.
+      setSiembra({ fase: 'error', error: e.message })
+      promesaSiembra = null
+      return { cargadas: 0, total: await db.preguntas.count(), error: e.message }
+    }
+  })()
+  return promesaSiembra
 }
 
-// Siembra en segundo plano (no bloquea la pantalla de entrada). Quien necesite
-// el banco completo espera `iniciarSiembra()`.
-let bancoListo = null
-export function iniciarSiembra() { bancoListo ??= sembrarBanco(); return bancoListo }
-
-// Filtros: { prueba, competencia, habilidad, componente, dificultad, tipo_error, excluirIds, estado }
+// Filtros: { prueba, competencia, habilidad, componente, dificultad, tipo_error, excluirIds, estado, usuario }
+// `usuario`: si es un estudiante cuyo grupo tiene plan mensual, solo devuelve las preguntas ya liberadas.
 export async function listarPreguntas(f = {}) {
+  await esperarBanco()
   let col = db.preguntas.toCollection()
   if (f.prueba) col = db.preguntas.where('prueba').equals(f.prueba)
   let lista = await col.toArray()
   const estado = f.estado ?? 'aprobada'
   if (estado !== 'todas') lista = lista.filter(p => p.estado === estado)
+  if (f.usuario) {
+    const { filtrarParaUsuario } = await import('./acceso')
+    lista = await filtrarParaUsuario(lista, f.usuario)
+  }
   if (f.competencia) lista = lista.filter(p => p.competencia === f.competencia)
   if (f.habilidad) lista = lista.filter(p => p.habilidad === f.habilidad)
   if (f.componente) lista = lista.filter(p => p.componente === f.componente)
@@ -131,4 +147,28 @@ export async function elegirPreguntas({ n, vistas = new Set(), ...filtros }) {
     elegidas.push(u); total += u.length
   }
   return ordenarPorTexto(elegidas.flat())
+}
+
+// ─── Pregunta de verificación ────────────────────────────────────────────────
+// Después de fallar y explicar la razón, el estudiante comprueba con una pregunta
+// NUEVA (no la misma): primero las de refuerzo que no haya visto, luego una de la
+// misma competencia y habilidad (sin texto compartido, dificultad no mayor, tema
+// igual si se puede). Devuelve null si no hay nada nuevo.
+export function elegirVerificacion(pregunta, candidatas, vistas = new Set()) {
+  const noVista = (p) => p && p.id !== pregunta.id && !vistas.has(p.id)
+  const porId = Object.fromEntries(candidatas.map(p => [p.id, p]))
+  for (const rid of pregunta.refuerzo_ids ?? []) if (noVista(porId[rid])) return porId[rid]
+  const base = candidatas.filter(p => noVista(p) && p.competencia === pregunta.competencia && (p.estado ?? 'aprobada') === 'aprobada' && !grupoTexto(p) && (p.dificultad ?? 2) <= (pregunta.dificultad ?? 2))
+  const puntaje = (p) => (p.habilidad === pregunta.habilidad ? 2 : 0) + (p.tema && p.tema === pregunta.tema ? 1 : 0) + (p.dificultad === pregunta.dificultad ? 0.5 : 0)
+  const orden = mezclar(base).sort((a, b) => puntaje(b) - puntaje(a))
+  if (orden.length) return orden[0]
+  // Último recurso: cualquier pregunta no vista de la competencia (aunque tenga texto compartido o sea más difícil)
+  const resto = mezclar(candidatas.filter(p => noVista(p) && p.competencia === pregunta.competencia && (p.estado ?? 'aprobada') === 'aprobada'))
+  return resto[0] ?? null
+}
+
+export async function preguntaVerificacion(pregunta, { vistas = new Set(), usuario = null } = {}) {
+  const refuerzos = (await Promise.all((pregunta.refuerzo_ids ?? []).map(obtenerPregunta))).filter(Boolean)
+  const mismas = await listarPreguntas({ competencia: pregunta.competencia, usuario })
+  return elegirVerificacion(pregunta, [...refuerzos, ...mismas], vistas)
 }

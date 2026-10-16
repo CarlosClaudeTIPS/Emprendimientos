@@ -51,16 +51,28 @@ export async function sincronizar() {
   set({ sincronizando: true, error: null })
   try {
     const cola = await db.cola.orderBy('id').toArray()
+    const fallos = []
     for (const item of cola) {
       const destino = TABLAS[item.tabla]
       if (!destino) { await db.cola.delete(item.id); continue }
-      const fila = aFilaNube(item.tabla, item.datos)
-      const { error } = await supabase.from(destino.destino).upsert(fila, { onConflict: destino.clave })
-      if (error) throw new Error(`${item.tabla}: ${error.message}`)
-      await db.cola.delete(item.id)
-      if (item.tabla === 'intentos') await db.intentos.update(item.datos.uid, { sincronizado: 1 })
+      try {
+        const fila = aFilaNube(item.tabla, item.datos)
+        const { error } = await supabase.from(destino.destino).upsert(fila, { onConflict: destino.clave })
+        if (error) {
+          // Si la fila ya existe en la nube y la regla de seguridad no deja modificarla (por ejemplo, un
+          // intento de otro estudiante reenviado desde la cuenta del docente), ya está subida: se descarta.
+          if (/row-level security/i.test(error.message) && await existeEnNube(destino, fila)) { await db.cola.delete(item.id); continue }
+          throw new Error(`${item.tabla}: ${error.message}`)
+        }
+        await db.cola.delete(item.id)
+        if (item.tabla === 'intentos') await db.intentos.update(item.datos.uid, { sincronizado: 1 })
+      } catch (e) {
+        // Un cambio que falla no bloquea a los demás: se anota el error y se reintenta en la siguiente ronda.
+        fallos.push(e.message)
+        await db.cola.update(item.id, { error: e.message, fallos: (item.fallos ?? 0) + 1, ultimo_intento: ahora() })
+      }
     }
-    set({ ultimo: ahora() })
+    set({ ultimo: ahora(), error: fallos.length ? `${fallos.length} cambio(s) no se pudieron subir · ${fallos[0]}` : null })
   } catch (e) {
     set({ error: e.message })
   } finally {
@@ -69,10 +81,15 @@ export async function sincronizar() {
   }
 }
 
+async function existeEnNube(destino, fila) {
+  const { data } = await supabase.from(destino.destino).select(destino.clave).eq(destino.clave, fila[destino.clave]).maybeSingle()
+  return Boolean(data)
+}
+
 // Campos que no van a la nube o que cambian de forma.
 function aFilaNube(tabla, d) {
   const { sincronizado, semilla, ...resto } = d
-  if (tabla === 'usuarios') { const { pin_hash, demo, ...u } = resto; return u }
+  if (tabla === 'usuarios') { const { pin_hash, demo, ruta_config, futuro, ...u } = resto; return u } // ruta_config y futuro viajan por sus funciones (migraciones 005 y 006)
   if (tabla === 'preguntas') { const { editada_local, fecha_carga, fecha_edicion, ...p } = resto; return { ...p, actualizado: fecha_edicion ?? ahora() } }
   if (tabla === 'recursos') { const { editado_local, ...r } = resto; return r }
   return resto
@@ -125,10 +142,21 @@ async function todasLasFilas(tabla, filtrar = q => q) {
   }
 }
 
+// Sincronización automática: al arrancar, al recuperar la conexión, cada minuto, al volver a la app
+// y unos segundos después de cada respuesta registrada. Lo que falle se reintenta solo en el
+// siguiente ciclo; el botón de la barra lateral es solo para forzarlo a mano.
+let temporizador = null
+export function programarSync(ms = 4_000) {
+  clearTimeout(temporizador)
+  temporizador = setTimeout(() => sincronizar(), ms)
+}
+
 export function iniciarSync() {
   if (typeof window === 'undefined') return
   window.addEventListener('online', () => { set({ enLinea: true }); sincronizar() })
   window.addEventListener('offline', () => set({ enLinea: false }))
+  window.addEventListener('saber11:cola', () => programarSync())
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') sincronizar() })
   contarPendientes()
   sincronizar()
   setInterval(sincronizar, 60_000)

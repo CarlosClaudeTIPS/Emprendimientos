@@ -9,7 +9,7 @@ tienda/
 ├── producto.html       Ficha de producto (producto.html?p=ID)
 ├── preguntas.html      Preguntas frecuentes
 ├── politicas.html      Entregas, pagos, cambios, privacidad
-├── admin.html          Panel de administración (edita y exporta los datos)
+├── admin.html          Panel de administración (edita y exporta los datos; NO se publica, se usa en el computador)
 ├── data/config.json    Nombre, WhatsApp, colores, redes, políticas, analítica
 ├── data/catalogo.json  Categorías y productos
 ├── img/                Logo, portada y fotos de productos

@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
+import { puedeEditar } from '../../lib/roles'
 import { db } from '../../lib/db'
 import { intentosDe, moverEstudiante } from '../../lib/datos'
 import { listarPreguntas } from '../../lib/banco'
 import { sesionesDe } from '../../lib/pruebas'
 import { resumen, evolucionSemanal } from '../../lib/analitica'
 import { recomendar, reglasVigentes } from '../../lib/reglas'
-import { hashPin } from '../../lib/sesion'
+import { cambiarPinEstudiante } from '../../lib/sesion'
 import { ir } from '../../lib/nav'
 import { Titulo, FilaMetrica, Metrica, Badge, fechaCorta, formatoTiempo } from '../ui'
 import { nombrePrueba, nombreTipoError, nombreDiagnostico } from '../../lib/taxonomia'
 import { carreraPorId } from '../../lib/carreras'
 
-export default function EstudianteDetalle({ params }) {
+export default function EstudianteDetalle({ usuario, params }) {
   const [d, setD] = useState(null)
   const [pinNuevo, setPinNuevo] = useState('')
+  const [cambiandoPin, setCambiandoPin] = useState(false)
   const cargar = async () => {
     const e = await db.usuarios.get(params.id)
     if (!e) return
@@ -35,8 +37,10 @@ export default function EstudianteDetalle({ params }) {
 
   const cambiarPin = async () => {
     if (!/^\d{4,6}$/.test(pinNuevo)) return alert('El PIN debe tener 4 a 6 dígitos')
-    await db.usuarios.update(e.id, { pin_hash: await hashPin(pinNuevo) })
-    setPinNuevo(''); alert('PIN actualizado')
+    setCambiandoPin(true)
+    try { await cambiarPinEstudiante(e, pinNuevo); setPinNuevo(''); alert(`PIN de ${e.nombre} actualizado. Ya puede entrar con el nuevo PIN.`) }
+    catch (err) { alert('No se cambió el PIN: ' + err.message) }
+    finally { setCambiandoPin(false) }
   }
 
   return (
@@ -48,13 +52,16 @@ export default function EstudianteDetalle({ params }) {
       {d.grupos.length > 1 && (
         <label className="card !py-2.5 flex items-center justify-between gap-2 text-sm">
           <span className="text-gray-400">Grupo</span>
-          <select className="input !w-auto !py-1.5 text-sm" value={e.grupo_id ?? ''} onChange={ev => cambiarGrupo(ev.target.value)}>
+          <select className="input !w-auto !py-1.5 text-sm" value={e.grupo_id ?? ''} disabled={!puedeEditar(usuario)} onChange={ev => cambiarGrupo(ev.target.value)}>
             {!e.grupo_id && <option value="">Sin grupo</option>}
             {d.grupos.map(g => <option key={g.id} value={g.id}>{g.nombre}</option>)}
           </select>
         </label>
       )}
-      <button className="btn-secondary w-full" onClick={() => ir('historial', { id: e.id })}>Ver historial completo (cada prueba y cada pregunta)</button>
+      <div className="grid sm:grid-cols-2 gap-2">
+        <button className="btn-primary w-full" onClick={() => ir('informe', { estudiante: e.id })}>Informe de mejoramiento</button>
+        <button className="btn-secondary w-full" onClick={() => ir('historial', { id: e.id })}>Historial completo</button>
+      </div>
       <div className="grid grid-cols-3 gap-2">
         <Metrica etiqueta="Aciertos" valor={r.precision} sufijo="%" />
         <Metrica etiqueta="Respuestas" valor={r.total} />
@@ -86,10 +93,10 @@ export default function EstudianteDetalle({ params }) {
           {d.errores.length === 0 && <p className="text-sm text-gray-500">Sin errores registrados.</p>}
         </div>
       </div>
-      <div className="card">
+      {puedeEditar(usuario) && <div className="card">
         <p className="font-medium mb-1">Restablecer PIN</p>
-        <div className="flex gap-2"><input className="input" placeholder="Nuevo PIN" value={pinNuevo} onChange={e => setPinNuevo(e.target.value)} /><button className="btn-secondary shrink-0" onClick={cambiarPin}>Guardar</button></div>
-      </div>
+        <div className="flex gap-2"><input className="input" placeholder="Nuevo PIN" value={pinNuevo} onChange={e => setPinNuevo(e.target.value)} /><button className="btn-secondary shrink-0" disabled={cambiandoPin} onClick={cambiarPin}>{cambiandoPin ? 'Guardando…' : 'Guardar'}</button></div>
+      </div>}
     </div>
   )
 }

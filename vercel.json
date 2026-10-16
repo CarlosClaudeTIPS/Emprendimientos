@@ -10,7 +10,7 @@
     "api/estudiantes.js": {
       "maxDuration": 30
     },
-    "api/ia-preguntas.js": {
+    "api/pin.js": {
       "maxDuration": 30
     }
   },

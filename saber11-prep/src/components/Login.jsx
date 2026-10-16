@@ -1,9 +1,9 @@
-import { useMemo, useRef, useState , useEffect} from 'react'
+import { useMemo, useRef, useState } from 'react'
 import { BookOpenCheck, Timer, LineChart, Calculator, BookOpen, Globe2, FlaskConical, Languages, Star, ChevronLeft, ChevronRight } from 'lucide-react'
 import { entrarLocal, entrarNube, pedirRecuperacion, registrarEstudiante, baseUsuario } from '../lib/sesion'
 import { NUBE_DISPONIBLE } from '../lib/supabase'
 import { USUARIOS_DEMO } from '../lib/demo'
-import { contarPorPrueba, iniciarSiembra } from '../lib/banco'
+import BarraPortal from './BarraPortal'
 
 // ─── Portada pública + acceso ────────────────────────────────────────────────
 
@@ -21,12 +21,15 @@ export const MATERIAS = [
 export default function Login() {
   const [tipo, setTipo] = useState('estudiante')
   const acceso = useRef(null)
-  const [conteo, setConteo] = useState({})
-  useEffect(() => { iniciarSiembra().then(contarPorPrueba).then(setConteo).catch(() => {}) }, [])
+  const conteo = useMemo(() => {
+    // Conteo calculado al compilar (vite.config.js): no hace falta descargar el banco para la portada.
+    return typeof __BANCO_CONTEO__ !== 'undefined' ? __BANCO_CONTEO__ : {}
+  }, [])
   const irAcceso = (t) => { setTipo(t); acceso.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }) }
 
   return (
     <div className="min-h-screen bg-dark-800">
+      <BarraPortal />
       {/* Barra superior */}
       <header className="sticky top-0 z-30 bg-dark-800/95 backdrop-blur border-b border-dark-700">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
