@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { db, getConfig, setConfig } from '../../lib/db'
 import { listarCiclos, guardarCiclo, estadoCiclo, programa, estructuraExamen, formatoFecha, FECHAS_REFERENCIA } from '../../lib/ciclo'
-import { crearUsuario, hashPin } from '../../lib/sesion'
+import { crearUsuario, hashPin, cambiarPinEstudiante } from '../../lib/sesion'
 import { taxonomia, aplicarExtension } from '../../lib/taxonomia'
 import { borrarDatosDemo } from '../../lib/demo'
 import { REGLAS_POR_DEFECTO } from '../../lib/reglas'
@@ -91,7 +91,26 @@ function Usuarios({ admin }) {
     try { await crearUsuario(nuevo); setNuevo(null); cargar() } catch (e) { alert(e.message) }
   }
   const cambiarRol = async (u, rol) => { await db.usuarios.update(u.id, { rol }); cargar() }
-  const resetPin = async (u) => { const pin = prompt(`Nuevo PIN para ${u.nombre}`); if (pin) { await db.usuarios.update(u.id, { pin_hash: await hashPin(pin) }); alert('PIN actualizado') } }
+  // Estudiantes: por la misma vía que el panel del docente (en la nube, función de servidor
+  // api/pin.js que cambia la contraseña real y comprueba el ingreso). Antes solo se cambiaba
+  // el hash local y el estudiante seguía sin poder entrar.
+  const resetPin = async (u) => {
+    const pin = prompt(`Nuevo PIN para ${u.nombre} (4 a 6 dígitos)`)
+    if (!pin) return
+    if (u.rol !== 'estudiante') {
+      if (NUBE_DISPONIBLE) return alert('Docentes y administradores cambian su contraseña desde «Olvidé mi contraseña» en la pantalla de ingreso.')
+      await db.usuarios.update(u.id, { pin_hash: await hashPin(pin) }); return alert('PIN actualizado')
+    }
+    try {
+      const r = await cambiarPinEstudiante(u, pin)
+      const usuarioReal = r?.usuario ?? u.usuario
+      let msg = `PIN de ${u.nombre} actualizado.\n\nEntra como ESTUDIANTE con:\n  Usuario: ${usuarioReal}\n  PIN: ${String(pin).trim()}`
+      if (r?.verificado === true) msg += '\n\n✔ Comprobado: el ingreso con estos datos funciona.'
+      else if (r?.verificado === false) msg += `\n\n✖ Atención: el ingreso de prueba falló (${r.detalle ?? 'sin detalle'}).`
+      if (usuarioReal !== u.usuario) msg += `\n\nOjo: el usuario de acceso es "${usuarioReal}", no "${u.usuario}".`
+      alert(msg)
+    } catch (err) { alert('No se cambió el PIN: ' + err.message) }
+  }
   const eliminar = async (u) => {
     if (u.id === admin.id) return alert('No puedes eliminar tu propia cuenta')
     if (!confirm(`¿Eliminar a ${u.nombre} y todos sus registros? Esta acción no se puede deshacer.`)) return
