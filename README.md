@@ -21,7 +21,7 @@ Para una sola sección sin construir nada: `cd tienda && python -m http.server 8
 
 ## Publicar (Vercel)
 
-Proyecto de Vercel conectado a este repositorio, rama `main`: Framework **Other**, Build Command `npm run build`, Output Directory `dist`. Cada `git push` republica el sitio. Variables de entorno opcionales: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` (ICFES en la nube).
+Proyecto de Vercel `saber11-prep` conectado a este repositorio, rama `main`: Framework **Other**, Build Command `npm run build`, Output Directory `dist`. Cada `git push` republica el sitio. Variables de entorno opcionales: `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` (ICFES en la nube).
 
 ## Dominio propio
 
