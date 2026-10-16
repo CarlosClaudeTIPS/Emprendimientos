@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { db } from '../../lib/db'
-import { intentosDe, moverEstudiante } from '../../lib/datos'
+import { intentosDe, moverEstudiante, restablecerPin } from '../../lib/datos'
 import { listarPreguntas } from '../../lib/banco'
 import { sesionesDe } from '../../lib/pruebas'
 import { resumen, evolucionSemanal } from '../../lib/analitica'
 import { recomendar, reglasVigentes } from '../../lib/reglas'
-import { hashPin } from '../../lib/sesion'
 import { ir } from '../../lib/nav'
 import { Titulo, FilaMetrica, Metrica, Badge, fechaCorta, formatoTiempo } from '../ui'
 import { nombrePrueba, nombreTipoError, nombreDiagnostico } from '../../lib/taxonomia'
@@ -34,9 +33,11 @@ export default function EstudianteDetalle({ params }) {
   }
 
   const cambiarPin = async () => {
-    if (!/^\d{4,6}$/.test(pinNuevo)) return alert('El PIN debe tener 4 a 6 dígitos')
-    await db.usuarios.update(e.id, { pin_hash: await hashPin(pinNuevo) })
-    setPinNuevo(''); alert('PIN actualizado')
+    if (!/^\d{4,8}$/.test(pinNuevo)) return alert('El PIN debe tener entre 4 y 8 dígitos')
+    try {
+      await restablecerPin(e, pinNuevo)
+      setPinNuevo(''); alert(`PIN actualizado. ${e.nombre} ya entra con el PIN nuevo (usuario ${e.usuario}).`)
+    } catch (err) { alert(err.message) }
   }
 
   return (

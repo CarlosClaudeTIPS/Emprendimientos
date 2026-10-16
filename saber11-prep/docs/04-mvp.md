@@ -46,7 +46,7 @@ Extra no pedido en la lista pero sí en el prompt (sección 35): **modo papel** 
 
 | # | Criterio | Estado | Observación |
 |---|---|---|---|
-| 1 | Administrar usuarios | ⚠️ | `Admin.jsx` → Usuarios: crear docente/admin, cambiar rol, restablecer PIN, eliminar cuenta con sus intentos y sesiones. En modo nube solo aplica a la copia local; las cuentas reales se gestionan en Supabase. |
+| 1 | Administrar usuarios | ⚠️ | `Admin.jsx` → Usuarios: crear docente/admin, cambiar rol, restablecer PIN, eliminar cuenta con sus intentos y sesiones. En modo nube, restablecer PIN sí cambia la contraseña real del estudiante (vía `api/estudiantes.js` con `SUPABASE_SERVICE_ROLE_KEY`); crear/cambiar rol/eliminar siguen aplicando solo a la copia local y las cuentas de docentes/admin se gestionan en Supabase. |
 | 2 | Administrar ciclos | ✅ | Editar nombre, inicio, fecha del examen, calendario, marcar provisional/oficial, activar, crear nuevo. Fechas 2027 provisionales por defecto (`FECHAS_REFERENCIA`). |
 | 3 | Administrar contenido | ✅ | Banco (igual que docente) + Taxonomía (agregar tipos de error como extensión local) + Examen y programa (editar los JSON base). |
 | 4 | Aprobar recursos | ✅ | Igual que docente; además lo que crea el admin nace aprobado. |
