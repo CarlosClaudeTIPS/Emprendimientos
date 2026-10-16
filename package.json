@@ -1,0 +1,16 @@
+{
+  "name": "emprendimientos",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Portal de emprendimientos: ICFES, apoyo docente y tienda. Un solo sitio, tres puertas.",
+  "scripts": {
+    "build": "node build-sitio.mjs",
+    "preview": "BASE=./ node portal/build.mjs && npx -y serve portal/dist"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.134.0",
+    "@supabase/supabase-js": "^2.108.1",
+    "zod": "^4.6.5"
+  }
+}
