@@ -8,7 +8,7 @@
 window.PORTAL_CONFIG = {
   marca: {
     nombre: "Nivytek",                     // Marca del sitio (dominio nivytek.com)
-    lema: "Tres servicios, una sola casa.",
+    lema: "Servicios y productos, en un solo lugar.",
     pregunta: "¿Qué estás buscando hoy?"
   },
   secciones: [

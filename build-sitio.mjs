@@ -1,5 +1,5 @@
 /* Construye el sitio completo para Vercel en dist/:
-     /            portal de tres puertas (portal/site)
+     /            portal de la marca, una puerta por sección (portal/site)
      /icfes/      app ICFES (saber11-prep, construida con Vite)
      /docentes/   apoyo docente (estático)
      /tienda/     tienda (estática)

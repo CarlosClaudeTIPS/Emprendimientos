@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nivytek · ICFES, apoyo docente y tienda</title>
 <link rel="canonical" href="https://nivytek.com/">
-<meta name="description" content="Preparación para el ICFES, apoyo personalizado para docentes y tienda con pedidos por WhatsApp. Tres servicios, una sola casa.">
+<meta name="description" content="Nivytek reúne servicios y productos en un solo lugar: preparación para el ICFES, apoyo personalizado para docentes y tienda con pedidos por WhatsApp.">
 <meta property="og:site_name" content="Nivytek">
 <meta property="og:url" content="https://nivytek.com/">
 <meta property="og:title" content="Nivytek · ¿Qué estás buscando hoy?">
-<meta property="og:description" content="ICFES, apoyo docente y tienda. Entra por la puerta que te corresponde.">
+<meta property="og:description" content="Servicios y productos en un solo lugar. Elige lo que necesitas hoy.">
 <link rel="icon" href="shared/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="shared/barra.css"><script src="shared/portal.config.js"></script><script defer src="shared/barra.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,7 +66,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:40px}
   document.title=c.marca.nombre+' · '+c.secciones.map(function(s){return s.nombre}).join(', ');
   document.getElementById('q').textContent=c.marca.pregunta; document.getElementById('lema').textContent=c.marca.lema;
   document.getElementById('doors').innerHTML=c.secciones.map(function(s){return '<a class="door" href="'+s.carpeta+'" style="--c:'+s.color+'"><div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(I[s.icono]||I.star)+'</svg></div><span class="who">'+s.publico+'</span><h2>'+s.titulo+'</h2><p>'+s.texto+'</p><span class="go">'+s.boton+'</span></a>'}).join('');
-  document.getElementById('foot').textContent='© '+new Date().getFullYear()+' '+c.marca.nombre+'. Cada sección tiene su propio canal de contacto.';
+  document.getElementById('foot').textContent='© '+new Date().getFullYear()+' '+c.marca.nombre+'. Cada servicio tiene su propio canal de contacto.';
 })();
 </script>
 </body>

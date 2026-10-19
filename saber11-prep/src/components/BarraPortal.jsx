@@ -1,7 +1,7 @@
 import { ExternalLink } from 'lucide-react'
 import { MARCA, SECCIONES, urlPortal, urlSeccion } from '../lib/portal'
 
-// Franja superior que muestra las tres secciones del portal. Se ve en la
+// Franja superior que muestra las secciones del portal. Se ve en la
 // portada y en el inicio de cada rol; desde cualquier otra pantalla el
 // logo lleva al inicio y ahí vuelve a aparecer.
 export default function BarraPortal({ className = '' }) {

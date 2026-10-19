@@ -27,7 +27,7 @@ usa Git Bash para los ganchos; viene con Git para Windows.
 
 | Carpeta | Proyecto | Dirección en el sitio |
 |---|---|---|
-| `portal/` | Portada con las tres puertas y barra común | `/` |
+| `portal/` | Portada con una puerta por sección y barra común | `/` |
 | `saber11-prep/` | ICFES | `/icfes/` |
 | `apoyo-docente/` | Apoyo docente | `/docentes/` |
 | `tienda/` | Tienda | `/tienda/` |

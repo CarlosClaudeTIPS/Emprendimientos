@@ -14,7 +14,7 @@ Archivos que se reemplazan cuando existan los logos definitivos:
 
 ## Sistema común (la casa)
 
-- **Marca:** Nivytek. Lema actual: «Tres servicios, una sola casa.» Pregunta de la portada: «¿Qué estás buscando hoy?»
+- **Marca:** Nivytek, marca independiente y ampliable: las secciones son su oferta actual, no un catálogo cerrado. Nunca usar «tres servicios» ni cifras fijas. Lema actual: «Servicios y productos, en un solo lugar.» Pregunta de la portada: «¿Qué estás buscando hoy?»
 - **Carácter:** cercano, claro, ordenado, colombiano, sin exceso de adornos. Formas redondeadas (botones píldora, tarjetas con esquinas de 12–16 px), fondos claros, mucho aire.
 - **Tipografías:** Nunito (títulos, pesos 700–900) y Source Sans 3 (texto). Las secciones usan Poppins (ICFES) y Plus Jakarta Sans (tienda): todas sans-serif redondeadas y amigables.
 - **Fondo y texto:** fondo crema `#FBFAF7`, texto `#1D2433`, texto suave `#5B6474`, líneas `#E4E2DA`.

@@ -83,7 +83,7 @@ Otros pendientes: correr `supabase/migracion-005-ruta.sql`, `migracion-006-futur
   banda, ancho real del contenedor (no se encogen en celular), leyenda numerada para rótulos largos,
   decimales con coma. Prueba `tests/estimulo.test.js` revisa que todo gráfico del banco tenga números válidos.
 - **Logo → inicio** y **franja del portal** (`src/components/BarraPortal.jsx`, `src/lib/portal.js`): en la
-  portada y el inicio se ven las tres secciones (ICFES · Apoyo docente · Tienda).
+  portada y el inicio se ven las secciones del portal (hoy ICFES · Apoyo docente · Tienda).
 - **Portal unido en el mismo sitio**: el repo `Emprendimientos` arma todo con `npm run build` (`build-sitio.mjs`):
   la portada y la barra común (`portal/site/`) en `/`, esta app en `/icfes/`, `apoyo-docente/` en `/docentes/`
   y `tienda/` en `/tienda/`. Marca y textos: `portal/site/shared/portal.config.js`. La app enlaza a `/docentes/`

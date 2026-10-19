@@ -1,6 +1,6 @@
 # Emprendimientos
 
-Un solo sitio con tres puertas: **ICFES** (preparación Saber 11), **Apoyo docente** y **Tienda** (catálogo con pedidos por WhatsApp).
+Sitio de la marca **Nivytek** (nivytek.com): un portal modular con los servicios y productos actuales, **ICFES** (preparación Saber 11), **Apoyo docente** y **Tienda** (catálogo con pedidos por WhatsApp), preparado para sumar más secciones sin rediseñar.
 
 ```
 portal/          portada y barra común (portal/site), constructor (portal/build.mjs)

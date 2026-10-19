@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Portal de emprendimientos: ICFES, apoyo docente y tienda. Un solo sitio, tres puertas.",
+  "description": "Sitio de Nivytek: portal modular con sus servicios y productos (hoy ICFES, apoyo docente y tienda).",
   "scripts": {
     "build": "node build-sitio.mjs",
     "preview": "BASE=./ node portal/build.mjs && npx -y serve portal/dist"

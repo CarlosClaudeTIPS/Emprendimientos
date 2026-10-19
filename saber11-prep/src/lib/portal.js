@@ -1,4 +1,4 @@
-// ─── Portal: las tres secciones de la casa (ICFES, Apoyo docente, Tienda) ───
+// ─── Portal: las secciones de Nivytek (hoy ICFES, Apoyo docente, Tienda) ───
 // Esta app es la sección «ICFES». Desde su inicio se enlazan las otras dos.
 //
 // Dónde viven las otras secciones: en el repositorio Emprendimientos el portal
