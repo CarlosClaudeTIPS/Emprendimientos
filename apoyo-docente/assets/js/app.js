@@ -110,7 +110,7 @@
       </div>
       ${s.nota ? `<div class="service-note${s.alerta ? " alert" : ""}">${icon("info")}<span>${esc(s.nota)}</span></div>` : ""}
       <footer>
-        <a class="btn btn-primary" href="#formulario" data-preselect="${esc(s.titulo)}">Solicitar este apoyo</a>
+        <a class="btn btn-primary" href="#plantillas" data-preselect="${esc(s.titulo)}">Solicitar este apoyo</a>
         <a class="btn btn-ghost wa-link" href="#" data-wa="${esc(s.titulo.toLowerCase())}">Consultar por WhatsApp</a>
       </footer>
     </div>`).join("");
@@ -195,7 +195,7 @@
       <p class="small" style="color:var(--c-ink-3)">Documento demostrativo con datos ficticios. El resultado final depende de tu contexto.</p>
       <div class="modal-actions">
         ${p.archivo ? `<a class="btn btn-ghost" href="${esc(p.archivo)}" download="${esc(p.archivo.split("/").pop())}">Descargar PDF</a>` : ""}
-        <a class="btn btn-primary" href="#formulario" data-close data-preselect="${esc(p.categoria)}">Quiero algo similar</a>
+        <a class="btn btn-primary" href="#plantillas" data-close data-preselect="${esc(p.categoria)}">Quiero algo similar</a>
         <a class="btn btn-wa wa-link" href="#" data-wa="un material similar a: ${esc(p.nombre)}">Preguntar por WhatsApp</a>
       </div>`);
   });
@@ -207,119 +207,29 @@
   /* ---------- FAQ ---------- */
   $("#faqList").innerHTML = (CFG.faq || []).map((f) => `<details class="faq reveal"><summary>${esc(f.p)}</summary><p>${esc(f.r)}</p></details>`).join("");
 
-  /* ---------- Preselección de tipo de apoyo desde botones ---------- */
-  document.addEventListener("click", (e) => {
-    const a = e.target.closest("[data-preselect]"); if (!a) return;
-    const val = a.dataset.preselect.toLowerCase();
-    $$('input[name="apoyo"]').forEach((cb) => { if (val.includes(cb.value.toLowerCase().split(" ")[0]) || cb.value.toLowerCase().includes(val.split(" ")[0])) cb.checked = true; });
-  });
-
-  /* ---------- Formulario por pasos ---------- */
-  const form = $("#needsForm"), steps = $$(".wstep", form), TOTAL = steps.length;
-  const btnPrev = $("#btnPrev"), btnNext = $("#btnNext"), btnSubmit = $("#btnSubmit"), errBox = $("#formError");
-  let current = 1;
-  const DRAFT_KEY = "apoyo-docente-borrador";
-
-  function renderStep() {
-    steps.forEach((s) => s.classList.toggle("active", +s.dataset.step === current));
-    $("#wizardBar").style.width = `${(current / TOTAL) * 100}%`;
-    $$("#wizardDots li").forEach((li, i) => li.classList.toggle("active", i + 1 === current));
-    $("#wizardCount").textContent = `Paso ${current} de ${TOTAL}`;
-    btnPrev.hidden = current === 1; btnNext.hidden = current === TOTAL; btnSubmit.hidden = current !== TOTAL;
-    errBox.hidden = true;
-    const first = $("input:not([type=checkbox]):not([type=radio]),textarea,select", steps[current - 1]); if (first && window.innerWidth > 820) first.focus({ preventScroll: true });
-  }
-  function validateStep() {
-    const s = steps[current - 1]; let ok = true, msg = "";
-    $$("[required]", s).forEach((el) => {
-      const bad = el.type === "checkbox" ? !el.checked : !el.value.trim();
-      el.classList.toggle("invalid", bad); if (bad) ok = false;
-    });
-    if (!ok) msg = "Completa los campos marcados con *.";
-    if (ok && current === 3 && !$$('input[name="apoyo"]:checked').length) { ok = false; msg = "Marca al menos una opción. Si no estás segura o seguro, elige «Aún no lo sé»."; }
-    const email = $("#f_correo"); if (ok && current === 1 && email.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) { ok = false; email.classList.add("invalid"); msg = "Revisa el correo electrónico."; }
-    errBox.textContent = msg; errBox.hidden = ok; return ok;
-  }
-  btnNext.addEventListener("click", () => { if (validateStep()) { current++; renderStep(); saveDraft(); } });
-  btnPrev.addEventListener("click", () => { current--; renderStep(); });
-  form.addEventListener("input", saveDraft);
-  form.addEventListener("change", saveDraft);
-
-  const collect = () => L.resumenDesdeFormulario(new FormData(form));
-  function saveDraft() { try { const o = {}; new FormData(form).forEach((v, k) => { (o[k] ||= []).push(v); }); localStorage.setItem(DRAFT_KEY, JSON.stringify(o)); } catch (_) { } }
-  function loadDraft() {
-    try {
-      const o = JSON.parse(localStorage.getItem(DRAFT_KEY) || "null"); if (!o) return;
-      Object.entries(o).forEach(([k, vals]) => {
-        $$(`[name="${k}"]`, form).forEach((el) => {
-          if (el.type === "checkbox" || el.type === "radio") el.checked = vals.includes(el.value); else el.value = vals[0] ?? "";
-        });
-      });
-      $("#f_consent").checked = false;
-    } catch (_) { }
-  }
-  loadDraft();
-
+  /* ---------- Resumen del pedido (WhatsApp o copiar) ---------- */
   const summaryText = L.textoResumen;
-
-  // Muestra el resumen (lo usan el formulario paso a paso y el de texto libre)
   async function mostrarResumen(data, volver) {
     const text = summaryText(data);
-    $("#summaryList").innerHTML = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd class="${k.startsWith("Lo que necesito") ? "pre" : ""}">${esc(v)}</dd>`).join("");
+    $("#summaryList").innerHTML = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd class="${k.startsWith("Detalles") ? "pre" : ""}">${esc(v)}</dd>`).join("");
     const waBtn = $("#summaryWa");
     if (WA_OK) { waBtn.href = waUrl(text); waBtn.hidden = false; $("#summaryWaPendiente").hidden = true; }
     else { waBtn.hidden = true; $("#summaryWaPendiente").hidden = false; }
     const status = $("#summaryStatus"); status.hidden = true; status.className = "summary-status";
-    form.hidden = true; freeForm.hidden = true; $(".modo-form").hidden = true;
     const sum = $("#summary"); sum.hidden = false; sum.scrollIntoView({ behavior: "smooth", block: "start" });
     // Envío opcional por correo (solo si hay endpoint configurado). Nunca afirmamos envío sin confirmación real.
     const endpoint = get("formulario.endpoint");
     if (endpoint) {
       status.hidden = false; status.textContent = "Enviando copia por correo…";
       try {
-        const r = await fetch(endpoint, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ ...data, _subject: "Nueva solicitud de apoyo docente" }) });
+        const r = await fetch(endpoint, { method: "POST", headers: { "Accept": "application/json", "Content-Type": "application/json" }, body: JSON.stringify({ ...data, _subject: "Nuevo pedido de apoyo docente" }) });
         if (r.ok) status.textContent = "✓ Copia enviada por correo. Puedes continuar por WhatsApp.";
         else throw new Error(r.status);
       } catch (_) { status.className = "summary-status err"; status.textContent = "No se pudo enviar la copia por correo. Continúa por WhatsApp: el resumen va en el mensaje."; }
     }
     $("#summaryCopy").onclick = async () => { try { await navigator.clipboard.writeText(text); $("#summaryCopy").textContent = "¡Copiado!"; setTimeout(() => $("#summaryCopy").textContent = "Copiar resumen", 2000); } catch (_) { window.prompt("Copia el resumen:", text); } };
-    $("#summaryEdit").onclick = () => { sum.hidden = true; $(".modo-form").hidden = false; volver(); };
+    $("#summaryEdit").onclick = () => { sum.hidden = true; volver(); };
   }
-  form.addEventListener("submit", (e) => {
-    e.preventDefault(); if (!validateStep()) return;
-    const data = collect();
-    try { localStorage.removeItem(DRAFT_KEY); } catch (_) { }
-    mostrarResumen(data, () => { form.hidden = false; current = 1; renderStep(); form.scrollIntoView({ behavior: "smooth" }); });
-  });
-
-  /* ---------- Formulario libre: "con mis palabras" ---------- */
-  const freeForm = $("#freeForm"), FREE_KEY = "apoyo-docente-borrador-libre";
-  $$('input[name="modoForm"]').forEach((r) => r.addEventListener("change", () => {
-    const libre = r.value === "libre" && r.checked;
-    freeForm.hidden = !libre; form.hidden = libre;
-    (libre ? $("#l_texto") : $("#f_nombre")).focus({ preventScroll: true });
-  }));
-  const lTexto = $("#l_texto"), lCont = $("#l_contador");
-  const contar = () => { const n = lTexto.value.trim().split(/\s+/).filter(Boolean).length; lCont.textContent = n ? `${n} palabra${n === 1 ? "" : "s"}` + (n < 25 ? " · un poco más de contexto ayuda" : " · buen nivel de detalle") : ""; };
-  lTexto.addEventListener("input", () => { contar(); try { localStorage.setItem(FREE_KEY, lTexto.value); } catch (_) { } });
-  try { const b = localStorage.getItem(FREE_KEY); if (b) { lTexto.value = b; contar(); } } catch (_) { }
-  freeForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const err = $("#freeError"), fd = new FormData(freeForm), g = (k) => (fd.get(k) || "").toString().trim();
-    let msg = "";
-    if (g("texto").split(/\s+/).filter(Boolean).length < 8) msg = "Cuéntanos un poco más: con unas pocas frases basta para entender tu caso.";
-    else if (!g("nombre")) msg = "Escribe tu nombre o una forma de contacto.";
-    else if (g("correo") && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(g("correo"))) msg = "Revisa el correo electrónico.";
-    else if (!fd.get("consentimiento")) msg = "Necesitamos tu autorización para usar los datos y responderte.";
-    $$("[required]", freeForm).forEach((el) => el.classList.toggle("invalid", el.type === "checkbox" ? !el.checked : !el.value.trim()));
-    err.textContent = msg; err.hidden = !msg; if (msg) return;
-    const data = { "Nombre / contacto": g("nombre"), "Correo": g("correo"), "Medio de contacto preferido": g("medio"), "Lo que necesito, en mis palabras": g("texto") };
-    Object.keys(data).forEach((k) => { if (!data[k]) delete data[k]; });
-    try { localStorage.removeItem(FREE_KEY); } catch (_) { }
-    mostrarResumen(data, () => { freeForm.hidden = false; freeForm.scrollIntoView({ behavior: "smooth" }); });
-  });
-  renderStep();
-
 
   /* ---------- Simulador de personalización ---------- */
   (function () {
@@ -352,7 +262,6 @@
       $("#simIncluye").innerHTML = cfg.inc(t).map((x) => `<li>${esc(x)}</li>`).join("");
       $("#simNote").textContent = NOTES[t];
       $("#simStamp").textContent = `Hecho para ${g}`;
-      $("#simCta").dataset.preselect = n === "revision" ? "Revisión" : n === "inclusion" ? "Inclusión" : n === "rubrica" ? "Evaluación" : n === "guia" ? "Material" : "Planeación";
       const doc = $("#simDoc"); doc.classList.remove("bump"); void doc.offsetWidth; doc.classList.add("bump");
     }
     sim.addEventListener("change", update); update();
@@ -386,15 +295,15 @@
   $$(".mobile-collapse").forEach((d) => d.addEventListener("toggle", () => { if (d.open) setTimeout(observeAll, 50); }));
 
   /* ---------- Barra fija inferior (celular) ---------- */
-  const bar = $("#mobileCta"), formSec = $("#formulario");
+  const bar = $("#mobileCta"), formSec = $("#plantillas");
   if (bar && formSec && "IntersectionObserver" in window) {
     new IntersectionObserver((en) => { document.body.classList.toggle("form-in-view", en[0].isIntersecting); }, { threshold: .15 }).observe(formSec);
     new IntersectionObserver((en) => { document.body.classList.toggle("past-hero", !en[0].isIntersecting); }).observe($(".hero"));
   }
 
   /* ---------- Vistas: la portada muestra el mapa; cada sección se abre sola ---------- */
-  const VISTAS = { home: "Inicio", servicios: "Servicios", proceso: "Cómo trabajamos", portafolio: "Ejemplos", plantillas: "Pedir un material", cotizacion: "Cotización", formulario: "Cuéntame qué necesitas", faq: "Preguntas y condiciones" };
-  const ALIAS = { inicio: "home", mapa: "home", personalizado: "proceso", confianza: "faq", simulador: "proceso", summary: "formulario" };
+  const VISTAS = { home: "Inicio", servicios: "Servicios", proceso: "Cómo trabajamos", portafolio: "Ejemplos", plantillas: "Cuéntame qué necesitas", cotizacion: "Cotización", faq: "Preguntas y condiciones" };
+  const ALIAS = { inicio: "home", mapa: "home", personalizado: "proceso", confianza: "faq", simulador: "proceso", summary: "plantillas", formulario: "plantillas" };
   function vistaDesdeHash() { const h = (location.hash || "").replace("#", ""); const v = ALIAS[h] || h; return VISTAS[v] ? v : "home"; }
   function setView(v) {
     document.body.dataset.view = v;
@@ -444,8 +353,17 @@
       err.textContent = faltan.join(" "); err.hidden = !faltan.length; if (faltan.length) return;
       const resumen = P.resumenPedido(tipo, d);
       try { localStorage.removeItem(BORRADOR); } catch (_) { }
-      location.hash = "formulario";
-      setTimeout(() => mostrarResumen(resumen, () => { location.hash = "plantillas"; setTimeout(() => pform.scrollIntoView({ behavior: "smooth" }), 80); }), 80);
+      $(".pl-wrap").hidden = true;
+      mostrarResumen(resumen, () => { $(".pl-wrap").hidden = false; pform.scrollIntoView({ behavior: "smooth" }); });
+    });
+    // Preselección del tipo desde "Solicitar este apoyo" / "Quiero algo similar"
+    const MAPA_TIPO = { planeaci: "plan", planeacion: "plan", material: "guia", guia: "guia", taller: "taller", evaluaci: "evaluacion", rubrica: "rubrica", inclusi: "actividad", piar: "actividad", refuerzo: "refuerzo" };
+    document.addEventListener("click", (e) => {
+      const a = e.target.closest("[data-preselect]"); if (!a) return;
+      const v = a.dataset.preselect.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      const k = Object.keys(MAPA_TIPO).find((x) => v.includes(x)); if (!k) return;
+      const prev = datos(); tipo = MAPA_TIPO[k]; const r = tipos.querySelector(`input[value="${tipo}"]`); if (r) r.checked = true; renderCampos(prev);
+      $(".pl-wrap").hidden = false; $("#summary").hidden = true;
     });
     // Recuperar borrador
     let b = null; try { b = JSON.parse(localStorage.getItem(BORRADOR) || "null"); } catch (_) { }
