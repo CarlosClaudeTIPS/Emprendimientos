@@ -7,7 +7,7 @@
    ===================================================================== */
 window.PORTAL_CONFIG = {
   marca: {
-    nombre: "Tu Marca",                    // Nombre provisional, cámbialo aquí
+    nombre: "Nivytek",                     // Marca del sitio (dominio nivytek.com)
     lema: "Tres servicios, una sola casa.",
     pregunta: "¿Qué estás buscando hoy?"
   },

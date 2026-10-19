@@ -15,4 +15,4 @@ Reglas:
 - No mezclar aquí nada del motor de apuestas ni de la app de motos (viven en `mundial-2026-motor`).
 - El ICFES vive solo aquí (`saber11-prep/`); el repo antiguo `saber11-prep` quedó congelado. El panel `tienda/admin.html` no se publica.
 - No inventar datos del negocio (WhatsApp, políticas, precios, reseñas). Lo que falte queda como pendiente.
-- Para cambiar la marca o agregar una pestaña: `portal/site/shared/portal.config.js`.
+- Marca: **Nivytek**, dominio **nivytek.com** (portal en `/`, ICFES en `/icfes/`, docentes en `/docentes/`, tienda en `/tienda/`). Para cambiar la marca o agregar una pestaña: `portal/site/shared/portal.config.js`.

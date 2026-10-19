@@ -1,6 +1,6 @@
 {
   "negocio": {
-    "nombre": "Mi Tienda",
+    "nombre": "Nivytek",
     "eslogan": "Productos útiles, novedosos y a buen precio",
     "descripcion": "Catálogo digital de productos para el hogar, tecnología, cuidado personal y más. Pedidos por WhatsApp.",
     "logo": "img/logo-ejemplo.svg",
@@ -145,7 +145,7 @@
   },
   "sitio": {
     "moneda": "COP",
-    "paginasEstaticas": false,
+    "paginasEstaticas": true,
     "avisoDemo": false
   },
   "pasosCompra": [

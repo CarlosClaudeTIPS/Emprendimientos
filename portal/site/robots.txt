@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /tienda/admin.html
+Sitemap: https://nivytek.com/sitemap.xml
+Sitemap: https://nivytek.com/tienda/sitemap.xml

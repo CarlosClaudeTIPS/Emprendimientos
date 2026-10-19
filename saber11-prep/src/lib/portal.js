@@ -7,7 +7,7 @@
 // otro dominio cuando la app corre sola (npm run dev).
 const PORTAL_URL = (import.meta.env.VITE_PORTAL_URL || '/').replace(/\/+$/, '')
 
-export const MARCA = import.meta.env.VITE_PORTAL_MARCA || 'Tu Marca'
+export const MARCA = import.meta.env.VITE_PORTAL_MARCA || 'Nivytek'
 
 export const SECCIONES = [
   { id: 'icfes', nombre: 'ICFES', carpeta: 'icfes/', color: '#2F4D8C', actual: true },

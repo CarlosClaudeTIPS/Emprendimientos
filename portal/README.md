@@ -37,7 +37,7 @@ Todo está en `portal/site/shared/portal.config.js`: nombre de la marca, lema y 
 3. Variables de entorno (solo si quieres el ICFES con nube; sin ellas funciona en modo local):
    `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`.
 4. **Deploy.** En dos o tres minutos tendrás una dirección `algo.vercel.app` con las tres secciones.
-5. Dominio propio: **Settings → Domains → Add** → escribe `tumarca.com`. Vercel te muestra dos registros
+5. Dominio propio: **Settings → Domains → Add** → escribe `nivytek.com` (y también `www.nivytek.com`). Vercel te muestra dos registros
    (un `A` y un `CNAME`). Los copias en el panel de tu registrador (Porkbun o MI.COM.CO) → DNS. En menos de una hora responde.
 
 Cada vez que hagas `git push` a `main`, Vercel vuelve a publicar solo.

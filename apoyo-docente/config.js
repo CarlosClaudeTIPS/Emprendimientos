@@ -12,7 +12,7 @@ window.SITE_CONFIG = {
 
   /* ---------- 1. IDENTIDAD ---------- */
   marca: {
-    nombre: "Aula Organizada",            // Nombre provisional. Cámbialo cuando definas el nombre definitivo.
+    nombre: "Nivytek",                    // Marca del sitio (nivytek.com)
     lema: "Tu trabajo docente, organizado según tus necesidades.",
     profesional: "Docente especialista",  // Cómo aparece la persona que presta el servicio (sin inventar títulos).
     ciudad: "Colombia",
