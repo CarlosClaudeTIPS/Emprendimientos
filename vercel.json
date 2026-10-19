@@ -2,14 +2,25 @@
   "outputDirectory": "dist",
   "redirects": [
     {
-      "source": "/:path((?!icfes(?:/|$)|api/|sw\\.js$|shared/|$).*)",
+      "source": "/",
       "has": [
         {
           "type": "host",
           "value": ".*\\.vercel\\.app"
         }
       ],
-      "destination": "https://nivytek.com/:path",
+      "destination": "https://nivytek.com/icfes/",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
+      ],
+      "destination": "https://nivytek.com/:path*",
       "permanent": true
     },
     {
