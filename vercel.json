@@ -13,14 +13,14 @@
       "permanent": true
     },
     {
-      "source": "/:path*",
+      "source": "/:path(.*)",
       "has": [
         {
           "type": "host",
           "value": ".*\\.vercel\\.app"
         }
       ],
-      "destination": "https://nivytek.com/:path*",
+      "destination": "https://nivytek.com/:path",
       "permanent": true
     },
     {
