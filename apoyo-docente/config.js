@@ -14,7 +14,7 @@ window.SITE_CONFIG = {
   marca: {
     nombre: "Nivytek",                    // Marca del sitio (nivytek.com)
     lema: "Tu trabajo docente, organizado según tus necesidades.",
-    profesional: "Docente especialista",  // Cómo aparece la persona que presta el servicio (sin inventar títulos).
+    profesional: "Nivytek",               // El servicio se presenta a nombre de la marca, no de una persona.
     ciudad: "Colombia",
     // Foto o ilustración de la profesional. Si dejas "" se muestra la ilustración incluida.
     // Ejemplo: "assets/img/perfil.png"
