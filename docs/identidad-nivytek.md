@@ -1,16 +1,21 @@
 # Identidad visual de Nivytek (nivytek.com)
 
 Resumen del estilo que ya tiene el sitio. Cualquier logo, ícono o imagen nueva debe respetarlo.
-Archivos que se reemplazan cuando existan los logos definitivos:
+La hoja de marca completa está en `docs/identidad/hoja-de-marca-nivytek.webp`.
 
-| Pieza | Archivo | Tamaño / formato |
-|---|---|---|
-| Ícono del portal (pestaña y barra) | `portal/site/shared/favicon.svg` | SVG cuadrado 40×40 |
-| Ícono del ICFES (app instalable) | `saber11-prep/public/icono.svg` | SVG cuadrado 64×64, esquinas redondeadas |
-| Logo de la tienda | `tienda/img/logo-ejemplo.svg` (cambiar `negocio.logo` en `tienda/data/config.json`) | SVG 64×64 |
-| Imagen al compartir la tienda | `tienda/img/og-default.jpg` | JPG 1200×630 |
-| Ícono de Apoyo docente | `apoyo-docente/assets/img/favicon.svg` | SVG cuadrado |
-| Imagen al compartir Apoyo docente | `apoyo-docente/assets/img/og-image.svg` (mejor PNG 1200×630) | 1200×630 |
+## Archivos de marca en uso
+
+| Pieza | Archivo |
+|---|---|
+| Símbolo Nivytek (N azul→verde con punto amarillo), vector, fondo transparente | `portal/site/shared/logo.svg` (copia en `apoyo-docente/assets/img/logo-nivytek.svg`) |
+| Símbolo en cuadro redondeado crema (favicon del portal, logo de la tienda) | `portal/site/shared/favicon.svg`, `tienda/img/logo-nivytek.svg` |
+| Imagen al compartir el portal (1200×630) | `portal/site/shared/og-nivytek.png` |
+| Imagen al compartir la tienda | `tienda/img/og-default.jpg` |
+| Imagen al compartir Apoyo docente | `apoyo-docente/assets/img/og-image.png` |
+| Íconos de servicio (patrón: cuadrado de color, trazo blanco, punto de acento) | `saber11-prep/public/icono.svg`, `apoyo-docente/assets/img/favicon.svg` |
+
+El logotipo es la palabra NIVYTEK en mayúsculas, Nunito 900, tinta `#1D2433` (blanco sobre la barra oscura).
+Las imágenes para compartir se generan desde el símbolo con un HTML sencillo (fondo crema, símbolo, NIVYTEK, lema, nivytek.com).
 
 ## Sistema común (la casa)
 

@@ -6,7 +6,7 @@
   var root = s ? s.getAttribute("src").replace(/shared\/barra\.js.*$/, "") : "../";
   var path = location.pathname;
   var enSeccion = cfg.secciones.some(function (x) { return path.indexOf("/" + x.carpeta.replace(/\/$/, "") + "/") !== -1; });
-  var html = '<div class="pb-in"><a class="pb-marca" href="' + root + '" aria-label="' + cfg.marca.nombre + ', ir al inicio"><i></i><span>' + cfg.marca.nombre + '</span></a><nav>' +
+  var html = '<div class="pb-in"><a class="pb-marca" href="' + root + '" aria-label="' + cfg.marca.nombre + ', ir al inicio"><img src="' + root + 'shared/logo.svg" alt="" width="22" height="22"><span>' + cfg.marca.nombre + '</span></a><nav>' +
     '<a' + (enSeccion ? '' : ' class="activa"') + ' href="' + root + '">Inicio</a>' +
     cfg.secciones.map(function (x) {
       var act = path.indexOf("/" + x.carpeta.replace(/\/$/, "") + "/") !== -1 ? ' class="activa"' : "";
