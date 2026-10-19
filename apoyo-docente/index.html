@@ -49,7 +49,7 @@
       <a href="#servicios">Servicios</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#portafolio">Ejemplos</a>
-      <a href="#plantillas">Plantillas</a>
+      <a href="#plantillas">Pedir un material</a>
       <a href="#cotizacion">Cotización</a>
       <a href="#faq">Preguntas</a>
       <a href="#formulario" class="btn btn-primary btn-sm">Cuéntame qué necesitas</a>
@@ -72,7 +72,7 @@
       <p class="lead">Planeaciones, materiales, evaluaciones y documentación educativa desarrollados según tu asignatura, tus estudiantes, tu institución y el tiempo del que dispones.</p>
       <div class="hero-actions">
         <a href="#formulario" class="btn btn-primary btn-lg">Cuéntame qué necesitas</a>
-        <a href="#plantillas" class="btn btn-ghost btn-lg">Crear una plantilla ahora</a>
+        <a href="#plantillas" class="btn btn-ghost btn-lg">Pedir un material</a>
       </div>
       <ul class="hero-badges" aria-label="Características del servicio">
         <li>Sin paquetes genéricos</li>
@@ -146,7 +146,7 @@
       <a class="mapa-item" href="#servicios" style="--n:1;--mc:#2F4D8C"><span class="mapa-ico" data-icon="layers"></span><b>Servicios</b><small>Planeación, material, evaluación, PIAR y documentos</small><span class="mapa-go">Ver qué puedo pedir</span></a>
       <a class="mapa-item" href="#proceso" style="--n:2;--mc:#2BB58A"><span class="mapa-ico" data-icon="refresh"></span><b>Cómo trabajamos</b><small>Primero entendemos tu contexto; después proponemos</small><span class="mapa-go">Ver el proceso</span></a>
       <a class="mapa-item" href="#portafolio" style="--n:3;--mc:#F4845F"><span class="mapa-ico" data-icon="search"></span><b>Ejemplos</b><small>Once muestras reales: busca por grado, área o tipo</small><span class="mapa-go">Explorar ejemplos</span></a>
-      <a class="mapa-item" href="#plantillas" style="--n:4;--mc:#6B4FBB"><span class="mapa-ico" data-icon="edit"></span><b>Plantillas</b><small>Arma tú mismo un plan, guía, taller o rúbrica en 2 minutos</small><span class="mapa-go">Crear ahora</span></a>
+      <a class="mapa-item" href="#plantillas" style="--n:4;--mc:#6B4FBB"><span class="mapa-ico" data-icon="edit"></span><b>Pedir un material</b><small>Dime el tipo, tu grado, el tema y los detalles; te respondo con una propuesta</small><span class="mapa-go">Armar mi pedido</span></a>
       <a class="mapa-item" href="#cotizacion" style="--n:5;--mc:#B8860B"><span class="mapa-ico" data-icon="scale"></span><b>Cotización</b><small>Qué se tiene en cuenta y qué modalidades hay</small><span class="mapa-go">Ver cómo se cotiza</span></a>
       <a class="mapa-item destacado" href="#formulario" style="--n:6;--mc:#F4845F"><span class="mapa-ico" data-icon="chat"></span><b>Cuéntame qué necesitas</b><small>Paso a paso o con tus palabras; te respondo con una propuesta</small><span class="mapa-go">Empezar</span></a>
     </div>
@@ -354,36 +354,43 @@
 <section class="section" data-view="plantillas" id="plantillas">
   <div class="container">
     <div class="section-head reveal">
-      <span class="eyebrow">Hazlo tú en dos minutos</span>
-      <h2>Plantillas editables para tu clase</h2>
-      <p>Elige el tipo, escribe los datos de tu grupo y obtén un documento con la estructura lista. Lo editas aquí mismo, lo copias, lo descargas en Word o lo imprimes. Sin registro y sin enviar nada.</p>
+      <span class="eyebrow">Pide exactamente lo que necesitas</span>
+      <h2>Arma tu pedido en dos minutos</h2>
+      <p>Elige el tipo de material, escribe los datos de tu grupo y cuéntame los detalles con tus palabras. Con eso me llega todo claro por WhatsApp y te respondo con una propuesta a tu medida: alcance, plazo y precio.</p>
     </div>
     <div class="pl-wrap reveal">
-      <div class="pl-tipos" role="radiogroup" aria-label="Tipo de plantilla" id="plTipos"></div>
+      <h3 class="pl-paso"><span>1</span> ¿Qué material necesitas?</h3>
+      <div class="pl-tipos" role="radiogroup" aria-label="Tipo de material" id="plTipos"></div>
       <form class="pl-form" id="plForm" novalidate>
+        <h3 class="pl-paso"><span>2</span> Datos de tu grupo y del material</h3>
         <div class="pl-campos" id="plCampos"></div>
-        <p class="form-error" id="plError" role="alert" hidden></p>
-        <div class="pl-acciones">
-          <button type="submit" class="btn btn-primary">Generar plantilla</button>
-          <span class="pl-hint">Los espacios entre [corchetes] quedan para que los completes.</span>
+        <h3 class="pl-paso"><span>3</span> Cuéntame los detalles con tus palabras</h3>
+        <div class="field">
+          <label for="pl_detalles">Lo que debe tener, lo que ya tienes, lo que quieres evitar, para cuándo <span class="req">*</span></label>
+          <textarea id="pl_detalles" name="detalles" rows="7" required placeholder="Ej.: Tengo 38 estudiantes y tres con PIAR. Quiero que las guías sean cortas, con imágenes y una versión adaptada. Ya tengo la malla y el formato del colegio. Lo necesito para el 20 de noviembre."></textarea>
+          <span class="contador" id="pl_contador" aria-live="polite"></span>
         </div>
-      </form>
-      <div class="pl-resultado" id="plResultado" hidden>
-        <div class="pl-toolbar">
-          <span class="pl-estado" id="plEstado">Puedes editar el texto directamente.</span>
-          <div class="pl-botones">
-            <button type="button" class="btn btn-ghost btn-sm" id="plCopiar">Copiar</button>
-            <button type="button" class="btn btn-ghost btn-sm" id="plWord">Descargar Word</button>
-            <button type="button" class="btn btn-ghost btn-sm" id="plImprimir">Imprimir / PDF</button>
-            <button type="button" class="btn btn-link btn-sm" id="plNuevo">Nueva</button>
+        <div class="field-row">
+          <div class="field">
+            <label for="pl_nombre">Tu nombre o forma de contacto <span class="req">*</span></label>
+            <input type="text" id="pl_nombre" name="nombre" required autocomplete="name" placeholder="Ej.: Profe Carolina">
+          </div>
+          <div class="field">
+            <label for="pl_fecha">Fecha límite <span class="opt">(opcional)</span></label>
+            <input type="date" id="pl_fecha" name="fecha">
           </div>
         </div>
-        <div class="pl-doc" id="plDoc" contenteditable="true" spellcheck="true" aria-label="Documento editable"></div>
-        <div class="pl-ayuda">
-          <strong>¿Prefieres que lo elabore por ti, con tu formato institucional?</strong>
-          <a href="#formulario" class="btn btn-primary btn-sm" data-preselect="Planeación">Pedir este material</a>
+        <div class="attach-note"><strong>¿Tienes tu formato institucional o materiales?</strong> Después de enviar el pedido podrás compartirlos por WhatsApp. Esta página no almacena archivos.</div>
+        <label class="consent">
+          <input type="checkbox" name="consentimiento" id="pl_consent" required>
+          <span>Autorizo el uso de estos datos únicamente para responder mi solicitud, según la <a href="#privacidad" data-modal="privacidad">política de privacidad</a>. <span class="req">*</span></span>
+        </label>
+        <p class="form-error" id="plError" role="alert" hidden></p>
+        <div class="pl-acciones">
+          <button type="submit" class="btn btn-primary btn-lg">Ver resumen y enviar por WhatsApp</button>
+          <span class="pl-hint">No se elabora nada automáticamente: el material lo preparo yo según tu pedido y lo acordamos antes de empezar.</span>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </section>

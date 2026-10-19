@@ -72,13 +72,13 @@ Los ejemplos del portafolio se pueden buscar por texto y filtrar por área, grad
 de los campos `area`, `grados`, `tipoRecurso`, `duracion`, `modalidad` y `adaptacion` de cada ejemplo en `config.js`.
 Si agregas un ejemplo nuevo, llena esos campos para que aparezca en los filtros.
 
-## 2c. Plantillas editables (sin IA, sin servidor)
+## 2c. «Pedir un material» (pedido guiado)
 
-La sección «Plantillas» permite al docente generar un plan de clase, guía, taller, evaluación, rúbrica, actividad
-diferenciada o material de refuerzo a partir de sus datos (área, grado, tema…). El documento se edita en la misma página,
-se copia, se descarga como Word (`.doc`) o se imprime. El borrador se guarda en el navegador del docente.
-Las estructuras están en `assets/js/plantillas.js`; para cambiar un texto o agregar un tipo, edita ese archivo.
-Los referentes curriculares (DBA, estándares) se dejan como espacio en blanco: no se inventan.
+La sección «Pedir un material» no produce documentos: ayuda al docente a especificar su pedido. Elige el tipo
+(plan de clase, guía, taller, evaluación, rúbrica, actividad diferenciada o refuerzo), llena los datos de su grupo,
+cuenta los detalles con sus palabras y obtiene un resumen listo para enviar por WhatsApp (o copiar). El material lo
+elabora la profesional después de acordar alcance, plazo y precio.
+Los tipos y los datos que se piden para cada uno están en `assets/js/plantillas.js`.
 
 ## 2d. WhatsApp pendiente
 

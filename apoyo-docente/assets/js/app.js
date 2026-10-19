@@ -393,7 +393,7 @@
   }
 
   /* ---------- Vistas: la portada muestra el mapa; cada sección se abre sola ---------- */
-  const VISTAS = { home: "Inicio", servicios: "Servicios", proceso: "Cómo trabajamos", portafolio: "Ejemplos", plantillas: "Plantillas", cotizacion: "Cotización", formulario: "Cuéntame qué necesitas", faq: "Preguntas y condiciones" };
+  const VISTAS = { home: "Inicio", servicios: "Servicios", proceso: "Cómo trabajamos", portafolio: "Ejemplos", plantillas: "Pedir un material", cotizacion: "Cotización", formulario: "Cuéntame qué necesitas", faq: "Preguntas y condiciones" };
   const ALIAS = { inicio: "home", mapa: "home", personalizado: "proceso", confianza: "faq", simulador: "proceso", summary: "formulario" };
   function vistaDesdeHash() { const h = (location.hash || "").replace("#", ""); const v = ALIAS[h] || h; return VISTAS[v] ? v : "home"; }
   function setView(v) {
@@ -412,12 +412,12 @@
   }
   window.addEventListener("hashchange", irAVista);
 
-  /* ---------- Plantillas editables (un solo generador configurable) ---------- */
+  /* ---------- Pedir un material: tipo + datos del grupo + detalles con sus palabras → resumen para WhatsApp ---------- */
   (function () {
     const P = window.Plantillas; if (!P || !$("#plantillas")) return;
-    const BORRADOR = "apoyo-docente-plantilla";
+    const BORRADOR = "apoyo-docente-pedido";
     let tipo = "plan";
-    const tipos = $("#plTipos"), campos = $("#plCampos"), form = $("#plForm"), res = $("#plResultado"), doc = $("#plDoc"), err = $("#plError"), estado = $("#plEstado");
+    const tipos = $("#plTipos"), campos = $("#plCampos"), pform = $("#plForm"), err = $("#plError"), det = $("#pl_detalles"), cont = $("#pl_contador");
     tipos.innerHTML = Object.entries(P.TIPOS).map(([id, t]) => `<label class="pl-tipo"><input type="radio" name="pl_tipo" value="${id}"${id === tipo ? " checked" : ""}><span><b>${esc(t.nombre)}</b><small>${esc(t.descripcion)}</small></span></label>`).join("");
     function renderCampos(valores = {}) {
       campos.innerHTML = P.TIPOS[tipo].campos.map((c) => {
@@ -429,37 +429,27 @@
         return `<div class="field"><label for="${id}">${esc(c.etiqueta)}${req}</label><input type="text" id="${id}" name="${c.id}" value="${v}" placeholder="${esc(c.placeholder || "")}"${c.requerido ? " required" : ""}></div>`;
       }).join("");
     }
-    const datos = () => Object.fromEntries(new FormData(form).entries());
-    function guardar(html) { try { localStorage.setItem(BORRADOR, JSON.stringify({ tipo, datos: datos(), html: html ?? (res.hidden ? "" : doc.innerHTML) })); } catch (_) { } }
-    $("#plTipos").addEventListener("change", (e) => { if (e.target.name === "pl_tipo") { const prev = datos(); tipo = e.target.value; renderCampos(prev); } });
-    form.addEventListener("submit", (e) => {
+    const datos = () => { const o = Object.fromEntries(new FormData(pform).entries()); delete o.consentimiento; return o; };
+    const guardar = () => { try { localStorage.setItem(BORRADOR, JSON.stringify({ tipo, datos: datos() })); } catch (_) { } };
+    const contar = () => { const n = det.value.trim().split(/\s+/).filter(Boolean).length; cont.textContent = n ? `${n} palabra${n === 1 ? "" : "s"}` + (n < 20 ? " · un poco más de contexto ayuda" : " · buen nivel de detalle") : ""; };
+    tipos.addEventListener("change", (e) => { if (e.target.name === "pl_tipo") { const prev = datos(); tipo = e.target.value; renderCampos(prev); guardar(); } });
+    pform.addEventListener("input", () => { contar(); guardar(); });
+    pform.addEventListener("submit", (e) => {
       e.preventDefault();
       const d = datos(), faltan = P.validar(tipo, d);
-      $$("[required]", form).forEach((el) => el.classList.toggle("invalid", !el.value.trim()));
-      if (faltan.length) { err.textContent = faltan.join(" "); err.hidden = false; return; }
-      err.hidden = true;
-      const r = P.generar(tipo, d);
-      doc.innerHTML = r.html; doc.dataset.titulo = r.titulo; res.hidden = false; estado.textContent = "Listo. Puedes editar el texto directamente antes de copiar o descargar.";
-      guardar(r.html); res.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (d.detalles.trim().split(/\s+/).filter(Boolean).length < 6) faltan.push("Cuéntame un poco más en los detalles: con dos o tres frases basta.");
+      if (!(d.nombre || "").trim()) faltan.push("Escribe tu nombre o una forma de contacto.");
+      if (!$("#pl_consent").checked) faltan.push("Necesitamos tu autorización para usar los datos y responderte.");
+      $$("[required]", pform).forEach((el) => el.classList.toggle("invalid", el.type === "checkbox" ? !el.checked : !el.value.trim()));
+      err.textContent = faltan.join(" "); err.hidden = !faltan.length; if (faltan.length) return;
+      const resumen = P.resumenPedido(tipo, d);
+      try { localStorage.removeItem(BORRADOR); } catch (_) { }
+      location.hash = "formulario";
+      setTimeout(() => mostrarResumen(resumen, () => { location.hash = "plantillas"; setTimeout(() => pform.scrollIntoView({ behavior: "smooth" }), 80); }), 80);
     });
-    doc.addEventListener("input", () => { estado.textContent = "Cambios guardados en este navegador."; guardar(); });
-    const aviso = (t) => { estado.textContent = t; };
-    $("#plCopiar").addEventListener("click", async () => {
-      const texto = P.aTexto(doc.innerHTML);
-      try { await navigator.clipboard.writeText(texto); aviso("Copiado al portapapeles."); } catch (_) { window.prompt("Copia el texto:", texto); }
-    });
-    $("#plWord").addEventListener("click", () => {
-      const titulo = doc.dataset.titulo || "plantilla", html = P.documentoHtml(titulo, doc.innerHTML);
-      const blob = new Blob(["\ufeff", html], { type: "application/msword" });
-      const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = titulo.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/°/g, "").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-").slice(0, 80) + ".doc";
-      document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
-      aviso("Descarga iniciada. Word, LibreOffice y Google Docs abren este archivo.");
-    });
-    $("#plImprimir").addEventListener("click", () => { document.body.classList.add("imprimiendo-plantilla"); window.print(); setTimeout(() => document.body.classList.remove("imprimiendo-plantilla"), 1000); });
-    $("#plNuevo").addEventListener("click", () => { res.hidden = true; doc.innerHTML = ""; try { localStorage.removeItem(BORRADOR); } catch (_) { } form.scrollIntoView({ behavior: "smooth" }); });
     // Recuperar borrador
     let b = null; try { b = JSON.parse(localStorage.getItem(BORRADOR) || "null"); } catch (_) { }
-    if (b && P.TIPOS[b.tipo]) { tipo = b.tipo; const r = tipos.querySelector(`input[value="${tipo}"]`); if (r) r.checked = true; renderCampos(b.datos || {}); if (b.html) { doc.innerHTML = b.html; doc.dataset.titulo = (b.html.match(/<h1>([^<]*)<\/h1>/) || [])[1] || ""; res.hidden = false; estado.textContent = "Recuperamos tu último borrador de este navegador."; } }
+    if (b && P.TIPOS[b.tipo]) { tipo = b.tipo; const r = tipos.querySelector(`input[value="${tipo}"]`); if (r) r.checked = true; renderCampos(b.datos || {}); ["detalles", "nombre", "fecha"].forEach((k) => { if (b.datos && b.datos[k]) $("#pl_" + k).value = b.datos[k]; }); contar(); }
     else renderCampos();
   })();
 

@@ -4,52 +4,26 @@ import { createRequire } from "node:module";
 const require = createRequire(import.meta.url);
 const P = require("../assets/js/plantillas.js");
 
-test("existen los 7 tipos y cada uno genera secciones", () => {
+test("existen los 7 tipos de material y cada uno define sus campos", () => {
   assert.deepEqual(Object.keys(P.TIPOS), ["plan", "guia", "taller", "evaluacion", "rubrica", "actividad", "refuerzo"]);
-  for (const t of Object.keys(P.TIPOS)) {
-    const r = P.generar(t, { area: "Matemáticas", grado: "5°", tema: "Fracciones" });
-    assert.match(r.titulo, /Fracciones/);
-    assert.ok((r.html.match(/<section>/g) || []).length >= 4, t + " tiene pocas secciones");
-    assert.ok(r.texto.length > 100);
-  }
+  for (const t of Object.values(P.TIPOS)) { assert.ok(t.nombre && t.descripcion); assert.ok(t.campos.length >= 4); }
 });
 
 test("validar exige área, grado y tema", () => {
   assert.deepEqual(P.validar("plan", {}), ["Falta: Asignatura o área.", "Falta: Grado.", "Falta: Tema."]);
   assert.deepEqual(P.validar("plan", { area: "L", grado: "8°", tema: "Crónica" }), []);
+  assert.deepEqual(P.validar("otro", {}), ["Tipo de material desconocido."]);
 });
 
-test("plan de clase respeta el número de sesiones y lo acota", () => {
-  const r = P.generar("plan", { area: "L", grado: "8°", tema: "Crónica", sesiones: "4" });
-  assert.equal((r.html.match(/Sesión \d/g) || []).length, 4);
-  assert.equal((P.generar("plan", { area: "L", grado: "8°", tema: "x", sesiones: "99" }).html.match(/Sesión \d+/g) || []).length, 10);
+test("resumenPedido incluye solo lo diligenciado, con el tipo y los detalles", () => {
+  const r = P.resumenPedido("rubrica", { nombre: "Profe Ana", area: "Lenguaje", grado: "8°", tema: "Exposición", criterios: "", escala: "4 / 3 / 2 / 1", detalles: "  Para 35 estudiantes, en el formato del colegio.  ", fecha: "2026-11-20" });
+  assert.deepEqual(r, {
+    "Nombre / contacto": "Profe Ana", "Material que necesito": "Rúbrica", "Asignatura o área": "Lenguaje", "Grado": "8°",
+    "Tema": "Exposición", "Niveles": "4 / 3 / 2 / 1", "Fecha límite": "2026-11-20", "Detalles, en mis palabras": "Para 35 estudiantes, en el formato del colegio."
+  });
 });
 
-test("rúbrica usa los criterios y niveles indicados", () => {
-  const r = P.generar("rubrica", { area: "L", grado: "8°", tema: "Exposición", criterios: "Dominio\nOrganización", escala: "4 / 3 / 2 / 1" });
-  assert.match(r.html, /<b>Dominio<\/b>/);
-  assert.equal((r.html.match(/<th>[1-4]<\/th>/g) || []).length, 4);
-});
-
-test("los datos del docente se escapan (sin inyección de HTML)", () => {
-  const r = P.generar("guia", { area: "<script>alert(1)</script>", grado: "5°", tema: "x" });
-  assert.ok(!r.html.includes("<script>"));
-  assert.ok(r.html.includes("&lt;script&gt;"));
-});
-
-test("evaluación mixta alterna selección múltiple y abiertas", () => {
-  const r = P.generar("evaluacion", { area: "M", grado: "3°", tema: "Sumas", preguntas: "4", formato: "Mixta" });
-  assert.equal((r.html.match(/A\. \[opción\]/g) || []).length, 2);
-  assert.equal((r.html.match(/Pregunta abierta/g) || []).length, 2);
-});
-
-test("no inventa referentes oficiales: deja el espacio marcado", () => {
-  const r = P.generar("plan", { area: "M", grado: "3°", tema: "Sumas" });
-  assert.match(r.html, /\[Escribe aquí el estándar, DBA o malla/);
-  assert.ok(!/aprobado por el Ministerio/i.test(r.html));
-});
-
-test("documentoHtml produce un documento completo con el título", () => {
-  const d = P.documentoHtml("Mi plan", "<p>hola</p>");
-  assert.match(d, /^<!DOCTYPE html>/); assert.match(d, /<title>Mi plan<\/title>/); assert.match(d, /<p>hola<\/p>/);
+test("el módulo no genera documentos", () => {
+  assert.equal(typeof P.generar, "undefined");
+  assert.equal(typeof P.documentoHtml, "undefined");
 });
