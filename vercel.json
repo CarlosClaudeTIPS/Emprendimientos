@@ -2,6 +2,17 @@
   "outputDirectory": "dist",
   "redirects": [
     {
+      "source": "/:path((?!icfes(?:/|$)|api/|sw\\.js$|shared/|$).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": ".*\\.vercel\\.app"
+        }
+      ],
+      "destination": "https://nivytek.com/:path",
+      "permanent": true
+    },
+    {
       "source": "/portal",
       "destination": "/",
       "permanent": true
