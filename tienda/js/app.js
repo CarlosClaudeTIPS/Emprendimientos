@@ -330,7 +330,9 @@
         <a href="${T.ruta('catalogo.html?f=nuevos')}" ${act('nuevos')}>Novedades</a>
         <a href="${T.ruta('preguntas.html')}" ${act('preguntas')}>Preguntas</a>`;
     const avisos = [];
-    if (!T.hayWA()) avisos.push(`<div class="aviso-config" role="status"><span>Falta configurar el número de WhatsApp: los botones de pedido no funcionarán. Hazlo en <a href="${T.ruta('admin.html')}">el panel de administración</a>.</span></div>`);
+    // Aviso solo para el dueño (en el computador o en la vista previa del panel), nunca para los clientes.
+    const esLocal = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || location.protocol === 'file:';
+    if (!T.hayWA() && (esLocal || T.modoBorrador)) avisos.push(`<div class="aviso-config" role="status"><span>Falta configurar el número de WhatsApp: los botones de pedido no funcionarán. Hazlo en <a href="${T.ruta('admin.html')}">el panel de administración</a>.</span></div>`);
     if (T.modoBorrador) avisos.push(`<div class="aviso-demo" role="status"><span>Estás viendo el <strong>borrador local</strong> del panel admin. <a href="#" id="salir-preview">Salir de la vista previa</a></span></div>`);
     else if ((cfg.sitio || {}).avisoDemo) avisos.push(`<div class="aviso-demo" role="status"><span>Catálogo de demostración: los productos marcados (DEMO) son ejemplos y no están a la venta.</span><button type="button" data-cerrar-aviso aria-label="Cerrar aviso">✕</button></div>`);
     if (avisos.length && !T.leerLS('tienda_avisos_cerrados', false)) {
