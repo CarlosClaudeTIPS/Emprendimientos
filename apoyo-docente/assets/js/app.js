@@ -262,15 +262,16 @@
 
   const summaryText = L.textoResumen;
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault(); if (!validateStep()) return;
-    const data = collect(), text = summaryText(data);
-    $("#summaryList").innerHTML = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+  // Muestra el resumen (lo usan el formulario paso a paso y el de texto libre)
+  async function mostrarResumen(data, volver) {
+    const text = summaryText(data);
+    $("#summaryList").innerHTML = Object.entries(data).filter(([, v]) => v).map(([k, v]) => `<dt>${esc(k)}</dt><dd class="${k.startsWith("Lo que necesito") ? "pre" : ""}">${esc(v)}</dd>`).join("");
     const waBtn = $("#summaryWa");
     if (WA_OK) { waBtn.href = waUrl(text); waBtn.hidden = false; $("#summaryWaPendiente").hidden = true; }
     else { waBtn.hidden = true; $("#summaryWaPendiente").hidden = false; }
     const status = $("#summaryStatus"); status.hidden = true; status.className = "summary-status";
-    form.hidden = true; const sum = $("#summary"); sum.hidden = false; sum.scrollIntoView({ behavior: "smooth", block: "start" });
+    form.hidden = true; freeForm.hidden = true; $(".modo-form").hidden = true;
+    const sum = $("#summary"); sum.hidden = false; sum.scrollIntoView({ behavior: "smooth", block: "start" });
     // Envío opcional por correo (solo si hay endpoint configurado). Nunca afirmamos envío sin confirmación real.
     const endpoint = get("formulario.endpoint");
     if (endpoint) {
@@ -281,9 +282,41 @@
         else throw new Error(r.status);
       } catch (_) { status.className = "summary-status err"; status.textContent = "No se pudo enviar la copia por correo. Continúa por WhatsApp: el resumen va en el mensaje."; }
     }
-    try { localStorage.removeItem(DRAFT_KEY); } catch (_) { }
     $("#summaryCopy").onclick = async () => { try { await navigator.clipboard.writeText(text); $("#summaryCopy").textContent = "¡Copiado!"; setTimeout(() => $("#summaryCopy").textContent = "Copiar resumen", 2000); } catch (_) { window.prompt("Copia el resumen:", text); } };
-    $("#summaryEdit").onclick = () => { sum.hidden = true; form.hidden = false; current = 1; renderStep(); form.scrollIntoView({ behavior: "smooth" }); };
+    $("#summaryEdit").onclick = () => { sum.hidden = true; $(".modo-form").hidden = false; volver(); };
+  }
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); if (!validateStep()) return;
+    const data = collect();
+    try { localStorage.removeItem(DRAFT_KEY); } catch (_) { }
+    mostrarResumen(data, () => { form.hidden = false; current = 1; renderStep(); form.scrollIntoView({ behavior: "smooth" }); });
+  });
+
+  /* ---------- Formulario libre: "con mis palabras" ---------- */
+  const freeForm = $("#freeForm"), FREE_KEY = "apoyo-docente-borrador-libre";
+  $$('input[name="modoForm"]').forEach((r) => r.addEventListener("change", () => {
+    const libre = r.value === "libre" && r.checked;
+    freeForm.hidden = !libre; form.hidden = libre;
+    (libre ? $("#l_texto") : $("#f_nombre")).focus({ preventScroll: true });
+  }));
+  const lTexto = $("#l_texto"), lCont = $("#l_contador");
+  const contar = () => { const n = lTexto.value.trim().split(/\s+/).filter(Boolean).length; lCont.textContent = n ? `${n} palabra${n === 1 ? "" : "s"}` + (n < 25 ? " · un poco más de contexto ayuda" : " · buen nivel de detalle") : ""; };
+  lTexto.addEventListener("input", () => { contar(); try { localStorage.setItem(FREE_KEY, lTexto.value); } catch (_) { } });
+  try { const b = localStorage.getItem(FREE_KEY); if (b) { lTexto.value = b; contar(); } } catch (_) { }
+  freeForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const err = $("#freeError"), fd = new FormData(freeForm), g = (k) => (fd.get(k) || "").toString().trim();
+    let msg = "";
+    if (g("texto").split(/\s+/).filter(Boolean).length < 8) msg = "Cuéntanos un poco más: con unas pocas frases basta para entender tu caso.";
+    else if (!g("nombre")) msg = "Escribe tu nombre o una forma de contacto.";
+    else if (g("correo") && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(g("correo"))) msg = "Revisa el correo electrónico.";
+    else if (!fd.get("consentimiento")) msg = "Necesitamos tu autorización para usar los datos y responderte.";
+    $$("[required]", freeForm).forEach((el) => el.classList.toggle("invalid", el.type === "checkbox" ? !el.checked : !el.value.trim()));
+    err.textContent = msg; err.hidden = !msg; if (msg) return;
+    const data = { "Nombre / contacto": g("nombre"), "Correo": g("correo"), "Medio de contacto preferido": g("medio"), "Lo que necesito, en mis palabras": g("texto") };
+    Object.keys(data).forEach((k) => { if (!data[k]) delete data[k]; });
+    try { localStorage.removeItem(FREE_KEY); } catch (_) { }
+    mostrarResumen(data, () => { freeForm.hidden = false; freeForm.scrollIntoView({ behavior: "smooth" }); });
   });
   renderStep();
 

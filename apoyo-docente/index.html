@@ -148,7 +148,7 @@
       <a class="mapa-item" href="#portafolio" style="--n:3;--mc:#F4845F"><span class="mapa-ico" data-icon="search"></span><b>Ejemplos</b><small>Once muestras reales: busca por grado, área o tipo</small><span class="mapa-go">Explorar ejemplos</span></a>
       <a class="mapa-item" href="#plantillas" style="--n:4;--mc:#6B4FBB"><span class="mapa-ico" data-icon="edit"></span><b>Plantillas</b><small>Arma tú mismo un plan, guía, taller o rúbrica en 2 minutos</small><span class="mapa-go">Crear ahora</span></a>
       <a class="mapa-item" href="#cotizacion" style="--n:5;--mc:#B8860B"><span class="mapa-ico" data-icon="scale"></span><b>Cotización</b><small>Qué se tiene en cuenta y qué modalidades hay</small><span class="mapa-go">Ver cómo se cotiza</span></a>
-      <a class="mapa-item destacado" href="#formulario" style="--n:6;--mc:#F4845F"><span class="mapa-ico" data-icon="chat"></span><b>Cuéntame qué necesitas</b><small>Cinco pasos cortos y te respondo con una propuesta</small><span class="mapa-go">Empezar</span></a>
+      <a class="mapa-item destacado" href="#formulario" style="--n:6;--mc:#F4845F"><span class="mapa-ico" data-icon="chat"></span><b>Cuéntame qué necesitas</b><small>Paso a paso o con tus palabras; te respondo con una propuesta</small><span class="mapa-go">Empezar</span></a>
     </div>
     <p class="note reveal">¿Dudas? <a href="#faq">Preguntas frecuentes y condiciones</a>.</p>
   </div>
@@ -426,8 +426,56 @@
     <div class="section-head reveal">
       <span class="eyebrow">Diagnóstico inicial</span>
       <h2>Cuéntame qué necesitas</h2>
-      <p>Cinco pasos cortos. No necesitas conocer términos técnicos; si no sabes exactamente qué necesitas, también puedes decirlo.</p>
+      <p>Elige cómo prefieres contarlo. En los dos casos te respondo con una propuesta a tu medida.</p>
     </div>
+
+    <div class="modo-form reveal" role="radiogroup" aria-label="Cómo quieres contarlo">
+      <label class="modo-opcion"><input type="radio" name="modoForm" value="pasos" checked><span><b>Paso a paso</b><small>Cinco preguntas cortas con opciones para marcar. Ideal si tienes claro el tipo de material.</small></span></label>
+      <label class="modo-opcion"><input type="radio" name="modoForm" value="libre"><span><b>Con mis palabras</b><small>Un solo cuadro para explicar con calma tu situación, lo que tienes y lo que esperas. Ideal si tu caso es particular.</small></span></label>
+    </div>
+
+    <form id="freeForm" class="wizard reveal libre" novalidate hidden>
+      <fieldset class="wstep active">
+        <legend>Explícame tu necesidad a tu manera</legend>
+        <p class="hint">Escribe como si me lo contaras por mensaje. Mientras más contexto me des, más ajustada será la propuesta. Te puede servir mencionar:</p>
+        <ul class="guia-libre">
+          <li><b>Tu grupo:</b> grado, área, cuántos estudiantes, algo particular del curso.</li>
+          <li><b>Lo que necesitas:</b> qué material, para qué tema o periodo, en qué formato.</li>
+          <li><b>Lo que ya tienes:</b> malla, formato institucional, guías anteriores, materiales a medias.</li>
+          <li><b>Lo que esperas:</b> cómo te lo imaginas, qué debe tener sí o sí, qué quieres evitar.</li>
+          <li><b>Tiempo y presupuesto:</b> para cuándo lo necesitas y, si quieres, cuánto podrías invertir.</li>
+        </ul>
+        <div class="field">
+          <label for="l_texto">Tu explicación <span class="req">*</span></label>
+          <textarea id="l_texto" name="texto" rows="10" required placeholder="Ej.: Soy profe de Ciencias de 6° en un colegio público, tengo 38 estudiantes y tres con PIAR. Para el tercer periodo necesito guías de trabajo autónomo sobre el sistema digestivo porque voy a estar incapacitada dos semanas. Tengo la malla y el formato del colegio, pero las guías viejas son muy largas y los estudiantes no las terminan. Quisiera algo corto, con imágenes, y una versión adaptada para los tres estudiantes. Lo necesito para el 20 de noviembre."></textarea>
+          <span class="contador" id="l_contador" aria-live="polite"></span>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="l_nombre">Nombre o forma de contacto <span class="req">*</span></label>
+            <input type="text" id="l_nombre" name="nombre" required autocomplete="name" placeholder="Ej.: Profe Carolina">
+          </div>
+          <div class="field">
+            <label for="l_medio">Medio de contacto preferido</label>
+            <select id="l_medio" name="medio"><option>WhatsApp</option><option>Correo electrónico</option><option>Llamada</option></select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="l_correo">Correo electrónico <span class="opt">(opcional)</span></label>
+          <input type="email" id="l_correo" name="correo" autocomplete="email" placeholder="tucorreo@ejemplo.com">
+        </div>
+        <div class="attach-note"><strong>¿Tienes archivos?</strong> Después de enviar podrás compartirlos por WhatsApp o correo. Esta página no los almacena.</div>
+        <label class="consent">
+          <input type="checkbox" name="consentimiento" id="l_consent" required>
+          <span>Autorizo el uso de estos datos únicamente para responder mi solicitud, según la <a href="#privacidad" data-modal="privacidad">política de privacidad</a>. <span class="req">*</span></span>
+        </label>
+      </fieldset>
+      <div class="wizard-nav">
+        <span class="wizard-count">Un solo paso</span>
+        <button type="submit" class="btn btn-primary">Ver resumen</button>
+      </div>
+      <p class="form-error" id="freeError" role="alert" hidden></p>
+    </form>
 
     <form id="needsForm" class="wizard reveal" novalidate>
       <div class="wizard-progress" aria-hidden="true">
@@ -512,7 +560,8 @@
         <legend>Cuéntanos más</legend>
         <div class="field">
           <label for="f_descripcion">Describe tu necesidad <span class="req">*</span></label>
-          <textarea id="f_descripcion" name="descripcion" rows="4" required placeholder="Ej.: Necesito las planeaciones de la tercera semana del segundo periodo para 5°, tema fracciones. Tengo el formato de mi colegio."></textarea>
+          <textarea id="f_descripcion" name="descripcion" rows="6" required placeholder="Ej.: Necesito las planeaciones de la tercera semana del segundo periodo para 5°, tema fracciones. Tengo el formato de mi colegio y quisiera actividades con material concreto."></textarea>
+          <span class="hint">Cuéntalo con tus palabras: tema, qué tienes, qué esperas y para cuándo. Si prefieres explicarlo largo, usa la opción «Con mis palabras» arriba.</span>
         </div>
         <div class="field">
           <label for="f_tienes">¿Qué materiales ya tienes elaborados? <span class="opt">(opcional)</span></label>
