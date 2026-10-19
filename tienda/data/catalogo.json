@@ -128,8 +128,109 @@
         "series s",
         "pc"
       ],
-      "relacionados": [],
+      "relacionados": [
+        "control-xbox-robot-white"
+      ],
       "fechaCreacion": "2026-10-15",
+      "stock": 1
+    },
+    {
+      "id": "control-xbox-robot-white",
+      "nombre": "Control Xbox Inalámbrico Robot White - Nuevo y sellado",
+      "categoria": "tecnologia",
+      "precio": 189000,
+      "precioAnterior": null,
+      "disponible": true,
+      "nuevo": true,
+      "oferta": false,
+      "destacado": true,
+      "popular": false,
+      "visible": true,
+      "orden": 2,
+      "imagenes": [
+        "img/productos/control-xbox-robot-white.jpg",
+        "img/productos/control-xbox-robot-white-mesa.jpg",
+        "img/productos/control-xbox-robot-white-caja.jpg"
+      ],
+      "video": "",
+      "descripcionCorta": "Control inalámbrico Xbox original color blanco (Robot White), nuevo y sellado de fábrica.",
+      "descripcion": "Control original de Xbox en color blanco Robot White, completamente nuevo, sellado de fábrica y 100% funcional.\n\nNota importante: la caja de cartón exterior se maltrató un poco durante el transporte del envío, pero el control adentro está intacto, sin ningún uso, con sus sellos originales. Estado del control: 10/10. Estado de la caja: 7/10.\n\nEntrega personal en Bogotá, con punto de encuentro en la Av. Américas con 68 (zona segura). También se hacen envíos a otras zonas o ciudades únicamente con pago previo confirmado; el costo del envío lo asume el comprador.\n\nTrato serio y seguro. Solo venta, no se aceptan cambios.",
+      "problema": "Para quien necesita un segundo control para jugar acompañado, reemplazar uno dañado o usar un control de Xbox en PC o celular, con la garantía de que es original y viene sellado.",
+      "beneficios": [
+        "Control original Xbox, nuevo y sellado de fábrica (10/10)",
+        "Diseño clásico en blanco, el modelo estándar de Xbox Series",
+        "Compatible con consola, PC y móviles, según indica el vendedor",
+        "Precio inferior al de una edición especial por ser el modelo estándar",
+        "Entrega personal en Bogotá en punto de encuentro seguro"
+      ],
+      "especificaciones": {
+        "Marca": "Xbox",
+        "Modelo / color": "Robot White (blanco)",
+        "Estado del control": "Nuevo, sellado de fábrica (10/10)",
+        "Estado de la caja": "Con maltrato leve por transporte (7/10)",
+        "Compatibilidad": "Xbox Series X|S, Xbox One, PC (Windows), Android y iOS",
+        "Conectividad": "Pendiente de confirmar"
+      },
+      "incluye": [
+        "1 control inalámbrico Xbox Robot White en su caja original",
+        "Contenido adicional de la caja: pendiente de confirmar"
+      ],
+      "instrucciones": [
+        "Enciende el control manteniendo presionado el botón Xbox.",
+        "Empareja el control con tu consola o dispositivo siguiendo el procedimiento habitual de Xbox.",
+        "En PC, Android o iOS verifica el método de conexión soportado antes de usarlo."
+      ],
+      "precauciones": [
+        "Producto sellado: el control se entrega sin abrir; solo la caja exterior presenta maltrato leve por transporte.",
+        "No se aceptan cambios ni devoluciones por cambio de opinión; confirma tu compra antes de pagar.",
+        "Verifica la compatibilidad con tu dispositivo antes de comprar."
+      ],
+      "preguntas": [
+        {
+          "p": "¿Es nuevo o usado?",
+          "r": "Es nuevo, sellado de fábrica y sin uso (10/10). Solo la caja de cartón exterior tiene un maltrato leve por el transporte (7/10)."
+        },
+        {
+          "p": "¿El maltrato de la caja afecta al control?",
+          "r": "No. El control está intacto, con sus sellos originales. Lo que se afectó fue únicamente el cartón exterior."
+        },
+        {
+          "p": "¿Cómo es la entrega en Bogotá?",
+          "r": "Entrega personal en un punto de encuentro seguro en la Av. Américas con 68. Coordinamos día y hora por WhatsApp."
+        },
+        {
+          "p": "¿Hacen envíos a otras ciudades?",
+          "r": "Sí, únicamente con pago previo confirmado. El costo del envío lo asume el comprador y se cotiza por WhatsApp."
+        },
+        {
+          "p": "¿Aceptan cambios?",
+          "r": "No. Es solo venta, no se aceptan cambios."
+        },
+        {
+          "p": "¿Con qué dispositivos funciona?",
+          "r": "Según el vendedor, con Xbox Series X|S, Xbox One, PC (Windows), Android y iOS. Confírmanos tu dispositivo por WhatsApp si tienes dudas."
+        }
+      ],
+      "variantes": [],
+      "palabrasClave": [
+        "xbox",
+        "control",
+        "mando",
+        "robot white",
+        "blanco",
+        "inalámbrico",
+        "gamer",
+        "videojuegos",
+        "series x",
+        "series s",
+        "xbox one",
+        "pc",
+        "gamepad"
+      ],
+      "relacionados": [
+        "control-xbox-forza-horizon-6"
+      ],
+      "fechaCreacion": "2026-10-19",
       "stock": 1
     }
   ]
