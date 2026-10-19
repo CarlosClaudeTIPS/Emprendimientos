@@ -30,6 +30,7 @@ h1,h2,h3{font-family:var(--font-head);line-height:1.15;margin:0}
 .door:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(20,30,60,.12)}
 .door .pic{height:84px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 12%,#fff)}
 .door .pic svg{width:50px;height:50px;stroke:var(--c)}
+.door .pic img{width:64px;height:64px;border-radius:16px;box-shadow:0 6px 16px rgba(29,36,51,.14)}
 .door .who{font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .door h2{font-size:1.35rem}
 .door p{margin:0;color:var(--muted);font-size:.98rem}
@@ -67,7 +68,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:40px}
     star:'<path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/>'};
   document.title=c.marca.nombre+' · '+c.secciones.map(function(s){return s.nombre}).join(', ');
   document.getElementById('q').textContent=c.marca.pregunta; document.getElementById('lema').textContent=c.marca.lema;
-  document.getElementById('doors').innerHTML=c.secciones.map(function(s){return '<a class="door" href="'+s.carpeta+'" style="--c:'+s.color+'"><div class="pic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(I[s.icono]||I.star)+'</svg></div><span class="who">'+s.publico+'</span><h2>'+s.titulo+'</h2><p>'+s.texto+'</p><span class="go">'+s.boton+'</span></a>'}).join('');
+  document.getElementById('doors').innerHTML=c.secciones.map(function(s){return '<a class="door" href="'+s.carpeta+'" style="--c:'+s.color+'"><div class="pic">'+(s.iconoArchivo?'<img src="'+s.iconoArchivo+'" alt="" width="64" height="64">':'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(I[s.icono]||I.star)+'</svg>')+'</div><span class="who">'+s.publico+'</span><h2>'+s.titulo+'</h2><p>'+s.texto+'</p><span class="go">'+s.boton+'</span></a>'}).join('');
   document.getElementById('foot').textContent='© '+new Date().getFullYear()+' '+c.marca.nombre+'. Cada servicio tiene su propio canal de contacto.';
 })();
 </script>
