@@ -45,6 +45,28 @@ for (const f of walk(join(tmp, "src")).filter((f) => /\.jsx?$/.test(f))) {
 execSync(`npx vite build --base=${BASE} --outDir ${JSON.stringify(join(dist, "icfes"))} --emptyOutDir`, { cwd: tmp, stdio: "inherit" });
 rmSync(tmp, { recursive: true, force: true });
 
+// 4b. Contenido inicial escrito en el HTML (buscadores y vistas previas lo ven sin JavaScript);
+//     el JavaScript de cada página vuelve a dibujar lo mismo encima.
+const esc = (t) => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+{ // Portada: puertas y lema desde portal.config.js
+  const win = {}; new Function("window", readFileSync(join(here, "site/shared/portal.config.js"), "utf8"))(win);
+  const cfg = win.PORTAL_CONFIG, f = join(dist, "index.html");
+  const puertas = cfg.secciones.map((s) => `<a class="door" href="${esc(s.carpeta)}" style="--c:${esc(s.color)}"><div class="pic">${s.iconoArchivo ? `<img src="${esc(s.iconoArchivo)}" alt="" width="64" height="64">` : ""}</div><span class="who">${esc(s.publico)}</span><h2>${esc(s.titulo)}</h2><p>${esc(s.texto)}</p><span class="go">${esc(s.boton)}</span></a>`).join("");
+  writeFileSync(f, readFileSync(f, "utf8").replace('<div class="doors" id="doors"></div>', `<div class="doors" id="doors">${puertas}</div>`).replace('<p id="lema"></p>', `<p id="lema">${esc(cfg.marca.lema)}</p>`));
+}
+{ // Tienda: portada, pasos y preguntas frecuentes desde data/config.json
+  const c = JSON.parse(readFileSync(join(root, "tienda/data/config.json"), "utf8")), f = join(dist, "tienda/index.html");
+  const n = c.negocio || {}, h = c.portada || {};
+  const hero = `<div>${h.etiqueta ? `<span class="hero-etiqueta">${esc(h.etiqueta)}</span>` : ""}<h1>${esc(h.titulo || n.eslogan || "")}</h1><p>${esc(h.subtitulo || n.descripcion || "")}</p><div class="hero-acciones"><a class="btn btn-acento" href="catalogo.html">Explorar todos los productos</a><a class="btn btn-contorno" href="catalogo.html?f=ofertas">Ver ofertas</a></div></div>${h.imagen ? `<div class="hero-imagen"><img src="${esc(h.imagen)}" alt="${esc(n.nombre)}" width="380" height="380"></div>` : ""}`;
+  const pasos = (c.pasosCompra || []).map((p, i) => `<div class="paso"><span class="paso-num">${i + 1}</span><strong>${esc(p.titulo)}</strong><span>${esc(p.texto)}</span></div>`).join("");
+  const faq = (c.preguntasFrecuentes || []).filter((q) => q.p && q.r).slice(0, 5).map((q) => `<details class="faq"><summary>${esc(q.p)}</summary><p>${esc(q.r).replace(/\n/g, "<br>")}</p></details>`).join("");
+  let html = readFileSync(f, "utf8");
+  html = html.replace('<div class="hero-caja" id="hero"><div class="esqueleto" style="min-height:220px"></div></div>', `<div class="hero-caja" id="hero">${hero}</div>`)
+    .replace('<div class="pasos" id="pasos"></div>', `<div class="pasos" id="pasos">${pasos}</div>`)
+    .replace('<div class="bloque" id="faq-inicio" style="margin-top:0"></div>', `<div class="bloque" id="faq-inicio" style="margin-top:0">${faq}</div>`);
+  writeFileSync(f, html);
+}
+
 // 5. Barra común en cada página de las secciones
 for (const f of walk(dist).filter((f) => f.endsWith(".html") && relative(dist, f) !== "index.html")) {
   const up = relative(dirname(f), dist).split("\\").join("/") || ".";

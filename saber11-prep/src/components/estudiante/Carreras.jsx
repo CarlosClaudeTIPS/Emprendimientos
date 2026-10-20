@@ -113,7 +113,7 @@ export default function Carreras({ usuario, inicial = false }) {
     return (
       <div className="min-h-screen p-4 md:p-8">
         <div className="max-w-3xl mx-auto">
-          <div className="flex items-center gap-2 mb-5"><img src="/icono.svg" alt="" className="w-9 h-9" /><span className="text-xl font-bold text-brand-blue">Saber<span className="text-brand-navy">11</span></span></div>
+          <div className="flex items-center gap-2 mb-5"><img src="/icono.svg" alt="" className="w-9 h-9" /><span className="text-xl font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · ICFES</span></span></div>
           {cuerpo}
         </div>
       </div>

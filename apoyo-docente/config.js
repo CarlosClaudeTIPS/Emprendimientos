@@ -12,7 +12,7 @@ window.SITE_CONFIG = {
 
   /* ---------- 1. IDENTIDAD ---------- */
   marca: {
-    nombre: "Nivytek",                    // Marca del sitio (nivytek.com)
+    nombre: "Nivytek · Apoyo docente",    // Marca única Nivytek; esta es su sección
     lema: "Tu trabajo docente, organizado según tus necesidades.",
     profesional: "Nivytek",               // El servicio se presenta a nombre de la marca, no de una persona.
     ciudad: "Colombia",
@@ -29,7 +29,7 @@ window.SITE_CONFIG = {
     correo: "nivytek@hotmail.com",        // Opcional. Si lo dejas vacío no se muestra.
     horario: "Lunes a viernes, 8:00 a.m. – 6:00 p.m. (respuesta en máximo 24 horas hábiles)",
     // Mensaje inicial del botón principal de WhatsApp. [necesidad] se reemplaza con lo que elija el docente.
-    mensajeInicial: "Hola, quisiera conocer más sobre el servicio de apoyo docente. Necesito ayuda con [necesidad] y me gustaría saber cómo podemos organizar una propuesta personalizada."
+    mensajeInicial: "Hola, soy docente y quiero cotizar un trabajo."
   },
 
   /* ---------- 3. ENVÍO DEL FORMULARIO (opcional) ---------- */

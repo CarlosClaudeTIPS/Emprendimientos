@@ -50,7 +50,7 @@
   /* ---------- Textos desde config ---------- */
   $$("[data-cfg]").forEach((el) => { const v = get(el.dataset.cfg); if (v) el.textContent = v; });
   $("#year").textContent = new Date().getFullYear();
-  document.title = `${get("marca.nombre") || "Apoyo docente"} | Apoyo docente personalizado`;
+  document.title = `${get("marca.nombre") || "Nivytek · Apoyo docente"} | Planeaciones, guías, rúbricas y PIAR`;
 
   // Foto de la profesional (si está configurada)
   if (get("marca.foto")) {
@@ -309,7 +309,7 @@
     document.body.dataset.view = v;
     const bar = $("#viewBar"); bar.hidden = v === "home"; $("#viewTitle").textContent = VISTAS[v] || "";
     $$(".main-nav a").forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + v));
-    document.title = `${v === "home" ? "" : VISTAS[v] + " · "}${get("marca.nombre") || "Apoyo docente"} | Apoyo docente personalizado`;
+    document.title = `${v === "home" ? "" : VISTAS[v] + " · "}${get("marca.nombre") || "Nivytek · Apoyo docente"} | Planeaciones, guías, rúbricas y PIAR`;
   }
   function irAVista() {
     const v = vistaDesdeHash(), h = (location.hash || "").replace("#", "");

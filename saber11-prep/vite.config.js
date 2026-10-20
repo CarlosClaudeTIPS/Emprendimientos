@@ -29,8 +29,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['icono.svg'],
       manifest: {
-        name: 'Saber 11 · Preparación',
-        short_name: 'Saber 11',
+        name: 'Nivytek · ICFES',
+        short_name: 'ICFES',
         description: 'Preparación para la prueba Saber 11° del ICFES: práctica, retroalimentación y seguimiento.',
         lang: 'es-CO',
         start_url: '/',

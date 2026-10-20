@@ -3,7 +3,6 @@ import { BookOpenCheck, Timer, LineChart, Calculator, BookOpen, Globe2, FlaskCon
 import { entrarLocal, entrarNube, pedirRecuperacion, registrarEstudiante, baseUsuario } from '../lib/sesion'
 import { NUBE_DISPONIBLE } from '../lib/supabase'
 import { USUARIOS_DEMO } from '../lib/demo'
-import BarraPortal from './BarraPortal'
 
 // ─── Portada pública + acceso ────────────────────────────────────────────────
 
@@ -29,13 +28,12 @@ export default function Login() {
 
   return (
     <div className="min-h-screen bg-dark-800">
-      <BarraPortal />
       {/* Barra superior */}
       <header className="sticky top-0 z-30 bg-dark-800/95 backdrop-blur border-b border-dark-700">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="#/" className="flex items-center gap-2">
             <img src="/icono.svg" alt="" className="w-9 h-9" />
-            <span className="text-xl font-bold text-brand-blue">Saber<span className="text-brand-navy">11</span></span>
+            <span className="text-lg md:text-xl font-bold text-brand-navy whitespace-nowrap">Nivytek<span className="text-brand-blue"> · ICFES</span></span>
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-brand-navy">
             <a href="#/" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Inicio</a>

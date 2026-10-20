@@ -1,6 +1,6 @@
 {
   "negocio": {
-    "nombre": "Nivytek",
+    "nombre": "Nivytek · Tienda",
     "eslogan": "Productos útiles, novedosos y a buen precio",
     "descripcion": "Catálogo digital de productos para el hogar, tecnología, cuidado personal y más. Pedidos por WhatsApp.",
     "logo": "img/logo-nivytek.svg",
@@ -11,7 +11,7 @@
     "numero": "573000510910",
     "mensajeProducto": "Hola, estoy interesado en el producto {nombre}. ¿Me pueden confirmar disponibilidad, precio y costo de envío?\n{variantes}{enlace}",
     "mensajeDisponibilidad": "Hola, ¿tienen disponible el producto {nombre}?\n{variantes}{enlace}",
-    "mensajeGeneral": "Hola, quiero más información sobre sus productos.",
+    "mensajeGeneral": "Hola, quiero preguntar por un producto.",
     "mensajeEnvios": "Hola, ¿me pueden informar los costos y tiempos de envío?",
     "mensajePagos": "Hola, ¿qué métodos de pago aceptan?",
     "mensajeCarrito": "Hola, quiero pedir estos productos:\n{items}\nTotal estimado: {total}\n¿Me confirman disponibilidad y costo de envío?",

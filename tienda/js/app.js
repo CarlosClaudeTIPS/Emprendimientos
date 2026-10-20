@@ -103,8 +103,6 @@
       r.setProperty('--acento', m.colorAcento);
       r.setProperty('--acento-oscuro', T.oscurecer(m.colorAcento, 10));
     }
-    const nombre = config.negocio && config.negocio.nombre;
-    if (nombre && document.title.indexOf('{negocio}') >= 0) document.title = document.title.replace('{negocio}', nombre);
   };
 
   function hexRgb(h) { h = h.replace('#', ''); if (h.length === 3) h = h.split('').map(c => c + c).join(''); const n = parseInt(h, 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
@@ -545,8 +543,8 @@
     const it = (href, ico, txt, k, extra) => `<a href="${href}" class="${activa === k ? 'activo' : ''}" ${extra || ''}>${ico}<span>${txt}</span></a>`;
     nav.innerHTML = it(T.ruta('index.html'), T.icoCat.casa, 'Inicio', 'inicio') +
       it(T.ruta('catalogo.html'), T.ico.tienda, 'Catálogo', 'catalogo') +
-      `<a href="#" id="bi-buscar">${T.ico.buscar}<span>Buscar</span></a>` +
-      `<a href="#" id="bi-carrito">${T.ico.carrito}<span class="contador"></span><span>Carrito</span></a>` +
+      `<a href="catalogo.html" id="bi-buscar">${T.ico.buscar}<span>Buscar</span></a>` +
+      `<a href="#carrito" id="bi-carrito">${T.ico.carrito}<span class="contador"></span><span>Carrito</span></a>` +
       `<a href="${T.enlaceWA((cfg.whatsapp || {}).mensajeGeneral)}" id="bi-wa" class="bi-wa" target="_blank" rel="noopener">${T.ico.wa}<span>WhatsApp</span></a>`;
     document.body.appendChild(nav); document.body.classList.add('con-barra-inferior');
     $('#bi-buscar').addEventListener('click', (e) => { e.preventDefault(); const m = $('#menu-movil'); if (m) { m.classList.add('abierto'); window.scrollTo({ top: 0, behavior: 'smooth' }); const i = m.querySelector('input'); if (i) setTimeout(() => i.focus(), 250); } });

@@ -4,7 +4,6 @@ import { salir, solicitudesPendientes } from '../lib/sesion'
 import { useSync, sincronizar } from '../lib/sync'
 import { NUBE_DISPONIBLE } from '../lib/supabase'
 import { ir } from '../lib/nav'
-import BarraPortal from './BarraPortal'
 import { esRevisor } from '../lib/roles'
 
 const MENU = {
@@ -60,7 +59,7 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
       <aside className="no-print hidden md:flex md:flex-col w-60 shrink-0 border-r border-dark-700 bg-dark-800 p-4">
         <button onClick={irInicio} className="flex items-center gap-2 px-2 py-2 mb-4 rounded-xl hover:bg-dark-900 text-left" title="Ir al inicio" aria-label="Ir al inicio">
           <img src="/icono.svg" alt="" className="w-9 h-9" />
-          <span className="text-xl font-bold text-brand-blue">Saber<span className="text-brand-navy">11</span></span>
+          <span className="text-xl font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · ICFES</span></span>
         </button>
         <nav className="space-y-1">
           {[...items, ...extra].map(it => (
@@ -94,7 +93,6 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
             <button onClick={() => onVistaEstudiante?.(false)} className="font-semibold underline shrink-0">Salir de esta vista</button>
           </div>
         )}
-        {enInicio && <BarraPortal />}
         {esRevisor(usuario) && (
           <div className="no-print bg-sky-50 border-b border-sky-200 text-brand-navy text-xs px-4 py-1.5 flex items-center gap-2"><Eye size={14} /> Cuenta de revisión: puedes ver todo, pero no modificar nada.</div>
         )}
@@ -102,7 +100,7 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
         <header className="no-print md:hidden sticky top-0 z-20 bg-dark-800/95 backdrop-blur border-b border-dark-700 px-4 py-2.5 flex items-center justify-between">
           <button onClick={irInicio} className="flex items-center gap-2" title="Ir al inicio" aria-label="Ir al inicio">
             <img src="/icono.svg" alt="" className="w-7 h-7" />
-            <span className="font-bold text-brand-blue">Saber<span className="text-brand-navy">11</span></span>
+            <span className="font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · ICFES</span></span>
           </button>
           <div className="flex items-center gap-3">
             {puedePrevisualizar && (
