@@ -12,6 +12,7 @@
       var act = path.indexOf("/" + x.carpeta.replace(/\/$/, "") + "/") !== -1 ? ' class="activa"' : "";
       return '<a' + act + ' href="' + root + x.carpeta + '">' + x.nombre + '</a>';
     }).join("") + '</nav></div>';
+  document.documentElement.classList.add("con-barra-portal");
   var bar = document.createElement("div"); bar.id = "portal-barra"; bar.innerHTML = html;
   function go() { document.body.insertBefore(bar, document.body.firstChild); }
   if (document.body) go(); else document.addEventListener("DOMContentLoaded", go);

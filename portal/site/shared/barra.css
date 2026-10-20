@@ -9,4 +9,7 @@
 #portal-barra .pb-marca span{font-weight:900}
 #portal-barra nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
 #portal-barra nav::-webkit-scrollbar{display:none}
+/* Las cabeceras propias de cada sección se pegan justo debajo de la barra común (40px) */
+html.con-barra-portal .encabezado,html.con-barra-portal .site-header,html.con-barra-portal .sticky.top-0{top:40px}
+html.con-barra-portal .filtros{top:120px}
 @media (max-width:600px){#portal-barra .pb-in{gap:8px}#portal-barra a{padding:6px 8px;font-size:13px}#portal-barra .pb-marca span{display:none}}
