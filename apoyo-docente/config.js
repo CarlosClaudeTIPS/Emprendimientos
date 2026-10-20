@@ -25,8 +25,8 @@ window.SITE_CONFIG = {
   contacto: {
     // Número de WhatsApp en formato internacional, SIN "+", espacios ni guiones. Colombia empieza por 57.
     // PENDIENTE: mientras esté vacío, la página muestra "número pendiente" y ofrece copiar el resumen.
-    whatsapp: "",
-    correo: "",                           // Opcional. Si lo dejas vacío no se muestra.
+    whatsapp: "573043134833",
+    correo: "nivytek@hotmail.com",        // Opcional. Si lo dejas vacío no se muestra.
     horario: "Lunes a viernes, 8:00 a.m. – 6:00 p.m. (respuesta en máximo 24 horas hábiles)",
     // Mensaje inicial del botón principal de WhatsApp. [necesidad] se reemplaza con lo que elija el docente.
     mensajeInicial: "Hola, quisiera conocer más sobre el servicio de apoyo docente. Necesito ayuda con [necesidad] y me gustaría saber cómo podemos organizar una propuesta personalizada."

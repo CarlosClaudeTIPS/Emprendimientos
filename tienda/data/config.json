@@ -8,7 +8,7 @@
     "horario": ""
   },
   "whatsapp": {
-    "numero": "",
+    "numero": "573000510910",
     "mensajeProducto": "Hola, estoy interesado en el producto {nombre}. ¿Me pueden confirmar disponibilidad, precio y costo de envío?\n{variantes}{enlace}",
     "mensajeDisponibilidad": "Hola, ¿tienen disponible el producto {nombre}?\n{variantes}{enlace}",
     "mensajeGeneral": "Hola, quiero más información sobre sus productos.",
