@@ -33,7 +33,7 @@ export default function Login() {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="#/" className="flex items-center gap-2">
             <img src="/icono.svg" alt="" className="w-9 h-9" />
-            <span className="text-lg md:text-xl font-bold text-brand-navy whitespace-nowrap">Nivytek<span className="text-brand-blue"> · ICFES</span></span>
+            <span className="text-base sm:text-lg md:text-xl font-bold text-brand-navy whitespace-nowrap">Nivytek<span className="text-brand-blue"> · ICFES</span></span>
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-brand-navy">
             <a href="#/" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Inicio</a>
@@ -42,7 +42,7 @@ export default function Login() {
             <button onClick={() => irAcceso('docente')}>Colegios y docentes</button>
           </nav>
           <div className="flex items-center gap-2">
-            <button className="btn-primary !py-2 !px-4" onClick={() => irAcceso('estudiante')}>Soy estudiante</button>
+            <button className="btn-primary !py-2 !px-3 sm:!px-4 whitespace-nowrap text-sm sm:text-base" onClick={() => irAcceso('estudiante')}>Soy estudiante</button>
             <button className="btn-secondary !py-2 !px-4 hidden sm:inline-flex" onClick={() => irAcceso('docente')}>Iniciar sesión</button>
           </div>
         </div>
