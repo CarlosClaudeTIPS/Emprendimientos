@@ -64,7 +64,22 @@ const esc = (t) => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").
   html = html.replace('<div class="hero-caja" id="hero"><div class="esqueleto" style="min-height:220px"></div></div>', `<div class="hero-caja" id="hero">${hero}</div>`)
     .replace('<div class="pasos" id="pasos"></div>', `<div class="pasos" id="pasos">${pasos}</div>`)
     .replace('<div class="bloque" id="faq-inicio" style="margin-top:0"></div>', `<div class="bloque" id="faq-inicio" style="margin-top:0">${faq}</div>`);
+  // Compra con confianza
+  const confianza = (c.confianza || []).map((x) => `<div class="confianza-item"><span class="icono"></span><div><strong>${esc(x.titulo)}</strong><span>${esc(x.texto)}</span></div></div>`).join("");
+  html = html.replace('<div class="confianza" id="confianza"></div>', `<div class="confianza" id="confianza">${confianza}</div>`);
+  // Categorías con productos y catálogo con cada producto (nombre, precio, foto con alt, descripción y WhatsApp)
+  const cat = JSON.parse(readFileSync(join(root, "tienda/data/catalogo.json"), "utf8"));
+  const visibles = (cat.productos || []).filter((p) => p.visible !== false);
+  const precio = (n) => n == null || isNaN(n) ? "" : "$" + Math.round(Number(n)).toLocaleString("es-CO");
+  const numWA = String((c.whatsapp || {}).numero || "").replace(/\D/g, "");
+  const urlProd = (p) => (c.sitio || {}).paginasEstaticas ? `p/${encodeURIComponent(p.id)}.html` : `producto.html?p=${encodeURIComponent(p.id)}`;
+  const msgProd = (p) => encodeURIComponent(String((c.whatsapp || {}).mensajeProducto || "Hola, estoy interesado en {nombre} ({precio}).").replace("{nombre}", p.nombre).replace("{precio}", precio(p.precio)).replace("{variantes}", "").replace("{enlace}", `https://nivytek.com/tienda/${urlProd(p)}`).trim());
+  const tarjeta = (p) => { const k = (cat.categorias || []).find((x) => x.id === p.categoria); return `<article class="tarjeta ${p.disponible ? "" : "agotada"}" data-id="${esc(p.id)}"><a class="tarjeta-imagen" href="${urlProd(p)}"><img src="${esc((p.imagenes && p.imagenes[0]) || "img/sin-imagen.svg")}" alt="${esc(p.nombre)}" loading="lazy" width="400" height="400"></a><div class="tarjeta-cuerpo">${k ? `<span class="tarjeta-categoria-txt">${esc(k.nombre)}</span>` : ""}<h3 class="tarjeta-titulo"><a href="${urlProd(p)}">${esc(p.nombre)}</a></h3>${p.descripcionCorta ? `<p class="tarjeta-desc">${esc(p.descripcionCorta)}</p>` : ""}<div class="precio"><span class="precio-actual">${precio(p.precio)}</span></div><div class="tarjeta-acciones">${numWA ? `<a class="btn btn-whatsapp" href="https://wa.me/${numWA}?text=${msgProd(p)}" target="_blank" rel="noopener">${p.disponible ? "Pedir por WhatsApp" : "Preguntar por WhatsApp"}</a>` : ""}</div></div></article>`; };
+  const cats = (cat.categorias || []).filter((k) => k.visible !== false).map((k) => ({ ...k, n: visibles.filter((p) => p.categoria === k.id).length })).filter((k) => k.n > 0);
+  html = html.replace('<div class="grid-categorias" id="categorias"></div>', `<div class="grid-categorias" id="categorias">${cats.map((k) => `<a class="tarjeta-categoria" href="catalogo.html?cat=${encodeURIComponent(k.id)}"><span class="icono"></span><strong>${esc(k.nombre)}</strong><span>${k.n} producto${k.n === 1 ? "" : "s"}</span></a>`).join("")}</div>`);
   writeFileSync(f, html);
+  const fc = join(dist, "tienda/catalogo.html");
+  writeFileSync(fc, readFileSync(fc, "utf8").replace('<div class="grid-productos" id="grid"></div>', `<div class="grid-productos" id="grid">${visibles.map(tarjeta).join("")}</div>`).replace('<p id="sub-catalogo"></p>', `<p id="sub-catalogo">${visibles.length} producto${visibles.length === 1 ? "" : "s"} con pedido por WhatsApp.</p>`));
 }
 
 // 5. Barra común en cada página de las secciones

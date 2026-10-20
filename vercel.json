@@ -24,6 +24,21 @@
       "permanent": true
     },
     {
+      "source": "/tienda",
+      "destination": "/tienda/",
+      "permanent": true
+    },
+    {
+      "source": "/docentes",
+      "destination": "/docentes/",
+      "permanent": true
+    },
+    {
+      "source": "/icfes",
+      "destination": "/icfes/",
+      "permanent": true
+    },
+    {
       "source": "/portal",
       "destination": "/",
       "permanent": true

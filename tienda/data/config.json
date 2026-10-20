@@ -9,7 +9,7 @@
   },
   "whatsapp": {
     "numero": "573000510910",
-    "mensajeProducto": "Hola, estoy interesado en el producto {nombre}. ¿Me pueden confirmar disponibilidad, precio y costo de envío?\n{variantes}{enlace}",
+    "mensajeProducto": "Hola, estoy interesado en el producto {nombre} ({precio}). ¿Me pueden confirmar disponibilidad y costo de envío?\n{variantes}{enlace}",
     "mensajeDisponibilidad": "Hola, ¿tienen disponible el producto {nombre}?\n{variantes}{enlace}",
     "mensajeGeneral": "Hola, quiero preguntar por un producto.",
     "mensajeEnvios": "Hola, ¿me pueden informar los costos y tiempos de envío?",
@@ -38,17 +38,22 @@
     {
       "icono": "svg:camion",
       "titulo": "Entregas",
-      "texto": "Entrega personal en Bogotá o envío nacional con pago previo. Te cotizamos el envío antes de decidir."
+      "texto": "Entrega personal en Bogotá (Av. Américas con 68, día y hora por WhatsApp) o envío nacional por transportadora con pago previo. Tiempo de entrega: [COMPLETAR: días en Bogotá y a otras ciudades]."
     },
     {
       "icono": "svg:tarjeta",
       "titulo": "Pagos",
-      "texto": "Efectivo en la entrega, llave Bre-B o Nequi. Pagas solo después de confirmar disponibilidad y total."
+      "texto": "Efectivo en la entrega personal, o transferencia por llave Bre-B o Nequi. Para envíos nacionales el pago se hace antes del despacho. Pagas solo después de confirmar disponibilidad y total."
     },
     {
       "icono": "svg:chat",
       "titulo": "Atención",
       "texto": "Respondemos tus preguntas por WhatsApp antes de que compres."
+    },
+    {
+      "icono": "svg:escudo",
+      "titulo": "Si llega dañado",
+      "texto": "Revísalo al recibirlo y escríbenos ese mismo día con fotos. [COMPLETAR: qué se hace, cambio del producto o devolución del dinero, y en cuántos días]. Garantía del vendedor de 1 mes por defectos de fábrica."
     }
   ],
   "politicas": {
@@ -155,15 +160,15 @@
     },
     {
       "titulo": "Escríbenos",
-      "texto": "Toca «Pedir por WhatsApp». El mensaje sale listo con el nombre del producto."
+      "texto": "Toca «Pedir por WhatsApp». El mensaje sale con el nombre y el precio del producto."
     },
     {
       "titulo": "Confirmamos",
-      "texto": "Te confirmamos disponibilidad, precio final y envío antes de que pagues."
+      "texto": "Te confirmamos disponibilidad, total y costo de envío. Pagas en efectivo al recibir en Bogotá, o por Bre-B o Nequi antes del envío nacional."
     },
     {
       "titulo": "Recibe",
-      "texto": "Acordamos pago y entrega por el chat y te avisamos cuando salga tu pedido."
+      "texto": "Entrega personal en Bogotá o envío por transportadora. Tiempo: [COMPLETAR: días]. Revisa el producto al recibirlo."
     }
   ]
 }
