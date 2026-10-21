@@ -21,6 +21,10 @@ window.SITE_CONFIG = {
     foto: ""
   },
 
+  /* ---------- 1b. TESTIMONIOS (solo reales; la sección se oculta mientras esté vacío) ---------- */
+  // Ejemplo: { texto: "…", autor: "Nombre, docente de 5.º, Colegio X" }
+  testimonios: [],
+
   /* ---------- 2. CONTACTO ---------- */
   contacto: {
     // Número de WhatsApp en formato internacional, SIN "+", espacios ni guiones. Colombia empieza por 57.

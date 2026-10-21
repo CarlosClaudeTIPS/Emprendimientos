@@ -144,7 +144,7 @@
       <svg class="mapa-ruta" viewBox="0 0 1000 420" aria-hidden="true" preserveAspectRatio="none"><path d="M90 110 C 300 10, 450 220, 500 110 S 760 10, 910 110 M910 110 C 760 300, 560 170, 500 310 S 300 420, 90 310" fill="none" stroke="#C9D3E8" stroke-width="3" stroke-dasharray="10 10"/></svg>
       <a class="mapa-item" href="#servicios" style="--n:1;--mc:#2F4D8C"><span class="mapa-ico" data-icon="layers"></span><b>Servicios</b><small>Planeación, material, evaluación, PIAR y documentos</small><span class="mapa-go">Ver qué puedo pedir</span></a>
       <a class="mapa-item" href="#proceso" style="--n:2;--mc:#2BB58A"><span class="mapa-ico" data-icon="refresh"></span><b>Cómo trabajamos</b><small>Primero entendemos tu contexto; después proponemos</small><span class="mapa-go">Ver el proceso</span></a>
-      <a class="mapa-item" href="#portafolio" style="--n:3;--mc:#F4845F"><span class="mapa-ico" data-icon="search"></span><b>Ejemplos</b><small>Once muestras reales: busca por grado, área o tipo</small><span class="mapa-go">Explorar ejemplos</span></a>
+      <a class="mapa-item" href="#portafolio" style="--n:3;--mc:#F4845F"><span class="mapa-ico" data-icon="search"></span><b>Ejemplos</b><small>Once muestras elaboradas con datos ficticios: busca por grado, área o tipo</small><span class="mapa-go">Explorar ejemplos</span></a>
       <a class="mapa-item destacado" href="#plantillas" style="--n:4;--mc:#F4845F"><span class="mapa-ico" data-icon="chat"></span><b>Cuéntame qué necesitas</b><small>Elige el tipo de material, dame los datos de tu grupo y cuéntame los detalles; te respondo con una propuesta</small><span class="mapa-go">Armar mi pedido</span></a>
       <a class="mapa-item" href="#cotizacion" style="--n:5;--mc:#B8860B"><span class="mapa-ico" data-icon="scale"></span><b>Cotización</b><small>Qué se tiene en cuenta y qué modalidades hay</small><span class="mapa-go">Ver cómo se cotiza</span></a>
     </div>
@@ -270,6 +270,43 @@
   </div>
 </section>
 
+<!-- ========== QUIÉN ESTÁ DETRÁS ========== -->
+<section class="section section-soft" id="quien">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Quién está detrás</span>
+      <h2>Una docente de aula, no una agencia</h2>
+    </div>
+    <div class="quien reveal">
+      <div class="quien-foto" aria-hidden="true"><img src="assets/img/logo-nivytek.svg" alt="" width="120" height="120"></div>
+      <div class="quien-texto">
+        <p class="quien-nombre">Nivytek · Apoyo docente</p>
+        <p class="quien-rol">Docente de colegio público en Bogotá</p>
+        <ul class="quien-datos">
+          <li><strong>Experiencia:</strong> [COMPLETAR: años de experiencia docente]</li>
+          <li><strong>Áreas y grados:</strong> [COMPLETAR: áreas y grados que domina]</li>
+        </ul>
+        <p class="quien-frase">[COMPLETAR: frase personal de una línea]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIOS (oculto hasta tener testimonios reales; se llena en config.js → testimonios) ========== -->
+<section class="section" id="testimonios" hidden>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Lo que dicen los docentes</span>
+      <h2>Testimonios</h2>
+    </div>
+    <div class="testimonios" id="testimoniosLista">
+      <blockquote class="testimonio"><p>[COMPLETAR: testimonio real]</p><footer>[COMPLETAR: nombre, cargo y colegio]</footer></blockquote>
+      <blockquote class="testimonio"><p>[COMPLETAR: testimonio real]</p><footer>[COMPLETAR: nombre, cargo y colegio]</footer></blockquote>
+      <blockquote class="testimonio"><p>[COMPLETAR: testimonio real]</p><footer>[COMPLETAR: nombre, cargo y colegio]</footer></blockquote>
+    </div>
+  </div>
+</section>
+
 <!-- ========== SERVICIOS DETALLADOS ========== -->
 <section class="section section-soft" data-view="servicios" id="servicios">
   <div class="container">
@@ -330,7 +367,7 @@
     <div class="section-head reveal">
       <span class="eyebrow">Ejemplos de trabajo</span>
       <h2>Explora lo que se puede elaborar</h2>
-      <p>Documentos demostrativos con datos ficticios. Toca uno para ver la muestra completa. <span class="only-mobile">Desliza para ver más →</span></p>
+      <p>Once muestras de trabajo elaboradas con datos ficticios para proteger a estudiantes y colegios. Toca una para verla completa. <span class="only-mobile">Desliza para ver más →</span></p>
     </div>
     <form class="catalogo-filtros reveal" id="catalogoFiltros" role="search" aria-label="Buscar ejemplos" onsubmit="return false">
       <label class="cf-buscar"><span class="sr-only">Buscar</span><input type="search" id="cfQ" placeholder="Buscar: fracciones, rúbrica, 5°…" autocomplete="off"></label>
@@ -377,6 +414,7 @@
             <input type="date" id="pl_fecha" name="fecha">
           </div>
         </div>
+        <div class="attach-note aviso-piar" role="note"><strong>Si compartes documentos de estudiantes (como PIAR), quita nombres y documentos de identidad antes de enviarlos.</strong></div>
         <div class="attach-note"><strong>¿Tienes tu formato institucional o materiales?</strong> Después de enviar el pedido podrás compartirlos por WhatsApp. Esta página no almacena archivos.</div>
         <label class="consent">
           <input type="checkbox" name="consentimiento" id="pl_consent" required>
@@ -511,6 +549,20 @@
 </main>
 
 <!-- ========== PIE ========== -->
+<!-- ========== POLÍTICA DE PRIVACIDAD (texto real, Ley 1581 de 2012) ========== -->
+<section class="section section-soft" id="privacidad">
+  <div class="container privacidad">
+  <h2>Política de privacidad</h2>
+  <p><strong>Responsable del tratamiento:</strong> Nivytek · Apoyo docente, [COMPLETAR: nombre completo del responsable]. Contacto: <a href="mailto:nivytek@hotmail.com">nivytek@hotmail.com</a> · WhatsApp +57 304 313 4833.</p>
+  <p><strong>Qué datos se recogen:</strong> tu nombre o forma de contacto, tu número de WhatsApp o correo, y la descripción de tu necesidad (grado, área, tipo de material, plazos). Si decides compartir documentos (formatos institucionales, guías, PIAR), también esos archivos.</p>
+  <p><strong>Para qué se usan:</strong> únicamente para responder tu solicitud, preparar la propuesta y elaborar el trabajo acordado. No se usan para publicidad, no se venden ni se comparten con terceros.</p>
+  <p><strong>Cuánto tiempo se guardan:</strong> mientras dure el trabajo y, después, [COMPLETAR: tiempo de conservación, por ejemplo 6 meses] para atender ajustes o reclamos. Luego se eliminan.</p>
+  <p><strong>Cómo pedir corrección o eliminación:</strong> escribe por WhatsApp o al correo indicando qué datos o documentos quieres corregir o borrar. Se atiende en un máximo de 15 días hábiles, según la Ley 1581 de 2012 y el Decreto 1377 de 2013 (Colombia).</p>
+  <p><strong>Documentos de estudiantes:</strong> antes de enviar cualquier documento de estudiantes (como un PIAR), quita nombres y documentos de identidad. No se piden ni se conservan datos de menores que no sean necesarios.</p>
+  <p>Esta página no almacena tus respuestas en un servidor propio: el resumen se construye en tu dispositivo y se envía por WhatsApp solo cuando tú lo decides.</p>
+  </div>
+</section>
+
 <footer class="site-footer">
   <div class="container footer-grid">
     <div>
@@ -519,7 +571,7 @@
     </div>
     <div>
       <h3 class="foot-h">Contacto</h3>
-      <p id="footerContact"></p>
+      <p id="footerContact"><a href="https://wa.me/573043134833?text=Hola%2C%20soy%20docente%20y%20quiero%20cotizar%20un%20trabajo." target="_blank" rel="noopener">WhatsApp: +57 304 313 4833</a><br><a href="mailto:nivytek@hotmail.com">nivytek@hotmail.com</a></p>
       <p class="small" data-cfg="contacto.horario"></p>
     </div>
     <div>
@@ -555,10 +607,13 @@
 <!-- Textos legales -->
 <template id="tpl-privacidad">
   <h3>Política de privacidad</h3>
-  <p>Los datos que compartes a través de esta página (nombre, forma de contacto, correo y la descripción de tu necesidad) se usan únicamente para responder tu solicitud y preparar una propuesta. No se venden ni se comparten con terceros.</p>
-  <p>Esta página no almacena tus respuestas en un servidor propio. El resumen se construye en tu dispositivo y se envía a WhatsApp solo cuando tú lo decides. Si configuras el envío por correo, los datos se transmiten a través del servicio de formularios indicado en la configuración.</p>
-  <p>Los documentos que compartes por WhatsApp o correo se tratan de forma confidencial y se usan solo para elaborar tu trabajo. Te recomendamos anonimizar cualquier información de estudiantes que no sea necesaria.</p>
-  <p>Puedes solicitar la eliminación de tus datos y documentos en cualquier momento escribiendo por el mismo canal de contacto. Tratamiento conforme a la Ley 1581 de 2012 (Colombia).</p>
+  <p><strong>Responsable del tratamiento:</strong> Nivytek · Apoyo docente, [COMPLETAR: nombre completo del responsable]. Contacto: <a href="mailto:nivytek@hotmail.com">nivytek@hotmail.com</a> · WhatsApp +57 304 313 4833.</p>
+  <p><strong>Qué datos se recogen:</strong> tu nombre o forma de contacto, tu número de WhatsApp o correo, y la descripción de tu necesidad (grado, área, tipo de material, plazos). Si decides compartir documentos (formatos institucionales, guías, PIAR), también esos archivos.</p>
+  <p><strong>Para qué se usan:</strong> únicamente para responder tu solicitud, preparar la propuesta y elaborar el trabajo acordado. No se usan para publicidad, no se venden ni se comparten con terceros.</p>
+  <p><strong>Cuánto tiempo se guardan:</strong> mientras dure el trabajo y, después, [COMPLETAR: tiempo de conservación, por ejemplo 6 meses] para atender ajustes o reclamos. Luego se eliminan.</p>
+  <p><strong>Cómo pedir corrección o eliminación:</strong> escribe por WhatsApp o al correo indicando qué datos o documentos quieres corregir o borrar. Se atiende en un máximo de 15 días hábiles, según la Ley 1581 de 2012 y el Decreto 1377 de 2013 (Colombia).</p>
+  <p><strong>Documentos de estudiantes:</strong> antes de enviar cualquier documento de estudiantes (como un PIAR), quita nombres y documentos de identidad. No se piden ni se conservan datos de menores que no sean necesarios.</p>
+  <p>Esta página no almacena tus respuestas en un servidor propio: el resumen se construye en tu dispositivo y se envía por WhatsApp solo cuando tú lo decides.</p>
 </template>
 <template id="tpl-condiciones">
   <h3>Condiciones del servicio</h3>

@@ -91,6 +91,13 @@
   if (get("contacto.correo")) contactBits.push(`<a href="mailto:${esc(get("contacto.correo"))}">${esc(get("contacto.correo"))}</a>`);
   $("#footerContact").innerHTML = contactBits.join("<br>");
 
+  /* ---------- Testimonios: solo si hay reales en config.js ---------- */
+  const testimonios = (get("testimonios") || []).filter((t) => t && t.texto && !/COMPLETAR/.test(t.texto));
+  if (testimonios.length) {
+    $("#testimoniosLista").innerHTML = testimonios.map((t) => `<blockquote class="testimonio"><p>${esc(t.texto)}</p><footer>${esc(t.autor || "")}</footer></blockquote>`).join("");
+    $("#testimonios").hidden = false;
+  }
+
   /* ---------- Menú móvil ---------- */
   const nav = $("#mainNav"), toggle = $("#navToggle");
   toggle.addEventListener("click", () => { const open = nav.classList.toggle("open"); toggle.setAttribute("aria-expanded", String(open)); });

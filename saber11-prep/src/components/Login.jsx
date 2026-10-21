@@ -57,15 +57,37 @@ export default function Login() {
           <div>
             <p className="titulo-contorno text-6xl md:text-8xl font-extrabold leading-none">SABER 11°</p>
             <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-tight">Estudia y practica para el examen ICFES Saber 11°</h1>
-            <p className="mt-4 text-gray-300 text-base md:text-lg max-w-xl">Practica con preguntas estilo ICFES, entiende por qué fallaste cada opción y sigue tu progreso con tu docente. Gratis, desde el celular y también sin conexión.</p>
+            <p className="mt-4 text-gray-300 text-base md:text-lg max-w-xl">Practica con preguntas estilo ICFES, entiende por qué fallaste cada opción y sigue tu progreso con tu docente. Desde el celular y también sin conexión.</p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <button className="btn-primary !px-6 !py-3 text-base" onClick={() => irAcceso('estudiante')}>Entrar como estudiante</button>
+              <a className="btn-primary !px-6 !py-3 text-base inline-flex items-center gap-2" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20ICFES%20de%20Nivytek." target="_blank" rel="noopener">¿Te interesa? Escríbenos por WhatsApp</a>
               <button className="btn-secondary !px-6 !py-3 text-base" onClick={() => irAcceso('docente')}>Soy docente</button>
             </div>
+            <p className="mt-3 text-sm text-gray-400">¿Ya tienes usuario? <button className="underline text-brand-blue" onClick={() => irAcceso('estudiante')}>Entrar como estudiante</button></p>
           </div>
           <div className="relative flex justify-center">
             <div className="absolute right-6 top-4 w-20 h-20 rounded-full bg-orange-300/80" />
             <Celular />
+          </div>
+        </div>
+      </section>
+
+      {/* Cómo funcionan las clases */}
+      <section id="clases" className="bg-dark-900 py-14">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">Cómo funcionan las clases</h2>
+          <p className="mt-3 text-gray-400 text-center max-w-2xl mx-auto">Acompañamiento con docente, además de la práctica en la plataforma.</p>
+          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              { t: 'Grupos pequeños', d: 'Clases individuales o en grupos de máximo 5 estudiantes.' },
+              { t: 'Modalidad', d: '[COMPLETAR: virtual, presencial o ambas]' },
+              { t: 'Duración de cada sesión', d: '[COMPLETAR: duración de cada sesión]' },
+              { t: 'Sesiones al mes', d: '[COMPLETAR: número de sesiones al mes]' },
+            ].map(({ t, d }) => (
+              <div key={t} className="card !p-5"><p className="font-semibold text-brand-navy">{t}</p><p className="mt-1 text-sm text-gray-400">{d}</p></div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <a className="btn-primary !px-6 !py-3 text-base inline-flex items-center gap-2" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20ICFES%20de%20Nivytek." target="_blank" rel="noopener">Escríbenos por WhatsApp para conocer horarios y valores</a>
           </div>
         </div>
       </section>
@@ -135,6 +157,7 @@ export default function Login() {
 function Celular() {
   return (
     <div className="relative w-60 md:w-64 rounded-[2.2rem] border-[10px] border-slate-200 bg-dark-800 shadow-2xl shadow-slate-300 rotate-6">
+      <span className="absolute -top-3 left-1/2 -translate-x-1/2 rotate-0 badge bg-amber-300 text-brand-navy text-[10px] font-bold px-2 py-0.5 rounded-full shadow">Ejemplo</span>
       <div className="mx-auto mt-2 mb-3 w-16 h-1.5 rounded-full bg-slate-200" />
       <div className="px-4 pb-5">
         <div className="rounded-2xl h-28 bg-gradient-to-br from-sky-400 via-indigo-500 to-fuchsia-500 flex items-end p-3">
@@ -146,7 +169,7 @@ function Celular() {
           <ChevronRight size={18} className="text-brand-blue" />
         </div>
         <div className="flex justify-center gap-1.5 mt-2">{[1, 2, 3, 4, 5].map(i => <Star key={i} size={16} className={i < 5 ? 'text-emerald-500 fill-emerald-500' : 'text-gray-600'} />)}</div>
-        <p className="text-[10px] text-center text-gray-500 mt-1">Simulacros realizados: 2</p>
+        <p className="text-[10px] text-center text-gray-500 mt-1">Ejemplo · Simulacros realizados: 2</p>
         <div className="mt-3 rounded-xl bg-brand-blue text-[#fff] text-center text-sm font-semibold py-2">Ver</div>
       </div>
     </div>
