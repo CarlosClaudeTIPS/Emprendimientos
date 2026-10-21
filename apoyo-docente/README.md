@@ -14,6 +14,7 @@ apoyo-docente/
 ├── assets/
 │   ├── css/styles.css  ← diseño
 │   ├── js/app.js       ← funcionamiento (pestañas, portafolio, formulario, WhatsApp)
+│   ├── js/calculadora.js ← precios y reglas de la calculadora de precio estimado
 │   ├── img/            ← favicon, imagen para compartir, foto de la profesional
 │   └── portafolio/     ← aquí van las capturas o PDF de ejemplos reales
 └── README.md
@@ -85,6 +86,21 @@ Los tipos y los datos que se piden para cada uno están en `assets/js/plantillas
 Mientras `contacto.whatsapp` esté vacío en `config.js`, la página no muestra un número falso: los botones de WhatsApp
 avisan que el número está pendiente y copian el mensaje al portapapeles; el resumen del formulario ofrece copiarlo.
 En cuanto escribas el número real, todo queda activo sin tocar nada más.
+
+## 2e. Calculadora de precio estimado (en «Cotización»)
+
+Dentro de «Cotización», debajo de «Qué tenemos en cuenta», hay una calculadora para que el docente arme su pedido y vea
+un aproximado («entre $X y $Y»). Desde el mapa de la página se llega con «Calcula un aproximado» (`#calculadora`).
+No guarda nada: al recargar vuelve al ejemplo inicial (una guía).
+
+- **Precios y reglas** en `assets/js/calculadora.js`, objeto `PRECIOS`: precio base de cada trabajo, pedido mínimo
+  ($30.000), revisión extra ($10.000), recargos por complejidad alta (25 %) y por urgencia (20 % si la entrega es en
+  menos de 48 horas), descuento de planeaciones de periodo (10 % con 2 grados, 15 % con 3 o más), redondeo y el factor
+  del «hasta» (×1,3 redondeado a los $5.000). Cambia los números ahí; la página y el mensaje se actualizan solos.
+- **Equivalencias** (qué elegir si el docente dice «taller», «quiz», «nivelación»…): misma lista `PRECIOS.equivalencias`.
+- El botón «Pedir propuesta por WhatsApp» envía el pedido con el aproximado y deja el espacio «Grado y área:» para que
+  el docente lo complete; «Copiar resumen» copia el mismo texto.
+- Pruebas: `tests/calculadora.test.mjs` (incluye los tres casos de referencia).
 
 ## 3. Cómo funciona el formulario (sin costo)
 

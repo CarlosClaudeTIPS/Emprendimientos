@@ -146,7 +146,7 @@
       <a class="mapa-item" href="#proceso" style="--n:2;--mc:#2BB58A"><span class="mapa-ico" data-icon="refresh"></span><b>Cómo trabajamos</b><small>Primero entendemos tu contexto; después proponemos</small><span class="mapa-go">Ver el proceso</span></a>
       <a class="mapa-item" href="#portafolio" style="--n:3;--mc:#F4845F"><span class="mapa-ico" data-icon="search"></span><b>Ejemplos</b><small>Once muestras elaboradas con datos ficticios: busca por grado, área o tipo</small><span class="mapa-go">Explorar ejemplos</span></a>
       <a class="mapa-item destacado" href="#plantillas" style="--n:4;--mc:#F4845F"><span class="mapa-ico" data-icon="chat"></span><b>Cuéntame qué necesitas</b><small>Elige el tipo de material, dame los datos de tu grupo y cuéntame los detalles; te respondo con una propuesta</small><span class="mapa-go">Armar mi pedido</span></a>
-      <a class="mapa-item" href="#cotizacion" style="--n:5;--mc:#B8860B"><span class="mapa-ico" data-icon="scale"></span><b>Cotización</b><small>Qué se tiene en cuenta y qué modalidades hay</small><span class="mapa-go">Ver cómo se cotiza</span></a>
+      <a class="mapa-item" href="#calculadora" style="--n:5;--mc:#B8860B"><span class="mapa-ico" data-icon="scale"></span><b>Cotización</b><small>Qué se tiene en cuenta, modalidades y una calculadora de aproximado</small><span class="mapa-go">Calcula un aproximado</span></a>
     </div>
     <p class="note reveal">¿Dudas? <a href="#faq">Preguntas frecuentes y condiciones</a>.</p>
   </div>
@@ -472,6 +472,49 @@
       </div>
       <div class="modalidades" id="modalidades"><!-- modalidades --></div>
     </div>
+
+    <!-- Calculadora de precio estimado -->
+    <div class="calc reveal" id="calculadora">
+      <div class="calc-head">
+        <span class="eyebrow">Calcula un aproximado</span>
+        <h3>¿Más o menos cuánto costaría?</h3>
+        <p>Elige qué necesitas, cuántos y para cuándo. Verás un rango aproximado al instante. El precio final te llega en la propuesta, según el detalle de tu pedido.</p>
+      </div>
+      <form class="calc-form" id="calcForm" novalidate>
+        <div class="calc-items" id="calcItems"></div>
+        <button type="button" class="btn btn-ghost btn-sm" id="calcAgregar">+ Agregar otro</button>
+        <details class="calc-equiv">
+          <summary>¿No encuentras tu trabajo en la lista? Si te piden esto, es esto</summary>
+          <ul id="calcEquiv"></ul>
+        </details>
+        <div class="calc-opciones">
+          <div class="field field-corto">
+            <label for="calcRev">Revisiones extra <span class="opt">(una va incluida)</span></label>
+            <input type="number" id="calcRev" name="revisiones" value="0" min="0" max="10" inputmode="numeric">
+          </div>
+          <div class="field">
+            <label for="calcFecha">Fecha de entrega <span class="opt">(opcional)</span></label>
+            <input type="date" id="calcFecha" name="fecha">
+          </div>
+          <label class="consent calc-check">
+            <input type="checkbox" id="calcComplejo" name="complejidad">
+            <span>Necesito adaptaciones para varios grupos, ajustes razonables o un material más largo de lo normal <span class="opt">(+25 %)</span></span>
+          </label>
+        </div>
+        <p class="calc-aviso" id="calcAviso" aria-live="polite" hidden></p>
+      </form>
+      <div class="calc-resultado" aria-live="polite">
+        <div class="calc-rango" id="calcRango"></div>
+        <ul class="calc-desglose" id="calcDesglose"></ul>
+        <p class="calc-nota" id="calcNota"></p>
+        <div class="calc-acciones">
+          <a href="#" class="btn btn-wa btn-lg wa-link" id="calcWa" data-wa="">Enviar mi pedido por WhatsApp</a>
+          <button type="button" class="btn btn-ghost" id="calcCopiar">Copiar resumen</button>
+        </div>
+        <pre class="calc-texto" id="calcTexto" tabindex="0" aria-label="Resumen del pedido"></pre>
+      </div>
+    </div>
+
     <div class="cta-row reveal">
       <a href="#plantillas" class="btn btn-primary btn-lg">Solicitar una cotización</a>
       <a href="https://wa.me/573043134833?text=Hola%2C%20soy%20docente%20y%20quiero%20cotizar%20un%20trabajo." class="btn btn-ghost btn-lg wa-link" data-wa="Tengo dudas sobre cómo funciona la cotización">Resolver mis dudas</a>
@@ -632,6 +675,7 @@
 <script src="config.js"></script>
 <script src="assets/js/logica.js"></script>
 <script src="assets/js/plantillas.js"></script>
+<script src="assets/js/calculadora.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>

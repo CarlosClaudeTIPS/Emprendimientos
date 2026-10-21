@@ -310,7 +310,7 @@
 
   /* ---------- Vistas: la portada muestra el mapa; cada sección se abre sola ---------- */
   const VISTAS = { home: "Inicio", servicios: "Servicios", proceso: "Cómo trabajamos", portafolio: "Ejemplos", plantillas: "Cuéntame qué necesitas", cotizacion: "Cotización", faq: "Preguntas y condiciones" };
-  const ALIAS = { inicio: "home", mapa: "home", personalizado: "proceso", confianza: "faq", simulador: "proceso", summary: "plantillas", formulario: "plantillas" };
+  const ALIAS = { inicio: "home", mapa: "home", personalizado: "proceso", confianza: "faq", simulador: "proceso", summary: "plantillas", formulario: "plantillas", calculadora: "cotizacion" };
   function vistaDesdeHash() { const h = (location.hash || "").replace("#", ""); const v = ALIAS[h] || h; return VISTAS[v] ? v : "home"; }
   function setView(v) {
     document.body.dataset.view = v;
@@ -376,6 +376,79 @@
     let b = null; try { b = JSON.parse(localStorage.getItem(BORRADOR) || "null"); } catch (_) { }
     if (b && P.TIPOS[b.tipo]) { tipo = b.tipo; const r = tipos.querySelector(`input[value="${tipo}"]`); if (r) r.checked = true; renderCampos(b.datos || {}); ["detalles", "nombre", "fecha"].forEach((k) => { if (b.datos && b.datos[k]) $("#pl_" + k).value = b.datos[k]; }); contar(); }
     else renderCampos();
+  })();
+
+  /* ---------- Calculadora de precio estimado (no guarda nada) ---------- */
+  (function () {
+    const C = window.Calculadora; if (!C || !$("#calculadora")) return;
+    const items = $("#calcItems"), rev = $("#calcRev"), fecha = $("#calcFecha"), complejo = $("#calcComplejo"), aviso = $("#calcAviso");
+    const opciones = C.PRECIOS.trabajos.map((t) => `<option value="${t.clave}">${esc(t.nombre)}</option>`).join("");
+    $("#calcEquiv").innerHTML = C.PRECIOS.equivalencias.map(([a, b]) => `<li><span>${esc(a)}</span> → <b>${esc(b)}</b></li>`).join("");
+    let n = 0;
+    function etiquetaCantidad(t) { return t.clave === "plan_per" ? "Grados" : t.clave === "piar" ? "Estudiantes" : t.porGrado ? "Semanas" : "Cantidad"; }
+    function fila(clave = "guia", cantidad = 1, grados = 1) {
+      const id = ++n, t = C.trabajo(clave);
+      const div = document.createElement("div"); div.className = "calc-item"; div.dataset.id = id;
+      div.innerHTML = `
+        <div class="field calc-tipo"><label for="ct${id}">Trabajo</label><select id="ct${id}" name="tipo">${opciones}</select></div>
+        <div class="field field-corto calc-cant"><label for="cc${id}">${etiquetaCantidad(t)}</label><input type="number" id="cc${id}" name="cantidad" value="${cantidad}" min="1" max="50" inputmode="numeric"></div>
+        <div class="field field-corto calc-grados" ${t.porGrado ? "" : "hidden"}><label for="cg${id}">Grados</label><input type="number" id="cg${id}" name="grados" value="${grados}" min="1" max="12" inputmode="numeric"></div>
+        <button type="button" class="calc-quitar" aria-label="Quitar este trabajo" title="Quitar">×</button>
+        <small class="calc-item-aviso" ${t.aviso ? "" : "hidden"}>${esc(t.aviso || "")}</small>`;
+      div.querySelector("select").value = clave;
+      items.appendChild(div); return div;
+    }
+    function leer() {
+      return {
+        items: $$(".calc-item", items).map((d) => ({ clave: d.querySelector("select").value, cantidad: d.querySelector('[name="cantidad"]').value, grados: d.querySelector('[name="grados"]').value })),
+        revisionesExtra: rev.value, complejidad: complejo.checked, fecha: fecha.value
+      };
+    }
+    function pintar() {
+      const pedido = leer(), r = C.calcular(pedido);
+      if (r.urgente) { aviso.textContent = "Como es para antes de 48 horas, se suma 20 % por urgencia."; aviso.hidden = false; } else aviso.hidden = true;
+      if (r.vacio) {
+        $("#calcRango").innerHTML = `<span class="calc-vacio">Agrega al menos un trabajo para ver el aproximado.</span>`;
+        $("#calcDesglose").innerHTML = ""; $("#calcNota").textContent = ""; $("#calcTexto").textContent = ""; $("#calcWa").classList.add("disabled"); return;
+      }
+      $("#calcRango").innerHTML = `<span class="calc-label">Aproximado</span><strong>entre ${C.cop(r.desde)} y ${C.cop(r.hasta)}</strong><span class="calc-sub">El precio final te llega en la propuesta, según el detalle de tu pedido.</span>`;
+      const filas = r.lineas.map((l) => `<li><span>${esc(l.nombre)} × ${l.cantidad}${l.grados > 1 ? ` × ${l.grados} grados` : ""}${l.descuento ? ` <em>(descuento por ${l.cantidad} grados: −${C.cop(l.descuento)})</em>` : ""}</span><b>${C.cop(l.valor)}</b></li>`);
+      if (r.revisiones) filas.push(`<li><span>Revisiones extra × ${r.revisionesExtra}</span><b>${C.cop(r.revisiones)}</b></li>`);
+      if (r.complejidad) filas.push(`<li><span>Complejidad alta (+25 %)</span><b>${C.cop(r.complejidad)}</b></li>`);
+      if (r.urgencia) filas.push(`<li><span>Urgencia, menos de 48 horas (+20 %)</span><b>${C.cop(r.urgencia)}</b></li>`);
+      $("#calcDesglose").innerHTML = filas.join("");
+      $("#calcNota").textContent = r.minimoAplicado ? `El pedido mínimo es ${C.cop(C.PRECIOS.minimo)}.` : "Los valores se redondean hacia arriba a los mil siguientes. Una revisión va incluida.";
+      const texto = C.mensaje(get("marca.profesional") || "Nivytek", pedido, r);
+      $("#calcTexto").textContent = texto;
+      const wa = $("#calcWa"); wa.classList.remove("disabled");
+      if (WA_OK) { wa.href = waUrl(texto); wa.target = "_blank"; wa.rel = "noopener"; wa.classList.remove("wa-pendiente"); }
+      else { wa.dataset.waTexto = texto; wa.classList.add("wa-pendiente"); wa.href = "#contacto"; }
+    }
+    items.addEventListener("change", (e) => {
+      const d = e.target.closest(".calc-item"); if (!d) return;
+      if (e.target.name === "tipo") {
+        const t = C.trabajo(e.target.value);
+        d.querySelector(".calc-cant label").textContent = etiquetaCantidad(t);
+        d.querySelector(".calc-grados").hidden = !t.porGrado;
+        const av = d.querySelector(".calc-item-aviso"); av.textContent = t.aviso || ""; av.hidden = !t.aviso;
+      }
+      pintar();
+    });
+    items.addEventListener("input", pintar);
+    items.addEventListener("click", (e) => { const b = e.target.closest(".calc-quitar"); if (!b) return; b.closest(".calc-item").remove(); if (!$(".calc-item", items)) fila(); pintar(); });
+    $("#calcAgregar").addEventListener("click", () => { const d = fila("rubrica", 1); d.querySelector("select").focus(); pintar(); });
+    [rev, fecha, complejo].forEach((el) => { el.addEventListener("input", pintar); el.addEventListener("change", pintar); });
+    $("#calcCopiar").addEventListener("click", async () => {
+      const t = $("#calcTexto").textContent; if (!t) return;
+      const b = $("#calcCopiar"); try { await navigator.clipboard.writeText(t); b.textContent = "¡Copiado!"; } catch (_) { window.prompt("Copia el resumen:", t); }
+      setTimeout(() => { b.textContent = "Copiar resumen"; }, 2000);
+    });
+    // Ejemplo inicial: una guía (se marca como ejemplo hasta que el docente toque algo)
+    fila("guia", 1); pintar();
+    const marca = document.createElement("p"); marca.className = "calc-ejemplo"; marca.id = "calcEjemplo"; marca.textContent = "Ejemplo cargado: una guía para 5°. Cámbialo por lo que necesitas.";
+    items.before(marca);
+    $("#calcForm").addEventListener("input", () => { marca.hidden = true; }, { once: true });
+    $("#calcForm").addEventListener("change", () => { marca.hidden = true; }, { once: true });
   })();
 
   /* ---------- Animaciones al hacer scroll ---------- */
