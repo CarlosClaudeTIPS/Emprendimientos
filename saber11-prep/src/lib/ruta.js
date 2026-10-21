@@ -27,7 +27,18 @@ export function normalizarConfig(c = {}, ciclo = null) {
     dias_semana: clamp(c.dias_semana ?? RUTA_POR_DEFECTO.dias_semana, LIMITES.dias_semana),
     meta_global: clamp(c.meta_global ?? RUTA_POR_DEFECTO.meta_global, LIMITES.meta_global),
     definida: Boolean(c.definida),
+    // Rutas de examen de admisión propio: { rutas: { unal: { activa, desde, admision_especial, dipa } }, reparto: { lejos, medio, cerca } }
+    admision: normalizarAdmision(c.admision),
   }
+}
+
+function normalizarAdmision(a) {
+  if (!a || typeof a !== 'object') return { rutas: {}, reparto: { lejos: 30, medio: 50, cerca: 80 } }
+  const rutas = {}
+  for (const [k, v] of Object.entries(a.rutas ?? {})) if (v && typeof v === 'object') rutas[k] = { activa: Boolean(v.activa), desde: v.desde ?? null, admision_especial: Boolean(v.admision_especial), dipa: v.dipa ?? null }
+  const r = a.reparto ?? {}
+  const pct = (v, d) => Math.min(100, Math.max(0, Number.isFinite(Number(v)) ? Number(v) : d))
+  return { rutas, reparto: { lejos: pct(r.lejos, 30), medio: pct(r.medio, 50), cerca: pct(r.cerca, 80) } }
 }
 
 // Qué días de la semana se estudia según cuántos días eligió (0 = lunes … 6 = domingo).

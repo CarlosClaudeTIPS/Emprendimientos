@@ -74,6 +74,8 @@
    "https://www.udea.edu.co/wps/wcm/connect/udea/ed5f45da-003d-4db7-85c3-5f519cca3f74/Gu%C3%ADa+aspirantes+nuevos+2027-1+V3.pdf?MOD=AJPERES&CVID=q0UTesf",
    "https://www.udea.edu.co/wps/portal/udea/web/inicio/estudiar-udea/quiero-estudiar-udea/pregrado/calendario-guias-admision"
   ],
+  "convocatorias": [{"nombre": "2027-1", "inscripcion": ["2026-08-14", "2026-09-18"], "prueba": "2026-10-26", "prueba_hasta": "2026-10-27", "resultados": "2026-11-11", "costo": "$90.800 Medellín; $28.200 regiones", "fuente": "https://www.udea.edu.co/wps/portal/udea/web/inicio/estudiar-udea/quiero-estudiar-udea/pregrado/calendario-guias-admision"}],
+  "convocatoria_siguiente": "Por confirmar en la página oficial de admisiones de la Universidad de Antioquia.",
   "verificado": "2026-10"
  },
  {

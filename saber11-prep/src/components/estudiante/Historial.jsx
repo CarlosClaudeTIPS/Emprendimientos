@@ -33,7 +33,7 @@ export default function Historial({ usuario, params }) {
 
   useEffect(() => {
     (async () => {
-      const [intentos, preguntas, sesiones, quien] = await Promise.all([intentosDe(id), listarPreguntas({ estado: 'todas' }), sesionesDe(id), ajeno ? db.usuarios.get(id) : usuario])
+      const [intentos, preguntas, sesiones, quien] = await Promise.all([intentosDe(id, { examen: 'todos' }), listarPreguntas({ estado: 'todas', examen: 'todos' }), sesionesDe(id), ajeno ? db.usuarios.get(id) : usuario])
       const porId = Object.fromEntries(preguntas.map(p => [p.id, p]))
       const grupos = {}
       for (const i of intentos) if (porId[i.pregunta_id]) (grupos[i.pregunta_id] ??= []).push(i)

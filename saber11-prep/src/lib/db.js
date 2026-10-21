@@ -57,3 +57,6 @@ export async function getConfig(clave, porDefecto = null) {
 export async function setConfig(clave, valor) {
   await db.config.put({ clave, valor })
 }
+
+// Solo en desarrollo: acceso a la base local desde la consola y las pruebas de navegador.
+if (import.meta.env?.DEV && typeof window !== 'undefined') window.__saber11 = { db }

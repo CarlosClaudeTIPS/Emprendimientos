@@ -44,7 +44,7 @@ export default function Practica({ usuario, params }) {
       if (params.ids) lista = (await Promise.all(params.ids.split(',').map(obtenerPregunta))).filter(Boolean)
       else {
         const filtros = {}
-        for (const k of ['prueba', 'competencia', 'habilidad', 'componente', 'dificultad', 'tipo_error', 'tema']) if (params[k]) filtros[k] = params[k]
+        for (const k of ['prueba', 'competencia', 'habilidad', 'componente', 'dificultad', 'tipo_error', 'tema', 'examen']) if (params[k]) filtros[k] = params[k]
         const n = Number(params.n ?? 5)
         const vistas = await preguntasVistas(usuario.id)
         if (params.enfoque === 'carrera' && !filtros.prueba && modoCarreraActivo(usuario)) {

@@ -173,6 +173,6 @@ export function elegirVerificacion(pregunta, candidatas, vistas = new Set()) {
 
 export async function preguntaVerificacion(pregunta, { vistas = new Set(), usuario = null } = {}) {
   const refuerzos = (await Promise.all((pregunta.refuerzo_ids ?? []).map(obtenerPregunta))).filter(Boolean)
-  const mismas = await listarPreguntas({ competencia: pregunta.competencia, usuario })
+  const mismas = await listarPreguntas({ competencia: pregunta.competencia, usuario, examen: examenDePregunta(pregunta) })
   return elegirVerificacion(pregunta, [...refuerzos, ...mismas], vistas)
 }

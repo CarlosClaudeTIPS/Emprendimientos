@@ -185,7 +185,9 @@ export async function terminarSesion(id, { agotado = false } = {}) {
   const preguntas = Object.fromEntries((await Promise.all(s.pregunta_ids.map(obtenerPregunta))).filter(Boolean).map(p => [p.id, p]))
   const resultado = resumen(intentos, preguntas)
   const fin = ahora()
-  const nuevo = { ...s, estado: 'terminada', fecha_fin: fin, agotado, resultado, duracion_seg: Math.round((new Date(fin) - new Date(s.fecha_inicio)) / 1000), sincronizado: 0 }
+  let pausado = 0
+  for (const p of s.config?.pausas ?? []) pausado += ((p.fin ? new Date(p.fin) : new Date(fin)) - new Date(p.inicio)) / 1000
+  const nuevo = { ...s, estado: 'terminada', fecha_fin: fin, agotado, resultado, duracion_seg: Math.max(0, Math.round((new Date(fin) - new Date(s.fecha_inicio)) / 1000 - pausado)), con_pausas: (s.config?.pausas ?? []).length > 0, sincronizado: 0 }
   await db.sesiones.put(nuevo)
   await encolar('sesiones', nuevo)
   return nuevo

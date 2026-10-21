@@ -3,6 +3,7 @@ import { intentosDe, preguntasVistas } from '../../lib/datos'
 import { listarPreguntas, preguntaVerificacion } from '../../lib/banco'
 import { evaluar } from '../../lib/feedback'
 import { ir } from '../../lib/nav'
+import { examenPorId } from '../../lib/examenes-config'
 import PreguntaVista from '../PreguntaVista'
 import Retro from '../Retro'
 import { Titulo, Badge, Vacio, fechaCorta } from '../ui'
@@ -12,14 +13,15 @@ import { nombreTipoError, nombreHabilidad, nombrePrueba, nombreDiagnostico, taxo
 // Qué fallé, cuándo, por qué (según la evidencia disponible), qué habilidad,
 // qué recurso, y si después resolví algo similar.
 
-export default function MisErrores({ usuario }) {
+export default function MisErrores({ usuario, params = {} }) {
+  const examen = params.examen ?? 'icfes'
   const [datos, setDatos] = useState(null)
   const [filtro, setFiltro] = useState('')
   const [abierto, setAbierto] = useState(null)
 
   useEffect(() => {
     (async () => {
-      const [intentos, preguntas] = await Promise.all([intentosDe(usuario.id), listarPreguntas({ estado: 'todas' })])
+      const [intentos, preguntas] = await Promise.all([intentosDe(usuario.id, { examen }), listarPreguntas({ estado: 'todas', examen })])
       const porId = Object.fromEntries(preguntas.map(p => [p.id, p]))
       const ordenados = [...intentos].sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
       // Último intento por pregunta: si la última vez acertó, el error está "superado"
@@ -32,7 +34,7 @@ export default function MisErrores({ usuario }) {
       })
       setDatos({ errores, porId })
     })()
-  }, [usuario.id])
+  }, [usuario.id, examen])
 
   if (!datos) return <p className="text-sm text-gray-400">Cargando…</p>
   const tipos = [...new Set(datos.errores.map(e => e.intento.tipo_error).filter(Boolean))]
@@ -41,7 +43,7 @@ export default function MisErrores({ usuario }) {
 
   return (
     <div className="space-y-4">
-      <Titulo sub={`${datos.errores.length} errores registrados · ${pendientes} sin superar`}>Mis errores</Titulo>
+      <Titulo volver={examen !== 'icfes'} sub={`${datos.errores.length} errores registrados · ${pendientes} sin superar`}>{examen === 'icfes' ? 'Mis errores' : `Mis errores · ${examenPorId(examen)?.corto ?? examen}`}</Titulo>
 
       {tipos.length > 0 && (
         <div className="flex gap-1.5 overflow-x-auto pb-1 -mx-4 px-4">

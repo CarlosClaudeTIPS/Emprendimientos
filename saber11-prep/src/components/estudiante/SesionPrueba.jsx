@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { Clock, ChevronLeft, ChevronRight, Flag } from 'lucide-react'
+import { Clock, ChevronLeft, ChevronRight, Flag, Pause, Play } from 'lucide-react'
+import { pausarSesion, reanudarSesion, enPausa, transcurridoSeg, puntajeEstimado, examenPorId, nombreSubhabilidad } from '../../lib/examenes'
 import { obtenerSesion, responderEnSesion, acumularTiempo, guardarIndice, terminarSesion, sesion2DeCompleto, sesionesDeCompleto } from '../../lib/pruebas'
 import { resumen } from '../../lib/analitica'
 import { obtenerPregunta, grupoTexto, preguntaVerificacion } from '../../lib/banco'
@@ -40,15 +41,17 @@ export default function SesionPrueba({ usuario, params }) {
   useEffect(() => {
     if (!sesion || sesion.estado !== 'en_curso' || !sesion.config.tiempo_seg) return
     const tick = () => {
-      const transcurrido = (Date.now() - new Date(sesion.fecha_inicio)) / 1000
-      const r = Math.max(0, Math.round(sesion.config.tiempo_seg - transcurrido))
+      const r = Math.max(0, Math.round(sesion.config.tiempo_seg - transcurridoSeg(sesion)))
       setRestante(r)
-      if (r <= 0) finalizar(true)
+      if (r <= 0 && !enPausa(sesion)) finalizar(true)
     }
     tick()
+    if (enPausa(sesion)) return
     const t = setInterval(tick, 1000)
     return () => clearInterval(t)
-  }, [sesion?.id, sesion?.estado])
+  }, [sesion?.id, sesion?.estado, sesion?.config?.pausas?.length, enPausa(sesion)])
+  const pausar = async () => { const p = preguntas[indice]; if (p) await acumularTiempo(sesion.id, p.id, segundosEnActual()); setSesion(await pausarSesion(sesion.id)) }
+  const reanudar = async () => { entradaPregunta.current = Date.now(); setSesion(await reanudarSesion(sesion.id)) }
 
   const segundosEnActual = () => { const s = (Date.now() - entradaPregunta.current) / 1000; entradaPregunta.current = Date.now(); return s }
 
@@ -90,15 +93,27 @@ export default function SesionPrueba({ usuario, params }) {
           <p className="text-sm font-medium truncate">{sesion.titulo}</p>
           <p className="text-xs text-gray-400">{respondidas}/{preguntas.length} respondidas{esSimulacro && ` · ${nombrePrueba(p.prueba)}`}</p>
         </div>
-        {restante != null && (
-          <div className={`flex items-center gap-1 font-mono text-lg ${restante < 60 ? 'text-brand-red' : restante < 300 ? 'text-brand-amber' : 'text-gray-200'}`}>
-            <Clock size={18} /> {formatoTiempo(restante)}
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          {restante != null && (
+            <div className={`flex items-center gap-1 font-mono text-lg ${restante < 60 ? 'text-brand-red' : restante < 300 ? 'text-brand-amber' : 'text-gray-200'}`}>
+              <Clock size={18} /> {formatoTiempo(restante)}
+            </div>
+          )}
+          {sesion.config.pausable && <button className="btn-ghost !px-2 !py-1 text-xs" onClick={pausar} title="Pausar" aria-label="Pausar"><Pause size={16} /></button>}
+        </div>
       </div>
+      {enPausa(sesion) && (
+        <div className="fixed inset-0 z-40 bg-dark-900/95 flex items-center justify-center p-4">
+          <div className="card w-full max-w-sm text-center">
+            <p className="font-semibold text-lg">En pausa</p>
+            <p className="text-sm text-gray-400 mt-1">El cronómetro está detenido. Este simulacro quedará marcado como «con pausas». En el examen real no hay pausas.</p>
+            <button className="btn-primary w-full mt-4" onClick={reanudar}><Play size={16} /> Reanudar</button>
+          </div>
+        </div>
+      )}
 
       {esSimulacro && sesion.config.faltantes?.length > 0 && indice === 0 && (
-        <p className="text-xs text-gray-500">{sesion.config.por_tiempo ? `Prueba de ${sesion.config.tiempo_min} min con el ritmo real del examen.` : `Simulacro a escala ${Math.round(sesion.config.escala * 100)} % de la sesión real (${sesion.config.tiempo_real_min} min).`} El banco aún no tiene suficientes preguntas en: {sesion.config.faltantes.map(f => nombrePrueba(f.prueba)).join(', ')}.</p>
+        <p className="text-xs text-gray-500">{sesion.config.examen ? `Simulacro del examen de admisión (${sesion.config.tiempo_real_min} min reales).` : sesion.config.por_tiempo ? `Prueba de ${sesion.config.tiempo_min} min con el ritmo real del examen.` : `Simulacro a escala ${Math.round(sesion.config.escala * 100)} % de la sesión real (${sesion.config.tiempo_real_min} min).`} El banco aún no tiene suficientes preguntas en: {sesion.config.faltantes.map(f => nombrePrueba(f.prueba)).join(', ')}.</p>
       )}
 
       <div className="card">
@@ -171,7 +186,8 @@ function Resultados({ sesion, preguntas, usuario }) {
 
   return (
     <div className="space-y-4">
-      <Titulo volver sub={`${sesion.titulo}${sesion.agotado ? ' · se agotó el tiempo' : ''}`}>Resultados</Titulo>
+      <Titulo volver sub={`${sesion.titulo}${sesion.agotado ? ' · se agotó el tiempo' : ''}${sesion.con_pausas ? ' · con pausas' : ''}`}>Resultados</Titulo>
+      {sesion.config?.examen && intentos.length > 0 && <ResultadosExamen sesion={sesion} intentos={intentos} />}
 
       {esSesion1Completo && !hayS2 && (
         <div className="card border-brand-blue/50">
@@ -198,7 +214,7 @@ function Resultados({ sesion, preguntas, usuario }) {
         </div>
       )}
 
-      {sesion.config?.diagnostico && intentos.length > 0 && <PerfilInicial intentos={intentos} usuario={usuario} />}
+      {sesion.config?.diagnostico && !sesion.config?.examen && intentos.length > 0 && <PerfilInicial intentos={intentos} usuario={usuario} />}
 
       <div className="grid grid-cols-3 gap-2">
         <Metrica etiqueta="Aciertos" valor={r.precision} sufijo="%" />
@@ -208,7 +224,7 @@ function Resultados({ sesion, preguntas, usuario }) {
 
       {r.por_prueba.length > 1 && <div className="card"><p className="text-sm font-medium mb-1">Por prueba</p>{r.por_prueba.map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.precision} detalle={`${x.aciertos}/${x.total}`} />)}</div>}
       <div className="card"><p className="text-sm font-medium mb-1">Por competencia</p>{r.por_competencia.map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.precision} detalle={`${x.aciertos}/${x.total}`} />)}</div>
-      <div className="card"><p className="text-sm font-medium mb-1">Por habilidad del eje transversal</p>{r.por_habilidad.map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.precision} detalle={`${x.aciertos}/${x.total}`} />)}</div>
+      {!sesion.config?.examen && <div className="card"><p className="text-sm font-medium mb-1">Por habilidad del eje transversal</p>{r.por_habilidad.map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.precision} detalle={`${x.aciertos}/${x.total}`} />)}</div>}
 
       {r.por_tipo_error.length > 0 && (
         <div className="card">
@@ -246,11 +262,48 @@ function Resultados({ sesion, preguntas, usuario }) {
         })()}
       </div>
 
+      {sesion.config?.examen ? (
+        <div className="flex gap-2">
+          <button className="btn-secondary flex-1" onClick={() => ir('errores', { examen: sesion.config.examen })}>Mis errores de esta ruta</button>
+          <button className="btn-primary flex-1" onClick={() => ir('admision', { examen: sesion.config.examen })}>Volver a la ruta</button>
+        </div>
+      ) : (
       <div className="flex gap-2">
         {sesion.config?.diagnostico && <button className="btn-primary flex-1" onClick={() => ir('refuerzo')}>Ver mi plan de refuerzo</button>}
         <button className={sesion.config?.diagnostico ? 'btn-secondary flex-1' : 'btn-primary flex-1'} onClick={() => ir('errores')}>Ir a mis errores</button>
         <button className="btn-secondary flex-1" onClick={() => ir(usuario.rol === 'estudiante' ? 'inicio' : 'simulacros')}>Volver</button>
       </div>
+      )}
+    </div>
+  )
+}
+
+// Puntaje estimado Nivytek de una sesión de examen de admisión, por componente y subhabilidad.
+function ResultadosExamen({ sesion, intentos }) {
+  const e = examenPorId(sesion.config.examen)
+  if (!e) return null
+  const est = puntajeEstimado(e, intentos)
+  const porSub = {}
+  for (const i of intentos) { const x = (porSub[i.competencia] ??= { id: i.competencia, n: 0, aciertos: 0 }); x.n++; if (i.correcta) x.aciertos++ }
+  const subs = Object.values(porSub).map(x => ({ ...x, precision: Math.round(x.aciertos / x.n * 100) })).sort((a, b) => a.precision - b.precision)
+  const ritmo = intentos.filter(i => i.tiempo_seg > 0)
+  const seg = ritmo.length ? Math.round(ritmo.reduce((a, i) => a + i.tiempo_seg, 0) / ritmo.length) : null
+  const objetivo = Math.round(e.min_por_pregunta * 60)
+  return (
+    <div className="card border-brand-blue/50 space-y-2">
+      <p className="font-semibold">Puntaje estimado Nivytek · {e.corto}</p>
+      <div className="grid grid-cols-3 gap-2">
+        <Metrica etiqueta="Estimado" valor={est.total ?? '—'} sufijo={e.puntaje.total?.max ? `/${e.puntaje.total.max}` : ''} />
+        <Metrica etiqueta="Aciertos" valor={sesion.resultado?.precision ?? 0} sufijo="%" />
+        <Metrica etiqueta="Ritmo" valor={seg != null ? `${Math.floor(seg / 60)}:${String(seg % 60).padStart(2, '0')}` : '—'} sufijo=" min" />
+      </div>
+      <p className="text-[11px] text-gray-500">{e.puntaje.nota}{seg != null ? ` Objetivo de ritmo: ${e.min_por_pregunta} min por pregunta (${seg <= objetivo ? 'vas bien' : 'vas lento'}).` : ''}{sesion.con_pausas ? ' Simulacro con pausas.' : ''}</p>
+      {est.componentes.filter(c => c.n).map(c => <FilaMetrica key={c.id} nombre={`${c.nombre}${c.puntaje != null ? ` · ${c.puntaje}` : ''}`} valor={c.precision} detalle={`${c.aciertos}/${c.n}`} />)}
+      {subs.length > 1 && (
+        <details className="text-sm"><summary className="cursor-pointer text-brand-blue text-xs">Por subhabilidad</summary>
+          <div className="mt-1">{subs.map(s => <FilaMetrica key={s.id} nombre={nombreSubhabilidad(s.id)} valor={s.precision} detalle={`${s.aciertos}/${s.n}`} />)}</div>
+        </details>
+      )}
     </div>
   )
 }

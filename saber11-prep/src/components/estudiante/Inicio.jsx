@@ -16,7 +16,7 @@ import { Stethoscope, Compass, FileBarChart, BookOpenCheck } from 'lucide-react'
 import { modoCarreraActivo, prioridadesDeUsuario, carreraPorId, NOMBRE_NIVEL } from '../../lib/carreras'
 import { VistaPrioridades } from './Carreras'
 import { estadoLiberacion, grupoDe } from '../../lib/acceso'
-import { Unlock, Rocket } from 'lucide-react'
+import { Unlock, Rocket, GraduationCap } from 'lucide-react'
 import RutaMejorar from './RutaMejorar'
 
 export default function Inicio({ usuario }) {
@@ -142,6 +142,7 @@ export default function Inicio({ usuario }) {
         <Accion icono={FileBarChart} titulo="Mi informe" sub="puntajes, niveles y qué mejorar" onClick={() => ir('informe')} />
         <Accion icono={BookOpenCheck} titulo="Guía ICFES" sub="qué es, para qué sirve, universidades" onClick={() => ir('guia')} />
         <Accion icono={Rocket} titulo="Mi futuro" sub="intereses, opciones y proyecto de vida" onClick={() => ir('futuro')} />
+        <Accion icono={GraduationCap} titulo="Exámenes de admisión" sub="Universidad Nacional, Antioquia y más" onClick={() => ir('admision')} />
       </div>
 
       <div className="card">

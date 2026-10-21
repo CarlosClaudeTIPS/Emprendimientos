@@ -70,6 +70,8 @@
    "https://admisiones.unal.edu.co/pregrado/prueba-de-admision/",
    "https://admisiones.unal.edu.co/pregrado/politica-de-gratuidad-en-la-inscripcion/"
   ],
+  "convocatorias": [{"nombre": "2027-1", "inscripcion": ["2026-07-06", "2026-08-24"], "prueba": "2026-09-20", "resultados": "2026-10-09", "costo": "$175.000", "fuente": "https://admisiones.unal.edu.co/pregrado/"}],
+  "convocatoria_siguiente": "La convocatoria del segundo semestre suele abrir en febrero con prueba en abril o mayo. Por confirmar en admisiones.unal.edu.co.",
   "verificado": "2026-10"
  },
  {

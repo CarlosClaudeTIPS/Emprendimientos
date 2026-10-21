@@ -34,6 +34,7 @@ import Refuerzo from './components/estudiante/Refuerzo'
 const Historial = cargar(() => import('./components/estudiante/Historial'))
 import Carreras from './components/estudiante/Carreras'
 const MiFuturo = cargar(() => import('./components/estudiante/MiFuturo'))
+const Admision = cargar(() => import('./components/estudiante/Admision'))
 const Informe = cargar(() => import('./components/Informe'))
 const Guia = cargar(() => import('./components/Guia'))
 const PanelDocente = cargar(() => import('./components/docente/PanelDocente'))
@@ -101,6 +102,7 @@ function elegirVista(rol, ruta, params, usuario) {
   if (ruta === 'historial') return <Historial usuario={usuario} params={params} />
   if (ruta === 'informe') return <Informe usuario={usuario} params={params} />
   if (ruta === 'guia') return <Guia usuario={usuario} params={params} />
+  if (ruta === 'admision') return <Admision usuario={usuario} params={params} />
 
   if (rol === 'estudiante') {
     switch (ruta) {
