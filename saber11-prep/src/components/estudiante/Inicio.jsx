@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react'
 import { Play, Timer, AlertCircle, BarChart3, Map, Library, ClipboardList } from 'lucide-react'
-import { intentosDe, asignacionesPendientes } from '../../lib/datos'
+import { intentosDe, asignacionesPendientes, proximasClases } from '../../lib/datos'
+import { describirTiempo } from '../../lib/tiempo'
+import { formatoClase } from '../docente/Clases'
+import { Video } from 'lucide-react'
 import { cicloActivo, estadoCiclo, programa, formatoFecha } from '../../lib/ciclo'
 import { recomendar, reglasVigentes } from '../../lib/reglas'
 import { listarPreguntas } from '../../lib/banco'
 import { resumen } from '../../lib/analitica'
 import { ir } from '../../lib/nav'
 import { Barra, Badge } from '../ui'
-import { crearMiniPrueba, crearSimulacro, crearSimulacroCompleto, crearDiagnostico, diagnosticoDe } from '../../lib/pruebas'
+import { crearMiniPrueba, crearSimulacro, crearSimulacroCompleto, crearDiagnostico, diagnosticoDe, crearPruebaPorTiempo } from '../../lib/pruebas'
 import { MATERIAS, ICONO_PRUEBA } from '../Login'
 import { Stethoscope, Compass, FileBarChart, BookOpenCheck } from 'lucide-react'
 import { modoCarreraActivo, prioridadesDeUsuario, carreraPorId, NOMBRE_NIVEL } from '../../lib/carreras'
@@ -24,7 +27,7 @@ export default function Inicio({ usuario }) {
       const [intentos, ciclo, prog, preguntas, pendientes, diagnostico, grupo, todas] = await Promise.all([intentosDe(usuario.id), cicloActivo(), programa(), listarPreguntas({ usuario }), asignacionesPendientes(usuario), diagnosticoDe(usuario.id), grupoDe(usuario), listarPreguntas()])
       const preguntasPorId = Object.fromEntries(preguntas.map(p => [p.id, p]))
       setDatos({
-        intentos, ciclo, estado: estadoCiclo(ciclo, prog), pendientes,
+        intentos, ciclo, estado: estadoCiclo(ciclo, prog), pendientes, clases: await proximasClases(usuario),
         resumen: resumen(intentos, preguntasPorId),
         recs: recomendar(intentos, { preguntasPorId, reglas: await reglasVigentes() }).slice(0, 2),
         totalBanco: preguntas.length, diagnostico, liberacion: estadoLiberacion(todas, grupo),
@@ -33,7 +36,7 @@ export default function Inicio({ usuario }) {
   }, [usuario.id])
 
   if (!datos) return <p className="text-gray-400 text-sm">Cargando…</p>
-  const { estado, ciclo, resumen: r, recs, pendientes } = datos
+  const { estado, ciclo, resumen: r, recs, pendientes, clases = [] } = datos
   const vistas = new Set(datos.intentos.map(i => i.pregunta_id)).size
   const progresoBanco = Math.round((vistas / Math.max(1, datos.totalBanco)) * 100)
   const errores = datos.intentos.filter(i => !i.correcta).length
@@ -45,7 +48,7 @@ export default function Inicio({ usuario }) {
 
   const abrirAsignacion = async (a) => {
     try {
-      const s = a.tipo === 'diagnostico' ? await crearDiagnostico({ estudiante: usuario, asignacion_id: a.id }) : a.tipo === 'simulacro'
+      const s = a.tipo === 'diagnostico' ? await crearDiagnostico({ estudiante: usuario, asignacion_id: a.id }) : a.tipo === 'tiempo' ? await crearPruebaPorTiempo({ estudiante: usuario, tiempo_min: a.config.tiempo_min, asignacion_id: a.id, titulo: a.titulo }) : a.tipo === 'simulacro'
         ? (a.config.sesion_examen === 'completo'
           ? await crearSimulacroCompleto({ estudiante: usuario, escala: a.config.escala, asignacion_id: a.id })
           : await crearSimulacro({ estudiante: usuario, ...a.config, asignacion_id: a.id, titulo: a.titulo }))
@@ -98,6 +101,22 @@ export default function Inicio({ usuario }) {
         </div>
       </div>
 
+      {clases.length > 0 && (
+        <div className="card border-emerald-400/40">
+          <p className="text-sm font-medium flex items-center gap-2 mb-2"><Video size={16} className="text-emerald-500" /> Próxima clase</p>
+          {clases.slice(0, 2).map(c => (
+            <div key={c.id} className="flex items-start justify-between gap-3 rounded-lg bg-dark-900 border border-dark-600 p-3 mb-2">
+              <div>
+                <p className="text-sm font-medium">{c.titulo}</p>
+                <p className="text-xs text-gray-400 capitalize">{formatoClase(c.fecha)} · {c.duracion_min} min</p>
+                {c.nota && <p className="text-xs text-gray-500 mt-1">{c.nota}</p>}
+              </div>
+              {c.enlace ? <a className="btn-primary !py-1.5 text-xs shrink-0" href={c.enlace} target="_blank" rel="noopener"><Video size={14} /> Entrar a la clase</a> : <span className="text-xs text-gray-500 shrink-0">Enlace pendiente</span>}
+            </div>
+          ))}
+        </div>
+      )}
+
       {pendientes.length > 0 && (
         <div className="card border-brand-blue/40">
           <p className="text-sm font-medium flex items-center gap-2 mb-2"><ClipboardList size={16} /> Tu docente te asignó</p>
@@ -105,7 +124,7 @@ export default function Inicio({ usuario }) {
             {pendientes.map(a => (
               <button key={a.id} onClick={() => abrirAsignacion(a)} className="w-full text-left rounded-lg bg-dark-900 border border-dark-600 p-3 hover:border-gray-400">
                 <p className="text-sm font-medium">{a.titulo}</p>
-                <p className="text-xs text-gray-400">{a.tipo === 'simulacro' ? 'Simulacro' : 'Mini-prueba'}{a.config?.cantidad ? ` · ${a.config.cantidad} preguntas` : ''}{a.config?.tiempo_min ? ` · ${a.config.tiempo_min} min` : ''}{a.fecha_limite ? ` · hasta ${formatoFecha(a.fecha_limite)}` : ''}</p>
+                <p className="text-xs text-gray-400">{a.tipo === 'simulacro' ? 'Simulacro' : a.tipo === 'tiempo' ? `Prueba de ${describirTiempo(a.config.tiempo_min)} · las preguntas se ajustan al tiempo` : a.tipo === 'diagnostico' ? 'Prueba diagnóstica' : 'Mini-prueba'}{a.config?.cantidad ? ` · ${a.config.cantidad} preguntas` : ''}{a.config?.tiempo_min ? ` · ${a.config.tiempo_min} min` : ''}{a.fecha_limite ? ` · hasta ${formatoFecha(a.fecha_limite)}` : ''}</p>
                 {a.nota && <p className="text-xs text-gray-500 mt-1">{a.nota}</p>}
               </button>
             ))}

@@ -16,6 +16,17 @@ npm run demo                    # igual, con usuarios demo (admin/docente/est1�
 
 Para la nube real, copia `.env.example` a `.env.local` con `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` (ver `INSTALAR-EN-OTRO-PC.md`). Si quieres entrar directo como un usuario local en desarrollo: `VITE_AUTOLOGIN=admin:1234`.
 
+## Novedades (21-oct-2026)
+
+- **Pruebas por tiempo** (`src/lib/tiempo.js`, `crearPruebaPorTiempo` en `src/lib/pruebas.js`): el docente o el admin
+  elige solo el tiempo, de 30 en 30 minutos hasta 4 h 30, y la prueba se arma sola con el ritmo real del examen
+  (540 min ÷ 254 preguntas ≈ 2,1 min por pregunta) repartida entre las cinco pruebas con la proporción del Saber 11.
+  Se asigna desde Grupo → Asignaciones → «Por tiempo»; el estudiante la abre desde su inicio. No necesita migración.
+- **Clases por Google Meet** (`src/components/docente/Clases.jsx`, tabla `clases`): Grupo → pestaña «Clases» →
+  «Crear enlace en Google Meet» (abre meet.google.com/new) → «Programar clase» con fecha, duración, enlace y nota.
+  El estudiante ve «Próxima clase» en su inicio con el botón «Entrar a la clase». **Requiere ejecutar
+  `supabase/migracion-009-clases.sql` en el SQL Editor de Supabase**; sin ella, en modo nube las clases no se sincronizan.
+
 ## Qué hay (13-oct-2026)
 
 - **App:** modo carrera (el estudiante elige hasta 3 carreras y la app prioriza materias), banco con letras repartidas, sincronización robusta (un cambio fallido no bloquea la cola; el estado muestra errores en rojo), recarga automática al publicar versión nueva (PWA).

@@ -3,6 +3,7 @@ import { elegirPreguntas, obtenerPregunta, listarPreguntas, mezclar, grupoTexto 
 import { estructuraExamen } from './ciclo'
 import { registrarIntento, preguntasVistas } from './datos'
 import { resumen } from './analitica'
+import { repartoPorTiempo, describirTiempo } from './tiempo'
 
 // ─── Mini-pruebas y simulacros ───────────────────────────────────────────────
 // Una "sesión de prueba" agrupa varias preguntas que se responden seguidas,
@@ -81,6 +82,30 @@ export async function crearSimulacro({ estudiante, sesion_examen = 1, escala = 0
   const s = {
     id: uuid(), estudiante_id: estudiante.id, tipo: 'simulacro', titulo: titulo ?? `Simulacro · ${ses.nombre}`,
     config: { sesion_examen: ses.numero, escala, cantidad: total, tiempo_seg: Math.round(segPorPregunta * total), bloques, faltantes, tiempo_real_min: est.duracion_sesion_min },
+    pregunta_ids: bloques.flatMap(b => b.ids), respuestas: {}, tiempos: {}, indice: 0,
+    estado: 'en_curso', fecha_inicio: ahora(), fecha_fin: null, asignacion_id, sincronizado: 0,
+  }
+  await db.sesiones.add(s)
+  return s
+}
+
+// Prueba por tiempo: el docente elige los minutos (de 30 en 30) y la cantidad de
+// preguntas y su reparto por materia salen solos del ritmo real del examen.
+export async function crearPruebaPorTiempo({ estudiante, tiempo_min, asignacion_id = null, titulo = null }) {
+  const est = await estructuraExamen()
+  const plan = repartoPorTiempo(est, tiempo_min)
+  const vistas = await preguntasVistas(estudiante.id)
+  const bloques = [], faltantes = []
+  for (const b of plan.bloques) {
+    const elegidas = await elegirPreguntas({ n: b.objetivo, vistas, prueba: b.prueba, usuario: estudiante })
+    if (elegidas.length < b.objetivo) faltantes.push({ prueba: b.prueba, objetivo: b.objetivo, disponibles: elegidas.length })
+    bloques.push({ prueba: b.prueba, ids: elegidas.map(p => p.id) })
+  }
+  const total = bloques.reduce((a, b) => a + b.ids.length, 0)
+  if (!total) throw new Error('El banco no tiene preguntas para esta prueba')
+  const s = {
+    id: uuid(), estudiante_id: estudiante.id, tipo: 'simulacro', titulo: titulo ?? `Prueba de ${describirTiempo(plan.tiempo_min)}`,
+    config: { por_tiempo: true, tiempo_min: plan.tiempo_min, sesion_examen: null, escala: plan.escala, cantidad: total, tiempo_seg: plan.tiempo_min * 60, bloques, faltantes, tiempo_real_min: est.duracion_sesion_min * est.sesiones.length },
     pregunta_ids: bloques.flatMap(b => b.ids), respuestas: {}, tiempos: {}, indice: 0,
     estado: 'en_curso', fecha_inicio: ahora(), fecha_fin: null, asignacion_id, sincronizado: 0,
   }

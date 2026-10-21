@@ -26,6 +26,10 @@ db.version(1).stores({
 db.version(2).stores({
   sesiones_docente: 'id, grupo_id, fecha',
 })
+// v3: clases (reuniones por Google Meet u otro enlace) programadas por el docente para su grupo
+db.version(3).stores({
+  clases: 'id, grupo_id, fecha, estado',
+})
 
 export const ahora = () => new Date().toISOString()
 

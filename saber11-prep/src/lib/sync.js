@@ -41,6 +41,7 @@ const TABLAS = {
   recursos: { destino: 'recursos', clave: 'id' },
   preguntas: { destino: 'preguntas', clave: 'id' },
   sesiones_docente: { destino: 'sesiones_docente', clave: 'id' },
+  clases: { destino: 'clases', clave: 'id' },
 }
 
 export async function sincronizar() {
@@ -103,6 +104,8 @@ export async function descargarDeNube(usuario) {
       if (usuario.grupo_id) {
         const { data: asig } = await supabase.from('asignaciones').select('*').eq('grupo_id', usuario.grupo_id)
         if (asig) await db.asignaciones.bulkPut(asig.map(a => ({ ...a, sincronizado: 1 })))
+        const { data: clases } = await supabase.from('clases').select('*').eq('grupo_id', usuario.grupo_id)
+        if (clases) await db.clases.bulkPut(clases.map(c => ({ ...c, sincronizado: 1 })))
       }
       // Su propio historial (para verlo desde cualquier dispositivo). Solo se agrega
       // lo que no está en este dispositivo: lo local puede tener cambios sin enviar.
@@ -116,6 +119,8 @@ export async function descargarDeNube(usuario) {
       const { data: grupos } = await supabase.from('grupos').select('*')
       if (grupos) await db.grupos.bulkPut(grupos.map(g => ({ ...g, sincronizado: 1 })))
       const { data: usuarios } = await supabase.from('perfiles').select('*')
+      const { data: clases } = await supabase.from('clases').select('*')
+      if (clases) await db.clases.bulkPut(clases.map(c => ({ ...c, sincronizado: 1 })))
       if (usuarios) await db.usuarios.bulkPut(usuarios.map(u => ({ ...u, sincronizado: 1 })))
       const intentos = await todasLasFilas('intentos')
       await db.intentos.bulkPut(intentos.map(i => ({ ...i, sincronizado: 1 })))

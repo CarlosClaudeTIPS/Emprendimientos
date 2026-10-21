@@ -173,6 +173,33 @@ export async function asignacionesPendientes(estudiante) {
   return lista.filter(a => a.estado === 'activa' && !hechasIds.has(a.id)).sort((a, b) => (a.fecha_creacion < b.fecha_creacion ? 1 : -1))
 }
 
+// ── Clases (reuniones por Google Meet u otro enlace) ─────────────────────────
+// El docente crea el enlace en meet.google.com/new y lo pega aquí; los
+// estudiantes del grupo ven la próxima clase en su inicio con el botón de entrar.
+export async function crearClase({ grupo_id, docente_id, titulo, fecha, duracion_min = 60, enlace = '', nota = '' }) {
+  const c = { id: uuid(), grupo_id, docente_id, titulo, fecha, duracion_min: Number(duracion_min) || 60, enlace: enlace.trim(), nota, estado: 'programada', fecha_creacion: ahora(), sincronizado: 0 }
+  await db.clases.add(c)
+  await encolar('clases', c)
+  return c
+}
+
+export async function actualizarClase(id, cambios) {
+  await db.clases.update(id, { ...cambios, sincronizado: 0 })
+  const c = await db.clases.get(id)
+  await encolar('clases', c)
+  return c
+}
+
+export const clasesDeGrupo = (grupo_id) => db.clases.where('grupo_id').equals(grupo_id).sortBy('fecha')
+
+// Próximas clases del estudiante: programadas y que no hayan terminado hace más de una hora.
+export async function proximasClases(estudiante) {
+  if (!estudiante.grupo_id) return []
+  const lista = await db.clases.where('grupo_id').equals(estudiante.grupo_id).toArray()
+  const limite = Date.now() - 60 * 60 * 1000
+  return lista.filter(c => c.estado === 'programada' && new Date(c.fecha).getTime() + (c.duracion_min || 60) * 60000 > limite).sort((a, b) => (a.fecha < b.fecha ? -1 : 1))
+}
+
 // ── Recursos (biblioteca) ─────────────────────────────────────────────────────
 export async function guardarRecurso(r) {
   const rec = { id: r.id ?? uuid(), estado: 'pendiente', version: 1, categoria: 'refuerzo', habilidades: [], tipos_error: [], ...r, editado_local: true, actualizado: ahora(), sincronizado: 0 }

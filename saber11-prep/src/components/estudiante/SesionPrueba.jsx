@@ -98,7 +98,7 @@ export default function SesionPrueba({ usuario, params }) {
       </div>
 
       {esSimulacro && sesion.config.faltantes?.length > 0 && indice === 0 && (
-        <p className="text-xs text-gray-500">Simulacro a escala {Math.round(sesion.config.escala * 100)} % de la sesión real ({sesion.config.tiempo_real_min} min). El banco aún no tiene suficientes preguntas en: {sesion.config.faltantes.map(f => nombrePrueba(f.prueba)).join(', ')}.</p>
+        <p className="text-xs text-gray-500">{sesion.config.por_tiempo ? `Prueba de ${sesion.config.tiempo_min} min con el ritmo real del examen.` : `Simulacro a escala ${Math.round(sesion.config.escala * 100)} % de la sesión real (${sesion.config.tiempo_real_min} min).`} El banco aún no tiene suficientes preguntas en: {sesion.config.faltantes.map(f => nombrePrueba(f.prueba)).join(', ')}.</p>
       )}
 
       <div className="card">

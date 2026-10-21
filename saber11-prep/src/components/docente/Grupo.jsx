@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
-import { UserPlus, ClipboardList, Printer, Lightbulb, FileBarChart } from 'lucide-react'
+import { UserPlus, ClipboardList, Printer, Lightbulb, FileBarChart, Video } from 'lucide-react'
+import Clases from './Clases'
+import { PASOS_TIEMPO_MIN, repartoPorTiempo, describirTiempo } from '../../lib/tiempo'
+import { estructuraExamen } from '../../lib/ciclo'
 import { db } from '../../lib/db'
 import { intentosDeGrupo, agregarEstudiante, importarEstudiantes, crearAsignacion, asignacionesDeGrupo, sesionesDocenteDe, prepararSesionDocente, guardarSesionDocente, actualizarGrupo } from '../../lib/datos'
 import { PLANES, LOTE_MENSUAL, estadoLiberacion } from '../../lib/acceso'
@@ -60,7 +63,7 @@ export default function Grupo({ usuario, params }) {
 
   const guardarAsignacion = async () => {
     if (!asig.titulo.trim()) return alert('Falta el título')
-    const config = asig.tipo === 'diagnostico' ? { cantidad: 25, tiempo_min: 40, diagnostico: true } : asig.tipo === 'simulacro'
+    const config = asig.tipo === 'diagnostico' ? { cantidad: 25, tiempo_min: 40, diagnostico: true } : asig.tipo === 'tiempo' ? { tiempo_min: Number(asig.tiempo_total_min) || 60 } : asig.tipo === 'simulacro'
       ? { sesion_examen: asig.sesion_examen === 'completo' ? 'completo' : Number(asig.sesion_examen), escala: Number(asig.escala) }
       : { cantidad: Number(asig.cantidad), tiempo_min: asig.tiempo_min ? Number(asig.tiempo_min) : null, filtros: limpiar({ prueba: asig.prueba, competencia: asig.competencia, habilidad: asig.habilidad, tipo_error: asig.tipo_error, dificultad: asig.dificultad }) }
     await crearAsignacion({ grupo_id: grupo.id, docente_id: usuario.id, tipo: asig.tipo, titulo: asig.titulo, config, fecha_limite: asig.fecha_limite || null, nota: asig.nota })
@@ -78,7 +81,7 @@ export default function Grupo({ usuario, params }) {
       <Titulo volver sub={`${grupo.colegio ?? ''}${grupo.curso ? ' · ' + grupo.curso : ''} · código ${grupo.codigo} · ${d.miembros.length} estudiantes`}>{grupo.nombre}</Titulo>
 
       <div className="flex gap-1.5 overflow-x-auto -mx-4 px-4 pb-1">
-        {[['resumen', 'Resumen'], ['estudiantes', 'Estudiantes'], ['preguntas', 'Preguntas'], ['asignaciones', 'Asignaciones'], ['sesiones', 'Sesiones']].map(([k, n]) => (
+        {[['resumen', 'Resumen'], ['estudiantes', 'Estudiantes'], ['preguntas', 'Preguntas'], ['asignaciones', 'Asignaciones'], ['clases', 'Clases'], ['sesiones', 'Sesiones']].map(([k, n]) => (
           <button key={k} onClick={() => setPestana(k)} className={`badge shrink-0 border px-3 py-1 ${pestana === k ? 'border-brand-blue text-white' : 'border-dark-600 text-gray-400'}`}>{n}</button>
         ))}
       </div>
@@ -195,6 +198,7 @@ export default function Grupo({ usuario, params }) {
         </div>
       )}
 
+      {pestana === 'clases' && <Clases grupo={grupo} usuario={usuario} editable={editable} />}
       {pestana === 'sesiones' && <SesionesDocente grupo={grupo} usuario={usuario} porId={d.porId} onAsignar={asignarDesdeAccion} />}
 
       {pestana === 'asignaciones' && (
@@ -202,9 +206,11 @@ export default function Grupo({ usuario, params }) {
           {editable && !asig && <button className="btn-secondary w-full" onClick={() => setAsig(nuevaAsig())}><ClipboardList size={16} /> Nueva asignación</button>}
           {asig && (
             <div className="card space-y-2">
-              <div className="flex gap-2">{['diagnostico', 'mini', 'simulacro'].map(t => <button key={t} onClick={() => setAsig({ ...asig, tipo: t, titulo: t === 'diagnostico' && !asig.titulo ? 'Prueba diagnóstica' : asig.titulo })} className={`btn flex-1 ${asig.tipo === t ? 'bg-dark-600 text-white' : 'bg-dark-900 text-gray-400'}`}>{t === 'mini' ? 'Mini-prueba' : t === 'diagnostico' ? 'Diagnóstica' : 'Simulacro'}</button>)}</div>
+              <div className="flex gap-2">{['diagnostico', 'mini', 'tiempo', 'simulacro'].map(t => <button key={t} onClick={() => setAsig({ ...asig, tipo: t, titulo: t === 'diagnostico' && !asig.titulo ? 'Prueba diagnóstica' : t === 'tiempo' && !asig.titulo ? `Prueba de ${describirTiempo(Number(asig.tiempo_total_min) || 60)}` : asig.titulo })} className={`btn flex-1 ${asig.tipo === t ? 'bg-dark-600 text-white' : 'bg-dark-900 text-gray-400'}`}>{t === 'mini' ? 'Mini-prueba' : t === 'diagnostico' ? 'Diagnóstica' : t === 'tiempo' ? 'Por tiempo' : 'Simulacro'}</button>)}</div>
               <input className="input" placeholder="Título" value={asig.titulo} onChange={e => setAsig({ ...asig, titulo: e.target.value })} />
-              {asig.tipo === 'diagnostico' ? <p className="text-sm text-gray-400">25 preguntas (5 por materia, dificultad básica y media) en 40 minutos.</p> : asig.tipo === 'mini' ? (
+              {asig.tipo === 'diagnostico' ? <p className="text-sm text-gray-400">25 preguntas (5 por materia, dificultad básica y media) en 40 minutos.</p> : asig.tipo === 'tiempo' ? (
+                <PorTiempo asig={asig} setAsig={setAsig} />
+              ) : asig.tipo === 'mini' ? (
                 <div className="grid grid-cols-2 gap-2">
                   <input className="input" type="number" placeholder="Cantidad" value={asig.cantidad} onChange={e => setAsig({ ...asig, cantidad: e.target.value })} />
                   <input className="input" type="number" placeholder="Tiempo (min)" value={asig.tiempo_min} onChange={e => setAsig({ ...asig, tiempo_min: e.target.value })} />
@@ -235,6 +241,24 @@ export default function Grupo({ usuario, params }) {
 }
 
 // ─── Sesiones del docente (una cada ~21 días) ────────────────────────────────
+// Selector de tiempo (de 30 en 30 min) con la vista previa del reparto por materia.
+function PorTiempo({ asig, setAsig }) {
+  const [plan, setPlan] = useState(null)
+  const min = Number(asig.tiempo_total_min) || 60
+  useEffect(() => { let vivo = true; estructuraExamen().then(est => { if (vivo) setPlan(repartoPorTiempo(est, min)) }); return () => { vivo = false } }, [min])
+  return (
+    <div className="space-y-2">
+      <label className="text-sm text-gray-400">Tiempo de la prueba</label>
+      <select className="input" value={min} onChange={e => setAsig({ ...asig, tiempo_total_min: e.target.value, titulo: /^Prueba de /.test(asig.titulo) || !asig.titulo ? `Prueba de ${describirTiempo(Number(e.target.value))}` : asig.titulo })}>
+        {PASOS_TIEMPO_MIN.map(m => <option key={m} value={m}>{describirTiempo(m)}</option>)}
+      </select>
+      {plan && (
+        <p className="text-xs text-gray-400">{plan.total} preguntas, con el ritmo real del examen (≈ {Math.round(plan.segPorPregunta / 60 * 10) / 10} min por pregunta): {plan.bloques.map(b => `${nombrePrueba(b.prueba)} ${b.objetivo}`).join(' · ')}. Cada estudiante recibe preguntas distintas que aún no ha visto.</p>
+      )}
+    </div>
+  )
+}
+
 function SesionesDocente({ grupo, usuario, porId, onAsignar }) {
   const [lista, setLista] = useState([])
   const [borrador, setBorrador] = useState(null)
@@ -290,7 +314,7 @@ function SesionesDocente({ grupo, usuario, porId, onAsignar }) {
   )
 }
 
-function nuevaAsig() { return { tipo: 'mini', titulo: '', cantidad: 10, tiempo_min: 20, prueba: '', competencia: '', habilidad: '', tipo_error: '', dificultad: '', sesion_examen: 1, escala: 0.25, fecha_limite: '', nota: '' } }
+function nuevaAsig() { return { tipo: 'mini', titulo: '', cantidad: 10, tiempo_min: 20, tiempo_total_min: 60, prueba: '', competencia: '', habilidad: '', tipo_error: '', dificultad: '', sesion_examen: 1, escala: 0.25, fecha_limite: '', nota: '' } }
 function limpiar(o) { return Object.fromEntries(Object.entries(o).filter(([, v]) => v)) }
 
 function AsignacionFila({ a, miembros }) {
@@ -300,7 +324,7 @@ function AsignacionFila({ a, miembros }) {
   return (
     <div className="card p-3">
       <div className="flex justify-between gap-2">
-        <div><p className="text-sm font-medium">{a.titulo}</p><p className="text-xs text-gray-500">{a.tipo === 'diagnostico' ? 'Prueba diagnóstica · 25 preguntas · 40 min' : a.tipo === 'simulacro' ? `Simulacro sesión ${a.config.sesion_examen} · ${Math.round(a.config.escala * 100)} %` : `Mini-prueba · ${a.config.cantidad} preguntas${a.config.tiempo_min ? ` · ${a.config.tiempo_min} min` : ''}`}{a.fecha_limite ? ` · hasta ${a.fecha_limite}` : ''}</p></div>
+        <div><p className="text-sm font-medium">{a.titulo}</p><p className="text-xs text-gray-500">{a.tipo === 'diagnostico' ? 'Prueba diagnóstica · 25 preguntas · 40 min' : a.tipo === 'tiempo' ? `Prueba por tiempo · ${describirTiempo(a.config.tiempo_min)} · la cantidad y el reparto por materia se ajustan al tiempo` : a.tipo === 'simulacro' ? `Simulacro sesión ${a.config.sesion_examen} · ${Math.round(a.config.escala * 100)} %` : `Mini-prueba · ${a.config.cantidad} preguntas${a.config.tiempo_min ? ` · ${a.config.tiempo_min} min` : ''}`}{a.fecha_limite ? ` · hasta ${a.fecha_limite}` : ''}</p></div>
         <div className="text-right shrink-0"><p className="text-sm font-medium">{prom != null ? `${prom}%` : '—'}</p><p className="text-xs text-gray-500">{hechas?.length ?? 0}/{miembros.length} hechas</p></div>
       </div>
     </div>
