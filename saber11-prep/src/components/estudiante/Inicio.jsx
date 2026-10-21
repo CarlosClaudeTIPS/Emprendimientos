@@ -169,6 +169,12 @@ export async function lanzarAccion(accion, usuario) {
   if (!accion) return
   if (accion.tipo === 'practica') return ir('practica', { ...accion.filtros, n: accion.n ?? 5, verificacion: accion.verificacion ? '1' : undefined })
   if (accion.tipo === 'ids') return ir('practica', { ids: accion.ids.join(',') })
+  if (accion.tipo === 'examen') {
+    if (accion.modo === 'practica') return ir('practica', { examen: accion.examen, prueba: accion.componente ?? undefined, n: accion.n ?? 5 })
+    const { crearSesionExamen } = await import('../../lib/examenes')
+    const s = await crearSesionExamen({ estudiante: usuario, examen: accion.examen, modo: accion.modo === 'bloque' ? 'bloque' : accion.modo === 'completo' ? 'completo' : 'diagnostico', componente: accion.componente ?? undefined })
+    return ir('sesion', { id: s.id })
+  }
   if (accion.tipo === 'errores') return accion.ids?.length ? ir('practica', { ids: accion.ids.join(','), modo: 'refuerzo' }) : ir('errores')
   if (accion.tipo === 'diagnostico') { const d = await diagnosticoDe(usuario.id); if (d?.estado === 'en_curso') return ir('sesion', { id: d.id }); const s = await crearDiagnostico({ estudiante: usuario }); return ir('sesion', { id: s.id }) }
   if (accion.tipo === 'simulacro') { const s = await crearSimulacro({ estudiante: usuario, sesion_examen: accion.sesion_examen ?? 1, escala: accion.escala ?? 0.25, titulo: 'Simulacro de mi ruta' }); return ir('sesion', { id: s.id }) }

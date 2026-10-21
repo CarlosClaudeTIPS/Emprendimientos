@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Printer, Download, FileBarChart } from 'lucide-react'
 import { db } from '../lib/db'
 import { intentosDe, intentosDeGrupo } from '../lib/datos'
+import { nombreSubhabilidad as nombreSub } from '../lib/examenes'
 import { listarPreguntas } from '../lib/banco'
 import { sesionesDe } from '../lib/pruebas'
 import { informeEstudiante, informeGrupo, csvInformeGrupo, NOMBRE_NIVEL, ORDEN_NIVEL, PRUEBAS } from '../lib/informes'
@@ -56,7 +57,18 @@ export default function Informe({ usuario, params }) {
           for (const p of PRUEBAS) poblacion[p] = otros.map(x => x.pruebas.find(q => q.prueba === p).puntaje)
         }
         const grupoEst = est.grupo_id ? await db.grupos.get(est.grupo_id) : null
-        setD({ tipo: 'estudiante', est, grupo: grupoEst, informe: informeEstudiante({ intentos: filtrar(intentos), preguntasPorId: porId, poblacion, sesiones }), sesiones: sesiones.filter(s => s.estado === 'terminada'), aprendizaje: medirAprendizaje(filtrar(intentos)) })
+        // Rutas de examen de admisión activas: una línea por ruta (para el informe al acudiente)
+        const rutas = []
+        try {
+          const { rutasAdmision, rutasActivasIds, resultadosRuta } = await import('../lib/examenes')
+          for (const id of rutasActivasIds(await rutasAdmision(est))) {
+            const r = await resultadosRuta(est, id)
+            if (!r.intentos) continue
+            const subs = r.subhabilidades.filter(s => s.n >= 3)
+            rutas.push({ examen: id, nombre: r.examen.corto, intentos: r.intentos, estimado: r.estimado.total, mejor: subs.length ? nombreSub(subs.reduce((a, b) => (a.precision >= b.precision ? a : b)).id) : null, flojo: subs.length > 1 ? nombreSub(subs.reduce((a, b) => (a.precision <= b.precision ? a : b)).id) : null })
+          }
+        } catch {}
+        setD({ tipo: 'estudiante', est, grupo: grupoEst, rutas, informe: informeEstudiante({ intentos: filtrar(intentos), preguntasPorId: porId, poblacion, sesiones }), sesiones: sesiones.filter(s => s.estado === 'terminada'), aprendizaje: medirAprendizaje(filtrar(intentos)) })
       } else setD({ tipo: 'vacio' })
     })()
   }, [estudianteId, grupoId, base])
@@ -101,7 +113,7 @@ export default function Informe({ usuario, params }) {
             ? <ReporteEstudiante inf={inf} est={d.est} grupo={d.grupo} fechaAplicacion={fechaAplicacion(base, d.sesiones)} />
             : <ReporteGrupo inf={inf} grupo={d.grupo} docente={usuario.rol !== 'estudiante' ? usuario.nombre : null} fechaAplicacion={fechaAplicacion(base, d.sesiones)} />)}
           {formato === 'ambos' && <p className="text-sm font-semibold text-brand-navy pt-2 border-t border-dark-600">Anexo: informe de mejoramiento (no hace parte del reporte ICFES)</p>}
-          {formato !== 'icfes' && (d.tipo === 'estudiante' ? <CuerpoEstudiante inf={inf} aprendizaje={d.aprendizaje} /> : <CuerpoGrupo inf={inf} grupoId={grupoId} />)}
+          {formato !== 'icfes' && (d.tipo === 'estudiante' ? <CuerpoEstudiante inf={inf} aprendizaje={d.aprendizaje} rutas={d.rutas ?? []} /> : <CuerpoGrupo inf={inf} grupoId={grupoId} />)}
         </>
       )}
 
@@ -127,9 +139,16 @@ function Puntaje({ etiqueta, valor, sufijo = '', sub = null, color }) {
   )
 }
 
-function CuerpoEstudiante({ inf, aprendizaje = null }) {
+function CuerpoEstudiante({ inf, aprendizaje = null, rutas = [] }) {
   return (
     <>
+      {rutas.length > 0 && (
+        <div className="card">
+          <p className="font-medium mb-1">Rutas de examen de admisión</p>
+          {rutas.map(r => <p key={r.examen} className="text-sm text-gray-300">Ruta {r.nombre}: practicó {r.intentos} preguntas{r.mejor ? `; mejor en ${r.mejor}` : ''}{r.flojo ? `; sigue flojo en ${r.flojo}` : ''}{r.estimado != null ? ` · puntaje estimado Nivytek ${r.estimado}` : ''}.</p>)}
+          <p className="text-[11px] text-gray-500 mt-1">El puntaje estimado es una aproximación de Nivytek, no un resultado oficial.</p>
+        </div>
+      )}
       <div className="card">
         <p className="font-medium mb-2 flex items-center gap-2"><FileBarChart size={16} className="text-brand-blue" /> Puntaje global estimado</p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">

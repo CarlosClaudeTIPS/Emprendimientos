@@ -82,3 +82,34 @@ describe('fechas desde la guía', () => {
     expect(proximaConvocatoria({}, new Date())).toBeNull()
   })
 })
+
+import { planSemana } from '../src/lib/ruta'
+describe('plan semanal con doble ruta', () => {
+  const base = { config: { minutos_dia: 30, dias_semana: 5, definida: true }, hayDiagnostico: true, perfil: { n: 50, prioridades: [{ id: 'M1', prueba: 'matematicas', nombre: 'Interpretación', nivel: 'floja', precision: 40 }] }, hoy: new Date('2026-10-21T10:00:00') }
+  it('sin rutas propias no hay sesiones de examen', () => {
+    const plan = planSemana(base)
+    expect(plan.dias.filter(d => d.tipo === 'examen')).toHaveLength(0)
+  })
+  it('lejos del examen dedica 30 % (al menos 1 de 5 sesiones) y nunca todas', () => {
+    const plan = planSemana({ ...base, rutasPropias: [{ examen: 'unal', nombre: 'Universidad Nacional', dias_restantes: 120, diagnostico_hecho: true, componentes_flojos: [{ id: 'unal_imagen', nombre: 'Análisis de la imagen' }] }] })
+    const ex = plan.dias.filter(d => d.tipo === 'examen')
+    expect(ex.length).toBe(2) // round(0.3 × 5) = 2
+    expect(plan.dias.filter(d => !d.descanso && d.tipo !== 'examen').length).toBeGreaterThanOrEqual(1)
+    expect(ex[0].accion.examen).toBe('unal')
+  })
+  it('en la recta final dedica 80 % pero deja al menos una sesión de Saber 11', () => {
+    const plan = planSemana({ ...base, rutasPropias: [{ examen: 'udea', nombre: 'Universidad de Antioquia', dias_restantes: 10, diagnostico_hecho: true, componentes_flojos: [] }] })
+    const ex = plan.dias.filter(d => d.tipo === 'examen')
+    expect(ex.length).toBe(4)
+    expect(plan.dias.filter(d => !d.descanso && d.tipo !== 'examen').length).toBe(1)
+  })
+  it('el reparto configurado por el docente manda', () => {
+    const plan = planSemana({ ...base, reparto: { lejos: 60, medio: 60, cerca: 60 }, rutasPropias: [{ examen: 'unal', nombre: 'UNAL', dias_restantes: 120, diagnostico_hecho: true, componentes_flojos: [] }] })
+    expect(plan.dias.filter(d => d.tipo === 'examen').length).toBe(3)
+  })
+  it('si falta el diagnóstico del examen, la primera sesión de la ruta es el diagnóstico', () => {
+    const plan = planSemana({ ...base, rutasPropias: [{ examen: 'unal', nombre: 'UNAL', dias_restantes: 120, diagnostico_hecho: false, componentes_flojos: [] }] })
+    const ex = plan.dias.filter(d => d.tipo === 'examen')
+    expect(ex[0].accion.modo).toBe('diagnostico')
+  })
+})

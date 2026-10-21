@@ -1,3 +1,4 @@
+import { proporcionRutaPropia, examenDePrueba } from './examenes-config'
 import { db, setConfig, getConfig } from './db'
 import { supabase, NUBE_DISPONIBLE } from './supabase'
 import { refrescarUsuario } from './sesion'
@@ -56,7 +57,9 @@ export const preguntasPorSesion = (minutos) => Math.max(3, Math.min(15, Math.flo
 // Plan de la semana que contiene `hoy`.
 //  perfil: salida de perfilDiagnostico (o null)      hayDiagnostico: hay una sesión diagnóstica terminada
 //  intentos / sesiones: del estudiante (para marcar lo hecho)   erroresPendientes: ids de preguntas falladas no superadas
-export function planSemana({ config, perfil = null, hayDiagnostico = false, intentos = [], sesiones = [], erroresPendientes = [], puntajeActual = null, hoy = new Date() }) {
+// rutasPropias: [{ examen, nombre, dias_restantes, diagnostico_hecho, componentes_flojos: [{ id, nombre }] }]
+// reparto: { lejos, medio, cerca } (porcentaje de sesiones para la ruta propia según la cercanía del examen)
+export function planSemana({ config, perfil = null, hayDiagnostico = false, intentos = [], sesiones = [], erroresPendientes = [], puntajeActual = null, hoy = new Date(), rutasPropias = [], reparto = null }) {
   const cfg = normalizarConfig(config)
   const lunes = lunesDe(hoy)
   const diasEstudio = diasDeEstudio(cfg.dias_semana)
@@ -76,8 +79,28 @@ export function planSemana({ config, perfil = null, hayDiagnostico = false, inte
   // Sesiones ya hechas por día (para marcar).
   const intentosPorDia = {}, sesionesPorDia = {}
   for (const i of intentos) (intentosPorDia[clave(i.fecha)] ??= []).push(i)
+  // Las sesiones del Saber 11 se marcan solo con intentos del Saber 11.
+  const soloIcfes = (lista) => lista.filter(i => examenDePrueba(i.prueba) === 'icfes')
   for (const s of sesiones) if (s.estado === 'terminada') (sesionesPorDia[clave(s.fecha_fin ?? s.fecha_inicio)] ??= []).push(s)
   const diagnosticoHecho = sesiones.some(s => s.config?.diagnostico && s.estado === 'terminada')
+
+  // Doble ruta: qué sesiones de la semana se dedican al examen propio.
+  const activas = rutasPropias.filter(r => r && r.examen)
+  const nEstudio = diasEstudio.length
+  let indicesPropia = new Set()
+  if (activas.length && nEstudio > 0) {
+    const masCercana = activas.reduce((a, b) => ((a.dias_restantes ?? Infinity) <= (b.dias_restantes ?? Infinity) ? a : b))
+    const prop = proporcionRutaPropia(masCercana.dias_restantes ?? null, reparto ?? cfg.admision?.reparto)
+    // Mínimos: si hay al menos 2 días de estudio, cada ruta conserva al menos una sesión por semana.
+    let nPropia = Math.round(prop * nEstudio)
+    if (nEstudio >= 2) nPropia = Math.min(nEstudio - 1, Math.max(1, nPropia))
+    else nPropia = prop >= 0.5 ? 1 : 0
+    // Se reparten de forma alterna (p. ej. 2 de 5: días 2.º y 4.º) para no amontonarlas.
+    const posiciones = []
+    for (let i = 0; i < nPropia; i++) posiciones.push(Math.min(nEstudio - 1, Math.floor((i + 0.5) * nEstudio / nPropia)))
+    indicesPropia = new Set(posiciones)
+  }
+  let turnoPropia = 0
 
   const dias = []
   let k = 0
@@ -90,7 +113,19 @@ export function planSemana({ config, perfil = null, hayDiagnostico = false, inte
     if (!esEstudio) { dias.push({ fecha: key, dia: d, descanso: true, hoy: esHoy, pasado }); continue }
     const ultimoEstudio = d === diasEstudio[diasEstudio.length - 1]
     let s
-    if (sinDatos && k === 0 && !diagnosticoHecho) {
+    if (indicesPropia.has(k) && !(sinDatos && k === 0 && !diagnosticoHecho)) {
+      // Sesión de la ruta de examen propio: alterna entre las rutas activas; primero el diagnóstico si falta.
+      const ruta = activas[turnoPropia % activas.length]; turnoPropia++
+      if (!ruta.diagnostico_hecho) {
+        s = { tipo: 'examen', examen: ruta.examen, titulo: `Diagnóstico · ${ruta.nombre}`, detalle: `Prueba corta por componente y subhabilidad. Con ella se decide qué practicar de este examen.`, minutos: Math.max(m, 45), accion: { tipo: 'examen', examen: ruta.examen, modo: 'diagnostico' } }
+      } else if (ultimoEstudio && (rectaFinal || (ruta.dias_restantes != null && ruta.dias_restantes <= 42)) && m >= 30) {
+        const comp = ruta.componentes_flojos?.[0] ?? null
+        s = { tipo: 'examen', examen: ruta.examen, titulo: `Simulacro por bloque · ${ruta.nombre}`, detalle: comp ? `Bloque de ${comp.nombre} con el tiempo real por pregunta.` : 'Un componente completo con el tiempo real por pregunta.', minutos: m, accion: { tipo: 'examen', examen: ruta.examen, modo: 'bloque', componente: comp?.id ?? null } }
+      } else {
+        const comp = ruta.componentes_flojos?.[turnoPropia % Math.max(1, ruta.componentes_flojos?.length ?? 1)] ?? null
+        s = { tipo: 'examen', examen: ruta.examen, titulo: `Practicar ${comp ? comp.nombre : 'el examen'} · ${ruta.nombre}`, detalle: `${n} preguntas con explicación${comp ? ` del componente donde más puedes subir` : ''}. En cada error, di por qué y verifica con una nueva.`, minutos: m, accion: { tipo: 'examen', examen: ruta.examen, modo: 'practica', componente: comp?.id ?? null, n } }
+      }
+    } else if (sinDatos && k === 0 && !diagnosticoHecho) {
       s = { tipo: 'diagnostico', titulo: 'Prueba diagnóstica', detalle: `25 preguntas · 40 min${m < 40 ? ' (puedes hacerla en dos partes: se guarda donde la dejes)' : ''}. Con ella se arma el resto de tu ruta.`, minutos: 40, accion: { tipo: 'diagnostico' } }
     } else if (ultimoEstudio && (rectaFinal || semanaIndice % 2 === 0) && m >= 30) {
       const escala = Math.min(0.5, Math.max(0.1, Math.round((m / 260) * 20) / 20))
@@ -111,7 +146,7 @@ export function planSemana({ config, perfil = null, hayDiagnostico = false, inte
         s = { tipo: 'practica', titulo: 'Práctica variada', detalle: `${n} preguntas de todas las materias con explicación.`, minutos: m, accion: { tipo: 'practica', filtros: {}, n } }
       }
     }
-    s.hecho = estaHecha(s, intentosPorDia[key] ?? [], sesionesPorDia[key] ?? [], diagnosticoHecho)
+    s.hecho = estaHecha(s, s.tipo === 'examen' ? (intentosPorDia[key] ?? []) : soloIcfes(intentosPorDia[key] ?? []), sesionesPorDia[key] ?? [], diagnosticoHecho)
     dias.push({ fecha: key, dia: d, hoy: esHoy, pasado, ...s })
     k++
   }
@@ -131,7 +166,8 @@ function estaHecha(s, intentosDia, sesionesDia, diagnosticoHecho) {
     case 'practica': return s.competencia ? intentosDia.filter(i => i.competencia === s.competencia).length >= Math.ceil(n / 2) || intentosDia.length >= n : intentosDia.length >= n
     case 'errores': return intentosDia.some(i => i.modo === 'verificacion' || i.modo === 'refuerzo') || intentosDia.length >= 3
     case 'mini': return sesionesDia.some(x => x.tipo === 'mini' && !x.config?.diagnostico)
-    case 'simulacro': return sesionesDia.some(x => x.tipo === 'simulacro')
+    case 'simulacro': return sesionesDia.some(x => x.tipo === 'simulacro' && !x.config?.examen)
+    case 'examen': return sesionesDia.some(x => x.config?.examen === s.examen) || intentosDia.filter(i => examenDePrueba(i.prueba) === s.examen).length >= Math.min(n, 5)
     default: return false
   }
 }

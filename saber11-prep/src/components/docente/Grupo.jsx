@@ -11,6 +11,29 @@ import { listarPreguntas } from '../../lib/banco'
 import { resumenGrupo, estadisticasPreguntas } from '../../lib/analitica'
 import { generarIntentosDemo } from '../../lib/demo'
 import { puedeEditar } from '../../lib/roles'
+import { LISTA_EXAMENES, REPARTO_POR_DEFECTO } from '../../lib/examenes-config'
+
+// Reparto de la práctica semanal entre el Saber 11 y la ruta de examen propio (por grupo).
+function RepartoAdmision({ grupo, onCambio }) {
+  const [v, setV] = useState({ ...REPARTO_POR_DEFECTO, ...(grupo.reparto_admision ?? {}) })
+  const [abierto, setAbierto] = useState(false)
+  const guardar = async () => { await actualizarGrupo(grupo.id, { reparto_admision: { lejos: Number(v.lejos), medio: Number(v.medio), cerca: Number(v.cerca) } }); setAbierto(false); onCambio?.() }
+  return (
+    <div className="card text-sm">
+      <div className="flex items-center justify-between gap-2">
+        <p className="font-medium">Reparto semanal con doble ruta</p>
+        <button className="text-xs font-semibold text-brand-blue" onClick={() => setAbierto(a => !a)}>{abierto ? 'Cerrar' : 'Cambiar'}</button>
+      </div>
+      <p className="text-xs text-gray-400 mt-1">Porcentaje de sesiones de la semana para el examen propio: a más de 8 semanas {v.lejos} %, entre 8 y 3 semanas {v.medio} %, a menos de 3 semanas {v.cerca} %. Ninguna ruta baja de una sesión por semana.</p>
+      {abierto && (
+        <div className="grid grid-cols-3 gap-2 mt-2">
+          {[['lejos', 'Más de 8 semanas'], ['medio', 'Entre 8 y 3'], ['cerca', 'Menos de 3']].map(([k, n]) => <div key={k}><label className="label">{n}</label><input className="input" type="number" min="0" max="100" value={v[k]} onChange={e => setV({ ...v, [k]: e.target.value })} /></div>)}
+          <button className="btn-primary col-span-3" onClick={guardar}>Guardar reparto</button>
+        </div>
+      )}
+    </div>
+  )
+}
 import { NUBE_DISPONIBLE } from '../../lib/supabase'
 import { ir } from '../../lib/nav'
 import { Titulo, Badge, FilaMetrica, Metrica, Vacio, fechaCorta } from '../ui'
@@ -25,6 +48,7 @@ export default function Grupo({ usuario, params }) {
   const [grupo, setGrupo] = useState(null)
   const [d, setD] = useState(null)
   const [pestana, setPestana] = useState('resumen')
+  const [rutaVista, setRutaVista] = useState('icfes') // 'icfes' | 'unal' | 'udea'
   const [alta, setAlta] = useState(null) // { modo: 'uno'|'lista', ... }
   const [creados, setCreados] = useState(null)
   const [asig, setAsig] = useState(null)
@@ -34,14 +58,14 @@ export default function Grupo({ usuario, params }) {
   const cargar = async () => {
     const g = await db.grupos.get(params.id)
     if (!g) return
-    const { miembros, intentos } = await intentosDeGrupo(g.id)
-    const preguntas = await listarPreguntas({ estado: 'todas' })
+    const { miembros, intentos } = await intentosDeGrupo(g.id, { examen: rutaVista })
+    const preguntas = await listarPreguntas({ estado: 'todas', examen: 'todos' })
     const porId = Object.fromEntries(preguntas.map(p => [p.id, p]))
     setGrupo(g)
     setD({ miembros, intentos, resumen: resumenGrupo(miembros, intentos, porId), preguntas: estadisticasPreguntas(intentos, porId), porId })
     setAsignaciones(await asignacionesDeGrupo(g.id))
   }
-  useEffect(() => { cargar() }, [params.id])
+  useEffect(() => { cargar() }, [params.id, rutaVista])
 
   if (!grupo || !d) return <p className="text-sm text-gray-400">Cargando…</p>
   const r = d.resumen
@@ -90,6 +114,12 @@ export default function Grupo({ usuario, params }) {
         <>
           <button className="btn-primary w-full" onClick={() => ir('informe', { grupo: grupo.id })}><FileBarChart size={16} /> Informe de mejoramiento del grupo (puntajes, niveles, percentiles)</button>
           <PlanAcceso grupo={grupo} preguntas={Object.values(d.porId)} onCambio={cargar} editable={editable} />
+          <div className="card !py-2.5 flex flex-wrap items-center gap-2 text-sm">
+            <span className="text-gray-400 text-xs">Ruta:</span>
+            {[['icfes', 'Saber 11'], ...LISTA_EXAMENES.map(e => [e.id, e.corto])].map(([k, n]) => <button key={k} onClick={() => setRutaVista(k)} className={`badge border px-3 py-1 ${rutaVista === k ? 'border-brand-blue text-white' : 'border-dark-600 text-gray-400'}`}>{n}</button>)}
+            {rutaVista !== 'icfes' && <span className="text-xs text-gray-500">Lo que más falló el grupo en este examen, por componente y subhabilidad.</span>}
+          </div>
+          {rutaVista !== 'icfes' && editable && <RepartoAdmision grupo={grupo} onCambio={cargar} />}
           <div className="grid grid-cols-3 gap-2">
             <Metrica etiqueta="Promedio" valor={r.promedio} sufijo="%" />
             <Metrica etiqueta="Activos" valor={`${r.n_activos}/${r.n_estudiantes}`} />

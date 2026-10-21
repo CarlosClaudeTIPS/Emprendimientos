@@ -12,11 +12,27 @@ import { planSemana, leerRutaConfig, guardarRutaConfig, NOMBRE_DIA, LIMITES } fr
 import { Badge, Barra } from '../ui'
 import { ir } from '../../lib/nav'
 import { lanzarAccion } from './Inicio'
+import { rutasActivasIds, examenPorId, fichaGuia, diagnosticoExamen, resultadosRuta, proximaConvocatoria } from '../../lib/examenes'
+import { grupoDe } from '../../lib/acceso'
 import { MATERIAS } from '../Login'
 
 // ─── Mi ruta para mejorar ────────────────────────────────────────────────────
 // Carga todo lo del estudiante, arma el plan de la semana (lib/ruta.js) y lo
 // muestra. `modo="hoy"` muestra solo la sesión de hoy (tarjeta de Inicio).
+
+// Rutas de examen propio activas, con fecha y componentes flojos (para la doble ruta).
+async function rutasPropiasDe(usuario, config) {
+  const activas = rutasActivasIds(config.admision)
+  const out = []
+  for (const id of activas) {
+    const e = examenPorId(id)
+    const [ficha, diag, res] = await Promise.all([fichaGuia(e), diagnosticoExamen(usuario.id, id), resultadosRuta(usuario, id)])
+    const prox = ficha ? proximaConvocatoria(ficha) : null
+    const flojos = res.estimado.componentes.filter(c => c.n > 0).sort((a, b) => a.theta - b.theta).map(c => ({ id: c.id, nombre: c.nombre }))
+    out.push({ examen: id, nombre: e.corto, dias_restantes: prox?.dias_restantes ?? null, diagnostico_hecho: diag?.estado === 'terminada', componentes_flojos: flojos.length ? flojos : e.componentes.map(c => ({ id: c.id, nombre: c.nombre })) })
+  }
+  return out
+}
 
 export async function cargarRuta(usuario) {
   const [intentos, sesiones, preguntas, ciclo, diag] = await Promise.all([intentosDe(usuario.id), sesionesDe(usuario.id), listarPreguntas({ usuario }), cicloActivo(), diagnosticoDe(usuario.id)])
@@ -29,8 +45,11 @@ export async function cargarRuta(usuario) {
   const ultimo = {}
   for (const i of ordenados) ultimo[i.pregunta_id] ??= i
   const erroresPendientes = Object.values(ultimo).filter(i => !i.correcta && preguntasPorId[i.pregunta_id]).sort((a, b) => (a.fecha < b.fecha ? 1 : -1)).map(i => i.pregunta_id)
-  const plan = planSemana({ config, perfil, hayDiagnostico: diag?.estado === 'terminada', intentos, sesiones, erroresPendientes, puntajeActual: inf?.global ?? null })
-  return { config, perfil, plan, ciclo, constancia: constancia(intentos), informe: inf, n: intentos.length }
+  const rutasPropias = await rutasPropiasDe(usuario, config)
+  const todos = rutasPropias.length ? await intentosDe(usuario.id, { examen: 'todos' }) : intentos
+  const reparto = (await grupoDe(usuario))?.reparto_admision ?? null
+  const plan = planSemana({ config, perfil, hayDiagnostico: diag?.estado === 'terminada', intentos: todos, sesiones, erroresPendientes, puntajeActual: inf?.global ?? null, rutasPropias, reparto })
+  return { config, perfil, plan, ciclo, constancia: constancia(intentos), informe: inf, n: intentos.length, rutasPropias }
 }
 
 export default function RutaMejorar({ usuario, modo = 'completa' }) {
@@ -116,7 +135,7 @@ function FilaDia({ dia, usuario }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <p className="text-xs text-gray-400">{nombre}{dia.hoy ? ' · hoy' : ''}</p>
-            <Badge tono={dia.tipo === 'simulacro' ? 'morado' : dia.tipo === 'errores' ? 'ambar' : dia.tipo === 'diagnostico' ? 'azul' : 'gris'}>{dia.minutos} min</Badge>
+            <Badge tono={dia.tipo === 'simulacro' ? 'morado' : dia.tipo === 'errores' ? 'ambar' : dia.tipo === 'diagnostico' ? 'azul' : dia.tipo === 'examen' ? 'verde' : 'gris'}>{dia.minutos} min</Badge>
             {dia.pasado && !dia.hecho && <Badge tono="rojo">pendiente</Badge>}
           </div>
           <p className="font-medium leading-tight mt-0.5">{dia.titulo}</p>

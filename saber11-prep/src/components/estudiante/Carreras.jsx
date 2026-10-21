@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Compass, Check, Search, X } from 'lucide-react'
+import { Compass, Check, Search, X, GraduationCap } from 'lucide-react'
 import { AREAS, CARRERAS, MAX_CARRERAS, NOMBRE_NIVEL, prioridadesDe, guardarCarreras } from '../../lib/carreras'
 import { ir } from '../../lib/nav'
 import { MATERIAS, ICONO_PRUEBA } from '../Login'
@@ -53,6 +53,16 @@ export default function Carreras({ usuario, inicial = false }) {
         </div>
       )}
 
+      {!inicial && (
+        <div className="card text-sm flex items-start gap-3">
+          <GraduationCap size={20} className="text-brand-navy shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p className="font-medium">¿Quieres entrar a la Universidad Nacional o a la Universidad de Antioquia?</p>
+            <p className="text-xs text-gray-400 mt-0.5">Esas universidades admiten con su propio examen. Te recomendamos activar su ruta además de la del Saber 11: el plan semanal reparte la práctica entre las dos.</p>
+            <button className="btn-secondary !py-1.5 text-xs mt-2" onClick={() => ir('admision')}>Ver rutas de examen de admisión</button>
+          </div>
+        </div>
+      )}
       <div className="card space-y-3">
         <div className="flex items-center justify-between gap-2">
           <p className="font-semibold text-brand-navy">Tus carreras <span className="text-gray-400 font-normal text-sm">({elegidas.length} de {MAX_CARRERAS})</span></p>

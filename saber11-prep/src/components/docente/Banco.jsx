@@ -3,7 +3,8 @@ import { Plus, Upload, Download, Copy, Archive, List, LayoutList } from 'lucide-
 import { puedeEditar } from '../../lib/roles'
 import { listarPreguntas, guardarPregunta } from '../../lib/banco'
 import { db } from '../../lib/db'
-import { taxonomia, nombrePrueba, nombreCompetencia } from '../../lib/taxonomia'
+import { taxonomia, nombrePrueba, nombreCompetencia, competenciasDe } from '../../lib/taxonomia'
+import { LISTA_EXAMENES } from '../../lib/examenes-config'
 import PreguntaVista from '../PreguntaVista'
 import { Titulo, Badge, Vacio } from '../ui'
 import ImportarPreguntas from './ImportarPreguntas'
@@ -90,8 +91,8 @@ export default function Banco({ usuario }) {
       </div>}>Banco de preguntas</Titulo>
 
       <div className="grid grid-cols-2 gap-2">
-        <select className="input" value={f.prueba} onChange={e => setF({ ...f, prueba: e.target.value, competencia: '' })}><option value="">Todas las pruebas</option>{tax.pruebas.map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}</select>
-        <select className="input" value={f.competencia} onChange={e => setF({ ...f, competencia: e.target.value })}><option value="">Toda competencia</option>{tax.competencias.filter(c => !f.prueba || c.prueba === f.prueba).map(c => <option key={c.id} value={c.id}>{c.nombre}</option>)}</select>
+        <select className="input" value={f.prueba} onChange={e => setF({ ...f, prueba: e.target.value, competencia: '' })}><option value="">Todas las pruebas (Saber 11)</option>{tax.pruebas.map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}{LISTA_EXAMENES.map(ex => <optgroup key={ex.id} label={`Examen ${ex.corto}`}>{ex.componentes.map(c => <option key={c.id} value={c.id}>{c.nombre}</option>)}</optgroup>)}</select>
+        <select className="input" value={f.competencia} onChange={e => setF({ ...f, competencia: e.target.value })}><option value="">Toda competencia</option>{(f.prueba ? competenciasDe(f.prueba) : tax.competencias).map(c => <option key={c.id} value={c.id}>{c.nombre}</option>)}</select>
         <select className="input" value={f.habilidad} onChange={e => setF({ ...f, habilidad: e.target.value })}><option value="">Toda habilidad</option>{tax.habilidades.map(h => <option key={h.id} value={h.id}>{h.nombre}</option>)}</select>
         <select className="input" value={f.estado} onChange={e => setF({ ...f, estado: e.target.value })}><option value="todas">Todos los estados</option>{['aprobada', 'pendiente', 'borrador', 'archivada'].map(e => <option key={e} value={e}>{e}</option>)}</select>
       </div>
@@ -108,6 +109,8 @@ export default function Banco({ usuario }) {
           <div className="flex gap-2"><button className="btn-primary flex-1" onClick={guardarEdicion}>Guardar</button><button className="btn-secondary flex-1" onClick={() => { setEdicion(null); setAbierta(null) }}>Cancelar</button></div>
         </div>
       )}
+
+      <ConteoExamenes onIr={(prueba, competencia) => setF({ ...f, prueba, competencia, estado: 'todas' })} />
 
       {lista.length === 0 && <Vacio>Sin preguntas con esos filtros.</Vacio>}
 
@@ -191,6 +194,35 @@ export default function Banco({ usuario }) {
           </div>
         ))}
       </div>
+    </div>
+  )
+}
+
+// Preguntas aprobadas por subhabilidad en cada examen propio; avisa cuando hay menos de 20.
+const MINIMO_SUBHABILIDAD = 20
+function ConteoExamenes({ onIr }) {
+  const [conteo, setConteo] = useState(null)
+  const [abierto, setAbierto] = useState(false)
+  useEffect(() => { (async () => { const todas = await listarPreguntas({ estado: 'todas', examen: 'todos' }); const c = {}; for (const p of todas) { if (!p.examen) continue; const k = p.competencia; c[k] ??= { aprobadas: 0, borrador: 0 }; if (p.estado === 'aprobada') c[k].aprobadas++; else if (p.estado !== 'archivada') c[k].borrador++ } setConteo(c) })() }, [])
+  if (!conteo) return null
+  const faltantes = LISTA_EXAMENES.flatMap(ex => ex.componentes.flatMap(c => c.subhabilidades.map(s => ({ ex, c, s, n: conteo[`${c.id}.${s.id}`]?.aprobadas ?? 0, b: conteo[`${c.id}.${s.id}`]?.borrador ?? 0 })))).filter(x => x.n < MINIMO_SUBHABILIDAD)
+  return (
+    <div className="card !py-2.5 text-sm">
+      <button className="w-full text-left flex items-center justify-between gap-2" onClick={() => setAbierto(a => !a)}>
+        <span className="font-medium">Exámenes de admisión: preguntas aprobadas por subhabilidad</span>
+        <Badge tono={faltantes.length ? 'ambar' : 'verde'}>{faltantes.length ? `${faltantes.length} con menos de ${MINIMO_SUBHABILIDAD}` : 'todas con 20 o más'}</Badge>
+      </button>
+      {abierto && LISTA_EXAMENES.map(ex => (
+        <div key={ex.id} className="mt-2">
+          <p className="text-xs uppercase tracking-wide text-gray-400">{ex.corto}</p>
+          {ex.componentes.map(c => (
+            <div key={c.id} className="flex flex-wrap gap-1 mt-1">
+              <span className="text-xs text-gray-300 w-full">{c.nombre}</span>
+              {c.subhabilidades.map(s => { const k = `${c.id}.${s.id}`; const n = conteo[k]?.aprobadas ?? 0; const b = conteo[k]?.borrador ?? 0; return <button key={s.id} className={`badge border px-2 py-0.5 ${n < MINIMO_SUBHABILIDAD ? 'border-amber-300 text-amber-700' : 'border-dark-600 text-gray-400'}`} title="Ver estas preguntas" onClick={() => onIr(c.id, k)}>{s.nombre}: {n}{b ? ` (+${b} por revisar)` : ''}</button> })}
+            </div>
+          ))}
+        </div>
+      ))}
     </div>
   )
 }
