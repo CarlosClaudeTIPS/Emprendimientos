@@ -126,3 +126,15 @@ jefe de esa app y el revisor es la cuenta «solo mirar».
   (productos) y `config.json` (WhatsApp, textos) desde aquí, y se publica.
 
 Migraciones pendientes de correr en Supabase (SQL Editor, en orden): 004, 005, 006, 007 y **008**.
+
+## Exámenes de admisión propios: Universidad Nacional y UdeA (hecho el 21-oct-2026)
+
+Ver `docs/19-examenes-propios.md`. Resumen: pantalla «Exámenes de admisión» (`#/admision`) con la ruta
+Universidad Nacional (prioridad), la ruta UdeA y fichas de otras instituciones; diagnóstico, práctica por
+componente y subhabilidad, simulacro completo con pausas, por bloques, ritmo, repaso de errores, puntaje
+estimado Nivytek (Rasch), fechas desde la guía, doble ruta en el plan semanal (reparto configurable por
+grupo), filtro por ruta en el panel del docente y conteo por subhabilidad en el Banco. Banco inicial:
+414 preguntas en **borrador** (64 + 10 importadas, 200 figuras generadas por código, 140 originales).
+Nada está aprobado: aprobar desde Banco → filtro por componente. Regenerar figuras:
+`node scripts/generar-figuras.mjs 20`. Importar formato corto: `node scripts/importar-examen.mjs archivo.json`.
+Pendientes: convocatorias 2027-2, subtipos con imágenes licenciadas, dificultad empírica en el panel.

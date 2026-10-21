@@ -55,3 +55,17 @@ Cada archivo del banco es un arreglo JSON de preguntas. Todas las claves en espa
 - Inglés: enunciado y opciones en inglés; explicaciones en español.
 - Contextos colombianos y cotidianos cuando sea natural (transporte, recibos de servicios, cultivos, clima, elecciones escolares), sin estereotipos.
 - Sin preguntas de memoria pura: toda pregunta debe exigir leer e interpretar el contexto.
+
+## Exámenes de admisión propios (UNAL, UdeA)
+
+Además de los campos anteriores, estas preguntas llevan:
+
+- `examen`: `unal` | `udea`. `prueba`: el componente (`unal_matematicas`, `unal_ciencias`, `unal_sociales`, `unal_textual`, `unal_imagen`, `udea_lectora`, `udea_logico`).
+- `competencia`: `<prueba>.<subhabilidad>` y `subhabilidad` (ids en `content/examenes/*.json`).
+- `dificultad_examen`: 1 a 5 (más fina que `dificultad`; la usa el puntaje estimado).
+- `tipo`: `null` o `"dos_afirmaciones"` con `afirmaciones: ["I …", "II …"]` (opciones Solo I / Solo II / Ambas / Ninguna).
+- `estimulo` tipo `svg`: `{ "tipo": "svg", "svg": "<svg …>", "alt": "…" }`; opciones con figura: `{ "clave": "A", "texto": "Figura A", "svg": "<svg …>", … }`. Sin scripts ni manejadores de eventos.
+- `estimulo` tipo `imagen` solo con `autor`, `licencia` y `url_origen` (el validador lo exige al aprobar).
+- `generador`: `{ subtipo, semilla, dificultad }` en las generadas por código (`scripts/generar-figuras.mjs`).
+- `examenes_compatibles`: opcional, lista de exámenes en los que también sirve la pregunta.
+- En borrador, los distractores pueden quedar sin `explicacion`; al aprobar es obligatoria.
