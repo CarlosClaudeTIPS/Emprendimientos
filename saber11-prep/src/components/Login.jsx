@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { BookOpenCheck, Timer, LineChart, Calculator, BookOpen, Globe2, FlaskConical, Languages, Star, ChevronLeft, ChevronRight } from 'lucide-react'
 import { entrarLocal, entrarNube, pedirRecuperacion, registrarEstudiante, baseUsuario } from '../lib/sesion'
 import { NUBE_DISPONIBLE } from '../lib/supabase'
@@ -20,10 +20,6 @@ export const MATERIAS = [
 export default function Login() {
   const [tipo, setTipo] = useState('estudiante')
   const acceso = useRef(null)
-  const conteo = useMemo(() => {
-    // Conteo calculado al compilar (vite.config.js): no hace falta descargar el banco para la portada.
-    return typeof __BANCO_CONTEO__ !== 'undefined' ? __BANCO_CONTEO__ : {}
-  }, [])
   const irAcceso = (t) => { setTipo(t); acceso.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }) }
 
   return (
@@ -125,7 +121,7 @@ export default function Login() {
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: m.fondo, color: m.color }}><I size={24} /></div>
                   <p className="mt-3 font-semibold text-brand-navy">{m.nombre}</p>
                   <p className="text-xs text-gray-400 mt-1">{m.frase}</p>
-                  <p className="mt-3 text-sm font-semibold" style={{ color: m.color }}>{conteo[m.id] ?? 0} preguntas</p>
+                  <p className="mt-3 text-sm font-semibold" style={{ color: m.color }}>Preguntas explicadas</p>
                 </div>
               )
             })}

@@ -42,7 +42,7 @@ export default function Materias({ usuario }) {
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style={{ background: m.fondo, color: m.color }}><I size={24} /></div>
                 <div className="min-w-0 flex-1">
                   <p className="font-semibold text-brand-navy flex items-center gap-2 flex-wrap">{m.nombre}{enModoCarrera && <Badge tono={tono[p.nivel]}>{NOMBRE_NIVEL[p.nivel]} · {Math.round(p.proporcion * 100)} %</Badge>}</p>
-                  <p className="text-xs text-gray-400">{e.total} preguntas explicadas{usuario.rol === 'estudiante' ? ` · ${e.vistas} resueltas` : ''}</p>
+                  <p className="text-xs text-gray-400">{usuario.rol === 'estudiante' ? `${e.vistas} resueltas` : 'Preguntas explicadas'}</p>
                 </div>
                 <ChevronRight className="text-gray-500" size={20} />
               </div>

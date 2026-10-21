@@ -12,7 +12,6 @@ import { taxonomia, nombrePrueba } from '../../lib/taxonomia'
 export default function Simulacros({ usuario }) {
   const [est, setEst] = useState(null)
   const [historial, setHistorial] = useState([])
-  const [conteo, setConteo] = useState({})
   const [fase, setFase] = useState(null)
   const [mini, setMini] = useState({ prueba: '', competencia: '', habilidad: '', dificultad: '', cantidad: 10, tiempo_min: 20 })
   const [escala, setEscala] = useState(1)
@@ -91,7 +90,7 @@ export default function Simulacros({ usuario }) {
         <div className="grid grid-cols-2 gap-2">
           <div><label className="label">Prueba</label>
             <select className="input" value={mini.prueba} onChange={e => setMini({ ...mini, prueba: e.target.value, competencia: '' })}>
-              <option value="">Todas</option>{tax.pruebas.map(p => <option key={p.id} value={p.id}>{p.nombre} ({conteo[p.id] ?? 0})</option>)}
+              <option value="">Todas</option>{tax.pruebas.map(p => <option key={p.id} value={p.id}>{p.nombre}</option>)}
             </select></div>
           <div><label className="label">Competencia</label>
             <select className="input" value={mini.competencia} onChange={e => setMini({ ...mini, competencia: e.target.value })}>
