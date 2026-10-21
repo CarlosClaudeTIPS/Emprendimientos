@@ -59,7 +59,6 @@ export default function Materia({ usuario, params }) {
         <div className="flex-1 min-w-0">
           <p className="text-sm text-gray-300">{m.frase}</p>
           <div className="flex flex-wrap gap-4 mt-2 text-sm">
-            <span><b className="text-brand-navy">{d.preguntas.length}</b> preguntas</span>
             {esEst && <span><b className="text-brand-navy">{vistas}</b> resueltas</span>}
             {esEst && <span><b className="text-brand-navy">{precision ?? '—'}{precision != null && '%'}</b> aciertos</span>}
           </div>
@@ -75,9 +74,9 @@ export default function Materia({ usuario, params }) {
       {temas.length > 1 && (
         <div className="card">
           <p className="text-sm font-medium">Practicar por tema</p>
-          <p className="text-[11px] text-gray-500 mb-2">5 preguntas de un tema concreto, con explicación. Entre paréntesis, cuántas hay en el banco.</p>
+          <p className="text-[11px] text-gray-500 mb-2">5 preguntas de un tema concreto, con explicación.</p>
           <div className="flex flex-wrap gap-1.5">
-            {temas.map(([t, n]) => <button key={t} onClick={() => ir('practica', { prueba: m.id, tema: t, n: 5 })} className="badge border border-dark-600 text-gray-300 hover:border-brand-blue hover:text-brand-blue">{t} <span className="text-gray-500">({n})</span></button>)}
+            {temas.map(([t, n]) => <button key={t} onClick={() => ir('practica', { prueba: m.id, tema: t, n: 5 })} className="badge border border-dark-600 text-gray-300 hover:border-brand-blue hover:text-brand-blue">{t}</button>)}
           </div>
         </div>
       )}
@@ -107,7 +106,7 @@ export default function Materia({ usuario, params }) {
             </select>
           ) : <div />}
         </div>
-        <p className="text-xs text-gray-500 mb-2">{lista.length} preguntas. Toca una para resolverla con su explicación completa.</p>
+        <p className="text-xs text-gray-500 mb-2">Toca una pregunta para resolverla con su explicación completa.</p>
         <div className="divide-y divide-dark-700">
           {lista.map(p => {
             const e = estadoDe(p)
