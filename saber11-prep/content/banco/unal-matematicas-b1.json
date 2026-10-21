@@ -1,0 +1,785 @@
+[
+  {
+    "id": "UNAL-MAT-101",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.numerico",
+    "subhabilidad": "numerico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Razones y proporciones",
+    "subtema": "Trabajo conjunto",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un tanque de reserva se llena con dos llaves: la primera, sola, lo llena en 4 horas y la segunda, sola, en 6 horas. En el fondo hay un desagüe que, si el tanque está lleno y las llaves cerradas, lo vacía por completo en 12 horas. Si el tanque está vacío y se abren las dos llaves con el desagüe también abierto, el tanque se llena en",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "1,5 horas",
+        "correcta": false,
+        "explicacion": "Resulta de sumar las fracciones horarias con signos cambiados o de dividir mal; en 1,5 horas apenas se habría llenado la mitad del tanque.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "2,4 horas",
+        "correcta": false,
+        "explicacion": "Es el tiempo si el desagüe estuviera cerrado: 1/4 + 1/6 = 5/12 del tanque por hora, es decir, 12/5 = 2,4 horas. Olvida restar lo que sale por el desagüe.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Ignorar el desagüe"
+      },
+      {
+        "clave": "C",
+        "texto": "3 horas",
+        "correcta": true,
+        "explicacion": "Por hora entra 1/4 + 1/6 = 5/12 del tanque y sale 1/12. El neto es 5/12 − 1/12 = 4/12 = 1/3 del tanque por hora, así que se llena en 3 horas.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "22 horas",
+        "correcta": false,
+        "explicacion": "Sumar los tiempos (4 + 6 + 12) no tiene sentido físico: dos llaves juntas tardan menos que cualquiera de ellas sola, no más.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Sumar los tiempos en vez de las fracciones por hora"
+      }
+    ],
+    "explicacion": "En problemas de trabajo conjunto se suma lo que hace cada agente por unidad de tiempo. La primera llave aporta 1/4 del tanque por hora, la segunda 1/6 y el desagüe retira 1/12. Con denominador común 12: 3/12 + 2/12 − 1/12 = 4/12 = 1/3 del tanque por hora. Si en una hora se llena un tercio, el tanque completo tarda 3 horas.",
+    "que_identificar": "Que cada llave y el desagüe aportan una fracción del tanque por hora, y que el desagüe se resta.",
+    "que_revisar": "Suma y resta de fracciones con distinto denominador; problemas de llaves y de obreros.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-102",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.numerico",
+    "subhabilidad": "numerico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Porcentajes y proporciones",
+    "subtema": "Variaciones porcentuales sucesivas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un almacén de electrodomésticos aumentó el precio de un televisor en un 20 % en noviembre y, en diciembre, anunció un descuento del 25 % sobre el precio ya aumentado. Comparado con el precio original de octubre, el precio de diciembre",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "disminuyó un 10 %",
+        "correcta": true,
+        "explicacion": "Si el precio original es P, en noviembre vale 1,2P y en diciembre 0,75 × 1,2P = 0,9P. Quedó un 10 % por debajo del original.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "disminuyó un 5 %",
+        "correcta": false,
+        "explicacion": "Sale de restar los porcentajes (20 − 25 = −5) como si ambos se aplicaran al mismo precio; el 25 % se aplica sobre un precio mayor, así que descuenta más.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Sumar o restar porcentajes sucesivos directamente"
+      },
+      {
+        "clave": "C",
+        "texto": "aumentó un 5 %",
+        "correcta": false,
+        "explicacion": "Confunde el orden de los cambios o el signo del resultado. Un descuento del 25 % sobre un precio aumentado 20 % siempre deja el precio por debajo del original.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "quedó igual",
+        "correcta": false,
+        "explicacion": "Supone que 20 % de aumento y 25 % de descuento se compensan; eso solo pasaría si el descuento fuera 1 − 1/1,2 ≈ 16,7 %.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Creer que subir y bajar porcentajes similares se anula"
+      }
+    ],
+    "explicacion": "Los cambios porcentuales sucesivos se multiplican, no se suman. Un aumento del 20 % equivale a multiplicar por 1,2; un descuento del 25 % equivale a multiplicar por 0,75. El factor total es 1,2 × 0,75 = 0,9, es decir, el precio final es el 90 % del original: disminuyó un 10 %. Comprobación con P = 100 000: sube a 120 000 y baja a 90 000.",
+    "que_identificar": "Que el segundo porcentaje se aplica sobre el precio ya modificado, no sobre el original.",
+    "que_revisar": "Factores multiplicativos de aumento y descuento; composición de variaciones porcentuales.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-103",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.numerico",
+    "subhabilidad": "numerico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Teoría de números",
+    "subtema": "Descomposición en primos, divisores y MCD",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. El número n tiene exactamente 20 divisores positivos.",
+      "II. El máximo común divisor de n y 100 es 20."
+    ],
+    "enunciado": "Sea n = 2³ · 3² · 5. De las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "La afirmación I es falsa: la cantidad de divisores se obtiene sumando 1 a cada exponente y multiplicando, (3 + 1)(2 + 1)(1 + 1) = 24, no 20. Quien marca esto suele sumar los exponentes mal o cuenta de memoria.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": true,
+        "explicacion": "I es falsa porque n tiene (3 + 1)(2 + 1)(1 + 1) = 24 divisores. II es verdadera: 100 = 2² · 5², y los factores comunes con n = 2³ · 3² · 5 son 2² · 5 = 20.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "La II es correcta, pero la I no: el número de divisores de 2³ · 3² · 5 es 4 × 3 × 2 = 24. Marcar “Ambas” suele venir de aceptar el 20 sin calcularlo.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "La afirmación II sí es correcta: el MCD de 360 y 100 toma la menor potencia de cada primo común, 2² · 5 = 20. Descartarla indica un error al hallar el MCD (por ejemplo, tomar 2³ o incluir el 3).",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "n = 2³ · 3² · 5 = 360. Cantidad de divisores: se suma 1 a cada exponente y se multiplica, (3 + 1)(2 + 1)(1 + 1) = 24, así que I es falsa. Para el MCD con 100 = 2² · 5² se toma, de cada primo común, la menor potencia: 2² y 5¹, es decir, 20; II es verdadera. Por tanto, solo la II es correcta.",
+    "que_identificar": "Que la descomposición en primos permite contar divisores y hallar el MCD sin listar números.",
+    "que_revisar": "Fórmula del número de divisores; MCD y MCM a partir de la factorización prima.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-104",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.espacial_metrico",
+    "subhabilidad": "espacial_metrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Trigonometría",
+    "subtema": "Razones trigonométricas en triángulos rectángulos",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Desde un punto del suelo situado a 30 m de la base de una antena de telecomunicaciones, el ángulo de elevación hasta la punta de la antena es de 30°. Si el terreno es plano, la altura de la antena es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "15 m",
+        "correcta": false,
+        "explicacion": "Es 30 · sen 30°. El seno relaciona el cateto opuesto con la hipotenusa, pero aquí se conoce el cateto adyacente (30 m), no la hipotenusa.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Usar seno en lugar de tangente"
+      },
+      {
+        "clave": "B",
+        "texto": "15√3 m",
+        "correcta": false,
+        "explicacion": "Es 30 · cos 30°. El coseno relaciona el cateto adyacente con la hipotenusa; el dato de 30 m ya es el cateto adyacente, de modo que esta operación no corresponde a ninguna razón del triángulo.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Usar coseno en lugar de tangente"
+      },
+      {
+        "clave": "C",
+        "texto": "30√3 m",
+        "correcta": false,
+        "explicacion": "Es 30 · tan 60°, es decir, se intercambió el ángulo de elevación por su complemento. Con un ángulo de 30° la antena debe ser más baja que la distancia horizontal, no más alta.",
+        "tipo_error": "descuido",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confundir el ángulo con su complemento"
+      },
+      {
+        "clave": "D",
+        "texto": "10√3 m",
+        "correcta": true,
+        "explicacion": "La altura h es el cateto opuesto al ángulo de 30° y 30 m es el cateto adyacente: tan 30° = h/30, así que h = 30 · (√3/3) = 10√3 ≈ 17,3 m.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La antena, el suelo y la línea visual forman un triángulo rectángulo. Se conoce el cateto adyacente al ángulo de 30° (30 m) y se busca el cateto opuesto (la altura), de modo que la razón adecuada es la tangente: tan 30° = h/30. Como tan 30° = √3/3, h = 30 · √3/3 = 10√3 ≈ 17,3 m. Verificación: con 30° la altura debe ser menor que la distancia horizontal, y 17,3 < 30.",
+    "que_identificar": "Cuál razón trigonométrica relaciona los dos catetos conocidos y buscados.",
+    "que_revisar": "Valores exactos de seno, coseno y tangente de 30°, 45° y 60°; ángulo de elevación.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-105",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.espacial_metrico",
+    "subhabilidad": "espacial_metrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Volumen y área de sólidos",
+    "subtema": "Efecto de cambiar las dimensiones de un cilindro",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. El volumen del nuevo cilindro es el doble del original.",
+      "II. El área lateral del nuevo cilindro es igual a la del original."
+    ],
+    "enunciado": "Una fábrica de envases rediseña un tarro cilíndrico: duplica el radio de la base y reduce la altura a la mitad. De las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "La I es cierta, pero la II también: el área lateral es 2πrh, y al reemplazar r por 2r y h por h/2 queda 2π(2r)(h/2) = 2πrh, exactamente la misma. Descartar la II suele venir de pensar que el área lateral depende del cuadrado del radio.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "La II es cierta, pero también la I: V = πr²h pasa a π(2r)²(h/2) = π · 4r² · h/2 = 2πr²h. Descartar la I suele venir de pensar que duplicar el radio y reducir la altura a la mitad se compensan, lo cual ignora que el radio aparece al cuadrado.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": true,
+        "explicacion": "Volumen: π(2r)²(h/2) = 2πr²h, el doble. Área lateral: 2π(2r)(h/2) = 2πrh, igual que antes. Las dos afirmaciones son verdaderas.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "Ambas afirmaciones son verdaderas; marcar esto indica que se trató el volumen y el área lateral como si dependieran linealmente de las dos dimensiones. En el volumen el radio está al cuadrado, por eso no se compensa con la mitad de la altura.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Con radio r y altura h, el volumen es V = πr²h y el área lateral es A = 2πrh. Al pasar a radio 2r y altura h/2: V’ = π(2r)²(h/2) = π · 4r² · h/2 = 2πr²h = 2V, luego I es verdadera. A’ = 2π(2r)(h/2) = 2πrh = A, luego II también es verdadera. La clave es que el radio aparece al cuadrado en el volumen pero no en el área lateral.",
+    "que_identificar": "Qué dimensiones aparecen al cuadrado en cada fórmula y cómo eso cambia el efecto de duplicar o reducir a la mitad.",
+    "que_revisar": "Volumen y área lateral del cilindro; cómo escalan área y volumen al cambiar una dimensión.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-106",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.aleatorio",
+    "subhabilidad": "aleatorio",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Probabilidad",
+    "subtema": "Extracciones sin reemplazo",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una bolsa hay 4 balotas rojas y 6 azules, idénticas al tacto. Se sacan dos balotas al azar, una tras otra y sin devolver la primera a la bolsa. La probabilidad de que las dos sean azules es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "3/5",
+        "correcta": false,
+        "explicacion": "Es la probabilidad de que la primera balota sea azul (6/10). Falta multiplicar por la probabilidad de que la segunda también lo sea.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Considerar solo la primera extracción"
+      },
+      {
+        "clave": "B",
+        "texto": "9/25",
+        "correcta": false,
+        "explicacion": "Es (6/10)² = 36/100, lo que corresponde a extracciones con reemplazo. Al no devolver la primera balota, en la segunda extracción quedan 5 azules entre 9.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Tratar las extracciones como independientes"
+      },
+      {
+        "clave": "C",
+        "texto": "1/9",
+        "correcta": false,
+        "explicacion": "Puede salir de dividir mal (por ejemplo 1/3 · 1/3) o de usar solo las 9 balotas restantes sin la primera extracción. No corresponde a ningún cálculo correcto del problema.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "1/3",
+        "correcta": true,
+        "explicacion": "Primera azul: 6/10. Si salió azul, quedan 5 azules entre 9 balotas: 5/9. Producto: (6/10)(5/9) = 30/90 = 1/3.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Como la primera balota no se devuelve, la segunda extracción depende de la primera. P(primera azul) = 6/10. Dado que fue azul, quedan 9 balotas con 5 azules: P(segunda azul | primera azul) = 5/9. La probabilidad de ambas es el producto: (6/10)(5/9) = 30/90 = 1/3. Si hubiera reemplazo sería (6/10)(6/10) = 9/25, que es un distractor típico.",
+    "que_identificar": "Que “sin devolver” cambia el total y los casos favorables de la segunda extracción.",
+    "que_revisar": "Probabilidad condicional y regla del producto; diferencia entre con y sin reemplazo.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-107",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.aleatorio",
+    "subhabilidad": "aleatorio",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Estadística descriptiva",
+    "subtema": "Media, mediana y efecto de un cambio en los datos",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "tabla",
+      "titulo": "Notas de un quiz de química (escala de 0,0 a 5,0)",
+      "columnas": [
+        "Estudiante",
+        "Nota"
+      ],
+      "filas": [
+        [
+          "Ana",
+          "4,0"
+        ],
+        [
+          "Bruno",
+          "3,0"
+        ],
+        [
+          "Camila",
+          "4,5"
+        ],
+        [
+          "Daniel",
+          "2,0"
+        ],
+        [
+          "Elena",
+          "3,5"
+        ],
+        [
+          "Felipe",
+          "4,0"
+        ],
+        [
+          "Gloria",
+          "3,0"
+        ],
+        [
+          "Hernán",
+          "4,0"
+        ]
+      ]
+    },
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. La mediana de las notas es mayor que la media.",
+      "II. Si Daniel hubiera obtenido 3,0 en lugar de 2,0, la mediana habría cambiado."
+    ],
+    "enunciado": "La tabla muestra las notas de ocho estudiantes en un quiz. De las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": true,
+        "explicacion": "La media es 28/8 = 3,5 y la mediana, promedio de la cuarta y la quinta nota ordenadas (3,5 y 4,0), es 3,75; I es verdadera. Si Daniel tuviera 3,0, los datos ordenados serían 3,0; 3,0; 3,0; 3,5; 4,0; 4,0; 4,0; 4,5 y la mediana seguiría siendo 3,75; II es falsa.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "Tiene invertidas las dos conclusiones. La mediana (3,75) sí supera a la media (3,5), y cambiar la nota más baja de 2,0 a 3,0 no altera las posiciones centrales, de modo que la mediana no cambia.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "La I es correcta, pero la II no: la mediana solo depende de los valores centrales. Subir la nota más baja de 2,0 a 3,0 la deja por debajo del centro, así que la cuarta y la quinta nota siguen siendo 3,5 y 4,0.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "La I sí es correcta: la nota de 2,0 “jala” la media hacia abajo (3,5) mientras la mediana queda en 3,75. Quien descarta la I suele ordenar mal los datos o confundir mediana con moda.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Ordenadas: 2,0; 3,0; 3,0; 3,5; 4,0; 4,0; 4,0; 4,5. La suma es 28,0 y la media 28/8 = 3,5. Con ocho datos la mediana es el promedio del cuarto y el quinto: (3,5 + 4,0)/2 = 3,75, mayor que la media, así que I es verdadera (la nota baja de 2,0 arrastra la media). Si Daniel tuviera 3,0, los ordenados serían 3,0; 3,0; 3,0; 3,5; 4,0; 4,0; 4,0; 4,5: el cuarto y el quinto siguen siendo 3,5 y 4,0, la mediana no cambia y II es falsa. Solo I es correcta.",
+    "que_identificar": "Que la mediana depende solo de las posiciones centrales y la media de todos los valores.",
+    "que_revisar": "Cálculo de media y mediana con número par de datos; sensibilidad de cada medida a valores extremos.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-108",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.variacional",
+    "subhabilidad": "variacional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Logaritmos",
+    "subtema": "Ecuaciones logarítmicas y dominio",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Para resolver la ecuación log₂(x) + log₂(x − 6) = 4, un estudiante escribe:\n\nPaso 1: log₂[x(x − 6)] = 4\nPaso 2: x(x − 6) = 2⁴ = 16\nPaso 3: x² − 6x − 16 = 0, es decir, (x − 8)(x + 2) = 0\nPaso 4: x = 8 o x = −2\nConclusión: la ecuación tiene dos soluciones.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "El procedimiento contiene un error. ¿En qué consiste?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "En el paso 1: la suma de dos logaritmos no equivale al logaritmo del producto de sus argumentos.",
+        "correcta": false,
+        "explicacion": "La propiedad usada es correcta: log_b(m) + log_b(n) = log_b(m · n) cuando m y n son positivos. El paso 1 está bien.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Dudar de una propiedad correcta de los logaritmos"
+      },
+      {
+        "clave": "B",
+        "texto": "En el paso 3: la factorización es incorrecta.",
+        "correcta": false,
+        "explicacion": "La factorización está bien: (x − 8)(x + 2) = x² + 2x − 8x − 16 = x² − 6x − 16.",
+        "tipo_error": "verificacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "No comprobar la factorización antes de descartarla"
+      },
+      {
+        "clave": "C",
+        "texto": "En la conclusión: x = −2 no está en el dominio de log₂(x), así que la única solución es x = 8.",
+        "correcta": true,
+        "explicacion": "Los pasos algebraicos son válidos, pero al pasar de logaritmos a la ecuación cuadrática se pierde la condición x > 0 y x − 6 > 0. Para x = −2 la ecuación original no tiene sentido; solo x = 8 cumple: log₂ 8 + log₂ 2 = 3 + 1 = 4.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "No hay error: la ecuación tiene dos soluciones, 8 y −2, porque ambas anulan la cuadrática.",
+        "correcta": false,
+        "explicacion": "Al reemplazar x = −2 en la ecuación original aparecen log₂(−2) y log₂(−8), que no existen en los reales. Toda ecuación logarítmica exige verificar las soluciones en el dominio.",
+        "tipo_error": "verificacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "No verificar las soluciones en la ecuación original"
+      }
+    ],
+    "explicacion": "Las propiedades de los logaritmos solo valen cuando los argumentos son positivos, de modo que la ecuación original exige x > 0 y x − 6 > 0, es decir, x > 6. Al convertirla en x² − 6x − 16 = 0 se obtiene una ecuación más amplia cuyas raíces son 8 y −2, pero −2 no cumple la condición de dominio. Comprobación: log₂ 8 + log₂(8 − 6) = 3 + 1 = 4. La única solución es x = 8; el error está en la conclusión, no en el álgebra.",
+    "que_identificar": "Que el paso de logaritmos a ecuación polinómica puede introducir soluciones extrañas.",
+    "que_revisar": "Dominio de la función logarítmica; propiedades del logaritmo de un producto; verificación de soluciones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-109",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.variacional",
+    "subhabilidad": "variacional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Funciones racionales",
+    "subtema": "Asíntotas, ceros e interceptos",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Sea f la función definida por f(x) = (2x + 1)/(x − 3) para x ≠ 3. Sobre la gráfica de f es correcto afirmar que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "tiene una asíntota vertical en x = −1/2.",
+        "correcta": false,
+        "explicacion": "En x = −1/2 el numerador vale cero y f(−1/2) = 0: ahí la gráfica corta el eje x, no se dispara. La asíntota vertical aparece donde el denominador se anula, x = 3.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confundir ceros del numerador con los del denominador"
+      },
+      {
+        "clave": "B",
+        "texto": "tiene una asíntota horizontal en y = 2.",
+        "correcta": true,
+        "explicacion": "Numerador y denominador son de grado 1, así que cuando x crece sin límite f(x) se acerca al cociente de los coeficientes principales, 2/1 = 2.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "corta el eje y en el punto (0, 1/3).",
+        "correcta": false,
+        "explicacion": "El intercepto con el eje y se obtiene con x = 0: f(0) = (0 + 1)/(0 − 3) = −1/3, no 1/3. Es un error de signo en el denominador.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Error de signo al evaluar f(0)"
+      },
+      {
+        "clave": "D",
+        "texto": "no corta el eje x.",
+        "correcta": false,
+        "explicacion": "La gráfica sí corta el eje x donde el numerador se anula: 2x + 1 = 0, es decir, en x = −1/2. Una función racional no corta el eje x solo si su numerador nunca vale cero.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "En una función racional, la asíntota vertical está donde el denominador vale cero y el numerador no: x − 3 = 0, x = 3. El cero de la función está donde el numerador vale cero: 2x + 1 = 0, x = −1/2. El intercepto con el eje y es f(0) = 1/(−3) = −1/3. Como numerador y denominador tienen el mismo grado, la asíntota horizontal es el cociente de los coeficientes principales: y = 2/1 = 2. Solo la afirmación sobre la asíntota horizontal es correcta.",
+    "que_identificar": "Qué parte de la expresión determina cada característica de la gráfica (ceros, asíntotas, interceptos).",
+    "que_revisar": "Asíntotas de funciones racionales según los grados; cálculo de interceptos.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-MAT-110",
+    "examen": "unal",
+    "prueba": "unal_matematicas",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_matematicas.variacional",
+    "subhabilidad": "variacional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "resolver",
+    "tema": "Integral definida",
+    "subtema": "La integral como área bajo una curva",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un arquitecto diseña un arco cuya forma, en metros, sigue la parábola y = 4 − x² para los valores de x en los que y ≥ 0; el eje x representa el suelo. El área, en metros cuadrados, de la región encerrada entre el arco y el suelo es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "0",
+        "correcta": false,
+        "explicacion": "Resulta de integrar entre −2 y 2 una función impar o de pensar que las áreas a la izquierda y a la derecha del eje y se cancelan. La función 4 − x² es positiva en todo el intervalo, así que sus aportes se suman.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Creer que la simetría cancela las áreas"
+      },
+      {
+        "clave": "B",
+        "texto": "16/3",
+        "correcta": false,
+        "explicacion": "Es ∫₀² (4 − x²) dx = 8 − 8/3 = 16/3, solo la mitad derecha del arco. Falta duplicar o integrar desde −2.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Integrar solo de 0 a 2"
+      },
+      {
+        "clave": "C",
+        "texto": "16",
+        "correcta": false,
+        "explicacion": "Es el área del rectángulo de base 4 (de −2 a 2) y altura 4 que encierra al arco. El arco queda por debajo de ese rectángulo, así que el área real debe ser menor que 16.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Tomar el rectángulo que contiene la figura"
+      },
+      {
+        "clave": "D",
+        "texto": "32/3",
+        "correcta": true,
+        "explicacion": "El arco toca el suelo en x = −2 y x = 2. Área = ∫₋₂² (4 − x²) dx = [4x − x³/3] de −2 a 2 = (8 − 8/3) − (−8 + 8/3) = 32/3 ≈ 10,67 m².",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Primero se hallan los puntos donde el arco toca el suelo: 4 − x² = 0 da x = −2 y x = 2. Como 4 − x² ≥ 0 en ese intervalo, el área es la integral definida ∫₋₂² (4 − x²) dx. Una antiderivada es 4x − x³/3. Evaluando: en x = 2 vale 8 − 8/3 = 16/3; en x = −2 vale −8 + 8/3 = −16/3. La diferencia es 16/3 − (−16/3) = 32/3 ≈ 10,67 m². Como control, el área es menor que la del rectángulo 4 × 4 = 16 que encierra al arco y mayor que la del triángulo de la misma base y altura, 8.",
+    "que_identificar": "Los límites de integración (ceros de la función) y que el área es la integral de una función no negativa.",
+    "que_revisar": "Antiderivadas de polinomios; teorema fundamental del cálculo; estimar áreas con figuras conocidas.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  }
+]

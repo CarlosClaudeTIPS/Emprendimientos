@@ -1,0 +1,756 @@
+[
+  {
+    "id": "UNAL-CIE-101",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.fisica",
+    "subhabilidad": "fisica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Cinemática",
+    "subtema": "Caída libre",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Desde el borde de un puente se deja caer una piedra, sin velocidad inicial, y se escucha que toca el agua 3 s después. Despreciando la resistencia del aire y el tiempo que tarda el sonido en subir, y tomando g = 10 m/s², la altura del puente sobre el agua es aproximadamente",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "45 m",
+        "correcta": true,
+        "explicacion": "Con velocidad inicial cero, h = ½ g t² = ½ · 10 m/s² · (3 s)² = 5 · 9 = 45 m.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "30 m",
+        "correcta": false,
+        "explicacion": "Es la velocidad con que la piedra llega al agua, v = g t = 30 m/s, tomada como si fuera la altura. Son magnitudes distintas.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confundir v = gt con la distancia recorrida"
+      },
+      {
+        "clave": "C",
+        "texto": "90 m",
+        "correcta": false,
+        "explicacion": "Es g t² = 10 · 9 = 90, sin el factor ½. La piedra parte del reposo, de modo que su velocidad promedio es la mitad de la final; de ahí el ½ de la fórmula.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvidar el ½ en h = ½gt²"
+      },
+      {
+        "clave": "D",
+        "texto": "15 m",
+        "correcta": false,
+        "explicacion": "Es la velocidad media de la caída (15 m/s) o la mitad de la velocidad final. Para obtener la distancia hay que multiplicar esa velocidad media por el tiempo: 15 · 3 = 45 m.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "En caída libre desde el reposo la distancia recorrida es h = ½ g t². Con g = 10 m/s² y t = 3 s: h = ½ · 10 · 9 = 45 m. Otra forma de verlo: la velocidad final es v = g t = 30 m/s, la velocidad media es (0 + 30)/2 = 15 m/s y la distancia es 15 m/s · 3 s = 45 m. Los distractores salen de confundir la velocidad con la distancia o de omitir el ½.",
+    "que_identificar": "Que el movimiento es uniformemente acelerado con velocidad inicial cero.",
+    "que_revisar": "Ecuaciones del movimiento uniformemente acelerado; caída libre.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-102",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.fisica",
+    "subhabilidad": "fisica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Cinemática",
+    "subtema": "Gráfica velocidad–tiempo y distancia recorrida",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "lineas",
+      "titulo": "Velocidad de un bus urbano en un tramo recto",
+      "eje_x": "Tiempo (s)",
+      "eje_y": "Velocidad (m/s)",
+      "series": [
+        {
+          "nombre": "Bus",
+          "valores": [
+            [
+              "0",
+              0
+            ],
+            [
+              "5",
+              10
+            ],
+            [
+              "15",
+              10
+            ]
+          ]
+        }
+      ]
+    },
+    "tipo": null,
+    "enunciado": "La gráfica muestra cómo cambia la velocidad de un bus que parte del reposo en una avenida recta. La distancia que recorre el bus durante los 15 s representados es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "100 m",
+        "correcta": false,
+        "explicacion": "Solo cuenta el tramo de velocidad constante (10 m/s × 10 s). Durante los primeros 5 s el bus también avanza, aunque menos: 25 m.",
+        "tipo_error": "lectura_grafico",
+        "diagnostico": "probable",
+        "razon_frecuente": "Ignorar el tramo de aceleración"
+      },
+      {
+        "clave": "B",
+        "texto": "125 m",
+        "correcta": true,
+        "explicacion": "La distancia es el área bajo la gráfica v–t: triángulo de 0 a 5 s, ½ · 5 · 10 = 25 m, más rectángulo de 5 a 15 s, 10 · 10 = 100 m. Total 125 m.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "150 m",
+        "correcta": false,
+        "explicacion": "Es 10 m/s × 15 s, como si el bus hubiera ido a 10 m/s todo el tiempo. En los primeros 5 s la velocidad fue menor, así que recorrió menos.",
+        "tipo_error": "lectura_grafico",
+        "diagnostico": "probable",
+        "razon_frecuente": "Multiplicar la velocidad máxima por el tiempo total"
+      },
+      {
+        "clave": "D",
+        "texto": "75 m",
+        "correcta": false,
+        "explicacion": "Sale de leer mal el área: por ejemplo, tomar el triángulo como 25 m y el rectángulo como 50 m (10 m/s × 5 s), o de confundir los intervalos del eje del tiempo.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "En una gráfica velocidad–tiempo, la distancia recorrida equivale al área bajo la curva. Entre 0 y 5 s la velocidad sube uniformemente de 0 a 10 m/s (aceleración de 2 m/s²): el área es un triángulo de ½ · 5 s · 10 m/s = 25 m. Entre 5 y 15 s la velocidad se mantiene en 10 m/s: el área es un rectángulo de 10 s · 10 m/s = 100 m. La distancia total es 25 + 100 = 125 m.",
+    "que_identificar": "Que en una gráfica v–t la distancia es el área bajo la curva y que la gráfica tiene dos tramos distintos.",
+    "que_revisar": "Interpretación de gráficas v–t; movimiento uniformemente acelerado y uniforme.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-103",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.fisica",
+    "subhabilidad": "fisica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Equilibrio de cuerpos rígidos",
+    "subtema": "Torques en una balanza",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En un parque, dos niños juegan en un balancín cuyo tablón, de 3 m de largo y de masa despreciable, está apoyado en su punto medio. Un niño de 30 kg se sienta a 0,8 m del apoyo. Para que el balancín quede en equilibrio horizontal, un niño de 40 kg debe sentarse del otro lado, a una distancia del apoyo de",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "0,2 m",
+        "correcta": false,
+        "explicacion": "Resulta de restar las masas o de hacer una operación sin sentido físico (por ejemplo 0,8 − 0,6). En equilibrio deben igualarse los productos masa × distancia, no las diferencias.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "0,8 m",
+        "correcta": false,
+        "explicacion": "Supone que ambos niños deben sentarse a la misma distancia, pero como tienen masas distintas, el más pesado debe quedar más cerca del apoyo para que su torque no sea mayor.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Ignorar que la masa influye en el torque"
+      },
+      {
+        "clave": "C",
+        "texto": "1,07 m",
+        "correcta": false,
+        "explicacion": "Es 40 · 0,8 / 30: se invirtieron las masas. El niño de 40 kg, al ser más pesado, debe sentarse más cerca del apoyo que el de 30 kg, no más lejos.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Intercambiar las masas en la proporción"
+      },
+      {
+        "clave": "D",
+        "texto": "0,6 m",
+        "correcta": true,
+        "explicacion": "Los torques respecto al apoyo deben ser iguales: 30 kg · 0,8 m = 40 kg · d, de donde d = 24/40 = 0,6 m.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Un balancín en equilibrio cumple que la suma de torques respecto al apoyo es cero: el torque de un lado iguala al del otro. Como el peso es proporcional a la masa y g se cancela, basta igualar masa × distancia: 30 · 0,8 = 40 · d, es decir, 24 = 40d y d = 0,6 m. Tiene sentido: el niño más pesado se sienta más cerca del apoyo. El dato de 3 m solo sirve para confirmar que 0,6 m cabe en el tablón.",
+    "que_identificar": "Que el equilibrio exige igualar torques (fuerza × distancia al apoyo), no fuerzas ni distancias por separado.",
+    "que_revisar": "Torque o momento de una fuerza; condiciones de equilibrio rotacional.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-104",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.fisica",
+    "subhabilidad": "fisica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gravitación y movimiento circular",
+    "subtema": "Periodo orbital y radio (tercera ley de Kepler)",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "Para un satélite en órbita circular alrededor de un planeta, la fuerza gravitacional actúa como fuerza centrípeta: GMm/r² = m v²/r, con v = 2πr/T. De ahí se deduce que T² es proporcional a r³ (tercera ley de Kepler).",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Dos satélites artificiales giran en órbitas circulares alrededor del mismo planeta. El satélite P tiene un radio orbital R y un periodo T. El satélite Q tiene un radio orbital 4R. El periodo de Q es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "2T",
+        "correcta": false,
+        "explicacion": "Corresponde a suponer que el periodo crece como la raíz cuadrada del radio (T ∝ √r), pero la relación correcta es T² ∝ r³, es decir, T ∝ r^(3/2).",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Usar T ∝ √r"
+      },
+      {
+        "clave": "B",
+        "texto": "4T",
+        "correcta": false,
+        "explicacion": "Supone que el periodo es proporcional al radio. Eso valdría si la rapidez orbital fuera la misma en ambas órbitas, pero a mayor radio la gravedad es menor y el satélite se mueve más despacio, así que tarda aún más.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suponer T proporcional a r"
+      },
+      {
+        "clave": "C",
+        "texto": "8T",
+        "correcta": true,
+        "explicacion": "Como T² ∝ r³, (T_Q/T)² = (4R/R)³ = 64, luego T_Q/T = √64 = 8. El satélite más lejano tarda 8 veces más en completar una vuelta.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "16T",
+        "correcta": false,
+        "explicacion": "Es 4² = 16: se elevó al cuadrado el factor del radio en vez de aplicar la potencia 3/2. Con T² ∝ r³, el factor del periodo es 4^(3/2) = 8.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Elevar al cuadrado en vez de a la 3/2"
+      }
+    ],
+    "explicacion": "Igualando la fuerza gravitacional con la centrípeta y sustituyendo v = 2πr/T se obtiene T² = (4π²/GM) r³: el cuadrado del periodo es proporcional al cubo del radio. Al multiplicar el radio por 4, T² se multiplica por 4³ = 64 y T por √64 = 8. Por eso el periodo de Q es 8T. Dicho de otro modo, Q recorre una órbita 4 veces más larga y además va a la mitad de la rapidez (v ∝ 1/√r), así que tarda 4 × 2 = 8 veces más.",
+    "que_identificar": "La relación entre periodo y radio que se deduce de igualar gravedad y fuerza centrípeta.",
+    "que_revisar": "Ley de gravitación universal; fuerza centrípeta; tercera ley de Kepler.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-105",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.quimica",
+    "subhabilidad": "quimica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Materia y sus transformaciones",
+    "subtema": "Cambio físico frente a cambio químico",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una cocina ocurren varios procesos a lo largo del día. ¿Cuál de los siguientes corresponde a un cambio químico, es decir, a la formación de sustancias nuevas?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Disolver una cucharada de sal en una olla con agua hasta que ya no se vea.",
+        "correcta": false,
+        "explicacion": "La sal se dispersa en el agua, pero sigue siendo cloruro de sodio: al evaporar el agua se recupera la sal. Es un cambio físico.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confundir disolución con reacción"
+      },
+      {
+        "clave": "B",
+        "texto": "Que un cuchillo de hierro dejado húmedo varios días se cubra de herrumbre.",
+        "correcta": true,
+        "explicacion": "El hierro reacciona con el oxígeno y el agua y forma óxidos de hierro, sustancias con composición y propiedades distintas del metal original. Eso es un cambio químico.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Hervir agua en una olla destapada hasta que se convierta en vapor.",
+        "correcta": false,
+        "explicacion": "El vapor sigue siendo agua (H₂O) en estado gaseoso; al enfriarse vuelve a ser líquida. Los cambios de estado son cambios físicos.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Tomar un cambio de estado por reacción"
+      },
+      {
+        "clave": "D",
+        "texto": "Triturar una panela con un mazo hasta volverla polvo fino para endulzar jugos.",
+        "correcta": false,
+        "explicacion": "Cambia el tamaño de los pedazos, pero la sustancia es la misma: tiene igual sabor, composición y solubilidad. Es un cambio físico.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Un cambio químico produce sustancias con composición distinta a las iniciales, y normalmente no se revierte con medios físicos sencillos. La oxidación del hierro forma óxidos de hierro (herrumbre), que ya no son hierro metálico: hay cambio de color, pérdida de brillo y de propiedades mecánicas. Disolver, hervir y triturar cambian el estado, la dispersión o el tamaño de las partículas, pero no la identidad de la sustancia, así que son cambios físicos.",
+    "que_identificar": "Si al final del proceso hay una sustancia nueva o la misma sustancia en otra forma.",
+    "que_revisar": "Propiedades físicas y químicas; cambios de estado; reacciones de oxidación.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-106",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.quimica",
+    "subhabilidad": "quimica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Enlace químico y geometría molecular",
+    "subtema": "Polaridad de moléculas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "El oxígeno es más electronegativo que el carbono, el hidrógeno y el nitrógeno, de modo que los enlaces C=O, O−H y N−H son polares. Sin embargo, no todas las moléculas que contienen enlaces polares son polares. ¿Cuál de las siguientes moléculas es apolar a pesar de tener enlaces polares?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "CO₂",
+        "correcta": true,
+        "explicacion": "El carbono central tiene dos dobles enlaces y ningún par libre, así que la molécula es lineal (O=C=O). Los dos dipolos C=O son iguales y opuestos, se cancelan y el momento dipolar neto es cero.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "H₂O",
+        "correcta": false,
+        "explicacion": "El oxígeno tiene dos pares libres y la molécula es angular (unos 104,5°). Los dipolos O−H no se cancelan y la molécula es polar; por eso el agua disuelve sales.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suponer que una molécula con tres átomos es lineal"
+      },
+      {
+        "clave": "C",
+        "texto": "NH₃",
+        "correcta": false,
+        "explicacion": "El nitrógeno tiene un par libre y la geometría es piramidal; los tres dipolos N−H apuntan hacia el mismo lado y la molécula es polar.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No considerar el par libre del nitrógeno"
+      },
+      {
+        "clave": "D",
+        "texto": "HCl",
+        "correcta": false,
+        "explicacion": "Es una molécula de solo dos átomos con un enlace polar: el dipolo del enlace es el dipolo de la molécula, así que necesariamente es polar.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La polaridad de una molécula depende tanto de la polaridad de sus enlaces como de su geometría. En el CO₂ el carbono no tiene pares libres y forma dos dobles enlaces, lo que da una geometría lineal; los dos dipolos C=O son de igual magnitud y sentidos opuestos, así que se anulan y la molécula es apolar. En el agua (angular) y el amoniaco (piramidal) los pares libres del átomo central doblan la molécula y los dipolos no se cancelan. El HCl, con un solo enlace, es polar.",
+    "que_identificar": "Que la cancelación de dipolos depende de la geometría, y la geometría de los pares libres del átomo central.",
+    "que_revisar": "Electronegatividad y enlaces polares; geometría molecular (modelo de repulsión de pares electrónicos); momento dipolar.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-107",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.quimica",
+    "subhabilidad": "quimica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Soluciones",
+    "subtema": "Concentración molar de una mezcla",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En un laboratorio escolar se mezclan 200 mL de una solución de cloruro de sodio 0,5 mol/L con 300 mL de otra solución de cloruro de sodio 1,0 mol/L. Suponiendo que los volúmenes se suman sin cambio, la concentración de la mezcla es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "0,4 mol/L",
+        "correcta": false,
+        "explicacion": "Es la cantidad total de soluto, 0,4 mol, tomada como si fuera la concentración. Falta dividir por el volumen total, 0,5 L.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confundir moles con molaridad"
+      },
+      {
+        "clave": "B",
+        "texto": "0,8 mol/L",
+        "correcta": true,
+        "explicacion": "Moles de la primera: 0,200 L × 0,5 mol/L = 0,10 mol. Moles de la segunda: 0,300 L × 1,0 mol/L = 0,30 mol. Total 0,40 mol en 0,500 L: 0,40/0,500 = 0,8 mol/L.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "0,75 mol/L",
+        "correcta": false,
+        "explicacion": "Es el promedio simple de las dos concentraciones, (0,5 + 1,0)/2. Solo sería válido si los volúmenes fueran iguales; aquí hay más volumen de la solución concentrada, así que la mezcla queda más cerca de 1,0.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Promediar concentraciones sin ponderar por volumen"
+      },
+      {
+        "clave": "D",
+        "texto": "1,5 mol/L",
+        "correcta": false,
+        "explicacion": "Es la suma de las dos concentraciones. Al mezclar, el soluto se reparte en un volumen mayor, así que la concentración final siempre queda entre las dos iniciales, nunca por encima de la mayor.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Sumar concentraciones"
+      }
+    ],
+    "explicacion": "La molaridad es moles de soluto por litro de solución, así que primero se calculan los moles aportados por cada solución: 0,200 L · 0,5 mol/L = 0,10 mol y 0,300 L · 1,0 mol/L = 0,30 mol, en total 0,40 mol. El volumen final es 200 + 300 = 500 mL = 0,500 L. La concentración de la mezcla es 0,40 mol / 0,500 L = 0,8 mol/L. Como comprobación, el resultado está entre 0,5 y 1,0 y más cerca de 1,0, porque la solución concentrada aporta más volumen.",
+    "que_identificar": "Que lo que se conserva al mezclar es la cantidad de soluto (moles), no la concentración.",
+    "que_revisar": "Molaridad; mezclas y diluciones; promedios ponderados.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-108",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.biologia",
+    "subhabilidad": "biologia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Sistemas del cuerpo humano",
+    "subtema": "Respuesta integrada de los sistemas respiratorio y circulatorio al ejercicio",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una estudiante sube corriendo cinco pisos por las escaleras y nota que su respiración se acelera y que el corazón le late más rápido. La explicación más adecuada para estos cambios es que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "los pulmones aumentan de tamaño durante el ejercicio y por eso necesitan entrar y sacar más aire para llenarse por completo en cada ciclo.",
+        "correcta": false,
+        "explicacion": "Los pulmones no crecen al hacer ejercicio; lo que cambia es la frecuencia y la profundidad de la respiración. Confunde la causa con el efecto.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "la sangre pierde glóbulos rojos con el esfuerzo y el corazón debe bombear más para compensar la pérdida.",
+        "correcta": false,
+        "explicacion": "El ejercicio no destruye glóbulos rojos de manera apreciable. El aumento del pulso responde a la demanda de oxígeno de los músculos, no a una pérdida de células.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Inventar un mecanismo sin base fisiológica"
+      },
+      {
+        "clave": "C",
+        "texto": "el cuerpo necesita eliminar el calor producido y la respiración rápida es el único mecanismo con que cuenta para enfriarse.",
+        "correcta": false,
+        "explicacion": "Aunque algo de calor se pierde por la respiración, el principal mecanismo de enfriamiento en humanos es la sudoración. Además, esta opción no explica el aumento del pulso.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Tomar un efecto secundario como causa principal"
+      },
+      {
+        "clave": "D",
+        "texto": "los músculos activos consumen más O₂ y producen más CO₂, y el sistema nervioso ajusta la respiración y el pulso a esa demanda.",
+        "correcta": true,
+        "explicacion": "Al aumentar el trabajo muscular sube la producción de CO₂ y el consumo de O₂. Sensores detectan el cambio en la sangre y el centro respiratorio y el control cardiaco aumentan la ventilación y el gasto cardiaco: así llega más oxígeno y se retira más CO₂.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Durante el ejercicio los músculos hacen respiración celular a un ritmo mayor: consumen más oxígeno y liberan más dióxido de carbono. El aumento de CO₂ en la sangre es detectado por quimiorreceptores, y el sistema nervioso responde elevando la frecuencia respiratoria (más intercambio de gases en los pulmones) y la frecuencia cardiaca (la sangre circula más rápido y transporta más oxígeno hacia los músculos y más CO₂ hacia los pulmones). Es un ejemplo de cómo varios sistemas se coordinan para mantener la homeostasis.",
+    "que_identificar": "La relación causa–efecto entre la demanda de los músculos y la respuesta coordinada de los sistemas respiratorio y circulatorio.",
+    "que_revisar": "Respiración celular; intercambio de gases; regulación nerviosa de la respiración y del ritmo cardiaco; homeostasis.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-109",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.biologia",
+    "subhabilidad": "biologia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Botánica",
+    "subtema": "Transpiración y estomas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una clase se cubre una planta de maceta, bien regada, con una bolsa plástica transparente que se ata al tallo, dejando por fuera la maceta y la tierra. Se deja al sol y, dos horas después, aparecen gotas de agua en el interior de la bolsa. La explicación de este resultado es que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "la planta produce agua durante la fotosíntesis y la libera por las hojas.",
+        "correcta": false,
+        "explicacion": "En la fotosíntesis el agua es un reactivo que se consume, no un producto. Las gotas vienen del agua absorbida por la raíz que la planta libera como vapor.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confundir reactivos y productos de la fotosíntesis"
+      },
+      {
+        "clave": "B",
+        "texto": "el plástico filtra la humedad del aire exterior, caliente por el sol, y la acumula en el interior de la bolsa.",
+        "correcta": false,
+        "explicacion": "La bolsa está cerrada y el plástico no deja pasar el vapor de agua. Además, si fuera así, también se formarían gotas en una bolsa atada sin planta, lo cual no ocurre.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Atribuir el agua a un origen externo"
+      },
+      {
+        "clave": "C",
+        "texto": "las hojas liberan vapor de agua por los estomas y, al no poder escapar, se condensa en el plástico.",
+        "correcta": true,
+        "explicacion": "La planta absorbe agua por la raíz, la transporta por el tallo y la pierde como vapor por los estomas de las hojas (transpiración). Dentro de la bolsa el vapor se acumula y se condensa como gotas.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el agua de la tierra de la maceta se evapora con el calor y el vapor sube hasta la bolsa.",
+        "correcta": false,
+        "explicacion": "La maceta y la tierra quedaron fuera de la bolsa, que se ató al tallo. El agua que aparece dentro solo pudo salir de las partes de la planta que están dentro: tallo y hojas.",
+        "tipo_error": "lectura_grafico",
+        "diagnostico": "probable",
+        "razon_frecuente": "No atender a que la tierra quedó fuera de la bolsa"
+      }
+    ],
+    "explicacion": "Las plantas pierden agua en forma de vapor por los estomas de las hojas, proceso llamado transpiración, que además ayuda a subir agua y sales desde la raíz. Al encerrar la parte aérea en una bolsa, ese vapor no se dispersa, el aire interior se satura y el agua se condensa sobre el plástico. El diseño del experimento, con la tierra por fuera, descarta la evaporación del suelo; y la fotosíntesis consume agua en vez de producirla, así que las gotas solo pueden venir de la transpiración.",
+    "que_identificar": "Qué partes de la planta quedaron dentro de la bolsa y cuál proceso libera agua desde ellas.",
+    "que_revisar": "Transpiración y función de los estomas; transporte de agua en la planta; reactivos y productos de la fotosíntesis.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-CIE-110",
+    "examen": "unal",
+    "prueba": "unal_ciencias",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_ciencias.biologia",
+    "subhabilidad": "biologia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Genética",
+    "subtema": "Herencia de los grupos sanguíneos ABO",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "El grupo sanguíneo ABO está determinado por un gen con tres alelos: Iᴬ e Iᴮ son codominantes entre sí y ambos dominan sobre i. Así, el grupo A corresponde a los genotipos IᴬIᴬ o Iᴬi; el grupo B, a IᴮIᴮ o Iᴮi; el grupo AB, a IᴬIᴮ; y el grupo O, a ii.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una pareja en la que la madre es de grupo A y el padre de grupo B tiene un hijo de grupo O. A partir de esta información se puede concluir que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "el hijo no puede ser de ambos, porque una pareja de grupos A y B solo puede tener hijos de grupo AB.",
+        "correcta": false,
+        "explicacion": "Solo tendrían hijos exclusivamente AB si ambos padres fueran homocigotos (IᴬIᴬ e IᴮIᴮ). Si cada uno porta un alelo i, pueden tener hijos A, B, AB u O.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suponer que los padres son homocigotos"
+      },
+      {
+        "clave": "B",
+        "texto": "la madre es IᴬIᴬ y el padre es Iᴮi, y cada hijo tiene probabilidad 1/2 de ser de grupo O.",
+        "correcta": false,
+        "explicacion": "Si la madre fuera IᴬIᴬ, todos sus hijos recibirían un alelo Iᴬ y ninguno podría ser O (ii). Para que el hijo sea O, la madre debe aportar un alelo i.",
+        "tipo_error": "inferencia",
+        "diagnostico": "probable",
+        "razon_frecuente": "Revisar solo el genotipo de uno de los padres"
+      },
+      {
+        "clave": "C",
+        "texto": "la madre es Iᴬi y el padre es IᴮIᴮ, y cada hijo tiene probabilidad 1/2 de ser de grupo O.",
+        "correcta": false,
+        "explicacion": "Si el padre fuera IᴮIᴮ, todos sus hijos recibirían Iᴮ y serían B o AB, nunca O. Para que el hijo sea ii, también el padre debe portar i.",
+        "tipo_error": "inferencia",
+        "diagnostico": "probable",
+        "razon_frecuente": "Revisar solo el genotipo de uno de los padres"
+      },
+      {
+        "clave": "D",
+        "texto": "la madre es Iᴬi y el padre es Iᴮi, y cada hijo tiene probabilidad 1/4 de ser de grupo O.",
+        "correcta": true,
+        "explicacion": "Un hijo de grupo O es ii y recibió un alelo i de cada progenitor. Como la madre es A y el padre B, sus genotipos deben ser Iᴬi e Iᴮi. El cruce Iᴬi × Iᴮi da IᴬIᴮ, Iᴬi, Iᴮi e ii con 1/4 cada uno.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El grupo O solo se presenta con el genotipo ii, y cada alelo i proviene de un progenitor distinto. Por tanto, los dos padres portan el alelo i: la madre, de grupo A, es Iᴬi y el padre, de grupo B, es Iᴮi. Con el cuadro de Punnett del cruce Iᴬi × Iᴮi se obtienen cuatro combinaciones igualmente probables: IᴬIᴮ (AB), Iᴬi (A), Iᴮi (B) e ii (O). La probabilidad de un hijo de grupo O es 1/4 en cada embarazo; el hecho de que ya haya nacido uno no cambia esa probabilidad para los siguientes.",
+    "que_identificar": "Que el fenotipo del hijo permite deducir alelos que los padres portan pero no muestran.",
+    "que_revisar": "Alelos múltiples y codominancia; cuadro de Punnett; deducción de genotipos a partir de la descendencia.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  }
+]
