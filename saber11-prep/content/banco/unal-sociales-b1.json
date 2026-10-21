@@ -1,0 +1,732 @@
+[
+  {
+    "id": "UNAL-SOC-101",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.historia",
+    "subhabilidad": "historia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Historia universal",
+    "subtema": "Mesopotamia y el origen de la escritura",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "Fragmento de un manual escolar: «Las tablillas de arcilla más antiguas halladas en las ciudades de Mesopotamia, de hacia el 3200 a. C., no contienen relatos ni oraciones. Registran cantidades de cebada, cabezas de ganado y raciones entregadas a los trabajadores de los templos. Solo varios siglos después aparecen, escritos con los mismos signos cuneiformes, himnos, códigos de leyes y poemas como el de Gilgamesh».",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "A partir del fragmento, puede afirmarse que la escritura en Mesopotamia",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "nació como un medio para conservar los mitos y la poesía que se recitaban en los templos",
+        "correcta": false,
+        "explicacion": "El fragmento dice justo lo contrario: los textos literarios y religiosos aparecen varios siglos después de los registros de cebada y ganado.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Invierte el orden cronológico que da el texto"
+      },
+      {
+        "clave": "B",
+        "texto": "surgió ligada a las necesidades de contabilidad y administración de una sociedad urbana",
+        "correcta": true,
+        "explicacion": "Los primeros registros son cantidades de granos, animales y raciones de trabajadores de los templos; es decir, control económico y administrativo. La literatura y las leyes llegan después con los mismos signos.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "fue inventada por los reyes para difundir sus códigos de leyes entre toda la población",
+        "correcta": false,
+        "explicacion": "Los códigos de leyes aparecen siglos después de las primeras tablillas, y el fragmento no atribuye la invención a los reyes.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Toma un uso posterior como el origen"
+      },
+      {
+        "clave": "D",
+        "texto": "se limitó a registrar cifras y nunca se usó para componer textos literarios",
+        "correcta": false,
+        "explicacion": "El final del fragmento menciona himnos y poemas como el de Gilgamesh escritos con los mismos signos cuneiformes.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "No leyó la última frase del fragmento"
+      }
+    ],
+    "explicacion": "Primero, ubica qué registran las tablillas más antiguas: cebada, ganado y raciones de trabajadores de los templos, o sea, cuentas. Segundo, observa el orden temporal: la literatura, los himnos y las leyes aparecen «varios siglos después». De ahí se concluye que la escritura nació como herramienta de administración y contabilidad de una sociedad urbana, y solo más tarde se extendió a otros usos.",
+    "que_identificar": "Orden cronológico de los usos de la escritura que presenta el fragmento.",
+    "que_revisar": "Primeras civilizaciones urbanas: Mesopotamia, templos, escritura cuneiforme.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-102",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.historia",
+    "subhabilidad": "historia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Historia universal",
+    "subtema": "Roma y Cartago: guerras púnicas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Situación: en el siglo III a. C., Cartago, ciudad fundada por colonos fenicios en el norte de África, dominaba el comercio del Mediterráneo occidental con una flota numerosa y experimentada. Roma, en cambio, había crecido conquistando por tierra la península itálica y casi no tenía barcos de guerra. Cuando ambas potencias chocaron por el control de Sicilia, hacia el 264 a. C., Roma emprendió la construcción acelerada de una flota, copiando el diseño de una nave cartaginesa capturada.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La decisión romana de construir una flota se explica principalmente porque",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Roma deseaba convertirse en una potencia comercial que rivalizara con los mercaderes de Cartago",
+        "correcta": false,
+        "explicacion": "La situación habla de una disputa militar por Sicilia, no de un interés romano por el comercio marítimo.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Atribuye a Roma el perfil comercial de Cartago"
+      },
+      {
+        "clave": "B",
+        "texto": "las legiones romanas habían sido derrotadas en tierra por los ejércitos cartagineses",
+        "correcta": false,
+        "explicacion": "El texto no menciona ninguna derrota terrestre; el problema de Roma era la falta de barcos, no la debilidad de sus legiones.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "los colonos fenicios habían abandonado Cartago y dejaron sin control las rutas del mar",
+        "correcta": false,
+        "explicacion": "Nada en la situación sugiere un abandono de Cartago; al contrario, se la describe dominando el mar con una flota experimentada.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "disputar una isla a una potencia marítima exigía un poder naval que Roma no poseía",
+        "correcta": true,
+        "explicacion": "Sicilia es una isla y Cartago dominaba el mar. Una potencia terrestre sin barcos no podía abastecer tropas ni impedir refuerzos enemigos; por eso Roma tuvo que construir flota, incluso copiando una nave capturada.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Relaciona tres datos: Cartago es potencia marítima, Roma es potencia terrestre sin barcos, y el territorio en disputa es Sicilia, una isla. Para pelear por una isla contra quien domina el mar hay que tener barcos; de lo contrario no se pueden transportar ni abastecer tropas. Por eso Roma construye flota a toda prisa, al punto de copiar una nave enemiga. Las demás opciones introducen hechos que la situación no menciona.",
+    "que_identificar": "Relación entre el tipo de poder de cada potencia y el escenario geográfico del conflicto.",
+    "que_revisar": "Expansión romana por el Mediterráneo; guerras púnicas.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-103",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.historia",
+    "subhabilidad": "historia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Historia universal",
+    "subtema": "Renacimiento",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Descripción de un taller de Florencia hacia 1480: el maestro conserva dibujos de estatuas romanas antiguas y los usa como modelo; sus aprendices estudian anatomía para representar el cuerpo con exactitud y trazan líneas de fuga para que los edificios pintados parezcan tener profundidad. Una familia de banqueros paga la obra y pide aparecer retratada en ella.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "El taller descrito ilustra que, en el Renacimiento,",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "el arte unió el estudio de la Antigüedad y de la naturaleza con el patrocinio de élites urbanas",
+        "correcta": true,
+        "explicacion": "Cada rasgo del taller corresponde a un elemento: las estatuas romanas (Antigüedad clásica), la anatomía y la perspectiva (observación y geometría) y los banqueros que pagan y se hacen retratar (mecenazgo de las élites de la ciudad).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "las instituciones religiosas eran las únicas que podían encargar y financiar obras de arte en las ciudades",
+        "correcta": false,
+        "explicacion": "En la descripción quien paga la obra es una familia de banqueros, lo que muestra que había patrocinio privado y no solo religioso.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Generaliza el papel de la Iglesia medieval"
+      },
+      {
+        "clave": "C",
+        "texto": "los artistas rechazaron por completo los modelos del pasado para inventar un estilo sin antecedentes",
+        "correcta": false,
+        "explicacion": "El maestro usa dibujos de estatuas romanas como modelo, es decir, recupera el pasado clásico en lugar de rechazarlo.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde renovación con ruptura total"
+      },
+      {
+        "clave": "D",
+        "texto": "la pintura dejó de representar al ser humano y se concentró en los edificios y los espacios",
+        "correcta": false,
+        "explicacion": "Los aprendices estudian anatomía precisamente para representar bien el cuerpo humano; la perspectiva se suma, no reemplaza.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Descompón la descripción en sus partes: modelos romanos antiguos (recuperación de la Antigüedad clásica), estudio de la anatomía y de la perspectiva (observación de la naturaleza y uso de la geometría) y una familia de banqueros que paga y quiere aparecer retratada (mecenazgo de las élites urbanas y afirmación del individuo). La opción correcta es la única que reúne los tres rasgos; las otras contradicen algún detalle del taller.",
+    "que_identificar": "Los rasgos del Renacimiento presentes en cada detalle de la descripción.",
+    "que_revisar": "Humanismo y Renacimiento: antropocentrismo, perspectiva, mecenazgo.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-104",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.historia",
+    "subhabilidad": "historia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Historia de América y de Colombia",
+    "subtema": "Crisis de la monarquía española y juntas de 1810",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "En 1808 las tropas de Napoleón ocuparon España y el rey Fernando VII quedó cautivo en Francia. En la península surgieron juntas que gobernaban en nombre del rey ausente. En 1810, en ciudades como Caracas, Buenos Aires y Santafé, los criollos formaron sus propias juntas y en sus actas declararon que conservarían los derechos del monarca, aunque al mismo tiempo se negaron a obedecer al Consejo de Regencia que gobernaba desde España.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Que las juntas americanas de 1810 declararan fidelidad al rey y, a la vez, desconocieran a la Regencia se explica mejor porque",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "los criollos simpatizaban con Napoleón y buscaban una alianza con Francia contra España",
+        "correcta": false,
+        "explicacion": "Las juntas se formaron en nombre del rey cautivo por Napoleón; declararse fiel a Fernando VII es incompatible con apoyar a quien lo tenía prisionero.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde el rechazo a la Regencia con apoyo a Francia"
+      },
+      {
+        "clave": "B",
+        "texto": "las juntas ya habían resuelto proclamar repúblicas independientes y solo usaban la figura del rey como pretexto para armarse y ganar tiempo",
+        "correcta": false,
+        "explicacion": "Las actas de 1810 conservan los derechos del monarca; las declaraciones de independencia y las repúblicas vinieron después, de modo que el texto no permite afirmar una decisión previa.",
+        "tipo_error": "inferencia",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee 1810 con lo que pasó años después"
+      },
+      {
+        "clave": "C",
+        "texto": "sin rey efectivo, los criollos reclamaron para sus ciudades el mismo derecho de autogobierno que las juntas peninsulares",
+        "correcta": true,
+        "explicacion": "Si en España las ciudades podían formar juntas para gobernar en nombre del rey ausente, los criollos argumentaron que sus ciudades tenían el mismo derecho y no debían subordinarse a un organismo peninsular como la Regencia. Fidelidad al rey y rechazo a la Regencia son coherentes con esa lógica.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el Consejo de Regencia había abolido la monarquía y dejó a los americanos sin una autoridad legítima",
+        "correcta": false,
+        "explicacion": "La Regencia gobernaba precisamente en nombre de Fernando VII; no abolió la monarquía. La disputa era sobre quién representaba al rey ausente.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Atribuye a la Regencia un carácter republicano"
+      }
+    ],
+    "explicacion": "Sigue la cadena: Napoleón captura al rey (1808); sin rey, las ciudades españolas forman juntas que gobiernan en su nombre; los criollos observan ese ejemplo y, en 1810, hacen lo mismo en sus ciudades. Si una junta de Sevilla o de Cádiz podía representar al rey ausente, ¿por qué no una de Caracas o Santafé? Por eso se declaran fieles al monarca (legitimidad) y rechazan a la Regencia (que pretendía mandar sobre ellos sin representarlos). La independencia como proyecto explícito aparece más tarde; en 1810 el argumento es la igualdad de derechos entre americanos y peninsulares frente al vacío de poder.",
+    "que_identificar": "La relación entre el vacío de poder en España y el argumento de autogobierno de los criollos.",
+    "que_revisar": "Independencia de Hispanoamérica: crisis de 1808, juntas de 1810, Patria Boba.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-105",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.geografia",
+    "subhabilidad": "geografia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Geografía física",
+    "subtema": "Estaciones y latitud",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": "Situación: en diciembre, una estudiante de Bogotá (latitud 4° N) conversa por videollamada con su primo en Buenos Aires (latitud 34° S). Él le cuenta que allá hace mucho calor y los días son largos, mientras que en julio pasaba frío y oscurecía temprano. Ella responde que en su ciudad la temperatura cambia poco a lo largo del año y que lo que varía es si llueve mucho o poco.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La diferencia que describen los primos se explica porque",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Buenos Aires está más cerca del mar y por eso recibe más calor durante el mes de diciembre",
+        "correcta": false,
+        "explicacion": "La cercanía al mar modera las temperaturas, pero no produce la alternancia de veranos e inviernos ni el cambio en la duración de los días.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Bogotá está en una zona muy alta, y la altitud elimina los cambios propios de las estaciones",
+        "correcta": false,
+        "explicacion": "La altitud explica que Bogotá sea fría, no que carezca de estaciones: una ciudad baja como Barranquilla tampoco tiene veranos e inviernos marcados.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde el efecto de la altitud con el de la latitud"
+      },
+      {
+        "clave": "C",
+        "texto": "cerca del ecuador la altura del Sol varía poco en el año; en latitudes medias varía mucho por la inclinación del eje",
+        "correcta": true,
+        "explicacion": "La inclinación del eje hace que, en latitudes medias como la de Buenos Aires, el Sol esté alto y los días sean largos en diciembre y lo contrario en julio. Cerca del ecuador, como en Bogotá, esa variación es mínima y las diferencias del año son de lluvias, no de temperatura.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "la Tierra está más lejos del Sol en diciembre y por eso se enfría el hemisferio norte, mientras el sur se calienta en esa época",
+        "correcta": false,
+        "explicacion": "La distancia al Sol varía muy poco y no explica que los dos hemisferios tengan estaciones opuestas al mismo tiempo; además, Bogotá no se enfría en diciembre.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Atribuye las estaciones a la distancia al Sol"
+      }
+    ],
+    "explicacion": "Las estaciones se deben a la inclinación del eje terrestre: a lo largo del año cada hemisferio se inclina hacia el Sol o se aleja de él, lo que cambia la altura del Sol a mediodía y la duración del día. Ese efecto es grande en latitudes medias (Buenos Aires, 34° S: verano en diciembre, invierno en julio) y casi nulo cerca del ecuador (Bogotá, 4° N), donde el Sol se mantiene alto todo el año y lo que marca el calendario son las temporadas de lluvia y sequía.",
+    "que_identificar": "El dato clave es la latitud de cada ciudad, no la altitud ni la cercanía al mar.",
+    "que_revisar": "Movimientos de la Tierra, inclinación del eje, zonas climáticas por latitud.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-106",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.geografia",
+    "subhabilidad": "geografia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Geografía de Colombia",
+    "subtema": "Cordilleras y vertientes",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Mapa descrito: un río nace en el Macizo Colombiano, en el sur del país, y corre hacia el norte por un valle largo encajonado entre la cordillera Central, al occidente, y la cordillera Oriental, al oriente. Ya en las tierras bajas del norte recibe, por su margen izquierda, las aguas de otro gran río que venía por el valle vecino, situado entre la cordillera Occidental y la Central. Unidos, desembocan en el mar.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "El río descrito y el mar al que llega son",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "el Magdalena, que desemboca en el mar Caribe tras recibir al Cauca",
+        "correcta": true,
+        "explicacion": "El valle entre las cordilleras Central y Oriental es el del Magdalena, que nace en el Macizo Colombiano; el valle vecino entre la Occidental y la Central es el del Cauca, que se le une en las tierras bajas del norte. Ambos forman la vertiente del Caribe.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "el Cauca, que desemboca en el océano Pacífico tras recibir al Magdalena",
+        "correcta": false,
+        "explicacion": "Invierte los valles: el Cauca corre entre la Occidental y la Central y es el afluente, no el río principal; además ninguno de los dos llega al Pacífico.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde cuál río es afluente de cuál"
+      },
+      {
+        "clave": "C",
+        "texto": "el Atrato, que desemboca en el mar Caribe tras recibir al San Juan",
+        "correcta": false,
+        "explicacion": "El Atrato corre al occidente de la cordillera Occidental, no entre la Central y la Oriental, y el San Juan desemboca en el Pacífico, no en el Atrato.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el Magdalena, que desemboca en el océano Pacífico tras recibir al Cauca",
+        "correcta": false,
+        "explicacion": "Acierta el río y su afluente, pero el Magdalena corre hacia el norte y desemboca en el Caribe, en Bocas de Ceniza; el Pacífico queda al occidente de la cordillera Occidental.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Acierta el río pero no la vertiente"
+      }
+    ],
+    "explicacion": "Ubica los tres ramales: Occidental, Central y Oriental. El valle entre la Central y la Oriental lo recorre el Magdalena, que nace en el Macizo Colombiano y corre al norte. El valle entre la Occidental y la Central lo recorre el Cauca, que se une al Magdalena por la izquierda en las tierras bajas del Caribe. Como el conjunto corre hacia el norte, la desembocadura es en el mar Caribe. Un río que llegara al Pacífico tendría que bajar por el flanco occidental de la cordillera Occidental.",
+    "que_identificar": "La posición del valle respecto a las cordilleras y la dirección del flujo.",
+    "que_revisar": "Relieve colombiano: cordilleras, valles interandinos y vertientes hidrográficas.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-107",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.geografia",
+    "subhabilidad": "geografia",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Geografía física y de Colombia",
+    "subtema": "Vientos alisios y el Caribe insular",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "Fragmento de una guía de navegación: «En el archipiélago de San Andrés, Providencia y Santa Catalina, en el Caribe suroccidental, los veleros cuentan con un viento que sopla desde el noreste durante la mayor parte del año, con una regularidad que los marinos conocen desde hace siglos. Ese mismo viento empuja el oleaje contra la costa oriental de las islas, donde se extiende la barrera de arrecifes, y deja más abrigada la costa occidental».",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La regularidad del viento descrito se explica porque el archipiélago se encuentra",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "en una zona de altas presiones polares, donde los vientos descienden fríos y secos hacia el mar y se mantienen constantes",
+        "correcta": false,
+        "explicacion": "Las altas presiones polares están a miles de kilómetros; el Caribe suroccidental es una región tropical, cálida y húmeda.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "sobre la línea del ecuador, donde las masas de aire ascienden y los vientos son débiles y variables",
+        "correcta": false,
+        "explicacion": "El archipiélago está cerca de los 12° N, no sobre el ecuador, y la franja ecuatorial se caracteriza por calmas, lo contrario de un viento constante.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde la zona de convergencia con la de los alisios"
+      },
+      {
+        "clave": "C",
+        "texto": "en una latitud media del hemisferio norte, bajo la influencia de los vientos del oeste",
+        "correcta": false,
+        "explicacion": "Los vientos del oeste dominan entre los 30° y los 60° de latitud; además, un viento del oeste no soplaría del noreste.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No relaciona la dirección del viento con la franja"
+      },
+      {
+        "clave": "D",
+        "texto": "en la franja tropical del hemisferio norte, donde los alisios soplan del noreste hacia la baja presión ecuatorial",
+        "correcta": true,
+        "explicacion": "Entre los trópicos, el aire fluye desde las altas presiones subtropicales hacia la baja presión ecuatorial y la rotación terrestre lo desvía: en el hemisferio norte sopla del noreste. Esos son los alisios, constantes casi todo el año, lo que explica también el oleaje y los arrecifes del costado oriental.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El dato clave es la dirección: viento constante del noreste en una isla tropical del hemisferio norte. Entre los trópicos el aire se desplaza desde las altas presiones subtropicales hacia la zona de baja presión ecuatorial; la rotación de la Tierra lo desvía hacia la derecha en el hemisferio norte, de modo que llega del noreste. Son los vientos alisios, que por su constancia guiaron la navegación a vela durante siglos. La costa que recibe el viento (barlovento) es la oriental, con oleaje y arrecifes; la occidental queda a sotavento, más abrigada.",
+    "que_identificar": "Dirección del viento y latitud del lugar para reconocer el cinturón de vientos.",
+    "que_revisar": "Circulación atmosférica general: alisios, calmas ecuatoriales, vientos del oeste; territorio insular colombiano.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-108",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.filosofia_logica",
+    "subhabilidad": "filosofia_logica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Filosofía",
+    "subtema": "Platón: mundo sensible y mundo de las ideas",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "Situación: un profesor propone a sus estudiantes imaginar personas encadenadas desde la infancia dentro de una caverna, de espaldas a la salida. Solo ven, proyectadas en la pared del fondo, las sombras de objetos que pasan por detrás de ellas, y toman esas sombras por las cosas mismas. Uno de los prisioneros logra salir, ve los objetos reales y la luz del sol, y al regresar nadie le cree.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "De acuerdo con la propuesta de Platón que el profesor recrea, las sombras de la pared representan",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "las ideas eternas y perfectas que solo la razón puede alcanzar",
+        "correcta": false,
+        "explicacion": "Invierte el símbolo: las ideas corresponden a los objetos reales y a la luz del sol que ve el prisionero liberado, no a las sombras.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Invierte los términos de la alegoría"
+      },
+      {
+        "clave": "B",
+        "texto": "el mundo sensible: copias imperfectas de la realidad que se toman por la realidad misma",
+        "correcta": true,
+        "explicacion": "En la alegoría, las sombras son lo que percibimos por los sentidos: copias imperfectas de los objetos reales (las ideas). Los prisioneros las toman por la realidad, como quien cree que lo que ve y toca es todo lo que existe.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "las creencias religiosas que la filosofía debe respetar sin someterlas a examen",
+        "correcta": false,
+        "explicacion": "La alegoría no trata sobre religión y, además, propone justamente examinar y superar lo que se da por cierto.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "los conocimientos científicos que se obtienen midiendo y experimentando con los objetos de la naturaleza",
+        "correcta": false,
+        "explicacion": "Platón desconfiaba del conocimiento basado en los sentidos; las sombras representan esa apariencia engañosa, no un saber confiable.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee la alegoría con una idea moderna de ciencia"
+      }
+    ],
+    "explicacion": "Identifica cada elemento de la alegoría: la caverna y las sombras son el mundo que percibimos con los sentidos; los objetos reales y el sol son el mundo de las ideas, al que se accede con la razón; el prisionero que sale es el filósofo. Las sombras, entonces, representan el mundo sensible: copias imperfectas que la mayoría confunde con la realidad verdadera. Las demás opciones invierten el símbolo o le atribuyen un contenido que la alegoría no tiene.",
+    "que_identificar": "La correspondencia entre los elementos de la alegoría y los dos mundos de Platón.",
+    "que_revisar": "Platón: teoría de las ideas, alegoría de la caverna, conocimiento sensible y racional.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-109",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.filosofia_logica",
+    "subhabilidad": "filosofia_logica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Lógica",
+    "subtema": "Silogismo categórico",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "En una clase de lógica se escriben estas dos premisas: «Todos los mamíferos son vertebrados» y «Algunos animales acuáticos son mamíferos».",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La única conclusión que se sigue necesariamente de las dos premisas es:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Todos los animales acuáticos son vertebrados.",
+        "correcta": false,
+        "explicacion": "La segunda premisa habla de «algunos» animales acuáticos; pasar a «todos» es una generalización que las premisas no autorizan.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Convierte «algunos» en «todos»"
+      },
+      {
+        "clave": "B",
+        "texto": "Algunos animales acuáticos son vertebrados.",
+        "correcta": true,
+        "explicacion": "Los animales acuáticos que son mamíferos (segunda premisa) tienen que ser vertebrados, porque todo mamífero lo es (primera premisa). Luego hay al menos algunos animales acuáticos vertebrados.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Algunos vertebrados no son animales acuáticos.",
+        "correcta": false,
+        "explicacion": "Puede ser cierto en el mundo real, pero las premisas no dicen nada sobre vertebrados que no sean acuáticos; una conclusión válida solo usa lo que las premisas afirman.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Usa conocimiento del mundo en vez de las premisas"
+      },
+      {
+        "clave": "D",
+        "texto": "Todos los vertebrados acuáticos son mamíferos.",
+        "correcta": false,
+        "explicacion": "Invierte la primera premisa: que todo mamífero sea vertebrado no implica que todo vertebrado sea mamífero (los peces son vertebrados y no mamíferos).",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Convierte indebidamente la premisa universal"
+      }
+    ],
+    "explicacion": "Encadena los términos: algunos acuáticos son mamíferos, y todo mamífero es vertebrado; por lo tanto, esos acuáticos que son mamíferos son también vertebrados. La conclusión válida conserva el cuantificador más débil («algunos») y respeta la dirección de la inclusión. La opción con «todos los acuáticos» generaliza de más; la que habla de vertebrados no acuáticos añade información ajena a las premisas; y la que dice que todo vertebrado acuático es mamífero invierte la primera premisa.",
+    "que_identificar": "El cuantificador de cada premisa y la dirección de la inclusión entre los términos.",
+    "que_revisar": "Silogismo categórico: término medio, cuantificadores universales y particulares, conversión de proposiciones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UNAL-SOC-110",
+    "examen": "unal",
+    "prueba": "unal_sociales",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "unal_sociales.filosofia_logica",
+    "subhabilidad": "filosofia_logica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "comprender",
+    "tema": "Epistemología",
+    "subtema": "Criterio de refutabilidad",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": "Fragmento: «Para un grupo de filósofos de la ciencia del siglo XX, lo que distingue una afirmación científica no es que esté comprobada, sino que sea refutable: quien la propone debe poder indicar qué observación, de ocurrir, la mostraría falsa. Una teoría que explica cualquier resultado posible, incluso los contrarios entre sí, no dice nada sobre el mundo».",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el criterio del fragmento, de las siguientes afirmaciones la que NO sería científica es:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "«Todo lo que le pasa a una persona, bueno o malo, confirma que su destino estaba escrito».",
+        "correcta": true,
+        "explicacion": "La afirmación acomoda cualquier suceso: si algo sale bien, era el destino; si sale mal, también. No existe observación posible que la refute, y por eso, según el criterio del fragmento, no dice nada sobre el mundo.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "«El agua pura, a la presión del nivel del mar, hierve a 100 grados centígrados».",
+        "correcta": false,
+        "explicacion": "Es refutable: bastaría medir el agua pura al nivel del mar y encontrar otra temperatura de ebullición. Que además sea verdadera no le quita el carácter científico.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cree que lo comprobado no es refutable"
+      },
+      {
+        "clave": "C",
+        "texto": "«Ningún metal se encuentra en estado líquido a la temperatura ambiente normal de una habitación cerrada».",
+        "correcta": false,
+        "explicacion": "Es refutable y de hecho está refutada (el mercurio es líquido a temperatura ambiente). Una afirmación falsa puede ser científica; lo que importa es que una observación pueda contradecirla.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde «falsa» con «no refutable»"
+      },
+      {
+        "clave": "D",
+        "texto": "«Una planta que se mantiene en total oscuridad deja de producir almidón en sus hojas».",
+        "correcta": false,
+        "explicacion": "Es refutable: un experimento con plantas a oscuras que siguieran produciendo almidón la contradiría. Indica con claridad qué observación la mostraría falsa.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Aplica la regla del fragmento a cada frase preguntando: ¿qué observación podría mostrarla falsa? El punto de ebullición, la existencia de metales líquidos y la producción de almidón sin luz admiten una observación que los contradiga (en el caso del metal, el mercurio ya lo hace), así que son refutables, sean verdaderas o falsas. La frase sobre el destino, en cambio, interpreta cualquier suceso, bueno o malo, como confirmación: ningún hecho podría refutarla, y por eso no sería científica según este criterio. Ojo: el criterio no distingue entre verdadero y falso, sino entre refutable y no refutable.",
+    "que_identificar": "Si existe alguna observación posible que contradiga cada afirmación.",
+    "que_revisar": "Filosofía de la ciencia del siglo XX: falsacionismo, demarcación entre ciencia y no ciencia.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 105,
+    "etiquetas": [
+      "examen:unal"
+    ],
+    "estado": "borrador"
+  }
+]

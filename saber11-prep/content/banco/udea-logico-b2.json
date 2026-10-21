@@ -1,0 +1,2494 @@
+[
+  {
+    "id": "UDEA-LOG-201",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Lectura directa de una tabla",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "tabla",
+      "titulo": "Arepas vendidas por día",
+      "columnas": [
+        "Día",
+        "Arepas vendidas"
+      ],
+      "filas": [
+        [
+          "Lunes",
+          40
+        ],
+        [
+          "Martes",
+          35
+        ],
+        [
+          "Miércoles",
+          50
+        ],
+        [
+          "Jueves",
+          45
+        ],
+        [
+          "Viernes",
+          60
+        ]
+      ]
+    },
+    "tipo": null,
+    "enunciado": "La tabla muestra las arepas vendidas en una tienda de barrio durante una semana. ¿Cuántas arepas más se vendieron el viernes que el martes?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "15",
+        "correcta": false,
+        "explicacion": "15 es la diferencia entre el viernes y el jueves (60 − 45); la pregunta compara con el martes.",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "probable",
+        "razon_frecuente": "Toma la fila equivocada"
+      },
+      {
+        "clave": "B",
+        "texto": "25",
+        "correcta": true,
+        "explicacion": "Viernes 60 y martes 35: 60 − 35 = 25 arepas más el viernes.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "20",
+        "correcta": false,
+        "explicacion": "20 es la diferencia entre el viernes y el lunes (60 − 40), no con el martes.",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde lunes con martes"
+      },
+      {
+        "clave": "D",
+        "texto": "95",
+        "correcta": false,
+        "explicacion": "95 es la suma de las ventas del viernes y el martes (60 + 35); la pregunta pide la diferencia.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suma en lugar de restar"
+      }
+    ],
+    "explicacion": "Se ubican las dos filas pedidas: martes = 35 y viernes = 60. Como se pregunta cuántas más se vendieron el viernes, se restan: 60 − 35 = 25.",
+    "que_identificar": "Qué filas de la tabla corresponden a los días que compara la pregunta y qué operación pide (diferencia, no suma).",
+    "que_revisar": "Lectura de tablas de una entrada; diferencia entre dos valores.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-202",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Porcentaje de un total a partir de un gráfico de barras",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "barras",
+      "titulo": "Estudiantes matriculados por grado",
+      "eje_x": "Grado",
+      "eje_y": "Estudiantes",
+      "series": [
+        {
+          "nombre": "Matriculados",
+          "valores": [
+            [
+              "6°",
+              32
+            ],
+            [
+              "7°",
+              28
+            ],
+            [
+              "8°",
+              30
+            ],
+            [
+              "9°",
+              24
+            ],
+            [
+              "10°",
+              26
+            ],
+            [
+              "11°",
+              20
+            ]
+          ]
+        }
+      ]
+    },
+    "tipo": null,
+    "enunciado": "El gráfico muestra el número de estudiantes matriculados por grado en un colegio. ¿Qué porcentaje del total de matriculados corresponde al grado once?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "12,5 %",
+        "correcta": true,
+        "explicacion": "El total es 32 + 28 + 30 + 24 + 26 + 20 = 160 y el grado once tiene 20: 20/160 = 0,125 = 12,5 %.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "20 %",
+        "correcta": false,
+        "explicacion": "20 es el número de estudiantes de once, no su porcentaje; para el porcentaje hay que dividir entre el total (160).",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde cantidad con porcentaje"
+      },
+      {
+        "clave": "C",
+        "texto": "10 %",
+        "correcta": false,
+        "explicacion": "El 10 % de 160 sería 16 estudiantes, y el grado once tiene 20.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "16,7 %",
+        "correcta": false,
+        "explicacion": "16,7 % sería la parte que corresponde a cada grado si todos tuvieran la misma cantidad (1 de 6); el grado once tiene menos que el promedio.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Reparte el total en partes iguales"
+      }
+    ],
+    "explicacion": "Primero se suma la altura de todas las barras: 32 + 28 + 30 + 24 + 26 + 20 = 160 estudiantes. Luego se divide la barra de once entre el total: 20 ÷ 160 = 0,125, es decir, 12,5 %.",
+    "que_identificar": "Que el porcentaje se calcula respecto al total de todas las barras, no respecto a una sola.",
+    "que_revisar": "Suma de datos de un gráfico de barras; porcentaje de una parte respecto al todo.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-203",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Variación entre puntos consecutivos de un gráfico de líneas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "lineas",
+      "titulo": "Lluvia mensual (mm)",
+      "eje_x": "Mes",
+      "eje_y": "Lluvia (mm)",
+      "series": [
+        {
+          "nombre": "Lluvia",
+          "valores": [
+            [
+              "Ene",
+              60
+            ],
+            [
+              "Feb",
+              80
+            ],
+            [
+              "Mar",
+              120
+            ],
+            [
+              "Abr",
+              180
+            ],
+            [
+              "May",
+              200
+            ],
+            [
+              "Jun",
+              150
+            ]
+          ]
+        }
+      ]
+    },
+    "tipo": null,
+    "enunciado": "El gráfico muestra la lluvia mensual registrada en un municipio durante el primer semestre. ¿En qué mes se registró el mayor aumento de lluvia respecto al mes anterior?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Mayo",
+        "correcta": false,
+        "explicacion": "Mayo tiene el valor más alto (200 mm), pero su aumento respecto a abril fue de solo 20 mm; la pregunta pide el mayor aumento, no el mayor valor.",
+        "tipo_error": "lectura_grafico",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde el punto más alto con el mayor aumento"
+      },
+      {
+        "clave": "B",
+        "texto": "Marzo",
+        "correcta": false,
+        "explicacion": "De febrero a marzo la lluvia aumentó 40 mm (de 80 a 120), menos que el aumento de abril.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Abril",
+        "correcta": true,
+        "explicacion": "De marzo (120 mm) a abril (180 mm) la lluvia aumentó 60 mm, el mayor incremento entre meses consecutivos.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Junio",
+        "correcta": false,
+        "explicacion": "En junio la lluvia disminuyó (de 200 a 150 mm); es el mayor cambio en valor absoluto, pero es una disminución, no un aumento.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Toma el mayor cambio sin mirar el signo"
+      }
+    ],
+    "explicacion": "Se calcula la diferencia de cada mes con el anterior: febrero +20, marzo +40, abril +60, mayo +20, junio −50. El mayor aumento es el de abril (de 120 mm a 180 mm). El valor más alto está en mayo, pero eso no es lo que se pregunta.",
+    "que_identificar": "La diferencia entre «el mes con más lluvia» y «el mes en que más subió la lluvia»: la segunda se lee en la pendiente del tramo.",
+    "que_revisar": "Lectura de gráficos de líneas; variación entre valores consecutivos; signo del cambio.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-204",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Tabla de doble entrada y porcentaje condicionado",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "tabla",
+      "titulo": "Medio de transporte habitual por zona",
+      "columnas": [
+        "Medio",
+        "Zona norte",
+        "Zona sur"
+      ],
+      "filas": [
+        [
+          "Bus",
+          50,
+          40
+        ],
+        [
+          "Metro",
+          30,
+          45
+        ],
+        [
+          "Bicicleta",
+          20,
+          15
+        ],
+        [
+          "Total",
+          100,
+          100
+        ]
+      ]
+    },
+    "tipo": null,
+    "enunciado": "Se preguntó a 200 personas de dos zonas de una ciudad cuál es su medio de transporte habitual. Los resultados están en la tabla. De las personas que usan metro, ¿qué porcentaje vive en la zona sur?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "22,5 %",
+        "correcta": false,
+        "explicacion": "45/200 = 22,5 % es la parte del total de encuestados que usa metro y vive en el sur; la pregunta se refiere solo a quienes usan metro.",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "probable",
+        "razon_frecuente": "Divide entre el total general"
+      },
+      {
+        "clave": "B",
+        "texto": "45 %",
+        "correcta": false,
+        "explicacion": "45 % es la proporción de personas de la zona sur que usan metro (45 de 100), no la de usuarios de metro que viven en el sur.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Invierte la condición"
+      },
+      {
+        "clave": "C",
+        "texto": "37,5 %",
+        "correcta": false,
+        "explicacion": "37,5 % es la fracción del total que usa metro (75 de 200); no responde a qué parte de ellos vive en el sur.",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "60 %",
+        "correcta": true,
+        "explicacion": "Usan metro 30 + 45 = 75 personas; de ellas, 45 son de la zona sur: 45/75 = 0,6 = 60 %.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La pregunta condiciona al grupo «personas que usan metro». Ese grupo se obtiene sumando la fila del metro: 30 (norte) + 45 (sur) = 75. De esas 75, las 45 de la zona sur representan 45 ÷ 75 = 0,60 = 60 %.",
+    "que_identificar": "Cuál es el grupo de referencia (el denominador): en «de los que usan metro, qué parte…», el total es la fila del metro, no los 200.",
+    "que_revisar": "Tablas de doble entrada; porcentaje respecto a un subgrupo (frecuencia condicionada).",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-205",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Promedio a partir de un gráfico de barras",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "barras",
+      "titulo": "Material reciclable recogido por semana",
+      "eje_x": "Semana",
+      "eje_y": "Kilogramos",
+      "series": [
+        {
+          "nombre": "Kilogramos",
+          "valores": [
+            [
+              "Sem. 1",
+              120
+            ],
+            [
+              "Sem. 2",
+              150
+            ],
+            [
+              "Sem. 3",
+              90
+            ],
+            [
+              "Sem. 4",
+              160
+            ]
+          ]
+        }
+      ]
+    },
+    "tipo": null,
+    "enunciado": "El gráfico muestra los kilogramos de material reciclable recogidos en un barrio durante cuatro semanas. ¿Cuántos kilogramos deben recogerse en la quinta semana para que el promedio de las cinco semanas sea exactamente 140 kg?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "180",
+        "correcta": true,
+        "explicacion": "Para promediar 140 en cinco semanas el total debe ser 5 × 140 = 700 kg; ya hay 120 + 150 + 90 + 160 = 520 kg, así que faltan 700 − 520 = 180 kg.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "140",
+        "correcta": false,
+        "explicacion": "Recoger 140 kg solo mantendría el promedio actual (130) por debajo de 140: el promedio de las cuatro primeras semanas es 130, no 140.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cree que basta recoger el valor del promedio deseado"
+      },
+      {
+        "clave": "C",
+        "texto": "130",
+        "correcta": false,
+        "explicacion": "130 kg es el promedio de las cuatro semanas mostradas (520 ÷ 4), no la cantidad que falta en la quinta.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Se detiene en el promedio actual"
+      },
+      {
+        "clave": "D",
+        "texto": "200",
+        "correcta": false,
+        "explicacion": "Con 200 kg el total sería 720 y el promedio 144, mayor que el pedido.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Un promedio de 140 kg en cinco semanas equivale a un total de 5 × 140 = 700 kg. Las cuatro semanas del gráfico suman 120 + 150 + 90 + 160 = 520 kg. Por tanto, en la quinta semana deben recogerse 700 − 520 = 180 kg.",
+    "que_identificar": "Que el promedio deseado se traduce en un total requerido (promedio × número de datos) y se compara con lo acumulado.",
+    "que_revisar": "Promedio aritmético; despeje de un dato faltante a partir del promedio.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-206",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Extrapolación de tendencias en un gráfico de líneas",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "lineas",
+      "titulo": "Unidades vendidas por mes",
+      "eje_x": "Mes",
+      "eje_y": "Unidades",
+      "series": [
+        {
+          "nombre": "Pan integral",
+          "valores": [
+            [
+              "Ene",
+              8
+            ],
+            [
+              "Feb",
+              11
+            ],
+            [
+              "Mar",
+              14
+            ],
+            [
+              "Abr",
+              17
+            ],
+            [
+              "May",
+              20
+            ]
+          ]
+        },
+        {
+          "nombre": "Pan blanco",
+          "valores": [
+            [
+              "Ene",
+              36
+            ],
+            [
+              "Feb",
+              33
+            ],
+            [
+              "Mar",
+              30
+            ],
+            [
+              "Abr",
+              27
+            ],
+            [
+              "May",
+              24
+            ]
+          ]
+        }
+      ]
+    },
+    "tipo": null,
+    "enunciado": "El gráfico muestra las unidades vendidas por mes de dos productos de una panadería entre enero y mayo. Si ambas tendencias se mantienen, ¿en qué mes las ventas del pan integral superarán por primera vez a las del pan blanco?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Mayo",
+        "correcta": false,
+        "explicacion": "En mayo el gráfico aún muestra al pan blanco por encima (24 frente a 20); no hay cruce dentro del periodo mostrado.",
+        "tipo_error": "lectura_grafico",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee el último punto como cruce"
+      },
+      {
+        "clave": "B",
+        "texto": "Junio",
+        "correcta": true,
+        "explicacion": "El integral sube 3 por mes y el blanco baja 3 por mes. En junio tendrían 23 y 21 unidades: es el primer mes en que el integral supera al blanco.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Julio",
+        "correcta": false,
+        "explicacion": "En julio el integral (26) ya supera al blanco (18), pero el cruce ocurre un mes antes, en junio.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Avanza un mes de más"
+      },
+      {
+        "clave": "D",
+        "texto": "Agosto",
+        "correcta": false,
+        "explicacion": "Si se proyectan ambas rectas, en agosto la diferencia ya sería de 14 unidades a favor del integral; el cruce es muy anterior.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El pan integral crece 3 unidades cada mes (8, 11, 14, 17, 20) y el pan blanco disminuye 3 cada mes (36, 33, 30, 27, 24). En mayo la diferencia es de 4 a favor del blanco y se acorta 6 unidades por mes. En junio: integral 23 y blanco 21, así que ese es el primer mes en que el integral supera al blanco.",
+    "que_identificar": "El ritmo de cambio de cada serie (pendiente) y cuánto se acorta la distancia entre ellas cada mes.",
+    "que_revisar": "Progresiones aritméticas; lectura de gráficos de líneas con dos series; extrapolación.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-207",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Variación porcentual entre filas de una tabla",
+    "dificultad": 2,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "tabla",
+      "titulo": "Precio de la libra de café",
+      "columnas": [
+        "Año",
+        "Precio (pesos)"
+      ],
+      "filas": [
+        [
+          "2021",
+          8000
+        ],
+        [
+          "2022",
+          10000
+        ],
+        [
+          "2023",
+          11000
+        ],
+        [
+          "2024",
+          13200
+        ]
+      ]
+    },
+    "tipo": null,
+    "enunciado": "La tabla muestra el precio de una libra de café en una tienda de pueblo en cuatro años. ¿Entre cuáles años consecutivos fue mayor el aumento porcentual del precio?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Entre 2023 y 2024",
+        "correcta": false,
+        "explicacion": "Es el mayor aumento en pesos (2 200), pero en porcentaje fue 2 200/11 000 = 20 %, menor que el 25 % del primer periodo.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde aumento absoluto con porcentual"
+      },
+      {
+        "clave": "B",
+        "texto": "Entre 2022 y 2023",
+        "correcta": false,
+        "explicacion": "El precio subió 1 000 pesos sobre 10 000, es decir, 10 %: el menor aumento porcentual de la tabla.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Todos los aumentos porcentuales fueron iguales",
+        "correcta": false,
+        "explicacion": "Los aumentos fueron de 25 %, 10 % y 20 %, así que no son iguales.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Entre 2021 y 2022",
+        "correcta": true,
+        "explicacion": "El precio pasó de 8 000 a 10 000: aumentó 2 000 sobre 8 000, es decir, 25 %, el mayor aumento porcentual.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El aumento porcentual se calcula dividiendo el aumento entre el precio inicial del periodo. 2021–2022: 2 000/8 000 = 25 %. 2022–2023: 1 000/10 000 = 10 %. 2023–2024: 2 200/11 000 = 20 %. El mayor es el del primer periodo, aunque el mayor aumento en pesos fue el último.",
+    "que_identificar": "Que el porcentaje depende del valor inicial: un mismo aumento en pesos es porcentualmente menor cuando el precio ya es alto.",
+    "que_revisar": "Variación porcentual; comparación de razones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-208",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Comparación de crecimiento porcentual en barras agrupadas",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "barras",
+      "titulo": "Inscritos por curso",
+      "eje_x": "Curso",
+      "eje_y": "Inscritos",
+      "series": [
+        {
+          "nombre": "Primer año",
+          "valores": [
+            [
+              "Danza",
+              40
+            ],
+            [
+              "Música",
+              60
+            ],
+            [
+              "Teatro",
+              20
+            ],
+            [
+              "Pintura",
+              30
+            ]
+          ]
+        },
+        {
+          "nombre": "Segundo año",
+          "valores": [
+            [
+              "Danza",
+              52
+            ],
+            [
+              "Música",
+              54
+            ],
+            [
+              "Teatro",
+              30
+            ],
+            [
+              "Pintura",
+              36
+            ]
+          ]
+        }
+      ]
+    },
+    "tipo": null,
+    "enunciado": "El gráfico muestra el número de inscritos en los cursos de un centro cultural en dos años. ¿Cuál curso tuvo el mayor crecimiento porcentual de inscritos entre el primer año y el segundo?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Danza",
+        "correcta": false,
+        "explicacion": "Danza tuvo el mayor aumento en número de personas (12), pero en porcentaje fue 12/40 = 30 %, menor que el de teatro.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Compara aumentos absolutos"
+      },
+      {
+        "clave": "B",
+        "texto": "Música",
+        "correcta": false,
+        "explicacion": "Música es el curso con más inscritos en ambos años, pero pasó de 60 a 54: disminuyó 10 %.",
+        "tipo_error": "lectura_grafico",
+        "diagnostico": "probable",
+        "razon_frecuente": "Elige la barra más alta"
+      },
+      {
+        "clave": "C",
+        "texto": "Teatro",
+        "correcta": true,
+        "explicacion": "Teatro pasó de 20 a 30 inscritos: un aumento de 10 sobre 20, es decir, 50 %, el mayor crecimiento porcentual.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Pintura",
+        "correcta": false,
+        "explicacion": "Pintura pasó de 30 a 36: aumento de 6 sobre 30, es decir, 20 %, menor que el de danza y el de teatro.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Para cada curso se divide el aumento entre el valor del primer año: Danza (52 − 40)/40 = 30 %; Música (54 − 60)/60 = −10 %; Teatro (30 − 20)/20 = 50 %; Pintura (36 − 30)/30 = 20 %. El mayor crecimiento porcentual es el de teatro, aunque danza creció más en número de personas y música sigue siendo el curso más grande.",
+    "que_identificar": "Que «mayor crecimiento porcentual» se calcula respecto al valor inicial de cada curso, no según la altura de la barra ni el aumento absoluto.",
+    "que_revisar": "Gráficos de barras agrupadas; variación porcentual; comparación de razones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-209",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Afirmaciones verdaderas sobre datos de un gráfico",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un gráfico de barras registra los libros prestados en una biblioteca escolar durante una semana: lunes 24, martes 18, miércoles 30, jueves 30 y viernes 48. ¿Cuál de las siguientes afirmaciones es correcta?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "El viernes se prestaron tantos libros como el lunes y el martes juntos.",
+        "correcta": false,
+        "explicacion": "Lunes y martes suman 24 + 18 = 42, y el viernes fueron 48; no coinciden.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Aproxima sin sumar"
+      },
+      {
+        "clave": "B",
+        "texto": "El viernes se prestó el doble de libros que el lunes.",
+        "correcta": true,
+        "explicacion": "El lunes se prestaron 24 y el viernes 48, y 48 = 2 × 24.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "El promedio diario de préstamos fue de 32 libros.",
+        "correcta": false,
+        "explicacion": "El total es 24 + 18 + 30 + 30 + 48 = 150, y 150 ÷ 5 = 30, no 32.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Error al sumar o dividir"
+      },
+      {
+        "clave": "D",
+        "texto": "Miércoles y jueves juntos superan a lunes y viernes juntos.",
+        "correcta": false,
+        "explicacion": "Miércoles y jueves suman 60; lunes y viernes suman 72, que es mayor.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Se comprueba cada afirmación con los datos. Lunes + martes = 42 ≠ 48. Viernes 48 = 2 × 24 (lunes): correcta. El promedio es 150 ÷ 5 = 30, no 32. Miércoles + jueves = 60 es menor que lunes + viernes = 72.",
+    "que_identificar": "Que cada afirmación debe verificarse con una operación concreta sobre los datos, sin fiarse de la impresión visual.",
+    "que_revisar": "Suma, promedio y comparación de datos; verificación de afirmaciones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-210",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.graficas_tablas",
+    "subhabilidad": "graficas_tablas",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Gráficas y tablas",
+    "subtema": "Lectura crítica de un gráfico con eje truncado",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una empresa muestra sus ventas anuales en un gráfico de barras cuyo eje vertical comienza en 95 millones y termina en 100 millones de pesos. Las ventas pasaron de 96 millones en el primer año a 99 millones en el segundo, y la barra del segundo año se ve cuatro veces más alta que la del primero. ¿Cuál es la conclusión correcta?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Las ventas crecieron cerca de un 3 %, aunque el gráfico haga ver la diferencia mucho mayor.",
+        "correcta": true,
+        "explicacion": "El aumento real es 3 millones sobre 96, alrededor de 3,1 %. Como el eje empieza en 95, las barras miden 1 y 4 unidades y el crecimiento parece de cuatro veces.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Las ventas se cuadruplicaron de un año al otro.",
+        "correcta": false,
+        "explicacion": "La altura de las barras se cuadruplica solo porque el eje empieza en 95; las ventas pasaron de 96 a 99 millones, muy lejos de cuadruplicarse.",
+        "tipo_error": "lectura_grafico",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee la altura de la barra como el valor"
+      },
+      {
+        "clave": "C",
+        "texto": "El gráfico es inválido porque un eje nunca puede empezar en un valor distinto de cero.",
+        "correcta": false,
+        "explicacion": "Un eje puede empezar en otro valor; el problema es que exagera visualmente la diferencia, no que sea inválido.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Las ventas crecieron un 25 % respecto al primer año.",
+        "correcta": false,
+        "explicacion": "25 % resultaría de comparar la barra pequeña (1 unidad) con la grande (4) de forma inversa; el aumento real sobre 96 millones es de unos 3 %.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Opera con las alturas en lugar de los valores"
+      }
+    ],
+    "explicacion": "El aumento real es 99 − 96 = 3 millones, que sobre 96 millones representa 3/96 ≈ 0,031, cerca del 3 %. Como el eje vertical empieza en 95, la primera barra mide 1 unidad y la segunda 4, lo que hace ver un crecimiento de cuatro veces que no existe. El gráfico no es inválido, pero exagera la diferencia.",
+    "que_identificar": "Dónde empieza el eje vertical y cómo eso cambia la impresión visual sin cambiar los datos.",
+    "que_revisar": "Lectura crítica de gráficos; variación porcentual; ejes truncados.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-211",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Identificación de variables en un experimento",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un estudiante quiere saber si la cantidad de luz afecta el crecimiento de plantas de fríjol. Siembra una semilla en cada una de cuatro macetas iguales, con la misma tierra y la misma cantidad de agua, y las ubica en lugares con distinta cantidad de luz. Cada semana mide la altura de las plantas. En este experimento, la variable que se mide para ver el efecto es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "la cantidad de luz que recibe cada maceta.",
+        "correcta": false,
+        "explicacion": "La cantidad de luz es la variable que el estudiante cambia a propósito (independiente), no la que mide como resultado.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde la variable que se cambia con la que se mide"
+      },
+      {
+        "clave": "B",
+        "texto": "el tipo de tierra de las macetas.",
+        "correcta": false,
+        "explicacion": "La tierra se mantiene igual en todas las macetas para que no influya; es una variable controlada.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "la altura que alcanzan las plantas.",
+        "correcta": true,
+        "explicacion": "La altura de las plantas es lo que se mide cada semana para ver el efecto de la luz: es la variable dependiente.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el número de macetas utilizadas.",
+        "correcta": false,
+        "explicacion": "El número de macetas forma parte del montaje; no es una variable que se mida ni que cambie durante el experimento.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "En un experimento, la variable que se cambia a propósito es la independiente (aquí, la cantidad de luz); la que se mide para ver el efecto es la dependiente (la altura de las plantas), y las que se mantienen iguales son las controladas (tierra, agua, maceta).",
+    "que_identificar": "Cuál factor cambia el experimentador, cuál mide y cuáles mantiene iguales.",
+    "que_revisar": "Variables independiente, dependiente y controladas.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-212",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Variables que deben mantenerse constantes",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Camila quiere comprobar si la temperatura del agua afecta el tiempo que tarda en disolverse una pastilla efervescente. Prepara tres vasos con agua a 10 °C, 25 °C y 40 °C y deja caer una pastilla en cada uno. Para que la comparación sea válida, ¿qué debe mantener igual en los tres vasos?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "La temperatura del agua.",
+        "correcta": false,
+        "explicacion": "La temperatura es justamente lo que Camila cambia para estudiar su efecto; si fuera igual en los tres vasos no habría nada que comparar.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde la variable que se cambia con las controladas"
+      },
+      {
+        "clave": "B",
+        "texto": "El tiempo de disolución de la pastilla.",
+        "correcta": false,
+        "explicacion": "El tiempo de disolución es el resultado que se mide; no se puede fijar de antemano.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde la variable medida con una controlada"
+      },
+      {
+        "clave": "C",
+        "texto": "Nada, porque cambiar varias cosas a la vez da más información.",
+        "correcta": false,
+        "explicacion": "Si cambian varias cosas a la vez no se sabe a cuál de ellas se debe la diferencia observada.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cree que más variación es mejor"
+      },
+      {
+        "clave": "D",
+        "texto": "La cantidad de agua y el tamaño de la pastilla.",
+        "correcta": true,
+        "explicacion": "Si la cantidad de agua y la pastilla son iguales en los tres vasos, la única diferencia es la temperatura, y cualquier cambio en el tiempo puede atribuirse a ella.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Para atribuir el resultado a la temperatura, todo lo demás que pueda influir en la disolución debe ser igual en los tres vasos: la cantidad de agua, el tamaño y la marca de la pastilla, el tipo de vaso. La temperatura es la variable que se cambia y el tiempo es el que se mide.",
+    "que_identificar": "Qué factores distintos de la temperatura podrían cambiar el tiempo de disolución y por eso deben fijarse.",
+    "que_revisar": "Variables controladas en un diseño experimental.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-213",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Elección de la comparación adecuada",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un agricultor quiere saber cuál de dos abonos, X o Y, produce más tomates. Siembra cuatro parcelas iguales:\n• Parcela 1: abono X, riego diario, sol pleno.\n• Parcela 2: abono Y, riego diario, sol pleno.\n• Parcela 3: abono Y, riego cada tres días, sol pleno.\n• Parcela 4: abono X, riego diario, sombra.\n¿Qué dos parcelas debe comparar para concluir sobre el efecto del abono?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "La 1 y la 2.",
+        "correcta": true,
+        "explicacion": "Las parcelas 1 y 2 solo se diferencian en el abono (X frente a Y); riego y luz son iguales, así que cualquier diferencia en la cosecha se debe al abono.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "La 2 y la 3.",
+        "correcta": false,
+        "explicacion": "Las parcelas 2 y 3 tienen el mismo abono (Y) y se diferencian en el riego: sirven para estudiar el riego, no el abono.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Elige parcelas que difieren en otra variable"
+      },
+      {
+        "clave": "C",
+        "texto": "La 1 y la 4.",
+        "correcta": false,
+        "explicacion": "Las parcelas 1 y 4 tienen el mismo abono (X) y difieren en la luz: no permiten comparar los abonos.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Elige parcelas que difieren en otra variable"
+      },
+      {
+        "clave": "D",
+        "texto": "La 3 y la 4.",
+        "correcta": false,
+        "explicacion": "Entre las parcelas 3 y 4 cambian el abono, el riego y la luz a la vez; no se podría saber a cuál se debe la diferencia.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Para aislar el efecto del abono hay que comparar dos parcelas que se diferencien únicamente en el abono y coincidan en todo lo demás. Las parcelas 1 y 2 comparten riego diario y sol pleno y difieren solo en el abono (X frente a Y).",
+    "que_identificar": "Qué par de condiciones difiere exactamente en la variable de interés y en ninguna otra.",
+    "que_revisar": "Comparación controlada: una sola variable cambia a la vez.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-214",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Fallas de diseño: grupos no equivalentes",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un profesor quiere saber si una nueva estrategia de estudio mejora las notas. La aplica solo con el grupo de la mañana, que desde antes tenía mejor promedio que el grupo de la tarde, y al final del periodo el grupo de la mañana obtiene mejores notas. ¿Por qué el profesor no puede concluir que la estrategia funciona?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Porque debió aplicar la estrategia a los dos grupos a la vez.",
+        "correcta": false,
+        "explicacion": "Si la aplicara a ambos grupos no tendría con qué comparar; se necesita un grupo sin la estrategia, pero que sea comparable.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cree que todo grupo debe recibir el tratamiento"
+      },
+      {
+        "clave": "B",
+        "texto": "Porque los dos grupos ya eran diferentes antes de aplicar la estrategia.",
+        "correcta": true,
+        "explicacion": "El grupo de la mañana ya tenía mejor promedio: la diferencia final puede deberse a esa ventaja previa y no a la estrategia.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Porque las notas no son una medida válida del aprendizaje.",
+        "correcta": false,
+        "explicacion": "Se pueden discutir las notas como medida, pero esa no es la falla del diseño: el problema es que los grupos no eran comparables desde el inicio.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Porque un solo profesor no puede realizar un experimento.",
+        "correcta": false,
+        "explicacion": "Un solo docente puede diseñar una comparación válida; lo que falla es cómo se escogieron los grupos.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Para atribuir una diferencia a la estrategia, los grupos comparados deben ser equivalentes antes de empezar. Como el grupo de la mañana ya tenía mejor promedio, la ventaja final puede deberse a esa diferencia previa (variable no controlada) y no a la estrategia.",
+    "que_identificar": "Si los grupos que se comparan eran iguales en lo importante antes del tratamiento.",
+    "que_revisar": "Grupo de control equivalente; variables no controladas (factores de confusión).",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-215",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Selección de ensayos para aislar una variable",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Para estudiar el rebote de una pelota se hicieron cuatro ensayos:\n• Ensayo 1: se soltó desde 1 m sobre baldosa y rebotó 60 cm.\n• Ensayo 2: se soltó desde 2 m sobre baldosa y rebotó 110 cm.\n• Ensayo 3: se soltó desde 1 m sobre césped y rebotó 35 cm.\n• Ensayo 4: se soltó desde 2 m sobre césped y rebotó 65 cm.\n¿Qué ensayos deben compararse para conocer el efecto de la superficie cuando la pelota se suelta desde 2 m?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "El 1 y el 2.",
+        "correcta": false,
+        "explicacion": "Los ensayos 1 y 2 usan la misma superficie (baldosa) y cambian la altura: muestran el efecto de la altura, no de la superficie.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Compara ensayos que cambian la otra variable"
+      },
+      {
+        "clave": "B",
+        "texto": "El 1 y el 3.",
+        "correcta": false,
+        "explicacion": "Los ensayos 1 y 3 sí comparan superficies, pero desde 1 m; la pregunta pide la comparación desde 2 m.",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "probable",
+        "razon_frecuente": "Ignora la condición de altura pedida"
+      },
+      {
+        "clave": "C",
+        "texto": "El 1 y el 4.",
+        "correcta": false,
+        "explicacion": "Entre los ensayos 1 y 4 cambian tanto la altura como la superficie, así que no se puede aislar el efecto de la superficie.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "El 2 y el 4.",
+        "correcta": true,
+        "explicacion": "Los ensayos 2 y 4 se hicieron ambos desde 2 m y difieren solo en la superficie (baldosa frente a césped): la diferencia de rebote (110 cm frente a 65 cm) se debe a la superficie.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Se busca un par de ensayos con la misma altura (2 m) y distinta superficie. Solo los ensayos 2 y 4 cumplen eso: ambos desde 2 m, uno sobre baldosa (110 cm) y otro sobre césped (65 cm). La diferencia de 45 cm se atribuye a la superficie.",
+    "que_identificar": "Qué condición debe mantenerse fija según la pregunta (altura de 2 m) y cuál debe variar (superficie).",
+    "que_revisar": "Comparación controlada con dos factores; lectura de condiciones experimentales.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-216",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Necesidad de un grupo de control",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una investigadora quiere saber si un suplemento de hierro reduce el cansancio en deportistas aficionados. Entrega el suplemento a 30 deportistas y, al cabo de un mes, todos reportan sentirse menos cansados. ¿Qué le falta al diseño para poder atribuir el cambio al suplemento?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Darle el suplemento a muchos más deportistas.",
+        "correcta": false,
+        "explicacion": "Aumentar el número de personas que lo toman no resuelve el problema: seguiría sin saberse qué habría pasado sin el suplemento.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cree que más datos reemplazan al control"
+      },
+      {
+        "clave": "B",
+        "texto": "Medir el cansancio solo al final del mes.",
+        "correcta": false,
+        "explicacion": "Medir únicamente al final empeora el diseño: se perdería el punto de comparación inicial.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Un grupo de deportistas similares que no reciba el suplemento.",
+        "correcta": true,
+        "explicacion": "Sin un grupo comparable que no tome el suplemento (o que tome un placebo) no se puede saber si la mejoría se debe al hierro o a otros factores, como el entrenamiento o la expectativa.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Cambiar al mismo tiempo la dieta de los deportistas.",
+        "correcta": false,
+        "explicacion": "Cambiar la dieta a la vez añadiría otra variable y haría imposible saber cuál produjo el efecto.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Introduce otra variable"
+      }
+    ],
+    "explicacion": "Que todos mejoren no demuestra que el suplemento sea la causa: pudieron mejorar por el entrenamiento, el descanso o la expectativa de mejorar. Se necesita un grupo de control de deportistas similares que no reciba el suplemento (o reciba un placebo) y comparar ambos grupos.",
+    "que_identificar": "Si existe un grupo de comparación que permita descartar explicaciones distintas al tratamiento.",
+    "que_revisar": "Grupo de control y placebo; explicaciones alternativas.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-217",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Conclusiones inválidas por variables confundidas",
+    "dificultad": 2,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Para saber qué marca de pilas dura más, Andrés puso pilas de la marca P en una linterna grande y pilas de la marca Q en una linterna pequeña, encendió ambas al mismo tiempo y observó que la linterna con pilas P se apagó varias horas después que la otra. ¿Qué puede concluir Andrés?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Que las pilas de la marca P duran más que las de la marca Q.",
+        "correcta": false,
+        "explicacion": "La linterna con pilas P también era distinta (grande), así que la diferencia puede deberse a la linterna y no a la marca.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Atribuye el efecto a la variable que le interesa"
+      },
+      {
+        "clave": "B",
+        "texto": "Nada sobre las marcas, porque también cambió el tipo de linterna.",
+        "correcta": true,
+        "explicacion": "Al cambiar a la vez la marca de la pila y la linterna, no es posible saber a cuál de las dos se debe la diferencia de duración.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Que las linternas grandes gastan menos energía que las pequeñas.",
+        "correcta": false,
+        "explicacion": "Tampoco puede concluirse sobre las linternas: la marca de la pila también fue distinta en cada una.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Atribuye el efecto a la otra variable"
+      },
+      {
+        "clave": "D",
+        "texto": "Que las dos marcas duran lo mismo y la diferencia fue casual.",
+        "correcta": false,
+        "explicacion": "No hay razón para afirmar que duran lo mismo; el experimento simplemente no permite decidirlo.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "En la comparación cambiaron dos cosas a la vez: la marca de la pila y la linterna. Por eso la diferencia de duración puede deberse a cualquiera de las dos y no se puede concluir nada sobre las marcas. Para hacerlo, debería usar dos linternas iguales con pilas de distinta marca.",
+    "que_identificar": "Si entre las dos condiciones comparadas cambia una sola variable o más de una.",
+    "que_revisar": "Variables confundidas; diseño de una comparación justa.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-218",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Diseño que pone a prueba una hipótesis",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Hipótesis: «A mayor cantidad de sal disuelta, el agua hierve a una temperatura más alta». ¿Cuál de los siguientes diseños permite poner a prueba esta hipótesis?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Calentar en la misma estufa cuatro ollas iguales con 500 mL de agua y 0 g, 10 g, 20 g y 30 g de sal, y medir la temperatura a la que hierve cada una.",
+        "correcta": true,
+        "explicacion": "Solo cambia la cantidad de sal, se mantiene igual todo lo demás y se mide la variable que menciona la hipótesis: la temperatura de ebullición.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Calentar 500 mL de agua con 10 g de sal y 1 000 mL de agua con 20 g de sal, y medir la temperatura a la que hierve cada una.",
+        "correcta": false,
+        "explicacion": "Cambian a la vez la cantidad de agua y la de sal; además, la concentración de sal es la misma en ambas ollas (2 g por cada 100 mL), así que no se compara lo que pide la hipótesis.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No controla la cantidad de agua"
+      },
+      {
+        "clave": "C",
+        "texto": "Calentar 500 mL de agua con 20 g de sal en dos estufas distintas y comparar la temperatura a la que hierve.",
+        "correcta": false,
+        "explicacion": "La cantidad de sal es la misma en ambas ollas; lo que cambia es la estufa, que no es la variable de la hipótesis.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Varía una variable distinta a la de la hipótesis"
+      },
+      {
+        "clave": "D",
+        "texto": "Medir cuánto tiempo tarda en hervir 500 mL de agua con sal y sin sal en la misma estufa.",
+        "correcta": false,
+        "explicacion": "Se controla bien la comparación, pero se mide el tiempo y no la temperatura de ebullición, que es lo que afirma la hipótesis.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Mide una variable distinta a la de la hipótesis"
+      }
+    ],
+    "explicacion": "Un diseño adecuado cambia solo la variable independiente (cantidad de sal), mantiene constantes las demás (volumen de agua, olla, estufa) y mide la variable dependiente de la hipótesis (temperatura de ebullición). Solo la primera propuesta cumple las tres condiciones; las otras cambian dos variables, varían una variable ajena o miden algo distinto.",
+    "que_identificar": "Que el diseño cambie únicamente la variable de la hipótesis y mida exactamente la variable que esta predice.",
+    "que_revisar": "Hipótesis, variables independiente y dependiente, diseño experimental.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-219",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Interpretación de un diseño con dos factores",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se estudió la germinación de semillas de maíz combinando dos temperaturas y dos niveles de humedad. El porcentaje de semillas germinadas fue:\n• 20 °C y humedad baja: 40 %.\n• 20 °C y humedad alta: 70 %.\n• 30 °C y humedad baja: 45 %.\n• 30 °C y humedad alta: 75 %.\n¿Cuál conclusión se apoya en estos resultados?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "La temperatura influye más que la humedad en la germinación.",
+        "correcta": false,
+        "explicacion": "Al pasar de 20 °C a 30 °C la germinación sube solo 5 puntos (con cualquier humedad), mientras que la humedad la sube 30 puntos.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Invierte el tamaño de los efectos"
+      },
+      {
+        "clave": "B",
+        "texto": "La humedad solo influye cuando la temperatura es de 30 °C.",
+        "correcta": false,
+        "explicacion": "La humedad alta aumenta la germinación 30 puntos tanto a 20 °C (40 → 70) como a 30 °C (45 → 75).",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "probable",
+        "razon_frecuente": "Mira solo una de las temperaturas"
+      },
+      {
+        "clave": "C",
+        "texto": "Ninguna de las dos variables afecta la germinación.",
+        "correcta": false,
+        "explicacion": "Ambas variables producen cambios: la humedad 30 puntos y la temperatura 5 puntos.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "La humedad influye más que la temperatura en la germinación.",
+        "correcta": true,
+        "explicacion": "Con la misma temperatura, pasar de humedad baja a alta aumenta la germinación 30 puntos; con la misma humedad, pasar de 20 °C a 30 °C la aumenta solo 5 puntos.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Se compara el efecto de cada variable manteniendo fija la otra. Humedad: a 20 °C pasa de 40 % a 70 % (+30) y a 30 °C de 45 % a 75 % (+30). Temperatura: con humedad baja pasa de 40 % a 45 % (+5) y con humedad alta de 70 % a 75 % (+5). La humedad tiene un efecto mucho mayor, y ambos efectos se observan en las dos condiciones.",
+    "que_identificar": "Cómo comparar pares de resultados que difieren en una sola variable para medir el efecto de cada una.",
+    "que_revisar": "Diseños con dos factores; comparación de efectos manteniendo una variable fija.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-220",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.control_variables",
+    "subhabilidad": "control_variables",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Control de variables",
+    "subtema": "Repetición de mediciones y confiabilidad",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un estudiante mide una sola vez el tiempo que tarda una bola en caer desde 2 m de altura y obtiene 0,64 s. Su compañera le dice que debe repetir la medición varias veces en las mismas condiciones y promediar. ¿Cuál es la razón principal de esa recomendación?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Porque una medida con decimales no se considera válida en un experimento.",
+        "correcta": false,
+        "explicacion": "Las medidas con decimales son normales y válidas; la precisión del instrumento no es el problema que resuelve la repetición.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Porque el tiempo de caída cambia según cuántas veces se mida.",
+        "correcta": false,
+        "explicacion": "El tiempo real de caída no depende de cuántas veces se mida; lo que varía es la lectura por errores de medición.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde la medida con la cantidad medida"
+      },
+      {
+        "clave": "C",
+        "texto": "Porque repetir y promediar reduce el efecto de los errores aleatorios de medición.",
+        "correcta": true,
+        "explicacion": "Cada medición tiene pequeños errores al azar (por ejemplo, el tiempo de reacción al activar el cronómetro). Al repetir y promediar, esos errores tienden a compensarse y el resultado es más confiable.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Porque así se puede cambiar la altura en cada intento y obtener más datos.",
+        "correcta": false,
+        "explicacion": "Cambiar la altura en cada intento sería variar la condición; la repetición debe hacerse en las mismas condiciones para que los datos sean comparables.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde repetir con variar"
+      }
+    ],
+    "explicacion": "Una sola medición puede estar afectada por errores aleatorios, como el tiempo de reacción al usar el cronómetro. Si se repite la medición varias veces en las mismas condiciones y se promedia, esos errores tienden a compensarse y el valor obtenido es más confiable. La repetición no cambia el fenómeno ni implica variar la altura.",
+    "que_identificar": "La diferencia entre el valor real de una magnitud y la lectura que se obtiene al medirla.",
+    "que_revisar": "Errores aleatorios, repetición de mediciones y promedio.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-221",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Cardinal de la unión de dos conjuntos",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En un grupo de 40 estudiantes, 25 tienen celular, 18 tienen tableta y 10 tienen ambos aparatos. ¿Cuántos estudiantes tienen al menos uno de los dos?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "33",
+        "correcta": true,
+        "explicacion": "Los que tienen al menos uno son 25 + 18 − 10 = 33: la intersección se resta porque al sumar se contó dos veces.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "43",
+        "correcta": false,
+        "explicacion": "43 es la suma 25 + 18 sin restar los 10 que tienen ambos, que quedan contados dos veces; además supera el total de 40.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No resta la intersección"
+      },
+      {
+        "clave": "C",
+        "texto": "23",
+        "correcta": false,
+        "explicacion": "23 resulta de restar la intersección dos veces (25 + 18 − 10 − 10); solo debe restarse una vez.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Resta la intersección dos veces"
+      },
+      {
+        "clave": "D",
+        "texto": "7",
+        "correcta": false,
+        "explicacion": "7 es el número de estudiantes que no tienen ninguno de los dos (40 − 33), no los que tienen al menos uno.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Responde el complemento"
+      }
+    ],
+    "explicacion": "Al sumar 25 + 18 = 43, los 10 estudiantes que tienen ambos aparatos quedan contados dos veces. Se resta la intersección una vez: 43 − 10 = 33 estudiantes tienen al menos uno. Los 7 restantes (40 − 33) no tienen ninguno.",
+    "que_identificar": "Que quienes tienen ambos aparatos están dentro de los 25 y también dentro de los 18.",
+    "que_revisar": "Cardinal de la unión: |A ∪ B| = |A| + |B| − |A ∩ B|.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-222",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Elementos fuera de la unión",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "De 50 familias encuestadas en una vereda, 32 cultivan café, 20 cultivan plátano y 12 cultivan ambos productos. ¿Cuántas familias no cultivan ninguno de los dos?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "18",
+        "correcta": false,
+        "explicacion": "18 es el número de familias que no cultivan café (50 − 32); pero algunas de ellas cultivan plátano.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Resta solo un conjunto"
+      },
+      {
+        "clave": "B",
+        "texto": "8",
+        "correcta": false,
+        "explicacion": "8 son las familias que cultivan solo plátano (20 − 12), no las que no cultivan ninguno.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde «solo plátano» con «ninguno»"
+      },
+      {
+        "clave": "C",
+        "texto": "2",
+        "correcta": false,
+        "explicacion": "2 resultaría de 50 − 32 − 20 sin tener en cuenta que los 12 que cultivan ambos se restaron dos veces (el resultado sería −2, que no tiene sentido).",
+        "tipo_error": "procedimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "10",
+        "correcta": true,
+        "explicacion": "Cultivan al menos uno 32 + 20 − 12 = 40 familias; las que no cultivan ninguno son 50 − 40 = 10.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Primero se halla cuántas familias cultivan al menos uno de los dos productos: 32 + 20 − 12 = 40 (se resta la intersección para no contarla dos veces). Luego se resta del total: 50 − 40 = 10 familias no cultivan ninguno.",
+    "que_identificar": "Que «ninguno» es el complemento de la unión, no de un solo conjunto.",
+    "que_revisar": "Unión de conjuntos y complemento respecto al universo.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-223",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Elementos que pertenecen exactamente a un conjunto",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una escuela de música hay 60 estudiantes: 35 tocan guitarra, 30 tocan piano y 15 tocan ambos instrumentos. ¿Cuántos estudiantes tocan exactamente uno de los dos instrumentos?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "50",
+        "correcta": false,
+        "explicacion": "50 es el número de estudiantes que tocan al menos un instrumento (35 + 30 − 15); incluye a los 15 que tocan ambos.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde «al menos uno» con «exactamente uno»"
+      },
+      {
+        "clave": "B",
+        "texto": "35",
+        "correcta": true,
+        "explicacion": "Solo guitarra: 35 − 15 = 20. Solo piano: 30 − 15 = 15. Exactamente uno: 20 + 15 = 35.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "65",
+        "correcta": false,
+        "explicacion": "65 es la suma 35 + 30, que cuenta dos veces a los que tocan ambos y además supera el total de estudiantes.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No resta la intersección"
+      },
+      {
+        "clave": "D",
+        "texto": "10",
+        "correcta": false,
+        "explicacion": "10 son los estudiantes que no tocan ninguno de los dos instrumentos (60 − 50).",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Responde el complemento"
+      }
+    ],
+    "explicacion": "«Exactamente uno» excluye a quienes tocan ambos. Solo guitarra: 35 − 15 = 20. Solo piano: 30 − 15 = 15. En total, 20 + 15 = 35 estudiantes tocan un único instrumento. Quienes tocan al menos uno son 50 y 10 no tocan ninguno.",
+    "que_identificar": "La diferencia entre «al menos uno» (unión) y «exactamente uno» (unión menos intersección).",
+    "que_revisar": "Diferencia de conjuntos; regiones de un diagrama de dos conjuntos.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-224",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Cálculo de la intersección a partir del complemento",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En un club de lectura de 45 personas, 28 leen novelas, 24 leen poesía y 6 no leen ninguno de los dos géneros. ¿Cuántas personas leen ambos géneros?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "7",
+        "correcta": false,
+        "explicacion": "7 resulta de 28 + 24 − 45, sin descontar las 6 personas que no leen ninguno: el total que lee al menos uno es 39, no 45.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida a quienes no leen ninguno"
+      },
+      {
+        "clave": "B",
+        "texto": "15",
+        "correcta": false,
+        "explicacion": "15 es el número de personas que leen solo novelas (28 − 13), no las que leen ambos géneros.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde «solo novelas» con «ambos»"
+      },
+      {
+        "clave": "C",
+        "texto": "13",
+        "correcta": true,
+        "explicacion": "Leen al menos uno 45 − 6 = 39 personas. Como 28 + 24 = 52 cuenta dos veces a quienes leen ambos: 52 − 39 = 13.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "11",
+        "correcta": false,
+        "explicacion": "11 es el número de personas que leen solo poesía (24 − 13), no las que leen ambos.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde «solo poesía» con «ambos»"
+      }
+    ],
+    "explicacion": "Quienes leen al menos un género son 45 − 6 = 39. Al sumar 28 + 24 = 52 se cuenta dos veces a quienes leen ambos, así que la intersección es 52 − 39 = 13. Comprobación: solo novelas 15, solo poesía 11, ambos 13 y ninguno 6; en total 15 + 11 + 13 + 6 = 45.",
+    "que_identificar": "Que el dato «ninguno» permite hallar la unión y, con ella, la intersección.",
+    "que_revisar": "Despeje de la intersección en |A ∪ B| = |A| + |B| − |A ∩ B|.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-225",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Verificación de afirmaciones sobre un diagrama de dos conjuntos",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "enunciado": "En un salón de 36 estudiantes, 20 practican natación, 16 practican atletismo y 8 practican ambos deportes. Se hacen las siguientes afirmaciones:\nI. 8 estudiantes no practican ninguno de los dos deportes.\nII. Los que practican solo natación son el doble de los que practican solo atletismo.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": true,
+        "explicacion": "Practican al menos uno 20 + 16 − 8 = 28; ninguno: 36 − 28 = 8, así que I es verdadera. Solo natación 12 y solo atletismo 8: 12 no es el doble de 8, así que II es falsa.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "II es falsa: solo natación son 20 − 8 = 12 y solo atletismo 16 − 8 = 8; el doble de 8 sería 16. Además I sí es verdadera.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "No resta la intersección al calcular «solo»"
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "I es verdadera, pero II no: 12 no es el doble de 8. Quien compara 20 con 8 (sin restar los que practican ambos) cree ver el doble; el error está en no restar la intersección.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Compara 20 con 8 sin restar la intersección"
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "I sí es verdadera: 36 − (20 + 16 − 8) = 8 estudiantes no practican ninguno.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Afirmación I: practican al menos uno 20 + 16 − 8 = 28 estudiantes; no practican ninguno 36 − 28 = 8. Verdadera. Afirmación II: solo natación 20 − 8 = 12; solo atletismo 16 − 8 = 8; 12 no es el doble de 8 (sería 16). Falsa. Solo es correcta la afirmación I.",
+    "que_identificar": "Que «solo natación» se obtiene restando la intersección, y que cada afirmación se verifica por separado.",
+    "que_revisar": "Regiones de un diagrama de dos conjuntos; verificación de afirmaciones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador",
+    "afirmaciones": [
+      "I. 8 estudiantes no practican ninguno de los dos deportes.",
+      "II. Los que practican solo natación son el doble de los que practican solo atletismo."
+    ]
+  },
+  {
+    "id": "UDEA-LOG-226",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Unión de tres conjuntos",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una tienda de barrio se registró lo que compraron 100 clientes en una mañana: 40 compraron pan, 35 compraron leche y 30 compraron huevos. Además, 10 compraron pan y leche, 8 compraron pan y huevos, 6 compraron leche y huevos, y 3 compraron los tres productos. ¿Cuántos clientes no compraron ninguno de los tres productos?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "19",
+        "correcta": false,
+        "explicacion": "19 resulta de 100 − (105 − 24) = 100 − 81: se restaron las tres intersecciones de a dos pero no se volvió a sumar a los 3 clientes que compraron los tres productos, que quedaron restados de más.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida sumar la intersección triple"
+      },
+      {
+        "clave": "B",
+        "texto": "16",
+        "correcta": true,
+        "explicacion": "Compraron al menos uno: 40 + 35 + 30 − 10 − 8 − 6 + 3 = 84. No compraron ninguno: 100 − 84 = 16.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "22",
+        "correcta": false,
+        "explicacion": "22 resulta de restar también los 3 que compraron los tres productos (105 − 24 − 3 = 78 → 100 − 78 = 22); en la fórmula la intersección triple se suma, no se resta.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Resta la intersección triple en vez de sumarla"
+      },
+      {
+        "clave": "D",
+        "texto": "24",
+        "correcta": false,
+        "explicacion": "24 es la suma de las intersecciones de a dos (10 + 8 + 6); no es la cantidad de clientes que no compraron nada.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Con tres conjuntos: |P ∪ L ∪ H| = 40 + 35 + 30 − 10 − 8 − 6 + 3 = 105 − 24 + 3 = 84 clientes compraron al menos un producto. Los que no compraron ninguno son 100 − 84 = 16. La intersección de los tres se suma al final porque al restar las tres parejas se eliminó tres veces y debe quedar contada una vez.",
+    "que_identificar": "Por qué la intersección de los tres conjuntos se suma al final en la fórmula de la unión.",
+    "que_revisar": "Principio de inclusión-exclusión para tres conjuntos.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-227",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Inclusión y complemento",
+    "dificultad": 2,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "enunciado": "En una empresa trabajan 80 personas. 50 hablan inglés, 30 hablan francés y 20 hablan los dos idiomas. Se hacen las siguientes afirmaciones:\nI. Todas las personas que hablan francés también hablan inglés.\nII. 20 personas no hablan ninguno de los dos idiomas.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "I es falsa: hablan francés 30 personas, pero solo 20 hablan también inglés; las otras 10 hablan francés sin inglés. Y II es verdadera.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Supone que un conjunto está contenido en el otro"
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": true,
+        "explicacion": "I es falsa porque 30 − 20 = 10 personas hablan francés pero no inglés. II es verdadera: hablan al menos uno 50 + 30 − 20 = 60, y 80 − 60 = 20 no hablan ninguno.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "II es verdadera, pero I no: para que todos los que hablan francés hablaran inglés, la intersección tendría que ser 30, y es 20.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde «20 hablan ambos» con «todos los de francés»"
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "II sí es verdadera: 80 − (50 + 30 − 20) = 20 personas no hablan ninguno de los dos idiomas.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Afirmación I: si todas las personas que hablan francés hablaran inglés, la intersección sería igual a 30; como es 20, hay 10 personas que hablan francés y no inglés. Falsa. Afirmación II: hablan al menos un idioma 50 + 30 − 20 = 60; no hablan ninguno 80 − 60 = 20. Verdadera. Solo es correcta la afirmación II.",
+    "que_identificar": "Qué significa que un conjunto esté contenido en otro en términos de la intersección.",
+    "que_revisar": "Inclusión de conjuntos; complemento de la unión.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador",
+    "afirmaciones": [
+      "I. Todas las personas que hablan francés también hablan inglés.",
+      "II. 20 personas no hablan ninguno de los dos idiomas."
+    ]
+  },
+  {
+    "id": "UDEA-LOG-228",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Conjuntos con porcentajes",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una encuesta sobre redes de mensajería, el 70 % de las personas dijo usar WhatsApp, el 55 % dijo usar Instagram y el 15 % dijo no usar ninguna de las dos. ¿Qué porcentaje de las personas encuestadas usa ambas?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "25 %",
+        "correcta": false,
+        "explicacion": "25 % resulta de 70 + 55 − 100, como si todos usaran al menos una; pero el 15 % no usa ninguna, así que la unión es 85 %, no 100 %.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida a quienes no usan ninguna"
+      },
+      {
+        "clave": "B",
+        "texto": "30 %",
+        "correcta": false,
+        "explicacion": "30 % es la parte que usa solo WhatsApp (70 − 40), no la que usa ambas.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde «solo WhatsApp» con «ambas»"
+      },
+      {
+        "clave": "C",
+        "texto": "15 %",
+        "correcta": false,
+        "explicacion": "15 % es la parte que no usa ninguna; para hallar la intersección hay que usar ese dato, pero no es la respuesta.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "40 %",
+        "correcta": true,
+        "explicacion": "Usa al menos una 100 − 15 = 85 %. Como 70 + 55 = 125 cuenta dos veces a quienes usan ambas: 125 − 85 = 40 %.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Los porcentajes funcionan igual que los cardinales con un total de 100. Usa al menos una red el 100 − 15 = 85 %. La suma 70 + 55 = 125 cuenta dos veces a quienes usan ambas, así que la intersección es 125 − 85 = 40 %. Comprobación: solo WhatsApp 30 %, solo Instagram 15 %, ambas 40 %, ninguna 15 %; total 100 %.",
+    "que_identificar": "Que el universo es 100 % y que «ninguna» define la unión antes de despejar la intersección.",
+    "que_revisar": "Inclusión-exclusión con porcentajes.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-229",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Elementos en exactamente dos de tres conjuntos",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se preguntó a 60 estudiantes por sus pasatiempos: 30 ven series, 25 escuchan pódcast y 20 leen cómics. 12 ven series y escuchan pódcast, 8 ven series y leen cómics, 7 escuchan pódcast y leen cómics, y 4 realizan las tres actividades. ¿Cuántos estudiantes realizan exactamente dos de las tres actividades?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "27",
+        "correcta": false,
+        "explicacion": "27 es la suma 12 + 8 + 7, pero en cada una de esas tres parejas están incluidos los 4 que hacen las tres actividades, que no realizan «exactamente dos».",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No descuenta la intersección triple"
+      },
+      {
+        "clave": "B",
+        "texto": "23",
+        "correcta": false,
+        "explicacion": "23 resulta de restar los 4 una sola vez (27 − 4); pero los 4 están contados en cada una de las tres parejas, así que deben restarse tres veces.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Resta la intersección triple una sola vez"
+      },
+      {
+        "clave": "C",
+        "texto": "15",
+        "correcta": true,
+        "explicacion": "Solo series y pódcast: 12 − 4 = 8. Solo series y cómics: 8 − 4 = 4. Solo pódcast y cómics: 7 − 4 = 3. Exactamente dos: 8 + 4 + 3 = 15.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "19",
+        "correcta": false,
+        "explicacion": "19 no corresponde a ninguna región del diagrama; puede venir de restar 8 en lugar de 12 (27 − 8).",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Cada dato «hacen X y Y» incluye a los 4 que hacen las tres actividades. Para obtener quienes hacen exactamente esas dos se resta 4 de cada pareja: 12 − 4 = 8, 8 − 4 = 4 y 7 − 4 = 3. En total 8 + 4 + 3 = 15 estudiantes realizan exactamente dos actividades. (Equivale a 27 − 3 × 4.)",
+    "que_identificar": "Que la intersección de los tres conjuntos está dentro de cada una de las intersecciones de a dos.",
+    "que_revisar": "Regiones de un diagrama de tres conjuntos; «exactamente dos».",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-230",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": "Valores mínimos y máximos de la intersección",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "enunciado": "En un conjunto residencial viven 50 familias: 30 tienen perro y 28 tienen gato. No se conoce cuántas tienen ambos animales. Se hacen las siguientes afirmaciones:\nI. Al menos 8 familias tienen perro y gato.\nII. A lo sumo 20 familias no tienen ninguno de los dos animales.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "I es verdadera, pero II también: las familias sin ninguno de los dos son x − 8, donde x es la intersección, y como x no puede pasar de 28, ese número no puede pasar de 20.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No analiza el valor máximo de la intersección"
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "II es verdadera, pero I también: 30 + 28 = 58 familias contadas superan a las 50 que existen, así que al menos 58 − 50 = 8 fueron contadas dos veces, es decir, tienen ambos.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cree que la intersección puede ser cero"
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": true,
+        "explicacion": "I: 30 + 28 = 58 > 50, así que por lo menos 8 familias tienen ambos animales. II: si x familias tienen ambos, las que no tienen ninguno son 50 − (58 − x) = x − 8; como x ≤ 28 (no puede superar al conjunto más pequeño), ese número es a lo sumo 20.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "Ambas afirmaciones se deducen de los datos: la intersección está entre 8 y 28, y las familias sin animales están entre 0 y 20.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Sea x el número de familias con ambos animales. Afirmación I: las que tienen al menos uno son 30 + 28 − x = 58 − x, que no puede superar 50; entonces x ≥ 8. Verdadera. Afirmación II: las familias sin ninguno son 50 − (58 − x) = x − 8. Como la intersección no puede ser mayor que el conjunto más pequeño, x ≤ 28, y por tanto x − 8 ≤ 20. Verdadera. Ambas afirmaciones son correctas.",
+    "que_identificar": "Las cotas de la intersección: nunca es menor que |A| + |B| − |U| ni mayor que el menor de los dos conjuntos.",
+    "que_revisar": "Cotas de la intersección y del complemento de la unión.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador",
+    "afirmaciones": [
+      "I. Al menos 8 familias tienen perro y gato.",
+      "II. A lo sumo 20 familias no tienen ninguno de los dos animales."
+    ]
+  }
+]

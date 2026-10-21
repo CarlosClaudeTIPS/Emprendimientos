@@ -1,0 +1,2990 @@
+[
+  {
+    "id": "UDEA-LOG-101",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Negación de un condicional",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un vecino de Medellín afirma: «Si llueve esta tarde, el partido del barrio se aplaza». La negación de esta afirmación es:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Si no llueve esta tarde, el partido del barrio no se aplaza.",
+        "correcta": false,
+        "explicacion": "Es el condicional inverso, no la negación: negar el antecedente y el consecuente produce otra implicación, no lo contrario de la original.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde negar con invertir el condicional"
+      },
+      {
+        "clave": "B",
+        "texto": "Llueve esta tarde y el partido del barrio no se aplaza.",
+        "correcta": true,
+        "explicacion": "Un condicional «si p, entonces q» solo es falso cuando p ocurre y q no. Por eso su negación es «p y no q»: llueve y, aun así, el partido no se aplaza.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "No llueve esta tarde y el partido del barrio se aplaza.",
+        "correcta": false,
+        "explicacion": "Esta situación es compatible con la afirmación original: el condicional no dice nada sobre lo que pasa si no llueve.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Niega ambas partes por separado"
+      },
+      {
+        "clave": "D",
+        "texto": "Si el partido del barrio no se aplaza, no llueve esta tarde.",
+        "correcta": false,
+        "explicacion": "Es el contrarrecíproco, que equivale a la afirmación original en lugar de negarla.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Toma una proposición equivalente como si fuera la negación"
+      }
+    ],
+    "explicacion": "La afirmación tiene la forma «si p, entonces q», con p: llueve esta tarde y q: el partido se aplaza. Un condicional es falso únicamente en el caso en que el antecedente es verdadero y el consecuente es falso. Por lo tanto, su negación es la conjunción «p y no q»: llueve esta tarde y el partido no se aplaza. Las demás opciones son otros condicionales (inverso o contrarrecíproco) o una combinación que no contradice la afirmación.",
+    "que_identificar": "La estructura «si p, entonces q» y el único caso que la hace falsa.",
+    "que_revisar": "Negación del condicional: ¬(p → q) ≡ p ∧ ¬q. Diferencia entre recíproco, inverso y contrarrecíproco.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-102",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Valores de verdad",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se sabe que la proposición p: «Ana tiene cédula» es verdadera y que la proposición q: «Ana votó en las elecciones» es falsa. ¿Cuál de las siguientes proposiciones es verdadera?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Ana tiene cédula y votó en las elecciones.",
+        "correcta": false,
+        "explicacion": "Una conjunción solo es verdadera si ambas partes lo son, y q es falsa.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida que la conjunción exige las dos partes verdaderas"
+      },
+      {
+        "clave": "B",
+        "texto": "Si Ana tiene cédula, entonces votó en las elecciones.",
+        "correcta": false,
+        "explicacion": "Es el caso p verdadera y q falsa, el único en que un condicional resulta falso.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee el condicional como si fuera verdadero por tener antecedente verdadero"
+      },
+      {
+        "clave": "C",
+        "texto": "Si Ana votó en las elecciones, entonces tiene cédula.",
+        "correcta": true,
+        "explicacion": "Es el condicional q → p. Como el antecedente q es falso, el condicional es verdadero sin importar el consecuente (y aquí además p es verdadero).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Ana no tiene cédula o votó en las elecciones.",
+        "correcta": false,
+        "explicacion": "Es ¬p ∨ q. Ambas partes son falsas (¬p es falsa porque p es verdadera, y q es falsa), así que la disyunción es falsa.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde el valor de ¬p"
+      }
+    ],
+    "explicacion": "Con p verdadera y q falsa se evalúa cada opción: la conjunción p ∧ q es falsa porque q lo es; el condicional p → q es falso porque tiene antecedente verdadero y consecuente falso; la disyunción ¬p ∨ q es falsa porque ¬p y q son ambas falsas. El condicional q → p («si Ana votó, entonces tiene cédula») tiene antecedente falso, y un condicional con antecedente falso siempre es verdadero. Esa es la única proposición verdadera.",
+    "que_identificar": "Los valores de p y q y la tabla de verdad de cada conectivo.",
+    "que_revisar": "Tablas de verdad de ∧, ∨, → y ¬; el condicional con antecedente falso es verdadero.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-103",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Deducción con premisas (modus tollens)",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En un curso se cumple la regla: «Todo estudiante que entregó el proyecto final aprobó la materia». Se sabe que Camilo, estudiante del curso, no aprobó la materia. De lo anterior se concluye con certeza que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Camilo entregó el proyecto final, pero tarde.",
+        "correcta": false,
+        "explicacion": "La regla no distingue entregas a tiempo o tardías; además, si entregó, debió aprobar, lo que contradice el dato.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Camilo entregó el proyecto final incompleto.",
+        "correcta": false,
+        "explicacion": "Es una explicación inventada: si Camilo hubiera entregado, por la regla habría aprobado, pero no aprobó.",
+        "tipo_error": "inferencia",
+        "diagnostico": "probable",
+        "razon_frecuente": "Agrega información que el enunciado no da"
+      },
+      {
+        "clave": "C",
+        "texto": "no es posible concluir nada sobre el proyecto de Camilo.",
+        "correcta": false,
+        "explicacion": "Sí es posible: la regla es un condicional y el dato niega su consecuente, lo que permite negar el antecedente.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No reconoce el modus tollens"
+      },
+      {
+        "clave": "D",
+        "texto": "Camilo no entregó el proyecto final.",
+        "correcta": true,
+        "explicacion": "La regla equivale a «si entregó el proyecto, entonces aprobó». Camilo no aprobó (se niega el consecuente), luego no entregó el proyecto (se niega el antecedente). Es el modus tollens.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La regla se traduce en el condicional «si entregó el proyecto, entonces aprobó». El dato «Camilo no aprobó» niega el consecuente. Por modus tollens, se niega el antecedente: Camilo no entregó el proyecto final. Si lo hubiera entregado, la regla obligaría a que aprobara, y eso contradice el dato. Cualquier detalle sobre entregas tardías o incompletas no está en el enunciado.",
+    "que_identificar": "Un condicional universal y un dato que niega su consecuente.",
+    "que_revisar": "Modus tollens: de p → q y ¬q se concluye ¬p. No añadir supuestos que no están en las premisas.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-104",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Equivalencias (leyes de De Morgan)",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una madre dice: «No es cierto que Juliana estudia y trabaja al mismo tiempo». Una afirmación equivalente a la anterior es:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Juliana no estudia o no trabaja.",
+        "correcta": true,
+        "explicacion": "Por la ley de De Morgan, la negación de una conjunción «p y q» es la disyunción de las negaciones: «no p o no q».",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Juliana no estudia y no trabaja.",
+        "correcta": false,
+        "explicacion": "Negar «p y q» no equivale a «no p y no q»: basta con que falle una de las dos actividades para que la afirmación original sea cierta.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Niega cada parte y conserva la «y»"
+      },
+      {
+        "clave": "C",
+        "texto": "Si Juliana estudia, entonces trabaja.",
+        "correcta": false,
+        "explicacion": "Este condicional es verdadero, por ejemplo, cuando Juliana hace ambas cosas, situación que la afirmación original excluye.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Juliana estudia o trabaja.",
+        "correcta": false,
+        "explicacion": "Esta disyunción es verdadera cuando Juliana hace las dos cosas, lo que contradice la afirmación original.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida negar las proposiciones simples"
+      }
+    ],
+    "explicacion": "La afirmación tiene la forma ¬(p ∧ q), con p: Juliana estudia y q: Juliana trabaja. Por la ley de De Morgan, ¬(p ∧ q) ≡ ¬p ∨ ¬q, es decir, «Juliana no estudia o no trabaja». La opción que conserva la «y» exige que fallen ambas actividades, condición más fuerte que la original. Las otras dos opciones son verdaderas cuando Juliana estudia y trabaja, caso que la afirmación original niega.",
+    "que_identificar": "Una conjunción negada en su totalidad.",
+    "que_revisar": "Leyes de De Morgan: ¬(p ∧ q) ≡ ¬p ∨ ¬q y ¬(p ∨ q) ≡ ¬p ∧ ¬q.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-105",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Deducción en cadena (modus ponens)",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se sabe que: «Si el bus sale a tiempo, Laura llega a la cita médica». «Si Laura llega a la cita médica, consigue el turno con el especialista». Hoy el bus salió a tiempo. ¿Qué se concluye necesariamente?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Laura consiguió el turno con el especialista.",
+        "correcta": true,
+        "explicacion": "Del hecho «el bus salió a tiempo» y la primera premisa se deduce que Laura llegó a la cita; con la segunda premisa se deduce que consiguió el turno. Dos aplicaciones de modus ponens.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Laura no llegó a la cita médica.",
+        "correcta": false,
+        "explicacion": "Contradice la primera premisa: el bus salió a tiempo, luego Laura llegó a la cita.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Invierte la conclusión de la primera premisa"
+      },
+      {
+        "clave": "C",
+        "texto": "Laura consiguió el turno, pero no por haber llegado a la cita.",
+        "correcta": false,
+        "explicacion": "El enunciado establece precisamente que llegar a la cita conduce al turno; esta opción contradice el encadenamiento.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "No es posible saber si Laura consiguió el turno.",
+        "correcta": false,
+        "explicacion": "Sí es posible: las dos premisas se encadenan y el dato afirma el antecedente de la primera.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No encadena los dos condicionales"
+      }
+    ],
+    "explicacion": "Sean p: el bus sale a tiempo, q: Laura llega a la cita y r: Laura consigue el turno. Las premisas son p → q y q → r, y el dato es p. Por modus ponens, de p y p → q se obtiene q; de q y q → r se obtiene r. Por lo tanto, Laura consiguió el turno con el especialista. Las otras opciones contradicen las premisas o niegan una conclusión que sí es deducible.",
+    "que_identificar": "Dos condicionales encadenados y la afirmación del primer antecedente.",
+    "que_revisar": "Modus ponens y silogismo hipotético: de p → q y q → r se obtiene p → r.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-106",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Equivalencias («solo si» y contrarrecíproco)",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En un reglamento se lee: «Solo las personas mayores de edad pueden inscribirse en el torneo». Una afirmación equivalente es:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Si una persona es mayor de edad, entonces se inscribe en el torneo.",
+        "correcta": false,
+        "explicacion": "El reglamento no obliga a los mayores de edad a inscribirse; solo exige la mayoría de edad a quien se inscriba.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee «solo» como «todos los que»"
+      },
+      {
+        "clave": "B",
+        "texto": "Toda persona mayor de edad participa en el torneo.",
+        "correcta": false,
+        "explicacion": "Es la misma confusión: ser mayor de edad es condición necesaria para inscribirse, no suficiente.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde condición necesaria con suficiente"
+      },
+      {
+        "clave": "C",
+        "texto": "Si una persona no se inscribe en el torneo, no es mayor de edad.",
+        "correcta": false,
+        "explicacion": "Es el inverso de la afirmación correcta; una persona mayor de edad puede simplemente no inscribirse.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Niega las partes en el orden equivocado"
+      },
+      {
+        "clave": "D",
+        "texto": "Si una persona no es mayor de edad, entonces no puede inscribirse en el torneo.",
+        "correcta": true,
+        "explicacion": "«Solo los mayores de edad se inscriben» significa «si alguien se inscribe, es mayor de edad». Su contrarrecíproco, equivalente, es «si no es mayor de edad, no se inscribe».",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La expresión «solo los A hacen B» se traduce como «si alguien hace B, entonces es A»: inscribirse exige ser mayor de edad. El contrarrecíproco de ese condicional, que es lógicamente equivalente, es «si alguien no es mayor de edad, entonces no puede inscribirse». Las opciones que afirman que todo mayor de edad se inscribe convierten una condición necesaria en suficiente, y la que dice «si no se inscribe, no es mayor de edad» es el inverso, que no es equivalente.",
+    "que_identificar": "La palabra «solo» como condición necesaria y la dirección del condicional.",
+    "que_revisar": "Traducción de «solo si» y «solo los»; equivalencia con el contrarrecíproco.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-107",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Tablas de verdad y equivalencias",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. La proposición (p ∨ q) → (p ∧ q) es falsa en exactamente dos de las cuatro combinaciones posibles de valores de verdad de p y q.",
+      "II. La proposición p → q es equivalente a ¬p ∨ q."
+    ],
+    "enunciado": "Considere las siguientes afirmaciones sobre proposiciones p y q cualesquiera.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "La primera es correcta, pero la segunda también: p → q y ¬p ∨ q tienen la misma tabla de verdad.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "No conoce la equivalencia del condicional con la disyunción"
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "La segunda es correcta, pero la primera también: la proposición es falsa en las filas (V, F) y (F, V).",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cuenta mal las filas de la tabla"
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": true,
+        "explicacion": "La primera se verifica con la tabla de verdad: (p ∨ q) → (p ∧ q) es falsa exactamente cuando una sola de las dos es verdadera (dos filas). La segunda es la equivalencia clásica del condicional con la disyunción.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "Ambas afirmaciones son verdaderas, como lo muestran las tablas de verdad.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Afirmación I: se construye la tabla de (p ∨ q) → (p ∧ q). Con (V, V): V → V, verdadera. Con (V, F): V → F, falsa. Con (F, V): V → F, falsa. Con (F, F): F → F, verdadera. Es falsa en exactamente dos combinaciones, así que I es correcta. Afirmación II: p → q es falsa solo cuando p es V y q es F; ¬p ∨ q es falsa solo cuando ¬p es F (p es V) y q es F. Coinciden en todas las filas, luego son equivalentes y II es correcta. Por lo tanto, ambas son correctas.",
+    "que_identificar": "Cuántas filas tiene la tabla y en cuáles falla cada conectivo.",
+    "que_revisar": "Construcción de tablas de verdad con dos variables; equivalencia p → q ≡ ¬p ∨ q.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-108",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Deducción con disyunción y condicional",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Sofía pasó sus vacaciones en Cartagena o en Santa Marta. Si estuvo en Cartagena, visitó a su tía. Al regresar, se supo que Sofía no visitó a su tía. Con certeza se concluye que Sofía",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "estuvo en Cartagena.",
+        "correcta": false,
+        "explicacion": "Si hubiera estado en Cartagena habría visitado a su tía, y no lo hizo; luego no estuvo allí.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Ignora el dato de la tía"
+      },
+      {
+        "clave": "B",
+        "texto": "estuvo en Santa Marta.",
+        "correcta": true,
+        "explicacion": "Como no visitó a su tía, por modus tollens no estuvo en Cartagena. La disyunción obliga entonces a que haya estado en Santa Marta.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "no salió de vacaciones.",
+        "correcta": false,
+        "explicacion": "El enunciado afirma que estuvo en una de las dos ciudades; no se puede negar la disyunción.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Desconoce la primera premisa"
+      },
+      {
+        "clave": "D",
+        "texto": "visitó a su tía en Santa Marta.",
+        "correcta": false,
+        "explicacion": "El dato dice expresamente que Sofía no visitó a su tía en ningún lugar.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Contradice un dato explícito"
+      }
+    ],
+    "explicacion": "Sean c: estuvo en Cartagena, s: estuvo en Santa Marta y t: visitó a su tía. Las premisas son c ∨ s, c → t y ¬t. De c → t y ¬t, por modus tollens, se obtiene ¬c: no estuvo en Cartagena. De c ∨ s y ¬c, por silogismo disyuntivo, se obtiene s: Sofía estuvo en Santa Marta. Las demás opciones contradicen alguna premisa.",
+    "que_identificar": "Una disyunción, un condicional y la negación de su consecuente.",
+    "que_revisar": "Modus tollens y silogismo disyuntivo (de p ∨ q y ¬p se obtiene q).",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-109",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Negación de cuantificadores",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un pasajero asegura: «Todos los buses de esta ruta tienen aire acondicionado». Para demostrar que está equivocado basta con comprobar que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "ningún bus de la ruta tiene aire acondicionado.",
+        "correcta": false,
+        "explicacion": "Eso sí refutaría la afirmación, pero no es lo mínimo necesario: exige mucho más de lo que se pide para «basta con».",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Niega «todos» con «ninguno»"
+      },
+      {
+        "clave": "B",
+        "texto": "algunos buses de la ruta tienen aire acondicionado.",
+        "correcta": false,
+        "explicacion": "Esto es compatible con que todos lo tengan; no contradice la afirmación.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde «algunos tienen» con «algunos no tienen»"
+      },
+      {
+        "clave": "C",
+        "texto": "los buses de otras rutas no tienen aire acondicionado.",
+        "correcta": false,
+        "explicacion": "La afirmación habla solo de esta ruta; lo que pase en otras rutas es irrelevante.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "al menos un bus de la ruta no tiene aire acondicionado.",
+        "correcta": true,
+        "explicacion": "La negación de «todos los x cumplen P» es «existe al menos un x que no cumple P». Un solo contraejemplo basta.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La afirmación es universal: «para todo bus de la ruta, tiene aire acondicionado». Su negación es existencial: «existe al menos un bus de la ruta que no tiene aire acondicionado». Encontrar un solo bus sin aire acondicionado la refuta. Decir que ninguno lo tiene también la refutaría, pero no es lo mínimo que basta; decir que algunos sí lo tienen no la contradice; y hablar de otras rutas está fuera del alcance de la afirmación.",
+    "que_identificar": "El cuantificador «todos» y qué significa negarlo.",
+    "que_revisar": "Negación de cuantificadores: ¬(∀x P(x)) ≡ ∃x ¬P(x); el papel del contraejemplo.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-110",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": "Condicional falso con consecuente compuesto",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un concejal afirma: «Si el municipio recibe la financiación, entonces se construye el puente y se pavimenta la vía». Al año siguiente se comprobó que la afirmación del concejal fue falsa. De lo anterior es necesariamente cierto que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "el municipio no recibió la financiación.",
+        "correcta": false,
+        "explicacion": "Si no la hubiera recibido, el condicional sería verdadero (antecedente falso), lo que contradice que fue falso.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida que un condicional con antecedente falso es verdadero"
+      },
+      {
+        "clave": "B",
+        "texto": "el municipio recibió la financiación y no se pavimentó la vía.",
+        "correcta": false,
+        "explicacion": "No es necesario: pudo construirse la vía y faltar el puente; eso también hace falsa la afirmación.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Niega solo una de las dos obras"
+      },
+      {
+        "clave": "C",
+        "texto": "el municipio recibió la financiación y al menos una de las dos obras no se hizo.",
+        "correcta": true,
+        "explicacion": "Un condicional es falso únicamente cuando el antecedente es verdadero y el consecuente falso. El consecuente es una conjunción, falsa cuando falla al menos una de sus partes.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "no se construyó el puente ni se pavimentó la vía.",
+        "correcta": false,
+        "explicacion": "Basta con que falte una obra para que la conjunción sea falsa; no se puede asegurar que faltaron ambas.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Niega la conjunción como si fuera «ni uno ni otro»"
+      }
+    ],
+    "explicacion": "La afirmación tiene la forma f → (p ∧ v), con f: recibe financiación, p: se construye el puente y v: se pavimenta la vía. Que sea falsa significa que el antecedente f es verdadero y el consecuente p ∧ v es falso. Por De Morgan, ¬(p ∧ v) ≡ ¬p ∨ ¬v: al menos una de las dos obras no se hizo. Así, se recibió la financiación y faltó al menos una obra. No se puede asegurar cuál faltó ni que faltaran ambas.",
+    "que_identificar": "El único caso en que un condicional es falso y la negación de una conjunción.",
+    "que_revisar": "¬(p → q) ≡ p ∧ ¬q combinada con De Morgan; no concluir más de lo que las premisas permiten.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-111",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Proporcionalidad directa",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una plaza de mercado, 4 kg de papa cuestan $9.600. Al mismo precio por kilo, ¿cuánto cuestan 7 kg de papa?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "$14.400",
+        "correcta": false,
+        "explicacion": "Corresponde a 6 kg (6 × $2.400), no a 7 kg.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Multiplica por una cantidad equivocada"
+      },
+      {
+        "clave": "B",
+        "texto": "$16.800",
+        "correcta": true,
+        "explicacion": "El precio por kilo es $9.600 ÷ 4 = $2.400. Entonces 7 kg cuestan 7 × $2.400 = $16.800.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "$19.200",
+        "correcta": false,
+        "explicacion": "Es el precio de 8 kg (el doble de 4 kg), no de 7 kg.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Duplica el precio de 4 kg"
+      },
+      {
+        "clave": "D",
+        "texto": "$13.600",
+        "correcta": false,
+        "explicacion": "No corresponde a ninguna cantidad entera de kilos a $2.400; resulta de un error aritmético.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El costo es directamente proporcional a la cantidad de kilos. Primero se halla el valor unitario: $9.600 ÷ 4 kg = $2.400 por kilo. Luego se multiplica por los 7 kg: 7 × $2.400 = $16.800. También puede plantearse la regla de tres: 4/9.600 = 7/x, de donde x = 7 × 9.600 ÷ 4 = 16.800.",
+    "que_identificar": "Que la relación kilos–precio es directa (más kilos, más dinero).",
+    "que_revisar": "Regla de tres directa y valor unitario.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-112",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Proporcionalidad inversa",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un tanque de agua se llena en 20 minutos usando 6 llaves iguales. Si solo se abren 4 de esas llaves, el tanque se llena en",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "13 minutos y 20 segundos.",
+        "correcta": false,
+        "explicacion": "Resulta de aplicar una regla de tres directa (20 × 4 ÷ 6), pero menos llaves deben tardar más, no menos.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Usa proporcionalidad directa en una relación inversa"
+      },
+      {
+        "clave": "B",
+        "texto": "24 minutos.",
+        "correcta": false,
+        "explicacion": "Es solo un aumento arbitrario; no mantiene constante el producto llaves × minutos.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "30 minutos.",
+        "correcta": true,
+        "explicacion": "La relación es inversa: 6 × 20 = 4 × t, de donde t = 120 ÷ 4 = 30 minutos.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "40 minutos.",
+        "correcta": false,
+        "explicacion": "Sería el doble del tiempo, lo que corresponde a la mitad de las llaves (3), no a 4.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Duplica el tiempo sin calcular la proporción"
+      }
+    ],
+    "explicacion": "A menor número de llaves, mayor tiempo: la relación es inversamente proporcional, de modo que el producto llaves × minutos se mantiene constante. Con 6 llaves, 6 × 20 = 120. Con 4 llaves, 4 × t = 120, luego t = 30 minutos. La opción de 13 min 20 s proviene de aplicar una regla de tres directa, que daría menos tiempo con menos llaves, lo cual no tiene sentido.",
+    "que_identificar": "Que al reducir una magnitud la otra aumenta (relación inversa).",
+    "que_revisar": "Proporcionalidad inversa: producto constante; verificar el sentido del resultado.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-113",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Proporcionalidad compuesta",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una fábrica, 5 máquinas iguales producen 1.200 arepas en 4 horas. ¿Cuántas arepas producen 8 máquinas iguales en 6 horas?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "2.880",
+        "correcta": true,
+        "explicacion": "La producción es directamente proporcional a las máquinas y a las horas: 1.200 × (8/5) × (6/4) = 1.200 × 1,6 × 1,5 = 2.880.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "1.920",
+        "correcta": false,
+        "explicacion": "Solo se ajustó el número de máquinas (1.200 × 8/5) y se olvidó el cambio de 4 a 6 horas.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Aplica una sola de las dos proporciones"
+      },
+      {
+        "clave": "C",
+        "texto": "3.200",
+        "correcta": false,
+        "explicacion": "Resulta de operar mal las fracciones (por ejemplo, 1.200 × 8 × 6 ÷ 18); el producto de 8/5 por 6/4 es 2,4, no 2,67.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "1.000",
+        "correcta": false,
+        "explicacion": "Se invirtió alguna de las razones, como si más máquinas o más horas produjeran menos.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Invierte una razón directa"
+      }
+    ],
+    "explicacion": "Producción, máquinas y horas se relacionan de forma directa: más máquinas o más horas producen más arepas. Se parte de 1.200 y se multiplica por la razón de máquinas (8/5 = 1,6) y por la razón de horas (6/4 = 1,5): 1.200 × 1,6 = 1.920 y 1.920 × 1,5 = 2.880 arepas. Otra forma: cada máquina produce 1.200 ÷ 5 ÷ 4 = 60 arepas por hora; 8 máquinas en 6 horas producen 8 × 6 × 60 = 2.880.",
+    "que_identificar": "Dos magnitudes que varían a la vez y el sentido (directo) de cada una.",
+    "que_revisar": "Regla de tres compuesta; método de la producción unitaria por máquina y por hora.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-114",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Escalas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En un mapa a escala 1:250.000, la distancia en línea recta entre dos pueblos del oriente antioqueño mide 3,6 cm. La distancia real entre los pueblos es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "0,9 km",
+        "correcta": false,
+        "explicacion": "Hay un error de una cifra al convertir centímetros a kilómetros: 900.000 cm son 9 km, no 0,9 km.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Error en la conversión de unidades"
+      },
+      {
+        "clave": "B",
+        "texto": "36 km",
+        "correcta": false,
+        "explicacion": "Multiplicó 3,6 por 10 en lugar de aplicar la escala y convertir unidades correctamente.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "90 km",
+        "correcta": false,
+        "explicacion": "Resulta de convertir mal: 900.000 cm equivalen a 9.000 m, es decir, 9 km, no 90 km.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Se equivoca en una potencia de 10"
+      },
+      {
+        "clave": "D",
+        "texto": "9 km",
+        "correcta": true,
+        "explicacion": "Cada centímetro del mapa representa 250.000 cm reales. 3,6 × 250.000 = 900.000 cm = 9.000 m = 9 km.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La escala 1:250.000 indica que 1 cm del mapa equivale a 250.000 cm reales. Entonces 3,6 cm representan 3,6 × 250.000 = 900.000 cm. Se convierte: 900.000 cm ÷ 100 = 9.000 m, y 9.000 m ÷ 1.000 = 9 km. Un truco útil: 250.000 cm = 2,5 km, así que cada centímetro del mapa son 2,5 km y 3,6 × 2,5 = 9 km.",
+    "que_identificar": "Qué significa la escala y las conversiones cm → m → km.",
+    "que_revisar": "Escalas como proporción directa; conversión de unidades de longitud.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-115",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Mezclas y porcentajes",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se mezclan 3 litros de un jugo que contiene 40 % de pulpa con 2 litros de otro jugo que contiene 15 % de pulpa. El porcentaje de pulpa de la mezcla es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "27,5 %",
+        "correcta": false,
+        "explicacion": "Es el promedio simple de 40 % y 15 %, que solo valdría si los dos volúmenes fueran iguales.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Promedia los porcentajes sin ponderar por el volumen"
+      },
+      {
+        "clave": "B",
+        "texto": "30 %",
+        "correcta": true,
+        "explicacion": "Pulpa total: 0,40 × 3 + 0,15 × 2 = 1,2 + 0,3 = 1,5 litros en 5 litros de mezcla. 1,5 ÷ 5 = 0,30 = 30 %.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "32,5 %",
+        "correcta": false,
+        "explicacion": "Pondera al revés, dando más peso al jugo de 15 % que al de 40 %; los 3 litros son del jugo más concentrado.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "55 %",
+        "correcta": false,
+        "explicacion": "Suma los porcentajes como si se acumularan; un porcentaje de mezcla siempre queda entre los dos originales.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suma porcentajes de componentes distintos"
+      }
+    ],
+    "explicacion": "Se calcula la cantidad de pulpa de cada jugo: 40 % de 3 L es 1,2 L y 15 % de 2 L es 0,3 L. En total hay 1,5 L de pulpa en 3 + 2 = 5 L de mezcla. El porcentaje es 1,5 ÷ 5 = 0,30, es decir, 30 %. El promedio simple (27,5 %) no sirve porque los volúmenes son distintos: la mezcla se parece más al jugo del que hay más cantidad.",
+    "que_identificar": "Que el porcentaje final es un promedio ponderado por los volúmenes.",
+    "que_revisar": "Porcentaje de una cantidad; concentración = parte ÷ total.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-116",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Reparto proporcional",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. El socio que aportó 5 millones recibe $2.000.000.",
+      "II. El socio que aportó 2 millones recibe la mitad de lo que recibe el socio que aportó 3 millones."
+    ],
+    "enunciado": "Tres socios de una panadería en Rionegro aportaron 2, 3 y 5 millones de pesos, respectivamente, y acordaron repartir las utilidades de $4.000.000 en proporción directa a sus aportes.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": true,
+        "explicacion": "El total de aportes es 10 millones. El socio de 5 millones recibe 5/10 de $4.000.000 = $2.000.000 (I correcta). El de 2 millones recibe $800.000 y el de 3 millones $1.200.000; 800.000 no es la mitad de 1.200.000 (II falsa).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "La afirmación II es falsa: $800.000 es dos terceras partes de $1.200.000, no la mitad.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Supone que a aportes distintos corresponde una razón de 1 a 2"
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "La afirmación II es falsa; solo la primera se cumple.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "No verifica la razón 2:3 entre los dos socios menores"
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "La afirmación I sí es correcta: la mitad de los aportes corresponde a la mitad de las utilidades.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El total aportado es 2 + 3 + 5 = 10 millones. Cada socio recibe la fracción de las utilidades igual a su fracción del aporte. Socio de 5 millones: 5/10 × 4.000.000 = 2.000.000 (afirmación I correcta). Socio de 2 millones: 2/10 × 4.000.000 = 800.000; socio de 3 millones: 3/10 × 4.000.000 = 1.200.000. La razón entre ellos es 800.000 : 1.200.000 = 2 : 3, no 1 : 2, así que la afirmación II es falsa. Comprobación: 800.000 + 1.200.000 + 2.000.000 = 4.000.000.",
+    "que_identificar": "La fracción del total que representa cada aporte.",
+    "que_revisar": "Reparto directamente proporcional; razones entre partes.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-117",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Proporcionalidad inversa con cambio de condiciones",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una cuadrilla de 12 obreros, trabajando al mismo ritmo, empedra una calle en 15 días. Al terminar el quinto día se retiran 4 obreros. ¿Cuántos días más necesitan los obreros que quedan para terminar la calle?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "10 días",
+        "correcta": false,
+        "explicacion": "Es el tiempo que faltaba con los 12 obreros; no tiene en cuenta que ahora son menos.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Ignora el retiro de los obreros"
+      },
+      {
+        "clave": "B",
+        "texto": "20 días",
+        "correcta": false,
+        "explicacion": "Es el total de días de la obra (5 + 15), pero se pregunta por los días que faltan después del quinto día.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Responde el total en vez de lo que falta"
+      },
+      {
+        "clave": "C",
+        "texto": "15 días",
+        "correcta": true,
+        "explicacion": "La obra total equivale a 12 × 15 = 180 jornadas. En 5 días se gastaron 60; faltan 120 jornadas para 8 obreros: 120 ÷ 8 = 15 días.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "18 días",
+        "correcta": false,
+        "explicacion": "Resulta de restar mal las jornadas hechas o de usar 12 obreros en lugar de 8 en alguna parte del cálculo.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Se mide la obra en jornadas de obrero: 12 obreros × 15 días = 180 jornadas. En los primeros 5 días los 12 obreros completaron 12 × 5 = 60 jornadas; faltan 180 − 60 = 120. Quedan 12 − 4 = 8 obreros, que necesitan 120 ÷ 8 = 15 días más. Otra vía: faltaban 10 días con 12 obreros; con 8 obreros la relación es inversa, 10 × 12 ÷ 8 = 15 días.",
+    "que_identificar": "Separar lo que ya se hizo de lo que falta antes de aplicar la proporción.",
+    "que_revisar": "Proporcionalidad inversa; método de las jornadas (obrero-día).",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-118",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Proporcionalidad directa en recetas",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una receta de arroz con pollo para 6 personas usa 450 g de arroz. Para preparar la misma receta para 10 personas se necesitan",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "600 g",
+        "correcta": false,
+        "explicacion": "Corresponde a 8 personas (8 × 75 g), no a 10.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suma 150 g sin calcular la porción"
+      },
+      {
+        "clave": "B",
+        "texto": "700 g",
+        "correcta": false,
+        "explicacion": "No es múltiplo de 75 g por persona; proviene de un redondeo o una suma equivocada.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "900 g",
+        "correcta": false,
+        "explicacion": "Es el doble de la receta, que serviría para 12 personas, no para 10.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Duplica la receta sin ajustar"
+      },
+      {
+        "clave": "D",
+        "texto": "750 g",
+        "correcta": true,
+        "explicacion": "Cada persona requiere 450 ÷ 6 = 75 g de arroz. Para 10 personas: 10 × 75 = 750 g.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La cantidad de arroz es directamente proporcional al número de personas. Por persona se necesitan 450 ÷ 6 = 75 g. Para 10 personas, 10 × 75 = 750 g. Con regla de tres: 6/450 = 10/x, x = 450 × 10 ÷ 6 = 750. Duplicar la receta (900 g) alcanzaría para 12 personas y sobraría.",
+    "que_identificar": "La cantidad por persona como valor unitario.",
+    "que_revisar": "Regla de tres directa; valor unitario.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-119",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Velocidad y tiempo (relación inversa)",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. Si el bus aumentara su velocidad promedio a 70 km/h, tardaría 5 horas en el mismo trayecto.",
+      "II. Si el bus duplicara su velocidad promedio, el tiempo del trayecto se reduciría a la mitad."
+    ],
+    "enunciado": "Un bus intermunicipal recorre un trayecto de 420 km a una velocidad promedio de 60 km/h, de modo que tarda 7 horas.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "La afirmación I es falsa: a 70 km/h el tiempo es 420 ÷ 70 = 6 horas, no 5.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Resta 10 km/h como si fueran horas"
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": true,
+        "explicacion": "A 70 km/h el tiempo sería 420 ÷ 70 = 6 horas, no 5 (I falsa). Como distancia = velocidad × tiempo, al duplicar la velocidad con la misma distancia el tiempo se reduce a la mitad (II correcta).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "La afirmación I es falsa; a 70 km/h se tardan 6 horas.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Acepta I sin dividir 420 entre 70"
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "La afirmación II sí es correcta: velocidad y tiempo son inversamente proporcionales para una distancia fija.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Afirmación I: con 420 km y 70 km/h el tiempo es 420 ÷ 70 = 6 horas, no 5, así que I es falsa. Afirmación II: para una distancia fija, velocidad y tiempo son inversamente proporcionales (su producto es la distancia constante); si la velocidad pasa de 60 a 120 km/h, el tiempo pasa de 7 a 420 ÷ 120 = 3,5 horas, la mitad. II es correcta. Por lo tanto, solo II es correcta.",
+    "que_identificar": "La relación distancia = velocidad × tiempo y su carácter inverso a distancia fija.",
+    "que_revisar": "Proporcionalidad inversa entre velocidad y tiempo; verificar con la operación, no por intuición.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-120",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": "Mezclas: dilución",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se tienen 8 litros de una solución limpiadora con 25 % de vinagre. ¿Cuántos litros de agua pura hay que agregar para que la solución quede con 10 % de vinagre?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "12 litros",
+        "correcta": true,
+        "explicacion": "Hay 0,25 × 8 = 2 L de vinagre, cantidad que no cambia al agregar agua. Se requiere 2 ÷ (8 + x) = 0,10, luego 8 + x = 20 y x = 12.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "20 litros",
+        "correcta": false,
+        "explicacion": "20 litros es el volumen total final de la solución, no la cantidad de agua agregada.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde el total final con lo agregado"
+      },
+      {
+        "clave": "C",
+        "texto": "10 litros",
+        "correcta": false,
+        "explicacion": "Con 10 L de agua el total sería 18 L y el porcentaje 2 ÷ 18 ≈ 11,1 %, no 10 %.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "4 litros",
+        "correcta": false,
+        "explicacion": "Resulta de restar porcentajes (25 − 10 = 15) o de suponer que el agua agregada es proporcional a 8 L de forma directa; con 4 L la solución quedaría al 16,7 %.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Opera con los porcentajes como si fueran litros"
+      }
+    ],
+    "explicacion": "La cantidad de vinagre no cambia al agregar agua: 25 % de 8 L = 2 L. Si se agregan x litros de agua, el volumen total es 8 + x y el vinagre debe ser el 10 %: 2 = 0,10 × (8 + x). Entonces 8 + x = 20 y x = 12 litros. Comprobación: 2 L de vinagre en 20 L totales es exactamente el 10 %. El 20 es el volumen final, no el agua agregada.",
+    "que_identificar": "La cantidad de soluto que permanece constante al diluir.",
+    "que_revisar": "Porcentajes en mezclas; ecuación concentración = soluto ÷ volumen total.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-121",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Aplicar una operación definida",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Para números reales se define la operación a ◇ b = 3a − 2b. El valor de 4 ◇ 5 es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "22",
+        "correcta": false,
+        "explicacion": "Resulta de sumar en lugar de restar: 3 × 4 + 2 × 5 = 22.",
+        "tipo_error": "descuido",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cambia el signo de la definición"
+      },
+      {
+        "clave": "B",
+        "texto": "7",
+        "correcta": false,
+        "explicacion": "Es 5 ◇ 4 = 3 × 5 − 2 × 4 = 7; se intercambió el orden de los operandos.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Invierte el orden de a y b"
+      },
+      {
+        "clave": "C",
+        "texto": "−2",
+        "correcta": false,
+        "explicacion": "Proviene de restar al revés (2b − 3a = 10 − 12 = −2).",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Resta en orden contrario"
+      },
+      {
+        "clave": "D",
+        "texto": "2",
+        "correcta": true,
+        "explicacion": "Se reemplaza a = 4 y b = 5 en la definición: 3 × 4 − 2 × 5 = 12 − 10 = 2.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La operación está definida por a ◇ b = 3a − 2b. Se sustituye a = 4 y b = 5 respetando el orden: 3 × 4 − 2 × 5 = 12 − 10 = 2. El orden importa porque la operación no es conmutativa: 5 ◇ 4 daría 15 − 8 = 7. El error más común es cambiar el signo de la resta o invertir los operandos.",
+    "que_identificar": "Qué papel cumple cada operando en la definición.",
+    "que_revisar": "Sustitución ordenada en operaciones definidas; la operación puede no ser conmutativa.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-122",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Operaciones anidadas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se define la operación a ★ b = a·b − (a + b). El valor de (2 ★ 3) ★ 1 es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "−1",
+        "correcta": true,
+        "explicacion": "Primero 2 ★ 3 = 6 − 5 = 1. Luego 1 ★ 1 = 1 − 2 = −1.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "1",
+        "correcta": false,
+        "explicacion": "Es el resultado del paréntesis (2 ★ 3 = 1); falta aplicar la operación con el 1 de afuera.",
+        "tipo_error": "descuido",
+        "diagnostico": "probable",
+        "razon_frecuente": "Se detiene en el paso intermedio"
+      },
+      {
+        "clave": "C",
+        "texto": "−3",
+        "correcta": false,
+        "explicacion": "Es 2 ★ (3 ★ 1): 3 ★ 1 = −1 y 2 ★ (−1) = −2 − 1 = −3. Se agruparon mal los paréntesis.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Resuelve de derecha a izquierda ignorando el paréntesis"
+      },
+      {
+        "clave": "D",
+        "texto": "5",
+        "correcta": false,
+        "explicacion": "Resulta de operar a·b + (a + b) en algún paso, es decir, de cambiar la resta por suma.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Se resuelve primero el paréntesis: 2 ★ 3 = 2 × 3 − (2 + 3) = 6 − 5 = 1. Luego se opera ese resultado con 1: 1 ★ 1 = 1 × 1 − (1 + 1) = 1 − 2 = −1. El orden de los paréntesis importa: 2 ★ (3 ★ 1) daría 2 ★ (−1) = −2 − 1 = −3, un valor distinto, lo que muestra que la operación no es asociativa.",
+    "que_identificar": "El orden de evaluación que marcan los paréntesis.",
+    "que_revisar": "Operaciones definidas y jerarquía de paréntesis; la operación puede no ser asociativa.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-123",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Elemento neutro de una operación",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se define la operación a ∆ b = a + b + ab para números reales. El número e que cumple a ∆ e = a para todo valor de a es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "1",
+        "correcta": false,
+        "explicacion": "Con e = 1 se obtiene a + 1 + a = 2a + 1, que no es igual a a.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Asume que el neutro siempre es 1, como en la multiplicación"
+      },
+      {
+        "clave": "B",
+        "texto": "0",
+        "correcta": true,
+        "explicacion": "a ∆ 0 = a + 0 + a × 0 = a para cualquier a, luego 0 es el elemento neutro de ∆.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "−1",
+        "correcta": false,
+        "explicacion": "a ∆ (−1) = a − 1 − a = −1 para todo a; −1 anula la operación en lugar de dejar a sin cambio.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde el elemento neutro con el elemento absorbente"
+      },
+      {
+        "clave": "D",
+        "texto": "No existe tal número.",
+        "correcta": false,
+        "explicacion": "Sí existe: al plantear a + e + ae = a se obtiene e(1 + a) = 0, que se cumple para todo a cuando e = 0.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Se busca e tal que a ∆ e = a para todo a. Por la definición, a ∆ e = a + e + ae. Se iguala a a: a + e + ae = a, de donde e + ae = 0, es decir, e(1 + a) = 0. Para que esto se cumpla con cualquier valor de a, debe ser e = 0. Comprobación: a ∆ 0 = a + 0 + 0 = a. El valor −1 es especial pero por otra razón: a ∆ (−1) = −1 siempre, es decir, es un elemento absorbente.",
+    "que_identificar": "Lo que significa «para todo a» en la condición.",
+    "que_revisar": "Elemento neutro y absorbente; resolver una ecuación con parámetro.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-124",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Sucesiones numéricas",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En la sucesión 3, 7, 15, 31, 63, … cada término se obtiene del anterior con la misma regla. El término siguiente es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "95",
+        "correcta": false,
+        "explicacion": "Resulta de sumar 32 (la diferencia anterior) una vez más, pero las diferencias se duplican: 4, 8, 16, 32, 64.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Supone diferencias constantes"
+      },
+      {
+        "clave": "B",
+        "texto": "126",
+        "correcta": false,
+        "explicacion": "Es el doble de 63; falta sumar 1, como exige la regla «doble más uno».",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Aplica solo la duplicación"
+      },
+      {
+        "clave": "C",
+        "texto": "127",
+        "correcta": true,
+        "explicacion": "Cada término es el doble del anterior más 1: 3 → 7 → 15 → 31 → 63 → 2 × 63 + 1 = 127. También las diferencias (4, 8, 16, 32) se duplican, y 63 + 64 = 127.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "128",
+        "correcta": false,
+        "explicacion": "Es la potencia 2⁷; los términos de la sucesión son potencias de 2 menos 1, así que el siguiente es 128 − 1.",
+        "tipo_error": "descuido",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida restar 1 a la potencia de 2"
+      }
+    ],
+    "explicacion": "Se buscan las diferencias entre términos consecutivos: 7 − 3 = 4, 15 − 7 = 8, 31 − 15 = 16, 63 − 31 = 32. Las diferencias se duplican, así que la siguiente es 64 y el término es 63 + 64 = 127. Equivalente: cada término es el doble del anterior más 1 (2 × 63 + 1 = 127), o bien cada término es una potencia de 2 menos 1 (2⁷ − 1 = 127).",
+    "que_identificar": "El patrón de las diferencias entre términos consecutivos.",
+    "que_revisar": "Sucesiones por recurrencia; patrones multiplicativos.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-125",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Sucesiones numéricas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Observe la sucesión 2, 3, 5, 9, 17, 33, … Si el patrón se mantiene, el término que sigue a 33 es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "49",
+        "correcta": false,
+        "explicacion": "Resulta de sumar 16 otra vez; pero las diferencias se duplican (1, 2, 4, 8, 16), así que la siguiente es 32.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Repite la última diferencia"
+      },
+      {
+        "clave": "B",
+        "texto": "57",
+        "correcta": false,
+        "explicacion": "No corresponde ni a sumar 16 ni a sumar 32; proviene de una suma equivocada.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "66",
+        "correcta": false,
+        "explicacion": "Es el doble de 33; la regla es «doble menos 1», no solo duplicar.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Duplica sin restar 1"
+      },
+      {
+        "clave": "D",
+        "texto": "65",
+        "correcta": true,
+        "explicacion": "Las diferencias son 1, 2, 4, 8, 16, es decir, se duplican. La siguiente es 32 y el término es 33 + 32 = 65. Equivalente: cada término es el doble del anterior menos 1.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Las diferencias entre términos consecutivos son 3 − 2 = 1, 5 − 3 = 2, 9 − 5 = 4, 17 − 9 = 8 y 33 − 17 = 16: cada diferencia es el doble de la anterior. La siguiente diferencia es 32 y el término buscado es 33 + 32 = 65. Otra lectura: cada término es el doble del anterior menos 1 (2 × 33 − 1 = 65), o bien una potencia de 2 más 1 (2⁶ + 1 = 65).",
+    "que_identificar": "Que las diferencias forman a su vez una sucesión con patrón.",
+    "que_revisar": "Sucesiones con diferencias geométricas; verificación con dos reglas equivalentes.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-126",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Propiedades de una operación",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. La operación ⊙ es conmutativa, es decir, a ⊙ b = b ⊙ a para todo par de números reales a y b.",
+      "II. Para todo número real a se cumple que a ⊙ a = a."
+    ],
+    "enunciado": "Para números reales se define a ⊙ b = (a + b)/2, es decir, el promedio de a y b.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "La afirmación II también es correcta: (a + a)/2 = a para todo a.",
+        "tipo_error": "verificacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "No comprueba el caso a ⊙ a"
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "La afirmación I también es correcta: la suma es conmutativa, así que el promedio no depende del orden.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Supone que una operación «rara» nunca es conmutativa"
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": true,
+        "explicacion": "Como a + b = b + a, el promedio no depende del orden (I correcta). Además, a ⊙ a = (a + a)/2 = 2a/2 = a para cualquier a (II correcta).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "Ambas afirmaciones son correctas; basta aplicar la definición en cada caso.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Afirmación I: a ⊙ b = (a + b)/2 y b ⊙ a = (b + a)/2. Como la suma de reales es conmutativa, ambos valores coinciden: la operación es conmutativa. Afirmación II: a ⊙ a = (a + a)/2 = 2a/2 = a, para cualquier a. Ambas se cumplen. Nótese que la operación no es asociativa: (1 ⊙ 3) ⊙ 5 = 2 ⊙ 5 = 3,5, mientras que 1 ⊙ (3 ⊙ 5) = 1 ⊙ 4 = 2,5; pero eso no se pregunta aquí.",
+    "que_identificar": "Qué propiedad exige cada afirmación y cómo comprobarla con la definición.",
+    "que_revisar": "Conmutatividad y otras propiedades de operaciones definidas; probar con la definición general, no solo con ejemplos.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-127",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Ecuación con operación definida",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se define la operación a ▲ b = 2a + 3b. Si (x ▲ 1) ▲ 2 = 32, el valor de x es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "5",
+        "correcta": true,
+        "explicacion": "x ▲ 1 = 2x + 3. Luego (2x + 3) ▲ 2 = 2(2x + 3) + 3 × 2 = 4x + 12. Igualando a 32: 4x = 20, x = 5.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "6",
+        "correcta": false,
+        "explicacion": "Resulta de sumar 2 en lugar de 3 × 2 en la segunda operación (4x + 8 = 32).",
+        "tipo_error": "descuido",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida multiplicar b por 3 en el segundo paso"
+      },
+      {
+        "clave": "C",
+        "texto": "8",
+        "correcta": false,
+        "explicacion": "Resulta de no duplicar el resultado intermedio: 2x + 3 + 6 = 32 no da entero; 8 proviene de otro tanteo sin comprobación.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "13",
+        "correcta": false,
+        "explicacion": "13 es el valor de x ▲ 1 cuando x = 5, es decir, el resultado intermedio, no el valor de x.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Responde el paso intermedio"
+      }
+    ],
+    "explicacion": "Primero se calcula el paréntesis en función de x: x ▲ 1 = 2x + 3 × 1 = 2x + 3. Después se opera ese resultado con 2: (2x + 3) ▲ 2 = 2(2x + 3) + 3 × 2 = 4x + 6 + 6 = 4x + 12. Se iguala a 32: 4x + 12 = 32, 4x = 20, x = 5. Comprobación: 5 ▲ 1 = 10 + 3 = 13 y 13 ▲ 2 = 26 + 6 = 32.",
+    "que_identificar": "Que el resultado del paréntesis es el primer operando de la segunda operación.",
+    "que_revisar": "Operaciones definidas con incógnita; ecuaciones lineales de primer grado; comprobar el resultado.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-128",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Patrones con símbolos",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En la sucesión de letras B, D, G, K, P, … cada letra se obtiene avanzando en el alfabeto (sin contar la ñ) una cantidad de posiciones que aumenta de uno en uno. La letra que sigue es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "U",
+        "correcta": false,
+        "explicacion": "U está 5 posiciones después de P, pero el salto debe ser de 6 (los saltos van 2, 3, 4, 5, 6).",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Repite el salto anterior"
+      },
+      {
+        "clave": "B",
+        "texto": "V",
+        "correcta": true,
+        "explicacion": "Los saltos son B→D (2), D→G (3), G→K (4), K→P (5). El siguiente salto es 6: P, Q, R, S, T, U, V.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "W",
+        "correcta": false,
+        "explicacion": "W está 7 posiciones después de P; el salto correcto es 6.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Cuenta una posición de más"
+      },
+      {
+        "clave": "D",
+        "texto": "T",
+        "correcta": false,
+        "explicacion": "T está solo 4 posiciones después de P, menos que el salto anterior; los saltos van creciendo.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Se numeran las letras (sin ñ): B = 2, D = 4, G = 7, K = 11, P = 16. Las diferencias son 2, 3, 4 y 5: aumentan de uno en uno. La siguiente diferencia es 6, así que la letra está en la posición 16 + 6 = 22, que corresponde a V (Q = 17, R = 18, S = 19, T = 20, U = 21, V = 22). El error típico es repetir el salto de 5 o contar mal las posiciones.",
+    "que_identificar": "La posición de cada letra en el alfabeto y las diferencias entre posiciones.",
+    "que_revisar": "Traducir patrones de símbolos a números; sucesiones con diferencias crecientes.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-129",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Patrones de figuras descritas",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. La figura 7 está formada por 49 fichas.",
+      "II. Para pasar de una figura a la siguiente siempre se agrega la misma cantidad de fichas."
+    ],
+    "enunciado": "Con fichas cuadradas iguales se arma una secuencia de figuras: la figura 1 es un solo cuadrado; la figura 2 es un cuadrado de 2 fichas por lado (4 fichas); la figura 3 es un cuadrado de 3 fichas por lado (9 fichas), y así sucesivamente.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": true,
+        "explicacion": "La figura n usa n² fichas, así que la figura 7 usa 49 (I correcta). Para pasar de la figura n a la n + 1 se agregan (n + 1)² − n² = 2n + 1 fichas, cantidad que crece en cada paso (II falsa).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "La afirmación I también es correcta: 7 × 7 = 49 fichas; además II es falsa porque los aumentos son 3, 5, 7, …",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Supone que II es cierta porque las figuras «crecen igual»"
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "La afirmación II es falsa: de la figura 1 a la 2 se agregan 3 fichas, de la 2 a la 3 se agregan 5; no es constante.",
+        "tipo_error": "verificacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "No calcula los aumentos sucesivos"
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "La afirmación I sí se cumple: la figura n tiene n² fichas y 7² = 49.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La figura n es un cuadrado de n fichas por lado, así que usa n × n = n² fichas. Afirmación I: 7² = 49, correcta. Afirmación II: los aumentos entre figuras consecutivas son 4 − 1 = 3, 9 − 4 = 5, 16 − 9 = 7, …, es decir, 2n + 1 fichas, que crecen en cada paso; no es una cantidad fija. II es falsa. Por lo tanto, solo I es correcta.",
+    "que_identificar": "La regla general n² y lo que significa «la misma cantidad» entre figuras consecutivas.",
+    "que_revisar": "Sucesiones de figuras; término general y diferencias; números cuadrados.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-130",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": "Operación definida por tabla",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": {
+      "tipo": "tabla",
+      "titulo": "Operación ⊗ (fila: a, columna: b)",
+      "columnas": [
+        "⊗",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "filas": [
+        [
+          "1",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        [
+          "2",
+          "2",
+          "4",
+          "1",
+          "3"
+        ],
+        [
+          "3",
+          "3",
+          "1",
+          "4",
+          "2"
+        ],
+        [
+          "4",
+          "4",
+          "3",
+          "2",
+          "1"
+        ]
+      ]
+    },
+    "tipo": null,
+    "enunciado": "La tabla define la operación ⊗ sobre el conjunto {1, 2, 3, 4}: el resultado de a ⊗ b se lee en la fila de a y la columna de b. ¿Cuál es el valor de x que cumple (3 ⊗ x) ⊗ 2 = 1?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "2",
+        "correcta": false,
+        "explicacion": "Con x = 2: 3 ⊗ 2 = 1 y luego 1 ⊗ 2 = 2, que no es 1. Es tentador porque 3 ⊗ 2 da 1 directamente.",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "probable",
+        "razon_frecuente": "Se detiene al ver que 3 ⊗ 2 = 1 y olvida el segundo paso"
+      },
+      {
+        "clave": "B",
+        "texto": "3",
+        "correcta": false,
+        "explicacion": "Con x = 3: 3 ⊗ 3 = 4 y luego 4 ⊗ 2 = 3, que no es 1.",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "1",
+        "correcta": true,
+        "explicacion": "Para que (algo) ⊗ 2 = 1, la tabla muestra que ese «algo» debe ser 3 (3 ⊗ 2 = 1). Y 3 ⊗ x = 3 solo cuando x = 1. Comprobación: 3 ⊗ 1 = 3 y 3 ⊗ 2 = 1.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "4",
+        "correcta": false,
+        "explicacion": "Con x = 4: 3 ⊗ 4 = 2 y luego 2 ⊗ 2 = 4, que no es 1.",
+        "tipo_error": "lectura_tabla",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee filas y columnas intercambiadas"
+      }
+    ],
+    "explicacion": "Se trabaja de afuera hacia adentro. Primero: ¿qué valor y cumple y ⊗ 2 = 1? Se recorre la columna del 2: 1 ⊗ 2 = 2, 2 ⊗ 2 = 4, 3 ⊗ 2 = 1, 4 ⊗ 2 = 3. Solo y = 3 sirve. Segundo: ¿qué x cumple 3 ⊗ x = 3? Se recorre la fila del 3: 3 ⊗ 1 = 3, 3 ⊗ 2 = 1, 3 ⊗ 3 = 4, 3 ⊗ 4 = 2. Solo x = 1. Comprobación directa: (3 ⊗ 1) ⊗ 2 = 3 ⊗ 2 = 1. Probar los otros valores de x da 2, 3 y 4, ninguno igual a 1.",
+    "que_identificar": "Cómo se lee la tabla (fila = primer operando, columna = segundo) y el orden de los paréntesis.",
+    "que_revisar": "Operaciones definidas por tabla; resolver ecuaciones «hacia atrás» o por ensayo sistemático.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-131",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Perímetro de un rectángulo",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un lote rectangular mide 12 m de frente y 8 m de fondo. Cercarlo completamente con malla cuesta $15.000 por metro lineal. El costo total de la cerca es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "$1.440.000",
+        "correcta": false,
+        "explicacion": "Resulta de multiplicar el área (96 m²) por el precio; la cerca depende del perímetro, no del área.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde área con perímetro"
+      },
+      {
+        "clave": "B",
+        "texto": "$300.000",
+        "correcta": false,
+        "explicacion": "Corresponde a solo 20 m (12 + 8), es decir, a dos lados en lugar de los cuatro.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suma un solo largo y un solo ancho"
+      },
+      {
+        "clave": "C",
+        "texto": "$450.000",
+        "correcta": false,
+        "explicacion": "Corresponde a 30 m, cantidad que no coincide con el perímetro del lote (40 m).",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "$600.000",
+        "correcta": true,
+        "explicacion": "El perímetro es 2 × (12 + 8) = 40 m. El costo es 40 × $15.000 = $600.000.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La cerca rodea el lote, así que se necesita el perímetro: 2 × (12 + 8) = 2 × 20 = 40 m. El costo es 40 m × $15.000/m = $600.000. Multiplicar el área (12 × 8 = 96 m²) por el precio no tiene sentido porque la malla se vende por metro lineal, no por metro cuadrado.",
+    "que_identificar": "Si la situación pide perímetro (contorno) o área (superficie).",
+    "que_revisar": "Perímetro del rectángulo: 2(b + h); diferencia entre unidades lineales y cuadradas.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-132",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Área de un triángulo",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una bandera triangular de tela tiene una base de 10 cm y una altura de 6 cm sobre esa base. El área de la bandera es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "60 cm²",
+        "correcta": false,
+        "explicacion": "Es el producto base × altura, que corresponde a un rectángulo; el triángulo es la mitad.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida dividir entre 2"
+      },
+      {
+        "clave": "B",
+        "texto": "30 cm²",
+        "correcta": true,
+        "explicacion": "El área de un triángulo es (base × altura) ÷ 2 = (10 × 6) ÷ 2 = 30 cm².",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "16 cm²",
+        "correcta": false,
+        "explicacion": "Es la suma de 10 y 6; el área requiere multiplicar, no sumar.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suma las medidas en lugar de multiplicar"
+      },
+      {
+        "clave": "D",
+        "texto": "32 cm²",
+        "correcta": false,
+        "explicacion": "Resulta de sumar las medidas y duplicar, como si se calculara un perímetro.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El área de cualquier triángulo es la mitad del producto de la base por la altura correspondiente: A = (b × h) ÷ 2 = (10 × 6) ÷ 2 = 60 ÷ 2 = 30 cm². El 60 es el área del rectángulo de 10 por 6, que contiene exactamente dos triángulos como la bandera.",
+    "que_identificar": "La fórmula del triángulo y que la altura es perpendicular a la base.",
+    "que_revisar": "Área del triángulo: b × h ÷ 2.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-133",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Áreas de figuras compuestas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "El piso de una sala tiene forma de L. Se compone de un rectángulo de 6 m de largo por 4 m de ancho y, pegado a uno de sus lados de 4 m, otro rectángulo de 3 m de largo por 2 m de ancho, unido por su lado de 2 m, de modo que no se superponen. Para enchapar el piso completo se necesitan",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "30 m² de baldosa.",
+        "correcta": true,
+        "explicacion": "Área del rectángulo grande: 6 × 4 = 24 m². Área del pequeño: 3 × 2 = 6 m². Total: 24 + 6 = 30 m².",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "24 m² de baldosa.",
+        "correcta": false,
+        "explicacion": "Es solo el área del rectángulo grande; falta sumar los 6 m² del rectángulo pequeño.",
+        "tipo_error": "descuido",
+        "diagnostico": "probable",
+        "razon_frecuente": "Olvida una parte de la figura"
+      },
+      {
+        "clave": "C",
+        "texto": "36 m² de baldosa.",
+        "correcta": false,
+        "explicacion": "Resulta de tomar el rectángulo que encierra toda la L (9 × 4 = 36) sin descontar el vacío de 2 m por 3 m.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Calcula el rectángulo envolvente completo"
+      },
+      {
+        "clave": "D",
+        "texto": "48 m² de baldosa.",
+        "correcta": false,
+        "explicacion": "Resulta de operar con las cuatro medidas de forma incorrecta (por ejemplo, 6 × 4 × 2); el área de la L es la suma de dos rectángulos.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Una figura compuesta se descompone en figuras simples. El rectángulo grande mide 6 × 4 = 24 m² y el pequeño 3 × 2 = 6 m²; como no se superponen, el área total es 24 + 6 = 30 m². Otra vía: el rectángulo envolvente mide 9 m por 4 m (36 m²) y se le descuenta el hueco de 3 m por 2 m (6 m²), lo que también da 30 m².",
+    "que_identificar": "Las figuras simples en que se descompone la L.",
+    "que_revisar": "Áreas por descomposición o por diferencia; área del rectángulo.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-134",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Volumen de un cilindro",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un tanque cilíndrico para agua tiene 1 m de radio y 2 m de altura. Tomando π ≈ 3,14 y sabiendo que 1 m³ equivale a 1.000 litros, la capacidad del tanque es aproximadamente",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "3.140 litros",
+        "correcta": false,
+        "explicacion": "Es el volumen con altura 1 m (π × 1² × 1); falta multiplicar por la altura de 2 m.",
+        "tipo_error": "descuido",
+        "diagnostico": "probable",
+        "razon_frecuente": "Omite la altura"
+      },
+      {
+        "clave": "B",
+        "texto": "2.000 litros",
+        "correcta": false,
+        "explicacion": "Resulta de multiplicar solo radio × altura × 1.000 sin usar la fórmula del cilindro.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "6.280 litros",
+        "correcta": true,
+        "explicacion": "V = π r² h = 3,14 × 1² × 2 = 6,28 m³. Como 1 m³ = 1.000 L, la capacidad es 6.280 litros.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "12.560 litros",
+        "correcta": false,
+        "explicacion": "Resulta de calcular π × diámetro × altura (3,14 × 2 × 2 = 12,56 m³), es decir, de usar el diámetro y no elevar el radio al cuadrado.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Mezcla la fórmula de la circunferencia con la del volumen"
+      }
+    ],
+    "explicacion": "El volumen de un cilindro es V = π × r² × h. Con r = 1 m y h = 2 m: V = 3,14 × 1 × 2 = 6,28 m³. Cada metro cúbico son 1.000 litros, así que 6,28 m³ = 6.280 litros. Olvidar la altura da 3.140 L; usar π × diámetro × altura, sin elevar el radio al cuadrado, da 12.560 L.",
+    "que_identificar": "Las medidas que exige la fórmula (radio, no diámetro) y la conversión m³ → litros.",
+    "que_revisar": "Volumen del cilindro; equivalencia 1 m³ = 1.000 L.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-135",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Razón entre áreas de figuras semejantes",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Una baldosa cuadrada de 20 cm de lado cuesta $2.000. Si el precio de una baldosa del mismo material es proporcional a su área, una baldosa cuadrada de 60 cm de lado cuesta",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "$6.000",
+        "correcta": false,
+        "explicacion": "Triplica el precio porque se triplicó el lado, pero el área se multiplica por 9, no por 3.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Aplica la razón de los lados al área"
+      },
+      {
+        "clave": "B",
+        "texto": "$12.000",
+        "correcta": false,
+        "explicacion": "Multiplica por 6 (quizá 3 + 3), que no corresponde ni a la razón de lados ni a la de áreas.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "$36.000",
+        "correcta": false,
+        "explicacion": "Multiplica por 18 (quizá 9 × 2); la razón de áreas es 9 y el precio base es $2.000.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "$18.000",
+        "correcta": true,
+        "explicacion": "El lado se triplica (20 → 60), así que el área se multiplica por 3² = 9. Precio: 9 × $2.000 = $18.000.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El área de la baldosa pequeña es 20 × 20 = 400 cm² y la de la grande 60 × 60 = 3.600 cm². La razón de áreas es 3.600 ÷ 400 = 9, que es el cuadrado de la razón de lados (60 ÷ 20 = 3). Como el precio es proporcional al área, la baldosa grande cuesta 9 × $2.000 = $18.000. Triplicar el precio sería correcto solo si el precio dependiera del lado.",
+    "que_identificar": "Que al multiplicar el lado por k el área se multiplica por k².",
+    "que_revisar": "Figuras semejantes: razón de áreas = (razón de lados)².",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-136",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Diagonal y comparación de áreas",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. La diagonal del marco mide 17 cm.",
+      "II. Un marco cuadrado con el mismo perímetro que el rectangular tendría menor área que este."
+    ],
+    "enunciado": "Un marco rectangular de fotografía mide 12 cm de largo y 5 cm de ancho.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "La afirmación I es falsa: la diagonal no es la suma de los lados, sino √(12² + 5²) = 13 cm.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Suma los lados para hallar la diagonal"
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": false,
+        "explicacion": "La afirmación II es falsa: el cuadrado de perímetro 34 cm tiene lado 8,5 cm y área 72,25 cm², mayor que 60 cm².",
+        "tipo_error": "verificacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Supone que a igual perímetro el área es igual o menor"
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "Ninguna de las dos afirmaciones es correcta; ambas fallan al verificarse con el cálculo.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": true,
+        "explicacion": "La diagonal se calcula con Pitágoras: √(12² + 5²) = √169 = 13 cm, no 17 (I falsa). El perímetro es 34 cm; un cuadrado de ese perímetro tiene lado 8,5 cm y área 72,25 cm², mayor que los 60 cm² del rectángulo (II falsa).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Afirmación I: la diagonal de un rectángulo es la hipotenusa de un triángulo rectángulo con catetos 12 y 5; mide √(144 + 25) = √169 = 13 cm, no 17 cm. Falsa. Afirmación II: el perímetro del rectángulo es 2 × (12 + 5) = 34 cm; un cuadrado con ese perímetro tiene lado 34 ÷ 4 = 8,5 cm y área 8,5² = 72,25 cm². El área del rectángulo es 12 × 5 = 60 cm², menor que la del cuadrado, así que la afirmación de que el cuadrado tiene menor área es falsa. Ninguna es correcta.",
+    "que_identificar": "Qué fórmula aplica a cada afirmación y qué figura se está comparando.",
+    "que_revisar": "Teorema de Pitágoras; entre figuras de igual perímetro, el cuadrado tiene mayor área que cualquier rectángulo no cuadrado.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-137",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Área entre figuras (cuadrado y círculo inscrito)",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En una placa cuadrada de 10 cm de lado se recorta el círculo más grande posible (tangente a los cuatro lados). Tomando π ≈ 3,14, el área de la placa que sobra después del recorte es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "78,5 cm²",
+        "correcta": false,
+        "explicacion": "Es el área del círculo recortado, no la del material sobrante.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Responde el área del círculo"
+      },
+      {
+        "clave": "B",
+        "texto": "68,6 cm²",
+        "correcta": false,
+        "explicacion": "Resulta de usar el diámetro como radio en la fórmula del círculo (π × 10 = 31,4 restado de 100), o de calcular mal el área del círculo.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Usa la fórmula del área del círculo con el diámetro o con la longitud de la circunferencia"
+      },
+      {
+        "clave": "C",
+        "texto": "21,5 cm²",
+        "correcta": true,
+        "explicacion": "Área del cuadrado: 10² = 100 cm². El círculo inscrito tiene diámetro 10 cm, radio 5 cm y área 3,14 × 5² = 78,5 cm². Sobra 100 − 78,5 = 21,5 cm².",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "50 cm²",
+        "correcta": false,
+        "explicacion": "Supone que el círculo ocupa la mitad del cuadrado; en realidad ocupa cerca del 78,5 %.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El círculo más grande que cabe en el cuadrado toca los cuatro lados, así que su diámetro es igual al lado: 10 cm, y su radio es 5 cm. Área del cuadrado: 10 × 10 = 100 cm². Área del círculo: π r² ≈ 3,14 × 25 = 78,5 cm². Lo que sobra es la diferencia: 100 − 78,5 = 21,5 cm². Un círculo inscrito siempre ocupa alrededor del 78,5 % del cuadrado, sin importar el tamaño.",
+    "que_identificar": "La relación entre el lado del cuadrado y el radio del círculo inscrito.",
+    "que_revisar": "Área del círculo (π r²); áreas por diferencia; radio frente a diámetro.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-138",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Volumen de un prisma y cubos",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": "dos_afirmaciones",
+    "afirmaciones": [
+      "I. El volumen de la caja es 2.400 cm³.",
+      "II. En la caja caben exactamente 24 cubos de 10 cm de arista, sin dejar espacios vacíos."
+    ],
+    "enunciado": "Una caja de cartón con forma de prisma rectangular mide 40 cm de largo, 30 cm de ancho y 20 cm de alto.\nDe las afirmaciones anteriores es correcta:",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "Solo I",
+        "correcta": false,
+        "explicacion": "La afirmación I es falsa: el volumen es 40 × 30 × 20 = 24.000 cm³; falta un cero.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Error al multiplicar tres números con ceros"
+      },
+      {
+        "clave": "B",
+        "texto": "Solo II",
+        "correcta": true,
+        "explicacion": "El volumen es 40 × 30 × 20 = 24.000 cm³, no 2.400 (I falsa). A lo largo caben 4 cubos de 10 cm, a lo ancho 3 y a lo alto 2: 4 × 3 × 2 = 24 cubos exactos (II correcta).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Ambas",
+        "correcta": false,
+        "explicacion": "La afirmación I es falsa (el volumen es 24.000 cm³), así que no pueden ser ambas.",
+        "tipo_error": "calculo",
+        "diagnostico": "probable",
+        "razon_frecuente": "Acepta 2.400 sin verificar el producto"
+      },
+      {
+        "clave": "D",
+        "texto": "Ninguna",
+        "correcta": false,
+        "explicacion": "La afirmación II sí es correcta: 4 × 3 × 2 = 24 cubos de 10 cm de arista llenan la caja sin dejar espacios.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Afirmación I: el volumen de un prisma rectangular es largo × ancho × alto = 40 × 30 × 20 = 24.000 cm³, no 2.400 cm³. Falsa. Afirmación II: cada cubo de 10 cm de arista ocupa 1.000 cm³; a lo largo caben 40 ÷ 10 = 4, a lo ancho 30 ÷ 10 = 3 y a lo alto 20 ÷ 10 = 2, es decir, 4 × 3 × 2 = 24 cubos, que ocupan 24.000 cm³, exactamente el volumen de la caja. Correcta. Solo II es correcta.",
+    "que_identificar": "Las tres dimensiones y cuántas veces cabe la arista del cubo en cada una.",
+    "que_revisar": "Volumen del prisma rectangular; conteo de cubos unitarios; cuidado con los ceros.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-139",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Volumen y capacidad",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un tanque con forma de prisma rectangular mide 2 m de largo, 1,5 m de ancho y 1 m de profundidad. Se quiere llenarlo hasta las tres quintas partes de su capacidad usando baldes de 15 litros. Sabiendo que 1 m³ equivale a 1.000 litros, el número de baldes necesarios es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "120",
+        "correcta": true,
+        "explicacion": "Volumen: 2 × 1,5 × 1 = 3 m³ = 3.000 L. Tres quintas partes: 3.000 × 3/5 = 1.800 L. Baldes: 1.800 ÷ 15 = 120.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "200",
+        "correcta": false,
+        "explicacion": "Es el número de baldes para llenar el tanque completo (3.000 ÷ 15); se pedía solo 3/5.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Ignora la fracción del tanque"
+      },
+      {
+        "clave": "C",
+        "texto": "80",
+        "correcta": false,
+        "explicacion": "Corresponde a 2/5 del tanque (1.200 L ÷ 15), es decir, a la parte que queda vacía.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Usa la fracción complementaria"
+      },
+      {
+        "clave": "D",
+        "texto": "72",
+        "correcta": false,
+        "explicacion": "Resulta de un error en la conversión o en la fracción (por ejemplo, 1.080 L ÷ 15); 3/5 de 3.000 L son 1.800 L.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Primero el volumen del tanque: 2 × 1,5 × 1 = 3 m³. Como 1 m³ = 1.000 L, la capacidad es 3.000 L. Se quiere llenar 3/5: 3.000 × 3 ÷ 5 = 1.800 L. Cada balde aporta 15 L, así que se necesitan 1.800 ÷ 15 = 120 baldes. Llenar todo el tanque requeriría 200 baldes; 80 baldes corresponden a los 2/5 que quedan vacíos.",
+    "que_identificar": "La fracción que se pide y la conversión de m³ a litros.",
+    "que_revisar": "Volumen del prisma; equivalencia m³–litros; fracción de una cantidad.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LOG-140",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": "Perímetros iguales",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un triángulo equilátero y un cuadrado tienen el mismo perímetro. Si el lado del cuadrado mide 9 cm, el lado del triángulo mide",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "9 cm",
+        "correcta": false,
+        "explicacion": "Si los lados fueran iguales, el triángulo (3 lados) tendría menor perímetro que el cuadrado (4 lados).",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Supone que igual perímetro implica igual lado"
+      },
+      {
+        "clave": "B",
+        "texto": "12 cm",
+        "correcta": true,
+        "explicacion": "El perímetro del cuadrado es 4 × 9 = 36 cm. El triángulo equilátero tiene tres lados iguales: 36 ÷ 3 = 12 cm.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "6,75 cm",
+        "correcta": false,
+        "explicacion": "Resulta de calcular 27 ÷ 4, es decir, de intercambiar el número de lados de cada figura.",
+        "tipo_error": "procedimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Divide y multiplica con los números de lados cambiados"
+      },
+      {
+        "clave": "D",
+        "texto": "27 cm",
+        "correcta": false,
+        "explicacion": "Es 3 × 9, como si el perímetro del triángulo fuera tres veces el lado del cuadrado; el perímetro común es 36 cm.",
+        "tipo_error": "calculo",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El perímetro del cuadrado es 4 × 9 = 36 cm. Como el triángulo equilátero tiene el mismo perímetro y sus tres lados son iguales, cada lado mide 36 ÷ 3 = 12 cm. Comprobación: 3 × 12 = 36 = 4 × 9. El triángulo necesita lados más largos porque tiene menos lados para completar el mismo contorno.",
+    "que_identificar": "El perímetro común y el número de lados de cada figura.",
+    "que_revisar": "Perímetro de polígonos regulares: número de lados × lado.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea"
+    ],
+    "estado": "borrador"
+  }
+]

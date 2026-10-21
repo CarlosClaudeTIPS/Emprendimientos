@@ -1,0 +1,2222 @@
+[
+  {
+    "id": "UDEA-LEC-101",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Identificar información explícita",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": "Cada sábado, en varios municipios del oriente antioqueño, los mercados campesinos reúnen a productores que venden directamente lo que cosechan. A diferencia de la plaza mayorista, donde intervienen transportadores, acopiadores y revendedores, aquí el precio se fija cara a cara entre quien siembra y quien consume. Los estudios sobre estas ferias muestran dos efectos. El primero es económico: al eliminar intermediarios, el campesino recibe una proporción mayor del precio final y el comprador paga menos por el mismo producto. El segundo es social: el encuentro semanal crea lazos de confianza que no existen en un supermercado, donde el origen de los alimentos suele ser anónimo. Sin embargo, los mercados campesinos tienen límites. Dependen de que la alcaldía preste el espacio, de que el transporte desde la vereda sea costeable y de que la oferta sea constante; en épocas de lluvias intensas, varias ferias se suspenden por falta de productos. Por eso algunos investigadores sostienen que estos mercados complementan, pero no reemplazan, a los canales tradicionales de abastecimiento de las ciudades.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el texto, la diferencia principal entre el mercado campesino y la plaza mayorista es que en el primero",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "el precio lo fija la alcaldía del municipio",
+        "correcta": false,
+        "explicacion": "El texto dice que la alcaldía presta el espacio, no que fije precios.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Mezcla el papel de la alcaldía con la fijación de precios"
+      },
+      {
+        "clave": "B",
+        "texto": "productor y consumidor acuerdan el precio directamente",
+        "correcta": true,
+        "explicacion": "La segunda oración lo dice de forma explícita: el precio se fija cara a cara entre quien siembra y quien consume.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "intervienen transportadores, acopiadores y revendedores",
+        "correcta": false,
+        "explicacion": "Esa es la descripción de la plaza mayorista, no del mercado campesino.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Invierte los dos términos de la comparación"
+      },
+      {
+        "clave": "D",
+        "texto": "la oferta de productos es constante todo el año",
+        "correcta": false,
+        "explicacion": "El texto dice lo contrario: la oferta depende del clima y algunas ferias se suspenden.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: ubicar en el texto la comparación con la plaza mayorista. Paso 2: en la segunda oración se contrapone la intervención de intermediarios con la fijación del precio cara a cara. Paso 3: la opción que recoge ese acuerdo directo entre productor y consumidor es la que responde la pregunta; las demás describen la plaza mayorista o contradicen el texto.",
+    "que_identificar": "La oración que contrasta los dos espacios de venta.",
+    "que_revisar": "Qué dice el texto de cada uno de los dos términos comparados.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T101"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-102",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Inferir causas",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Cada sábado, en varios municipios del oriente antioqueño, los mercados campesinos reúnen a productores que venden directamente lo que cosechan. A diferencia de la plaza mayorista, donde intervienen transportadores, acopiadores y revendedores, aquí el precio se fija cara a cara entre quien siembra y quien consume. Los estudios sobre estas ferias muestran dos efectos. El primero es económico: al eliminar intermediarios, el campesino recibe una proporción mayor del precio final y el comprador paga menos por el mismo producto. El segundo es social: el encuentro semanal crea lazos de confianza que no existen en un supermercado, donde el origen de los alimentos suele ser anónimo. Sin embargo, los mercados campesinos tienen límites. Dependen de que la alcaldía preste el espacio, de que el transporte desde la vereda sea costeable y de que la oferta sea constante; en épocas de lluvias intensas, varias ferias se suspenden por falta de productos. Por eso algunos investigadores sostienen que estos mercados complementan, pero no reemplazan, a los canales tradicionales de abastecimiento de las ciudades.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Del texto se infiere que la confianza entre productor y comprador en el mercado campesino se debe principalmente a",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "que los precios son más bajos que en el supermercado y en la plaza mayorista",
+        "correcta": false,
+        "explicacion": "El precio es el efecto económico; el texto separa ese efecto del efecto social.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde los dos efectos que distingue el texto"
+      },
+      {
+        "clave": "B",
+        "texto": "que los productos tienen mejor calidad",
+        "correcta": false,
+        "explicacion": "El texto no dice nada sobre la calidad de los productos.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "verse cada semana y conocer el origen de los alimentos",
+        "correcta": true,
+        "explicacion": "El texto habla de un «encuentro semanal» que crea lazos y contrapone el supermercado, donde el origen es «anónimo». De ahí se infiere que la confianza nace de verse cada semana y saber de dónde viene lo que se compra.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "que la alcaldía garantiza el espacio de la feria",
+        "correcta": false,
+        "explicacion": "El espacio prestado es una condición para que exista la feria, no la causa de la confianza.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Toma una condición de funcionamiento como causa del vínculo"
+      }
+    ],
+    "explicacion": "Paso 1: localizar el efecto social: «el encuentro semanal crea lazos de confianza». Paso 2: notar el contraste con el supermercado, donde el origen es anónimo. Paso 3: unir ambas pistas: la confianza nace de encontrarse de manera repetida con quien produce y de conocer el origen. El precio bajo y la calidad no se presentan como causas del vínculo.",
+    "que_identificar": "Las pistas que explican el efecto social (encuentro semanal, origen conocido).",
+    "que_revisar": "Diferenciar el efecto económico del efecto social.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T101"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-103",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Identificar supuestos",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Cada sábado, en varios municipios del oriente antioqueño, los mercados campesinos reúnen a productores que venden directamente lo que cosechan. A diferencia de la plaza mayorista, donde intervienen transportadores, acopiadores y revendedores, aquí el precio se fija cara a cara entre quien siembra y quien consume. Los estudios sobre estas ferias muestran dos efectos. El primero es económico: al eliminar intermediarios, el campesino recibe una proporción mayor del precio final y el comprador paga menos por el mismo producto. El segundo es social: el encuentro semanal crea lazos de confianza que no existen en un supermercado, donde el origen de los alimentos suele ser anónimo. Sin embargo, los mercados campesinos tienen límites. Dependen de que la alcaldía preste el espacio, de que el transporte desde la vereda sea costeable y de que la oferta sea constante; en épocas de lluvias intensas, varias ferias se suspenden por falta de productos. Por eso algunos investigadores sostienen que estos mercados complementan, pero no reemplazan, a los canales tradicionales de abastecimiento de las ciudades.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La afirmación de que los mercados campesinos «complementan, pero no reemplazan» a los canales tradicionales se apoya en el supuesto de que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "la ciudad necesita un abastecimiento continuo que las ferias no garantizan",
+        "correcta": true,
+        "explicacion": "El texto enumera los límites de las ferias (espacio, transporte, oferta irregular) y de ahí concluye que no reemplazan a los canales tradicionales; eso supone que la ciudad requiere un suministro constante que las ferias no aseguran.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "los supermercados y las plazas venden alimentos de mejor calidad que los campesinos",
+        "correcta": false,
+        "explicacion": "El texto no compara la calidad; la calidad no es parte del razonamiento.",
+        "tipo_error": "argumentacion",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "los campesinos prefieren vender a los intermediarios",
+        "correcta": false,
+        "explicacion": "El texto muestra que vender directo les conviene; no sostiene esa preferencia.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Contradice el beneficio económico descrito"
+      },
+      {
+        "clave": "D",
+        "texto": "los compradores de la ciudad desconfían de los mercados campesinos",
+        "correcta": false,
+        "explicacion": "El texto dice justamente que las ferias generan confianza.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: la conclusión («complementan, pero no reemplazan») viene después de enumerar límites: dependencia del espacio, del transporte y de una oferta constante que falla en lluvias. Paso 2: para que esos límites impidan el reemplazo debe asumirse que la ciudad necesita un suministro continuo. Paso 3: las otras opciones introducen ideas sobre calidad, preferencias o desconfianza que el texto no usa o contradice.",
+    "que_identificar": "Qué debe ser cierto para que de los límites se siga la conclusión.",
+    "que_revisar": "Distinguir lo que el texto afirma de lo que da por sentado.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T101"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-104",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Reconocer afirmaciones falsas según el texto",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "Cada sábado, en varios municipios del oriente antioqueño, los mercados campesinos reúnen a productores que venden directamente lo que cosechan. A diferencia de la plaza mayorista, donde intervienen transportadores, acopiadores y revendedores, aquí el precio se fija cara a cara entre quien siembra y quien consume. Los estudios sobre estas ferias muestran dos efectos. El primero es económico: al eliminar intermediarios, el campesino recibe una proporción mayor del precio final y el comprador paga menos por el mismo producto. El segundo es social: el encuentro semanal crea lazos de confianza que no existen en un supermercado, donde el origen de los alimentos suele ser anónimo. Sin embargo, los mercados campesinos tienen límites. Dependen de que la alcaldía preste el espacio, de que el transporte desde la vereda sea costeable y de que la oferta sea constante; en épocas de lluvias intensas, varias ferias se suspenden por falta de productos. Por eso algunos investigadores sostienen que estos mercados complementan, pero no reemplazan, a los canales tradicionales de abastecimiento de las ciudades.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "¿Cuál de las siguientes afirmaciones NO corresponde a lo dicho en el texto?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "En la plaza mayorista participan transportadores, acopiadores y revendedores.",
+        "correcta": false,
+        "explicacion": "El texto lo afirma expresamente al describir la plaza mayorista.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee la pregunta como si pidiera la afirmación verdadera"
+      },
+      {
+        "clave": "B",
+        "texto": "Algunas ferias se suspenden por falta de productos en lluvias intensas.",
+        "correcta": false,
+        "explicacion": "Está dicho literalmente en el penúltimo párrafo del texto.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "El campesino recibe una proporción mayor del precio final.",
+        "correcta": false,
+        "explicacion": "Es el efecto económico que el texto describe de manera explícita.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Los mercados campesinos funcionan sin depender de las alcaldías.",
+        "correcta": true,
+        "explicacion": "El texto afirma lo contrario: las ferias «dependen de que la alcaldía preste el espacio». Es la única afirmación que contradice el texto.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: la pregunta pide la afirmación que NO está en el texto. Paso 2: revisar cada opción contra el texto: la plaza mayorista con intermediarios, la suspensión en lluvias y la mayor proporción para el campesino aparecen literalmente. Paso 3: la independencia respecto a la alcaldía contradice la frase «dependen de que la alcaldía preste el espacio», así que es la afirmación falsa.",
+    "que_identificar": "La palabra NO en el enunciado y la lista de dependencias de las ferias.",
+    "que_revisar": "Comparar cada opción con una frase concreta del texto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T101"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-105",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Inferir efectos",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "Cada sábado, en varios municipios del oriente antioqueño, los mercados campesinos reúnen a productores que venden directamente lo que cosechan. A diferencia de la plaza mayorista, donde intervienen transportadores, acopiadores y revendedores, aquí el precio se fija cara a cara entre quien siembra y quien consume. Los estudios sobre estas ferias muestran dos efectos. El primero es económico: al eliminar intermediarios, el campesino recibe una proporción mayor del precio final y el comprador paga menos por el mismo producto. El segundo es social: el encuentro semanal crea lazos de confianza que no existen en un supermercado, donde el origen de los alimentos suele ser anónimo. Sin embargo, los mercados campesinos tienen límites. Dependen de que la alcaldía preste el espacio, de que el transporte desde la vereda sea costeable y de que la oferta sea constante; en épocas de lluvias intensas, varias ferias se suspenden por falta de productos. Por eso algunos investigadores sostienen que estos mercados complementan, pero no reemplazan, a los canales tradicionales de abastecimiento de las ciudades.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "De acuerdo con el texto, eliminar a los intermediarios beneficia",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "únicamente al productor, que recibe más dinero",
+        "correcta": false,
+        "explicacion": "Es solo la mitad del efecto; el texto también menciona al comprador.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Se detiene en la primera parte de la oración"
+      },
+      {
+        "clave": "B",
+        "texto": "únicamente al comprador, que paga menos",
+        "correcta": false,
+        "explicacion": "Omite al campesino, que recibe una proporción mayor del precio.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "a los transportadores, que consiguen nuevas rutas",
+        "correcta": false,
+        "explicacion": "Los transportadores son intermediarios; el texto no habla de beneficios para ellos.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "al productor y al comprador a la vez",
+        "correcta": true,
+        "explicacion": "El texto dice que el campesino recibe una proporción mayor del precio final «y el comprador paga menos por el mismo producto»: ambos salen beneficiados.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: buscar el efecto económico en el texto. Paso 2: la oración señala dos beneficiarios unidos por «y»: el campesino recibe más y el comprador paga menos. Paso 3: la opción que incluye a los dos es la correcta; las que mencionan a uno solo son incompletas y los transportadores son parte de los intermediarios eliminados.",
+    "que_identificar": "Los dos sujetos de la oración sobre el efecto económico.",
+    "que_revisar": "No quedarse con la primera parte de una enumeración.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T101"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-106",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Inferir consecuencias de un proceso",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "Los páramos son ecosistemas de alta montaña que, en Colombia, se extienden por encima de los 3.000 metros de altitud. Su planta más conocida, el frailejón, crece apenas un centímetro al año y puede vivir más de un siglo. Las hojas del frailejón están cubiertas de pelos finos que atrapan la niebla; el agua condensada se desliza hacia el suelo, donde una capa esponjosa de musgos y materia orgánica la retiene y la libera lentamente hacia quebradas y ríos. Gracias a este mecanismo, los páramos abastecen de agua a gran parte de las ciudades andinas, aunque ocupan una fracción muy pequeña del territorio nacional. El ecosistema es frágil: el suelo tarda siglos en formarse y, una vez compactado por el ganado o removido por la minería, pierde su capacidad de absorber agua. Además, el aumento de la temperatura empuja a las especies hacia zonas más altas, pero la montaña tiene un límite: por encima de cierta altura ya no hay adónde subir. Proteger los páramos no es solo conservar un paisaje; es asegurar el agua de millones de personas que nunca los han visitado.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Del texto se puede inferir que, si el suelo de un páramo es compactado por el ganado, lo más probable es que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "el agua escurra en vez de retenerse y liberarse poco a poco",
+        "correcta": true,
+        "explicacion": "El texto explica que la capa esponjosa retiene el agua y la libera lentamente, y que al compactarse el suelo pierde la capacidad de absorber agua. La consecuencia lógica es que el agua escurra sin almacenarse.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "los frailejones crezcan más rápido porque el suelo firme sostiene mejor sus raíces",
+        "correcta": false,
+        "explicacion": "El texto no vincula la compactación con un crecimiento mayor; de hecho describe el suelo compactado como un daño.",
+        "tipo_error": "inferencia",
+        "diagnostico": "probable",
+        "razon_frecuente": "Supone un efecto positivo que el texto no plantea"
+      },
+      {
+        "clave": "C",
+        "texto": "aumente la cantidad de niebla en la zona",
+        "correcta": false,
+        "explicacion": "La niebla depende del clima, no del estado del suelo; el texto no sugiere esa relación.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el suelo recupere su esponjosidad en pocos años",
+        "correcta": false,
+        "explicacion": "El texto dice que el suelo tarda siglos en formarse, así que la recuperación rápida contradice el texto.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: recordar el mecanismo: la capa esponjosa retiene el agua y la libera lentamente. Paso 2: el texto dice que el suelo compactado «pierde su capacidad de absorber agua». Paso 3: si no absorbe, el agua no se almacena ni se libera despacio: escurre. Las otras opciones inventan efectos positivos o contradicen que el suelo tarda siglos en formarse.",
+    "que_identificar": "La cadena niebla → hojas → suelo esponjoso → ríos.",
+    "que_revisar": "Qué pasa con una cadena cuando falla uno de sus eslabones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T102"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-107",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Establecer analogías",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": "Los páramos son ecosistemas de alta montaña que, en Colombia, se extienden por encima de los 3.000 metros de altitud. Su planta más conocida, el frailejón, crece apenas un centímetro al año y puede vivir más de un siglo. Las hojas del frailejón están cubiertas de pelos finos que atrapan la niebla; el agua condensada se desliza hacia el suelo, donde una capa esponjosa de musgos y materia orgánica la retiene y la libera lentamente hacia quebradas y ríos. Gracias a este mecanismo, los páramos abastecen de agua a gran parte de las ciudades andinas, aunque ocupan una fracción muy pequeña del territorio nacional. El ecosistema es frágil: el suelo tarda siglos en formarse y, una vez compactado por el ganado o removido por la minería, pierde su capacidad de absorber agua. Además, el aumento de la temperatura empuja a las especies hacia zonas más altas, pero la montaña tiene un límite: por encima de cierta altura ya no hay adónde subir. Proteger los páramos no es solo conservar un paisaje; es asegurar el agua de millones de personas que nunca los han visitado.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La situación de las especies del páramo que se desplazan hacia arriba por el aumento de temperatura se parece más a la de",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "un río que se desborda cuando llueve con intensidad",
+        "correcta": false,
+        "explicacion": "El desborde es un exceso repentino; no capta la idea de huir hacia un límite sin salida.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Elige una imagen de naturaleza sin analizar la relación"
+      },
+      {
+        "clave": "B",
+        "texto": "una familia que huye de una inundación subiendo pisos hasta llegar a la azotea",
+        "correcta": true,
+        "explicacion": "Las especies ascienden para escapar del calor, pero la montaña termina y no hay adónde seguir; la familia escapa del agua subiendo hasta que la azotea le pone el mismo límite.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "un árbol que pierde las hojas en temporada seca",
+        "correcta": false,
+        "explicacion": "Es una adaptación cíclica, no un desplazamiento forzado hacia un límite.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "un agricultor que cambia de cultivo cada vez que baja el precio de lo que siembra",
+        "correcta": false,
+        "explicacion": "El agricultor tiene alternativas; la clave del texto es que las especies se quedan sin opciones.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Pierde el elemento del límite infranqueable"
+      }
+    ],
+    "explicacion": "Paso 1: extraer la estructura de la situación: una amenaza (calor) obliga a moverse en una sola dirección (hacia arriba) y hay un límite físico (la cima) donde ya no hay escape. Paso 2: buscar la opción con la misma estructura: huir del agua subiendo pisos hasta una azotea sin salida. Paso 3: descartar el desborde, la caída de hojas y el cambio de cultivo, que no incluyen un límite infranqueable.",
+    "que_identificar": "Los tres elementos de la analogía: amenaza, dirección de escape, límite.",
+    "que_revisar": "Comparar estructuras, no temas superficiales.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T102"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-108",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Identificar información explícita",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": "Los páramos son ecosistemas de alta montaña que, en Colombia, se extienden por encima de los 3.000 metros de altitud. Su planta más conocida, el frailejón, crece apenas un centímetro al año y puede vivir más de un siglo. Las hojas del frailejón están cubiertas de pelos finos que atrapan la niebla; el agua condensada se desliza hacia el suelo, donde una capa esponjosa de musgos y materia orgánica la retiene y la libera lentamente hacia quebradas y ríos. Gracias a este mecanismo, los páramos abastecen de agua a gran parte de las ciudades andinas, aunque ocupan una fracción muy pequeña del territorio nacional. El ecosistema es frágil: el suelo tarda siglos en formarse y, una vez compactado por el ganado o removido por la minería, pierde su capacidad de absorber agua. Además, el aumento de la temperatura empuja a las especies hacia zonas más altas, pero la montaña tiene un límite: por encima de cierta altura ya no hay adónde subir. Proteger los páramos no es solo conservar un paisaje; es asegurar el agua de millones de personas que nunca los han visitado.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el texto, los pelos finos de las hojas del frailejón sirven para",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "proteger la planta del frío de la alta montaña",
+        "correcta": false,
+        "explicacion": "Es una idea plausible, pero el texto no la menciona.",
+        "tipo_error": "conocimiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Responde con conocimiento previo en vez de con el texto"
+      },
+      {
+        "clave": "B",
+        "texto": "absorber nutrientes del suelo",
+        "correcta": false,
+        "explicacion": "Los nutrientes del suelo no se absorben por las hojas; el texto no dice eso.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "atrapar el agua de la niebla",
+        "correcta": true,
+        "explicacion": "El texto dice que las hojas «están cubiertas de pelos finos que atrapan la niebla»; de allí el agua baja al suelo.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "atraer insectos polinizadores",
+        "correcta": false,
+        "explicacion": "El texto no habla de polinización ni de insectos.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: ubicar la oración sobre las hojas del frailejón. Paso 2: el texto dice literalmente que los pelos finos atrapan la niebla y que el agua condensada se desliza al suelo. Paso 3: la función explícita es capturar el agua de la niebla; proteger del frío, absorber nutrientes o atraer insectos no aparecen en el texto.",
+    "que_identificar": "La frase que describe las hojas del frailejón.",
+    "que_revisar": "Responder con lo que dice el texto y no con lo que uno sabe de botánica.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T102"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-109",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Evaluar la validez de un argumento",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "Los páramos son ecosistemas de alta montaña que, en Colombia, se extienden por encima de los 3.000 metros de altitud. Su planta más conocida, el frailejón, crece apenas un centímetro al año y puede vivir más de un siglo. Las hojas del frailejón están cubiertas de pelos finos que atrapan la niebla; el agua condensada se desliza hacia el suelo, donde una capa esponjosa de musgos y materia orgánica la retiene y la libera lentamente hacia quebradas y ríos. Gracias a este mecanismo, los páramos abastecen de agua a gran parte de las ciudades andinas, aunque ocupan una fracción muy pequeña del territorio nacional. El ecosistema es frágil: el suelo tarda siglos en formarse y, una vez compactado por el ganado o removido por la minería, pierde su capacidad de absorber agua. Además, el aumento de la temperatura empuja a las especies hacia zonas más altas, pero la montaña tiene un límite: por encima de cierta altura ya no hay adónde subir. Proteger los páramos no es solo conservar un paisaje; es asegurar el agua de millones de personas que nunca los han visitado.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Alguien afirma: «Los páramos ocupan una fracción muy pequeña del territorio; por lo tanto, protegerlos no debería ser prioritario». Según el texto, este argumento es débil porque",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "confunde extensión con importancia: un área pequeña surte de agua a millones",
+        "correcta": true,
+        "explicacion": "El texto subraya precisamente que, aunque ocupan poco territorio, los páramos surten de agua a gran parte de las ciudades andinas. La importancia no depende del tamaño.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "los páramos en realidad ocupan la mayor parte del país",
+        "correcta": false,
+        "explicacion": "El texto afirma que ocupan una fracción muy pequeña; la premisa del argumento es cierta.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Ataca la premisa verdadera en vez de la inferencia"
+      },
+      {
+        "clave": "C",
+        "texto": "el texto dice que los páramos ya están suficientemente protegidos",
+        "correcta": false,
+        "explicacion": "El texto no afirma eso; al contrario, pide protegerlos.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "la prioridad de conservación deben fijarla las ciudades y no los científicos",
+        "correcta": false,
+        "explicacion": "Es una opinión ajena al texto y no evalúa la lógica del argumento.",
+        "tipo_error": "argumentacion",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: separar la premisa (ocupan poco territorio, que el texto confirma) de la conclusión (no son prioritarios). Paso 2: el texto dice que, pese a su tamaño, abastecen de agua a gran parte de las ciudades. Paso 3: la falla del argumento está en pasar de «pequeño» a «poco importante»; las otras opciones niegan la premisa, inventan datos o cambian de tema.",
+    "que_identificar": "La frase «aunque ocupan una fracción muy pequeña del territorio».",
+    "que_revisar": "Evaluar si la conclusión se sigue de la premisa, no si la premisa es cierta.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T102"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-110",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Inferir la intención del autor",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "Los páramos son ecosistemas de alta montaña que, en Colombia, se extienden por encima de los 3.000 metros de altitud. Su planta más conocida, el frailejón, crece apenas un centímetro al año y puede vivir más de un siglo. Las hojas del frailejón están cubiertas de pelos finos que atrapan la niebla; el agua condensada se desliza hacia el suelo, donde una capa esponjosa de musgos y materia orgánica la retiene y la libera lentamente hacia quebradas y ríos. Gracias a este mecanismo, los páramos abastecen de agua a gran parte de las ciudades andinas, aunque ocupan una fracción muy pequeña del territorio nacional. El ecosistema es frágil: el suelo tarda siglos en formarse y, una vez compactado por el ganado o removido por la minería, pierde su capacidad de absorber agua. Además, el aumento de la temperatura empuja a las especies hacia zonas más altas, pero la montaña tiene un límite: por encima de cierta altura ya no hay adónde subir. Proteger los páramos no es solo conservar un paisaje; es asegurar el agua de millones de personas que nunca los han visitado.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Con la última oración del texto, el autor busca principalmente",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "describir con detalle el paisaje y la vegetación del páramo",
+        "correcta": false,
+        "explicacion": "La oración no describe el paisaje; habla del agua y de las personas.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "convencer al lector de que la conservación también le concierne",
+        "correcta": true,
+        "explicacion": "La oración afirma que proteger los páramos es «asegurar el agua de millones de personas que nunca los han visitado»: conecta la conservación con quien vive lejos y no los conoce.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "explicar la biología del frailejón",
+        "correcta": false,
+        "explicacion": "Eso se hizo en las primeras oraciones; la última ya no habla de la planta.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Asigna a la oración final el tema de las primeras"
+      },
+      {
+        "clave": "D",
+        "texto": "criticar a la ganadería y la minería",
+        "correcta": false,
+        "explicacion": "Esas actividades se mencionan antes como amenazas; la oración final no las juzga.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: leer la última oración: proteger los páramos «es asegurar el agua de millones de personas que nunca los han visitado». Paso 2: notar que se dirige a quien no conoce el páramo y le muestra que depende de él. Paso 3: la intención es persuadir de que la conservación es asunto de todos; no describe paisaje, ni explica botánica, ni critica actividades.",
+    "que_identificar": "El contraste entre «conservar un paisaje» y «asegurar el agua».",
+    "que_revisar": "La función de un cierre: resumir, persuadir o describir.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T102"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-111",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Identificar supuestos",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Se ha vuelto común proponer que los colegios prohíban los celulares durante toda la jornada. Entiendo la preocupación: las notificaciones interrumpen la clase y hay estudiantes que pasan el descanso mirando una pantalla en lugar de hablar con sus compañeros. Pero creo que la prohibición total es una respuesta cómoda a un problema complejo. Primero, el celular es hoy una herramienta de trabajo: con él se consulta un diccionario, se graba un experimento o se organiza un trabajo en grupo. Quitarlo del todo es renunciar a enseñar a usarlo bien. Segundo, prohibir no educa. Un estudiante que solo deja el teléfono porque un adulto lo obliga no aprende a controlar su atención; aprende a esconder el aparato. Tercero, la medida castiga por igual a quien lo usa mal y a quien lo usa con criterio. Lo que propongo es distinto: reglas claras acordadas con los propios estudiantes, momentos de clase sin pantallas y momentos en que la pantalla sea el instrumento. El colegio debería ser el lugar donde se aprende a convivir con la tecnología, no el único lugar donde se finge que no existe.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La idea del autor de que «prohibir no educa» supone que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "los adultos no deberían poner ninguna regla sobre el uso del celular en el colegio",
+        "correcta": false,
+        "explicacion": "El autor propone «reglas claras»; no rechaza las reglas sino la prohibición total.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Exagera la postura del autor"
+      },
+      {
+        "clave": "B",
+        "texto": "una tarea del colegio es formar el autocontrol, no solo mantener el orden",
+        "correcta": true,
+        "explicacion": "El autor dice que quien deja el celular por obligación «no aprende a controlar su atención». Eso solo es una crítica si se asume que el colegio debe enseñar autocontrol y no basta con que haya orden.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "los estudiantes nunca usan mal el celular",
+        "correcta": false,
+        "explicacion": "El autor reconoce que hay estudiantes que lo usan mal; esa no es su premisa.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "los celulares no distraen en clase",
+        "correcta": false,
+        "explicacion": "El autor admite que las notificaciones interrumpen la clase.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: ubicar el argumento: quien deja el teléfono por obligación no aprende a controlar su atención, solo a esconderlo. Paso 2: preguntarse qué debe ser cierto para que eso sea un defecto de la prohibición: que el colegio deba formar autocontrol, no solo lograr orden. Paso 3: las otras opciones contradicen cosas que el autor sí admite (que distraen, que hay mal uso, que se necesitan reglas).",
+    "que_identificar": "Qué valor da por sentado el autor al criticar la prohibición.",
+    "que_revisar": "Diferenciar lo que el autor concede de lo que da por supuesto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T103"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-112",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Identificar la propuesta del autor",
+    "dificultad": 2,
+    "dificultad_examen": 2,
+    "contexto": "Se ha vuelto común proponer que los colegios prohíban los celulares durante toda la jornada. Entiendo la preocupación: las notificaciones interrumpen la clase y hay estudiantes que pasan el descanso mirando una pantalla en lugar de hablar con sus compañeros. Pero creo que la prohibición total es una respuesta cómoda a un problema complejo. Primero, el celular es hoy una herramienta de trabajo: con él se consulta un diccionario, se graba un experimento o se organiza un trabajo en grupo. Quitarlo del todo es renunciar a enseñar a usarlo bien. Segundo, prohibir no educa. Un estudiante que solo deja el teléfono porque un adulto lo obliga no aprende a controlar su atención; aprende a esconder el aparato. Tercero, la medida castiga por igual a quien lo usa mal y a quien lo usa con criterio. Lo que propongo es distinto: reglas claras acordadas con los propios estudiantes, momentos de clase sin pantallas y momentos en que la pantalla sea el instrumento. El colegio debería ser el lugar donde se aprende a convivir con la tecnología, no el único lugar donde se finge que no existe.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el texto, la propuesta del autor consiste en",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "prohibir el celular solo durante los descansos",
+        "correcta": false,
+        "explicacion": "El autor no menciona una prohibición limitada al descanso.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "permitir el celular en todo momento sin restricciones",
+        "correcta": false,
+        "explicacion": "El autor propone momentos de clase sin pantallas; no plantea libertad total.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee la crítica a la prohibición como defensa del uso libre"
+      },
+      {
+        "clave": "C",
+        "texto": "acordar reglas con los estudiantes y alternar momentos con y sin pantallas",
+        "correcta": true,
+        "explicacion": "El texto dice: «reglas claras acordadas con los propios estudiantes, momentos de clase sin pantallas y momentos en que la pantalla sea el instrumento».",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "dejar que cada profesor decida por su cuenta, sin consultar a los estudiantes",
+        "correcta": false,
+        "explicacion": "El texto habla de reglas acordadas con los estudiantes, no de decisiones individuales de cada docente.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: buscar la frase «Lo que propongo es distinto». Paso 2: lo que sigue enumera tres cosas: reglas acordadas con los estudiantes, momentos sin pantallas y momentos con la pantalla como instrumento. Paso 3: la opción que recoge esa alternancia con reglas acordadas es la correcta; las demás proponen extremos o actores que el texto no menciona.",
+    "que_identificar": "La oración que empieza con «Lo que propongo es distinto».",
+    "que_revisar": "Separar lo que el autor critica de lo que propone.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T103"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-113",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Inferir el sentido de una expresión",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Se ha vuelto común proponer que los colegios prohíban los celulares durante toda la jornada. Entiendo la preocupación: las notificaciones interrumpen la clase y hay estudiantes que pasan el descanso mirando una pantalla en lugar de hablar con sus compañeros. Pero creo que la prohibición total es una respuesta cómoda a un problema complejo. Primero, el celular es hoy una herramienta de trabajo: con él se consulta un diccionario, se graba un experimento o se organiza un trabajo en grupo. Quitarlo del todo es renunciar a enseñar a usarlo bien. Segundo, prohibir no educa. Un estudiante que solo deja el teléfono porque un adulto lo obliga no aprende a controlar su atención; aprende a esconder el aparato. Tercero, la medida castiga por igual a quien lo usa mal y a quien lo usa con criterio. Lo que propongo es distinto: reglas claras acordadas con los propios estudiantes, momentos de clase sin pantallas y momentos en que la pantalla sea el instrumento. El colegio debería ser el lugar donde se aprende a convivir con la tecnología, no el único lugar donde se finge que no existe.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se infiere que, para el autor, la prohibición total es «una respuesta cómoda» porque",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "es más fácil aplicarla que enseñar a usar bien la tecnología",
+        "correcta": true,
+        "explicacion": "El autor contrapone prohibir con «enseñar a usarlo bien» y con acordar reglas y alternar momentos, tareas más exigentes. Lo cómodo es evitar ese trabajo educativo.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "la mayoría de los padres de familia la apoya",
+        "correcta": false,
+        "explicacion": "El texto no menciona a los padres ni su opinión.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "no exige comprar equipos nuevos para el colegio",
+        "correcta": false,
+        "explicacion": "El texto no habla de costos ni de equipos.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "los estudiantes la aceptan sin protestar y dejan de usar el celular",
+        "correcta": false,
+        "explicacion": "El autor sugiere lo contrario: los estudiantes aprenden a esconder el aparato.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Contradice la idea de que los estudiantes esconden el teléfono"
+      }
+    ],
+    "explicacion": "Paso 1: identificar con qué contrasta el autor la prohibición: con enseñar a usar el celular bien y con construir reglas acordadas. Paso 2: esas alternativas requieren más esfuerzo del colegio. Paso 3: por eso la prohibición es «cómoda»: evita ese trabajo. Padres, costos y aceptación de los estudiantes no aparecen o se contradicen en el texto.",
+    "que_identificar": "Las alternativas que el autor opone a la prohibición.",
+    "que_revisar": "Deducir el sentido de un adjetivo a partir del contraste que plantea el texto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T103"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-114",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Evaluar una objeción",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": "Se ha vuelto común proponer que los colegios prohíban los celulares durante toda la jornada. Entiendo la preocupación: las notificaciones interrumpen la clase y hay estudiantes que pasan el descanso mirando una pantalla en lugar de hablar con sus compañeros. Pero creo que la prohibición total es una respuesta cómoda a un problema complejo. Primero, el celular es hoy una herramienta de trabajo: con él se consulta un diccionario, se graba un experimento o se organiza un trabajo en grupo. Quitarlo del todo es renunciar a enseñar a usarlo bien. Segundo, prohibir no educa. Un estudiante que solo deja el teléfono porque un adulto lo obliga no aprende a controlar su atención; aprende a esconder el aparato. Tercero, la medida castiga por igual a quien lo usa mal y a quien lo usa con criterio. Lo que propongo es distinto: reglas claras acordadas con los propios estudiantes, momentos de clase sin pantallas y momentos en que la pantalla sea el instrumento. El colegio debería ser el lugar donde se aprende a convivir con la tecnología, no el único lugar donde se finge que no existe.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un lector objeta: «El autor reconoce que las notificaciones interrumpen la clase; por eso su postura es contradictoria». Esta objeción es inadecuada porque",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "el autor nunca menciona las notificaciones en el texto",
+        "correcta": false,
+        "explicacion": "Sí las menciona en la segunda oración; la objeción parte de un hecho real del texto.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "No recuerda la concesión inicial del autor"
+      },
+      {
+        "clave": "B",
+        "texto": "reconocer un problema no obliga a aceptar una solución particular",
+        "correcta": true,
+        "explicacion": "El autor admite el problema de las interrupciones y propone otra solución (reglas y momentos sin pantallas). Aceptar que algo es un problema y rechazar la prohibición total no es contradictorio.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "una contradicción solo puede existir en textos científicos, no en textos de opinión",
+        "correcta": false,
+        "explicacion": "Los textos de opinión también pueden contradecirse; esa idea es falsa y no evalúa la objeción.",
+        "tipo_error": "argumentacion",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "las interrupciones en clase no son un problema real",
+        "correcta": false,
+        "explicacion": "El autor sí las considera un problema; negarlo no responde a la objeción.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: revisar qué concede el autor: que las notificaciones interrumpen la clase. Paso 2: revisar qué rechaza: la prohibición total, no la existencia del problema. Paso 3: la objeción confunde reconocer un problema con tener que aceptar una solución concreta; como el autor propone otra solución, no hay contradicción. Las demás opciones niegan hechos del texto o afirman ideas falsas.",
+    "que_identificar": "La diferencia entre aceptar un problema y aceptar una solución.",
+    "que_revisar": "Verificar si una supuesta contradicción lo es realmente.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T103"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-115",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Identificar razones explícitas",
+    "dificultad": 2,
+    "dificultad_examen": 2,
+    "contexto": "Se ha vuelto común proponer que los colegios prohíban los celulares durante toda la jornada. Entiendo la preocupación: las notificaciones interrumpen la clase y hay estudiantes que pasan el descanso mirando una pantalla en lugar de hablar con sus compañeros. Pero creo que la prohibición total es una respuesta cómoda a un problema complejo. Primero, el celular es hoy una herramienta de trabajo: con él se consulta un diccionario, se graba un experimento o se organiza un trabajo en grupo. Quitarlo del todo es renunciar a enseñar a usarlo bien. Segundo, prohibir no educa. Un estudiante que solo deja el teléfono porque un adulto lo obliga no aprende a controlar su atención; aprende a esconder el aparato. Tercero, la medida castiga por igual a quien lo usa mal y a quien lo usa con criterio. Lo que propongo es distinto: reglas claras acordadas con los propios estudiantes, momentos de clase sin pantallas y momentos en que la pantalla sea el instrumento. El colegio debería ser el lugar donde se aprende a convivir con la tecnología, no el único lugar donde se finge que no existe.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el texto, una de las razones del autor para rechazar la prohibición total es que esa medida",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "resulta demasiado costosa para los colegios",
+        "correcta": false,
+        "explicacion": "El texto no habla de costos.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "va en contra de la ley",
+        "correcta": false,
+        "explicacion": "El autor no apela a ninguna norma legal.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "es rechazada por la mayoría de los profesores y directivos del colegio",
+        "correcta": false,
+        "explicacion": "El texto no menciona la opinión de los profesores.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "trata igual a quien usa bien el celular y a quien lo usa mal",
+        "correcta": true,
+        "explicacion": "Es la tercera razón del autor: «la medida castiga por igual a quien lo usa mal y a quien lo usa con criterio».",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: identificar las tres razones numeradas del autor: el celular es herramienta, prohibir no educa, y la medida castiga por igual a todos. Paso 2: comparar las opciones con esas razones. Paso 3: solo la igualdad de castigo entre quien lo usa bien y mal aparece en el texto; costos, ley y profesores no se mencionan.",
+    "que_identificar": "Las razones introducidas por «Primero», «Segundo» y «Tercero».",
+    "que_revisar": "Buscar la información en la estructura enumerada del texto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T103"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-116",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Identificar información explícita",
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": "En varios pueblos de Colombia han surgido museos comunitarios: colecciones armadas por los propios habitantes con objetos que guardaban en sus casas. Una máquina de coser, una radio de bulbos, las fotografías de una fiesta patronal o las herramientas de un oficio desaparecido se exhiben en una casa prestada o en el salón de la escuela. A diferencia de los museos tradicionales, donde un equipo de especialistas decide qué merece conservarse, aquí la selección la hace la comunidad en asambleas, y los textos que acompañan cada pieza recogen los recuerdos de quienes la usaron. Quienes estudian estas iniciativas señalan que su valor no está en la rareza de los objetos, que suelen ser comunes, sino en los relatos que los rodean: el museo funciona como una memoria colectiva que los jóvenes pueden recorrer. También advierten un riesgo: sin apoyo técnico, muchas piezas se deterioran por la humedad o la luz, y algunos museos desaparecen cuando la persona que los impulsó se cansa o se muda. Por eso proponen alianzas con universidades que aporten conocimiento sin quitarle a la comunidad la decisión sobre qué contar.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el texto, en los museos comunitarios la selección de los objetos que se exhiben la realiza",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "un equipo de especialistas en patrimonio",
+        "correcta": false,
+        "explicacion": "Eso ocurre en los museos tradicionales, según el texto.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde los dos tipos de museo comparados"
+      },
+      {
+        "clave": "B",
+        "texto": "la alcaldía del municipio",
+        "correcta": false,
+        "explicacion": "El texto no menciona a la alcaldía en la selección.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "la comunidad reunida en asambleas",
+        "correcta": true,
+        "explicacion": "El texto lo dice explícitamente: «aquí la selección la hace la comunidad en asambleas».",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "la universidad que acompaña el proceso",
+        "correcta": false,
+        "explicacion": "La universidad aporta conocimiento, pero el texto insiste en que la decisión queda en la comunidad.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: localizar la comparación con los museos tradicionales. Paso 2: el texto contrapone al equipo de especialistas con «la comunidad en asambleas». Paso 3: la opción correcta es la comunidad en asambleas; los especialistas son del museo tradicional y la universidad, según el final del texto, aporta sin decidir.",
+    "que_identificar": "La oración que compara museos tradicionales y comunitarios.",
+    "que_revisar": "Atribuir cada acción al actor correcto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T104"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-117",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Establecer analogías",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "En varios pueblos de Colombia han surgido museos comunitarios: colecciones armadas por los propios habitantes con objetos que guardaban en sus casas. Una máquina de coser, una radio de bulbos, las fotografías de una fiesta patronal o las herramientas de un oficio desaparecido se exhiben en una casa prestada o en el salón de la escuela. A diferencia de los museos tradicionales, donde un equipo de especialistas decide qué merece conservarse, aquí la selección la hace la comunidad en asambleas, y los textos que acompañan cada pieza recogen los recuerdos de quienes la usaron. Quienes estudian estas iniciativas señalan que su valor no está en la rareza de los objetos, que suelen ser comunes, sino en los relatos que los rodean: el museo funciona como una memoria colectiva que los jóvenes pueden recorrer. También advierten un riesgo: sin apoyo técnico, muchas piezas se deterioran por la humedad o la luz, y algunos museos desaparecen cuando la persona que los impulsó se cansa o se muda. Por eso proponen alianzas con universidades que aporten conocimiento sin quitarle a la comunidad la decisión sobre qué contar.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La relación que el texto propone entre la universidad y la comunidad se parece más a la de",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "un juez que decide cuál de las partes tiene la razón",
+        "correcta": false,
+        "explicacion": "El juez impone una decisión; el texto pide que la decisión quede en la comunidad.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Pierde el rasgo de que la comunidad conserva la decisión"
+      },
+      {
+        "clave": "B",
+        "texto": "un comprador que adquiere la colección completa",
+        "correcta": false,
+        "explicacion": "Comprar implica quedarse con los objetos, lo contrario de apoyar sin apropiarse.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "un turista que visita el museo, toma fotos y da su opinión sobre las piezas",
+        "correcta": false,
+        "explicacion": "El turista no aporta conocimiento técnico sostenido; la relación propuesta es de acompañamiento.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "un asesor que enseña a conservar fotos viejas sin decidir cuáles guardar",
+        "correcta": true,
+        "explicacion": "La universidad debe aportar conocimiento técnico (cómo conservar) sin quitarle a la comunidad la decisión sobre qué contar, igual que el asesor que enseña a conservar pero no elige qué fotos se guardan.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: extraer la relación del texto: la universidad aporta conocimiento y la comunidad conserva la decisión. Paso 2: buscar la pareja con el mismo reparto de papeles: alguien que enseña a conservar sin decidir qué se conserva. Paso 3: el juez decide, el comprador se apropia y el turista no aporta conocimiento; ninguno reproduce la relación.",
+    "que_identificar": "Quién aporta saber y quién decide en la propuesta del texto.",
+    "que_revisar": "Mantener los papeles al trasladar una relación a otro contexto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T104"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-118",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Inferir el valor de un elemento",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "En varios pueblos de Colombia han surgido museos comunitarios: colecciones armadas por los propios habitantes con objetos que guardaban en sus casas. Una máquina de coser, una radio de bulbos, las fotografías de una fiesta patronal o las herramientas de un oficio desaparecido se exhiben en una casa prestada o en el salón de la escuela. A diferencia de los museos tradicionales, donde un equipo de especialistas decide qué merece conservarse, aquí la selección la hace la comunidad en asambleas, y los textos que acompañan cada pieza recogen los recuerdos de quienes la usaron. Quienes estudian estas iniciativas señalan que su valor no está en la rareza de los objetos, que suelen ser comunes, sino en los relatos que los rodean: el museo funciona como una memoria colectiva que los jóvenes pueden recorrer. También advierten un riesgo: sin apoyo técnico, muchas piezas se deterioran por la humedad o la luz, y algunos museos desaparecen cuando la persona que los impulsó se cansa o se muda. Por eso proponen alianzas con universidades que aporten conocimiento sin quitarle a la comunidad la decisión sobre qué contar.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Del texto se infiere que un objeto cotidiano, como una radio de bulbos, adquiere valor en el museo comunitario porque",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "está unido a los recuerdos de quienes lo usaron",
+        "correcta": true,
+        "explicacion": "El texto dice que el valor «no está en la rareza de los objetos... sino en los relatos que los rodean» y que los textos recogen los recuerdos de quienes los usaron.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "es un objeto escaso y difícil de conseguir",
+        "correcta": false,
+        "explicacion": "El texto afirma lo contrario: los objetos suelen ser comunes.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Aplica el criterio de rareza que el texto rechaza"
+      },
+      {
+        "clave": "C",
+        "texto": "fue restaurado por especialistas",
+        "correcta": false,
+        "explicacion": "El texto señala que muchas piezas no tienen apoyo técnico y se deterioran.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "tiene un precio alto en el mercado",
+        "correcta": false,
+        "explicacion": "El texto no habla de precio; su noción de valor es memorial, no económica.",
+        "tipo_error": "vocabulario",
+        "diagnostico": "probable",
+        "razon_frecuente": "Entiende «valor» como valor económico"
+      }
+    ],
+    "explicacion": "Paso 1: ubicar la frase sobre el valor de los objetos. Paso 2: el texto niega que el valor esté en la rareza y lo pone en los relatos y recuerdos que acompañan cada pieza. Paso 3: por tanto, la radio vale por los recuerdos de quienes la usaron; la escasez se niega, la restauración no se menciona y el precio no es el sentido de «valor» aquí.",
+    "que_identificar": "La oposición «no está en la rareza... sino en los relatos».",
+    "que_revisar": "El sentido de la palabra «valor» dentro del texto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T104"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-119",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Identificar riesgos mencionados",
+    "dificultad": 2,
+    "dificultad_examen": 2,
+    "contexto": "En varios pueblos de Colombia han surgido museos comunitarios: colecciones armadas por los propios habitantes con objetos que guardaban en sus casas. Una máquina de coser, una radio de bulbos, las fotografías de una fiesta patronal o las herramientas de un oficio desaparecido se exhiben en una casa prestada o en el salón de la escuela. A diferencia de los museos tradicionales, donde un equipo de especialistas decide qué merece conservarse, aquí la selección la hace la comunidad en asambleas, y los textos que acompañan cada pieza recogen los recuerdos de quienes la usaron. Quienes estudian estas iniciativas señalan que su valor no está en la rareza de los objetos, que suelen ser comunes, sino en los relatos que los rodean: el museo funciona como una memoria colectiva que los jóvenes pueden recorrer. También advierten un riesgo: sin apoyo técnico, muchas piezas se deterioran por la humedad o la luz, y algunos museos desaparecen cuando la persona que los impulsó se cansa o se muda. Por eso proponen alianzas con universidades que aporten conocimiento sin quitarle a la comunidad la decisión sobre qué contar.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el texto, uno de los riesgos de los museos comunitarios es que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "los visitantes se lleven las piezas",
+        "correcta": false,
+        "explicacion": "El texto no menciona robos.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "las piezas se deterioren por la humedad o la luz",
+        "correcta": true,
+        "explicacion": "El texto advierte que, «sin apoyo técnico, muchas piezas se deterioran por la humedad o la luz».",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "los especialistas impongan sus criterios a la comunidad",
+        "correcta": false,
+        "explicacion": "El texto plantea esto como algo a evitar en las alianzas, no como un riesgo observado.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Convierte una recomendación en un riesgo descrito"
+      },
+      {
+        "clave": "D",
+        "texto": "los jóvenes no se interesen por la memoria",
+        "correcta": false,
+        "explicacion": "El texto dice que los jóvenes pueden recorrer esa memoria; no plantea desinterés.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: buscar la frase «También advierten un riesgo». Paso 2: allí se mencionan dos cosas: el deterioro por humedad o luz y la desaparición del museo cuando su impulsor se cansa o se muda. Paso 3: la opción sobre el deterioro coincide con el texto; robos y desinterés no aparecen, y la imposición de los especialistas es algo que el texto propone evitar.",
+    "que_identificar": "El párrafo introducido por «También advierten un riesgo».",
+    "que_revisar": "Distinguir riesgos descritos de recomendaciones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T104"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-120",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Interpretar una expresión figurada",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "En varios pueblos de Colombia han surgido museos comunitarios: colecciones armadas por los propios habitantes con objetos que guardaban en sus casas. Una máquina de coser, una radio de bulbos, las fotografías de una fiesta patronal o las herramientas de un oficio desaparecido se exhiben en una casa prestada o en el salón de la escuela. A diferencia de los museos tradicionales, donde un equipo de especialistas decide qué merece conservarse, aquí la selección la hace la comunidad en asambleas, y los textos que acompañan cada pieza recogen los recuerdos de quienes la usaron. Quienes estudian estas iniciativas señalan que su valor no está en la rareza de los objetos, que suelen ser comunes, sino en los relatos que los rodean: el museo funciona como una memoria colectiva que los jóvenes pueden recorrer. También advierten un riesgo: sin apoyo técnico, muchas piezas se deterioran por la humedad o la luz, y algunos museos desaparecen cuando la persona que los impulsó se cansa o se muda. Por eso proponen alianzas con universidades que aporten conocimiento sin quitarle a la comunidad la decisión sobre qué contar.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La expresión «una memoria colectiva que los jóvenes pueden recorrer» sugiere que el museo comunitario",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "está pensado exclusivamente para visitantes jóvenes",
+        "correcta": false,
+        "explicacion": "Que los jóvenes puedan recorrerlo no significa que sea solo para ellos.",
+        "tipo_error": "inferencia",
+        "diagnostico": "probable",
+        "razon_frecuente": "Convierte un ejemplo de público en una exclusividad"
+      },
+      {
+        "clave": "B",
+        "texto": "guarda recuerdos de un grupo y los abre a quienes no los vivieron",
+        "correcta": true,
+        "explicacion": "«Memoria colectiva» alude a los recuerdos compartidos de la comunidad y «recorrer» a la posibilidad de que los jóvenes, que no vivieron esos tiempos, los conozcan al caminar entre las piezas.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "exhibe sobre todo objetos que pertenecen a los jóvenes del pueblo",
+        "correcta": false,
+        "explicacion": "Los objetos son de oficios y épocas pasadas; no son de los jóvenes.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "reemplaza los libros de historia del colegio",
+        "correcta": false,
+        "explicacion": "El texto no compara el museo con los libros ni habla de reemplazo.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: analizar las dos partes de la expresión: «memoria colectiva» (recuerdos compartidos de la comunidad) y «recorrer» (caminar por el museo). Paso 2: los jóvenes son quienes no vivieron esos recuerdos; al recorrer el museo los conocen. Paso 3: la idea es hacer accesible la memoria del grupo a quienes no la vivieron, sin exclusividad ni reemplazo de otros medios.",
+    "que_identificar": "El sentido figurado de «recorrer» una memoria.",
+    "que_revisar": "Interpretar metáforas a partir de su contexto en el texto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T104"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-121",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Interpretar una imagen poética",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "Inventario de la casa vieja\n\nLa casa que vendimos sigue en pie,\npero ya no es la casa.\nEn la cocina alguien cuelga otras ollas,\notro perro aprende el patio de memoria.\nYo conservo lo que no cabía en el camión:\nel ruido de la lluvia sobre el zinc,\nla mancha en la pared que era un caballo si uno la miraba de lado,\nla voz de mi abuela contando las gallinas al atardecer\ncomo quien cuenta monedas.\nDicen que la memoria es un cajón desordenado.\nNo es cierto: es un cajón que uno ordena cada vez que lo abre,\ny cada vez quedan cosas distintas encima.\nCuando paso por esa calle no me detengo.\nSé que si toco el timbre\nme abrirá un desconocido\ny tendré que explicarle, sin que me entienda,\nque vine a buscar\nalgo que me llevé hace años\nsin saberlo.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "El verso «otro perro aprende el patio de memoria» sugiere que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "otras personas habitan ahora la casa y la hacen suya",
+        "correcta": true,
+        "explicacion": "Un perro nuevo que se aprende el patio indica que otra familia, con sus animales, ocupa ahora la casa y la va haciendo suya, como antes lo hizo la familia del hablante.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "el perro de la familia se quedó en la casa vendida",
+        "correcta": false,
+        "explicacion": "El verso dice «otro perro», es decir, uno distinto al de la familia.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Pasa por alto la palabra «otro»"
+      },
+      {
+        "clave": "C",
+        "texto": "el patio fue remodelado por los nuevos dueños para sus animales",
+        "correcta": false,
+        "explicacion": "Nada en el verso habla de cambios físicos en el patio.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el hablante extraña a su perro",
+        "correcta": false,
+        "explicacion": "El poema no menciona un perro propio ni expresa nostalgia por él.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: leer el verso junto con el anterior: «alguien cuelga otras ollas, otro perro aprende el patio». Paso 2: la repetición de «otras» y «otro» señala que hay nuevos habitantes. Paso 3: que el perro «aprenda el patio de memoria» muestra que esos habitantes ya hacen suya la casa; no se dice que el perro antiguo se quedara ni que el patio cambiara.",
+    "que_identificar": "El paralelismo entre «otras ollas» y «otro perro».",
+    "que_revisar": "Leer cada verso en relación con los que lo rodean.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T105"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-122",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Identificar información explícita en un poema",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "Inventario de la casa vieja\n\nLa casa que vendimos sigue en pie,\npero ya no es la casa.\nEn la cocina alguien cuelga otras ollas,\notro perro aprende el patio de memoria.\nYo conservo lo que no cabía en el camión:\nel ruido de la lluvia sobre el zinc,\nla mancha en la pared que era un caballo si uno la miraba de lado,\nla voz de mi abuela contando las gallinas al atardecer\ncomo quien cuenta monedas.\nDicen que la memoria es un cajón desordenado.\nNo es cierto: es un cajón que uno ordena cada vez que lo abre,\ny cada vez quedan cosas distintas encima.\nCuando paso por esa calle no me detengo.\nSé que si toco el timbre\nme abrirá un desconocido\ny tendré que explicarle, sin que me entienda,\nque vine a buscar\nalgo que me llevé hace años\nsin saberlo.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el poema, lo que el hablante conserva de la casa es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "las ollas que cuelgan en la cocina de la casa",
+        "correcta": false,
+        "explicacion": "Las ollas que menciona son «otras», las de los nuevos habitantes.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Toma un objeto mencionado como si fuera del hablante"
+      },
+      {
+        "clave": "B",
+        "texto": "las gallinas de la abuela",
+        "correcta": false,
+        "explicacion": "Lo que conserva es la voz de la abuela contándolas, no las gallinas.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "los recuerdos que no se podían llevar en el camión",
+        "correcta": true,
+        "explicacion": "El poema dice: «Yo conservo lo que no cabía en el camión» y enumera recuerdos: el ruido de la lluvia, la mancha de la pared, la voz de la abuela.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el timbre de la puerta",
+        "correcta": false,
+        "explicacion": "El timbre aparece al final como algo que el hablante podría tocar, no como algo que conserva.",
+        "tipo_error": "comprension",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: buscar el verso con el verbo «conservo». Paso 2: lo que sigue a los dos puntos es una lista de sensaciones y recuerdos (ruido de la lluvia, mancha en la pared, voz de la abuela), no objetos. Paso 3: por eso lo conservado son los recuerdos que no cabían en el camión; ollas, gallinas y timbre son elementos del poema con otra función.",
+    "que_identificar": "El verso «Yo conservo lo que no cabía en el camión» y su enumeración.",
+    "que_revisar": "Distinguir lo que el poema menciona de lo que el hablante dice conservar.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T105"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-123",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Contrastar concepciones",
+    "dificultad": 3,
+    "dificultad_examen": 5,
+    "contexto": "Inventario de la casa vieja\n\nLa casa que vendimos sigue en pie,\npero ya no es la casa.\nEn la cocina alguien cuelga otras ollas,\notro perro aprende el patio de memoria.\nYo conservo lo que no cabía en el camión:\nel ruido de la lluvia sobre el zinc,\nla mancha en la pared que era un caballo si uno la miraba de lado,\nla voz de mi abuela contando las gallinas al atardecer\ncomo quien cuenta monedas.\nDicen que la memoria es un cajón desordenado.\nNo es cierto: es un cajón que uno ordena cada vez que lo abre,\ny cada vez quedan cosas distintas encima.\nCuando paso por esa calle no me detengo.\nSé que si toco el timbre\nme abrirá un desconocido\ny tendré que explicarle, sin que me entienda,\nque vine a buscar\nalgo que me llevé hace años\nsin saberlo.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "El poema afirma que la memoria no es «un cajón desordenado» sino «un cajón que uno ordena cada vez que lo abre». Esta idea se opone a la concepción de la memoria como",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "un archivo fijo que guarda los hechos tal como ocurrieron",
+        "correcta": true,
+        "explicacion": "Si cada vez que se abre el cajón se ordena distinto y quedan cosas diferentes encima, la memoria cambia con cada recuerdo; eso contradice la idea de un registro inmutable y fiel.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "algo que se pierde por completo con el paso del tiempo",
+        "correcta": false,
+        "explicacion": "El poema no habla de pérdida total sino de reordenamiento; además, el hablante conserva muchos recuerdos.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde cambiar con perder"
+      },
+      {
+        "clave": "C",
+        "texto": "un relato que se comparte con otras personas",
+        "correcta": false,
+        "explicacion": "El poema no trata la memoria como algo compartido; el hablante incluso dice que el desconocido no lo entendería.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "una herramienta para aprender de los errores",
+        "correcta": false,
+        "explicacion": "El poema no vincula la memoria con el aprendizaje ni con errores.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: entender la imagen: un cajón que se reordena cada vez que se abre y donde quedan cosas distintas encima. Paso 2: eso significa que recordar modifica lo recordado. Paso 3: la concepción opuesta es la de una memoria fija que guarda los hechos sin cambios. Las otras opciones hablan de pérdida, de compartir o de aprender, temas que el poema no plantea.",
+    "que_identificar": "Qué implica que el cajón se ordene distinto en cada apertura.",
+    "que_revisar": "Identificar la idea contraria a una metáfora.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T105"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-124",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Inferir el sentido del cierre",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Inventario de la casa vieja\n\nLa casa que vendimos sigue en pie,\npero ya no es la casa.\nEn la cocina alguien cuelga otras ollas,\notro perro aprende el patio de memoria.\nYo conservo lo que no cabía en el camión:\nel ruido de la lluvia sobre el zinc,\nla mancha en la pared que era un caballo si uno la miraba de lado,\nla voz de mi abuela contando las gallinas al atardecer\ncomo quien cuenta monedas.\nDicen que la memoria es un cajón desordenado.\nNo es cierto: es un cajón que uno ordena cada vez que lo abre,\ny cada vez quedan cosas distintas encima.\nCuando paso por esa calle no me detengo.\nSé que si toco el timbre\nme abrirá un desconocido\ny tendré que explicarle, sin que me entienda,\nque vine a buscar\nalgo que me llevé hace años\nsin saberlo.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Los versos finales («vine a buscar / algo que me llevé hace años / sin saberlo») indican que el hablante",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "olvidó un objeto valioso dentro de la casa",
+        "correcta": false,
+        "explicacion": "Dice que se lo llevó, no que lo olvidó; y no es un objeto, pues no cabía en el camión.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee «algo» como un objeto material"
+      },
+      {
+        "clave": "B",
+        "texto": "quiere comprar de nuevo la casa",
+        "correcta": false,
+        "explicacion": "El poema no expresa deseo de recuperar la casa; el hablante ni siquiera se detiene.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "sabe que lo que busca ya lo lleva en la memoria",
+        "correcta": true,
+        "explicacion": "Lo que «se llevó sin saberlo» son los recuerdos enumerados antes; por eso buscarlo en la casa no tiene sentido y el hablante no toca el timbre.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "culpa al nuevo dueño por haber cambiado la casa de su infancia",
+        "correcta": false,
+        "explicacion": "No hay reproche hacia el desconocido; solo la certeza de que no lo entendería.",
+        "tipo_error": "inferencia",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: relacionar «algo que me llevé hace años sin saberlo» con la lista de lo que el hablante conserva: recuerdos. Paso 2: si ya lo lleva consigo, buscarlo en la casa es inútil, lo que explica que no toque el timbre. Paso 3: no hay objeto olvidado, ni deseo de recomprar, ni reproche al nuevo dueño.",
+    "que_identificar": "La conexión entre «conservo lo que no cabía en el camión» y «algo que me llevé».",
+    "que_revisar": "Leer el final de un poema a la luz de su inicio.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T105"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-125",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Establecer analogías",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Inventario de la casa vieja\n\nLa casa que vendimos sigue en pie,\npero ya no es la casa.\nEn la cocina alguien cuelga otras ollas,\notro perro aprende el patio de memoria.\nYo conservo lo que no cabía en el camión:\nel ruido de la lluvia sobre el zinc,\nla mancha en la pared que era un caballo si uno la miraba de lado,\nla voz de mi abuela contando las gallinas al atardecer\ncomo quien cuenta monedas.\nDicen que la memoria es un cajón desordenado.\nNo es cierto: es un cajón que uno ordena cada vez que lo abre,\ny cada vez quedan cosas distintas encima.\nCuando paso por esa calle no me detengo.\nSé que si toco el timbre\nme abrirá un desconocido\ny tendré que explicarle, sin que me entienda,\nque vine a buscar\nalgo que me llevé hace años\nsin saberlo.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La actitud del hablante frente a la casa vendida se parece más a la de una persona que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "regresa a su antiguo colegio y exige que lo dejen tal como era cuando estudiaba",
+        "correcta": false,
+        "explicacion": "El hablante no pide que nada vuelva a ser como antes; acepta que la casa «ya no es la casa».",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Atribuye al hablante un deseo de restaurar el pasado"
+      },
+      {
+        "clave": "B",
+        "texto": "reclama a un amigo algo que le prestó hace años",
+        "correcta": false,
+        "explicacion": "No hay reclamo; lo que busca ya lo tiene consigo.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "borra todas las fotos de su infancia para no recordarla",
+        "correcta": false,
+        "explicacion": "El hablante conserva y valora los recuerdos; no quiere borrarlos.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "mira fotos de un viaje sabiendo que volver al lugar no repetirá lo vivido",
+        "correcta": true,
+        "explicacion": "El hablante sabe que la casa sigue allí, pero lo que vivió en ella ya solo existe en su memoria; igual que quien entiende que volver al lugar del viaje no devuelve la experiencia.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: resumir la actitud del hablante: acepta que la casa física sigue pero lo vivido solo está en su memoria, y no intenta recuperarlo en el lugar. Paso 2: buscar la situación con la misma actitud: quien sabe que volver al lugar del viaje no repite lo vivido. Paso 3: exigir, reclamar o borrar recuerdos son actitudes contrarias a la del poema.",
+    "que_identificar": "La aceptación del hablante: pasa de largo y no toca el timbre.",
+    "que_revisar": "Comparar actitudes, no solo situaciones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T105"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-126",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Identificar supuestos",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "Durante la adolescencia, el reloj biológico se desplaza: la melatonina, hormona que induce el sueño, comienza a liberarse más tarde en la noche que durante la infancia. Por eso un joven de quince años que se acuesta a las nueve suele dar vueltas en la cama sin lograr dormirse, mientras que a las once de la noche se siente despierto y a las seis de la mañana le cuesta reaccionar. No se trata de pereza ni de mala voluntad, sino de un cambio en la fisiología que se revierte poco a poco hacia los veinte años. El problema aparece cuando el horario escolar ignora este desplazamiento. Las clases que empiezan a las seis y media obligan a muchos estudiantes a dormir seis horas o menos, cuando necesitan entre ocho y diez. La falta crónica de sueño se asocia con menor concentración, irritabilidad y más accidentes. Algunos colegios que han retrasado una hora el inicio de la jornada informan mejoras en la asistencia y en el rendimiento. Los críticos de la medida señalan que el cambio afecta el transporte y los horarios de trabajo de las familias, por lo que la decisión no es solo científica, sino también social.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La afirmación final de que la decisión «no es solo científica, sino también social» supone que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "la ciencia no tiene nada que aportar a la discusión sobre el horario escolar",
+        "correcta": false,
+        "explicacion": "El texto usa evidencia científica a lo largo del texto; dice «no solo», no «no».",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee «no solo científica» como «no científica»"
+      },
+      {
+        "clave": "B",
+        "texto": "una medida buena para los estudiantes puede ser difícil de aplicar por sus efectos en otros",
+        "correcta": true,
+        "explicacion": "El texto reconoce beneficios para los estudiantes, pero también los efectos sobre transporte y horarios familiares. Decir que la decisión es también social supone que esos efectos cuentan aunque la ciencia respalde la medida.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "las familias deben decidir sin escuchar a los expertos",
+        "correcta": false,
+        "explicacion": "El texto no excluye a los expertos; pide considerar ambas dimensiones.",
+        "tipo_error": "argumentacion",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el transporte es más importante que el sueño",
+        "correcta": false,
+        "explicacion": "El texto no jerarquiza así; solo señala que el transporte también se afecta.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: leer la oración final junto con la objeción de los críticos: transporte y horarios de trabajo. Paso 2: la frase «no solo científica, sino también social» da por sentado que, aunque la evidencia favorezca retrasar el horario, los efectos en otras personas pueden pesar en la decisión. Paso 3: las demás opciones niegan el papel de la ciencia o jerarquizan de un modo que el texto no hace.",
+    "que_identificar": "El valor de «no solo... sino también».",
+    "que_revisar": "Qué se asume cuando se dice que una decisión tiene varias dimensiones.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T106"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-127",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Identificar datos explícitos",
+    "dificultad": 2,
+    "dificultad_examen": 2,
+    "contexto": "Durante la adolescencia, el reloj biológico se desplaza: la melatonina, hormona que induce el sueño, comienza a liberarse más tarde en la noche que durante la infancia. Por eso un joven de quince años que se acuesta a las nueve suele dar vueltas en la cama sin lograr dormirse, mientras que a las once de la noche se siente despierto y a las seis de la mañana le cuesta reaccionar. No se trata de pereza ni de mala voluntad, sino de un cambio en la fisiología que se revierte poco a poco hacia los veinte años. El problema aparece cuando el horario escolar ignora este desplazamiento. Las clases que empiezan a las seis y media obligan a muchos estudiantes a dormir seis horas o menos, cuando necesitan entre ocho y diez. La falta crónica de sueño se asocia con menor concentración, irritabilidad y más accidentes. Algunos colegios que han retrasado una hora el inicio de la jornada informan mejoras en la asistencia y en el rendimiento. Los críticos de la medida señalan que el cambio afecta el transporte y los horarios de trabajo de las familias, por lo que la decisión no es solo científica, sino también social.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el texto, la cantidad de sueño que necesitan los adolescentes es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "entre ocho y diez horas",
+        "correcta": true,
+        "explicacion": "El texto dice que muchos estudiantes duermen seis horas o menos «cuando necesitan entre ocho y diez».",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "seis horas o menos",
+        "correcta": false,
+        "explicacion": "Esa es la cantidad que muchos logran dormir por el horario escolar, no la que necesitan.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Confunde lo que duermen con lo que necesitan"
+      },
+      {
+        "clave": "C",
+        "texto": "la misma que un niño pequeño",
+        "correcta": false,
+        "explicacion": "El texto compara el momento en que se libera la melatonina, no la cantidad de horas de sueño con la infancia.",
+        "tipo_error": "interpretacion",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "más de doce horas",
+        "correcta": false,
+        "explicacion": "El texto no menciona esa cifra.",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: buscar la oración sobre las horas de sueño. Paso 2: distinguir dos cifras: las que duermen (seis o menos) y las que necesitan (entre ocho y diez). Paso 3: la pregunta pide la necesidad, así que la respuesta es entre ocho y diez horas.",
+    "que_identificar": "La oración que contrasta cuánto duermen y cuánto necesitan.",
+    "que_revisar": "No confundir dos cifras cercanas en la misma oración.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T106"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-128",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": "Aplicar la idea del texto a un caso",
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "Durante la adolescencia, el reloj biológico se desplaza: la melatonina, hormona que induce el sueño, comienza a liberarse más tarde en la noche que durante la infancia. Por eso un joven de quince años que se acuesta a las nueve suele dar vueltas en la cama sin lograr dormirse, mientras que a las once de la noche se siente despierto y a las seis de la mañana le cuesta reaccionar. No se trata de pereza ni de mala voluntad, sino de un cambio en la fisiología que se revierte poco a poco hacia los veinte años. El problema aparece cuando el horario escolar ignora este desplazamiento. Las clases que empiezan a las seis y media obligan a muchos estudiantes a dormir seis horas o menos, cuando necesitan entre ocho y diez. La falta crónica de sueño se asocia con menor concentración, irritabilidad y más accidentes. Algunos colegios que han retrasado una hora el inicio de la jornada informan mejoras en la asistencia y en el rendimiento. Los críticos de la medida señalan que el cambio afecta el transporte y los horarios de trabajo de las familias, por lo que la decisión no es solo científica, sino también social.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Del texto se infiere que un adolescente que se duerme tarde y por la mañana le cuesta levantarse",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "tiene un problema de pereza que debe corregir",
+        "correcta": false,
+        "explicacion": "El texto descarta explícitamente la pereza como explicación.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Mantiene el prejuicio que el texto refuta"
+      },
+      {
+        "clave": "B",
+        "texto": "debería acostarse a las nueve para reajustar su reloj biológico",
+        "correcta": false,
+        "explicacion": "El texto señala que acostarse a las nueve no funciona porque la melatonina se libera más tarde.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "presenta un patrón esperable para su edad",
+        "correcta": true,
+        "explicacion": "El texto describe exactamente ese comportamiento como consecuencia del desplazamiento del reloj biológico en la adolescencia, «no de pereza ni de mala voluntad».",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "conservará ese horario durante toda su vida",
+        "correcta": false,
+        "explicacion": "El texto dice que el cambio se revierte poco a poco hacia los veinte años.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: identificar el caso descrito en el texto: el joven que no se duerme a las nueve y a las seis no reacciona. Paso 2: el texto lo explica por la liberación tardía de melatonina y niega que sea pereza. Paso 3: por tanto, es un patrón normal de la edad, que además se revierte hacia los veinte años; acostarse más temprano no resuelve el desfase, según el texto.",
+    "que_identificar": "La frase «No se trata de pereza ni de mala voluntad».",
+    "que_revisar": "Aplicar la explicación del texto a un caso concreto.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T106"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-129",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": "Reconocer afirmaciones falsas según el texto",
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": "Durante la adolescencia, el reloj biológico se desplaza: la melatonina, hormona que induce el sueño, comienza a liberarse más tarde en la noche que durante la infancia. Por eso un joven de quince años que se acuesta a las nueve suele dar vueltas en la cama sin lograr dormirse, mientras que a las once de la noche se siente despierto y a las seis de la mañana le cuesta reaccionar. No se trata de pereza ni de mala voluntad, sino de un cambio en la fisiología que se revierte poco a poco hacia los veinte años. El problema aparece cuando el horario escolar ignora este desplazamiento. Las clases que empiezan a las seis y media obligan a muchos estudiantes a dormir seis horas o menos, cuando necesitan entre ocho y diez. La falta crónica de sueño se asocia con menor concentración, irritabilidad y más accidentes. Algunos colegios que han retrasado una hora el inicio de la jornada informan mejoras en la asistencia y en el rendimiento. Los críticos de la medida señalan que el cambio afecta el transporte y los horarios de trabajo de las familias, por lo que la decisión no es solo científica, sino también social.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "¿Cuál de las siguientes afirmaciones NO está respaldada por el texto?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "La melatonina se libera más tarde en la adolescencia que en la infancia.",
+        "correcta": false,
+        "explicacion": "Está dicho de manera explícita en la primera oración.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": "Lee la pregunta como si pidiera la afirmación verdadera"
+      },
+      {
+        "clave": "B",
+        "texto": "La falta crónica de sueño se asocia con irritabilidad.",
+        "correcta": false,
+        "explicacion": "El texto la menciona junto con la menor concentración y los accidentes.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "Algunos colegios que retrasaron el horario reportaron mejor asistencia y rendimiento.",
+        "correcta": false,
+        "explicacion": "El texto lo afirma en el penúltimo enunciado.",
+        "tipo_error": "comprension",
+        "diagnostico": "probable",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "Los críticos niegan que los adolescentes necesiten dormir más.",
+        "correcta": true,
+        "explicacion": "El texto dice que los críticos objetan por el transporte y los horarios familiares, no por dudar de la necesidad de sueño. Es la única afirmación que el texto no respalda.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Paso 1: la pregunta pide la afirmación que NO respalda el texto. Paso 2: verificar cada una: la melatonina tardía, la irritabilidad y la mejor asistencia aparecen literalmente. Paso 3: la objeción de los críticos es por transporte y horarios de las familias, no por negar la necesidad de sueño; esa afirmación es la que no se sostiene.",
+    "que_identificar": "Qué objetan exactamente los críticos según el texto.",
+    "que_revisar": "Confrontar cada opción con el texto antes de elegir.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T106"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-LEC-130",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": "Establecer analogías",
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "Durante la adolescencia, el reloj biológico se desplaza: la melatonina, hormona que induce el sueño, comienza a liberarse más tarde en la noche que durante la infancia. Por eso un joven de quince años que se acuesta a las nueve suele dar vueltas en la cama sin lograr dormirse, mientras que a las once de la noche se siente despierto y a las seis de la mañana le cuesta reaccionar. No se trata de pereza ni de mala voluntad, sino de un cambio en la fisiología que se revierte poco a poco hacia los veinte años. El problema aparece cuando el horario escolar ignora este desplazamiento. Las clases que empiezan a las seis y media obligan a muchos estudiantes a dormir seis horas o menos, cuando necesitan entre ocho y diez. La falta crónica de sueño se asocia con menor concentración, irritabilidad y más accidentes. Algunos colegios que han retrasado una hora el inicio de la jornada informan mejoras en la asistencia y en el rendimiento. Los críticos de la medida señalan que el cambio afecta el transporte y los horarios de trabajo de las familias, por lo que la decisión no es solo científica, sino también social.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La situación de un horario escolar que ignora el reloj biológico de los adolescentes se parece más a la de",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "una fábrica que ajusta sus turnos de trabajo según la demanda de cada temporada",
+        "correcta": false,
+        "explicacion": "Es un ejemplo de adaptación, justo lo contrario de ignorar una realidad.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "probable",
+        "razon_frecuente": "Elige una situación de ajuste en vez de una de desajuste"
+      },
+      {
+        "clave": "B",
+        "texto": "un hospital que atiende urgencias durante toda la noche",
+        "correcta": false,
+        "explicacion": "El hospital responde a una necesidad; no hay desajuste entre norma y realidad.",
+        "tipo_error": "razonamiento",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "una ruta de bus trazada con un mapa viejo que no coincide con las calles actuales",
+        "correcta": true,
+        "explicacion": "El horario se fijó sin tener en cuenta cómo funciona el cuerpo adolescente, igual que la ruta se diseñó con un mapa que no corresponde a la realidad: en ambos casos la norma no se ajusta a lo que hay.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "un reloj que se adelanta cinco minutos cada día",
+        "correcta": false,
+        "explicacion": "El reloj adelantado comparte la palabra «reloj», pero no representa una regla que ignora una realidad.",
+        "tipo_error": "distractor",
+        "diagnostico": "probable",
+        "razon_frecuente": "Se guía por la palabra «reloj» y no por la relación"
+      }
+    ],
+    "explicacion": "Paso 1: identificar la estructura: una norma (horario) diseñada sin considerar la realidad a la que se aplica (fisiología adolescente). Paso 2: buscar la misma estructura: una ruta hecha con un mapa que no corresponde a las calles reales. Paso 3: la fábrica y el hospital se adaptan a la realidad, y el reloj adelantado solo comparte una palabra con el texto.",
+    "que_identificar": "La relación entre una regla y la realidad que ignora.",
+    "que_revisar": "No elegir la analogía por una palabra repetida.",
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "texto:UDEA-T106"
+    ],
+    "estado": "borrador"
+  }
+]
