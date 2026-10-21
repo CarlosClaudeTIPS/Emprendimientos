@@ -1,0 +1,742 @@
+[
+  {
+    "id": "UDEA-001",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.literal",
+    "subhabilidad": "literal",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel literal",
+    "subtema": null,
+    "dificultad": 1,
+    "dificultad_examen": 1,
+    "contexto": "En muchas ciudades colombianas, las bicicletas compartidas se presentaron como una solución a la congestión. Los primeros estudios muestran resultados mixtos: el sistema funciona bien en zonas con ciclorrutas continuas y estaciones cercanas entre sí, pero apenas se usa donde el ciclista debe compartir la vía con buses y camiones. Los expertos concluyen que la bicicleta no reemplaza por sí sola al carro; lo hace cuando la ciudad le ofrece infraestructura segura.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Según el texto, el sistema de bicicletas compartidas funciona bien donde",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "hay más buses y camiones",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "no hay estaciones",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "hay ciclorrutas continuas y estaciones cercanas",
+        "correcta": true,
+        "explicacion": "Está dicho explícitamente en la segunda oración. En preguntas literales, la respuesta parafrasea una frase del texto.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "la congestión es menor",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Está dicho explícitamente en la segunda oración. En preguntas literales, la respuesta parafrasea una frase del texto.",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-002",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": null,
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "En muchas ciudades colombianas, las bicicletas compartidas se presentaron como una solución a la congestión. Los primeros estudios muestran resultados mixtos: el sistema funciona bien en zonas con ciclorrutas continuas y estaciones cercanas entre sí, pero apenas se usa donde el ciclista debe compartir la vía con buses y camiones. Los expertos concluyen que la bicicleta no reemplaza por sí sola al carro; lo hace cuando la ciudad le ofrece infraestructura segura.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Del texto se infiere que, para reducir la congestión con bicicletas, lo más importante es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "comprar más bicicletas",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "construir infraestructura segura para ciclistas",
+        "correcta": true,
+        "explicacion": "La conclusión de los expertos pone la condición: infraestructura segura. Las demás opciones no aparecen en el texto.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "prohibir los carros",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "aumentar los buses",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "La conclusión de los expertos pone la condición: infraestructura segura. Las demás opciones no aparecen en el texto.",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-003",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.critica_analogica",
+    "subhabilidad": "critica_analogica",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel crítico-analógico",
+    "subtema": null,
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": "En muchas ciudades colombianas, las bicicletas compartidas se presentaron como una solución a la congestión. Los primeros estudios muestran resultados mixtos: el sistema funciona bien en zonas con ciclorrutas continuas y estaciones cercanas entre sí, pero apenas se usa donde el ciclista debe compartir la vía con buses y camiones. Los expertos concluyen que la bicicleta no reemplaza por sí sola al carro; lo hace cuando la ciudad le ofrece infraestructura segura.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La relación entre la bicicleta y la ciclorruta en el texto es similar a la relación entre",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "un libro y su autor",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "una casa y su dueño",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "un médico y su paciente",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "un tren y sus rieles",
+        "correcta": true,
+        "explicacion": "Preguntas analógicas: la bicicleta solo funciona bien con su infraestructura, como el tren con sus rieles. Busca la misma relación, no el mismo tema.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Preguntas analógicas: la bicicleta solo funciona bien con su infraestructura, como el tren con sus rieles. Busca la misma relación, no el mismo tema.",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-004",
+    "examen": "udea",
+    "prueba": "udea_lectora",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_lectora.inferencial",
+    "subhabilidad": "inferencial",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "interpretar",
+    "tema": "Nivel inferencial",
+    "subtema": null,
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": "En muchas ciudades colombianas, las bicicletas compartidas se presentaron como una solución a la congestión. Los primeros estudios muestran resultados mixtos: el sistema funciona bien en zonas con ciclorrutas continuas y estaciones cercanas entre sí, pero apenas se usa donde el ciclista debe compartir la vía con buses y camiones. Los expertos concluyen que la bicicleta no reemplaza por sí sola al carro; lo hace cuando la ciudad le ofrece infraestructura segura.",
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "La expresión \"resultados mixtos\" significa que",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "los estudios no terminaron",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "todos los resultados fueron positivos",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "hubo éxitos en unas zonas y fracasos en otras",
+        "correcta": true,
+        "explicacion": "\"Mixto\" combina dos cosas. El texto lo explica enseguida: funciona en unas zonas y en otras no.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "el sistema fracasó por completo",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "\"Mixto\" combina dos cosas. El texto lo explica enseguida: funciona en unas zonas y en otras no.",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-005",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.proporcionalidad",
+    "subhabilidad": "proporcionalidad",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Proporcionalidad",
+    "subtema": null,
+    "dificultad": 1,
+    "dificultad_examen": 2,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Si 3 obreros pintan una pared en 6 horas, ¿cuánto tardan 9 obreros trabajando al mismo ritmo?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "3 horas",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "2 horas",
+        "correcta": true,
+        "explicacion": "Es proporcionalidad inversa: el triple de obreros tarda la tercera parte. 6/3 = 2 horas. Error típico: usar regla de tres directa (18 h).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "1 hora",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "18 horas",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Es proporcionalidad inversa: el triple de obreros tarda la tercera parte. 6/3 = 2 horas. Error típico: usar regla de tres directa (18 h).",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-006",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": null,
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Se define la operación a ★ b = 2a − b. El valor de (3 ★ 1) ★ 4 es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "2",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "6",
+        "correcta": true,
+        "explicacion": "Primero 3 ★ 1 = 2·3 − 1 = 5. Luego 5 ★ 4 = 2·5 − 4 = 6. Con operaciones inventadas, sigue la definición al pie de la letra y respeta los paréntesis.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "10",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "1",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Primero 3 ★ 1 = 2·3 − 1 = 5. Luego 5 ★ 4 = 2·5 − 4 = 6. Con operaciones inventadas, sigue la definición al pie de la letra y respeta los paréntesis.",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-007",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.logica_proposicional",
+    "subhabilidad": "logica_proposicional",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Lógica proposicional",
+    "subtema": null,
+    "dificultad": 3,
+    "dificultad_examen": 4,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "\"Si estudio, apruebo.\" De las siguientes, la afirmación equivalente es",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "estudio y no apruebo",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "si no estudio, no apruebo",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "si apruebo, estudié",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "si no apruebo, no estudié",
+        "correcta": true,
+        "explicacion": "El contrarrecíproco (si no Q, entonces no P) es equivalente a la original. Las opciones B y C son errores clásicos (recíproco e inverso).",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "El contrarrecíproco (si no Q, entonces no P) es equivalente a la original. Las opciones B y C son errores clásicos (recíproco e inverso).",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-008",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.razonamiento_abstracto",
+    "subhabilidad": "razonamiento_abstracto",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento abstracto (operaciones no convencionales)",
+    "subtema": null,
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "¿Qué número sigue en la sucesión 2, 6, 12, 20, 30, …?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "44",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "40",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "42",
+        "correcta": true,
+        "explicacion": "Las diferencias son 4, 6, 8, 10: la siguiente es 12, y 30 + 12 = 42. También: n·(n+1) con n = 6.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "36",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Las diferencias son 4, 6, 8, 10: la siguiente es 12, y 30 + 12 = 42. También: n·(n+1) con n = 6.",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-009",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.geometrico",
+    "subhabilidad": "geometrico",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Razonamiento geométrico (áreas, perímetros, volúmenes)",
+    "subtema": null,
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "Un cuadrado tiene perímetro 20 cm. Si se duplica la longitud de cada lado, su área",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "se cuadruplica: pasa de 25 a 100 cm²",
+        "correcta": true,
+        "explicacion": "Lado 5 → área 25. Lado 10 → área 100. Al multiplicar las longitudes por k, el área se multiplica por k².",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "pasa de 20 a 40 cm²",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "no cambia",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "se duplica: pasa de 25 a 50 cm²",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Lado 5 → área 25. Lado 10 → área 100. Al multiplicar las longitudes por k, el área se multiplica por k².",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  },
+  {
+    "id": "UDEA-010",
+    "examen": "udea",
+    "prueba": "udea_logico",
+    "origen": "estilo",
+    "fuente": {
+      "nombre": "Pregunta de práctica Nivytek (original, al estilo del examen)",
+      "url": null,
+      "anio": 2026
+    },
+    "competencia": "udea_logico.conjuntos",
+    "subhabilidad": "conjuntos",
+    "componente": null,
+    "afirmacion": null,
+    "evidencia": null,
+    "habilidad": "razonar",
+    "tema": "Conjuntos",
+    "subtema": null,
+    "dificultad": 2,
+    "dificultad_examen": 3,
+    "contexto": null,
+    "estimulo": null,
+    "tipo": null,
+    "enunciado": "En un curso de 30 estudiantes, 18 juegan fútbol, 12 juegan baloncesto y 5 juegan ambos. ¿Cuántos no juegan ninguno?",
+    "opciones": [
+      {
+        "clave": "A",
+        "texto": "5",
+        "correcta": true,
+        "explicacion": "Juegan al menos uno: 18 + 12 − 5 = 25 (se resta la intersección para no contarla dos veces). No juegan: 30 − 25 = 5.",
+        "tipo_error": null,
+        "diagnostico": null,
+        "razon_frecuente": null
+      },
+      {
+        "clave": "B",
+        "texto": "25",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "C",
+        "texto": "10",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      },
+      {
+        "clave": "D",
+        "texto": "0",
+        "correcta": false,
+        "explicacion": "",
+        "tipo_error": "distractor",
+        "diagnostico": "insuficiente",
+        "razon_frecuente": null
+      }
+    ],
+    "explicacion": "Juegan al menos uno: 18 + 12 − 5 = 25 (se resta la intersección para no contarla dos veces). No juegan: 30 − 25 = 5.",
+    "que_identificar": null,
+    "que_revisar": null,
+    "refuerzo_ids": [],
+    "recurso_ids": [],
+    "tiempo_sugerido_seg": 135,
+    "etiquetas": [
+      "examen:udea",
+      "revisar_distractores"
+    ],
+    "estado": "borrador"
+  }
+]

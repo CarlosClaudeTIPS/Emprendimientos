@@ -14,11 +14,11 @@ window.PORTAL_CONFIG = {
   },
   secciones: [
     {
-      id: "icfes", carpeta: "icfes/", nombre: "ICFES", color: "#2F4D8C",
+      id: "icfes", carpeta: "icfes/", nombre: "Saber 11 (ICFES)", color: "#2F4D8C",
       publico: "Estudiantes y familias",
-      titulo: "Prepárate para el ICFES",
-      texto: "Simulacros, preguntas explicadas y modo carrera para priorizar materias.",
-      boton: "Entrar a ICFES", icono: "test", iconoArchivo: "shared/iconos/icfes.svg"
+      titulo: "Prepárate para la prueba Saber 11 y los exámenes de admisión",
+      texto: "Saber 11 y exámenes de admisión propios (Nacional, Antioquia): preguntas explicadas, simulacros y rutas por carrera.",
+      boton: "Entrar a Saber 11", icono: "test", iconoArchivo: "shared/iconos/icfes.svg"
     },
     {
       id: "docentes", carpeta: "docentes/", nombre: "Apoyo docente", color: "#F4845F",

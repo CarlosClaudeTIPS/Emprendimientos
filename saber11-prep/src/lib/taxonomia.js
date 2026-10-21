@@ -1,4 +1,14 @@
-import taxonomiaBase from '../../content/taxonomia.json'
+import taxonomiaJson from '../../content/taxonomia.json'
+import { extensionTaxonomia } from './examenes-config'
+
+// Los componentes de los exámenes de admisión propios (content/examenes/*.json)
+// se suman como pruebas y competencias con el campo `examen`, para que nombres,
+// resúmenes y filtros funcionen igual. Las del Saber 11 no llevan `examen`.
+// `pruebas` y `competencias` siguen siendo solo las del Saber 11 (todo el código
+// existente las recorre); las de los exámenes propios van en `pruebasExamen` y
+// `competenciasExamen`, y los mapas por id incluyen ambas.
+const ext = extensionTaxonomia()
+const taxonomiaBase = taxonomiaJson
 
 // La taxonomía base viene del archivo; el administrador puede extenderla desde
 // la app (se guarda en config.taxonomia y se fusiona por id).
@@ -8,8 +18,10 @@ function estructurar(t) {
   const porId = (arr) => Object.fromEntries(arr.map(x => [x.id, x]))
   return {
     ...t,
-    pruebaPorId: porId(t.pruebas),
-    competenciaPorId: porId(t.competencias),
+    pruebasExamen: ext.pruebas,
+    competenciasExamen: ext.competencias,
+    pruebaPorId: porId([...t.pruebas, ...ext.pruebas]),
+    competenciaPorId: porId([...t.competencias, ...ext.competencias]),
     componentePorId: porId(t.componentes),
     habilidadPorId: porId(t.habilidades),
     tipoErrorPorId: porId(t.tipos_error),
@@ -40,5 +52,7 @@ export const nombreHabilidad = (id) => tax.habilidadPorId[id]?.nombre ?? id
 export const nombreTipoError = (id) => tax.tipoErrorPorId[id]?.nombre ?? id
 export const nombreDiagnostico = (id) => tax.diagnosticoPorId[id]?.nombre ?? id
 export const practicaParaError = (tipoError) => tax.tipoErrorPorId[tipoError]?.practica ?? 'ejercitacion'
-export const competenciasDe = (prueba) => tax.competencias.filter(c => c.prueba === prueba)
+export const competenciasDe = (prueba) => [...tax.competencias, ...tax.competenciasExamen].filter(c => c.prueba === prueba)
+export const pruebasDeExamen = (examen) => tax.pruebasExamen.filter(p => p.examen === examen)
+export const competenciasDeExamen = (examen) => tax.competenciasExamen.filter(c => c.examen === examen)
 export const componentesDe = (prueba) => tax.componentes.filter(c => c.prueba === prueba)

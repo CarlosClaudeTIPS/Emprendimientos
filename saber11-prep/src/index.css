@@ -20,6 +20,12 @@
 }
 
 @layer base {
+  /* Figuras SVG de las preguntas (trazo y relleno), también al imprimir */
+  :root { --fig: #2B2A63; --fill: #DCEEFB; }
+  @media print { :root { --fig: #000000; --fill: #E5E7EB; } }
+}
+
+@layer base {
   /* Foco visible para navegación por teclado (WCAG 2.2, 2.4.7 y 2.4.11) */
   :focus-visible { outline: 3px solid #1FA9EC; outline-offset: 2px; border-radius: 6px; }
 }

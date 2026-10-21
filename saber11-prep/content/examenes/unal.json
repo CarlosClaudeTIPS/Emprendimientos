@@ -1,0 +1,75 @@
+{
+  "id": "unal",
+  "nombre": "Ruta examen de admisión – Universidad Nacional",
+  "corto": "Universidad Nacional",
+  "universidad": "Universidad Nacional de Colombia",
+  "guia_id": "unal-bogota",
+  "descripcion": "120 preguntas en cinco componentes, incluido análisis de la imagen.",
+  "descargo": "Nivytek es un servicio independiente de preparación. No tiene relación con la Universidad Nacional de Colombia ni con ninguna otra universidad. El único mecanismo de ingreso es el desempeño en su prueba de admisión.",
+  "formato": "Opción múltiple con única respuesta (A, B, C, D).",
+  "duracion_min": 210,
+  "min_por_pregunta": 1.75,
+  "total_preguntas": 120,
+  "transversal": "Gráficas, tablas y esquemas para análisis, síntesis y deducción; problemas de comprensión y aplicación de conceptos básicos.",
+  "puntaje": {
+    "nota": "La universidad calcula su puntaje con su propio modelo; esta es una aproximación para orientar tu estudio.",
+    "modelo_oficial": "Teoría de Respuesta al Ítem (modelo de Rasch): habilidad por componente estandarizada con media 10 y desviación 1; puntaje total estandarizado con media 500 y desviación 100. Los cupos se asignan de mayor a menor puntaje por programa.",
+    "componente": { "media": 10, "desviacion": 1 },
+    "total": { "media": 500, "desviacion": 100 }
+  },
+  "estrategia": "No dejes preguntas en blanco salvo que la universidad indique lo contrario.",
+  "componentes": [
+    { "id": "unal_matematicas", "nombre": "Matemáticas", "preguntas": 25, "color": "#1FA9EC", "evalua": "Pensamiento numérico, espacial y métrico, aleatorio y variacional.",
+      "subhabilidades": [
+        { "id": "numerico", "nombre": "Pensamiento numérico" },
+        { "id": "espacial_metrico", "nombre": "Pensamiento espacial y métrico" },
+        { "id": "aleatorio", "nombre": "Pensamiento aleatorio" },
+        { "id": "variacional", "nombre": "Pensamiento variacional" }
+      ] },
+    { "id": "unal_ciencias", "nombre": "Ciencias naturales", "preguntas": 25, "color": "#10B981", "evalua": "Física, química y biología.",
+      "subhabilidades": [
+        { "id": "fisica", "nombre": "Física" },
+        { "id": "quimica", "nombre": "Química" },
+        { "id": "biologia", "nombre": "Biología" }
+      ] },
+    { "id": "unal_sociales", "nombre": "Ciencias sociales", "preguntas": 25, "color": "#F59E0B", "evalua": "Historia, geografía y filosofía.",
+      "subhabilidades": [
+        { "id": "historia", "nombre": "Historia de Colombia, de América y universal" },
+        { "id": "geografia", "nombre": "Geografía física y de Colombia" },
+        { "id": "filosofia_logica", "nombre": "Filosofía y lógica" }
+      ] },
+    { "id": "unal_textual", "nombre": "Análisis textual", "preguntas": 25, "color": "#8B5CF6", "evalua": "Textos referenciales (ciencia, humanidades, tecnología, artes) y poético-literarios; niveles literal, inferencial y crítico-intertextual, con énfasis en los dos últimos.",
+      "subhabilidades": [
+        { "id": "literal", "nombre": "Nivel literal" },
+        { "id": "inferencial", "nombre": "Nivel inferencial" },
+        { "id": "critico_intertextual", "nombre": "Nivel crítico-intertextual" }
+      ] },
+    { "id": "unal_imagen", "nombre": "Análisis de la imagen", "preguntas": 20, "color": "#EC4899", "evalua": "Reconocimiento de intencionalidades, simetrías, relaciones de causalidad lógica y asociaciones semánticas entre imagen y palabra. En la práctica, pesa mucho el razonamiento espacial.",
+      "subhabilidades": [
+        { "id": "rotacion", "nombre": "Rotación y reflejo", "espacial": true },
+        { "id": "vistas", "nombre": "Vistas de un sólido", "espacial": true },
+        { "id": "desarrollo_cubo", "nombre": "Desarrollo del cubo", "espacial": true },
+        { "id": "simetria", "nombre": "Simetría", "espacial": true },
+        { "id": "secuencias", "nombre": "Secuencias de figuras", "espacial": true },
+        { "id": "conteo_espacial", "nombre": "Conteo espacial", "espacial": true },
+        { "id": "superposicion", "nombre": "Superposición de figuras", "espacial": true },
+        { "id": "construccion", "nombre": "Construcción por instrucciones", "espacial": true },
+        { "id": "vista_flecha", "nombre": "Vista desde una flecha", "espacial": true },
+        { "id": "solido_desde_vistas", "nombre": "Sólido a partir de dos vistas", "espacial": true },
+        { "id": "intencionalidad", "nombre": "Intencionalidad de la imagen" },
+        { "id": "imagen_palabra", "nombre": "Imagen y palabra" },
+        { "id": "causalidad", "nombre": "Causalidad en la imagen" }
+      ] }
+  ],
+  "diagnostico": { "por_componente": 6, "titulo": "Diagnóstico Universidad Nacional" },
+  "avisos": [
+    { "id": "especificas", "texto": "Música, Música Instrumental, Artes Plásticas, y Cine y Televisión tienen además una prueba específica. Esta ruta no la prepara; solo informa." },
+    { "id": "admision_especial", "texto": "Convocatoria 2027-1: los aspirantes de los programas de admisión especial PEAMA, PAET y PTIUN se evalúan con el Saber 11 (matemáticas, lectura crítica, sociales y ciudadanas, ciencias naturales). Si aplicas a uno de esos programas, prioriza la ruta Saber 11 en esas cuatro áreas.", "pregunta": "¿Aplicas por PEAMA, PAET o PTIUN?" }
+  ],
+  "convocatoria_pendiente": "La convocatoria del segundo semestre suele abrir en febrero con prueba en abril o mayo. Por confirmar en admisiones.unal.edu.co.",
+  "enlaces": [
+    { "nombre": "Demostración interactiva oficial de la prueba (DIPA)", "url": "https://admisiones.unal.edu.co/pregrado/demostraciones-interactivas/", "nota": "Hazla como diagnóstico externo y registra aquí tu resultado." },
+    { "nombre": "Página oficial de la prueba de admisión", "url": "https://admisiones.unal.edu.co/pregrado/prueba-de-admision/" },
+    { "nombre": "Admisiones de pregrado", "url": "https://admisiones.unal.edu.co/pregrado/", "respaldo": true }
+  ]
+}

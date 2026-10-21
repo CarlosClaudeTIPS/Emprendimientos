@@ -1,6 +1,7 @@
 import { db, uuid, ahora, encolar } from './db'
 import { evaluar } from './feedback'
 import { crearUsuario, claveDePin } from './sesion'
+import { examenDeIntento } from './examenes-config'
 import { supabase, NUBE_DISPONIBLE } from './supabase'
 import { sincronizar } from './sync'
 
@@ -40,12 +41,17 @@ export async function explicarIntento(uid, pregunta, razon) {
   return actualizarIntento(uid, { razon: { id: razon.id, texto: razon.texto, tipo_error: razon.tipo_error }, tipo_error: ev.tipoError, diagnostico: ev.diagnostico })
 }
 
-export const intentosDe = (estudiante_id) => db.intentos.where('estudiante_id').equals(estudiante_id).toArray()
+// `examen`: 'icfes' (por defecto), 'unal', 'udea' o 'todos'.
+export async function intentosDe(estudiante_id, { examen = 'icfes' } = {}) {
+  const lista = await db.intentos.where('estudiante_id').equals(estudiante_id).toArray()
+  return examen === 'todos' ? lista : lista.filter(i => examenDeIntento(i) === examen)
+}
 
-export async function intentosDeGrupo(grupo_id) {
+export async function intentosDeGrupo(grupo_id, { examen = 'icfes' } = {}) {
   const miembros = await db.usuarios.where('grupo_id').equals(grupo_id).toArray()
   const ids = miembros.map(m => m.id)
-  const intentos = await db.intentos.where('estudiante_id').anyOf(ids).toArray()
+  let intentos = await db.intentos.where('estudiante_id').anyOf(ids).toArray()
+  if (examen !== 'todos') intentos = intentos.filter(i => examenDeIntento(i) === examen)
   return { miembros, intentos }
 }
 

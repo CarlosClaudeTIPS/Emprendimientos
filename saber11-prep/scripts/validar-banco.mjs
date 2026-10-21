@@ -8,16 +8,21 @@ const raiz = join(dirname(fileURLToPath(import.meta.url)), '..')
 const tax = JSON.parse(readFileSync(join(raiz, 'content/taxonomia.json'), 'utf8'))
 const dirBanco = join(raiz, 'content/banco')
 
+// Componentes y subhabilidades de los exámenes de admisión propios (content/examenes/*.json)
+const EXAMENES = Object.fromEntries(['unal', 'udea'].map(id => [id, JSON.parse(readFileSync(join(raiz, `content/examenes/${id}.json`), 'utf8'))]))
+const pruebasExamen = Object.values(EXAMENES).flatMap(e => e.componentes.map(c => ({ id: c.id, examen: e.id })))
+const competenciasExamen = Object.values(EXAMENES).flatMap(e => e.componentes.flatMap(c => c.subhabilidades.map(s => ({ id: `${c.id}.${s.id}`, prueba: c.id }))))
 const ids = (arr) => new Set(arr.map(x => x.id))
-const PRUEBAS = ids(tax.pruebas)
-const COMPETENCIAS = new Map(tax.competencias.map(c => [c.id, c.prueba]))
+const PRUEBAS = ids([...tax.pruebas, ...pruebasExamen])
+const EXAMEN_DE_PRUEBA = new Map(pruebasExamen.map(p => [p.id, p.examen]))
+const COMPETENCIAS = new Map([...tax.competencias, ...competenciasExamen].map(c => [c.id, c.prueba]))
 const COMPONENTES = new Map(tax.componentes.map(c => [c.id, c.prueba]))
 const HABILIDADES = ids(tax.habilidades)
 const TIPOS_ERROR = ids(tax.tipos_error)
 const ORIGENES = new Set(['oficial', 'estilo', 'generada'])
 const ESTADOS = new Set(['borrador', 'pendiente', 'aprobada', 'archivada'])
 const DIAG = new Set(['probable', 'insuficiente'])
-const ESTIMULOS = new Set(['tabla', 'barras', 'lineas', 'imagen'])
+const ESTIMULOS = new Set(['tabla', 'barras', 'lineas', 'imagen', 'svg'])
 
 const errores = []
 const todosIds = new Map()
@@ -39,6 +44,15 @@ for (const archivo of readdirSync(dirBanco).filter(f => f.endsWith('.json'))) {
     todas.push(p)
 
     if (!PRUEBAS.has(p.prueba)) err(archivo, id, `prueba desconocida: ${p.prueba}`)
+    const examen = EXAMEN_DE_PRUEBA.get(p.prueba) ?? null
+    if (examen && p.examen !== examen) err(archivo, id, `la prueba ${p.prueba} es del examen ${examen}; falta examen: "${examen}"`)
+    if (!examen && p.examen) err(archivo, id, `examen ${p.examen} con una prueba del Saber 11`)
+    if (examen) {
+      if (!p.subhabilidad || p.competencia !== `${p.prueba}.${p.subhabilidad}`) err(archivo, id, 'subhabilidad debe coincidir con competencia (<prueba>.<subhabilidad>)')
+      if (p.dificultad_examen != null && ![1, 2, 3, 4, 5].includes(p.dificultad_examen)) err(archivo, id, 'dificultad_examen debe ser 1 a 5')
+      if (p.estado === 'aprobada' && p.estimulo?.tipo === 'imagen' && !(p.estimulo.autor && p.estimulo.licencia)) err(archivo, id, 'imagen sin autor/licencia')
+    }
+    const borradorExamen = examen && p.estado !== 'aprobada'
     if (!ORIGENES.has(p.origen)) err(archivo, id, `origen inválido: ${p.origen}`)
     if (p.origen === 'oficial' && !p.fuente?.url) err(archivo, id, 'una pregunta oficial exige fuente.url')
     if (!p.fuente?.nombre) err(archivo, id, 'falta fuente.nombre')
@@ -52,8 +66,8 @@ for (const archivo of readdirSync(dirBanco).filter(f => f.endsWith('.json'))) {
     if (![1, 2, 3].includes(p.dificultad)) err(archivo, id, `dificultad debe ser 1, 2 o 3`)
     if (!p.enunciado || p.enunciado.length < 10) err(archivo, id, 'enunciado vacío o muy corto')
     if (!p.explicacion || p.explicacion.length < 40) err(archivo, id, 'explicacion vacía o muy corta')
-    if (!p.que_identificar) err(archivo, id, 'falta que_identificar')
-    if (!p.que_revisar) err(archivo, id, 'falta que_revisar')
+    if (!examen && !p.que_identificar) err(archivo, id, 'falta que_identificar')
+    if (!examen && !p.que_revisar) err(archivo, id, 'falta que_revisar')
     if (!ESTADOS.has(p.estado)) err(archivo, id, `estado inválido: ${p.estado}`)
     if (typeof p.tiempo_sugerido_seg !== 'number') err(archivo, id, 'tiempo_sugerido_seg debe ser número')
     if (!p.tema) err(archivo, id, 'falta tema')
@@ -65,6 +79,8 @@ for (const archivo of readdirSync(dirBanco).filter(f => f.endsWith('.json'))) {
       if (e.tipo === 'tabla' && Array.isArray(e.filas) && e.filas.some(f => f.length !== e.columnas.length)) err(archivo, id, 'tabla con filas de distinto tamaño que columnas')
       if ((e.tipo === 'barras' || e.tipo === 'lineas') && !Array.isArray(e.series)) err(archivo, id, 'gráfico sin series')
       if (e.tipo === 'imagen' && !e.alt) err(archivo, id, 'imagen sin alt')
+      if (e.tipo === 'svg' && !/^\s*<svg[\s>]/i.test(e.svg ?? '')) err(archivo, id, 'estimulo svg inválido')
+      if (e.tipo === 'svg' && /<script|on[a-z]+=/i.test(e.svg)) err(archivo, id, 'estimulo svg con script o manejador de eventos')
     }
 
     const ops = p.opciones
@@ -76,7 +92,9 @@ for (const archivo of readdirSync(dirBanco).filter(f => f.endsWith('.json'))) {
     if (!['ABC', 'ABCD'].includes(claves)) err(archivo, id, `claves de opciones deben ser A,B,C(,D) en orden; hay ${claves}`)
     for (const o of ops) {
       if (!o.texto) err(archivo, id, `opción ${o.clave} sin texto`)
-      if (!o.explicacion || o.explicacion.length < 15) err(archivo, id, `opción ${o.clave} sin explicación suficiente`)
+      if (o.svg && !/^\s*<svg[\s>]/i.test(o.svg)) err(archivo, id, `opción ${o.clave} con svg inválido`)
+      // En los borradores de exámenes propios la explicación por distractor se completa al revisar.
+      if ((!o.explicacion || o.explicacion.length < 15) && !(borradorExamen && !o.correcta)) err(archivo, id, `opción ${o.clave} sin explicación suficiente`)
       if (!o.correcta) {
         if (!TIPOS_ERROR.has(o.tipo_error)) err(archivo, id, `opción ${o.clave}: tipo_error desconocido: ${o.tipo_error}`)
         if (!DIAG.has(o.diagnostico)) err(archivo, id, `opción ${o.clave}: diagnostico debe ser probable|insuficiente`)

@@ -1,4 +1,5 @@
-import Estimulo from './Estimulo'
+import Estimulo, { svgSeguro } from './Estimulo'
+import { examenDePregunta, examenPorId, subhabilidadDe } from '../lib/examenes-config'
 import { Md, Badge } from './ui'
 import { nombrePrueba, nombreCompetencia, nombreHabilidad } from '../lib/taxonomia'
 
@@ -7,6 +8,8 @@ import { nombrePrueba, nombreCompetencia, nombreHabilidad } from '../lib/taxonom
 
 export default function PreguntaVista({ pregunta, elegida = null, onElegir = null, modo = 'responder', numero = null, mostrarMeta = true, mostrarContexto = true, contextoRepetido = false }) {
   const p = pregunta
+  const examen = examenDePregunta(p)
+  const cfgExamen = examen !== 'icfes' ? examenPorId(examen) : null
   const claseOpcion = (o) => {
     if (modo === 'revisar') {
       if (o.correcta) return 'opcion opcion-correcta'
@@ -21,9 +24,9 @@ export default function PreguntaVista({ pregunta, elegida = null, onElegir = nul
         <div className="flex flex-wrap items-center gap-2 text-xs">
           {numero != null && <span className="text-gray-400">Pregunta {numero}</span>}
           <Badge tono="morado">{nombrePrueba(p.prueba)}</Badge>
-          <Badge>{nombreCompetencia(p.competencia)}</Badge>
-          <Badge tono="azul">{nombreHabilidad(p.habilidad)}</Badge>
-          {p.origen === 'oficial' ? <Badge tono="verde">Oficial ICFES</Badge> : p.origen === 'generada' ? <Badge tono="ambar">Sin origen declarado</Badge> : <Badge>Estilo Saber 11</Badge>}
+          <Badge>{cfgExamen ? (subhabilidadDe(p.competencia)?.nombre ?? nombreCompetencia(p.competencia)) : nombreCompetencia(p.competencia)}</Badge>
+          {!cfgExamen && <Badge tono="azul">{nombreHabilidad(p.habilidad)}</Badge>}
+          {cfgExamen ? <Badge tono="azul">Pregunta de práctica Nivytek · {cfgExamen.corto}</Badge> : p.origen === 'oficial' ? <Badge tono="verde">Oficial ICFES</Badge> : p.origen === 'generada' ? <Badge tono="ambar">Sin origen declarado</Badge> : <Badge>Estilo Saber 11</Badge>}
         </div>
       )}
       {mostrarContexto && p.contexto && !contextoRepetido && <Md texto={p.contexto} className="text-[16px] text-gray-200 bg-dark-900 rounded-xl p-4 border border-dark-700" />}
@@ -35,10 +38,15 @@ export default function PreguntaVista({ pregunta, elegida = null, onElegir = nul
       )}
       {mostrarContexto && !contextoRepetido && <Estimulo estimulo={p.estimulo} />}
       <Md texto={p.enunciado} className="text-[17px] font-semibold text-brand-navy" />
+      {p.tipo === 'dos_afirmaciones' && Array.isArray(p.afirmaciones) && (
+        <ol className="rounded-xl border border-dark-700 bg-dark-900 p-3 space-y-1.5 text-[16px] text-gray-200">
+          {p.afirmaciones.map((a, i) => <li key={i} className="flex gap-2"><span className="font-semibold text-brand-navy w-6 shrink-0">{['I', 'II', 'III', 'IV'][i]}.</span><Md texto={a} className="[&_p]:mb-0" /></li>)}
+        </ol>
+      )}
       <div className="space-y-2">
         {p.opciones.map(o => (
           <button key={o.clave} type="button" disabled={modo !== 'responder'} onClick={() => onElegir?.(o.clave)} className={claseOpcion(o)}>
-            <span className="font-semibold mr-2">{o.clave}.</span><span className="align-top inline-block max-w-[calc(100%-2rem)]"><Md texto={o.texto} className="[&_p]:mb-0 [&_p]:inline" /></span>
+            <span className="font-semibold mr-2">{o.clave}.</span>{o.svg && svgSeguro(o.svg) ? <span className="figura inline-block align-middle max-w-[calc(100%-2rem)] [&_svg]:max-w-full [&_svg]:h-auto" dangerouslySetInnerHTML={{ __html: svgSeguro(o.svg) }} /> : <span className="align-top inline-block max-w-[calc(100%-2rem)]"><Md texto={o.texto} className="[&_p]:mb-0 [&_p]:inline" /></span>}
           </button>
         ))}
       </div>

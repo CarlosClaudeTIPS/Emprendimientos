@@ -29,10 +29,11 @@ export default function Login() {
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="#/" className="flex items-center gap-2">
             <img src="/icono.svg" alt="" className="w-9 h-9" />
-            <span className="text-base sm:text-lg md:text-xl font-bold text-brand-navy whitespace-nowrap">Nivytek<span className="text-brand-blue"> · ICFES</span></span>
+            <span className="text-base sm:text-lg md:text-xl font-bold text-brand-navy whitespace-nowrap">Nivytek<span className="text-brand-blue"> · Saber 11</span></span>
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-brand-navy">
             <a href="#/" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Inicio</a>
+            <a href="#/" onClick={e => { e.preventDefault(); document.getElementById('rutas')?.scrollIntoView({ behavior: 'smooth' }) }}>Rutas</a>
             <a href="#/" onClick={e => { e.preventDefault(); document.getElementById('materias')?.scrollIntoView({ behavior: 'smooth' }) }}>Materias</a>
             <a href="#/" onClick={e => { e.preventDefault(); document.getElementById('como')?.scrollIntoView({ behavior: 'smooth' }) }}>¿Cómo funciona?</a>
             <button onClick={() => irAcceso('docente')}>Colegios y docentes</button>
@@ -52,8 +53,8 @@ export default function Login() {
         <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-10 items-center relative">
           <div>
             <p className="titulo-contorno text-6xl md:text-8xl font-extrabold leading-none">SABER 11°</p>
-            <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-tight">Estudia y practica para el examen ICFES Saber 11°</h1>
-            <p className="mt-4 text-gray-300 text-base md:text-lg max-w-xl">Practica con preguntas estilo ICFES, entiende por qué fallaste cada opción y sigue tu progreso con tu docente. Desde el celular y también sin conexión.</p>
+            <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-tight">Prepárate para la prueba Saber 11 (ICFES) y para los exámenes de admisión</h1>
+            <p className="mt-4 text-gray-300 text-base md:text-lg max-w-xl">Practica con preguntas al estilo de la prueba Saber 11 y de los exámenes propios de la Universidad Nacional y la Universidad de Antioquia, entiende por qué fallaste cada opción y sigue tu progreso. Desde el celular y también sin conexión.</p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a className="btn-primary !px-6 !py-3 text-base inline-flex items-center gap-2" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20ICFES%20de%20Nivytek." target="_blank" rel="noopener">¿Te interesa? Escríbenos por WhatsApp</a>
               <button className="btn-secondary !px-6 !py-3 text-base" onClick={() => irAcceso('docente')}>Soy docente</button>
@@ -64,6 +65,30 @@ export default function Login() {
             <div className="absolute right-6 top-4 w-20 h-20 rounded-full bg-orange-300/80" />
             <Celular />
           </div>
+        </div>
+      </section>
+
+      {/* Las rutas: Saber 11 y exámenes de admisión propios, con la misma jerarquía */}
+      <section id="rutas" className="bg-dark-800 py-14 border-y border-dark-700">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center">¿Para qué examen te preparas?</h2>
+          <p className="mt-3 text-gray-400 text-center max-w-2xl mx-auto">Casi todas las universidades piden el Saber 11. Algunas, como la Nacional y la de Antioquia, admiten con su propio examen: aquí también lo practicas.</p>
+          <div className="mt-8 grid md:grid-cols-3 gap-4">
+            {[
+              { titulo: 'Saber 11 (ICFES)', texto: 'El examen de Estado que piden casi todas las universidades.', color: '#1FA9EC', fondo: '#E6F6FE', icono: BookOpenCheck },
+              { titulo: 'Examen de admisión Universidad Nacional', texto: '120 preguntas en cinco componentes, incluido análisis de la imagen.', color: '#2F4D8C', fondo: '#E7EEFB', icono: LineChart },
+              { titulo: 'Examen de admisión Universidad de Antioquia', texto: 'Competencia lectora y razonamiento lógico.', color: '#1E9E7A', fondo: '#DDF3EA', icono: Timer },
+            ].map(r => (
+              <div key={r.titulo} className="card !p-5 flex flex-col">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: r.fondo, color: r.color }}><r.icono size={24} /></div>
+                <p className="mt-3 font-semibold text-brand-navy text-lg leading-snug">{r.titulo}</p>
+                <p className="text-sm text-gray-400 mt-1 flex-1">{r.texto}</p>
+                <button className="btn-secondary mt-4 !py-2" onClick={() => irAcceso('estudiante')}>Entrar y practicar</button>
+              </div>
+            ))}
+          </div>
+          <p className="mt-5 text-center text-sm text-gray-400">¿Tu universidad tiene otra prueba propia? <button className="underline text-brand-blue" onClick={() => irAcceso('estudiante')}>Otras instituciones con prueba propia</button> (dentro de la app, en «Exámenes de admisión»).</p>
+          <p className="mt-4 text-center text-[11px] text-gray-500 max-w-3xl mx-auto">Nivytek es un servicio independiente de preparación. No tiene relación con la Universidad Nacional de Colombia, la Universidad de Antioquia ni con ninguna otra universidad. El único mecanismo de ingreso es el desempeño en la prueba de admisión de cada una.</p>
         </div>
       </section>
 
@@ -111,7 +136,7 @@ export default function Login() {
       {/* Materias */}
       <section id="materias" className="bg-dark-900 py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center">Las cinco pruebas</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center">Las cinco pruebas del Saber 11</h2>
           <p className="mt-3 text-gray-400 text-center">Banco de preguntas explicadas, organizado por materia, competencia y habilidad.</p>
           <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {MATERIAS.map(m => {

@@ -9,6 +9,7 @@ export default function Estimulo({ estimulo }) {
     case 'tabla': return <Tabla e={estimulo} />
     case 'barras': return <Grafico e={estimulo} tipo="barras" />
     case 'lineas': return <Grafico e={estimulo} tipo="lineas" />
+    case 'svg': return <FiguraSvg e={estimulo} />
     case 'imagen': return (
       <figure className="my-3">
         <img src={estimulo.url} alt={estimulo.alt} className="max-w-full rounded-lg border border-dark-700" />
@@ -17,6 +18,26 @@ export default function Estimulo({ estimulo }) {
     )
     default: return null
   }
+}
+
+// Figura vectorial guardada en la pregunta (generada por código o dibujada a mano).
+// Solo se acepta un <svg> sin scripts ni manejadores de eventos.
+export function svgSeguro(svg) {
+  const t = String(svg ?? '').trim()
+  if (!/^<svg[\s>]/i.test(t) || !/<\/svg>\s*$/i.test(t)) return null
+  if (/<script|on[a-z]+\s*=|javascript:|<foreignObject|<iframe|xlink:href\s*=\s*"(?!#)/i.test(t)) return null
+  return t
+}
+function FiguraSvg({ e }) {
+  const svg = svgSeguro(e.svg)
+  if (!svg) return null
+  return (
+    <figure className="my-3">
+      {e.titulo && <p className="text-sm font-medium mb-1">{e.titulo}</p>}
+      <div className="figura inline-block max-w-full rounded-xl border border-dark-700 bg-dark-800 p-2 [&_svg]:max-w-full [&_svg]:h-auto" role="img" aria-label={e.alt ?? 'Figura'} dangerouslySetInnerHTML={{ __html: svg }} />
+      {e.nota && <p className="text-xs text-gray-500 mt-1">{e.nota}</p>}
+    </figure>
+  )
 }
 
 function Tabla({ e }) {

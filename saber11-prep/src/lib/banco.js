@@ -1,4 +1,5 @@
 import { db, ahora, encolar } from './db'
+import { examenDePregunta } from './examenes-config'
 
 // ─── Banco de preguntas ──────────────────────────────────────────────────────
 // Los archivos content/banco/*.json se empaquetan con la app y se cargan en
@@ -67,7 +68,8 @@ export async function sembrarBanco() {
   return promesaSiembra
 }
 
-// Filtros: { prueba, competencia, habilidad, componente, dificultad, tipo_error, excluirIds, estado, usuario }
+// Filtros: { prueba, competencia, habilidad, componente, dificultad, tipo_error, excluirIds, estado, usuario, examen }
+// `examen`: 'icfes' (por defecto: solo Saber 11), 'unal', 'udea' o 'todos'. Si se filtra por `prueba`, el examen sale de ella.
 // `usuario`: si es un estudiante cuyo grupo tiene plan mensual, solo devuelve las preguntas ya liberadas.
 export async function listarPreguntas(f = {}) {
   await esperarBanco()
@@ -76,6 +78,8 @@ export async function listarPreguntas(f = {}) {
   let lista = await col.toArray()
   const estado = f.estado ?? 'aprobada'
   if (estado !== 'todas') lista = lista.filter(p => p.estado === estado)
+  const examen = f.examen ?? (f.prueba ? null : 'icfes')
+  if (examen && examen !== 'todos') lista = lista.filter(p => examenDePregunta(p) === examen)
   if (f.usuario) {
     const { filtrarParaUsuario } = await import('./acceso')
     lista = await filtrarParaUsuario(lista, f.usuario)

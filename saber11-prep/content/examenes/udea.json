@@ -1,0 +1,48 @@
+{
+  "id": "udea",
+  "nombre": "Ruta examen de admisión – Universidad de Antioquia",
+  "corto": "Universidad de Antioquia",
+  "universidad": "Universidad de Antioquia",
+  "guia_id": "udea",
+  "descripcion": "Competencia lectora y razonamiento lógico.",
+  "descargo": "Nivytek es un servicio independiente de preparación. No tiene relación con la Universidad de Antioquia ni con ninguna otra universidad. El único mecanismo de ingreso es el desempeño en su prueba de admisión.",
+  "formato": "Dos pruebas con el mismo peso (50 % cada una). Opción múltiple con única respuesta.",
+  "duracion_min": 180,
+  "min_por_pregunta": 2.25,
+  "total_preguntas": 80,
+  "total_aproximado": true,
+  "puntaje": {
+    "nota": "La universidad calcula su puntaje con su propio modelo; esta es una aproximación para orientar tu estudio.",
+    "modelo_oficial": "Puntaje de 0 a 100. Puntaje mínimo para ser admitido: 53/100 en Medellín y 50/100 en las sedes y seccionales regionales (Acuerdo Académico 597 de 2022). Desempate: certificado electoral y luego el puntaje de razonamiento lógico.",
+    "total": { "media": 50, "desviacion": 15, "min": 0, "max": 100 },
+    "minimos": { "medellin": 53, "regiones": 50 }
+  },
+  "estrategia": "No dejes preguntas en blanco salvo que la universidad indique lo contrario.",
+  "componentes": [
+    { "id": "udea_lectora", "nombre": "Competencia lectora", "preguntas": 40, "color": "#8B5CF6", "evalua": "Comprensión de textos en los niveles literal, inferencial y crítico-analógico.",
+      "subhabilidades": [
+        { "id": "literal", "nombre": "Nivel literal" },
+        { "id": "inferencial", "nombre": "Nivel inferencial" },
+        { "id": "critica_analogica", "nombre": "Nivel crítico-analógico" }
+      ] },
+    { "id": "udea_logico", "nombre": "Razonamiento lógico", "preguntas": 40, "color": "#1FA9EC", "evalua": "Razonamiento con proposiciones, proporciones, operaciones no convencionales, geometría, gráficas y tablas, control de variables y conjuntos.",
+      "subhabilidades": [
+        { "id": "logica_proposicional", "nombre": "Lógica proposicional" },
+        { "id": "proporcionalidad", "nombre": "Proporcionalidad" },
+        { "id": "razonamiento_abstracto", "nombre": "Razonamiento abstracto (operaciones no convencionales)" },
+        { "id": "geometrico", "nombre": "Razonamiento geométrico (áreas, perímetros, volúmenes)" },
+        { "id": "graficas_tablas", "nombre": "Gráficas y tablas" },
+        { "id": "control_variables", "nombre": "Control de variables" },
+        { "id": "conjuntos", "nombre": "Conjuntos" }
+      ] }
+  ],
+  "nota_subhabilidades": "Las subhabilidades son una organización interna de Nivytek para el estudio; la universidad no publica esta clasificación.",
+  "diagnostico": { "por_componente": 10, "titulo": "Diagnóstico Universidad de Antioquia" },
+  "avisos": [],
+  "convocatoria_pendiente": "Por confirmar en la página oficial de admisiones de la Universidad de Antioquia.",
+  "enlaces": [
+    { "nombre": "Simulacro oficial (Ude@)", "url": "https://udearroba.udea.edu.co/admisiones" },
+    { "nombre": "Calendario, guías de admisión y preguntas frecuentes", "url": "https://www.udea.edu.co/wps/portal/udea/web/inicio/estudiar-udea/quiero-estudiar-udea/pregrado/calendario-guias-admision", "respaldo": true },
+    { "nombre": "Programa de Preparación para la Vida Universitaria (gratuito, virtual)", "url": "https://www.udea.edu.co/wps/portal/udea/web/inicio/estudiar-udea/quiero-estudiar-udea/pregrado/camino-udea", "nota": "Busca «Camino a la UdeA» en la página oficial." }
+  ]
+}

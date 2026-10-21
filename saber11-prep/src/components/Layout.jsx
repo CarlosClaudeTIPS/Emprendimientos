@@ -37,10 +37,10 @@ const MENU = {
   ],
 }
 const EXTRA_ESCRITORIO = {
-  estudiante: [{ ruta: 'progreso', nombre: 'Progreso', icono: BarChart3 }, { ruta: 'biblioteca', nombre: 'Biblioteca', icono: Library }, { ruta: 'ruta', nombre: 'Mi ruta', icono: Map }, { ruta: 'carreras', nombre: 'Mi carrera', icono: Compass }, { ruta: 'futuro', nombre: 'Mi futuro', icono: Rocket }, { ruta: 'informe', nombre: 'Mi informe', icono: FileBarChart }, { ruta: 'guia', nombre: 'Guía ICFES', icono: BookOpenCheck }],
-  docente: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía ICFES', icono: BookOpenCheck }],
-  admin: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía ICFES', icono: BookOpenCheck }],
-  revisor: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía ICFES', icono: BookOpenCheck }],
+  estudiante: [{ ruta: 'progreso', nombre: 'Progreso', icono: BarChart3 }, { ruta: 'biblioteca', nombre: 'Biblioteca', icono: Library }, { ruta: 'ruta', nombre: 'Mi ruta', icono: Map }, { ruta: 'carreras', nombre: 'Mi carrera', icono: Compass }, { ruta: 'futuro', nombre: 'Mi futuro', icono: Rocket }, { ruta: 'informe', nombre: 'Mi informe', icono: FileBarChart }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
+  docente: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
+  admin: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
+  revisor: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
 }
 
 export default function Layout({ usuario, rolVista, ruta, children, vistaEstudiante = false, onVistaEstudiante = null }) {
@@ -59,7 +59,7 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
       <aside className="no-print hidden md:flex md:flex-col w-60 shrink-0 border-r border-dark-700 bg-dark-800 p-4">
         <button onClick={irInicio} className="flex items-center gap-2 px-2 py-2 mb-4 rounded-xl hover:bg-dark-900 text-left" title="Ir al inicio" aria-label="Ir al inicio">
           <img src="/icono.svg" alt="" className="w-9 h-9" />
-          <span className="text-xl font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · ICFES</span></span>
+          <span className="text-xl font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · Saber 11</span></span>
         </button>
         <nav className="space-y-1">
           {[...items, ...extra].map(it => (
@@ -100,7 +100,7 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
         <header className="no-print md:hidden sticky top-0 z-20 bg-dark-800/95 backdrop-blur border-b border-dark-700 px-4 py-2.5 flex items-center justify-between">
           <button onClick={irInicio} className="flex items-center gap-2" title="Ir al inicio" aria-label="Ir al inicio">
             <img src="/icono.svg" alt="" className="w-7 h-7" />
-            <span className="font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · ICFES</span></span>
+            <span className="font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · Saber 11</span></span>
           </button>
           <div className="flex items-center gap-3">
             {puedePrevisualizar && (
