@@ -1,4 +1,4 @@
-import Estimulo, { svgSeguro } from './Estimulo'
+import Estimulo, { svgSeguro, escalarSvg } from './Estimulo'
 import { examenDePregunta, examenPorId, subhabilidadDe } from '../lib/examenes-config'
 import { Md, Badge } from './ui'
 import { nombrePrueba, nombreCompetencia, nombreHabilidad } from '../lib/taxonomia'
@@ -46,7 +46,7 @@ export default function PreguntaVista({ pregunta, elegida = null, onElegir = nul
       <div className="space-y-2">
         {p.opciones.map(o => (
           <button key={o.clave} type="button" disabled={modo !== 'responder'} onClick={() => onElegir?.(o.clave)} className={claseOpcion(o)}>
-            <span className="font-semibold mr-2">{o.clave}.</span>{o.svg && svgSeguro(o.svg) ? <span className="figura inline-block align-middle max-w-[calc(100%-2rem)] [&_svg]:max-w-full [&_svg]:h-auto" dangerouslySetInnerHTML={{ __html: svgSeguro(o.svg) }} /> : <span className="align-top inline-block max-w-[calc(100%-2rem)]"><Md texto={o.texto} className="[&_p]:mb-0 [&_p]:inline" /></span>}
+            <span className="font-semibold mr-2">{o.clave}.</span>{o.svg && svgSeguro(o.svg) ? <span className="figura inline-block align-middle max-w-[calc(100%-2rem)] [&_svg]:max-w-full [&_svg]:h-auto" dangerouslySetInnerHTML={{ __html: escalarSvg(svgSeguro(o.svg), 1.35) }} /> : <span className="align-top inline-block max-w-[calc(100%-2rem)]"><Md texto={o.texto} className="[&_p]:mb-0 [&_p]:inline" /></span>}
           </button>
         ))}
       </div>

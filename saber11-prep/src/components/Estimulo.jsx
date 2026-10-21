@@ -28,8 +28,12 @@ export function svgSeguro(svg) {
   if (/<script|on[a-z]+\s*=|javascript:|<foreignObject|<iframe|xlink:href\s*=\s*"(?!#)/i.test(t)) return null
   return t
 }
+// Agranda el dibujo (las figuras se generan pequeñas): multiplica width/height del <svg> raíz.
+export function escalarSvg(svg, factor = 1.8) {
+  return String(svg).replace(/^(<svg[^>]*?)\swidth="([\d.]+)"([^>]*?)\sheight="([\d.]+)"/i, (m, a, w, b, h) => `${a} width="${Math.round(w * factor)}"${b} height="${Math.round(h * factor)}"`)
+}
 function FiguraSvg({ e }) {
-  const svg = svgSeguro(e.svg)
+  const svg = svgSeguro(e.svg) && escalarSvg(svgSeguro(e.svg), 1.8)
   if (!svg) return null
   return (
     <figure className="my-3">
