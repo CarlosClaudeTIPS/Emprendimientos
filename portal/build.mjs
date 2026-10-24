@@ -51,7 +51,7 @@ const esc = (t) => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").
 { // Portada: puertas y lema desde portal.config.js
   const win = {}; new Function("window", readFileSync(join(here, "site/shared/portal.config.js"), "utf8"))(win);
   const cfg = win.PORTAL_CONFIG, f = join(dist, "index.html");
-  const puertas = cfg.secciones.map((s) => `<a class="door" href="${esc(s.carpeta)}" style="--c:${esc(s.color)}"><div class="pic">${s.iconoArchivo ? `<img src="${esc(s.iconoArchivo)}" alt="" width="64" height="64">` : ""}</div><span class="who">${esc(s.publico)}</span><h2>${esc(s.titulo)}</h2><p>${esc(s.texto)}</p><span class="go">${esc(s.boton)}</span></a>`).join("");
+  const puertas = cfg.secciones.map((s) => `<a class="door" href="${esc(s.url || s.carpeta)}" style="--c:${esc(s.color)}"><div class="pic">${s.iconoArchivo ? `<img src="${esc(s.iconoArchivo)}" alt="" width="64" height="64">` : ""}</div><span class="who">${esc(s.publico)}</span><h2>${esc(s.titulo)}</h2><p>${esc(s.texto)}</p><span class="go">${esc(s.boton)}</span></a>`).join("");
   writeFileSync(f, readFileSync(f, "utf8").replace('<div class="doors" id="doors"></div>', `<div class="doors" id="doors">${puertas}</div>`).replace('<p id="lema"></p>', `<p id="lema">${esc(cfg.marca.lema)}</p>`));
 }
 { // Tienda: portada, pasos y preguntas frecuentes desde data/config.json
@@ -73,7 +73,7 @@ const esc = (t) => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").
   const precio = (n) => n == null || isNaN(n) ? "" : "$" + Math.round(Number(n)).toLocaleString("es-CO");
   const numWA = String((c.whatsapp || {}).numero || "").replace(/\D/g, "");
   const urlProd = (p) => (c.sitio || {}).paginasEstaticas ? `p/${encodeURIComponent(p.id)}.html` : `producto.html?p=${encodeURIComponent(p.id)}`;
-  const msgProd = (p) => encodeURIComponent(String((c.whatsapp || {}).mensajeProducto || "Hola, estoy interesado en {nombre} ({precio}).").replace("{nombre}", p.nombre).replace("{precio}", precio(p.precio)).replace("{variantes}", "").replace("{enlace}", `https://nivytek.com/tienda/${urlProd(p)}`).trim());
+  const msgProd = (p) => encodeURIComponent(String((c.whatsapp || {}).mensajeProducto || "Hola, estoy interesado en {nombre} ({precio}).").replace("{nombre}", p.nombre).replace("{precio}", precio(p.precio)).replace("{variantes}", "").replace("{enlace}", `https://tienda.nivytek.com/${urlProd(p)}`).trim());
   const tarjeta = (p) => { const k = (cat.categorias || []).find((x) => x.id === p.categoria); return `<article class="tarjeta ${p.disponible ? "" : "agotada"}" data-id="${esc(p.id)}"><a class="tarjeta-imagen" href="${urlProd(p)}"><img src="${esc((p.imagenes && p.imagenes[0]) || "img/sin-imagen.svg")}" alt="${esc(p.nombre)}" loading="lazy" width="400" height="400"></a><div class="tarjeta-cuerpo">${k ? `<span class="tarjeta-categoria-txt">${esc(k.nombre)}</span>` : ""}<h3 class="tarjeta-titulo"><a href="${urlProd(p)}">${esc(p.nombre)}</a></h3>${p.descripcionCorta ? `<p class="tarjeta-desc">${esc(p.descripcionCorta)}</p>` : ""}<div class="precio"><span class="precio-actual">${precio(p.precio)}</span></div><div class="tarjeta-acciones">${numWA ? `<a class="btn btn-whatsapp" href="https://wa.me/${numWA}?text=${msgProd(p)}" target="_blank" rel="noopener">${p.disponible ? "Pedir por WhatsApp" : "Preguntar por WhatsApp"}</a>` : ""}</div></div></article>`; };
   const cats = (cat.categorias || []).filter((k) => k.visible !== false).map((k) => ({ ...k, n: visibles.filter((p) => p.categoria === k.id).length })).filter((k) => k.n > 0);
   html = html.replace('<div class="grid-categorias" id="categorias"></div>', `<div class="grid-categorias" id="categorias">${cats.map((k) => `<a class="tarjeta-categoria" href="catalogo.html?cat=${encodeURIComponent(k.id)}"><span class="icono"></span><strong>${esc(k.nombre)}</strong><span>${k.n} producto${k.n === 1 ? "" : "s"}</span></a>`).join("")}</div>`);
@@ -85,7 +85,9 @@ const esc = (t) => String(t ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").
 // 5. Barra común en cada página de las secciones
 for (const f of walk(dist).filter((f) => f.endsWith(".html") && relative(dist, f) !== "index.html")) {
   const up = relative(dirname(f), dist).split("\\").join("/") || ".";
-  const tag = `<link rel="stylesheet" href="${up}/shared/barra.css"><script src="${up}/shared/portal.config.js"></script><script defer src="${up}/shared/barra.js"></script>`;
+  const enTienda = relative(dist, f).startsWith("tienda/");
+  const base = enTienda ? "https://nivytek.com" : up;
+  const tag = `<link rel="stylesheet" href="${base}/shared/barra.css"><script src="${base}/shared/portal.config.js"></script>${enTienda ? '<script>window.PORTAL_ROOT="https://nivytek.com/"</script>' : ""}<script defer src="${base}/shared/barra.js"></script>`;
   let html = readFileSync(f, "utf8");
   if (!html.includes("shared/barra.js")) html = html.replace(/<\/head>/i, tag + "\n</head>");
   if (!html.includes(ANALYTICS)) html = html.replace(/<\/head>/i, ANALYTICS + "\n</head>");

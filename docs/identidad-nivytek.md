@@ -43,7 +43,7 @@ Las imágenes para compartir se generan desde el símbolo con un HTML sencillo (
 - Ícono actual: cuadrado azul con tres líneas (documento/planeación) y círculo coral con chulo.
 - Sensación: orden, calma, apoyo humano; cálido sin ser infantil.
 
-## Tienda (`/tienda/`)
+## Tienda (`tienda.nivytek.com`)
 
 - Eslogan: «Productos útiles, novedosos y a buen precio.» Pedidos por WhatsApp. Público: compradores en Colombia.
 - Colores: azul marino `#1e3a5f` (principal), naranja `#d97706` (acento), WhatsApp `#25d366`; fondo `#f8fafc`, texto `#0f172a`, texto suave `#475569`, borde `#e2e8f0`.

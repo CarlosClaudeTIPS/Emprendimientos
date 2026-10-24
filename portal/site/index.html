@@ -12,6 +12,11 @@
 <meta property="og:image" content="https://nivytek.com/shared/og-nivytek.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:description" content="Servicios y productos en un solo lugar. Elige lo que necesitas hoy.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Nivytek","url":"https://nivytek.com/","logo":"https://nivytek.com/shared/logo.svg","email":"nivytek@hotmail.com","areaServed":"CO",
+ "contactPoint":[{"@type":"ContactPoint","contactType":"customer service","name":"Educación (ICFES y Apoyo docente)","telephone":"+573043134833","availableLanguage":"es"},{"@type":"ContactPoint","contactType":"sales","name":"Tienda","telephone":"+573000510910","availableLanguage":"es"}],
+ "subOrganization":[{"@type":"EducationalOrganization","name":"Nivytek · ICFES","url":"https://nivytek.com/icfes/"},{"@type":"ProfessionalService","name":"Nivytek · Apoyo docente","url":"https://nivytek.com/docentes/"},{"@type":"Store","name":"Nivytek · Tienda","url":"https://tienda.nivytek.com/"}]}
+</script>
 <link rel="icon" href="shared/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="shared/barra.css"><script src="shared/portal.config.js"></script><script defer src="shared/barra.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +73,7 @@ footer{text-align:center;color:var(--muted);font-size:.85rem;margin-top:40px}
     star:'<path d="M12 3l2.8 5.7 6.2.9-4.5 4.4 1.1 6.2L12 17.3 6.4 20.2l1.1-6.2L3 9.6l6.2-.9z"/>'};
   document.title=c.marca.nombre+' · '+c.secciones.map(function(s){return s.nombre}).join(', ');
   document.getElementById('q').textContent=c.marca.pregunta; document.getElementById('lema').textContent=c.marca.lema;
-  document.getElementById('doors').innerHTML=c.secciones.map(function(s){return '<a class="door" href="'+s.carpeta+'" style="--c:'+s.color+'"><div class="pic">'+(s.iconoArchivo?'<img src="'+s.iconoArchivo+'" alt="" width="64" height="64">':'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(I[s.icono]||I.star)+'</svg>')+'</div><span class="who">'+s.publico+'</span><h2>'+s.titulo+'</h2><p>'+s.texto+'</p><span class="go">'+s.boton+'</span></a>'}).join('');
+  document.getElementById('doors').innerHTML=c.secciones.map(function(s){return '<a class="door" href="'+(s.url||s.carpeta)+'" style="--c:'+s.color+'"><div class="pic">'+(s.iconoArchivo?'<img src="'+s.iconoArchivo+'" alt="" width="64" height="64">':'<svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+(I[s.icono]||I.star)+'</svg>')+'</div><span class="who">'+s.publico+'</span><h2>'+s.titulo+'</h2><p>'+s.texto+'</p><span class="go">'+s.boton+'</span></a>'}).join('');
   document.getElementById('foot').textContent='© '+new Date().getFullYear()+' '+c.marca.nombre+'. Cada servicio tiene su propio canal de contacto.';
 })();
 </script>

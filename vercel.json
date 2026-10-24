@@ -61,6 +61,16 @@
   ],
   "rewrites": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "tienda\\.nivytek\\.com"
+        }
+      ],
+      "destination": "/tienda/:path*"
+    },
+    {
       "source": "/icfes/:path((?!.*\\.).*)",
       "destination": "/icfes/index.html"
     }

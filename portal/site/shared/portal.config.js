@@ -28,7 +28,7 @@ window.PORTAL_CONFIG = {
       boton: "Entrar a Apoyo docente", icono: "calendar", iconoArchivo: "shared/iconos/docentes.svg"
     },
     {
-      id: "tienda", carpeta: "tienda/", nombre: "Tienda", color: "#1E9E7A",
+      id: "tienda", carpeta: "tienda/", url: "https://tienda.nivytek.com/", host: "tienda.nivytek.com", nombre: "Tienda", color: "#1E9E7A",
       publico: "Compradores y emprendedores",
       titulo: "Tienda de productos",
       texto: "Catálogo con pedidos por WhatsApp. Productos útiles, listos para pedir hoy.",
