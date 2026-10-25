@@ -90,7 +90,7 @@ async function existeEnNube(destino, fila) {
 // Campos que no van a la nube o que cambian de forma.
 function aFilaNube(tabla, d) {
   const { sincronizado, semilla, ...resto } = d
-  if (tabla === 'usuarios') { const { pin_hash, demo, ruta_config, futuro, ...u } = resto; return u } // ruta_config y futuro viajan por sus funciones (migraciones 005 y 006)
+  if (tabla === 'usuarios') { const { pin_hash, demo, ruta_config, futuro, grupo_solicitado, ...u } = resto; return u } // ruta_config y futuro viajan por sus funciones (migraciones 005 y 006)
   if (tabla === 'preguntas') { const { editada_local, fecha_carga, fecha_edicion, ...p } = resto; return { ...p, actualizado: fecha_edicion ?? ahora() } }
   if (tabla === 'recursos') { const { editado_local, ...r } = resto; return r }
   if (tabla === 'sesiones') { const { con_pausas, ...s } = resto; return s } // la marca «con pausas» ya va dentro de config.pausas

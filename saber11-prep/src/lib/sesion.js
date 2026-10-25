@@ -94,7 +94,17 @@ const capital = (t) => { const p = String(t ?? '').trim().split(/\s+/)[0]; retur
 
 // Registro del propio estudiante. Queda en estado "pendiente" hasta que el docente/admin lo acepte.
 // Devuelve el usuario asignado (si el nombre ya existe se le agrega 1, 2, 3…).
-export async function registrarEstudiante({ nombre, apellido, pin }) {
+// Grupos a los que un estudiante puede pedir unirse al registrarse (antes de tener cuenta).
+export async function gruposAbiertos() {
+  if (NUBE_DISPONIBLE) {
+    const { data, error } = await supabase.rpc('grupos_abiertos')
+    if (error) return [] // sin la migración 009 simplemente no se ofrece la lista
+    return data ?? []
+  }
+  return (await db.grupos.toArray()).map(g => ({ id: g.id, nombre: g.nombre, colegio: g.colegio, curso: g.curso }))
+}
+
+export async function registrarEstudiante({ nombre, apellido, pin, grupo_solicitado = null }) {
   const base = baseUsuario(nombre, apellido)
   if (base.length < 4 || !nombre?.trim() || !apellido?.trim()) throw new Error('Escribe tu primer nombre y tu primer apellido')
   if (!/^\d{4,8}$/.test(String(pin ?? ''))) throw new Error('El PIN debe tener entre 4 y 8 dígitos')
@@ -104,8 +114,9 @@ export async function registrarEstudiante({ nombre, apellido, pin }) {
     if (errH || !handle) throw new Error(errH?.message ?? 'No se pudo asignar el usuario')
     const { data, error } = await supabase.auth.signUp({ email: `${handle}@${DOMINIO_ESTUDIANTES}`, password: claveDePin(pin), options: { data: { nombre: nombreCompleto, rol: 'estudiante' } } })
     if (error || !data?.user) throw new Error(error?.message ?? 'No se pudo crear la cuenta')
-    const fila = { id: data.user.id, rol: 'estudiante', nombre: nombreCompleto, usuario: handle, estado: 'pendiente' }
-    const { error: errP } = await supabase.from('perfiles').insert(fila)
+    const fila = { id: data.user.id, rol: 'estudiante', nombre: nombreCompleto, usuario: handle, estado: 'pendiente', grupo_solicitado: grupo_solicitado || null }
+    let { error: errP } = await supabase.from('perfiles').insert(fila)
+    if (errP && /grupo_solicitado/.test(errP.message)) { delete fila.grupo_solicitado; ({ error: errP } = await supabase.from('perfiles').insert(fila)) } // nube sin la migración 009
     if (errP) throw new Error('Cuenta creada, pero no se pudo guardar el perfil: ' + errP.message)
     await db.usuarios.put({ ...fila, sincronizado: 1 })
     await setConfig('sesion_usuario_id', fila.id)
@@ -115,7 +126,7 @@ export async function registrarEstudiante({ nombre, apellido, pin }) {
   // Modo local
   let handle = base, n = 0
   while (await db.usuarios.where('usuario').equals(handle).first()) { n++; handle = base + n }
-  const u = { id: uuid(), nombre: nombreCompleto, usuario: handle, rol: 'estudiante', grupo_id: null, estado: 'pendiente', pin_hash: await hashPin(pin), creado: ahora(), sincronizado: 0 }
+  const u = { id: uuid(), nombre: nombreCompleto, usuario: handle, rol: 'estudiante', grupo_id: null, grupo_solicitado: grupo_solicitado || null, estado: 'pendiente', pin_hash: await hashPin(pin), creado: ahora(), sincronizado: 0 }
   await db.usuarios.add(u)
   await setConfig('sesion_usuario_id', u.id)
   setEstado({ usuario: u })
@@ -134,10 +145,11 @@ export async function solicitudesPendientes() {
 
 export async function resolverSolicitud(perfil, { aceptar, grupo = null }) {
   const cambios = aceptar
-    ? { estado: 'activo', grupo_id: grupo?.id ?? null, colegio: grupo?.colegio ?? null, curso: grupo?.curso ?? null, ciclo_id: grupo?.ciclo_id ?? null }
+    ? { estado: 'activo', grupo_id: grupo?.id ?? null, colegio: grupo?.colegio ?? null, curso: grupo?.curso ?? null, ciclo_id: grupo?.ciclo_id ?? null, grupo_solicitado: null }
     : { estado: 'rechazado' }
   if (NUBE_DISPONIBLE) {
-    const { error } = await supabase.from('perfiles').update(cambios).eq('id', perfil.id)
+    let { error } = await supabase.from('perfiles').update(cambios).eq('id', perfil.id)
+    if (error && /grupo_solicitado/.test(error.message)) { const { grupo_solicitado, ...sinCol } = cambios; ({ error } = await supabase.from('perfiles').update(sinCol).eq('id', perfil.id)) }
     if (error) throw new Error(error.message)
   }
   await db.usuarios.put({ ...perfil, ...cambios, sincronizado: 1 })

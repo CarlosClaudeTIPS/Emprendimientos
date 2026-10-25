@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { BookOpenCheck, Timer, LineChart, Calculator, BookOpen, Globe2, FlaskConical, Languages, Star, ChevronLeft, ChevronRight } from 'lucide-react'
-import { entrarLocal, entrarNube, pedirRecuperacion, registrarEstudiante, baseUsuario } from '../lib/sesion'
+import { entrarLocal, entrarNube, pedirRecuperacion, registrarEstudiante, baseUsuario, gruposAbiertos } from '../lib/sesion'
 import { NUBE_DISPONIBLE } from '../lib/supabase'
 import { USUARIOS_DEMO } from '../lib/demo'
 
@@ -204,7 +204,9 @@ function FormularioAcceso({ tipo, setTipo }) {
   const [aviso, setAviso] = useState('')
   const [cargando, setCargando] = useState(false)
   const [registro, setRegistro] = useState(false)
-  const [reg, setReg] = useState({ nombre: '', apellido: '', pin: '', pin2: '' })
+  const [reg, setReg] = useState({ nombre: '', apellido: '', pin: '', pin2: '', grupo_solicitado: '' })
+  const [gruposAb, setGruposAb] = useState([])
+  useEffect(() => { if (registro) gruposAbiertos().then(setGruposAb).catch(() => setGruposAb([])) }, [registro])
 
   const registrar = async (e) => {
     e.preventDefault(); setError('')
@@ -252,6 +254,16 @@ function FormularioAcceso({ tipo, setTipo }) {
             <div><label className="label">PIN (4 a 8 dígitos)</label><input className="input" type="password" inputMode="numeric" value={reg.pin} onChange={e => setReg({ ...reg, pin: e.target.value })} autoComplete="new-password" /></div>
             <div><label className="label">Repite el PIN</label><input className="input" type="password" inputMode="numeric" value={reg.pin2} onChange={e => setReg({ ...reg, pin2: e.target.value })} autoComplete="new-password" /></div>
           </div>
+          {gruposAb.length > 0 && (
+            <div>
+              <label className="label">¿A qué grupo quieres unirte?</label>
+              <select className="input" value={reg.grupo_solicitado} onChange={e => setReg({ ...reg, grupo_solicitado: e.target.value })}>
+                <option value="">No sé / que lo decida el docente</option>
+                {gruposAb.map(g => <option key={g.id} value={g.id}>{g.nombre}{g.colegio ? ` · ${g.colegio}` : ''}</option>)}
+              </select>
+              <p className="text-xs text-gray-500 mt-1">Es una solicitud: el docente confirma el grupo al aceptarte.</p>
+            </div>
+          )}
           {error && <p className="text-sm text-brand-red">{error}</p>}
           <button className="btn-primary w-full !py-3 text-base" disabled={cargando}>{cargando ? 'Registrando…' : 'Registrarme'}</button>
           <button type="button" className="btn-ghost w-full text-sm" onClick={() => { setRegistro(false); setError('') }}>Ya tengo usuario, quiero entrar</button>

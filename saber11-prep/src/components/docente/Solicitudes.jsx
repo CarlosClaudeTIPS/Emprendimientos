@@ -23,7 +23,8 @@ export default function Solicitudes({ usuario, grupos, onCambio }) {
     return () => { clearInterval(t); window.removeEventListener('focus', cargar) }
   }, [])
 
-  const elegido = (p) => grupoDe[p.id] ?? porDefecto ?? grupos[0]?.id ?? ''
+  // Primero el grupo que el estudiante pidió al registrarse (si existe); luego el último creado aquí; luego el primero.
+  const elegido = (p) => grupoDe[p.id] ?? (p.grupo_solicitado && grupos.some(g => g.id === p.grupo_solicitado) ? p.grupo_solicitado : null) ?? porDefecto ?? grupos[0]?.id ?? ''
 
   const crear = async () => {
     if (!nuevo.nombre.trim()) return
@@ -67,6 +68,7 @@ export default function Solicitudes({ usuario, grupos, onCambio }) {
             <div className="min-w-0 flex-1">
               <p className="text-sm font-medium">{p.nombre}</p>
               <p className="text-xs text-gray-500 font-mono">{p.usuario}</p>
+              {p.grupo_solicitado && <p className="text-xs text-brand-blue">Pidió unirse a: {grupos.find(g => g.id === p.grupo_solicitado)?.nombre ?? 'un grupo que ya no existe'}</p>}
             </div>
             <select className="input !w-auto !py-1.5 text-xs" value={elegido(p)} onChange={e => setGrupoDe({ ...grupoDe, [p.id]: e.target.value })}>
               {grupos.length === 0 && <option value="">Sin grupos</option>}

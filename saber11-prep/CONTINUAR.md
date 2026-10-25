@@ -125,7 +125,11 @@ jefe de esa app y el revisor es la cuenta «solo mirar».
 - **Tienda**: Carlos no edita el panel; dice qué cambiar y se edita `tienda/data/catalogo.json`
   (productos) y `config.json` (WhatsApp, textos) desde aquí, y se publica.
 
-Migraciones pendientes de correr en Supabase (SQL Editor, en orden): 004, 005, 006, 007 y **008**.
+- **Registro con grupo solicitado** (`supabase/migracion-009-grupo-solicitado.sql`): al registrarse, el estudiante elige el grupo al
+  que pide unirse; en Grupos → Solicitudes aparece «Pidió unirse a…» y el grupo ya viene preseleccionado. Sin la migración, la
+  app funciona igual pero sin la lista de grupos en el registro.
+
+Migraciones pendientes de correr en Supabase (SQL Editor, en orden): 004, 005, 006, 007, **008** y **009**.
 
 ## Exámenes de admisión propios: Universidad Nacional y UdeA (hecho el 21-oct-2026)
 
