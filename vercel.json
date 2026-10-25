@@ -25,7 +25,35 @@
     },
     {
       "source": "/tienda",
-      "destination": "/tienda/",
+      "has": [
+        {
+          "type": "host",
+          "value": "nivytek\\.com"
+        }
+      ],
+      "destination": "https://tienda.nivytek.com/",
+      "permanent": true
+    },
+    {
+      "source": "/tienda/",
+      "has": [
+        {
+          "type": "host",
+          "value": "nivytek\\.com"
+        }
+      ],
+      "destination": "https://tienda.nivytek.com/",
+      "permanent": true
+    },
+    {
+      "source": "/tienda/:path(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "nivytek\\.com"
+        }
+      ],
+      "destination": "https://tienda.nivytek.com/:path",
       "permanent": true
     },
     {
@@ -60,6 +88,26 @@
     }
   ],
   "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "tienda\\.nivytek\\.com"
+        }
+      ],
+      "destination": "/tienda/index.html"
+    },
+    {
+      "source": "/index.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tienda\\.nivytek\\.com"
+        }
+      ],
+      "destination": "/tienda/index.html"
+    },
     {
       "source": "/:path*",
       "has": [
