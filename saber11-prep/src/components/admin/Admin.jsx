@@ -7,6 +7,7 @@ import { borrarDatosDemo } from '../../lib/demo'
 import { REGLAS_POR_DEFECTO } from '../../lib/reglas'
 import { NUBE_DISPONIBLE } from '../../lib/supabase'
 import { Titulo, Badge, Metrica } from '../ui'
+import { ir } from '../../lib/nav'
 
 // ─── Administración ──────────────────────────────────────────────────────────
 // Usuarios, ciclos (fechas del examen), taxonomía (tipos de error), estructura
@@ -121,6 +122,7 @@ function Usuarios({ admin }) {
   return (
     <div className="space-y-3">
       {NUBE_DISPONIBLE && <p className="text-xs text-gray-400">Con Supabase, las cuentas se crean desde el panel de Supabase (docentes) o al inscribir estudiantes en un grupo (función api/estudiantes.js).</p>}
+      <p className="text-xs text-gray-400">Los estudiantes que se registran solos quedan <b>pendientes de aprobar</b> y sin grupo: no pueden entrar hasta que los aceptes. Se aprueban y se les asigna grupo en <b>Grupos</b> (tarjeta «Solicitudes»).</p>
       <button className="btn-secondary w-full" onClick={() => setNuevo({ nombre: '', usuario: '', pin: '', rol: 'docente' })}>Nuevo docente / admin / revisor</button>
       {nuevo && (
         <div className="card space-y-2">
@@ -136,7 +138,8 @@ function Usuarios({ admin }) {
       <div className="card p-0 divide-y divide-dark-700">
         {lista.map(u => (
           <div key={u.id} className="px-4 py-2 flex items-center gap-2 text-sm">
-            <div className="min-w-0 flex-1"><p className="truncate">{u.nombre} {u.demo && <Badge>demo</Badge>}</p><p className="text-xs text-gray-500">{u.usuario}{u.curso ? ` · ${u.curso}` : ''}</p></div>
+            <div className="min-w-0 flex-1"><p className="truncate">{u.nombre} {u.demo && <Badge>demo</Badge>} {u.rol === 'estudiante' && u.estado === 'pendiente' && <Badge tono="ambar">pendiente de aprobar</Badge>}{u.rol === 'estudiante' && u.estado === 'rechazado' && <Badge tono="rojo">rechazado</Badge>}</p><p className="text-xs text-gray-500">{u.usuario}{u.curso ? ` · ${u.curso}` : u.rol === 'estudiante' ? ' · sin grupo' : ''}</p></div>
+            {u.rol === 'estudiante' && u.estado === 'pendiente' && <button className="btn-secondary !px-2 !py-1 text-xs" onClick={() => ir('inicio', { vista: 'docente' })}>Aprobar y asignar grupo</button>}
             <select className="input !w-auto !py-1 text-xs" value={u.rol} onChange={e => cambiarRol(u, e.target.value)}><option value="estudiante">estudiante</option><option value="docente">docente</option><option value="admin">admin</option></select>
             <button className="btn-ghost !px-2 !py-1 text-xs" onClick={() => resetPin(u)}>PIN</button>
             <button className="btn-ghost !px-2 !py-1 text-xs text-brand-red" onClick={() => eliminar(u)}>Eliminar</button>
