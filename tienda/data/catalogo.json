@@ -240,8 +240,8 @@
       "stock": 1
     },
     {
-      "id": "rastreadores-eivouit-tag-x4",
-      "nombre": "Rastreadores EIVOUIT Tag (paquete de 4) - Compatibles con Apple Buscar (MFi)",
+      "id": "rastreadores-flyruit-tag-x4",
+      "nombre": "Rastreadores FLYRUIT Tag (paquete de 4) - Compatibles con Apple Buscar (MFi)",
       "categoria": "tecnologia",
       "precio": 99000,
       "precioAnterior": null,
@@ -252,7 +252,10 @@
       "popular": false,
       "visible": true,
       "orden": 3,
-      "imagenes": [],
+      "imagenes": [
+        "tienda/img/productos/flyruit-tag-x4.jpg",
+        "tienda/img/productos/flyruit-tag-x4-mesa.jpg"
+      ],
       "video": "",
       "descripcionCorta": "4 localizadores inteligentes nuevos y sellados, certificados por Apple (MFi) para la red Buscar.",
       "descripcion": "Paquete de 4 localizadores inteligentes, totalmente nuevos y sellados. Su principal ventaja es la certificación oficial Apple MFi para trabajar con la red Buscar (Find My): se enlazan de forma nativa a la app «Buscar» de tu iPhone, iPad o Mac y funcionan igual que un AirTag, sin descargar aplicaciones de terceros. La misma red de rastreo de Apple para tus llaves, maletas, mochila o mascotas, a una fracción del precio.\n\nProducto intacto y garantizado.\n\nEntrega personal en Bogotá, con punto de encuentro en la Av. Américas con 68, o envíos a otras ciudades con pago previo (el costo del envío lo asume el comprador).",
@@ -264,7 +267,7 @@
         "Nuevos y sellados"
       ],
       "especificaciones": {
-        "Marca": "EIVOUIT",
+        "Marca": "FLYRUIT",
         "Contenido": "4 rastreadores",
         "Compatibilidad": "iPhone, iPad y Mac con la app «Buscar» (red Find My de Apple)",
         "Certificación": "Apple MFi (Find My), según el fabricante",
@@ -273,7 +276,7 @@
         "Estado": "Nuevo, sellado"
       },
       "incluye": [
-        "4 rastreadores EIVOUIT Tag",
+        "4 rastreadores FLYRUIT Tag (uno con argolla para llaves)",
         "Contenido adicional del paquete: pendiente de confirmar"
       ],
       "instrucciones": [
@@ -289,7 +292,7 @@
       "preguntas": [
         {
           "p": "¿Es igual que un AirTag?",
-          "r": "Funciona en la misma red Buscar de Apple y se configura desde la misma app. Es de la marca EIVOUIT, con certificación MFi según el fabricante."
+          "r": "Funciona en la misma red Buscar de Apple y se configura desde la misma app. Es de la marca FLYRUIT, con certificación MFi según el fabricante."
         },
         {
           "p": "¿Sirve con Android?",
@@ -313,7 +316,7 @@
         "maleta",
         "gps",
         "tag",
-        "eivouit"
+        "flyruit"
       ],
       "relacionados": [],
       "fechaCreacion": "2026-10-28",
