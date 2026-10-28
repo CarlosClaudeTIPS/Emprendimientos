@@ -238,6 +238,86 @@
       ],
       "fechaCreacion": "2026-10-19",
       "stock": 1
+    },
+    {
+      "id": "rastreadores-eivouit-tag-x4",
+      "nombre": "Rastreadores EIVOUIT Tag (paquete de 4) - Compatibles con Apple Buscar (MFi)",
+      "categoria": "tecnologia",
+      "precio": 99000,
+      "precioAnterior": null,
+      "disponible": true,
+      "nuevo": true,
+      "oferta": false,
+      "destacado": true,
+      "popular": false,
+      "visible": true,
+      "orden": 3,
+      "imagenes": [],
+      "video": "",
+      "descripcionCorta": "4 localizadores inteligentes nuevos y sellados, certificados por Apple (MFi) para la red Buscar.",
+      "descripcion": "Paquete de 4 localizadores inteligentes, totalmente nuevos y sellados. Su principal ventaja es la certificación oficial Apple MFi para trabajar con la red Buscar (Find My): se enlazan de forma nativa a la app «Buscar» de tu iPhone, iPad o Mac y funcionan igual que un AirTag, sin descargar aplicaciones de terceros. La misma red de rastreo de Apple para tus llaves, maletas, mochila o mascotas, a una fracción del precio.\n\nProducto intacto y garantizado.\n\nEntrega personal en Bogotá, con punto de encuentro en la Av. Américas con 68, o envíos a otras ciudades con pago previo (el costo del envío lo asume el comprador).",
+      "problema": "Para quien pierde o teme perder llaves, billetera, maleta o mascota y quiere rastrearlas desde su iPhone sin pagar el precio de cuatro AirTag.",
+      "beneficios": [
+        "Funciona con la app «Buscar» de Apple, sin apps de terceros",
+        "4 unidades: llaves, maleta, mochila y mascota cubiertas",
+        "Certificación Apple MFi, según el fabricante",
+        "Nuevos y sellados"
+      ],
+      "especificaciones": {
+        "Marca": "EIVOUIT",
+        "Contenido": "4 rastreadores",
+        "Compatibilidad": "iPhone, iPad y Mac con la app «Buscar» (red Find My de Apple)",
+        "Certificación": "Apple MFi (Find My), según el fabricante",
+        "Compatibilidad Android": "No usa la red de Apple en Android",
+        "Batería": "Pendiente de confirmar",
+        "Estado": "Nuevo, sellado"
+      },
+      "incluye": [
+        "4 rastreadores EIVOUIT Tag",
+        "Contenido adicional del paquete: pendiente de confirmar"
+      ],
+      "instrucciones": [
+        "Retira la lengüeta de la batería y acércalo al iPhone.",
+        "Abre la app «Buscar» → Objetos → Añadir objeto y sigue los pasos.",
+        "Ponle nombre y fíjalo a tus llaves, maleta o collar de la mascota."
+      ],
+      "precauciones": [
+        "Requiere iPhone, iPad o Mac: en Android no funciona con la red de Apple.",
+        "Mantener fuera del alcance de niños pequeños (batería tipo botón).",
+        "No se aceptan cambios por cambio de opinión; confirma tu compra antes de pagar."
+      ],
+      "preguntas": [
+        {
+          "p": "¿Es igual que un AirTag?",
+          "r": "Funciona en la misma red Buscar de Apple y se configura desde la misma app. Es de la marca EIVOUIT, con certificación MFi según el fabricante."
+        },
+        {
+          "p": "¿Sirve con Android?",
+          "r": "No. Está hecho para la red Buscar de Apple (iPhone, iPad, Mac)."
+        },
+        {
+          "p": "¿Se venden por unidad?",
+          "r": "Se vende el paquete completo de 4. Si te interesa otra cantidad, pregúntanos por WhatsApp."
+        }
+      ],
+      "variantes": [],
+      "palabrasClave": [
+        "airtag",
+        "rastreador",
+        "localizador",
+        "find my",
+        "buscar",
+        "apple",
+        "llaves",
+        "mascota",
+        "maleta",
+        "gps",
+        "tag",
+        "eivouit"
+      ],
+      "relacionados": [],
+      "fechaCreacion": "2026-10-28",
+      "stock": 1
     }
   ]
 }
