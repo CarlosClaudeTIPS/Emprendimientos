@@ -1,0 +1,2805 @@
+{
+  "_estado": "Guía orientativa de salidas laborales por carrera con datos oficiales del Ministerio de Educación (OLE y SNIES). Las cifras son de recién graduados (graduados 2022 observados en 2023) y sirven para comparar carreras, no para predecir el futuro de una persona. Ver 'general.como_leer' antes de mostrar un número.",
+  "general": {
+    "como_leer": [
+      "Tasa de cotizantes (OLE): porcentaje de los graduados de un año que, al año siguiente, aparecen cotizando a salud y pensión (planilla PILA). Mide empleo FORMAL (con contrato o como independiente que cotiza); no cuenta a quien trabaja informal, a quien se fue del país ni a quien sigue estudiando. Por eso una tasa baja no siempre significa desempleo, sobre todo en carreras donde se trabaja por honorarios o por proyecto (derecho, artes, arquitectura, odontología).",
+      "La cifra de empleabilidad de cada carrera en este archivo se calculó cruzando dos bases oficiales del Ministerio de Educación: la Base IBC 2023 del OLE (graduados que cotizaban como dependientes con ingreso reportado) y la base de Graduados 2022 del SNIES. Al no contar independientes, el promedio nacional sale en 59,3% para universitarios, mientras la tasa de cotizantes oficial del OLE para 2023 fue 75,5% (universitario), 70,8% (tecnológico) y 55,3% (técnico profesional). Úsela para COMPARAR carreras entre sí, no como probabilidad de empleo.",
+      "Ingreso Base de Cotización (IBC): es el ingreso sobre el que se paga salud y pensión; para empleados dependientes se parece al salario. El OLE lo publica por rangos de salarios mínimos (SMMLV) y no en pesos exactos. Aquí se muestra el rango donde cae la MEDIANA (la mitad gana menos y la mitad más) y la distribución completa. Convertimos a pesos con el salario mínimo de 2023 ($1.160.000), que era el vigente cuando se midió.",
+      "Por qué un salario promedio engaña: unos pocos graduados con ingresos muy altos suben el promedio sin que eso le pase a la mayoría. La mediana y la distribución por rangos dicen más: por ejemplo, en Medicina el 40% de los recién graduados ya cotiza por más de 4 SMMLV, mientras en Licenciatura en educación infantil el 75% cotiza por 1,5 SMMLV o menos.",
+      "Estos son datos de RECIÉN graduados (el primer año después del título). El ingreso crece con la experiencia y, sobre todo, con posgrados: el OLE reporta tasa de cotizantes de 91,3% y medianas de IBC de 3,5 a 4 SMMLV en maestría y de 7 a 8 SMMLV en especializaciones médico-quirúrgicas (2023).",
+      "El dato más reciente del OLE es el corte 2023 (graduados de 2022 observados en 2023), publicado en 2025. El Observatorio actualiza con unos dos años de rezago."
+    ],
+    "salario_minimo": {
+      "anio": 2026,
+      "valor_cop": 1750905,
+      "auxilio_transporte_cop": 249095,
+      "auxilio_transporte_verificado": false,
+      "norma": "Decreto 1469 del 29 de diciembre de 2025 (Ministerio del Trabajo); fijado transitoriamente también por el Decreto 0159 del 19 de febrero de 2026 mientras el Consejo de Estado decide una demanda de nulidad.",
+      "fuente": "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_1469_2025.htm",
+      "fuente_alterna": "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_0159_2026.htm",
+      "nota": "Valor del SMMLV verificado en el texto de los Decretos 1469 de 2025 y 0159 de 2026 (normograma oficial). El auxilio de transporte ($249.095, Decreto 1470 de 2025) solo se encontró en prensa y portales jurídicos, no en texto oficial accesible: pendiente de verificar. El SMMLV de 2023 usado para convertir los rangos del OLE fue $1.160.000 (Decreto 2613 de 2022).",
+      "fuente_smmlv_2023": "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+    },
+    "contexto_nacional_ole_2023": {
+      "tasa_cotizantes_total": 77.4,
+      "tasa_cotizantes_pregrado": 73.4,
+      "tasa_cotizantes_posgrado": 91.3,
+      "tasa_cotizantes_tecnico_profesional": 55.3,
+      "tasa_cotizantes_tecnologico": 70.8,
+      "tasa_cotizantes_universitario": 75.5,
+      "no_cotizantes_pregrado_pct": 26.6,
+      "independientes_pregrado_pct": 11.5,
+      "graduados_2022": 535963,
+      "fuente": "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf"
+    },
+    "fuentes_para_consultar": [
+      {
+        "nombre": "Observatorio Laboral para la Educación (OLE) - portal y tableros por programa e institución",
+        "url": "https://ole.mineducacion.gov.co/portal/"
+      },
+      {
+        "nombre": "OLE - Tablas de salida y bases de datos (Base IBC 2023, anexos de IBC estimado 2020-2023)",
+        "url": "https://ole.mineducacion.gov.co/portal/secciones/Estudios-y-documentos/Tablas-de-salida-y-Bases-de-Datos/"
+      },
+      {
+        "nombre": "OLE - Informe 'Indicadores académicos y de vinculación laboral de las personas recién graduadas en educación superior, corte 2023'",
+        "url": "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf"
+      },
+      {
+        "nombre": "SNIES - Bases consolidadas (graduados, matriculados, programas por institución)",
+        "url": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      {
+        "nombre": "DANE - Gran Encuesta Integrada de Hogares (empleo y desempleo, incluido el de jóvenes)",
+        "url": "https://www.dane.gov.co/index.php/estadisticas-por-tema/mercado-laboral/empleo-y-desempleo"
+      },
+      {
+        "nombre": "Servicio Público de Empleo (vacantes reales por ocupación y ciudad)",
+        "url": "https://www.serviciodeempleo.gov.co/"
+      }
+    ],
+    "metodo": "Se descargaron la Base_IBC_2023 del OLE (786.458 filas: institución, código SNIES del programa, nivel, año de grado, rango de IBC y número de graduados cotizantes) y la base 'Estudiantes Graduados 2022' del SNIES (45.424 filas). Se unieron por código de institución y código SNIES del programa (el 100% de los cotizantes encontró su programa). Cada carrera del catálogo agrupa los programas cuyo nombre coincide con un patrón (listados en 'programas_incluidos'); el nivel es universitario salvo Tecnologías TIC (tecnológico) y Gastronomía, carrera militar y aviación (todos los niveles). Validación parcial: el porcentaje obtenido para Medicina (71,3%) coincide con el que cita, para 2023 y a partir del OLE, un informe de empleabilidad institucional (Universidad Cooperativa de Colombia, programa de Medicina, 2023), lo que sugiere que el tablero 'tasa de cotización por programas' del OLE usa el mismo numerador. Los tableros del OLE (bi.mineducacion.gov.co) no pudieron consultarse directamente desde esta sesión."
+  },
+  "verificado": "2026-10-28",
+  "carreras": {
+    "medicina": {
+      "que_hace": "Diagnostica, trata y previene enfermedades en personas. Tras el pregrado (unos 6 años más el año de servicio social obligatorio) trabaja en hospitales, clínicas, EPS/IPS, urgencias, centros de salud rurales o consultorios; muchos siguen a una especialización médico-quirúrgica, que es donde más suben los ingresos.",
+      "campos": [
+        "Médico general en urgencias, hospitalización o consulta externa",
+        "Servicio social obligatorio (rural) en municipios",
+        "Especialista (pediatría, cirugía, anestesiología, medicina interna, etc.) tras residencia",
+        "Salud pública y epidemiología en secretarías de salud o INS",
+        "Auditoría médica y administración en EPS/IPS",
+        "Investigación clínica y docencia universitaria",
+        "Medicina laboral y seguridad y salud en el trabajo"
+      ],
+      "empleabilidad": {
+        "valor_pct": 71.3,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Medicina",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 6902,
+        "cotizantes_dependientes_2023": 4921,
+        "programas_incluidos": 55,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "tasa_cotizantes_informe_ole": [
+          {
+            "programa": "Medicina",
+            "valor_pct": 92.4,
+            "anio": 2023,
+            "fuente": "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+            "nota": "Tasa de cotizantes oficial del informe OLE (incluye dependientes e independientes)."
+          },
+          {
+            "programa": "Medicina",
+            "valor_pct": 93.0,
+            "anio": 2022,
+            "fuente": "https://ole.mineducacion.gov.co/1769/articles-421348_recurso_1.pdf",
+            "nota": "Tasa de cotizantes oficial del informe OLE (incluye dependientes e independientes)."
+          }
+        ]
+      },
+      "salario_enganche": {
+        "valor_cop": 2900000,
+        "valor_cop_max": 4640000,
+        "rango_smmlv": "Entre 2,5 y 4 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 5.4,
+          "Entre 1 y 1,5 SMMLV": 5.0,
+          "Entre 1,5 y 2,5 SMMLV": 7.8,
+          "Entre 2,5 y 4 SMMLV": 41.1,
+          "Entre 4 y 6 SMMLV": 30.1,
+          "Entre 6 y 9 SMMLV": 9.5,
+          "Más de 9 SMMLV": 1.1
+        },
+        "cotizantes_con_ibc": 4921,
+        "programas_incluidos": [
+          "MEDICINA (6902)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 71.3% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 2,5 y 4 smmlv. El informe OLE 2023 la destaca entre los programas universitarios con mayor vinculación (92,4% contando independientes) e IBC entre 2,5 y 4 SMMLV; el 40% de los recién graduados ya cotiza por más de 4 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm",
+        "https://ole.mineducacion.gov.co/1769/articles-421348_recurso_1.pdf"
+      ]
+    },
+    "enfermeria": {
+      "que_hace": "Cuida pacientes, administra tratamientos, coordina servicios de salud y educa a las familias. Trabaja en hospitales y clínicas (hospitalización, UCI, urgencias, cirugía), en atención primaria, en programas de promoción y prevención, en empresas y en docencia.",
+      "campos": [
+        "Enfermera o enfermero asistencial en hospitalización, UCI, urgencias o salas de cirugía",
+        "Coordinación de servicios y jefatura de enfermería",
+        "Atención primaria y programas de promoción y prevención (EPS, secretarías de salud)",
+        "Salud ocupacional y enfermería en empresas",
+        "Cuidado domiciliario y de adultos mayores",
+        "Docencia e investigación en salud"
+      ],
+      "empleabilidad": {
+        "valor_pct": 70.1,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Enfermería",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 4110,
+        "cotizantes_dependientes_2023": 2883,
+        "programas_incluidos": 60,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "tasa_cotizantes_informe_ole": [
+          {
+            "programa": "Enfermería",
+            "valor_pct": 91.2,
+            "anio": 2023,
+            "fuente": "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+            "nota": "Tasa de cotizantes oficial del informe OLE (incluye dependientes e independientes)."
+          },
+          {
+            "programa": "Enfermería",
+            "valor_pct": 93.2,
+            "anio": 2022,
+            "fuente": "https://ole.mineducacion.gov.co/1769/articles-421348_recurso_1.pdf",
+            "nota": "Tasa de cotizantes oficial del informe OLE (incluye dependientes e independientes)."
+          }
+        ]
+      },
+      "salario_enganche": {
+        "valor_cop": 2900000,
+        "valor_cop_max": 4640000,
+        "rango_smmlv": "Entre 2,5 y 4 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 5.6,
+          "Entre 1 y 1,5 SMMLV": 7.2,
+          "Entre 1,5 y 2,5 SMMLV": 31.4,
+          "Entre 2,5 y 4 SMMLV": 44.7,
+          "Entre 4 y 6 SMMLV": 10.1,
+          "Entre 6 y 9 SMMLV": 0.9,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 2883,
+        "programas_incluidos": [
+          "ENFERMERIA (4110)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 70.1% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 2,5 y 4 smmlv. El informe OLE 2023 la destaca entre los programas con mayor vinculación (91,2% contando independientes) e IBC entre 2,5 y 4 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm",
+        "https://ole.mineducacion.gov.co/1769/articles-421348_recurso_1.pdf"
+      ]
+    },
+    "odontologia": {
+      "que_hace": "Previene, diagnostica y trata enfermedades de dientes, encías y boca. Gran parte ejerce en consultorio propio o en clínicas odontológicas privadas; también en EPS/IPS, programas de salud oral del Estado y, con especialización, en ortodoncia, endodoncia, cirugía oral o rehabilitación.",
+      "campos": [
+        "Odontólogo general en clínica privada o consultorio propio",
+        "Odontología en EPS/IPS y hospitales públicos",
+        "Especialista: ortodoncia, endodoncia, periodoncia, cirugía oral, odontopediatría",
+        "Salud pública oral en secretarías de salud",
+        "Docencia e investigación",
+        "Auditoría y administración de servicios odontológicos"
+      ],
+      "empleabilidad": {
+        "valor_pct": 40.9,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Odontología",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1646,
+        "cotizantes_dependientes_2023": 673,
+        "programas_incluidos": 30,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 8.9,
+          "Entre 1 y 1,5 SMMLV": 22.7,
+          "Entre 1,5 y 2,5 SMMLV": 23.5,
+          "Entre 2,5 y 4 SMMLV": 38.8,
+          "Entre 4 y 6 SMMLV": 5.3,
+          "Entre 6 y 9 SMMLV": 0.6,
+          "Más de 9 SMMLV": 0.1
+        },
+        "cotizantes_con_ibc": 673,
+        "programas_incluidos": [
+          "ODONTOLOGIA (1646)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 40.9% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Buena parte ejerce en consultorio propio o por prestación de servicios (no aparece como dependiente), pero la mitad de los que sí cotizan lo hace por menos de 2,5 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "psicologia": {
+      "que_hace": "Estudia el comportamiento y los procesos mentales para evaluar, acompañar e intervenir a personas, grupos y organizaciones. Trabaja en salud (clínica), en empresas (talento humano, selección), en colegios, en programas sociales del Estado (ICBF, comisarías, alcaldías) y en consulta independiente.",
+      "campos": [
+        "Psicología clínica y de la salud (consulta, hospitales, EPS)",
+        "Psicología organizacional: selección, bienestar y talento humano",
+        "Psicología educativa y orientación escolar",
+        "Psicología social y comunitaria en programas del Estado (ICBF, alcaldías, cooperación)",
+        "Psicología jurídica y forense",
+        "Investigación y docencia",
+        "Neuropsicología (con posgrado)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 42.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Psicología",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 11186,
+        "cotizantes_dependientes_2023": 4718,
+        "programas_incluidos": 90,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 13.6,
+          "Entre 1 y 1,5 SMMLV": 37.0,
+          "Entre 1,5 y 2,5 SMMLV": 32.8,
+          "Entre 2,5 y 4 SMMLV": 13.3,
+          "Entre 4 y 6 SMMLV": 2.5,
+          "Entre 6 y 9 SMMLV": 0.7,
+          "Más de 9 SMMLV": 0.2
+        },
+        "cotizantes_con_ibc": 4718,
+        "programas_incluidos": [
+          "PSICOLOGIA (11186)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 42.2% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Es la quinta carrera con más graduados (11.186 en 2022); la alta oferta de egresados presiona los ingresos iniciales: más de la mitad cotiza por menos de 1,5 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "veterinaria": {
+      "que_hace": "Cuida la salud animal y la producción pecuaria: atiende animales de compañía en clínicas, asesora fincas ganaderas, avícolas o porcícolas, y vigila la sanidad e inocuidad de alimentos de origen animal. Trabaja en clínicas privadas, empresas agropecuarias, ICA, Invima, alcaldías y laboratorios.",
+      "campos": [
+        "Clínica de pequeños animales (consultorio propio o clínica veterinaria)",
+        "Asistencia técnica y producción en fincas ganaderas, avícolas, porcícolas o acuícolas",
+        "Sanidad animal e inspección (ICA, Invima, mataderos y plantas de beneficio)",
+        "Industria de alimentos balanceados, genética y farmacéutica veterinaria",
+        "Zootecnia: nutrición, reproducción y mejoramiento animal",
+        "Docencia e investigación"
+      ],
+      "empleabilidad": {
+        "valor_pct": 51.5,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Medicina veterinaria",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 2911,
+        "cotizantes_dependientes_2023": 1500,
+        "programas_incluidos": 58,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 16.7,
+          "Entre 1 y 1,5 SMMLV": 40.1,
+          "Entre 1,5 y 2,5 SMMLV": 30.8,
+          "Entre 2,5 y 4 SMMLV": 10.3,
+          "Entre 4 y 6 SMMLV": 1.7,
+          "Entre 6 y 9 SMMLV": 0.3,
+          "Más de 9 SMMLV": 0.1
+        },
+        "cotizantes_con_ibc": 1500,
+        "programas_incluidos": [
+          "MEDICINA VETERINARIA Y ZOOTECNIA (1127)",
+          "MEDICINA VETERINARIA (1095)",
+          "ZOOTECNIA (689)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media: De los graduados en 2022, el 51.5% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Combina medicina veterinaria y zootecnia; muchos trabajan en consultorio propio o por honorarios en fincas, y los ingresos formales de enganche son bajos.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "nutricion": {
+      "que_hace": "Evalúa el estado nutricional y diseña planes de alimentación para personas sanas o enfermas y para grupos (colegios, hospitales, programas sociales). Trabaja en hospitales y EPS, servicios de alimentación, programas del Estado (PAE, ICBF), industria de alimentos, deporte y consulta privada.",
+      "campos": [
+        "Nutrición clínica en hospitales y EPS/IPS",
+        "Programas de alimentación escolar (PAE) e ICBF",
+        "Servicios de alimentación institucional y empresarial",
+        "Industria de alimentos: desarrollo de productos y rotulado",
+        "Nutrición deportiva y consulta particular",
+        "Salud pública y vigilancia nutricional"
+      ],
+      "empleabilidad": {
+        "valor_pct": 41.4,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Nutrición y dietética",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 884,
+        "cotizantes_dependientes_2023": 366,
+        "programas_incluidos": 10,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 7.4,
+          "Entre 1 y 1,5 SMMLV": 12.3,
+          "Entre 1,5 y 2,5 SMMLV": 44.8,
+          "Entre 2,5 y 4 SMMLV": 32.8,
+          "Entre 4 y 6 SMMLV": 2.2,
+          "Entre 6 y 9 SMMLV": 0.5,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 366,
+        "programas_incluidos": [
+          "NUTRICION Y DIETETICA (884)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 41.4% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Muchos trabajan por prestación de servicios o consulta particular, que no se cuenta aquí; los que cotizan lo hacen en su mayoría entre 1,5 y 4 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "fisioterapia": {
+      "que_hace": "Rehabilita el movimiento y la función corporal de personas con lesiones, discapacidad o enfermedades. Trabaja en hospitales y clínicas, centros de rehabilitación, IPS, ligas y clubes deportivos, empresas (salud ocupacional) y atención domiciliaria o consultorio propio.",
+      "campos": [
+        "Rehabilitación en hospitales, clínicas e IPS",
+        "Fisioterapia deportiva en clubes y ligas",
+        "Salud ocupacional y ergonomía en empresas",
+        "Atención domiciliaria y consultorio propio",
+        "Rehabilitación neurológica, cardiopulmonar o pediátrica (con posgrado)",
+        "Docencia e investigación"
+      ],
+      "empleabilidad": {
+        "valor_pct": 41.8,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Terapias",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 2376,
+        "cotizantes_dependientes_2023": 994,
+        "programas_incluidos": 32,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 13.2,
+          "Entre 1 y 1,5 SMMLV": 38.7,
+          "Entre 1,5 y 2,5 SMMLV": 36.2,
+          "Entre 2,5 y 4 SMMLV": 11.2,
+          "Entre 4 y 6 SMMLV": 0.6,
+          "Entre 6 y 9 SMMLV": 0.1,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 994,
+        "programas_incluidos": [
+          "FISIOTERAPIA (2376)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 41.8% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Gran parte trabaja por prestación de servicios en IPS, lo que no aparece como dependiente; el ingreso formal de enganche es bajo.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "ing_sistemas": {
+      "que_hace": "Diseña, construye y mantiene software, bases de datos, redes y sistemas de información. Trabaja en empresas de tecnología y consultoría, en bancos y aseguradoras, en áreas de TI de cualquier organización, en el Estado y, con frecuencia, de forma remota para empresas del exterior o como independiente.",
+      "campos": [
+        "Desarrollador de software (web, móvil, backend)",
+        "Ingeniero de datos, analista de datos o científico de datos",
+        "Ciberseguridad y seguridad de la información",
+        "Arquitectura de software y computación en la nube (cloud)",
+        "Administración de redes, infraestructura y soporte",
+        "Gestión de proyectos TI y análisis de requisitos",
+        "Inteligencia artificial y aprendizaje automático"
+      ],
+      "empleabilidad": {
+        "valor_pct": 74.0,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería de sistemas, telemática y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 8231,
+        "cotizantes_dependientes_2023": 6089,
+        "programas_incluidos": 156,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "tasa_cotizantes_informe_ole": [
+          {
+            "programa": "Ingeniería de Sistemas y Computación",
+            "valor_pct": 90.0,
+            "anio": 2023,
+            "fuente": "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+            "nota": "Tasa de cotizantes oficial del informe OLE (incluye dependientes e independientes)."
+          },
+          {
+            "programa": "Ingeniería Informática",
+            "valor_pct": 89.8,
+            "anio": 2023,
+            "fuente": "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+            "nota": "Tasa de cotizantes oficial del informe OLE (incluye dependientes e independientes)."
+          },
+          {
+            "programa": "Ingeniería de Sistemas",
+            "valor_pct": 88.5,
+            "anio": 2023,
+            "fuente": "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+            "nota": "Tasa de cotizantes oficial del informe OLE (incluye dependientes e independientes)."
+          }
+        ]
+      },
+      "salario_enganche": {
+        "valor_cop": 2900000,
+        "valor_cop_max": 4640000,
+        "rango_smmlv": "Entre 2,5 y 4 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 4.4,
+          "Entre 1 y 1,5 SMMLV": 13.2,
+          "Entre 1,5 y 2,5 SMMLV": 24.9,
+          "Entre 2,5 y 4 SMMLV": 29.8,
+          "Entre 4 y 6 SMMLV": 16.3,
+          "Entre 6 y 9 SMMLV": 8.4,
+          "Más de 9 SMMLV": 3.1
+        },
+        "cotizantes_con_ibc": 6089,
+        "programas_incluidos": [
+          "INGENIERIA DE SISTEMAS (6614)",
+          "INGENIERIA DE SISTEMAS Y COMPUTACION (592)",
+          "INGENIERIA INFORMATICA (472)",
+          "INGENIERIA DE SOFTWARE (213)",
+          "INGENIERIA DE SISTEMAS E INFORMATICA (107)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 74.0% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 2,5 y 4 smmlv. El informe OLE 2023 destaca Ingeniería de Sistemas y Computación (90,0%), Ingeniería Informática (89,8%) e Ingeniería de Sistemas (88,5%) entre los programas con mejor vinculación, con IBC entre 2,5 y 4 SMMLV; el 28% de los recién graduados cotiza por más de 4 SMMLV, la proporción más alta del catálogo junto con Medicina.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "ing_civil": {
+      "que_hace": "Planea, diseña, construye y mantiene obras: edificios, vías, puentes, acueductos, alcantarillados y obras hidráulicas. Trabaja en constructoras, firmas de consultoría e interventoría, entidades públicas (INVÍAS, ANI, alcaldías, empresas de servicios públicos) y como contratista independiente.",
+      "campos": [
+        "Residente o director de obra en constructoras",
+        "Diseño estructural, geotécnico, hidráulico o de vías",
+        "Interventoría y supervisión de contratos públicos",
+        "Gestión de proyectos de infraestructura (INVÍAS, ANI, alcaldías)",
+        "Empresas de servicios públicos (acueducto, alcantarillado)",
+        "Consultoría y contratación independiente"
+      ],
+      "empleabilidad": {
+        "valor_pct": 62.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería civil y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 7650,
+        "cotizantes_dependientes_2023": 4755,
+        "programas_incluidos": 62,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 13.9,
+          "Entre 1 y 1,5 SMMLV": 31.4,
+          "Entre 1,5 y 2,5 SMMLV": 37.4,
+          "Entre 2,5 y 4 SMMLV": 14.5,
+          "Entre 4 y 6 SMMLV": 2.4,
+          "Entre 6 y 9 SMMLV": 0.4,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 4755,
+        "programas_incluidos": [
+          "INGENIERIA CIVIL (7650)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 62.2% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. El informe OLE 2023 atribuye la caída de vinculación en Ingeniería, Industria y Construcción a la desaceleración del sector constructor (crecimiento de 3,1% en 2023 según DANE).",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "ing_industrial": {
+      "que_hace": "Mejora procesos, productividad, calidad y logística en empresas de manufactura y de servicios. Es una de las carreras con más graduados del país y la más transversal: trabaja en producción, cadena de suministro, calidad, proyectos, finanzas, consultoría y gestión del talento.",
+      "campos": [
+        "Producción y operaciones en plantas industriales",
+        "Logística y cadena de suministro",
+        "Calidad y mejora continua (Lean, Six Sigma, ISO)",
+        "Gestión de proyectos y consultoría",
+        "Seguridad y salud en el trabajo",
+        "Analítica de datos y planeación financiera",
+        "Compras y comercial en empresas industriales"
+      ],
+      "empleabilidad": {
+        "valor_pct": 72.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería industrial y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 9359,
+        "cotizantes_dependientes_2023": 6756,
+        "programas_incluidos": 115,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 8.0,
+          "Entre 1 y 1,5 SMMLV": 25.3,
+          "Entre 1,5 y 2,5 SMMLV": 33.9,
+          "Entre 2,5 y 4 SMMLV": 23.8,
+          "Entre 4 y 6 SMMLV": 6.5,
+          "Entre 6 y 9 SMMLV": 1.8,
+          "Más de 9 SMMLV": 0.7
+        },
+        "cotizantes_con_ibc": 6756,
+        "programas_incluidos": [
+          "INGENIERIA INDUSTRIAL (9359)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 72.2% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Es la tercera carrera con más graduados (9.359 en 2022) y pese a esa oferta mantiene vinculación alta.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "ing_electronica": {
+      "que_hace": "Diseña y mantiene sistemas eléctricos, electrónicos, de telecomunicaciones, automatización y control. Trabaja en empresas de energía (generación, transmisión, distribución), telecomunicaciones, industria manufacturera, minería y petróleo, y en empresas de tecnología.",
+      "campos": [
+        "Empresas de energía: generación, transmisión y distribución",
+        "Automatización y control industrial",
+        "Telecomunicaciones y redes",
+        "Diseño electrónico, sistemas embebidos e IoT",
+        "Mantenimiento eléctrico industrial y de edificios",
+        "Energías renovables (solar, eólica)",
+        "Instrumentación en petróleo, gas y minería"
+      ],
+      "empleabilidad": {
+        "valor_pct": 74.9,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería electrónica, telecomunicaciones y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 3309,
+        "cotizantes_dependientes_2023": 2479,
+        "programas_incluidos": 81,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "tasa_cotizantes_informe_ole": [
+          {
+            "programa": "Ingeniería Eléctrica",
+            "valor_pct": 89.7,
+            "anio": 2022,
+            "fuente": "https://ole.mineducacion.gov.co/1769/articles-421348_recurso_1.pdf",
+            "nota": "Tasa de cotizantes oficial del informe OLE (incluye dependientes e independientes)."
+          }
+        ]
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 5.4,
+          "Entre 1 y 1,5 SMMLV": 15.6,
+          "Entre 1,5 y 2,5 SMMLV": 33.6,
+          "Entre 2,5 y 4 SMMLV": 29.3,
+          "Entre 4 y 6 SMMLV": 11.3,
+          "Entre 6 y 9 SMMLV": 3.5,
+          "Más de 9 SMMLV": 1.3
+        },
+        "cotizantes_con_ibc": 2479,
+        "programas_incluidos": [
+          "INGENIERIA ELECTRONICA (2405)",
+          "INGENIERIA ELECTRICA (904)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 74.9% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. El informe OLE 2022 destacó Ingeniería Eléctrica (89,7% contando independientes) entre los programas de mayor vinculación.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm",
+        "https://ole.mineducacion.gov.co/1769/articles-421348_recurso_1.pdf",
+        "https://ole.mineducacion.gov.co/1769/articles-421348_recurso_1.pdf"
+      ]
+    },
+    "ing_mecanica": {
+      "que_hace": "Diseña, fabrica y mantiene máquinas, equipos, vehículos y sistemas térmicos; la mecatrónica integra mecánica, electrónica y software en robótica y automatización. Trabaja en industria manufacturera, automotriz, energía, petróleo, minería, agroindustria y empresas de mantenimiento.",
+      "campos": [
+        "Mantenimiento industrial y confiabilidad",
+        "Diseño mecánico y manufactura (CAD/CAM)",
+        "Automatización, robótica y mecatrónica",
+        "Sector energético, petróleo, gas y minería",
+        "Industria automotriz y metalmecánica",
+        "Climatización, refrigeración y sistemas térmicos",
+        "Gestión de proyectos industriales"
+      ],
+      "empleabilidad": {
+        "valor_pct": 74.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería mecánica y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 3157,
+        "cotizantes_dependientes_2023": 2342,
+        "programas_incluidos": 56,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 7.6,
+          "Entre 1 y 1,5 SMMLV": 21.6,
+          "Entre 1,5 y 2,5 SMMLV": 38.9,
+          "Entre 2,5 y 4 SMMLV": 23.4,
+          "Entre 4 y 6 SMMLV": 6.4,
+          "Entre 6 y 9 SMMLV": 1.7,
+          "Más de 9 SMMLV": 0.4
+        },
+        "cotizantes_con_ibc": 2342,
+        "programas_incluidos": [
+          "INGENIERIA MECANICA (2255)",
+          "INGENIERIA MECATRONICA (902)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 74.2% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación alta, con el 32% de los recién graduados cotizando por más de 2,5 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "ing_ambiental": {
+      "que_hace": "Previene y controla la contaminación, gestiona agua, residuos y recursos naturales, y elabora estudios y licencias ambientales. Trabaja en corporaciones autónomas regionales, ANLA, alcaldías, empresas de servicios públicos, consultoras ambientales y en áreas de sostenibilidad de empresas e industrias.",
+      "campos": [
+        "Consultoría: estudios de impacto y licencias ambientales",
+        "Autoridades ambientales (CAR, ANLA, secretarías de ambiente)",
+        "Gestión de residuos, agua potable y saneamiento",
+        "Sostenibilidad y cumplimiento ambiental en empresas",
+        "Interventoría ambiental en obras y proyectos",
+        "Cambio climático y energías limpias"
+      ],
+      "empleabilidad": {
+        "valor_pct": 45.1,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería ambiental, sanitaria y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 3864,
+        "cotizantes_dependientes_2023": 1742,
+        "programas_incluidos": 54,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 17.0,
+          "Entre 1 y 1,5 SMMLV": 41.3,
+          "Entre 1,5 y 2,5 SMMLV": 28.8,
+          "Entre 2,5 y 4 SMMLV": 10.3,
+          "Entre 4 y 6 SMMLV": 2.2,
+          "Entre 6 y 9 SMMLV": 0.3,
+          "Más de 9 SMMLV": 0.1
+        },
+        "cotizantes_con_ibc": 1742,
+        "programas_incluidos": [
+          "INGENIERIA AMBIENTAL (3243)",
+          "INGENIERIA AMBIENTAL Y SANITARIA (621)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 45.1% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Hay muchos graduados (3.864 en 2022) para una demanda que depende de licencias, obras y presupuesto público.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "ing_quimica": {
+      "que_hace": "Diseña y opera procesos que transforman materias primas en productos: químicos, alimentos, combustibles, cosméticos, farmacéuticos. Trabaja en plantas industriales, refinerías y petroquímica, industria de alimentos y bebidas, laboratorios de control de calidad y consultoría.",
+      "campos": [
+        "Operación y diseño de procesos en plantas industriales",
+        "Industria de alimentos y bebidas: producción y calidad",
+        "Petróleo, gas, refinación y petroquímica",
+        "Industria farmacéutica y cosmética",
+        "Control de calidad y laboratorios",
+        "Seguridad de procesos y medio ambiente",
+        "Investigación y desarrollo de productos"
+      ],
+      "empleabilidad": {
+        "valor_pct": 72.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería química y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1677,
+        "cotizantes_dependientes_2023": 1211,
+        "programas_incluidos": 29,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 7.4,
+          "Entre 1 y 1,5 SMMLV": 22.3,
+          "Entre 1,5 y 2,5 SMMLV": 39.1,
+          "Entre 2,5 y 4 SMMLV": 22.4,
+          "Entre 4 y 6 SMMLV": 7.0,
+          "Entre 6 y 9 SMMLV": 1.6,
+          "Más de 9 SMMLV": 0.2
+        },
+        "cotizantes_con_ibc": 1211,
+        "programas_incluidos": [
+          "INGENIERIA QUIMICA (1086)",
+          "INGENIERIA DE ALIMENTOS (591)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 72.2% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación alta; el informe OLE 2023 destaca Ingeniería de Procesos de Refinación y Petroquímicos (programa afín) con 100% de vinculación e IBC superior a 9 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "ing_agronomica": {
+      "que_hace": "Gestiona la producción agrícola y pecuaria: suelos, cultivos, riego, sanidad vegetal, poscosecha y empresa rural. Trabaja en empresas agroindustriales (café, flores, palma, banano, caña), fincas, casas de agroinsumos, Agrosavia, ICA, UMATA/alcaldías y proyectos de desarrollo rural.",
+      "campos": [
+        "Asistencia técnica a cultivos y fincas",
+        "Empresas agroindustriales y agroexportadoras (flores, banano, palma, café)",
+        "Casas comerciales de agroinsumos y semillas",
+        "Investigación agrícola (Agrosavia, centros de investigación gremiales)",
+        "Sanidad vegetal e inspección (ICA)",
+        "Proyectos de desarrollo rural y extensión agropecuaria",
+        "Administración de empresas agropecuarias"
+      ],
+      "empleabilidad": {
+        "valor_pct": 66.4,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería agronómica, pecuaria y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 932,
+        "cotizantes_dependientes_2023": 619,
+        "programas_incluidos": 19,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 8.1,
+          "Entre 1 y 1,5 SMMLV": 25.5,
+          "Entre 1,5 y 2,5 SMMLV": 41.4,
+          "Entre 2,5 y 4 SMMLV": 23.1,
+          "Entre 4 y 6 SMMLV": 1.8,
+          "Entre 6 y 9 SMMLV": 0.2,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 619,
+        "programas_incluidos": [
+          "INGENIERIA AGRONOMICA (730)",
+          "INGENIERIA AGROPECUARIA (166)",
+          "AGRONOMIA (36)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 66.4% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación media-alta en un sector donde también es común el trabajo por honorarios en fincas.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "tecnologia_tic": {
+      "que_hace": "Formación de 2 a 3 años (tecnólogo) para programar, administrar redes, bases de datos y soporte de sistemas. Se trabaja en empresas de tecnología, áreas de TI de empresas y entidades públicas, mesas de ayuda y, cada vez más, como desarrollador remoto; es una ruta frecuente hacia la ingeniería por ciclos propedéuticos.",
+      "campos": [
+        "Desarrollador de software junior (web, móvil)",
+        "Soporte técnico y mesa de ayuda",
+        "Administración de redes y cableado estructurado",
+        "Administración de bases de datos",
+        "Analista de pruebas (QA)",
+        "Continuar a Ingeniería de sistemas por ciclos propedéuticos"
+      ],
+      "empleabilidad": {
+        "valor_pct": 64.1,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería de sistemas, telemática y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 7142,
+        "cotizantes_dependientes_2023": 4580,
+        "programas_incluidos": 108,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 11.0,
+          "Entre 1 y 1,5 SMMLV": 41.4,
+          "Entre 1,5 y 2,5 SMMLV": 30.9,
+          "Entre 2,5 y 4 SMMLV": 12.3,
+          "Entre 4 y 6 SMMLV": 3.1,
+          "Entre 6 y 9 SMMLV": 0.9,
+          "Más de 9 SMMLV": 0.3
+        },
+        "cotizantes_con_ibc": 4580,
+        "programas_incluidos": [
+          "TECNOLOGÍA EN ANALISIS Y DESARROLLO DE SISTEMAS DE INFORMACION (1986)",
+          "TECNOLOGIA EN ANALISIS Y DESARROLLO DE SISTEMAS DE INFORMACION (1364)",
+          "TECNOLOG¿A EN AN¿LISIS Y DESARROLLO DE SISTEMAS DE INFORMACI¿N (1113)",
+          "TECNOLOGÍA EN ANÁLISIS Y DESARROLLO DE SISTEMAS DE INFORMACIÓN (579)",
+          "TECNOLOGÍA EN SISTEMAS DE GESTIÓN AMBIENTAL (442)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 64.1% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. El informe OLE 2023 destaca las tecnologías TIC (Informática 85,6%, Desarrollo informático 83,5%, Sistematización de datos 82,5%, contando independientes) con IBC entre 1,5 y 2,5 SMMLV; el ingreso sube al pasar a ingeniería por ciclos.",
+      "pendiente": "Dato de nivel tecnológico (agrupa Análisis y desarrollo de sistemas de información, Desarrollo de software, Gestión de redes de datos e Informática). Las tecnologías del SENA sí están incluidas porque reportan al SNIES.",
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "biologia": {
+      "que_hace": "Estudia los seres vivos y los ecosistemas. Trabaja en investigación (universidades, institutos como Humboldt, Sinchi o INS), consultoría ambiental (estudios de biodiversidad y licencias), laboratorios clínicos y de biotecnología, parques nacionales y autoridades ambientales, y en docencia. Para investigación suele exigirse maestría o doctorado.",
+      "campos": [
+        "Consultoría ambiental: inventarios de fauna y flora, licencias",
+        "Investigación en institutos y universidades (requiere posgrado)",
+        "Laboratorios clínicos, de biotecnología y control de calidad",
+        "Parques Nacionales y corporaciones autónomas",
+        "Biotecnología agrícola e industrial",
+        "Docencia en colegios y universidades"
+      ],
+      "empleabilidad": {
+        "valor_pct": 36.4,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Biología, microbiología y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 874,
+        "cotizantes_dependientes_2023": 318,
+        "programas_incluidos": 24,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 15.1,
+          "Entre 1 y 1,5 SMMLV": 38.1,
+          "Entre 1,5 y 2,5 SMMLV": 28.3,
+          "Entre 2,5 y 4 SMMLV": 16.0,
+          "Entre 4 y 6 SMMLV": 2.2,
+          "Entre 6 y 9 SMMLV": 0.3,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 318,
+        "programas_incluidos": [
+          "BIOLOGIA (874)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal baja: De los graduados en 2022, el 36.4% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. La mayoría de las salidas estables exigen posgrado; el pregrado solo tiene una vinculación formal baja.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "quimica": {
+      "que_hace": "Analiza la composición de la materia y desarrolla nuevos materiales y productos. Trabaja en laboratorios de control de calidad de industrias (alimentos, farmacéutica, cosmética, petróleo, minería), laboratorios ambientales y forenses, investigación y docencia.",
+      "campos": [
+        "Control de calidad y analista de laboratorio en industria",
+        "Laboratorios ambientales y de aguas",
+        "Industria farmacéutica, cosmética y de alimentos",
+        "Investigación y desarrollo (requiere posgrado)",
+        "Química forense (Medicina Legal, Fiscalía)",
+        "Ventas técnicas de reactivos y equipos",
+        "Docencia"
+      ],
+      "empleabilidad": {
+        "valor_pct": 64.4,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Química y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 427,
+        "cotizantes_dependientes_2023": 275,
+        "programas_incluidos": 16,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 6.5,
+          "Entre 1 y 1,5 SMMLV": 27.6,
+          "Entre 1,5 y 2,5 SMMLV": 36.4,
+          "Entre 2,5 y 4 SMMLV": 22.9,
+          "Entre 4 y 6 SMMLV": 5.8,
+          "Entre 6 y 9 SMMLV": 0.7,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 275,
+        "programas_incluidos": [
+          "QUIMICA (427)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 64.4% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación media-alta para una ciencia básica; la investigación exige posgrado.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "fisica": {
+      "que_hace": "Investiga las leyes fundamentales de la naturaleza y aplica modelos matemáticos a problemas reales. Es una carrera pequeña en Colombia: la mayoría continúa a maestría o doctorado para investigar o enseñar; también trabaja en física médica (radioterapia), metrología, análisis de datos, finanzas y empresas de tecnología.",
+      "campos": [
+        "Investigación y docencia universitaria (requiere posgrado)",
+        "Física médica y protección radiológica en hospitales",
+        "Análisis de datos, modelación y computación científica",
+        "Metrología y laboratorios de calibración",
+        "Geofísica, energía y empresas de tecnología",
+        "Docencia en colegios"
+      ],
+      "empleabilidad": {
+        "valor_pct": 47.0,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Física",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 202,
+        "cotizantes_dependientes_2023": 95,
+        "programas_incluidos": 10,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 10.5,
+          "Entre 1 y 1,5 SMMLV": 35.8,
+          "Entre 1,5 y 2,5 SMMLV": 25.3,
+          "Entre 2,5 y 4 SMMLV": 15.8,
+          "Entre 4 y 6 SMMLV": 8.4,
+          "Entre 6 y 9 SMMLV": 3.2,
+          "Más de 9 SMMLV": 1.1
+        },
+        "cotizantes_con_ibc": 95,
+        "programas_incluidos": [
+          "FISICA (202)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 47.0% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Programa pequeño (202 graduados en 2022); la ruta habitual es continuar a posgrado.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "matematicas_carrera": {
+      "que_hace": "Desarrolla modelos y métodos cuantitativos para resolver problemas; la estadística recoge, analiza e interpreta datos. Trabaja en bancos, aseguradoras, consultoras, empresas de tecnología y analítica, DANE y entidades públicas, investigación y docencia. Es un perfil muy demandado en ciencia de datos y riesgo financiero.",
+      "campos": [
+        "Analista o científico de datos",
+        "Riesgo financiero, actuaría y aseguradoras",
+        "Estadística oficial (DANE) e investigación de mercados",
+        "Bioestadística y ensayos clínicos",
+        "Investigación y docencia universitaria (con posgrado)",
+        "Modelación y optimización en empresas de tecnología y logística"
+      ],
+      "empleabilidad": {
+        "valor_pct": 72.6,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Matemáticas, estadística y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 372,
+        "cotizantes_dependientes_2023": 270,
+        "programas_incluidos": 22,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 2900000,
+        "valor_cop_max": 4640000,
+        "rango_smmlv": "Entre 2,5 y 4 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 5.2,
+          "Entre 1 y 1,5 SMMLV": 13.0,
+          "Entre 1,5 y 2,5 SMMLV": 22.2,
+          "Entre 2,5 y 4 SMMLV": 39.6,
+          "Entre 4 y 6 SMMLV": 14.1,
+          "Entre 6 y 9 SMMLV": 4.1,
+          "Más de 9 SMMLV": 1.9
+        },
+        "cotizantes_con_ibc": 270,
+        "programas_incluidos": [
+          "MATEMATICAS (241)",
+          "ESTADISTICA (131)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 72.6% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 2,5 y 4 smmlv. Programa pequeño pero con buena inserción: más de la mitad de los que cotizan empieza por encima de 2,5 SMMLV, impulsado por la demanda de analítica de datos y riesgo financiero.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "administracion": {
+      "que_hace": "Planea, organiza y dirige empresas y proyectos: finanzas, mercadeo, talento humano, operaciones. Es la carrera con más graduados del país; sus egresados trabajan en empresas de todos los sectores, en el Estado, en emprendimientos propios y en consultoría.",
+      "campos": [
+        "Áreas administrativas, financieras y comerciales de empresas",
+        "Gestión de talento humano",
+        "Compras, logística y operaciones",
+        "Emprendimiento y gerencia de pymes",
+        "Gestión pública y contratación estatal",
+        "Consultoría y gestión de proyectos",
+        "Banca y servicios financieros"
+      ],
+      "empleabilidad": {
+        "valor_pct": 65.8,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Administración",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 16386,
+        "cotizantes_dependientes_2023": 10785,
+        "programas_incluidos": 193,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 9.0,
+          "Entre 1 y 1,5 SMMLV": 33.3,
+          "Entre 1,5 y 2,5 SMMLV": 31.2,
+          "Entre 2,5 y 4 SMMLV": 19.0,
+          "Entre 4 y 6 SMMLV": 5.1,
+          "Entre 6 y 9 SMMLV": 1.6,
+          "Más de 9 SMMLV": 0.7
+        },
+        "cotizantes_con_ibc": 10785,
+        "programas_incluidos": [
+          "ADMINISTRACION DE EMPRESAS (16386)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 65.8% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Es la carrera con más graduados del país (16.386 en 2022 solo con ese nombre): hay empleo, pero mucha competencia y 40% de los recién graduados cotiza por 1,5 SMMLV o menos.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "contaduria": {
+      "que_hace": "Lleva la contabilidad, los impuestos, la auditoría y la información financiera de empresas y personas; firma estados financieros y actúa como revisor fiscal. Trabaja en departamentos contables, firmas de auditoría y outsourcing, la DIAN y entidades públicas, o de forma independiente atendiendo varias empresas.",
+      "campos": [
+        "Contador de empresas y outsourcing contable",
+        "Impuestos y planeación tributaria",
+        "Auditoría y revisoría fiscal",
+        "Costos y control de gestión",
+        "Contaduría pública independiente (varios clientes)",
+        "DIAN, Contraloría y sector público",
+        "Normas internacionales (NIIF) y finanzas corporativas"
+      ],
+      "empleabilidad": {
+        "valor_pct": 72.4,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Contaduría pública",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 12419,
+        "cotizantes_dependientes_2023": 8993,
+        "programas_incluidos": 158,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 8.4,
+          "Entre 1 y 1,5 SMMLV": 43.4,
+          "Entre 1,5 y 2,5 SMMLV": 33.6,
+          "Entre 2,5 y 4 SMMLV": 12.1,
+          "Entre 4 y 6 SMMLV": 2.0,
+          "Entre 6 y 9 SMMLV": 0.4,
+          "Más de 9 SMMLV": 0.1
+        },
+        "cotizantes_con_ibc": 8993,
+        "programas_incluidos": [
+          "CONTADURIA PUBLICA (12419)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal alta: De los graduados en 2022, el 72.4% cotizaba como empleado dependiente al año siguiente (el promedio de todos los universitarios fue 59,3% con este mismo cálculo). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Alta vinculación pero ingresos de enganche bajos: casi la mitad de los recién graduados cotiza por menos de 1,5 SMMLV; el ingreso crece con la experiencia y la firma de estados financieros.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "economia": {
+      "que_hace": "Analiza cómo se producen y distribuyen los recursos: precios, empleo, política fiscal, mercados. Trabaja en bancos y fiduciarias, centros de investigación, entidades públicas (Banco de la República, DNP, ministerios, DANE), consultoras, organismos internacionales y empresas en áreas de planeación y análisis.",
+      "campos": [
+        "Análisis económico y financiero en bancos y fiduciarias",
+        "Planeación y política pública (DNP, ministerios, alcaldías)",
+        "Centros de investigación y consultoría económica",
+        "Riesgo, inversiones y mercado de capitales",
+        "Evaluación de proyectos y regulación",
+        "Organismos internacionales y cooperación",
+        "Docencia e investigación (con posgrado)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 62.9,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Economía",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 2630,
+        "cotizantes_dependientes_2023": 1655,
+        "programas_incluidos": 62,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 7.6,
+          "Entre 1 y 1,5 SMMLV": 21.3,
+          "Entre 1,5 y 2,5 SMMLV": 28.7,
+          "Entre 2,5 y 4 SMMLV": 29.7,
+          "Entre 4 y 6 SMMLV": 9.7,
+          "Entre 6 y 9 SMMLV": 2.2,
+          "Más de 9 SMMLV": 0.7
+        },
+        "cotizantes_con_ibc": 1655,
+        "programas_incluidos": [
+          "ECONOMIA (2630)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 62.9% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación media-alta y el 42% de los recién graduados cotiza por más de 2,5 SMMLV, de los mejores ingresos del área económica.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "negocios_internacionales": {
+      "que_hace": "Gestiona el comercio exterior y la expansión internacional de empresas: importaciones, exportaciones, aduanas, logística internacional, mercados externos. Trabaja en empresas exportadoras e importadoras, agencias de aduanas, operadores logísticos, bancos (comercio exterior), ProColombia y zonas francas.",
+      "campos": [
+        "Comercio exterior: importaciones y exportaciones",
+        "Agencias de aduanas y logística internacional",
+        "Áreas internacionales de empresas y multinacionales",
+        "Banca de comercio exterior y cambios",
+        "ProColombia, zonas francas y cámaras de comercio",
+        "Compras internacionales y negociación con proveedores"
+      ],
+      "empleabilidad": {
+        "valor_pct": 67.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Administración",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 5965,
+        "cotizantes_dependientes_2023": 4006,
+        "programas_incluidos": 94,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 9.4,
+          "Entre 1 y 1,5 SMMLV": 26.8,
+          "Entre 1,5 y 2,5 SMMLV": 32.2,
+          "Entre 2,5 y 4 SMMLV": 23.5,
+          "Entre 4 y 6 SMMLV": 6.0,
+          "Entre 6 y 9 SMMLV": 1.4,
+          "Más de 9 SMMLV": 0.7
+        },
+        "cotizantes_con_ibc": 4006,
+        "programas_incluidos": [
+          "NEGOCIOS INTERNACIONALES (3713)",
+          "ADMINISTRACION DE NEGOCIOS INTERNACIONALES (1612)",
+          "COMERCIO INTERNACIONAL (640)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 67.2% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación media-alta; ingresos de enganche similares a Administración.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "mercadeo": {
+      "que_hace": "Investiga mercados, posiciona marcas y diseña campañas y estrategias de venta, hoy sobre todo en canales digitales. Trabaja en áreas comerciales y de mercadeo de empresas, agencias de publicidad y medios, consultoras de investigación de mercados, comercio electrónico y como independiente.",
+      "campos": [
+        "Marketing digital y comercio electrónico",
+        "Gestión de marca y producto en empresas",
+        "Agencias de publicidad y medios",
+        "Investigación de mercados y analítica de clientes",
+        "Ventas y gerencia comercial",
+        "Comunicación y contenidos de marca",
+        "Trade marketing y canales de distribución"
+      ],
+      "empleabilidad": {
+        "valor_pct": 67.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Administración",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 2327,
+        "cotizantes_dependientes_2023": 1563,
+        "programas_incluidos": 55,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 9.3,
+          "Entre 1 y 1,5 SMMLV": 27.8,
+          "Entre 1,5 y 2,5 SMMLV": 33.6,
+          "Entre 2,5 y 4 SMMLV": 21.0,
+          "Entre 4 y 6 SMMLV": 4.7,
+          "Entre 6 y 9 SMMLV": 2.2,
+          "Más de 9 SMMLV": 1.4
+        },
+        "cotizantes_con_ibc": 1563,
+        "programas_incluidos": [
+          "MERCADEO (940)",
+          "MERCADEO Y PUBLICIDAD (759)",
+          "PUBLICIDAD (628)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 67.2% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación media-alta; el mercadeo digital concentra la demanda actual.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "derecho": {
+      "que_hace": "Asesora, representa y defiende a personas, empresas y al Estado en asuntos jurídicos. Es la segunda carrera con más graduados del país. Trabaja en firmas de abogados, departamentos jurídicos de empresas, la Rama Judicial, Fiscalía, Procuraduría, Defensoría, alcaldías y ministerios, y mucho de forma independiente (litigio).",
+      "campos": [
+        "Litigio y consultoría independiente",
+        "Departamento jurídico de empresas y bancos",
+        "Rama Judicial: juzgados y tribunales (carrera judicial)",
+        "Fiscalía, Procuraduría, Defensoría del Pueblo",
+        "Contratación estatal y derecho administrativo en entidades públicas",
+        "Notarías y registro",
+        "Derecho laboral, tributario, penal, de familia (especializaciones)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 39.9,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Derecho y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 22430,
+        "cotizantes_dependientes_2023": 8958,
+        "programas_incluidos": 182,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 11.1,
+          "Entre 1 y 1,5 SMMLV": 26.9,
+          "Entre 1,5 y 2,5 SMMLV": 25.7,
+          "Entre 2,5 y 4 SMMLV": 20.3,
+          "Entre 4 y 6 SMMLV": 12.0,
+          "Entre 6 y 9 SMMLV": 3.4,
+          "Más de 9 SMMLV": 0.5
+        },
+        "cotizantes_con_ibc": 8958,
+        "programas_incluidos": [
+          "DERECHO (22430)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal baja: De los graduados en 2022, el 39.9% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Es la segunda carrera con más graduados del país (22.430 en 2022) y gran parte ejerce de forma independiente o por prestación de servicios, lo que no se refleja como cotización dependiente; aun así, la competencia por empleo formal es alta.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "ciencia_politica": {
+      "que_hace": "Analiza el poder, las instituciones, las políticas públicas y las relaciones entre Estados. Trabaja en entidades públicas y Congreso, partidos y campañas, ONG y cooperación internacional, centros de pensamiento, embajadas y organismos multilaterales, medios y consultoría en asuntos públicos.",
+      "campos": [
+        "Diseño y evaluación de políticas públicas en el Estado",
+        "Asesoría legislativa y asuntos públicos (Congreso, gremios)",
+        "Cooperación internacional y ONG",
+        "Carrera diplomática (concurso de la Cancillería) y organismos internacionales",
+        "Análisis político, consultoría y campañas",
+        "Centros de pensamiento e investigación",
+        "Docencia"
+      ],
+      "empleabilidad": {
+        "valor_pct": 45.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ciencia política, relaciones internacionales",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1099,
+        "cotizantes_dependientes_2023": 497,
+        "programas_incluidos": 21,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 8.7,
+          "Entre 1 y 1,5 SMMLV": 18.3,
+          "Entre 1,5 y 2,5 SMMLV": 31.6,
+          "Entre 2,5 y 4 SMMLV": 32.4,
+          "Entre 4 y 6 SMMLV": 7.0,
+          "Entre 6 y 9 SMMLV": 1.2,
+          "Más de 9 SMMLV": 0.8
+        },
+        "cotizantes_con_ibc": 497,
+        "programas_incluidos": [
+          "RELACIONES INTERNACIONALES (458)",
+          "CIENCIA POLITICA (399)",
+          "GOBIERNO Y RELACIONES INTERNACIONALES (171)",
+          "CIENCIAS POLITICAS (46)",
+          "CIENCIA POLITICA Y RELACIONES INTERNACIONALES (25)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 45.2% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Mucho del empleo es por contratos de prestación de servicios con el Estado o por proyecto en ONG, que no cuentan como dependientes; el 39% de quienes cotizan lo hace por más de 2,5 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "trabajo_social": {
+      "que_hace": "Acompaña a personas, familias y comunidades en situaciones de vulnerabilidad y gestiona programas sociales. Trabaja sobre todo en el Estado (ICBF, comisarías de familia, alcaldías, Unidad para las Víctimas), hospitales y EPS, colegios, ONG, cooperación internacional y áreas de bienestar de empresas.",
+      "campos": [
+        "Programas sociales del Estado (ICBF, alcaldías, Unidad para las Víctimas)",
+        "Comisarías de familia y protección de la niñez",
+        "Trabajo social en hospitales y EPS",
+        "Bienestar y responsabilidad social en empresas",
+        "ONG y cooperación internacional",
+        "Orientación escolar y trabajo social en colegios",
+        "Gestión comunitaria y proyectos de desarrollo"
+      ],
+      "empleabilidad": {
+        "valor_pct": 38.4,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Sociología, trabajo social y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 5136,
+        "cotizantes_dependientes_2023": 1973,
+        "programas_incluidos": 59,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 18.8,
+          "Entre 1 y 1,5 SMMLV": 42.3,
+          "Entre 1,5 y 2,5 SMMLV": 29.7,
+          "Entre 2,5 y 4 SMMLV": 8.3,
+          "Entre 4 y 6 SMMLV": 0.9,
+          "Entre 6 y 9 SMMLV": 0.1,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 1973,
+        "programas_incluidos": [
+          "TRABAJO SOCIAL (5136)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal baja: De los graduados en 2022, el 38.4% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. El empleo depende en gran medida de contratos de prestación de servicios con el Estado (no se cuentan como dependientes) y los ingresos iniciales son bajos.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "comunicacion": {
+      "que_hace": "Produce información y gestiona la comunicación de organizaciones: periodismo, comunicación corporativa, contenidos digitales, relaciones públicas. Trabaja en medios de comunicación, áreas de comunicaciones de empresas y entidades públicas, agencias, productoras y como independiente (freelance, creación de contenidos).",
+      "campos": [
+        "Comunicación corporativa e interna en empresas y entidades",
+        "Periodismo en medios tradicionales y digitales",
+        "Creación de contenidos y manejo de redes sociales",
+        "Relaciones públicas y agencias de comunicación",
+        "Comunicación para el desarrollo (ONG, cooperación)",
+        "Producción audiovisual y radial",
+        "Comunicación política y de gobierno"
+      ],
+      "empleabilidad": {
+        "valor_pct": 52.8,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Comunicación social, periodismo y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 4720,
+        "cotizantes_dependientes_2023": 2491,
+        "programas_incluidos": 56,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 13.1,
+          "Entre 1 y 1,5 SMMLV": 33.6,
+          "Entre 1,5 y 2,5 SMMLV": 34.1,
+          "Entre 2,5 y 4 SMMLV": 15.3,
+          "Entre 4 y 6 SMMLV": 3.4,
+          "Entre 6 y 9 SMMLV": 0.5,
+          "Más de 9 SMMLV": 0.1
+        },
+        "cotizantes_con_ibc": 2491,
+        "programas_incluidos": [
+          "COMUNICACION SOCIAL (1934)",
+          "COMUNICACION SOCIAL- PERIODISMO (1065)",
+          "COMUNICACION SOCIAL Y PERIODISMO (767)",
+          "COMUNICACION SOCIALY PERIODISMO (297)",
+          "COMUNICACION SOCIAL-PERIODISMO (265)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media: De los graduados en 2022, el 52.8% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación media; el trabajo independiente y por proyecto es frecuente en medios y contenidos.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "sociologia": {
+      "que_hace": "Investiga la sociedad, la cultura y la historia para entender y transformar problemas colectivos. Trabaja en investigación social (universidades, centros de investigación, ICANH), entidades públicas (Unidad de Víctimas, JEP, Centro de Memoria Histórica, alcaldías), ONG, consultoría social de proyectos (estudios de impacto, consulta previa), museos y archivos, y docencia.",
+      "campos": [
+        "Investigación social y consultoría (estudios sociales de proyectos, consulta previa)",
+        "Entidades públicas de paz, memoria y víctimas",
+        "ONG, cooperación internacional y organizaciones comunitarias",
+        "Museos, archivos y patrimonio (historia, antropología)",
+        "Investigación de mercados y opinión pública",
+        "Docencia universitaria y escolar (con posgrado o licenciatura)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 39.4,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Sociología, trabajo social y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1253,
+        "cotizantes_dependientes_2023": 494,
+        "programas_incluidos": 41,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 14.2,
+          "Entre 1 y 1,5 SMMLV": 36.6,
+          "Entre 1,5 y 2,5 SMMLV": 25.7,
+          "Entre 2,5 y 4 SMMLV": 18.0,
+          "Entre 4 y 6 SMMLV": 4.3,
+          "Entre 6 y 9 SMMLV": 1.0,
+          "Más de 9 SMMLV": 0.2
+        },
+        "cotizantes_con_ibc": 494,
+        "programas_incluidos": [
+          "SOCIOLOGIA (592)",
+          "ANTROPOLOGIA (373)",
+          "HISTORIA (288)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal baja: De los graduados en 2022, el 39.4% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Vinculación formal baja; el trabajo por proyecto y prestación de servicios es la norma, y las salidas de investigación exigen posgrado.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "filosofia": {
+      "que_hace": "Analiza ideas, argumentos y textos; la literatura estudia y crea obras. Son carreras pequeñas orientadas a la docencia, la investigación, la edición y la escritura. Trabajan en colegios y universidades, editoriales y medios, gestión cultural, bibliotecas y, con frecuencia, combinan varias actividades independientes.",
+      "campos": [
+        "Docencia en colegios (con complemento pedagógico) y universidades",
+        "Edición, corrección de estilo y editoriales",
+        "Escritura, periodismo cultural y creación de contenidos",
+        "Gestión cultural, bibliotecas y archivos",
+        "Investigación (con maestría o doctorado)",
+        "Ética y humanidades en empresas, bioética en salud"
+      ],
+      "empleabilidad": {
+        "valor_pct": 49.5,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Filosofía, teología y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 543,
+        "cotizantes_dependientes_2023": 269,
+        "programas_incluidos": 27,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 12.6,
+          "Entre 1 y 1,5 SMMLV": 32.7,
+          "Entre 1,5 y 2,5 SMMLV": 27.9,
+          "Entre 2,5 y 4 SMMLV": 19.3,
+          "Entre 4 y 6 SMMLV": 4.5,
+          "Entre 6 y 9 SMMLV": 3.0,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 269,
+        "programas_incluidos": [
+          "FILOSOFIA (296)",
+          "ESTUDIOS LITERARIOS (145)",
+          "LITERATURA (73)",
+          "FILOSOFIA Y LETRAS (29)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 49.5% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Programas pequeños; la mitad de quienes cotizan lo hace por menos de 1,5 SMMLV y la docencia es la salida principal.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "lic_humanidades": {
+      "que_hace": "Forma docentes de lengua castellana, literatura y humanidades para básica y media. El empleador principal es el Estado (colegios oficiales, por concurso docente de la CNSC) y los colegios privados; también trabaja en editoriales educativas, programas de lectura y escritura, y educación para adultos.",
+      "campos": [
+        "Docente de lenguaje y literatura en colegios oficiales (concurso CNSC)",
+        "Docente en colegios privados",
+        "Editoriales y materiales educativos",
+        "Programas de lectura, bibliotecas y promoción de lectura",
+        "Educación para adultos y formación complementaria",
+        "Coordinación académica (con experiencia)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 61.0,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Educación",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1701,
+        "cotizantes_dependientes_2023": 1037,
+        "programas_incluidos": 64,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 10.2,
+          "Entre 1 y 1,5 SMMLV": 33.5,
+          "Entre 1,5 y 2,5 SMMLV": 36.0,
+          "Entre 2,5 y 4 SMMLV": 18.3,
+          "Entre 4 y 6 SMMLV": 1.8,
+          "Entre 6 y 9 SMMLV": 0.2,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 1037,
+        "programas_incluidos": [
+          "LICENCIATURA EN LITERATURA Y LENGUA CASTELLANA (253)",
+          "LICENCIATURA EN ESPAÑOL Y LITERATURA (188)",
+          "LICENCIATURA EN LENGUA CASTELLANA E INGLES (160)",
+          "LICENCIATURA EN ESPAÑOL E INGLES (153)",
+          "LICENCIATURA EN LENGUA CASTELLANA Y COMUNICACION (144)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 61.0% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación media-alta ligada al concurso docente y a los colegios privados; el salario inicial lo fija el escalafón docente.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "lic_matematicas": {
+      "que_hace": "Forma docentes de matemáticas, física, química, biología o ciencias naturales para colegios. Trabaja en colegios oficiales (concurso docente CNSC) y privados, en preicfes y refuerzo académico, en instituciones técnicas y en el diseño de materiales y plataformas educativas. Los docentes de matemáticas y ciencias suelen ser de los más solicitados en los concursos.",
+      "campos": [
+        "Docente de matemáticas o ciencias en colegios oficiales (concurso CNSC)",
+        "Docente en colegios privados y preicfes",
+        "Instituciones técnicas, SENA e instituciones de educación para el trabajo",
+        "Diseño de materiales y contenidos educativos digitales",
+        "Coordinación académica y rectoría (con experiencia)",
+        "Investigación en educación matemática y científica (con posgrado)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 64.3,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Educación",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1769,
+        "cotizantes_dependientes_2023": 1138,
+        "programas_incluidos": 71,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 8.6,
+          "Entre 1 y 1,5 SMMLV": 44.8,
+          "Entre 1,5 y 2,5 SMMLV": 35.9,
+          "Entre 2,5 y 4 SMMLV": 10.2,
+          "Entre 4 y 6 SMMLV": 0.4,
+          "Entre 6 y 9 SMMLV": 0.1,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 1138,
+        "programas_incluidos": [
+          "LICENCIATURA EN MATEMATICAS (511)",
+          "LICENCIATURA EN CIENCIAS NATURALES Y EDUCACION AMBIENTAL (323)",
+          "LICENCIATURA EN BIOLOGIA (159)",
+          "LICENCIATURA EN MATEMATICAS Y FISICA (127)",
+          "LICENCIATURA EN QUIMICA (123)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 64.3% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Los docentes de matemáticas y ciencias son perfiles con vacantes recurrentes en los concursos docentes; el salario inicial está regido por el escalafón docente (Decreto 1278 de 2002).",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "lic_ingles": {
+      "que_hace": "Forma docentes de inglés u otras lenguas extranjeras. Trabaja en colegios oficiales (concurso docente) y privados, institutos de idiomas, programas de bilingüismo del Ministerio y las secretarías, universidades (cursos de inglés), empresas (capacitación) y traducción o enseñanza en línea.",
+      "campos": [
+        "Docente de inglés en colegios oficiales (concurso CNSC) y privados",
+        "Institutos de idiomas y centros de lenguas universitarios",
+        "Programas de bilingüismo (MEN, secretarías de educación)",
+        "Enseñanza de idiomas en línea y para empresas",
+        "Traducción y servicios bilingües (BPO, call centers bilingües)",
+        "Diseño de materiales y evaluación de lenguas"
+      ],
+      "empleabilidad": {
+        "valor_pct": 69.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Educación",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1634,
+        "cotizantes_dependientes_2023": 1131,
+        "programas_incluidos": 34,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 8.4,
+          "Entre 1 y 1,5 SMMLV": 21.4,
+          "Entre 1,5 y 2,5 SMMLV": 40.3,
+          "Entre 2,5 y 4 SMMLV": 26.1,
+          "Entre 4 y 6 SMMLV": 3.1,
+          "Entre 6 y 9 SMMLV": 0.5,
+          "Más de 9 SMMLV": 0.2
+        },
+        "cotizantes_con_ibc": 1131,
+        "programas_incluidos": [
+          "LICENCIATURA EN LENGUAS MODERNAS (271)",
+          "LICENCIATURA EN LENGUAS EXTRANJERAS (177)",
+          "LICENCIATURA EN INGLES (176)",
+          "LICENCIATURA EN LENGUAS EXTRANJERAS INGLES - FRANCES (166)",
+          "LICENCIATURA EN LENGUAS EXTRANJERAS CON ÉNFASIS EN INGLÉS (162)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 69.2% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Es la licenciatura con mejor ingreso de enganche del grupo educativo: 30% de los recién graduados cotiza por más de 2,5 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "lic_infantil": {
+      "que_hace": "Educa y acompaña el desarrollo de niños de 0 a 7 años. Trabaja en jardines infantiles y colegios (preescolar) públicos y privados, en programas de primera infancia del ICBF y de alcaldías (CDI, hogares infantiles), fundaciones y, con el tiempo, en coordinación pedagógica.",
+      "campos": [
+        "Docente de preescolar en colegios oficiales (concurso CNSC) y privados",
+        "Programas de primera infancia del ICBF y alcaldías (CDI, hogares infantiles)",
+        "Jardines infantiles privados",
+        "Fundaciones y ONG de infancia",
+        "Coordinación pedagógica y dirección de jardines",
+        "Diseño de materiales y estimulación temprana"
+      ],
+      "empleabilidad": {
+        "valor_pct": 58.1,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Educación",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1696,
+        "cotizantes_dependientes_2023": 985,
+        "programas_incluidos": 44,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 13.2,
+          "Entre 1 y 1,5 SMMLV": 64.9,
+          "Entre 1,5 y 2,5 SMMLV": 16.5,
+          "Entre 2,5 y 4 SMMLV": 4.9,
+          "Entre 4 y 6 SMMLV": 0.5,
+          "Entre 6 y 9 SMMLV": 0.0,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 985,
+        "programas_incluidos": [
+          "LICENCIATURA EN PEDAGOGIA INFANTIL (835)",
+          "LICENCIATURA EN EDUCACION INFANTIL (569)",
+          "LICENCIATURA EN EDUCACION PREESCOLAR (255)",
+          "LICENCIATURA EN EDUCACION PARA LA PRIMERA INFANCIA (37)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media: De los graduados en 2022, el 58.1% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. La vinculación es media pero los ingresos iniciales son los más bajos del catálogo: 75% cotiza por 1,5 SMMLV o menos.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "educacion_fisica": {
+      "que_hace": "Enseña educación física, entrena deportistas y promueve la actividad física y la recreación. Trabaja en colegios públicos y privados, clubes y ligas deportivas, institutos de deporte municipales y departamentales, gimnasios, cajas de compensación, empresas (pausas activas) y recreación.",
+      "campos": [
+        "Docente de educación física en colegios (concurso CNSC o privados)",
+        "Entrenamiento deportivo en clubes, ligas e institutos de deporte",
+        "Gimnasios, acondicionamiento físico y entrenamiento personal",
+        "Recreación y cajas de compensación",
+        "Actividad física y salud en empresas y EPS",
+        "Gestión deportiva (institutos municipales, eventos)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 38.1,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Educación",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 2602,
+        "cotizantes_dependientes_2023": 992,
+        "programas_incluidos": 36,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 20.5,
+          "Entre 1 y 1,5 SMMLV": 47.6,
+          "Entre 1,5 y 2,5 SMMLV": 20.5,
+          "Entre 2,5 y 4 SMMLV": 10.4,
+          "Entre 4 y 6 SMMLV": 1.0,
+          "Entre 6 y 9 SMMLV": 0.0,
+          "Más de 9 SMMLV": 0.1
+        },
+        "cotizantes_con_ibc": 992,
+        "programas_incluidos": [
+          "LICENCIATURA EN EDUCACION BASICA CON ENFASIS EN EDUCACION FISICA, RECREACION Y DEPORTES (832)",
+          "LICENCIATURA EN EDUCACION FISICA, RECREACION Y DEPORTES (346)",
+          "LICENCIATURA EN EDUCACION FISICA (310)",
+          "PROFESIONAL EN DEPORTE (192)",
+          "LICENCIATURA EN EDUCACION FISICA Y DEPORTES (166)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal baja: De los graduados en 2022, el 38.1% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Buena parte trabaja por horas o prestación de servicios en clubes, gimnasios y programas municipales, que no aparecen como empleo dependiente.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "arquitectura": {
+      "que_hace": "Diseña edificios y espacios urbanos y dirige su construcción. Trabaja en firmas de arquitectura y constructoras, en curadurías y planeación municipal, en diseño de interiores, en gestión de proyectos inmobiliarios y de forma independiente (diseño por encargo, licencias, remodelaciones).",
+      "campos": [
+        "Diseño arquitectónico en firmas y estudios",
+        "Dirección y residencia de obra en constructoras",
+        "Planeación urbana y ordenamiento territorial (alcaldías, curadurías)",
+        "Diseño de interiores y remodelaciones",
+        "Gestión y promoción inmobiliaria",
+        "Modelado BIM y visualización 3D",
+        "Patrimonio y restauración"
+      ],
+      "empleabilidad": {
+        "valor_pct": 47.2,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Arquitectura",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 4366,
+        "cotizantes_dependientes_2023": 2059,
+        "programas_incluidos": 57,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 17.0,
+          "Entre 1 y 1,5 SMMLV": 36.8,
+          "Entre 1,5 y 2,5 SMMLV": 34.6,
+          "Entre 2,5 y 4 SMMLV": 10.2,
+          "Entre 4 y 6 SMMLV": 1.3,
+          "Entre 6 y 9 SMMLV": 0.1,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 2059,
+        "programas_incluidos": [
+          "ARQUITECTURA (4366)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal por debajo del promedio: De los graduados en 2022, el 47.2% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Muchos trabajan como independientes o por proyecto; la vinculación dependiente es baja y más de la mitad de quienes cotizan lo hace por menos de 1,5 SMMLV.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "diseno_grafico": {
+      "que_hace": "Crea identidad visual, piezas publicitarias, interfaces digitales, ilustración y animación. Trabaja en agencias de publicidad y diseño, áreas de mercadeo y comunicación de empresas, medios, estudios de animación y videojuegos, y muy a menudo como independiente (freelance) para clientes locales o del exterior.",
+      "campos": [
+        "Diseño de marca e identidad visual",
+        "Diseño de interfaces y experiencia de usuario (UX/UI)",
+        "Agencias de publicidad y diseño",
+        "Áreas de mercadeo y comunicación de empresas",
+        "Ilustración, animación y motion graphics",
+        "Diseño editorial y empaques",
+        "Freelance para clientes locales y del exterior"
+      ],
+      "empleabilidad": {
+        "valor_pct": 52.7,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Diseño",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1132,
+        "cotizantes_dependientes_2023": 596,
+        "programas_incluidos": 29,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 12.4,
+          "Entre 1 y 1,5 SMMLV": 35.7,
+          "Entre 1,5 y 2,5 SMMLV": 38.6,
+          "Entre 2,5 y 4 SMMLV": 10.7,
+          "Entre 4 y 6 SMMLV": 2.0,
+          "Entre 6 y 9 SMMLV": 0.5,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 596,
+        "programas_incluidos": [
+          "DISEÑO GRAFICO (772)",
+          "DISE¿O GRAFICO (187)",
+          "DISEÑO VISUAL (131)",
+          "DISEÑO DE LA COMUNICACION GRAFICA (38)",
+          "DISENO GRAFICO (4)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media: De los graduados en 2022, el 52.7% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Vinculación media; el trabajo freelance (no contado como dependiente) es muy común en el sector.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "diseno_industrial": {
+      "que_hace": "Diseña productos, mobiliario, empaques y, en el caso de modas, prendas y colecciones. Trabaja en empresas manufactureras (muebles, empaques, electrodomésticos), industria textil y de confección, estudios de diseño, retail y marcas propias (emprendimiento).",
+      "campos": [
+        "Desarrollo de producto en empresas manufactureras",
+        "Industria textil, confección y marcas de moda",
+        "Diseño de empaques y exhibición comercial",
+        "Estudios de diseño y consultoría",
+        "Marca o taller propio (emprendimiento)",
+        "Modelado 3D, prototipado e impresión 3D",
+        "Compras y gestión de producto en retail"
+      ],
+      "empleabilidad": {
+        "valor_pct": 53.7,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Diseño",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1444,
+        "cotizantes_dependientes_2023": 775,
+        "programas_incluidos": 40,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 15.5,
+          "Entre 1 y 1,5 SMMLV": 38.6,
+          "Entre 1,5 y 2,5 SMMLV": 30.5,
+          "Entre 2,5 y 4 SMMLV": 10.7,
+          "Entre 4 y 6 SMMLV": 3.7,
+          "Entre 6 y 9 SMMLV": 0.9,
+          "Más de 9 SMMLV": 0.1
+        },
+        "cotizantes_con_ibc": 775,
+        "programas_incluidos": [
+          "DISEÑO INDUSTRIAL (800)",
+          "DISE¿O INDUSTRIAL (251)",
+          "DISEÑO DE MODAS (239)",
+          "DISEÑO DE VESTUARIO (90)",
+          "DISE¿O DE MODAS (52)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media: De los graduados en 2022, el 53.7% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Vinculación media con ingresos de enganche bajos; el emprendimiento de marca propia es frecuente en modas.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "artes": {
+      "que_hace": "Crea e interpreta obras en artes plásticas, música, teatro o danza. El trabajo suele combinar varias fuentes: creación propia, enseñanza (colegios, academias, universidades), orquestas y agrupaciones, gestión cultural en el Estado (Ministerio de las Culturas, secretarías, casas de cultura) y proyectos con estímulos públicos.",
+      "campos": [
+        "Creación e interpretación artística (conciertos, exposiciones, obras)",
+        "Docencia en colegios, academias y universidades",
+        "Orquestas, bandas, compañías de teatro y danza",
+        "Gestión cultural y convocatorias de estímulos (Ministerio de las Culturas, alcaldías)",
+        "Producción de eventos y espectáculos",
+        "Industrias creativas: ilustración, producción musical, audiovisual"
+      ],
+      "empleabilidad": {
+        "valor_pct": 37.0,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Artes plásticas, visuales y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1441,
+        "cotizantes_dependientes_2023": 533,
+        "programas_incluidos": 57,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 18.6,
+          "Entre 1 y 1,5 SMMLV": 37.0,
+          "Entre 1,5 y 2,5 SMMLV": 26.6,
+          "Entre 2,5 y 4 SMMLV": 15.2,
+          "Entre 4 y 6 SMMLV": 1.3,
+          "Entre 6 y 9 SMMLV": 0.8,
+          "Más de 9 SMMLV": 0.6
+        },
+        "cotizantes_con_ibc": 533,
+        "programas_incluidos": [
+          "MUSICA (356)",
+          "LICENCIATURA EN MUSICA (345)",
+          "ARTES PLASTICAS (319)",
+          "ARTES VISUALES (272)",
+          "ARTES ESCENICAS (69)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal baja: De los graduados en 2022, el 37.0% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. El trabajo artístico suele ser independiente y por proyecto, así que la cotización dependiente subestima la ocupación real, pero los ingresos formales iniciales son bajos.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "cine": {
+      "que_hace": "Escribe, dirige, produce, fotografía, edita y sonoriza contenidos audiovisuales: cine, televisión, series, publicidad y plataformas digitales. Trabaja en productoras, canales de televisión, agencias, empresas de contenidos y, muy frecuentemente, por proyecto como independiente.",
+      "campos": [
+        "Producción audiovisual en productoras y canales",
+        "Dirección, guion y realización",
+        "Fotografía, montaje, sonido y posproducción",
+        "Publicidad y contenidos para marcas y plataformas",
+        "Animación y efectos visuales",
+        "Gestión de proyectos con estímulos públicos (FDC, Proimágenes)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 36.3,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Artes plásticas, visuales y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 582,
+        "cotizantes_dependientes_2023": 211,
+        "programas_incluidos": 12,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 19.0,
+          "Entre 1 y 1,5 SMMLV": 39.8,
+          "Entre 1,5 y 2,5 SMMLV": 27.5,
+          "Entre 2,5 y 4 SMMLV": 10.4,
+          "Entre 4 y 6 SMMLV": 2.8,
+          "Entre 6 y 9 SMMLV": 0.5,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 211,
+        "programas_incluidos": [
+          "CINE Y TELEVISION (178)",
+          "COMUNICACION AUDIOVISUAL (129)",
+          "CINE Y TELEVISIÓN (80)",
+          "CINE Y COMUNICACIÓN DIGITAL (70)",
+          "CINE Y AUDIOVISUALES (55)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal baja: De los graduados en 2022, el 36.3% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. El sector trabaja por proyectos y como independiente; la cotización dependiente subestima la ocupación, pero los ingresos formales de enganche son bajos.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "lenguas_modernas": {
+      "que_hace": "Domina dos o más idiomas y los aplica a traducción, interpretación, enseñanza, comercio y servicios. Trabaja en empresas de BPO y servicio al cliente bilingüe, traducción e interpretación (independiente o agencias), turismo, comercio exterior, institutos de idiomas, embajadas y organizaciones internacionales.",
+      "campos": [
+        "Traducción e interpretación (independiente o agencias)",
+        "BPO y centros de servicio bilingües",
+        "Enseñanza de idiomas en institutos y empresas",
+        "Comercio exterior y atención a clientes internacionales",
+        "Turismo y hospitalidad",
+        "Organizaciones internacionales y embajadas",
+        "Localización de software y contenidos"
+      ],
+      "empleabilidad": {
+        "valor_pct": 67.0,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Lenguas modernas, literatura, linguística y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 1013,
+        "cotizantes_dependientes_2023": 679,
+        "programas_incluidos": 6,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 10.2,
+          "Entre 1 y 1,5 SMMLV": 16.3,
+          "Entre 1,5 y 2,5 SMMLV": 34.3,
+          "Entre 2,5 y 4 SMMLV": 30.9,
+          "Entre 4 y 6 SMMLV": 5.7,
+          "Entre 6 y 9 SMMLV": 1.6,
+          "Más de 9 SMMLV": 0.9
+        },
+        "cotizantes_con_ibc": 679,
+        "programas_incluidos": [
+          "LENGUAS MODERNAS (479)",
+          "PROFESIONAL EN LENGUAS MODERNAS (409)",
+          "FILOLOGIA E IDIOMAS (90)",
+          "TRADUCCION INGLES-FRANCES-ESPAÑOL (35)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 67.0% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1,5 y 2,5 smmlv. Buena inserción formal para una carrera de humanidades, con 37% de los recién graduados cotizando por más de 2,5 SMMLV (BPO bilingüe, comercio exterior).",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "turismo": {
+      "que_hace": "Administra hoteles, agencias de viajes, restaurantes, eventos y destinos turísticos. Trabaja en cadenas hoteleras, agencias y operadores turísticos, aerolíneas y cruceros, centros de convenciones, entidades de promoción turística (Fontur, oficinas de turismo) y emprendimientos propios.",
+      "campos": [
+        "Operación y gerencia hotelera",
+        "Agencias de viajes y operadores turísticos",
+        "Organización de eventos y centros de convenciones",
+        "Aerolíneas, cruceros y servicio a bordo",
+        "Promoción y planificación turística (Fontur, alcaldías)",
+        "Turismo de naturaleza y comunitario (emprendimiento)"
+      ],
+      "empleabilidad": {
+        "valor_pct": 65.3,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Administración",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 447,
+        "cotizantes_dependientes_2023": 292,
+        "programas_incluidos": 13,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 15.1,
+          "Entre 1 y 1,5 SMMLV": 35.6,
+          "Entre 1,5 y 2,5 SMMLV": 35.6,
+          "Entre 2,5 y 4 SMMLV": 11.0,
+          "Entre 4 y 6 SMMLV": 2.1,
+          "Entre 6 y 9 SMMLV": 0.0,
+          "Más de 9 SMMLV": 0.7
+        },
+        "cotizantes_con_ibc": 292,
+        "programas_incluidos": [
+          "ADMINISTRACION TURISTICA Y HOTELERA (230)",
+          "ADMINISTRACION DE EMPRESAS TURISTICAS Y HOTELERAS (118)",
+          "HOTELERIA Y TURISMO (95)",
+          "ADMINISTRACION TURISTICA (4)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media-alta: De los graduados en 2022, el 65.3% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Programas pequeños (447 graduados en 2022) con vinculación media-alta pero ingresos iniciales bajos.",
+      "pendiente": null,
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "gastronomia": {
+      "que_hace": "Prepara alimentos y dirige cocinas y negocios de comida. La mayoría de los programas son técnicos o tecnológicos. Trabaja en restaurantes, hoteles, catering y eventos, industria de alimentos, cocinas institucionales y, con frecuencia, en negocios propios.",
+      "campos": [
+        "Cocinero y jefe de cocina en restaurantes y hoteles",
+        "Catering, banquetes y eventos",
+        "Negocio propio: restaurante, pastelería, comida a domicilio",
+        "Industria de alimentos y desarrollo de productos",
+        "Cocinas institucionales (hospitales, colegios, empresas)",
+        "Docencia en escuelas de gastronomía"
+      ],
+      "empleabilidad": {
+        "valor_pct": 59.4,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Administración",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 281,
+        "cotizantes_dependientes_2023": 167,
+        "programas_incluidos": 10,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 19.8,
+          "Entre 1 y 1,5 SMMLV": 56.3,
+          "Entre 1,5 y 2,5 SMMLV": 19.2,
+          "Entre 2,5 y 4 SMMLV": 4.2,
+          "Entre 4 y 6 SMMLV": 0.6,
+          "Entre 6 y 9 SMMLV": 0.0,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 167,
+        "programas_incluidos": [
+          "TECNOLOGIA EN GASTRONOMIA (143)",
+          "TECNOLOGIA EN GESTION GASTRONOMICA (67)",
+          "PROFESIONAL EN GASTRONOMIA (30)",
+          "GASTRONOMIA Y COCINA PROFESIONAL (23)",
+          "TECNOLOGIA EN GASTRONOMIA Y COCINA (10)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Vinculación formal media: De los graduados en 2022, el 59.4% cotizaba como empleado dependiente al año siguiente (promedio universitario 59,3%). Ingreso mediano de enganche entre 1 y 1,5 smmlv. Dato de pocos programas de educación superior (281 graduados en 2022); gran parte de la formación es técnica laboral o SENA y no está en el OLE; el ingreso formal de enganche es bajo (73% cotiza por 1,5 SMMLV o menos).",
+      "pendiente": "Solo cubre programas de educación superior (281 graduados en 2022); la mayor parte de la formación gastronómica es técnica laboral o del SENA y no está en el OLE.",
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    },
+    "policia_militar": {
+      "que_hace": "Oficiales y suboficiales de las Fuerzas Militares y la Policía se forman en escuelas propias (Escuela Militar de Cadetes, Escuela Naval, Escuela Militar de Aviación, Escuela de Cadetes General Santander) con régimen laboral, salarial y pensional especial. Ingresan por convocatoria de cada escuela, con requisitos físicos, médicos y de edad, y durante la carrera reciben sueldo. Egresan como oficiales o suboficiales con un título profesional (Ciencias Militares, Administración Policial, Ciencias Navales) que también sirve fuera de la institución.",
+      "campos": [
+        "Oficial del Ejército, la Armada o la Fuerza Aeroespacial",
+        "Oficial o suboficial de la Policía Nacional",
+        "Inteligencia, seguridad y protección",
+        "Investigación criminal y criminalística (CTI, Policía Judicial)",
+        "Logística, administración y comunicaciones militares",
+        "Seguridad privada y consultoría tras el retiro"
+      ],
+      "empleabilidad": null,
+      "salario_enganche": {
+        "valor_cop": 1160000,
+        "valor_cop_max": 1740000,
+        "rango_smmlv": "Entre 1 y 1,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 41.4,
+          "Entre 1 y 1,5 SMMLV": 48.3,
+          "Entre 1,5 y 2,5 SMMLV": 6.9,
+          "Entre 2,5 y 4 SMMLV": 3.4,
+          "Entre 4 y 6 SMMLV": 0.0,
+          "Entre 6 y 9 SMMLV": 0.0,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 29,
+        "programas_incluidos": [
+          "CIENCIAS MILITARES (490)",
+          "ADMINISTRACION POLICIAL (247)",
+          "CIENCIAS MILITARES AERONÁUTICAS (65)",
+          "CRIMINALISTICA (58)",
+          "CIENCIAS NAVALES PARA OFICIALES NAVALES (31)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "nota": "No representativo: solo 29 cotizantes en PILA de 903 graduados; el resto está en el régimen especial de las Fuerzas."
+      },
+      "demanda": "No se puede medir con el OLE: militares y policías tienen un régimen de seguridad social propio y casi no aparecen en la planilla PILA, así que la tasa de cotizantes sale cercana a cero sin que signifique desempleo. En la práctica, quien egresa de una escuela de formación tiene empleo garantizado en la institución mientras permanezca en servicio; la incertidumbre está en el ingreso (cupos limitados, requisitos físicos y de edad), no en la salida laboral.",
+      "pendiente": "Sin dato de empleabilidad: el OLE no mide a militares y policías (régimen de seguridad social propio, no aparecen en PILA), y las escuelas de formación no publican tasa de vinculación. El dato de ingreso corresponde solo a los pocos egresados que cotizan fuera de la fuerza y no es representativo; los sueldos reales están en el régimen salarial de las Fuerzas Militares y la Policía (decreto anual de asignaciones), no verificado aquí.",
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf"
+      ]
+    },
+    "aviacion": {
+      "que_hace": "Pilotos, controladores y técnicos aeronáuticos operan y mantienen aeronaves. La formación de piloto comercial se hace en escuelas de aviación aprobadas por la Aerocivil (no es un pregrado universitario y es costosa); la ingeniería aeronáutica y las tecnologías en mantenimiento sí son educación superior. Se trabaja en aerolíneas, empresas de carga y chárter, aviación agrícola, Fuerza Aeroespacial, Aerocivil y talleres de mantenimiento.",
+      "campos": [
+        "Piloto comercial en aerolíneas, carga o chárter (licencia Aerocivil)",
+        "Ingeniería y mantenimiento aeronáutico",
+        "Control de tránsito aéreo y despacho de vuelos (Aerocivil)",
+        "Operaciones y seguridad aérea en aerolíneas",
+        "Aviación militar (Fuerza Aeroespacial, Ejército, Policía)",
+        "Aviación agrícola y de drones"
+      ],
+      "empleabilidad": {
+        "valor_pct": 38.7,
+        "anio": 2023,
+        "nivel": "programa",
+        "nbc": "Ingeniería mecánica y afines",
+        "indicador": "Porcentaje de los graduados en 2022 (SNIES) que en 2023 aparecen en la base IBC del OLE, es decir, que cotizaban a seguridad social como trabajadores dependientes con ingreso reportado. No incluye independientes ni cotizantes sin IBC, por eso es más bajo que la tasa de cotizantes general del OLE (75,5% universitario, 70,8% tecnológico en 2023).",
+        "graduados_2022": 413,
+        "cotizantes_dependientes_2023": 160,
+        "programas_incluidos": 11,
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "fuente_graduados": "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/"
+      },
+      "salario_enganche": {
+        "valor_cop": 1740000,
+        "valor_cop_max": 2900000,
+        "rango_smmlv": "Entre 1,5 y 2,5 SMMLV",
+        "anio": 2023,
+        "nivel": "programa",
+        "tipo": "rango_mediano",
+        "indicador": "Mediana del Ingreso Base de Cotización (IBC) estimado de los graduados en 2022 que en 2023 cotizaban como dependientes, en rangos de SMMLV. El OLE no publica el IBC en pesos desde 2017, solo por rangos; valor_cop es el piso del rango mediano convertido con el SMMLV de 2023 ($1.160.000, Decreto 2613 de 2022) y valor_cop_max su techo.",
+        "distribucion_pct": {
+          "1 SMMLV": 8.8,
+          "Entre 1 y 1,5 SMMLV": 25.6,
+          "Entre 1,5 y 2,5 SMMLV": 35.6,
+          "Entre 2,5 y 4 SMMLV": 22.5,
+          "Entre 4 y 6 SMMLV": 6.2,
+          "Entre 6 y 9 SMMLV": 1.2,
+          "Más de 9 SMMLV": 0.0
+        },
+        "cotizantes_con_ibc": 160,
+        "programas_incluidos": [
+          "INGENIERIA AERONAUTICA (212)",
+          "TECNOLOGIA EN MANTENIMIENTO AERONAUTICO (104)",
+          "TECNOLOGIA EN COMUNICACIONES AERONAUTICAS (29)",
+          "ESPECIALIZACION PILOTO POLICIAL (25)",
+          "ADMINISTRACION AERONAUTICA (20)"
+        ],
+        "fuente": "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023"
+      },
+      "demanda": "Dato parcial: el OLE solo cubre la educación superior (ingeniería y tecnologías aeronáuticas, 413 graduados en 2022), de los cuales el 38.7% cotizaba como dependiente al año siguiente, con ingreso mediano entre 1,5 y 2,5 smmlv. La formación de piloto en escuelas de la Aerocivil no está en estas bases; su mercado depende del ciclo de las aerolíneas y exige una inversión alta sin dato público de empleabilidad.",
+      "pendiente": "El OLE no cubre las escuelas de pilotos aprobadas por la Aerocivil (no son educación superior); las cifras corresponden solo a ingeniería y tecnologías aeronáuticas. Falta dato oficial de empleabilidad e ingreso de pilotos comerciales.",
+      "fuentes": [
+        "https://ole.mineducacion.gov.co/portal/noticias/Contenidos/Tablas-de-salida/425926:Base-IBC-2023",
+        "https://ole.mineducacion.gov.co/1769/articles-425926_recurso_1.xlsx",
+        "https://snies.mineducacion.gov.co/portal/ESTADISTICAS/Bases-consolidadas/",
+        "https://snies.mineducacion.gov.co/1778/articles-416247_recurso.xlsx",
+        "https://ole.mineducacion.gov.co/1769/articles-425924_recurso_1.pdf",
+        "https://cancilleria.gov.co/normograma/compilacion/docs/decreto_2613_2022.htm"
+      ]
+    }
+  }
+}

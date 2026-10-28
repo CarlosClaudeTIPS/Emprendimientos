@@ -142,3 +142,17 @@ grupo), filtro por ruta en el panel del docente y conteo por subhabilidad en el 
 Nada está aprobado: aprobar desde Banco → filtro por componente. Regenerar figuras:
 `node scripts/generar-figuras.mjs 20`. Importar formato corto: `node scripts/importar-examen.mjs archivo.json`.
 Pendientes: convocatorias 2027-2, subtipos con imágenes licenciadas, dificultad empírica en el panel.
+
+## Navegación en 5 pestañas, «Mi camino» y guía de carreras (hecho el 28-oct-2026)
+
+- Pestañas del estudiante: Inicio · Practicar · Mi avance · Mi camino · Guía (`src/components/Layout.jsx`; hubs en
+  `estudiante/Practicar.jsx`, `Avance.jsx`, `Camino.jsx`; bloqueo en orden en `src/lib/camino.js` y `App.jsx`).
+  Orden: Mi futuro → Mi carrera → Mi ruta → Exámenes de admisión.
+- Guía: pestañas «¿Qué puedes estudiar?» (content/futuro/formacion.json) y «Carreras y trabajo»
+  (`content/guia/carreras-trabajo.json`, 46 carreras). Cifras calculadas con las bases oficiales del OLE
+  (Base IBC 2023) y del SNIES (graduados 2022): % con empleo formal como dependientes al año de graduarse
+  (no cuenta independientes; por eso es menor que la tasa oficial del OLE, que se muestra aparte cuando el
+  informe la trae) y rango mediano de salario en SMMLV de 2023 convertido a pesos. Pendientes marcados en el
+  archivo: policia_militar, aviacion, gastronomia, tecnologia_tic; auxilio de transporte 2026 sin verificar
+  en fuente oficial. Para la tasa oficial por programa (con independientes) habría que consultar el tablero
+  bi.mineducacion.gov.co, que esta sesión no pudo abrir.
