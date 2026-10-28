@@ -48,6 +48,13 @@ export default function Camino({ usuario, params = {}, bloqueo = null, inicial =
       </div>
       <p className="text-xs text-gray-500">{e.completos} de {e.pasos.length} pasos listos. Cada paso se puede volver a abrir para cambiarlo.</p>
       {cerrado && <button className="btn-primary w-full" onClick={() => ir('futuro')}>Empezar el cuestionario de Mi futuro</button>}
+      {usuario.previsualizacion && (
+        <div className="card text-sm border-amber-300 bg-amber-50 text-amber-900">
+          <p className="font-medium">Estás en la vista de estudiante «Real»</p>
+          <p className="text-xs mt-1">Así ve la app un estudiante que aún no ha hecho su camino. Para revisar todas las pantallas como si ya lo hubiera terminado, cambia a la vista «Completa» (también está en la franja amarilla de arriba).</p>
+          <button className="btn-secondary mt-2 !py-1.5 text-xs" onClick={() => { try { localStorage.setItem('vista_estudiante_modo', 'completa') } catch {} window.location.reload() }}>Ver con todo abierto (vista Completa)</button>
+        </div>
+      )}
     </div>
   )
 }
