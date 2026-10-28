@@ -17,7 +17,7 @@ export default function Camino({ usuario, params = {}, bloqueo = null, inicial =
       {inicial ? (
         <div className="rounded-2xl p-5 bg-gradient-to-r from-brand-blue to-indigo-500 text-[#fff] shadow-lg shadow-sky-200">
           <p className="text-lg font-bold">Hola, {usuario.nombre.split(' ')[0]}. Empecemos por tu camino.</p>
-          <p className="text-sm opacity-90 mt-1">Son cuatro pasos en orden: primero descubre qué te interesa, luego elige carrera, después arma tu ruta de estudio y, si aplica, la de examen de admisión.{cerrado ? ' La práctica y las pruebas se abren cuando termines el cuestionario de Mi futuro (unos 10 minutos).' : ''}</p>
+          <p className="text-sm opacity-90 mt-1">Aquí no se practica por practicar. Primero decides hacia dónde vas, y con eso la app arma una ruta solo para ti: las materias que más pesan para tu carrera, las competencias en las que fallas y el tiempo que tienes. Son cuatro pasos en orden.{cerrado ? ' La práctica y las pruebas se abren cuando termines el cuestionario de Mi futuro (unos 10 minutos).' : ''}</p>
         </div>
       ) : <Titulo sub="Cuatro pasos en orden: cada uno se desbloquea al terminar el anterior">Mi camino</Titulo>}
       {bloqueo && (
@@ -38,6 +38,13 @@ export default function Camino({ usuario, params = {}, bloqueo = null, inicial =
             </button>
           )
         })}
+      </div>
+      <div className="card text-sm space-y-1.5">
+        <p className="font-medium">¿Por qué en este orden?</p>
+        <p className="text-gray-300"><b>1. Mi futuro</b> te muestra qué ocupaciones van con lo que te gusta: sin eso, elegir carrera es adivinar.</p>
+        <p className="text-gray-300"><b>2. Mi carrera</b> le dice a la app qué materias pesan más para lo que quieres: tu práctica deja de ser igual a la de todos.</p>
+        <p className="text-gray-300"><b>3. Mi ruta</b> cruza eso con tu diagnóstico y tu tiempo: cada semana practicas las competencias en las que tú fallas, no las que fallan los demás.</p>
+        <p className="text-gray-300"><b>4. Admisión</b> solo si tu universidad tiene examen propio: se suma a la ruta sin reemplazarla.</p>
       </div>
       <p className="text-xs text-gray-500">{e.completos} de {e.pasos.length} pasos listos. Cada paso se puede volver a abrir para cambiarlo.</p>
       {cerrado && <button className="btn-primary w-full" onClick={() => ir('futuro')}>Empezar el cuestionario de Mi futuro</button>}

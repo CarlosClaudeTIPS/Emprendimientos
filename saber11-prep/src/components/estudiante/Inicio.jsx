@@ -238,7 +238,7 @@ function AvisoCuestionario({ usuario }) {
   return (
     <button onClick={() => ir('futuro')} className="w-full text-left rounded-2xl p-4 bg-gradient-to-r from-brand-blue to-indigo-500 text-[#fff] shadow-lg shadow-sky-200">
       <p className="font-bold flex items-center gap-2"><Compass size={20} /> Primer paso: el cuestionario de Mi futuro</p>
-      <p className="text-sm opacity-90 mt-1">Unos 10 minutos. Con él se abren la práctica, las pruebas y el resto de tu camino (carrera, ruta y admisión).</p>
+      <p className="text-sm opacity-90 mt-1">Unos 10 minutos. Sirve para que tengas una meta: con él eliges carrera, y con la carrera la app arma una ruta de estudio solo para ti. Por eso la práctica y las pruebas se abren después.</p>
       <span className="inline-block mt-3 bg-[#fff] text-brand-blue font-semibold rounded-xl px-4 py-2 text-sm">Empezar el cuestionario</span>
     </button>
   )
