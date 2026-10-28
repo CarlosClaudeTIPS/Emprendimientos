@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { BookOpenCheck, ExternalLink, MapPin, Search, ChevronRight, ArrowLeft, Printer } from 'lucide-react'
 import { Titulo, Badge, Md, Vacio } from './ui'
+import { FORMACION, fuentePorId } from '../lib/futuro'
+import { AREAS as AREAS_CARRERAS, carreraPorId } from '../lib/carreras'
 
 // ─── Guía del ICFES ──────────────────────────────────────────────────────────
 // Qué es el examen, cómo se califica, para qué sirve y qué piden las universidades
@@ -13,13 +15,15 @@ async function cargarDatos() {
   if (DATOS) return DATOS
   const entradas = await Promise.all(Object.entries(archivos).map(async ([k, f]) => [k, await f()]))
   const general = entradas.find(([k]) => k.endsWith('/general.json'))?.[1] ?? null
+  const trabajo = entradas.find(([k]) => k.endsWith('/carreras-trabajo.json'))?.[1] ?? null
   DATOS = {
+    TRABAJO: trabajo,
     SECCIONES: Array.isArray(general) ? general : (general?.secciones ?? []),
     UNIVERSIDADES: entradas.filter(([k]) => k.includes('/universidades-')).flatMap(([, v]) => (Array.isArray(v) ? v : v?.universidades ?? [])),
   }
   return DATOS
 }
-let SECCIONES = [], UNIVERSIDADES = []
+let SECCIONES = [], UNIVERSIDADES = [], TRABAJO = null
 
 const USO = {
   requisito: { nombre: 'Solo requisito', tono: 'gris', texto: 'Exige haber presentado el Saber 11, sin puntaje mínimo publicado.' },
@@ -33,8 +37,8 @@ const sinTildes = (t) => String(t ?? '').normalize('NFD').replace(/[̀-ͯ]/g, ''
 export default function Guia({ params }) {
   const [cargado, setCargado] = useState(Boolean(DATOS))
   const [errorCarga, setErrorCarga] = useState(null)
-  useEffect(() => { cargarDatos().then(d => { SECCIONES = d.SECCIONES; UNIVERSIDADES = d.UNIVERSIDADES; setCargado(true) }).catch(e => setErrorCarga(e.message)) }, [])
-  if (DATOS) { SECCIONES = DATOS.SECCIONES; UNIVERSIDADES = DATOS.UNIVERSIDADES }
+  useEffect(() => { cargarDatos().then(d => { SECCIONES = d.SECCIONES; UNIVERSIDADES = d.UNIVERSIDADES; TRABAJO = d.TRABAJO; setCargado(true) }).catch(e => setErrorCarga(e.message)) }, [])
+  if (DATOS) { SECCIONES = DATOS.SECCIONES; UNIVERSIDADES = DATOS.UNIVERSIDADES; TRABAJO = DATOS.TRABAJO }
   return !cargado
     ? (errorCarga ? <div className="card" role="alert"><p className="text-sm">No se pudo cargar la guía ({errorCarga}).</p><button className="btn-secondary mt-2" onClick={() => { setErrorCarga(null); cargarDatos().then(() => setCargado(true)).catch(e => setErrorCarga(e.message)) }}>Reintentar</button></div> : <div className="space-y-3" role="status"><Titulo sub="Cargando la guía…">Guía del ICFES</Titulo><div className="card h-24 animate-pulse" /><div className="card h-40 animate-pulse" /></div>)
     : <GuiaCargada params={params} />
@@ -56,19 +60,21 @@ function GuiaCargada({ params }) {
 
   if (abierta) return <DetalleUniversidad u={abierta} volver={() => setAbierta(null)} />
 
-  const pestanas = [...SECCIONES.map(s => [s.id, s.titulo]), ['universidades', 'Universidades por ciudad'], ['saber11', '¿Qué piden del Saber 11?']]
+  const pestanas = [...SECCIONES.map(s => [s.id, s.titulo]), ['universidades', 'Universidades por ciudad'], ['saber11', '¿Qué piden del Saber 11?'], ['estudiar', '¿Qué puedes estudiar?'], ['carreras', 'Carreras y trabajo']]
   const seccion = SECCIONES.find(s => s.id === pestana)
 
   return (
     <div className="space-y-4">
-      <Titulo sub="Qué es el examen Saber 11, cómo se califica, para qué sirve y qué piden las universidades">Guía del ICFES</Titulo>
+      <Titulo sub="El Saber 11, las universidades, qué puedes estudiar y a qué te puedes dedicar">Guía</Titulo>
       <div className="flex gap-1.5 overflow-x-auto -mx-4 px-4 pb-1">
         {pestanas.map(([k, n]) => (
           <button key={k} onClick={() => setPestana(k)} className={`badge shrink-0 border px-3 py-1 ${pestana === k ? 'border-brand-blue text-brand-blue bg-sky-50' : 'border-dark-600 text-gray-400'}`}>{n}</button>
         ))}
       </div>
 
-      {pestana !== 'universidades' && pestana !== 'saber11' && (
+      {pestana === 'estudiar' && <QuePuedesEstudiar />}
+      {pestana === 'carreras' && <CarrerasYTrabajo />}
+      {!['universidades', 'saber11', 'estudiar', 'carreras'].includes(pestana) && (
         !seccion ? <Vacio>Esta sección aún no tiene contenido.</Vacio> : (
           <div className="card space-y-3">
             <p className="font-semibold text-brand-navy flex items-center gap-2"><BookOpenCheck size={18} className="text-brand-blue" /> {seccion.titulo}</p>
@@ -227,6 +233,81 @@ function ResumenSaber11({ abrir }) {
         </table>
         <p className="text-[11px] text-gray-500 mt-2">{lista.length} instituciones. Toca el nombre para ver la ficha completa con proceso, calendario y enlaces oficiales. Datos verificados en octubre de 2026; cambian cada convocatoria.</p>
       </div>
+    </div>
+  )
+}
+
+// ─── ¿Qué puedes estudiar? Tipos de formación después del colegio (content/futuro/formacion.json) ─
+function QuePuedesEstudiar() {
+  const [abierto, setAbierto] = useState(null)
+  return (
+    <div className="space-y-2">
+      <p className="text-sm text-gray-400">Después del colegio hay más caminos que la universidad. Cada uno tiene su duración, sus requisitos y su salida laboral. Toca uno para verlo.</p>
+      {FORMACION.map(t => (
+        <div key={t.id} className="card">
+          <button className="w-full text-left" onClick={() => setAbierto(abierto === t.id ? null : t.id)}>
+            <p className="font-semibold text-brand-navy flex flex-wrap items-center gap-2">{t.nombre}{t.nivel && <Badge>{t.nivel}</Badge>}</p>
+            <p className="text-xs text-gray-400 mt-0.5">{t.duracion}</p>
+          </button>
+          {abierto === t.id && (
+            <div className="mt-2 text-sm space-y-1.5 border-t border-dark-700 pt-2">
+              {[['Qué es', t.que_es], ['Requisitos', t.requisitos], ['Ventajas', t.ventajas], ['Ten en cuenta', t.limites]].filter(([, v]) => v).map(([k, v]) => <p key={k}><span className="text-gray-400">{k}:</span> <span className="text-gray-200">{v}</span></p>)}
+              {t.fuente && (() => { const f = fuentePorId(t.fuente); return f ? <p className="text-xs text-gray-500">Fuente: <a className="underline" href={f.url} target="_blank" rel="noopener">{f.nombre}</a></p> : null })()}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+// ─── Carreras y trabajo: a qué se dedica cada carrera, empleabilidad y salario de enganche (OLE) ─
+const pesos = (n) => n == null ? '—' : `$${Math.round(n).toLocaleString('es-CO')}`
+function CarrerasYTrabajo() {
+  const [busqueda, setBusqueda] = useState('')
+  const [abierta, setAbierta] = useState(null)
+  if (!TRABAJO?.carreras) return <Vacio>La información de carreras y trabajo aún no está disponible. Mientras tanto, consulta el Observatorio Laboral para la Educación: ole.mineducacion.gov.co.</Vacio>
+  const g = TRABAJO.general ?? {}
+  const q = sinTildes(busqueda)
+  const areas = AREAS_CARRERAS.map(a => ({ ...a, carreras: a.carreras.filter(c => !q || sinTildes(c.nombre).includes(q)) })).filter(a => a.carreras.length)
+  const d = abierta ? TRABAJO.carreras[abierta] : null
+  const c = abierta ? carreraPorId(abierta) : null
+  if (d && c) return (
+    <div className="space-y-3">
+      <button className="text-sm text-brand-blue flex items-center gap-1" onClick={() => setAbierta(null)}><ArrowLeft size={16} /> Todas las carreras</button>
+      <div className="card space-y-3">
+        <p className="text-lg font-bold text-brand-navy">{c.nombre}</p>
+        {d.que_hace && <p className="text-sm text-gray-200">{d.que_hace}</p>}
+        {d.campos?.length > 0 && <div><p className="text-xs uppercase tracking-wide text-gray-400 mb-1">A qué te puedes dedicar</p><div className="flex flex-wrap gap-1.5">{d.campos.map(x => <Badge key={x}>{x}</Badge>)}</div></div>}
+        <div className="grid grid-cols-2 gap-2">
+          <div className="rounded-xl bg-dark-900 p-3"><p className="text-xs text-gray-400">Graduados que cotizan (trabajan formalmente)</p><p className="text-2xl font-bold text-brand-navy">{d.empleabilidad ? `${d.empleabilidad.valor_pct} %` : 'Por confirmar'}</p>{d.empleabilidad && <p className="text-[11px] text-gray-500">{d.empleabilidad.anio}{d.empleabilidad.nivel === 'nbc' ? ` · dato del área «${d.empleabilidad.nbc}»` : ' · dato del programa'}</p>}</div>
+          <div className="rounded-xl bg-dark-900 p-3"><p className="text-xs text-gray-400">Salario de enganche (recién graduados)</p><p className="text-2xl font-bold text-brand-navy">{d.salario_enganche ? pesos(d.salario_enganche.valor_cop) : 'Por confirmar'}</p>{d.salario_enganche && <p className="text-[11px] text-gray-500">{d.salario_enganche.anio}{d.salario_enganche.nivel === 'nbc' ? ' · dato del área' : ' · dato del programa'}{g.salario_minimo?.valor_cop ? ` · mínimo ${g.salario_minimo.anio}: ${pesos(g.salario_minimo.valor_cop)}` : ''}</p>}</div>
+        </div>
+        {d.demanda && <p className="text-sm text-gray-300"><span className="text-gray-400">Qué tan fácil es conseguir trabajo:</span> {d.demanda}</p>}
+        {d.pendiente && <p className="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg p-2">Por confirmar: {d.pendiente}</p>}
+        {d.fuentes?.length > 0 && <p className="text-[11px] text-gray-500">Fuentes: {d.fuentes.map((u, i) => <a key={i} className="underline" href={u} target="_blank" rel="noopener">{new URL(u).hostname.replace('www.', '')}</a>).reduce((a, b) => [a, ' · ', b])}{TRABAJO.verificado ? ` · verificado ${TRABAJO.verificado}` : ''}</p>}
+      </div>
+      {g.como_leer && <div className="card text-xs text-gray-400 space-y-1"><p className="font-medium text-gray-300">Cómo leer estos datos</p>{(Array.isArray(g.como_leer) ? g.como_leer : [g.como_leer]).map((t, i) => <p key={i}>{t}</p>)}</div>}
+    </div>
+  )
+  return (
+    <div className="space-y-3">
+      <p className="text-sm text-gray-400">Para cada carrera: a qué se dedica, en qué puede trabajar, qué porcentaje de graduados consigue empleo formal y cuánto ganan al empezar, con datos oficiales del Observatorio Laboral para la Educación. Son promedios: sirven para comparar, no para predecir tu caso.</p>
+      <div className="relative"><Search size={16} className="absolute left-3 top-3 text-gray-500" /><input className="input pl-9" placeholder="Buscar carrera" value={busqueda} onChange={e => setBusqueda(e.target.value)} /></div>
+      {areas.map(a => (
+        <div key={a.id}>
+          <p className="text-xs uppercase tracking-wide text-gray-400 mb-1 px-1">{a.nombre}</p>
+          <div className="space-y-1.5">
+            {a.carreras.map(c => { const d = TRABAJO.carreras[c.id]; return (
+              <button key={c.id} className="card w-full text-left !py-2.5 flex items-center gap-3 hover:border-brand-blue" onClick={() => setAbierta(c.id)}>
+                <div className="min-w-0 flex-1"><p className="font-medium text-brand-navy">{c.nombre}</p><p className="text-xs text-gray-400 truncate">{d?.que_hace ?? 'Información por confirmar'}</p></div>
+                <div className="text-right shrink-0 text-xs"><p className="font-semibold text-brand-navy">{d?.empleabilidad ? `${d.empleabilidad.valor_pct} %` : '—'}</p><p className="text-gray-500">{d?.salario_enganche ? pesos(d.salario_enganche.valor_cop) : '—'}</p></div>
+                <ChevronRight size={16} className="text-gray-500 shrink-0" />
+              </button>) })}
+          </div>
+        </div>
+      ))}
+      {g.fuentes_para_consultar?.length > 0 && <div className="card text-xs text-gray-400"><p className="font-medium text-gray-300 mb-1">Consulta por tu cuenta</p>{g.fuentes_para_consultar.map((f, i) => <p key={i}><a className="underline text-brand-blue" href={f.url} target="_blank" rel="noopener">{f.nombre}</a>{f.que_ofrece ? ` · ${f.que_ofrece}` : ''}</p>)}</div>}
     </div>
   )
 }
