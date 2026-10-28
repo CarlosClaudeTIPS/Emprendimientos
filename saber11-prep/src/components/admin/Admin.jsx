@@ -15,14 +15,17 @@ import { ir } from '../../lib/nav'
 
 export default function Admin({ usuario }) {
   const [pestana, setPestana] = useState('ciclos')
+  const [avanzado, setAvanzado] = useState(false)
+  const TECNICAS = ['taxonomia', 'examen', 'reglas']
   return (
     <div className="space-y-4">
       <Titulo sub={NUBE_DISPONIBLE ? 'Conectado a Supabase' : 'Modo local: los datos viven en este navegador'}>Administración</Titulo>
       <div className="flex gap-1.5 overflow-x-auto -mx-4 px-4 pb-1">
-        {[['ciclos', 'Ciclos'], ['usuarios', 'Usuarios'], ['taxonomia', 'Taxonomía'], ['examen', 'Examen y programa'], ['reglas', 'Reglas'], ['datos', 'Datos']].map(([k, n]) => (
+        {[['ciclos', 'Ciclos'], ['usuarios', 'Usuarios'], ['datos', 'Datos'], ...(avanzado ? [['taxonomia', 'Taxonomía'], ['examen', 'Examen y programa'], ['reglas', 'Reglas']] : [])].map(([k, n]) => (
           <button key={k} onClick={() => setPestana(k)} className={`badge shrink-0 border px-3 py-1 ${pestana === k ? 'border-brand-blue text-white' : 'border-dark-600 text-gray-400'}`}>{n}</button>
         ))}
       </div>
+      <p className="text-xs text-gray-500">Lo del día a día está en Ciclos (fechas del examen), Usuarios y Datos. <button className="underline text-brand-blue" onClick={() => { setAvanzado(a => !a); if (avanzado && TECNICAS.includes(pestana)) setPestana('ciclos') }}>{avanzado ? 'Ocultar la configuración interna' : 'Mostrar configuración interna (avanzado)'}</button>{avanzado && <span> · Taxonomía, estructura del examen y reglas son archivos técnicos: solo cambian si el ICFES cambia el examen; normalmente no hace falta tocarlos.</span>}</p>
       {pestana === 'ciclos' && <Ciclos />}
       {pestana === 'usuarios' && <Usuarios admin={usuario} />}
       {pestana === 'taxonomia' && <Taxonomia />}
