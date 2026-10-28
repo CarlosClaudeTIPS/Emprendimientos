@@ -25,6 +25,10 @@ export async function estadoCamino(usuario) {
   return { pasos, hecho, actual, completos: pasos.filter(p => p.hecho).length }
 }
 
+// Mientras no se termine el cuestionario de Mi futuro (paso 1), la práctica y las pruebas quedan cerradas.
+export const RUTAS_CERRADAS_SIN_CUESTIONARIO = ['practicar', 'practica', 'sesion', 'simulacros', 'materias', 'materia', 'refuerzo', 'errores', 'avance', 'progreso', 'informe', 'historial', 'biblioteca', 'inicio', '']
+export const cerradaSinCuestionario = (estado, ruta) => !estado.hecho.futuro && RUTAS_CERRADAS_SIN_CUESTIONARIO.includes(ruta ?? '')
+
 // Qué paso exige una ruta de la app (null si no está en el camino).
 export const pasoDeRuta = (ruta) => RUTAS_POR_PASO[ruta] ?? null
 export function bloqueoDe(estado, ruta) {

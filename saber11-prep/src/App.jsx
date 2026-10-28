@@ -38,7 +38,7 @@ const Admision = cargar(() => import('./components/estudiante/Admision'))
 import Camino from './components/estudiante/Camino'
 import Practicar from './components/estudiante/Practicar'
 import Avance from './components/estudiante/Avance'
-import { estadoCamino, bloqueoDe } from './lib/camino'
+import { estadoCamino, bloqueoDe, cerradaSinCuestionario, RUTAS_CERRADAS_SIN_CUESTIONARIO } from './lib/camino'
 const Informe = cargar(() => import('./components/Informe'))
 const Guia = cargar(() => import('./components/Guia'))
 const PanelDocente = cargar(() => import('./components/docente/PanelDocente'))
@@ -72,7 +72,6 @@ export default function App() {
   const [contrasenaLista, setContrasenaLista] = useState(false)
   // Docente/admin: previsualizar la app como la ve un estudiante
   const [vistaEstudiante, setVistaEstudianteRaw] = useState(() => { try { return localStorage.getItem('vista_estudiante') === '1' } catch { return false } })
-  const [caminoOmitido, setCaminoOmitido] = useState(() => { try { return sessionStorage.getItem('camino_omitido') === '1' } catch { return false } })
   const setVistaEstudiante = (v) => { setVistaEstudianteRaw(v); try { localStorage.setItem('vista_estudiante', v ? '1' : '0') } catch {} ; ir('inicio') }
 
   useEffect(() => {
@@ -92,7 +91,6 @@ export default function App() {
   const previsualizando = vistaEstudiante && (u.rol === 'docente' || u.rol === 'admin')
   const uVista = previsualizando ? { ...u, rol: 'estudiante', previsualizacion: true } : u
   // Primera vez: el estudiante ve su camino (Mi futuro → Mi carrera → Mi ruta → Admisión) antes del inicio.
-  if (u.rol === 'estudiante' && !u.carreras_definidas && (ruta === 'inicio' || ruta === '' || ruta == null) && !caminoOmitido) return <Layout usuario={u} rolVista="estudiante" ruta="camino"><Camino usuario={u} inicial onOmitir={() => { try { sessionStorage.setItem('camino_omitido', '1') } catch {} setCaminoOmitido(true) }} /></Layout>
   const vista = <ConBloqueo usuario={uVista} ruta={ruta} params={params}>{elegirVista(uVista.rol, ruta, params, uVista)}</ConBloqueo>
   return <Layout usuario={u} rolVista={uVista.rol} ruta={ruta} vistaEstudiante={previsualizando} onVistaEstudiante={setVistaEstudiante}><BarraSiembra /><Suspense fallback={<p className="text-sm text-gray-400" role="status">Cargando…</p>}>{vista}</Suspense></Layout>
 }
@@ -100,10 +98,11 @@ export default function App() {
 // Los pasos de Mi camino se abren en orden: si el estudiante entra a uno bloqueado, ve el camino con el aviso.
 function ConBloqueo({ usuario, ruta, params, children }) {
   const [estado, setEstado] = useState(undefined)
-  const esPaso = usuario.rol === 'estudiante' && ['carreras', 'ruta', 'admision'].includes(ruta)
+  const esPaso = usuario.rol === 'estudiante' && !usuario.previsualizacion && (['carreras', 'ruta', 'admision'].includes(ruta) || RUTAS_CERRADAS_SIN_CUESTIONARIO.includes(ruta ?? ''))
   useEffect(() => { if (esPaso) estadoCamino(usuario).then(setEstado); else setEstado(null) }, [esPaso, ruta, usuario.id, usuario.carreras_definidas])
   if (!esPaso) return children
   if (estado == null) return <p className="text-sm text-gray-400">Cargando…</p>
+  if (cerradaSinCuestionario(estado, ruta)) return <Camino usuario={usuario} inicial cerrado />
   const b = bloqueoDe(estado, ruta)
   return b ? <Camino usuario={usuario} bloqueo={b} /> : children
 }

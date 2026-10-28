@@ -8,7 +8,7 @@ const ICONO = { futuro: Rocket, carrera: Compass, ruta: Map, admision: Graduatio
 
 // ─── Mi camino: Mi futuro → Mi carrera → Mi ruta → Exámenes de admisión ───────
 // `bloqueo`: cuando el estudiante intentó abrir un paso que aún no está desbloqueado.
-export default function Camino({ usuario, params = {}, bloqueo = null, inicial = false }) {
+export default function Camino({ usuario, params = {}, bloqueo = null, inicial = false, cerrado = false }) {
   const [e, setE] = useState(null)
   useEffect(() => { estadoCamino(usuario).then(setE) }, [usuario.id, usuario.carreras_definidas, usuario.ruta_config])
   if (!e) return <p className="text-sm text-gray-400">Cargando…</p>
@@ -17,7 +17,7 @@ export default function Camino({ usuario, params = {}, bloqueo = null, inicial =
       {inicial ? (
         <div className="rounded-2xl p-5 bg-gradient-to-r from-brand-blue to-indigo-500 text-[#fff] shadow-lg shadow-sky-200">
           <p className="text-lg font-bold">Hola, {usuario.nombre.split(' ')[0]}. Empecemos por tu camino.</p>
-          <p className="text-sm opacity-90 mt-1">Son cuatro pasos en orden: primero descubre qué te interesa, luego elige carrera, después arma tu ruta de estudio y, si aplica, la de examen de admisión. Puedes practicar mientras tanto.</p>
+          <p className="text-sm opacity-90 mt-1">Son cuatro pasos en orden: primero descubre qué te interesa, luego elige carrera, después arma tu ruta de estudio y, si aplica, la de examen de admisión.{cerrado ? ' La práctica y las pruebas se abren cuando termines el cuestionario de Mi futuro (unos 10 minutos).' : ''}</p>
         </div>
       ) : <Titulo sub="Cuatro pasos en orden: cada uno se desbloquea al terminar el anterior">Mi camino</Titulo>}
       {bloqueo && (
@@ -40,7 +40,7 @@ export default function Camino({ usuario, params = {}, bloqueo = null, inicial =
         })}
       </div>
       <p className="text-xs text-gray-500">{e.completos} de {e.pasos.length} pasos listos. Cada paso se puede volver a abrir para cambiarlo.</p>
-      {inicial && <button className="btn-ghost w-full" onClick={() => ir('inicio')}>Ir al inicio por ahora y practicar</button>}
+      {cerrado && <button className="btn-primary w-full" onClick={() => ir('futuro')}>Empezar el cuestionario de Mi futuro</button>}
     </div>
   )
 }

@@ -8,10 +8,10 @@ import { esRevisor } from '../lib/roles'
 
 const MENU = {
   estudiante: [
+    { ruta: 'camino', nombre: 'Mi camino', icono: Compass, agrupa: ['futuro', 'carreras', 'ruta'] },
     { ruta: 'inicio', nombre: 'Inicio', icono: Home },
     { ruta: 'practicar', nombre: 'Practicar', icono: LayoutGrid, agrupa: ['materias', 'materia', 'simulacros', 'refuerzo', 'admision', 'practica', 'sesion', 'biblioteca'] },
     { ruta: 'avance', nombre: 'Mi avance', icono: BarChart3, agrupa: ['progreso', 'informe', 'historial', 'errores'] },
-    { ruta: 'camino', nombre: 'Mi camino', icono: Compass, agrupa: ['futuro', 'carreras', 'ruta'] },
     { ruta: 'guia', nombre: 'Guía', icono: BookOpenCheck },
   ],
   docente: [
