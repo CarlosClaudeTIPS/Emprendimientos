@@ -11,6 +11,9 @@ import { ir } from '../../lib/nav'
 import { Titulo, FilaMetrica, Metrica, Badge, fechaCorta, formatoTiempo } from '../ui'
 import { nombrePrueba, nombreTipoError, nombreDiagnostico } from '../../lib/taxonomia'
 import { carreraPorId } from '../../lib/carreras'
+import { constancia } from '../../lib/aprendizaje'
+import { estadoCamino } from '../../lib/camino'
+import { rutasAdmision, rutasActivasIds, resultadosRuta } from '../../lib/examenes'
 
 export default function EstudianteDetalle({ usuario, params }) {
   const [d, setD] = useState(null)
@@ -22,7 +25,10 @@ export default function EstudianteDetalle({ usuario, params }) {
     const [intentos, preguntas, sesiones] = await Promise.all([intentosDe(e.id), listarPreguntas({ estado: 'todas' }), sesionesDe(e.id)])
     const porId = Object.fromEntries(preguntas.map(p => [p.id, p]))
     const ordenados = [...intentos].sort((a, b) => (a.fecha < b.fecha ? 1 : -1))
-    setD({ e, r: resumen(intentos, porId), evo: evolucionSemanal(intentos), recs: recomendar(intentos, { preguntasPorId: porId, reglas: await reglasVigentes() }), errores: ordenados.filter(i => !i.correcta).slice(0, 20), porId, sesiones: sesiones.filter(s => s.estado === 'terminada'), grupos: await db.grupos.toArray() })
+    // Camino (cuestionario, carrera, ruta, admisión) y rutas de examen propio, para la vista general
+    let camino = null, rutas = []
+    try { camino = await estadoCamino(e); for (const id of rutasActivasIds(await rutasAdmision(e))) rutas.push(await resultadosRuta(e, id)) } catch {}
+    setD({ e, r: resumen(intentos, porId), evo: evolucionSemanal(intentos), recs: recomendar(intentos, { preguntasPorId: porId, reglas: await reglasVigentes() }), errores: ordenados.filter(i => !i.correcta).slice(0, 20), porId, sesiones: sesiones.filter(s => s.estado === 'terminada'), grupos: await db.grupos.toArray(), act: constancia(intentos), ultima: ordenados[0]?.fecha ?? null, camino, rutas })
   }
   useEffect(() => { cargar() }, [params.id])
   if (!d) return <p className="text-sm text-gray-400">Cargando…</p>
@@ -66,16 +72,35 @@ export default function EstudianteDetalle({ usuario, params }) {
           </select>
         </label>
       )}
+      {/* Qué ha hecho: actividad, camino y pruebas */}
+      <div className="card">
+        <p className="font-medium mb-2">Qué ha hecho</p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+          <div className="rounded-xl bg-dark-900 p-2"><p className="text-xl font-semibold">{r.total}</p><p className="text-[11px] text-gray-500">respuestas</p></div>
+          <div className="rounded-xl bg-dark-900 p-2"><p className="text-xl font-semibold">{d.act.dias_total}</p><p className="text-[11px] text-gray-500">días con práctica</p></div>
+          <div className="rounded-xl bg-dark-900 p-2"><p className="text-xl font-semibold">{d.act.ultimos_7}<span className="text-xs text-gray-500">/7</span></p><p className="text-[11px] text-gray-500">días esta semana</p></div>
+          <div className="rounded-xl bg-dark-900 p-2"><p className="text-xl font-semibold">{d.sesiones.length}</p><p className="text-[11px] text-gray-500">pruebas terminadas</p></div>
+        </div>
+        <p className="text-xs text-gray-400 mt-2">{d.ultima ? `Última actividad: ${fechaCorta(d.ultima)}.` : 'Todavía no ha respondido nada.'}{d.act.racha > 1 ? ` Racha de ${d.act.racha} días seguidos.` : ''}</p>
+        {d.camino && (
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {d.camino.pasos.map(p => <Badge key={p.id} tono={p.hecho ? 'verde' : 'gris'}>{p.hecho ? '✔ ' : '○ '}{p.corto}</Badge>)}
+            {!d.camino.hecho.futuro && <span className="text-xs text-amber-700">Aún no responde el cuestionario de Mi futuro: la práctica sigue cerrada para él.</span>}
+          </div>
+        )}
+        {d.rutas.map(rt => <p key={rt.examen.id} className="text-xs text-gray-400 mt-1">Ruta {rt.examen.corto}: {rt.intentos} respuestas{rt.estimado.total != null ? ` · puntaje estimado Nivytek ${rt.estimado.total}` : ''}.</p>)}
+      </div>
       <div className="grid sm:grid-cols-2 gap-2">
-        <button className="btn-primary w-full" onClick={() => ir('informe', { estudiante: e.id })}>Informe de mejoramiento</button>
-        <button className="btn-secondary w-full" onClick={() => ir('historial', { id: e.id })}>Historial completo</button>
+        <button className="btn-primary w-full" onClick={() => ir('informe', { estudiante: e.id })}>Ver informe (formato ICFES y mejoramiento)</button>
+        <button className="btn-secondary w-full" onClick={() => ir('historial', { id: e.id })}>Historial pregunta por pregunta</button>
       </div>
       <div className="grid grid-cols-3 gap-2">
         <Metrica etiqueta="Aciertos" valor={r.precision} sufijo="%" />
         <Metrica etiqueta="Respuestas" valor={r.total} />
         <Metrica etiqueta="Tiempo prom." valor={formatoTiempo(r.tiempo_prom_seg)} />
       </div>
-      {r.por_prueba.length > 0 && <div className="card"><p className="font-medium mb-1">Por prueba</p>{r.por_prueba.map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.precision} detalle={`${x.aciertos}/${x.total}`} />)}</div>}
+      {r.por_prueba.length > 0 && <div className="card"><p className="font-medium mb-1">Por materia</p>{r.por_prueba.map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.precision} detalle={`${x.aciertos}/${x.total}`} />)}</div>}
+      {r.por_competencia.length > 0 && <div className="card"><p className="font-medium mb-1">Por competencia (de más floja a más fuerte)</p><p className="text-xs text-gray-500 mb-1">Esto es lo que usa su ruta para decidir qué practica cada semana.</p>{[...r.por_competencia].sort((a, b) => a.precision - b.precision).map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.precision} detalle={`${x.aciertos}/${x.total}`} />)}</div>}
       {r.por_habilidad.length > 0 && <div className="card"><p className="font-medium mb-1">Habilidades</p>{r.por_habilidad.map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.precision} detalle={`${x.aciertos}/${x.total}`} />)}</div>}
       {r.por_tipo_error.length > 0 && <div className="card"><p className="font-medium mb-1">Errores por tipo</p>{r.por_tipo_error.map(x => <FilaMetrica key={x.id} nombre={x.nombre} valor={x.pct} detalle={`${x.n}`} color="#F87171" />)}</div>}
       <div className="card">
@@ -88,9 +113,9 @@ export default function EstudianteDetalle({ usuario, params }) {
           {d.sesiones.map(s => <p key={s.id} className="text-sm flex justify-between"><span>{s.titulo} <span className="text-gray-500 text-xs">{fechaCorta(s.fecha_inicio)}</span></span><span>{s.resultado.precision}%</span></p>)}
         </div>
       )}
-      <div className="card">
-        <p className="font-medium mb-2">Últimos errores</p>
-        <div className="divide-y divide-dark-700">
+      <details className="card">
+        <summary className="font-medium cursor-pointer">Últimos errores (toca para ver)</summary>
+        <div className="divide-y divide-dark-700 mt-2">
           {d.errores.map(i => (
             <div key={i.uid} className="py-2 text-sm">
               <div className="flex flex-wrap gap-1.5 text-xs mb-0.5"><Badge tono="morado">{nombrePrueba(i.prueba)}</Badge>{i.tipo_error && <Badge tono={i.diagnostico === 'confirmado' ? 'rojo' : 'ambar'}>{nombreTipoError(i.tipo_error)} · {nombreDiagnostico(i.diagnostico).toLowerCase()}</Badge>}<span className="text-gray-500 ml-auto">{fechaCorta(i.fecha)}</span></div>
@@ -100,7 +125,7 @@ export default function EstudianteDetalle({ usuario, params }) {
           ))}
           {d.errores.length === 0 && <p className="text-sm text-gray-500">Sin errores registrados.</p>}
         </div>
-      </div>
+      </details>
       {puedeEditar(usuario) && <div className="card">
         <p className="font-medium mb-1">Restablecer PIN</p>
         <div className="flex gap-2"><input className="input" placeholder="Nuevo PIN" value={pinNuevo} onChange={e => setPinNuevo(e.target.value)} /><button className="btn-secondary shrink-0" disabled={cambiandoPin} onClick={cambiarPin}>{cambiandoPin ? 'Guardando…' : 'Guardar'}</button></div>
