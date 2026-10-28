@@ -18,6 +18,7 @@ import { VistaPrioridades } from './Carreras'
 import { estadoLiberacion, grupoDe } from '../../lib/acceso'
 import { Unlock, Rocket, GraduationCap } from 'lucide-react'
 import RutaMejorar from './RutaMejorar'
+import { estadoCamino } from '../../lib/camino'
 
 export default function Inicio({ usuario }) {
   const [datos, setDatos] = useState(null)
@@ -73,6 +74,7 @@ export default function Inicio({ usuario }) {
         )}
       </div>
 
+      <AvisoCuestionario usuario={usuario} />
       <TarjetaDiagnostico diagnostico={datos.diagnostico} usuario={usuario} />
       <RutaMejorar usuario={usuario} modo="hoy" />
 
@@ -225,6 +227,20 @@ function TarjetaLiberacion({ e }) {
         <p className="text-xs text-gray-400">{e.proximo ? `El próximo lote (${e.lote} por asignatura) se libera el ${formatoFecha(e.proximo.toISOString())}.` : 'Ya tienes todo el banco disponible.'}</p>
       </div>
     </div>
+  )
+}
+
+// Mientras no se termine el cuestionario de Mi futuro, la práctica está cerrada: se avisa aquí.
+function AvisoCuestionario({ usuario }) {
+  const [e, setE] = useState(null)
+  useEffect(() => { if (!usuario.previsualizacion) estadoCamino(usuario).then(setE) }, [usuario.id])
+  if (!e || e.hecho.futuro) return null
+  return (
+    <button onClick={() => ir('futuro')} className="w-full text-left rounded-2xl p-4 bg-gradient-to-r from-brand-blue to-indigo-500 text-[#fff] shadow-lg shadow-sky-200">
+      <p className="font-bold flex items-center gap-2"><Compass size={20} /> Primer paso: el cuestionario de Mi futuro</p>
+      <p className="text-sm opacity-90 mt-1">Unos 10 minutos. Con él se abren la práctica, las pruebas y el resto de tu camino (carrera, ruta y admisión).</p>
+      <span className="inline-block mt-3 bg-[#fff] text-brand-blue font-semibold rounded-xl px-4 py-2 text-sm">Empezar el cuestionario</span>
+    </button>
   )
 }
 
