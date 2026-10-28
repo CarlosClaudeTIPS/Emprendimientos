@@ -35,7 +35,7 @@ export default function Carreras({ usuario, inicial = false }) {
     try {
       const r = await guardarCarreras(usuario, { carreras: opciones.carreras ?? elegidas, modo_carrera: opciones.modo ?? modo })
       if (r.aviso) alert(r.aviso)
-      ir('inicio')
+      ir(inicial ? 'inicio' : 'camino')
     } catch (e) { setError(e.message) } finally { setGuardando(false) }
   }
 

@@ -9,11 +9,10 @@ import { esRevisor } from '../lib/roles'
 const MENU = {
   estudiante: [
     { ruta: 'inicio', nombre: 'Inicio', icono: Home },
-    { ruta: 'materias', nombre: 'Materias', icono: LayoutGrid },
-    { ruta: 'simulacros', nombre: 'Pruebas', icono: Timer },
-    { ruta: 'refuerzo', nombre: 'Refuerzo', icono: GraduationCap },
-    { ruta: 'errores', nombre: 'Errores', icono: AlertCircle },
-    { ruta: 'historial', nombre: 'Historial', icono: History },
+    { ruta: 'practicar', nombre: 'Practicar', icono: LayoutGrid, agrupa: ['materias', 'materia', 'simulacros', 'refuerzo', 'admision', 'practica', 'sesion', 'biblioteca'] },
+    { ruta: 'avance', nombre: 'Mi avance', icono: BarChart3, agrupa: ['progreso', 'informe', 'historial', 'errores'] },
+    { ruta: 'camino', nombre: 'Mi camino', icono: Compass, agrupa: ['futuro', 'carreras', 'ruta'] },
+    { ruta: 'guia', nombre: 'Guía', icono: BookOpenCheck },
   ],
   docente: [
     { ruta: 'inicio', nombre: 'Grupos', icono: Users },
@@ -37,7 +36,7 @@ const MENU = {
   ],
 }
 const EXTRA_ESCRITORIO = {
-  estudiante: [{ ruta: 'progreso', nombre: 'Progreso', icono: BarChart3 }, { ruta: 'biblioteca', nombre: 'Biblioteca', icono: Library }, { ruta: 'ruta', nombre: 'Mi ruta', icono: Map }, { ruta: 'carreras', nombre: 'Mi carrera', icono: Compass }, { ruta: 'futuro', nombre: 'Mi futuro', icono: Rocket }, { ruta: 'informe', nombre: 'Mi informe', icono: FileBarChart }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
+  estudiante: [],
   docente: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
   admin: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
   revisor: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
@@ -47,7 +46,7 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
   const rol = rolVista ?? usuario.rol
   const items = MENU[rol] ?? MENU.estudiante
   const extra = EXTRA_ESCRITORIO[rol] ?? []
-  const activo = (it) => ruta === it.ruta || (ruta === 'materia' && it.ruta === 'materias')
+  const activo = (it) => ruta === it.ruta || (ruta === 'materia' && it.ruta === 'materias') || (it.agrupa ?? []).includes(ruta)
   const puedePrevisualizar = usuario.rol === 'admin' || usuario.rol === 'docente'
   // El logo siempre lleva al inicio del rol que se está viendo.
   const irInicio = () => { ir('inicio', rol === 'docente' ? { vista: 'docente' } : {}); window.scrollTo({ top: 0 }) }

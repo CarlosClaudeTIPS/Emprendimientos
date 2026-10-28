@@ -62,7 +62,7 @@ export default function RutaMejorar({ usuario, modo = 'completa' }) {
 
   if (!config.definida || editando) {
     if (modo === 'hoy') return (
-      <button onClick={() => ir('ruta')} className="rounded-2xl p-4 w-full text-left bg-gradient-to-r from-emerald-500 to-teal-500 text-[#fff] shadow-lg shadow-emerald-100">
+      <button onClick={() => ir('camino')} className="rounded-2xl p-4 w-full text-left bg-gradient-to-r from-emerald-500 to-teal-500 text-[#fff] shadow-lg shadow-emerald-100">
         <p className="font-bold flex items-center gap-2"><Target size={20} /> Arma tu ruta para mejorar</p>
         <p className="text-sm opacity-90 mt-1">Dinos cuánto tiempo tienes al día y tu meta: te decimos qué hacer cada día hasta el examen.</p>
       </button>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Play, Timer, AlertCircle, BarChart3, Map, Library, ClipboardList } from 'lucide-react'
+import { Play, Timer, AlertCircle, BarChart3, Map, Library, ClipboardList, LayoutGrid } from 'lucide-react'
 import { intentosDe, asignacionesPendientes, proximasClases } from '../../lib/datos'
 import { describirTiempo } from '../../lib/tiempo'
 import { formatoClase } from '../docente/Clases'
@@ -135,14 +135,8 @@ export default function Inicio({ usuario }) {
       <div className="grid grid-cols-2 gap-2">
         <Accion icono={Play} titulo={enModoCarrera ? 'Práctica enfocada' : 'Continuar práctica'} sub={enModoCarrera ? '5 preguntas, más de tus prioridades' : '5 preguntas con explicación'} onClick={() => ir('practica', enModoCarrera ? { n: 5, enfoque: 'carrera' } : { n: 5 })} destacada />
         <Accion icono={Timer} titulo="Mini-prueba" sub={`${estado?.fase?.mini_prueba?.cantidad ?? 10} preguntas · ${estado?.fase?.mini_prueba?.tiempo_min ?? 20} min`} onClick={async () => { const f = estado?.fase?.mini_prueba; const s = await crearMiniPrueba({ estudiante: usuario, cantidad: f?.cantidad ?? 10, tiempo_min: f?.tiempo_min ?? 20, titulo: 'Mini-prueba de la semana' }); ir('sesion', { id: s.id }) }} />
-        <Accion icono={AlertCircle} titulo="Mis errores" sub={`${errores} para revisar`} onClick={() => ir('errores')} />
-        <Accion icono={BarChart3} titulo="Refuerzo" sub="lo que está flojo, explicado" onClick={() => ir('refuerzo')} />
-        <Accion icono={Timer} titulo="Simulacros" sub="por sesión, cronometrados" onClick={() => ir('simulacros')} />
-        <Accion icono={Map} titulo="Mi ruta" sub="tu plan semanal para mejorar" onClick={() => ir('ruta')} />
-        <Accion icono={FileBarChart} titulo="Mi informe" sub="puntajes, niveles y qué mejorar" onClick={() => ir('informe')} />
-        <Accion icono={BookOpenCheck} titulo="Guía ICFES" sub="qué es, para qué sirve, universidades" onClick={() => ir('guia')} />
-        <Accion icono={Rocket} titulo="Mi futuro" sub="intereses, opciones y proyecto de vida" onClick={() => ir('futuro')} />
-        <Accion icono={GraduationCap} titulo="Exámenes de admisión" sub="Universidad Nacional, Antioquia y más" onClick={() => ir('admision')} />
+        <Accion icono={AlertCircle} titulo="Mis errores" sub={`${errores} para revisar`} onClick={() => ir('avance', { ver: 'errores' })} />
+        <Accion icono={Compass} titulo="Mi camino" sub="futuro, carrera, ruta y admisión" onClick={() => ir('camino')} />
       </div>
 
       <div className="card">
@@ -160,7 +154,7 @@ export default function Inicio({ usuario }) {
         <p className="text-[11px] text-gray-500 mt-2">Las recomendaciones salen de reglas simples sobre tus últimos intentos, no de un modelo que adivina.</p>
       </div>
 
-      <button className="btn-ghost w-full" onClick={() => ir('biblioteca')}><Library size={16} /> Biblioteca de recursos</button>
+      <button className="btn-ghost w-full" onClick={() => ir('practicar')}><LayoutGrid size={16} /> Ver todo lo que puedes practicar</button>
     </div>
   )
 }
