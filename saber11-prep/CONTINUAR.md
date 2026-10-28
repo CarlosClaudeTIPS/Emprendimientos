@@ -156,3 +156,8 @@ Pendientes: convocatorias 2027-2, subtipos con imágenes licenciadas, dificultad
   archivo: policia_militar, aviacion, gastronomia, tecnologia_tic; auxilio de transporte 2026 sin verificar
   en fuente oficial. Para la tasa oficial por programa (con independientes) habría que consultar el tablero
   bi.mineducacion.gov.co, que esta sesión no pudo abrir.
+- **Candados hasta el cuestionario**: Practicar, pruebas, materias, refuerzo, errores y Mi avance se abren al terminar el
+  cuestionario de Mi futuro (`RUTAS_CERRADAS_SIN_CUESTIONARIO` en `src/lib/camino.js`). Inicio y Guía quedan abiertos.
+  Una prueba **asignada por el docente** (con `asignacion_id`) se abre siempre, aunque el estudiante no haya hecho el camino:
+  así se habilita un simulacro para todo el colegio con fecha límite. «Ver como estudiante» tiene dos modos: **Real**
+  (con los mismos candados) y **Completa** (todo abierto), en la franja amarilla.

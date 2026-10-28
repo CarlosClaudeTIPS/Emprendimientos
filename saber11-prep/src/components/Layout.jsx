@@ -42,7 +42,7 @@ const EXTRA_ESCRITORIO = {
   revisor: [{ ruta: 'ruta', nombre: 'Programa', icono: Map }, { ruta: 'guia', nombre: 'Guía Saber 11', icono: BookOpenCheck }],
 }
 
-export default function Layout({ usuario, rolVista, ruta, children, vistaEstudiante = false, onVistaEstudiante = null }) {
+export default function Layout({ usuario, rolVista, ruta, children, vistaEstudiante = false, onVistaEstudiante = null, modoVista = 'real', onModoVista = null }) {
   const rol = rolVista ?? usuario.rol
   const items = MENU[rol] ?? MENU.estudiante
   const extra = EXTRA_ESCRITORIO[rol] ?? []
@@ -88,7 +88,13 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
       <div className="flex-1 min-w-0 flex flex-col">
         {vistaEstudiante && (
           <div className="no-print sticky top-0 z-30 bg-amber-100 border-b border-amber-300 text-amber-800 text-sm px-4 py-2 flex items-center justify-between gap-2">
-            <span className="flex items-center gap-2"><Eye size={16} /> Estás viendo la app como la ven tus estudiantes. Tus respuestas de prueba quedan en tu cuenta.</span>
+            <span className="flex items-center gap-2 flex-wrap"><Eye size={16} /> Vista de estudiante:
+              <span className="inline-flex rounded-lg border border-amber-400 overflow-hidden text-xs">
+                <button onClick={() => onModoVista?.('real')} className={`px-2 py-0.5 ${modoVista === 'real' ? 'bg-amber-400 text-amber-950 font-semibold' : ''}`} title="Con los mismos candados que ven ellos">Real</button>
+                <button onClick={() => onModoVista?.('completa')} className={`px-2 py-0.5 ${modoVista === 'completa' ? 'bg-amber-400 text-amber-950 font-semibold' : ''}`} title="Todo abierto, como si ya hubieran terminado Mi camino">Completa</button>
+              </span>
+              <span className="text-xs">{modoVista === 'real' ? 'tal como la ven ellos, con lo que aún no han desbloqueado.' : 'todo abierto, como si ya hubieran hecho Mi camino.'} Tus respuestas quedan en tu cuenta.</span>
+            </span>
             <button onClick={() => onVistaEstudiante?.(false)} className="font-semibold underline shrink-0">Salir de esta vista</button>
           </div>
         )}

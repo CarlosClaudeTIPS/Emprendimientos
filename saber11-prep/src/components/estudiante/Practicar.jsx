@@ -9,7 +9,7 @@ import { modoCarreraActivo } from '../../lib/carreras'
 export default function Practicar({ usuario }) {
   const [camino, setCamino] = useState(null)
   useEffect(() => { estadoCamino(usuario).then(setCamino) }, [usuario.id])
-  const admisionLista = camino?.pasos.find(p => p.id === 'admision')?.desbloqueado
+  const admisionLista = (usuario.previsualizacion && !usuario.previsualizacion_real) || camino?.pasos.find(p => p.id === 'admision')?.desbloqueado
   const enModoCarrera = modoCarreraActivo(usuario)
   const Tarjeta = ({ icono: I, titulo, sub, onClick, bloqueado = false, nota = null }) => (
     <button disabled={bloqueado} onClick={onClick} className={`card w-full text-left flex items-center gap-3 ${bloqueado ? 'opacity-60' : 'hover:border-brand-blue'}`}>

@@ -9,7 +9,7 @@ import { asegurarCiclos } from './lib/ciclo'
 import { asegurarDatosIniciales } from './lib/demo'
 import { iniciarSync, descargarDeNube } from './lib/sync'
 import { aplicarExtension } from './lib/taxonomia'
-import { getConfig } from './lib/db'
+import { db, getConfig } from './lib/db'
 import { useRuta } from './lib/nav'
 import Login from './components/Login'
 import Layout from './components/Layout'
@@ -73,6 +73,9 @@ export default function App() {
   // Docente/admin: previsualizar la app como la ve un estudiante
   const [vistaEstudiante, setVistaEstudianteRaw] = useState(() => { try { return localStorage.getItem('vista_estudiante') === '1' } catch { return false } })
   const setVistaEstudiante = (v) => { setVistaEstudianteRaw(v); try { localStorage.setItem('vista_estudiante', v ? '1' : '0') } catch {} ; ir('inicio') }
+  // 'real' = con los mismos candados que ven los estudiantes; 'completa' = todo abierto para revisar.
+  const [modoVista, setModoVistaRaw] = useState(() => { try { return localStorage.getItem('vista_estudiante_modo') || 'real' } catch { return 'real' } })
+  const setModoVista = (m) => { setModoVistaRaw(m); try { localStorage.setItem('vista_estudiante_modo', m) } catch {} }
 
   useEffect(() => {
     try { sessionStorage.removeItem('recarga_por_trozo') } catch {}
@@ -89,19 +92,23 @@ export default function App() {
   const u = sesion.usuario
   if (u.rol === 'estudiante' && u.estado && u.estado !== 'activo') return <Pendiente usuario={u} />
   const previsualizando = vistaEstudiante && (u.rol === 'docente' || u.rol === 'admin')
-  const uVista = previsualizando ? { ...u, rol: 'estudiante', previsualizacion: true } : u
+  const uVista = previsualizando ? { ...u, rol: 'estudiante', previsualizacion: true, previsualizacion_real: modoVista === 'real' } : u
   // Primera vez: el estudiante ve su camino (Mi futuro → Mi carrera → Mi ruta → Admisión) antes del inicio.
   const vista = <ConBloqueo usuario={uVista} ruta={ruta} params={params}>{elegirVista(uVista.rol, ruta, params, uVista)}</ConBloqueo>
-  return <Layout usuario={u} rolVista={uVista.rol} ruta={ruta} vistaEstudiante={previsualizando} onVistaEstudiante={setVistaEstudiante}><BarraSiembra /><Suspense fallback={<p className="text-sm text-gray-400" role="status">Cargando…</p>}>{vista}</Suspense></Layout>
+  return <Layout usuario={u} rolVista={uVista.rol} ruta={ruta} vistaEstudiante={previsualizando} onVistaEstudiante={setVistaEstudiante} modoVista={modoVista} onModoVista={setModoVista}><BarraSiembra /><Suspense fallback={<p className="text-sm text-gray-400" role="status">Cargando…</p>}>{vista}</Suspense></Layout>
 }
 
 // Los pasos de Mi camino se abren en orden: si el estudiante entra a uno bloqueado, ve el camino con el aviso.
 function ConBloqueo({ usuario, ruta, params, children }) {
   const [estado, setEstado] = useState(undefined)
-  const esPaso = usuario.rol === 'estudiante' && !usuario.previsualizacion && (['carreras', 'ruta', 'admision'].includes(ruta) || RUTAS_CERRADAS_SIN_CUESTIONARIO.includes(ruta ?? ''))
-  useEffect(() => { if (esPaso) estadoCamino(usuario).then(setEstado); else setEstado(null) }, [esPaso, ruta, usuario.id, usuario.carreras_definidas])
+  const aplica = usuario.rol === 'estudiante' && (!usuario.previsualizacion || usuario.previsualizacion_real)
+  const esPaso = aplica && (['carreras', 'ruta', 'admision'].includes(ruta) || RUTAS_CERRADAS_SIN_CUESTIONARIO.includes(ruta ?? ''))
+  const [asignada, setAsignada] = useState(null) // una sesión asignada por el docente se puede abrir sin haber hecho el camino
+  useEffect(() => { if (esPaso) estadoCamino(usuario).then(setEstado); else setEstado(null) }, [esPaso, ruta, usuario.id, usuario.carreras_definidas, usuario.previsualizacion_real])
+  useEffect(() => { if (esPaso && ruta === 'sesion' && params?.id) db.sesiones.get(params.id).then(s => setAsignada(Boolean(s?.asignacion_id))); else setAsignada(null) }, [esPaso, ruta, params?.id])
   if (!esPaso) return children
-  if (estado == null) return <p className="text-sm text-gray-400">Cargando…</p>
+  if (estado == null || (ruta === 'sesion' && asignada == null)) return <p className="text-sm text-gray-400">Cargando…</p>
+  if (ruta === 'sesion' && asignada) return children
   if (cerradaSinCuestionario(estado, ruta)) return <Camino usuario={usuario} inicial cerrado />
   const b = bloqueoDe(estado, ruta)
   return b ? <Camino usuario={usuario} bloqueo={b} /> : children

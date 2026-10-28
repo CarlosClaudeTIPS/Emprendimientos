@@ -233,7 +233,7 @@ function TarjetaLiberacion({ e }) {
 // Mientras no se termine el cuestionario de Mi futuro, la práctica está cerrada: se avisa aquí.
 function AvisoCuestionario({ usuario }) {
   const [e, setE] = useState(null)
-  useEffect(() => { if (!usuario.previsualizacion) estadoCamino(usuario).then(setE) }, [usuario.id])
+  useEffect(() => { if (!usuario.previsualizacion || usuario.previsualizacion_real) estadoCamino(usuario).then(setE); else setE(null) }, [usuario.id, usuario.previsualizacion_real])
   if (!e || e.hecho.futuro) return null
   return (
     <button onClick={() => ir('futuro')} className="w-full text-left rounded-2xl p-4 bg-gradient-to-r from-brand-blue to-indigo-500 text-[#fff] shadow-lg shadow-sky-200">
