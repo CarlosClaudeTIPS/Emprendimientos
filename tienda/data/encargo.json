@@ -1,5 +1,123 @@
 {
-  "nota": "Productos por encargo. Se generan desde la pestaña 'Publicado en tienda' del Google Sheet 'Catálogo Nivytek (tienda)'. No editar a mano.",
-  "actualizado": "",
-  "productos": []
+  "nota": "Copia de respaldo de la pestaña 'Vitrina (pública)' del Google Sheet 'Catálogo Nivytek (tienda)'. Se usa cuando la hoja no responde. No editar a mano.",
+  "actualizado": "2026-10-31",
+  "productos": [
+    {
+      "id": "ya-cargador-usbc-20w",
+      "precio": "29900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "6",
+      "categoria": "Tecnología",
+      "nombre": "Cargador Stuffcool USB-C 20 W de carga rápida para iPhone, certificado MFi",
+      "descripcion": "Cargador de pared USB-C para iPhone, Samsung y otros celulares con carga rápida",
+      "descripcionLarga": "Marca: Stuffcool\nCargador de pared USB-C de 20 W con carga rápida (Power Delivery).\n- Carga rápida para iPhone 18, 17, 16 y modelos anteriores con puerto USB-C, iPad y celulares Android.\n- Certificación MFi (hecho para Apple).\n- Control de temperatura y protección contra sobrecarga, sobretensión y cortocircuito.\n- Detecta el equipo conectado y le entrega la potencia adecuada.\n- Nuevo, sin usar.",
+      "foto": "https://m.media-amazon.com/images/I/618-MJqshTL._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    },
+    {
+      "id": "ya-camara-yoton-2k",
+      "precio": "75900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "2",
+      "categoria": "Tecnología",
+      "nombre": "Cámara de seguridad YOTON 2K WiFi para interior, para bebé y mascotas",
+      "descripcion": "Cámara 2K con visión nocturna, detección de movimiento y app en el celular",
+      "descripcionLarga": "Marca: YOTON\nCámara de seguridad WiFi 2K para interior, ideal para vigilar al bebé, las mascotas o la casa.\n- Imagen 2K con giro de 360° para cubrir toda la habitación.\n- Funciona con WiFi de 2,4 y 5 GHz.\n- Detección de movimiento con seguimiento automático y alertas al celular.\n- Visión nocturna de hasta 10 metros.\n- Grabación continua las 24 horas.\n- Nueva, en su caja.",
+      "foto": "https://m.media-amazon.com/images/I/61tfGvrxoDL._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    },
+    {
+      "id": "ya-medicube-vitamina-c",
+      "precio": "79900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Medicube crema cápsula con vitamina C profunda",
+      "descripcion": "Crema facial coreana para dar luminosidad y unificar el tono de la piel",
+      "descripcionLarga": "Marca: medicube (Corea)\nCrema facial en cápsulas con vitamina C concentrada para dar luminosidad y unificar el tono de la piel.\n- Las cápsulas se revientan al aplicarla y liberan la vitamina C.\n- Ayuda a mejorar manchas, opacidad y textura irregular.\n- Probada por dermatólogos.\n- Se recomienda hacer prueba en una pequeña zona de la piel antes del primer uso.\n- Nueva, sellada.",
+      "foto": "https://m.media-amazon.com/images/I/71m8aGBgXqL._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    },
+    {
+      "id": "ya-medicube-azelaico",
+      "precio": "74900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Medicube Exosome Shot ácido azelaico 2.000 PPM, sérum facial",
+      "descripcion": "Sérum coreano para poros, granitos y textura de la piel",
+      "descripcionLarga": "Marca: medicube (Corea)\nSérum facial Exosome Shot con ácido azelaico 2.000 PPM.\n- Calma la piel reactiva y con tendencia a granitos.\n- Ayuda a mejorar el tono y la textura irregular.\n- Resultados probados clínicamente en 2 semanas de uso, según el fabricante.\n- Textura ligera de rápida absorción, para todo tipo de piel.\n- Nuevo, sellado.",
+      "foto": "https://m.media-amazon.com/images/I/71TFpArxslL._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    },
+    {
+      "id": "ya-medicube-exosome-poros",
+      "precio": "49900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Medicube Exosome Shot Zero 2.000 PPM, sérum para poros y grasa",
+      "descripcion": "Sérum coreano para refinar poros y mejorar la textura de la piel",
+      "descripcionLarga": "Marca: medicube (Corea)\nSérum facial Exosome Shot Zero 2.000 PPM para poros y exceso de grasa. Producto viral en redes.\n- Tecnología de exosomas para mejor absorción e hidratación.\n- Ayuda a refinar poros y controlar el sebo.\n- Probado clínicamente y suave con la piel.\n- Fácil de agregar a la rutina diaria.\n- Nuevo, sellado.",
+      "foto": "https://m.media-amazon.com/images/I/71bfHCGMlEL._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    },
+    {
+      "id": "ya-cerave-pm",
+      "precio": "69900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "CeraVe PM loción hidratante facial de noche",
+      "descripcion": "Hidratante facial de noche con ceramidas, niacinamida y ácido hialurónico",
+      "descripcionLarga": "Marca: CeraVe\nLoción hidratante facial de noche (PM), ligera y sin grasa.\n- Con 3 ceramidas esenciales, niacinamida y ácido hialurónico.\n- La niacinamida ayuda a calmar la piel.\n- Tecnología MVE de liberación prolongada: hidrata durante toda la noche.\n- Desarrollada con dermatólogos.\n- Nueva, sellada.",
+      "foto": "https://m.media-amazon.com/images/I/61TuwUQ-qvL._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    },
+    {
+      "id": "ya-cerave-protector-mineral",
+      "precio": "65900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "CeraVe protector solar mineral hidratante SPF 30 con tinte transparente",
+      "descripcion": "Protector solar mineral para rostro, apto para piel sensible",
+      "descripcionLarga": "Marca: CeraVe\nProtector solar facial mineral SPF 30 con tinte transparente que se adapta a la mayoría de tonos de piel.\n- Protección mineral de amplio espectro.\n- Hidrata como una crema facial y se puede usar como base.\n- Con 3 ceramidas esenciales para cuidar la barrera de la piel.\n- Apto para piel sensible.\n- Nuevo, sellado.",
+      "foto": "https://m.media-amazon.com/images/I/71zMpOIe51L._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    },
+    {
+      "id": "ya-cetaphil-limpiador",
+      "precio": "49900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Cetaphil limpiador facial diario suave, 473 ml",
+      "descripcion": "Limpiador suave para uso diario, apto para piel sensible",
+      "descripcionLarga": "Marca: Cetaphil\nLimpiador facial diario suave, presentación grande de 16 oz (473 ml).\n- Limpia sin resecar ni irritar.\n- Apto para piel sensible y uso diario, mañana y noche.\n- Nuevo, sellado.",
+      "foto": "https://m.media-amazon.com/images/I/61wJk3BTsrL._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    },
+    {
+      "id": "ya-nivea-locion",
+      "precio": "32900",
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "NIVEA loción corporal de larga duración para piel seca a muy seca",
+      "descripcion": "Hidratación profunda para piel seca a muy seca",
+      "descripcionLarga": "Marca: NIVEA\nLoción corporal hidratante para piel seca a muy seca.\n- 3 veces más cuidado: calma, nutre y fortalece la barrera de la piel.\n- Hidratación de hasta 72 horas.\n- Textura no grasosa de rápida absorción.\n- Probada dermatológicamente.\n- Nueva, sellada.",
+      "foto": "https://m.media-amazon.com/images/I/61nIWVHSZzL._AC_SL500_.jpg",
+      "ofertaHasta": ""
+    }
+  ]
 }

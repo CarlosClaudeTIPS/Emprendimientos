@@ -78,7 +78,9 @@
     if (csvVitrina) {
       try {
         const r = await fetch(csvVitrina, { cache: 'no-cache' });
-        if (r.ok) enc = { productos: T.leerCSV(await r.text()) };
+        const txt = r.ok ? await r.text() : '';
+        /* Si la pestaña no está publicada en la web, Google devuelve HTML: se ignora y se usa la copia local */
+        if (txt && !/^\s*</.test(txt) && /^id,/i.test(txt.trim())) { const filas = T.leerCSV(txt); if (filas.length) enc = { productos: filas }; }
       } catch (e) { /* la hoja no respondió: se usa la copia local */ }
     }
     if (!enc) {
