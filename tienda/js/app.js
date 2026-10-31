@@ -150,19 +150,38 @@
       const agotado = estado.startsWith('agotado');
       const enStock = String(e.modalidad || '').toLowerCase().startsWith('disponible ya');
       const unidades = parseInt(e.unidades, 10);
-      /* Descripción completa: "Marca: X" va a especificaciones, las líneas "- ..." a beneficios */
+      /* Descripción completa (columna de la hoja). Formato:
+         "Marca: X" -> especificaciones; párrafos -> descripción; "- ..." -> beneficios;
+         secciones "Cómo se usa:", "Precauciones:", "Ingredientes clave: ...", "Incluye:". */
       const lineas = String(e.descripcionLarga || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
       const especificaciones = {}; const beneficios = []; const parrafos = [];
+      const instrucciones = []; const precauciones = []; const incluye = [];
+      let seccion = '';
       lineas.forEach(l => {
-        const m = l.match(/^marca:\s*(.+)$/i);
-        if (m) especificaciones.Marca = m[1].replace(/\s*\(verificar[^)]*\)/i, '').trim();
-        else if (/^[-•]\s*/.test(l)) beneficios.push(l.replace(/^[-•]\s*/, ''));
-        else parrafos.push(l);
+        const m = l.match(/^(marca|ingredientes clave|contenido|c[oó]mo se usa|precauciones|contraindicaciones|incluye)\s*:\s*(.*)$/i);
+        if (m) {
+          const k = m[1].toLowerCase(); const v = m[2].trim();
+          if (k === 'marca') { especificaciones.Marca = v.replace(/\s*\(verificar[^)]*\)/i, '').trim(); seccion = ''; }
+          else if (k.startsWith('ingredientes')) { if (v) especificaciones['Ingredientes clave'] = v; seccion = ''; }
+          else if (k === 'contenido') { if (v) especificaciones.Contenido = v; seccion = ''; }
+          else { seccion = k.startsWith('c') && k.includes('usa') ? 'uso' : k === 'incluye' ? 'incluye' : 'prec'; if (v) (seccion === 'uso' ? instrucciones : seccion === 'incluye' ? incluye : precauciones).push(v); }
+          return;
+        }
+        const viñeta = /^[-•]\s*/.test(l); const txt = l.replace(/^[-•]\s*/, '');
+        if (seccion === 'uso') instrucciones.push(txt);
+        else if (seccion === 'prec') precauciones.push(txt);
+        else if (seccion === 'incluye') incluye.push(txt);
+        else if (viñeta) beneficios.push(txt);
+        else parrafos.push(txt);
       });
+      const guia = String(e.guia || '').trim();
+      const textoGuia = /^gu[ií]a/i.test(guia) ? `Con tu compra te enviamos por WhatsApp una ${guia.toLowerCase()} en español.` : '';
       catalogo.productos.push({
         id: e.id, nombre: e.nombre, categoria: c.id, precio,
         imagenes: e.foto ? [e.foto] : [], descripcionCorta: e.descripcion || '',
-        descripcion: parrafos.join('\n'), beneficios, especificaciones,
+        descripcion: parrafos.join('\n'), beneficios, especificaciones, instrucciones, precauciones,
+        incluye: textoGuia ? incluye.concat([textoGuia.replace(/^Con tu compra te enviamos por WhatsApp una /, '').replace(/\.$/, '').replace(/^./, c => c.toUpperCase())]) : incluye,
+        guia: textoGuia,
         modalidad: enStock ? 'stock' : 'encargo',
         consultar: estado.startsWith('consultar'),
         disponible: !agotado, visible: true, nuevo: true, destacado: enStock && !agotado, orden: (enStock ? 500 : 1000) + i,
@@ -551,6 +570,7 @@
         <div class="precio"><span class="precio-actual">${T.formatoPrecio(p.precio)}</span>${d > 0 ? `<span class="precio-anterior">${T.formatoPrecio(p.precioAnterior)}</span>` : ''}</div>
         ${T.textoStock(p) ? `<span class="stock-txt">${T.textoStock(p)}</span>` : ''}
         ${T.esEncargo(p) && p.disponible ? '<span class="stock-txt">Llega en máximo 15 días</span>' : ''}
+        ${p.guia ? '<span class="stock-txt">Incluye guía en español</span>' : ''}
         <div class="tarjeta-acciones">
           ${p.disponible
             ? `<button class="btn btn-whatsapp" data-wa="${T.esc(p.id)}">${T.ico.wa} Pedir</button>
