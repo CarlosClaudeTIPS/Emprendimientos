@@ -15,3 +15,10 @@
 - Respaldo manual: leer la pestaña y regenerar `data/encargo.json` (`{ actualizado, productos: [{ id, estado, categoria, nombre, descripcion, foto, precio, modalidad, ofertaHasta, publicado }] }`), probar, commit y push. `js/app.js` (`T.agregarEncargo`) los mezcla con el catálogo, les pone la etiqueta "Por encargo" y el mensaje de WhatsApp de encargo (llega en máximo 15 días, se separa con $20.000 o el 10%).
 - Estados: "Disponible por encargo", "Consultar disponibilidad", "Agotado - avisar cuando vuelva" (botón "Avísame cuando vuelva") y "Oculto" (no sale).
 - Columna "Descripción completa" de la hoja: primera línea `Marca: X`, párrafo, viñetas `- ` (beneficios) y secciones `Cómo se usa:`, `Precauciones:`, `Ingredientes clave: ...`, `Incluye:`. Columna "Guía en español que se envía" (Guía de uso / de instalación / No aplica) → la ficha dice que se envía la guía por WhatsApp. En cosméticos (empaques en inglés) la descripción debe ser fiel a la etiqueta, con modo de uso y contraindicaciones.
+
+## Checklist obligatorio cada vez que se agrega un producto a la venta (regla de Carlos: "hazle TODO")
+1. Nombre con marca, categoría correcta, foto (URL de Amazon `_AC_SL500_`) y link "Ver producto".
+2. Descripción corta y descripción completa fiel a la etiqueta/página oficial, en español: `Marca:`, beneficios, `Cómo se usa:`, `Precauciones:` (contraindicaciones, alergias, embarazo, niños), `Ingredientes clave:` en cosméticos, `Incluye:` si aplica.
+3. Guía en español que se envía (uso / instalación / no aplica) y la guía misma lista para mandar por WhatsApp.
+4. Costo, precio de referencia en Colombia (Mercado Libre y Google) y precio sugerido; preguntarle a Carlos el precio antes de marcar Publicar.
+5. Modalidad (Disponible ya / Por encargo), unidades y estado. Verificar que la oferta siga vigente y que se envíe a Colombia.
