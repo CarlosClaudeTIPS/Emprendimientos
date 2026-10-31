@@ -16,7 +16,7 @@
     const buscadores = T.$$('.buscador input'); buscadores.forEach(i => i.value = estado.q);
 
     const chips = () => {
-      const def = [['', 'Todo'], ['destacados', 'Destacados'], ['populares', 'Populares'], ['nuevos', 'Novedades'], ['ofertas', 'Ofertas']];
+      const def = [['', 'Todo'], ['destacados', 'Destacados'], ['populares', 'Populares'], ['nuevos', 'Novedades'], ['ofertas', 'Ofertas']].concat(T.visibles().some(T.esEncargo) ? [['encargo', 'Por encargo']] : []);
       T.$('#chips').innerHTML = def.map(([k, t]) => `<a class="chip ${estado.f === k && !estado.cat ? 'activo' : ''}" href="catalogo.html${k ? '?f=' + k : ''}">${t}</a>`).join('') +
         cats.map(c => `<a class="chip ${estado.cat === c.id ? 'activo' : ''}" href="catalogo.html?cat=${encodeURIComponent(c.id)}">${T.esc(c.nombre)}</a>`).join('');
     };
@@ -26,6 +26,7 @@
       if (estado.cat) lista = lista.filter(p => p.categoria === estado.cat);
       if (estado.f === 'destacados') lista = lista.filter(p => p.destacado);
       if (estado.f === 'populares') lista = lista.filter(p => p.popular);
+      if (estado.f === 'encargo') lista = lista.filter(T.esEncargo);
       if (estado.nuevos) lista = lista.filter(p => p.nuevo);
       if (estado.ofertas) lista = lista.filter(p => p.oferta);
       if (estado.disponibles) lista = lista.filter(p => p.disponible);
@@ -40,8 +41,8 @@
         default: if (!estado.q) lista = lista.slice().sort((a, b) => (b.disponible - a.disponible) || (b.destacado - a.destacado) || ((a.orden || 0) - (b.orden || 0)));
       }
       const cat = T.categoria(estado.cat);
-      T.$('#titulo-catalogo').textContent = estado.q ? `Resultados para “${estado.q}”` : cat ? cat.nombre : ({ nuevos: 'Novedades', ofertas: 'Ofertas', destacados: 'Destacados', populares: 'Populares' })[estado.f] || 'Catálogo';
-      T.$('#sub-catalogo').textContent = cat ? (cat.descripcion || '') : '';
+      T.$('#titulo-catalogo').textContent = estado.q ? `Resultados para “${estado.q}”` : cat ? cat.nombre : ({ nuevos: 'Novedades', ofertas: 'Ofertas', destacados: 'Destacados', populares: 'Populares', encargo: 'Por encargo' })[estado.f] || 'Catálogo';
+      T.$('#sub-catalogo').textContent = cat ? (cat.descripcion || '') : estado.f === 'encargo' ? T.TEXTO_ENCARGO : '';
       T.$('#conteo').textContent = `${lista.length} producto${lista.length === 1 ? '' : 's'}`;
       T.renderGrid('#grid', lista, (estado.q ? 'No encontramos productos con esa búsqueda. Prueba con otra palabra o <a href="catalogo.html">mira todo el catálogo</a>.' : 'No hay productos con estos filtros.') + '<div style="margin-top:1.2rem;text-align:left">' + T.encuesta('¿Buscabas algo que no tenemos?') + '</div>');
       chips();

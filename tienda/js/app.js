@@ -70,6 +70,13 @@
       if (bc) { catalogo = bc; T.modoBorrador = true; }
       if (bcfg) { config = bcfg; T.modoBorrador = true; }
     }
+    /* Productos por encargo: salen de la pestaña "Publicado en tienda" del
+       Google Sheet "Catálogo Nivytek (tienda)" y se publican en data/encargo.json.
+       Si el archivo falta o falla, la tienda sigue funcionando sin ellos. */
+    try {
+      const encRes = await fetch(T.ruta('data/encargo.json'), { cache: 'no-cache' });
+      if (encRes.ok) T.agregarEncargo(catalogo, await encRes.json());
+    } catch (e) { /* sin productos por encargo */ }
     catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto);
     catalogo.categorias = (catalogo.categorias || []).slice().sort((a, b) => (a.orden || 0) - (b.orden || 0));
     T.datos = { config, catalogo };
@@ -78,6 +85,51 @@
     return T.datos;
   };
 
+  /* Categorías de la hoja de ofertas -> categorías de la tienda */
+  T.CATEGORIAS_ENCARGO = {
+    'hogar y cocina': { id: 'hogar', nombre: 'Hogar y cocina', icono: 'svg:casa' },
+    'tecnología': { id: 'tecnologia', nombre: 'Tecnología y gadgets', icono: 'svg:enchufe' },
+    'cuidado personal': { id: 'cuidado-personal', nombre: 'Cuidado personal', icono: 'svg:hoja' },
+    'cuidado personal y belleza': { id: 'cuidado-personal', nombre: 'Cuidado personal', icono: 'svg:hoja' },
+    'moda y accesorios': { id: 'moda', nombre: 'Moda y accesorios', icono: 'svg:bolso' },
+    'carro y moto': { id: 'carro-moto', nombre: 'Carro y moto', icono: 'svg:etiqueta' },
+    'bebés y niños': { id: 'bebes-ninos', nombre: 'Bebés y niños', icono: 'svg:etiqueta' },
+    'mascotas': { id: 'mascotas', nombre: 'Mascotas', icono: 'svg:etiqueta' },
+    'deporte': { id: 'deporte', nombre: 'Deporte', icono: 'svg:etiqueta' },
+    'videojuegos': { id: 'videojuegos', nombre: 'Videojuegos', icono: 'svg:etiqueta' },
+    'herramientas': { id: 'herramientas', nombre: 'Herramientas', icono: 'svg:etiqueta' },
+    'oficina y estudio': { id: 'oficina', nombre: 'Oficina y estudio', icono: 'svg:etiqueta' },
+    'navidad y fiestas': { id: 'navidad', nombre: 'Navidad y fiestas', icono: 'svg:estrella' }
+  };
+
+  T.agregarEncargo = (catalogo, enc) => {
+    const lista = (enc && Array.isArray(enc.productos)) ? enc.productos : [];
+    catalogo.productos = catalogo.productos || [];
+    catalogo.categorias = catalogo.categorias || [];
+    lista.forEach((e, i) => {
+      const estado = String(e.estado || '').toLowerCase();
+      const precio = Number(e.precio) || 0;
+      if (!e.id || !e.nombre || !precio || estado.startsWith('oculto')) return;
+      if (catalogo.productos.some(p => p.id === e.id)) return;
+      const clave = String(e.categoria || '').trim().toLowerCase();
+      const c = T.CATEGORIAS_ENCARGO[clave] || { id: 'otros', nombre: 'Otros', icono: 'svg:estrella' };
+      if (!catalogo.categorias.some(x => x.id === c.id)) {
+        catalogo.categorias.push({ id: c.id, nombre: c.nombre, icono: c.icono, descripcion: '', orden: 50 + catalogo.categorias.length, visible: true });
+      }
+      const agotado = estado.startsWith('agotado');
+      catalogo.productos.push({
+        id: e.id, nombre: e.nombre, categoria: c.id, precio,
+        imagenes: e.foto ? [e.foto] : [], descripcionCorta: e.descripcion || '',
+        modalidad: e.modalidad === 'Disponible ya' ? 'stock' : 'encargo',
+        consultar: estado.startsWith('consultar'),
+        disponible: !agotado, visible: true, nuevo: true, orden: 1000 + i,
+        fechaCreacion: e.publicado || '', ofertaHasta: e.ofertaHasta || ''
+      });
+    });
+  };
+  T.esEncargo = (p) => p.modalidad === 'encargo';
+  T.TEXTO_ENCARGO = 'Por encargo: llega en máximo 15 días. Lo separas con $20.000 o el 10% del valor.';
+
   T.normalizarProducto = (p) => Object.assign({
     precioAnterior: null, disponible: true, nuevo: false, oferta: false, destacado: false, popular: false,
     visible: true, orden: 0, imagenes: [], video: '', descripcionCorta: '', descripcion: '', problema: '',
@@ -85,7 +137,7 @@
     variantes: [], palabrasClave: [], relacionados: [], fechaCreacion: '', stock: null
   }, p, { precio: Number(p.precio) || 0, precioAnterior: p.precioAnterior ? Number(p.precioAnterior) : null, stock: (p.stock === '' || p.stock == null) ? null : Math.max(0, Math.round(Number(p.stock)) || 0) });
 
-  T.vendido = (p) => !p.disponible && p.stock === 0;
+  T.vendido = (p) => !p.disponible && p.stock === 0 && !T.esEncargo(p);
   T.textoStock = (p) => (p.disponible && p.stock != null && p.stock > 0) ? `Quedan ${p.stock} unidad${p.stock === 1 ? '' : 'es'}` : '';
   T.visibles = () => T.datos.catalogo.productos.filter(p => p.visible !== false).sort((a, b) => (a.orden || 0) - (b.orden || 0));
   T.categoria = (id) => T.datos.catalogo.categorias.find(c => c.id === id);
@@ -113,7 +165,7 @@
   /* ---------- URL del producto y compartir ---------- */
   T.urlProducto = (p, absoluta) => {
     const cfg = T.datos.config.sitio || {};
-    const rel = cfg.paginasEstaticas ? ('p/' + encodeURIComponent(p.id) + '.html') : ('producto.html?p=' + encodeURIComponent(p.id));
+    const rel = (cfg.paginasEstaticas && !p.modalidad) ? ('p/' + encodeURIComponent(p.id) + '.html') : ('producto.html?p=' + encodeURIComponent(p.id));
     if (!absoluta) return T.ruta(rel);
     const base = new URL(T.ruta(rel), location.href);
     return base.href;
@@ -138,7 +190,11 @@
 
   T.mensajeProducto = (p, variantes, tipo, cantidad) => {
     const wa = T.datos.config.whatsapp || {};
-    const tpl = tipo === 'interes' ? (wa.mensajeInteres || 'Hola, vi que el producto {nombre} ya se vendió. Me interesa si consiguen otro. {enlace}') : tipo === 'disponibilidad' ? wa.mensajeDisponibilidad : wa.mensajeProducto;
+    const tpl = T.esEncargo(p)
+      ? (!p.disponible ? 'Hola, vi que {nombre} está agotado. ¿Me avisan cuando vuelva?\n{enlace}'
+        : tipo === 'disponibilidad' || p.consultar ? 'Hola, ¿sigue disponible por encargo {nombre} ({precio})?\n{variantes}{enlace}'
+        : 'Hola, quiero pedir por encargo {nombre} ({precio}). ¿Me confirman si la oferta sigue activa para separarlo?\n{variantes}{enlace}')
+      : tipo === 'interes' ? (wa.mensajeInteres || 'Hola, vi que el producto {nombre} ya se vendió. Me interesa si consiguen otro. {enlace}') : tipo === 'disponibilidad' ? wa.mensajeDisponibilidad : wa.mensajeProducto;
     let vTxt = variantes && Object.keys(variantes).length
       ? Object.entries(variantes).map(([k, v]) => `${k}: ${v}`).join(', ') + '\n' : '';
     if (cantidad && cantidad > 1) vTxt = `Cantidad: ${cantidad}\n` + vTxt;
@@ -433,7 +489,8 @@
       !p.disponible && `<span class="etiqueta etiqueta-agotado">${T.vendido(p) ? 'Vendido' : 'Agotado'}</span>`,
       p.disponible && p.oferta && d > 0 && `<span class="etiqueta etiqueta-oferta">-${d}%</span>`,
       p.disponible && p.oferta && d === 0 && '<span class="etiqueta etiqueta-oferta">Oferta</span>',
-      p.nuevo && '<span class="etiqueta etiqueta-nuevo">Nuevo</span>',
+      T.esEncargo(p) && '<span class="etiqueta etiqueta-encargo">Por encargo</span>',
+      p.nuevo && !T.esEncargo(p) && '<span class="etiqueta etiqueta-nuevo">Nuevo</span>',
       p.popular && '<span class="etiqueta etiqueta-popular">Popular</span>'
     ].filter(Boolean).join('');
     const url = T.urlProducto(p);
@@ -449,11 +506,12 @@
         ${p.descripcionCorta ? `<p class="tarjeta-desc">${T.esc(p.descripcionCorta)}</p>` : ''}
         <div class="precio"><span class="precio-actual">${T.formatoPrecio(p.precio)}</span>${d > 0 ? `<span class="precio-anterior">${T.formatoPrecio(p.precioAnterior)}</span>` : ''}</div>
         ${T.textoStock(p) ? `<span class="stock-txt">${T.textoStock(p)}</span>` : ''}
+        ${T.esEncargo(p) && p.disponible ? '<span class="stock-txt">Llega en máximo 15 días</span>' : ''}
         <div class="tarjeta-acciones">
           ${p.disponible
             ? `<button class="btn btn-whatsapp" data-wa="${T.esc(p.id)}">${T.ico.wa} Pedir</button>
                <button class="icono-btn" data-carrito="${T.esc(p.id)}" aria-label="Agregar al carrito" title="Agregar al carrito">${T.ico.mas}</button>`
-            : `<button class="btn btn-suave" data-wa-disp="${T.esc(p.id)}">${T.ico.wa} ${T.vendido(p) ? 'Quiero uno igual' : 'Avísame'}</button>`}
+            : `<button class="btn btn-suave" data-wa-disp="${T.esc(p.id)}">${T.ico.wa} ${T.vendido(p) ? 'Quiero uno igual' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame'}</button>`}
         </div>
       </div>
     </article>`;
