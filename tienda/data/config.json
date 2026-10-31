@@ -170,5 +170,9 @@
       "titulo": "Recibe",
       "texto": "Entrega personal en Bogotá o envío por transportadora. Tiempo: [COMPLETAR: días]. Revisa el producto al recibirlo."
     }
-  ]
+  ],
+  "vitrina": {
+    "csv": "https://docs.google.com/spreadsheets/d/1m1vI1PVkYpc2KIuLPcT_rlCTLbAcxF7hPgxuHE19x5s/pub?gid=778&single=true&output=csv",
+    "nota": "Pestaña 'Vitrina (pública)' del Google Sheet 'Catálogo Nivytek (tienda)', publicada en la web como CSV. Solo trae los productos con la casilla Publicar marcada."
+  }
 }

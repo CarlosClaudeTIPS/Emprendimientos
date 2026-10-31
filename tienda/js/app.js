@@ -73,10 +73,21 @@
     /* Productos por encargo: salen de la pestaña "Publicado en tienda" del
        Google Sheet "Catálogo Nivytek (tienda)" y se publican en data/encargo.json.
        Si el archivo falta o falla, la tienda sigue funcionando sin ellos. */
-    try {
-      const encRes = await fetch(T.ruta('data/encargo.json'), { cache: 'no-cache' });
-      if (encRes.ok) T.agregarEncargo(catalogo, await encRes.json());
-    } catch (e) { /* sin productos por encargo */ }
+    let enc = null;
+    const csvVitrina = (config.vitrina || {}).csv;
+    if (csvVitrina) {
+      try {
+        const r = await fetch(csvVitrina, { cache: 'no-cache' });
+        if (r.ok) enc = { productos: T.leerCSV(await r.text()) };
+      } catch (e) { /* la hoja no respondió: se usa la copia local */ }
+    }
+    if (!enc) {
+      try {
+        const encRes = await fetch(T.ruta('data/encargo.json'), { cache: 'no-cache' });
+        if (encRes.ok) enc = await encRes.json();
+      } catch (e) { /* sin productos de la hoja */ }
+    }
+    if (enc) T.agregarEncargo(catalogo, enc);
     catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto);
     catalogo.categorias = (catalogo.categorias || []).slice().sort((a, b) => (a.orden || 0) - (b.orden || 0));
     T.datos = { config, catalogo };
@@ -102,6 +113,24 @@
     'navidad y fiestas': { id: 'navidad', nombre: 'Navidad y fiestas', icono: 'svg:estrella' }
   };
 
+  /* CSV publicado de la pestaña "Vitrina (pública)" -> lista de objetos por encabezado */
+  T.leerCSV = (txt) => {
+    const filas = []; let fila = [], campo = '', q = false;
+    for (let i = 0; i < txt.length; i++) {
+      const c = txt[i];
+      if (q) { if (c === '"') { if (txt[i + 1] === '"') { campo += '"'; i++; } else q = false; } else campo += c; }
+      else if (c === '"') q = true;
+      else if (c === ',') { fila.push(campo); campo = ''; }
+      else if (c === '\n') { fila.push(campo); filas.push(fila); fila = []; campo = ''; }
+      else if (c !== '\r') campo += c;
+    }
+    if (campo || fila.length) { fila.push(campo); filas.push(fila); }
+    const enc = (filas.shift() || []).map(h => h.trim());
+    return filas.map(f => Object.fromEntries(enc.map((h, i) => [h, (f[i] || '').trim()])))
+      .map(o => Object.assign(o, { nombre: o.nombre, precio: String(o.precio || '').replace(/[^\d]/g, '') }))
+      .filter(o => o.id);
+  };
+
   T.agregarEncargo = (catalogo, enc) => {
     const lista = (enc && Array.isArray(enc.productos)) ? enc.productos : [];
     catalogo.productos = catalogo.productos || [];
@@ -117,12 +146,15 @@
         catalogo.categorias.push({ id: c.id, nombre: c.nombre, icono: c.icono, descripcion: '', orden: 50 + catalogo.categorias.length, visible: true });
       }
       const agotado = estado.startsWith('agotado');
+      const enStock = String(e.modalidad || '').toLowerCase().startsWith('disponible ya');
+      const unidades = parseInt(e.unidades, 10);
       catalogo.productos.push({
         id: e.id, nombre: e.nombre, categoria: c.id, precio,
         imagenes: e.foto ? [e.foto] : [], descripcionCorta: e.descripcion || '',
-        modalidad: e.modalidad === 'Disponible ya' ? 'stock' : 'encargo',
+        modalidad: enStock ? 'stock' : 'encargo',
         consultar: estado.startsWith('consultar'),
-        disponible: !agotado, visible: true, nuevo: true, orden: 1000 + i,
+        disponible: !agotado, visible: true, nuevo: true, destacado: enStock && !agotado, orden: (enStock ? 500 : 1000) + i,
+        stock: enStock ? (agotado ? 0 : (unidades > 0 ? unidades : null)) : null,
         fechaCreacion: e.publicado || '', ofertaHasta: e.ofertaHasta || ''
       });
     });
