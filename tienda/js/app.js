@@ -148,9 +148,19 @@
       const agotado = estado.startsWith('agotado');
       const enStock = String(e.modalidad || '').toLowerCase().startsWith('disponible ya');
       const unidades = parseInt(e.unidades, 10);
+      /* Descripción completa: "Marca: X" va a especificaciones, las líneas "- ..." a beneficios */
+      const lineas = String(e.descripcionLarga || '').split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const especificaciones = {}; const beneficios = []; const parrafos = [];
+      lineas.forEach(l => {
+        const m = l.match(/^marca:\s*(.+)$/i);
+        if (m) especificaciones.Marca = m[1].replace(/\s*\(verificar[^)]*\)/i, '').trim();
+        else if (/^[-•]\s*/.test(l)) beneficios.push(l.replace(/^[-•]\s*/, ''));
+        else parrafos.push(l);
+      });
       catalogo.productos.push({
         id: e.id, nombre: e.nombre, categoria: c.id, precio,
         imagenes: e.foto ? [e.foto] : [], descripcionCorta: e.descripcion || '',
+        descripcion: parrafos.join('\n'), beneficios, especificaciones,
         modalidad: enStock ? 'stock' : 'encargo',
         consultar: estado.startsWith('consultar'),
         disponible: !agotado, visible: true, nuevo: true, destacado: enStock && !agotado, orden: (enStock ? 500 : 1000) + i,
