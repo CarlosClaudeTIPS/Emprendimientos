@@ -83,11 +83,16 @@
         if (txt && !/^\s*</.test(txt) && /^id,/i.test(txt.trim())) { const filas = T.leerCSV(txt); if (filas.length) enc = { productos: filas }; }
       } catch (e) { /* la hoja no respondió: se usa la copia local */ }
     }
-    if (!enc) {
-      try {
-        const encRes = await fetch(T.ruta('data/encargo.json'), { cache: 'no-cache' });
-        if (encRes.ok) enc = await encRes.json();
-      } catch (e) { /* sin productos de la hoja */ }
+    let local = null;
+    try {
+      const encRes = await fetch(T.ruta('data/encargo.json'), { cache: 'no-cache' });
+      if (encRes.ok) local = await encRes.json();
+    } catch (e) { /* sin copia local */ }
+    if (!enc) enc = local;
+    /* Fotos mejoradas guardadas en la tienda: tienen prioridad sobre la URL externa de la hoja */
+    if (enc && local && local !== enc) {
+      const fotos = Object.fromEntries((local.productos || []).filter(p => p.foto && !/^https?:/.test(p.foto)).map(p => [p.id, p.foto]));
+      (enc.productos || []).forEach(p => { if (fotos[p.id]) p.foto = fotos[p.id]; });
     }
     if (enc) T.agregarEncargo(catalogo, enc);
     catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto);
