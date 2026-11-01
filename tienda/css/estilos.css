@@ -419,9 +419,9 @@ details.faq p { margin: .5rem 0 0; color: var(--texto-suave); }
 /* Galería deslizable con puntos */
 .galeria-principal { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .galeria-principal::-webkit-scrollbar { display: none; }
-.galeria-principal > .slide { flex: 0 0 100%; scroll-snap-align: start; height: 100%; display: grid; place-items: center; cursor: zoom-in; }
-.galeria-principal > .slide img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
-.galeria-principal > .slide video { width: 100%; height: 100%; object-fit: contain; background: #000; cursor: default; }
+.galeria-principal > .slide { flex: 0 0 100%; scroll-snap-align: start; position: relative; aspect-ratio: 1 / 1; cursor: zoom-in; }
+.galeria-principal > .slide img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #fff; }
+.galeria-principal > .slide video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: #000; cursor: default; }
 .galeria-puntos { display: flex; justify-content: center; gap: .35rem; margin-top: .5rem; }
 .galeria-puntos span { width: 7px; height: 7px; border-radius: 50%; background: var(--borde); transition: background .2s, transform .2s; }
 .galeria-puntos span.activo { background: var(--primario); transform: scale(1.3); }
