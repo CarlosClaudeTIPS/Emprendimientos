@@ -161,3 +161,12 @@ Pendientes: convocatorias 2027-2, subtipos con imágenes licenciadas, dificultad
   Una prueba **asignada por el docente** (con `asignacion_id`) se abre siempre, aunque el estudiante no haya hecho el camino:
   así se habilita un simulacro para todo el colegio con fecha límite. «Ver como estudiante» tiene dos modos: **Real**
   (con los mismos candados) y **Completa** (todo abierto), en la franja amarilla.
+
+## Lanzamiento educativo (rama `lanzamiento-edu`)
+
+- **Portada pública estática**: vive en `index.html` (`#portada`). La app (React) solo se descarga con sesión, en `#/entrar` o al llegar por enlace de correo (`src/main.jsx`, arranque en dos tiempos). La pantalla de acceso es `src/components/Login.jsx`; la portada se muestra u oculta con `src/lib/portada.js`.
+- **Registro con acudiente** (Ley 1581): `registrarEstudiante` exige nombre de quien autoriza y la casilla; se guardan en `perfiles.acudiente_nombre` y `perfiles.autorizacion_acudiente` (migración 010, incluida en `supabase/TODAS-LAS-MIGRACIONES-PENDIENTES.sql`). Si la nube no tiene la migración, el registro reintenta sin esas columnas.
+- **Política de privacidad**: `public/privacidad.html` (borrador marcado para revisión; datos en amarillo pendientes).
+- **PIN**: una sola regla, entre 4 y 8 dígitos (`sesion.js`, `api/pin.js`, Admin y ficha del estudiante).
+- **PWA**: el service worker se registra desde `src/lib/pwa.js` solo cuando hay sesión.
+- **Medición**: píxel de Meta compartido en `portal/site/shared/barra.js`; el ID va en `portal.config.js → analitica.metaPixel`. El registro dispara `window.nivytekEvento('Lead', …)`.
