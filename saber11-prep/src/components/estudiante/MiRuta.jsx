@@ -3,7 +3,7 @@ import { cicloActivo, listarCiclos, estadoCiclo, programa, formatoFecha } from '
 import { Titulo, Badge, Barra } from '../ui'
 import { Compass } from 'lucide-react'
 import { modoCarreraActivo, prioridadesDeUsuario, horasPorPrueba, formatoMinutos, carreraPorId, NOMBRE_NIVEL } from '../../lib/carreras'
-import { MATERIAS } from '../Login'
+import { MATERIAS } from '../../lib/materias'
 import { ir } from '../../lib/nav'
 import RutaMejorar from './RutaMejorar'
 

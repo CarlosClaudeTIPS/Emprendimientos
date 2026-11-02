@@ -8,35 +8,169 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"EducationalOrganization","name":"Nivytek · ICFES","url":"https://nivytek.com/icfes/","logo":"https://nivytek.com/shared/logo.svg","email":"nivytek@hotmail.com","telephone":"+573043134833","areaServed":{"@type":"City","name":"Bogotá"},"parentOrganization":{"@type":"Organization","name":"Nivytek","url":"https://nivytek.com/","logo":"https://nivytek.com/shared/logo.svg","email":"nivytek@hotmail.com"},
-     "makesOffer":{"@type":"Offer","itemOffered":{"@type":"Service","name":"Preparación para la prueba Saber 11 (ICFES)","serviceType":"Preparación ICFES","description":"Plataforma de práctica con preguntas explicadas y simulacros, y clases individuales o en grupos de hasta 5 estudiantes.","areaServed":"Bogotá, Colombia","provider":{"@type":"Organization","name":"Nivytek"}}}}
+    {"@context":"https://schema.org","@type":"EducationalOrganization","name":"Nivytek · Saber 11","url":"https://nivytek.com/icfes/","logo":"https://nivytek.com/shared/logo.svg","email":"nivytek@hotmail.com","telephone":"+573043134833","areaServed":{"@type":"City","name":"Bogotá"},"parentOrganization":{"@type":"Organization","name":"Nivytek","url":"https://nivytek.com/","logo":"https://nivytek.com/shared/logo.svg","email":"nivytek@hotmail.com"},
+     "makesOffer":{"@type":"Offer","itemOffered":{"@type":"Service","name":"Preparación para la prueba Saber 11 (ICFES) y exámenes de admisión","serviceType":"Preparación Saber 11","description":"Plataforma de práctica con preguntas explicadas, simulacros y rutas para los exámenes de admisión de la Universidad Nacional y la Universidad de Antioquia, con acompañamiento docente en clases individuales o en grupos de hasta 5 estudiantes.","areaServed":"Bogotá, Colombia","provider":{"@type":"Organization","name":"Nivytek"}}}}
     </script>
     <link rel="icon" href="/icono.svg" type="image/svg+xml" />
-    <title>Nivytek · Saber 11 (ICFES) y exámenes de admisión | Preparación</title>
-    <meta name="description" content="Preparación para la prueba Saber 11 (ICFES) y para los exámenes de admisión propios de la Universidad Nacional y la Universidad de Antioquia: práctica con preguntas explicadas, simulacros y seguimiento. Clases individuales o en grupos de hasta 5 estudiantes." />
+    <link rel="canonical" href="https://nivytek.com/icfes/" />
+    <title>Nivytek · Saber 11 (ICFES) y exámenes de admisión | Preparación para estudiantes y familias</title>
+    <meta name="description" content="Preparación para la prueba Saber 11 (ICFES) y para los exámenes de admisión de la Universidad Nacional y la Universidad de Antioquia: preguntas explicadas paso a paso, simulacros cronometrados, seguimiento de errores y acompañamiento docente en clases individuales o en grupos de hasta 5 estudiantes." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nivytek" />
+    <meta property="og:locale" content="es_CO" />
     <meta property="og:title" content="Nivytek · Saber 11 (ICFES) y exámenes de admisión" />
-    <meta property="og:description" content="Plataforma de práctica y clases individuales o en grupos de hasta 5 estudiantes. Más información por WhatsApp." />
+    <meta property="og:description" content="Preguntas explicadas, simulacros y rutas para la U. Nacional y la U. de Antioquia, con acompañamiento docente. Escríbenos por WhatsApp." />
     <meta property="og:url" content="https://nivytek.com/icfes/" />
     <meta property="og:image" content="https://nivytek.com/icfes/og-icfes.png" />
     <meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
-  <!-- Conteo de visitas (Vercel Analytics): se activa en Vercel → proyecto → Analytics. Sin cookies. -->
-<script defer src="/_vercel/insights/script.js"></script>
-</head>
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      /* La portada es HTML estático (la ven Google, las vistas previas y quien aún no tiene cuenta).
+         Se oculta de inmediato si la persona va a entrar (#/entrar), llegó por un enlace de
+         correo o ya tenía sesión en este navegador; así no parpadea antes de que cargue la app. */
+      (function () {
+        try {
+          var h = location.hash || '';
+          var sesion = localStorage.getItem('nivytek_sesion') === '1' || Object.keys(localStorage).some(function (k) { return /^sb-.*-auth-token$/.test(k); });
+          if (/^#\/entrar/.test(h) || /type=(invite|recovery|magiclink)/.test(h) || sesion) document.documentElement.classList.add('sin-portada');
+        } catch (e) {}
+      })();
+    </script>
+    <style>
+      .sin-portada #portada { display: none; }
+      #portada details summary { cursor: pointer; list-style: none; }
+      #portada details summary::-webkit-details-marker { display: none; }
+      #portada details[open] summary .flecha { transform: rotate(180deg); }
+    </style>
+  </head>
   <body>
-    <div id="root">
-      <!-- Contenido inicial para buscadores y vistas previas; la aplicación lo reemplaza al cargar. -->
-      <main style="max-width:720px;margin:0 auto;padding:32px 20px;font-family:Poppins,system-ui,sans-serif;color:#2B2A63">
-        <h1>Nivytek · Saber 11 (ICFES) y exámenes de admisión: preparación</h1>
-        <p>Plataforma de práctica para estudiantes de 10.º y 11.º: preguntas por materia con explicación paso a paso, simulacros cronometrados, seguimiento de errores, modo carrera para priorizar materias y guía de universidades. Los docentes crean grupos, asignan pruebas y ven el progreso de cada estudiante.</p>
-        <h2>Preguntas frecuentes</h2>
-        <h3>¿Cómo entro?</h3><p>Con el usuario y el PIN que te entrega tu docente. Si los olvidaste, pídele que los restablezca.</p>
-        <h3>¿Qué materias cubre?</h3><p>Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés, con la estructura de la prueba Saber 11.</p>
-        <h3>¿Sirve desde el celular?</h3><p>Sí. Funciona en el navegador del celular y del computador, y tu progreso se guarda en tu cuenta.</p>
-        <p><a href="https://nivytek.com/">Volver a Nivytek</a></p>
+    <!-- ========== PORTADA PÚBLICA (estática) ========== -->
+    <div id="portada" class="min-h-screen bg-dark-800">
+      <header class="sticky top-0 z-30 bg-dark-800/95 backdrop-blur border-b border-dark-700">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+          <a href="#inicio" class="flex items-center gap-2 min-w-0">
+            <img src="/icono.svg" alt="Logotipo de Nivytek · Saber 11" class="w-9 h-9" width="36" height="36" />
+            <span class="text-base sm:text-lg md:text-xl font-bold text-brand-navy whitespace-nowrap">Nivytek<span class="text-brand-blue"> · Saber 11</span></span>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-brand-navy" aria-label="Secciones de la portada">
+            <a href="#incluye">Qué incluye</a>
+            <a href="#como">Cómo se trabaja</a>
+            <a href="#inscribirse">Cómo inscribirse</a>
+            <a href="#preguntas">Preguntas</a>
+          </nav>
+          <a href="#/entrar" class="btn-primary !py-2 !px-4 whitespace-nowrap text-sm sm:text-base">Ingresar</a>
+        </div>
+      </header>
+
+      <main id="inicio">
+        <!-- Hero -->
+        <section class="relative overflow-hidden bg-dark-900">
+          <div class="max-w-6xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-5 gap-10 items-center">
+            <div class="md:col-span-3">
+              <p class="titulo-contorno text-6xl md:text-8xl font-extrabold leading-none" aria-hidden="true">SABER 11°</p>
+              <h1 class="mt-3 text-3xl md:text-5xl font-bold leading-tight">Preparación para la prueba Saber 11 (ICFES) y para los exámenes de admisión</h1>
+              <p class="mt-4 text-gray-300 text-base md:text-lg max-w-xl">Una plataforma para estudiantes de 10.º y 11.º, con acompañamiento de docentes: preguntas al estilo de la prueba con la explicación de cada opción, simulacros cronometrados y rutas propias para los exámenes de la Universidad Nacional y la Universidad de Antioquia. Funciona en el celular y en el computador.</p>
+              <div class="mt-7 flex flex-wrap gap-3">
+                <a class="btn-primary !px-6 !py-3 text-base" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20Saber%2011%20de%20Nivytek." target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+                <a class="btn-secondary !px-6 !py-3 text-base" href="#/entrar">Ya tengo cuenta: ingresar</a>
+              </div>
+              <p class="mt-4 text-xs text-gray-500 max-w-xl">Nivytek es un servicio independiente de preparación. No tiene relación con el ICFES, la Universidad Nacional de Colombia, la Universidad de Antioquia ni con ninguna otra institución, y no promete cupos ni puntajes.</p>
+            </div>
+            <div class="md:col-span-2 grid grid-cols-2 gap-3 text-sm">
+              <div class="card !p-4"><p class="text-2xl font-bold text-brand-blue">5</p><p class="text-gray-400">pruebas del Saber 11: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés</p></div>
+              <div class="card !p-4"><p class="text-2xl font-bold text-brand-blue">2</p><p class="text-gray-400">exámenes de admisión con ruta propia: U. Nacional y U. de Antioquia</p></div>
+              <div class="card !p-4"><p class="text-2xl font-bold text-brand-blue">1</p><p class="text-gray-400">explicación por cada opción de respuesta: por qué es correcta o por qué no</p></div>
+              <div class="card !p-4"><p class="text-2xl font-bold text-brand-blue">24/7</p><p class="text-gray-400">práctica desde el celular, con el progreso guardado en la cuenta del estudiante</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Qué es -->
+        <section class="max-w-6xl mx-auto px-4 py-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-center">¿Qué es Nivytek · Saber 11?</h2>
+          <p class="mt-4 text-gray-400 text-center max-w-3xl mx-auto">Es una plataforma de preparación en la que cada estudiante practica a su ritmo y un docente sigue su avance. El estudiante responde preguntas con la estructura de la prueba, revisa por qué falló cada opción y recibe una ruta de estudio según sus errores y la carrera que le interesa. El docente ve el progreso de cada uno, asigna pruebas y organiza simulacros.</p>
+        </section>
+
+        <!-- Qué incluye -->
+        <section id="incluye" class="bg-dark-900 py-14 border-y border-dark-700">
+          <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center">¿Qué incluye?</h2>
+            <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div class="card !p-5"><p class="font-semibold text-brand-navy text-lg">Las cinco pruebas del Saber 11</p><p class="mt-1 text-sm text-gray-400">Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés, organizadas por competencia y habilidad, con la estructura de la prueba.</p></div>
+              <div class="card !p-5"><p class="font-semibold text-brand-navy text-lg">Preguntas explicadas paso a paso</p><p class="mt-1 text-sm text-gray-400">Cada opción incorrecta tiene su explicación: qué había que identificar, dónde está la trampa y qué repasar. Preguntas de elaboración propia al estilo de la prueba (no oficiales).</p></div>
+              <div class="card !p-5"><p class="font-semibold text-brand-navy text-lg">Simulacros cronometrados</p><p class="mt-1 text-sm text-gray-400">Prueba diagnóstica, mini-pruebas por materia y simulacros por sesión con el tiempo real del examen, con informe en el formato del ICFES.</p></div>
+              <div class="card !p-5"><p class="font-semibold text-brand-navy text-lg">Ruta para la Universidad Nacional</p><p class="mt-1 text-sm text-gray-400">Práctica para los cinco componentes del examen de admisión, incluido el análisis de imagen, con dificultad graduada y seguimiento aparte.</p></div>
+              <div class="card !p-5"><p class="font-semibold text-brand-navy text-lg">Ruta para la Universidad de Antioquia</p><p class="mt-1 text-sm text-gray-400">Competencia lectora y razonamiento lógico, con el estilo del examen de admisión y la misma lógica de explicación por opción.</p></div>
+              <div class="card !p-5"><p class="font-semibold text-brand-navy text-lg">Seguimiento y ruta personal</p><p class="mt-1 text-sm text-gray-400">Mis errores, progreso por competencia, plan semanal según la carrera que le interesa al estudiante y guía de carreras y universidades.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Cómo se trabaja -->
+        <section id="como" class="max-w-6xl mx-auto px-4 py-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-center">¿Cómo se trabaja?</h2>
+          <p class="mt-3 text-gray-400 text-center max-w-2xl mx-auto">La plataforma no reemplaza al docente: lo acompaña. Así se combinan las dos cosas.</p>
+          <div class="mt-8 grid md:grid-cols-3 gap-4">
+            <div class="card !p-5"><p class="text-xs font-semibold uppercase tracking-wide text-brand-blue">En la plataforma</p><p class="mt-2 font-semibold text-brand-navy">Práctica diaria y a su ritmo</p><p class="mt-1 text-sm text-gray-400">El estudiante empieza por el cuestionario «Mi futuro» y la prueba diagnóstica; después sigue su camino: Mi carrera, Mi ruta y los exámenes de admisión que elija.</p></div>
+            <div class="card !p-5"><p class="text-xs font-semibold uppercase tracking-wide text-brand-blue">Con el docente</p><p class="mt-2 font-semibold text-brand-navy">Clases individuales o en grupos pequeños</p><p class="mt-1 text-sm text-gray-400">Acompañamiento en clases individuales o en grupos de hasta 5 estudiantes. El docente revisa los errores más frecuentes y asigna la práctica que cada uno necesita.</p></div>
+            <div class="card !p-5"><p class="text-xs font-semibold uppercase tracking-wide text-brand-blue">Para la familia</p><p class="mt-2 font-semibold text-brand-navy">Informe claro del avance</p><p class="mt-1 text-sm text-gray-400">El docente puede compartir el informe del estudiante en el formato del ICFES: puntaje estimado por prueba, competencias más flojas y qué está haciendo para mejorar.</p></div>
+          </div>
+          <div class="mt-8 text-center">
+            <a class="btn-primary !px-6 !py-3 text-base" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20conocer%20horarios%20y%20valores%20de%20la%20preparaci%C3%B3n%20Saber%2011%20de%20Nivytek." target="_blank" rel="noopener">Pregunta por horarios y valores por WhatsApp</a>
+          </div>
+        </section>
+
+        <!-- Cómo inscribirse -->
+        <section id="inscribirse" class="bg-dark-900 py-14 border-y border-dark-700">
+          <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center">¿Cómo inscribirse?</h2>
+            <ol class="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0">
+              <li class="card !p-5"><span class="badge bg-brand-blue text-[#fff]">1</span><p class="mt-2 font-semibold text-brand-navy">Escríbenos por WhatsApp</p><p class="mt-1 text-sm text-gray-400">Cuéntanos en qué grado está el estudiante y para qué examen se prepara. Te explicamos cómo funciona y acordamos los detalles.</p></li>
+              <li class="card !p-5"><span class="badge bg-brand-blue text-[#fff]">2</span><p class="mt-2 font-semibold text-brand-navy">El estudiante crea su cuenta</p><p class="mt-1 text-sm text-gray-400">En «Ingresar», con su primer nombre y su primer apellido, elige un PIN y, si es menor de edad, su padre, madre o acudiente autoriza el registro.</p></li>
+              <li class="card !p-5"><span class="badge bg-brand-blue text-[#fff]">3</span><p class="mt-2 font-semibold text-brand-navy">El docente aprueba y asigna grupo</p><p class="mt-1 text-sm text-gray-400">Ninguna cuenta entra sola: el docente revisa cada solicitud, la aprueba y asigna el grupo. Solo entonces se abre la práctica.</p></li>
+              <li class="card !p-5"><span class="badge bg-brand-blue text-[#fff]">4</span><p class="mt-2 font-semibold text-brand-navy">A practicar</p><p class="mt-1 text-sm text-gray-400">El estudiante entra con su usuario y su PIN desde el celular o el computador. Su progreso queda guardado en su cuenta.</p></li>
+            </ol>
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+              <a class="btn-primary !px-6 !py-3 text-base" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20inscribir%20a%20un%20estudiante%20en%20la%20preparaci%C3%B3n%20Saber%2011%20de%20Nivytek." target="_blank" rel="noopener">Quiero inscribirme por WhatsApp</a>
+              <a class="btn-secondary !px-6 !py-3 text-base" href="#/entrar">Ya hablé con el docente: crear mi cuenta</a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Preguntas frecuentes -->
+        <section id="preguntas" class="max-w-3xl mx-auto px-4 py-14">
+          <h2 class="text-3xl md:text-4xl font-bold text-center">Preguntas frecuentes</h2>
+          <div class="mt-8 space-y-3">
+            <details class="card !p-0"><summary class="flex items-center justify-between gap-3 p-4 font-semibold text-brand-navy"><span>¿Es un servicio oficial del ICFES o de las universidades?</span><span class="flecha text-brand-blue transition-transform" aria-hidden="true">▾</span></summary><p class="px-4 pb-4 text-sm text-gray-400">No. Nivytek es un servicio independiente de preparación. Las preguntas son de elaboración propia al estilo de cada prueba; los textos de dominio público se citan con su fuente. El único mecanismo de ingreso a una universidad es el desempeño en su prueba de admisión.</p></details>
+            <details class="card !p-0"><summary class="flex items-center justify-between gap-3 p-4 font-semibold text-brand-navy"><span>¿Qué materias cubre?</span><span class="flecha text-brand-blue transition-transform" aria-hidden="true">▾</span></summary><p class="px-4 pb-4 text-sm text-gray-400">Las cinco pruebas del Saber 11: Lectura crítica, Matemáticas, Sociales y ciudadanas, Ciencias naturales e Inglés. Además, los componentes del examen de admisión de la Universidad Nacional y los de la Universidad de Antioquia.</p></details>
+            <details class="card !p-0"><summary class="flex items-center justify-between gap-3 p-4 font-semibold text-brand-navy"><span>¿Cómo entro a la plataforma?</span><span class="flecha text-brand-blue transition-transform" aria-hidden="true">▾</span></summary><p class="px-4 pb-4 text-sm text-gray-400">Con el botón «Ingresar»: el estudiante escribe su usuario y su PIN. Si aún no tiene cuenta, puede registrarse ahí mismo; el docente debe aprobar el registro antes de que pueda empezar. Si olvidó el usuario o el PIN, el docente lo restablece.</p></details>
+            <details class="card !p-0"><summary class="flex items-center justify-between gap-3 p-4 font-semibold text-brand-navy"><span>¿Sirve desde el celular?</span><span class="flecha text-brand-blue transition-transform" aria-hidden="true">▾</span></summary><p class="px-4 pb-4 text-sm text-gray-400">Sí. Funciona en el navegador del celular y del computador, se puede instalar como aplicación y la práctica sigue funcionando sin conexión; el progreso se sincroniza después.</p></details>
+            <details class="card !p-0"><summary class="flex items-center justify-between gap-3 p-4 font-semibold text-brand-navy"><span>¿Cuánto cuesta y cuáles son los horarios?</span><span class="flecha text-brand-blue transition-transform" aria-hidden="true">▾</span></summary><p class="px-4 pb-4 text-sm text-gray-400">Depende de la modalidad (individual o en grupo) y del tiempo de acompañamiento. Escríbenos por WhatsApp y te damos la información completa.</p></details>
+            <details class="card !p-0"><summary class="flex items-center justify-between gap-3 p-4 font-semibold text-brand-navy"><span>¿Qué datos del estudiante se guardan y quién los ve?</span><span class="flecha text-brand-blue transition-transform" aria-hidden="true">▾</span></summary><p class="px-4 pb-4 text-sm text-gray-400">Solo el primer nombre y el primer apellido, el usuario, el nombre del acudiente que autoriza y las respuestas de práctica. No se piden correo ni documento de identidad del estudiante. Los ve el estudiante y su docente. Más detalle en la <a class="underline text-brand-blue" href="privacidad.html">política de privacidad</a>.</p></details>
+          </div>
+        </section>
+
+        <!-- Cierre -->
+        <section class="bg-brand-navy py-14">
+          <div class="max-w-3xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold !text-[#ffffff]">¿Hablamos?</h2>
+            <p class="mt-3 text-[#ffffff]/80">Cuéntanos en qué grado está el estudiante y para qué examen se prepara. Te respondemos por WhatsApp.</p>
+            <div class="mt-6 flex flex-wrap justify-center gap-3">
+              <a class="btn-primary !px-6 !py-3 text-base" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20Saber%2011%20de%20Nivytek." target="_blank" rel="noopener">Escribir por WhatsApp</a>
+              <a class="btn !px-6 !py-3 text-base border border-[#ffffff]/40 text-[#ffffff] hover:bg-[#ffffff]/10" href="#/entrar">Ingresar</a>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <footer class="border-t border-dark-700 py-8 px-4 text-center text-xs text-gray-500 space-y-2">
+        <p>Nivytek · Saber 11 · Preguntas de elaboración propia al estilo de cada prueba (no oficiales) · Textos de dominio público con su fuente.</p>
+        <p><a class="underline" href="privacidad.html">Política de privacidad</a> · <a class="underline" href="https://nivytek.com/">Volver a Nivytek</a> · WhatsApp: +57 304 313 4833</p>
+      </footer>
     </div>
+
+    <!-- La aplicación (acceso, registro y plataforma) se monta aquí -->
+    <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

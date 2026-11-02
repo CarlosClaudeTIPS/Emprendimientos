@@ -11,15 +11,8 @@ import { iniciarSync, descargarDeNube } from './lib/sync'
 import { aplicarExtension } from './lib/taxonomia'
 import { db, getConfig } from './lib/db'
 import { useRuta } from './lib/nav'
-import Login from './components/Login'
 import Layout from './components/Layout'
-import Inicio from './components/estudiante/Inicio'
-import Practica from './components/estudiante/Practica'
-import SesionPrueba from './components/estudiante/SesionPrueba'
-import Simulacros from './components/estudiante/Simulacros'
-import MisErrores from './components/estudiante/MisErrores'
-import MiProgreso from './components/estudiante/MiProgreso'
-import MiRuta from './components/estudiante/MiRuta'
+import { mostrarPortada } from './lib/portada'
 // Carga perezosa con reintento: si una pantalla no se puede descargar (por ejemplo, la app se
 // actualizó y el navegador aún tenía la página anterior en caché), se recarga una sola vez.
 const cargar = (importar) => lazy(() => importar().catch((e) => {
@@ -27,17 +20,27 @@ const cargar = (importar) => lazy(() => importar().catch((e) => {
   if (typeof sessionStorage !== 'undefined' && !sessionStorage.getItem(clave)) { sessionStorage.setItem(clave, '1'); window.location.reload(); return new Promise(() => {}) }
   throw e
 }))
+// Cada pantalla es un trozo aparte: quien entra a la portada o al acceso no descarga la
+// app completa, y el estudiante no descarga las pantallas de docente ni de admin.
+const Login = cargar(() => import('./components/Login'))
+const Inicio = cargar(() => import('./components/estudiante/Inicio'))
+const Practica = cargar(() => import('./components/estudiante/Practica'))
+const SesionPrueba = cargar(() => import('./components/estudiante/SesionPrueba'))
+const Simulacros = cargar(() => import('./components/estudiante/Simulacros'))
+const MisErrores = cargar(() => import('./components/estudiante/MisErrores'))
+const MiProgreso = cargar(() => import('./components/estudiante/MiProgreso'))
+const MiRuta = cargar(() => import('./components/estudiante/MiRuta'))
 const Biblioteca = cargar(() => import('./components/Biblioteca'))
-import Materias from './components/estudiante/Materias'
-import Materia from './components/estudiante/Materia'
-import Refuerzo from './components/estudiante/Refuerzo'
+const Materias = cargar(() => import('./components/estudiante/Materias'))
+const Materia = cargar(() => import('./components/estudiante/Materia'))
+const Refuerzo = cargar(() => import('./components/estudiante/Refuerzo'))
 const Historial = cargar(() => import('./components/estudiante/Historial'))
-import Carreras from './components/estudiante/Carreras'
+const Carreras = cargar(() => import('./components/estudiante/Carreras'))
 const MiFuturo = cargar(() => import('./components/estudiante/MiFuturo'))
 const Admision = cargar(() => import('./components/estudiante/Admision'))
-import Camino from './components/estudiante/Camino'
-import Practicar from './components/estudiante/Practicar'
-import Avance from './components/estudiante/Avance'
+const Camino = cargar(() => import('./components/estudiante/Camino'))
+const Practicar = cargar(() => import('./components/estudiante/Practicar'))
+const Avance = cargar(() => import('./components/estudiante/Avance'))
 import { estadoCamino, bloqueoDe, cerradaSinCuestionario, RUTAS_CERRADAS_SIN_CUESTIONARIO } from './lib/camino'
 const Informe = cargar(() => import('./components/Informe'))
 const Guia = cargar(() => import('./components/Guia'))
@@ -83,10 +86,16 @@ export default function App() {
   }, [])
 
   useEffect(() => { if (sesion.usuario) descargarDeNube(sesion.usuario) }, [sesion.usuario?.id])
+  // Con sesión: se registra la PWA (caché para trabajar sin conexión) y se oculta la portada estática.
+  useEffect(() => { if (sesion.usuario) { mostrarPortada(false); import('./lib/pwa').then(m => m.registrarPWA()).catch(() => {}) } }, [sesion.usuario?.id])
+  // Sin sesión: la portada pública (index.html) se ve en #/ y se oculta en #/entrar o al llegar por un enlace de correo.
+  const sinSesion = listo && !sesion.cargando && !sesion.usuario
+  const enAcceso = ruta === 'entrar' || LLEGO_POR_ENLACE
+  useEffect(() => { if (sinSesion) mostrarPortada(!enAcceso) }, [sinSesion, enAcceso])
 
   if (errorArranque) return <Pantalla>No se pudo iniciar la aplicación: {errorArranque}</Pantalla>
   if (!listo || sesion.cargando) return <Pantalla>Cargando…</Pantalla>
-  if (!sesion.usuario) return <Login />
+  if (!sesion.usuario) return enAcceso ? <Suspense fallback={<Pantalla>Cargando…</Pantalla>}><Login params={params} /></Suspense> : null
   if (LLEGO_POR_ENLACE && !contrasenaLista) return <CrearContrasena onLista={() => { setContrasenaLista(true); ir('inicio') }} />
 
   const u = sesion.usuario
@@ -172,5 +181,8 @@ function BarraSiembra() {
 }
 
 function Pantalla({ children }) {
+  // Mientras la portada estática esté visible (visitante sin sesión), no hace falta otra pantalla de carga.
+  const conPortada = typeof document !== 'undefined' && !document.documentElement.classList.contains('sin-portada')
+  if (conPortada) return null
   return <div className="min-h-screen flex items-center justify-center text-gray-400 text-sm p-6 text-center">{children}</div>
 }

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Compass, Check, Search, X, GraduationCap } from 'lucide-react'
 import { AREAS, CARRERAS, MAX_CARRERAS, NOMBRE_NIVEL, prioridadesDe, guardarCarreras } from '../../lib/carreras'
 import { ir } from '../../lib/nav'
-import { MATERIAS, ICONO_PRUEBA } from '../Login'
+import { MATERIAS, ICONO_PRUEBA } from '../../lib/materias'
 import { Titulo, Badge } from '../ui'
 
 // ─── Mis carreras: elegir carreras y activar el modo carrera ────────────────

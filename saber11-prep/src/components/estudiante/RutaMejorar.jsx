@@ -14,7 +14,7 @@ import { ir } from '../../lib/nav'
 import { lanzarAccion } from './Inicio'
 import { rutasActivasIds, examenPorId, fichaGuia, diagnosticoExamen, resultadosRuta, proximaConvocatoria } from '../../lib/examenes'
 import { grupoDe } from '../../lib/acceso'
-import { MATERIAS } from '../Login'
+import { MATERIAS } from '../../lib/materias'
 
 // ─── Mi ruta para mejorar ────────────────────────────────────────────────────
 // Carga todo lo del estudiante, arma el plan de la semana (lib/ruta.js) y lo

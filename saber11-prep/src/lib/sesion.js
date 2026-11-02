@@ -17,7 +17,12 @@ export function useSesion() {
   return useSyncExternalStore(suscribir, () => estado)
 }
 
-function setEstado(parcial) { estado = { ...estado, ...parcial }; emitir() }
+function setEstado(parcial) {
+  estado = { ...estado, ...parcial }
+  // Bandera para index.html: si hay sesión, la portada pública no se muestra ni un instante al abrir la app.
+  if ('usuario' in parcial) { try { if (parcial.usuario) localStorage.setItem('nivytek_sesion', '1'); else localStorage.removeItem('nivytek_sesion') } catch {} }
+  emitir()
+}
 
 export async function hashPin(pin) {
   const datos = new TextEncoder().encode(`saber11:${pin}`)
@@ -104,19 +109,28 @@ export async function gruposAbiertos() {
   return (await db.grupos.toArray()).map(g => ({ id: g.id, nombre: g.nombre, colegio: g.colegio, curso: g.curso }))
 }
 
-export async function registrarEstudiante({ nombre, apellido, pin, grupo_solicitado = null }) {
+// Ley 1581 de 2012 (Colombia): los estudiantes suelen ser menores de edad, así que el registro
+// pide el nombre de quien autoriza (padre, madre o acudiente) y la casilla de autorización.
+// Se guardan en perfiles.acudiente_nombre y perfiles.autorizacion_acudiente (migración 010).
+export async function registrarEstudiante({ nombre, apellido, pin, grupo_solicitado = null, acudiente_nombre = '', autorizacion = false }) {
   const base = baseUsuario(nombre, apellido)
   if (base.length < 4 || !nombre?.trim() || !apellido?.trim()) throw new Error('Escribe tu primer nombre y tu primer apellido')
   if (!/^\d{4,8}$/.test(String(pin ?? ''))) throw new Error('El PIN debe tener entre 4 y 8 dígitos')
+  const acudiente = String(acudiente_nombre ?? '').trim()
+  if (acudiente.length < 3) throw new Error('Escribe el nombre del padre, madre o acudiente que autoriza el registro')
+  if (!autorizacion) throw new Error('Falta marcar la autorización del padre, madre o acudiente')
+  const autorizacion_acudiente = ahora()
   const nombreCompleto = `${capital(nombre)} ${capital(apellido)}`
   if (NUBE_DISPONIBLE) {
     const { data: handle, error: errH } = await supabase.rpc('siguiente_usuario', { base })
     if (errH || !handle) throw new Error(errH?.message ?? 'No se pudo asignar el usuario')
     const { data, error } = await supabase.auth.signUp({ email: `${handle}@${DOMINIO_ESTUDIANTES}`, password: claveDePin(pin), options: { data: { nombre: nombreCompleto, rol: 'estudiante' } } })
     if (error || !data?.user) throw new Error(error?.message ?? 'No se pudo crear la cuenta')
-    const fila = { id: data.user.id, rol: 'estudiante', nombre: nombreCompleto, usuario: handle, estado: 'pendiente', grupo_solicitado: grupo_solicitado || null }
+    const fila = { id: data.user.id, rol: 'estudiante', nombre: nombreCompleto, usuario: handle, estado: 'pendiente', grupo_solicitado: grupo_solicitado || null, acudiente_nombre: acudiente, autorizacion_acudiente }
     let { error: errP } = await supabase.from('perfiles').insert(fila)
-    if (errP && /grupo_solicitado/.test(errP.message)) { delete fila.grupo_solicitado; ({ error: errP } = await supabase.from('perfiles').insert(fila)) } // nube sin la migración 009
+    // Nube sin alguna migración: se quita la columna que falta y se reintenta (010: acudiente; 009: grupo solicitado).
+    if (errP && /acudiente/.test(errP.message)) { delete fila.acudiente_nombre; delete fila.autorizacion_acudiente; ({ error: errP } = await supabase.from('perfiles').insert(fila)) }
+    if (errP && /grupo_solicitado/.test(errP.message)) { delete fila.grupo_solicitado; ({ error: errP } = await supabase.from('perfiles').insert(fila)) }
     if (errP) throw new Error('Cuenta creada, pero no se pudo guardar el perfil: ' + errP.message)
     await db.usuarios.put({ ...fila, sincronizado: 1 })
     await setConfig('sesion_usuario_id', fila.id)
@@ -126,7 +140,7 @@ export async function registrarEstudiante({ nombre, apellido, pin, grupo_solicit
   // Modo local
   let handle = base, n = 0
   while (await db.usuarios.where('usuario').equals(handle).first()) { n++; handle = base + n }
-  const u = { id: uuid(), nombre: nombreCompleto, usuario: handle, rol: 'estudiante', grupo_id: null, grupo_solicitado: grupo_solicitado || null, estado: 'pendiente', pin_hash: await hashPin(pin), creado: ahora(), sincronizado: 0 }
+  const u = { id: uuid(), nombre: nombreCompleto, usuario: handle, rol: 'estudiante', grupo_id: null, grupo_solicitado: grupo_solicitado || null, acudiente_nombre: acudiente, autorizacion_acudiente, estado: 'pendiente', pin_hash: await hashPin(pin), creado: ahora(), sincronizado: 0 }
   await db.usuarios.add(u)
   await setConfig('sesion_usuario_id', u.id)
   setEstado({ usuario: u })
@@ -216,7 +230,7 @@ export async function crearUsuario({ nombre, usuario, pin, rol = 'estudiante', g
 //    función de servidor api/pin.js (necesita SUPABASE_SERVICE_ROLE_KEY en Vercel).
 export async function cambiarPinEstudiante(estudiante, pin) {
   const limpio = String(pin ?? '').trim()
-  if (!/^\d{4,6}$/.test(limpio)) throw new Error('El PIN debe tener 4 a 6 dígitos')
+  if (!/^\d{4,8}$/.test(limpio)) throw new Error('El PIN debe tener entre 4 y 8 dígitos')
   if (!NUBE_DISPONIBLE) {
     await db.usuarios.update(estudiante.id, { pin_hash: await hashPin(limpio) })
     return

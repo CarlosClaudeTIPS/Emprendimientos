@@ -7,7 +7,7 @@ import { listarPreguntas } from '../../lib/banco'
 import { resumen } from '../../lib/analitica'
 import { taxonomia, nombrePrueba } from '../../lib/taxonomia'
 import { ir } from '../../lib/nav'
-import { MATERIAS } from '../Login'
+import { MATERIAS } from '../../lib/materias'
 import { Titulo, FilaMetrica, Badge, Vacio } from '../ui'
 
 // ─── Refuerzo: enseñanza dirigida a lo que está flojo ───────────────────────

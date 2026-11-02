@@ -48,7 +48,7 @@ export default defineConfig({
         // El portal (/portal/: portada, Apoyo docente, Tienda) es estático y no es parte de la PWA.
         globIgnores: ['**/banco-*.js', '**/pdf*.js', '**/pdf*.mjs', 'portal/**'],
         navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/portal(\/|$)/, /^\/api\//],
+        navigateFallbackDenylist: [/^\/portal(\/|$)/, /^\/api\//, /privacidad\.html$/],
         maximumFileSizeToCacheInBytes: 6 * 1024 * 1024,
         runtimeCaching: [{ urlPattern: ({ url }) => /\/assets\/(banco-|pdf)/.test(url.pathname), handler: 'CacheFirst', options: { cacheName: 'trozos-bajo-demanda', expiration: { maxEntries: 40, maxAgeSeconds: 60 * 24 * 3600 } } }],
       },
@@ -62,6 +62,10 @@ export default defineConfig({
           if (id.includes('/content/banco/')) return 'banco-' + id.split('/').pop().replace(/\.json$/, '').replace(/[^a-z0-9_-]/gi, '')
           if (id.includes('/content/guia/')) return 'guia-datos'
           if (id.includes('/content/futuro/')) return 'futuro-datos'
+          // Librerías aparte: cambian poco, así que el navegador las conserva en caché entre versiones de la app.
+          if (/node_modules\/(react|react-dom|scheduler)\//.test(id)) return 'react'
+          if (id.includes('node_modules/@supabase/')) return 'supabase'
+          if (id.includes('node_modules/dexie/')) return 'dexie'
         },
       },
     },

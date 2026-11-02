@@ -5,7 +5,7 @@ import { intentosDe } from '../../lib/datos'
 import { crearMiniPrueba } from '../../lib/pruebas'
 import { ir } from '../../lib/nav'
 import { competenciasDe, nombreHabilidad } from '../../lib/taxonomia'
-import { MATERIAS, ICONO_PRUEBA } from '../Login'
+import { MATERIAS, ICONO_PRUEBA } from '../../lib/materias'
 import { Titulo, FilaMetrica, Badge } from '../ui'
 
 // ─── Una materia: práctica, competencias y banco de preguntas ────────────────

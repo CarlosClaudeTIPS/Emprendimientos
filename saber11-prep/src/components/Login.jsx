@@ -1,198 +1,49 @@
-import { useEffect, useRef, useState } from 'react'
-import { BookOpenCheck, Timer, LineChart, Calculator, BookOpen, Globe2, FlaskConical, Languages, Star, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { Star } from 'lucide-react'
 import { entrarLocal, entrarNube, pedirRecuperacion, registrarEstudiante, baseUsuario, gruposAbiertos } from '../lib/sesion'
 import { NUBE_DISPONIBLE } from '../lib/supabase'
 import { USUARIOS_DEMO } from '../lib/demo'
+import { mostrarPortada } from '../lib/portada'
+// Compatibilidad: antes MATERIAS e ICONO_PRUEBA vivían aquí.
+export { MATERIAS, ICONO_PRUEBA } from '../lib/materias'
 
-// ─── Portada pública + acceso ────────────────────────────────────────────────
-
-export const ICONO_PRUEBA = {
-  lectura_critica: BookOpen, matematicas: Calculator, sociales_ciudadanas: Globe2, ciencias_naturales: FlaskConical, ingles: Languages,
-}
-export const MATERIAS = [
-  { id: 'lectura_critica', nombre: 'Lectura Crítica', color: '#8B5CF6', fondo: '#F3EEFF', frase: 'Comprende, infiere y evalúa textos continuos y discontinuos.' },
-  { id: 'matematicas', nombre: 'Matemáticas', color: '#1FA9EC', fondo: '#E6F6FE', frase: 'Interpreta datos, formula y resuelve, argumenta con números.' },
-  { id: 'sociales_ciudadanas', nombre: 'Sociales y Ciudadanas', color: '#F59E0B', fondo: '#FFF6E5', frase: 'Analiza perspectivas, historia, territorio y ciudadanía.' },
-  { id: 'ciencias_naturales', nombre: 'Ciencias Naturales', color: '#10B981', fondo: '#E7F8F1', frase: 'Explica fenómenos e indaga con datos de experimentos.' },
-  { id: 'ingles', nombre: 'Inglés', color: '#EC4899', fondo: '#FDEBF4', frase: 'Avisos, conversaciones, vocabulario y lectura en inglés.' },
-]
-
-export default function Login() {
-  const [tipo, setTipo] = useState('estudiante')
-  const acceso = useRef(null)
-  const irAcceso = (t) => { setTipo(t); acceso.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }) }
+// ─── Acceso (#/entrar) ───────────────────────────────────────────────────────
+// La portada pública (qué es, qué incluye, cómo inscribirse, preguntas, WhatsApp)
+// es HTML estático en index.html: la ven Google y las familias sin cargar la app.
+// Esta pantalla solo entra, registra y recupera contraseñas.
+export default function Login({ params }) {
+  const [tipo, setTipo] = useState(params?.tipo === 'docente' ? 'docente' : 'estudiante')
+  useEffect(() => { mostrarPortada(false); window.scrollTo(0, 0) }, [])
 
   return (
-    <div className="min-h-screen bg-dark-800">
-      {/* Barra superior */}
+    <div className="min-h-screen bg-dark-900">
       <header className="sticky top-0 z-30 bg-dark-800/95 backdrop-blur border-b border-dark-700">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <a href="#/" className="flex items-center gap-2">
-            <img src="/icono.svg" alt="" className="w-9 h-9" />
+        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-3">
+          <a href="#/" className="flex items-center gap-2 min-w-0" onClick={(e) => { e.preventDefault(); window.location.hash = '#/'; mostrarPortada(true) }}>
+            <img src="/icono.svg" alt="Logotipo de Nivytek · Saber 11" className="w-9 h-9" />
             <span className="text-base sm:text-lg md:text-xl font-bold text-brand-navy whitespace-nowrap">Nivytek<span className="text-brand-blue"> · Saber 11</span></span>
           </a>
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-brand-navy">
-            <a href="#/" onClick={e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }) }}>Inicio</a>
-            <a href="#/" onClick={e => { e.preventDefault(); document.getElementById('rutas')?.scrollIntoView({ behavior: 'smooth' }) }}>Rutas</a>
-            <a href="#/" onClick={e => { e.preventDefault(); document.getElementById('materias')?.scrollIntoView({ behavior: 'smooth' }) }}>Materias</a>
-            <a href="#/" onClick={e => { e.preventDefault(); document.getElementById('como')?.scrollIntoView({ behavior: 'smooth' }) }}>¿Cómo funciona?</a>
-            <button onClick={() => irAcceso('docente')}>Colegios y docentes</button>
-          </nav>
-          <div className="flex items-center gap-2">
-            <button className="btn-primary !py-2 !px-3 sm:!px-4 whitespace-nowrap text-sm sm:text-base" onClick={() => irAcceso('estudiante')}>Soy estudiante</button>
-            <button className="btn-secondary !py-2 !px-4 hidden sm:inline-flex" onClick={() => irAcceso('docente')}>Iniciar sesión</button>
-          </div>
+          <a href="#/" className="btn-secondary !py-2 !px-4 text-sm" onClick={(e) => { e.preventDefault(); window.location.hash = '#/'; mostrarPortada(true) }}>← Volver a la portada</a>
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-dark-900">
-        <div className="pointer-events-none absolute -right-40 top-1/2 -translate-y-1/2 hidden md:block">
-          {[520, 440, 360, 280].map(s => <div key={s} className="absolute rounded-full border-2 border-rose-200/60" style={{ width: s, height: s, top: -s / 2, left: -s / 2 }} />)}
-        </div>
-        <div className="max-w-6xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-10 items-center relative">
-          <div>
-            <p className="titulo-contorno text-6xl md:text-8xl font-extrabold leading-none">SABER 11°</p>
-            <h1 className="mt-3 text-3xl md:text-5xl font-bold leading-tight">Prepárate para la prueba Saber 11 (ICFES) y para los exámenes de admisión</h1>
-            <p className="mt-4 text-gray-300 text-base md:text-lg max-w-xl">Practica con preguntas al estilo de la prueba Saber 11 y de los exámenes propios de la Universidad Nacional y la Universidad de Antioquia, entiende por qué fallaste cada opción y sigue tu progreso. Desde el celular y también sin conexión.</p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              <a className="btn-primary !px-6 !py-3 text-base inline-flex items-center gap-2" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20ICFES%20de%20Nivytek." target="_blank" rel="noopener">¿Te interesa? Escríbenos por WhatsApp</a>
-              <button className="btn-secondary !px-6 !py-3 text-base" onClick={() => irAcceso('docente')}>Soy docente</button>
-            </div>
-            <p className="mt-3 text-sm text-gray-400">¿Ya tienes usuario? <button className="underline text-brand-blue" onClick={() => irAcceso('estudiante')}>Entrar como estudiante</button></p>
-          </div>
-          <div className="relative flex justify-center">
-            <div className="absolute right-6 top-4 w-20 h-20 rounded-full bg-orange-300/80" />
-            <Celular />
-          </div>
-        </div>
-      </section>
-
-      {/* Las rutas: Saber 11 y exámenes de admisión propios, con la misma jerarquía */}
-      <section id="rutas" className="bg-dark-800 py-14 border-y border-dark-700">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center">¿Para qué examen te preparas?</h2>
-          <p className="mt-3 text-gray-400 text-center max-w-2xl mx-auto">Casi todas las universidades piden el Saber 11. Algunas, como la Nacional y la de Antioquia, admiten con su propio examen: aquí también lo practicas.</p>
-          <div className="mt-8 grid md:grid-cols-3 gap-4">
-            {[
-              { titulo: 'Saber 11 (ICFES)', texto: 'El examen de Estado que piden casi todas las universidades.', color: '#1FA9EC', fondo: '#E6F6FE', icono: BookOpenCheck },
-              { titulo: 'Examen de admisión Universidad Nacional', texto: '120 preguntas en cinco componentes, incluido análisis de la imagen.', color: '#2F4D8C', fondo: '#E7EEFB', icono: LineChart },
-              { titulo: 'Examen de admisión Universidad de Antioquia', texto: 'Competencia lectora y razonamiento lógico.', color: '#1E9E7A', fondo: '#DDF3EA', icono: Timer },
-            ].map(r => (
-              <div key={r.titulo} className="card !p-5 flex flex-col">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: r.fondo, color: r.color }}><r.icono size={24} /></div>
-                <p className="mt-3 font-semibold text-brand-navy text-lg leading-snug">{r.titulo}</p>
-                <p className="text-sm text-gray-400 mt-1 flex-1">{r.texto}</p>
-                <button className="btn-secondary mt-4 !py-2" onClick={() => irAcceso('estudiante')}>Entrar y practicar</button>
-              </div>
-            ))}
-          </div>
-          <p className="mt-5 text-center text-sm text-gray-400">¿Tu universidad tiene otra prueba propia? <button className="underline text-brand-blue" onClick={() => irAcceso('estudiante')}>Otras instituciones con prueba propia</button> (dentro de la app, en «Exámenes de admisión»).</p>
-          <p className="mt-4 text-center text-[11px] text-gray-500 max-w-3xl mx-auto">Nivytek es un servicio independiente de preparación. No tiene relación con la Universidad Nacional de Colombia, la Universidad de Antioquia ni con ninguna otra universidad. El único mecanismo de ingreso es el desempeño en la prueba de admisión de cada una.</p>
-        </div>
-      </section>
-
-      {/* Cómo funcionan las clases */}
-      <section id="clases" className="bg-dark-900 py-14">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center">Cómo funcionan las clases</h2>
-          <p className="mt-3 text-gray-400 text-center max-w-2xl mx-auto">Acompañamiento con docente, además de la práctica en la plataforma.</p>
-          <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { t: 'Grupos pequeños', d: 'Clases individuales o en grupos de máximo 5 estudiantes.' },
-              { t: 'Modalidad', d: '[COMPLETAR: virtual, presencial o ambas]' },
-              { t: 'Duración de cada sesión', d: '[COMPLETAR: duración de cada sesión]' },
-              { t: 'Sesiones al mes', d: '[COMPLETAR: número de sesiones al mes]' },
-            ].map(({ t, d }) => (
-              <div key={t} className="card !p-5"><p className="font-semibold text-brand-navy">{t}</p><p className="mt-1 text-sm text-gray-400">{d}</p></div>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <a className="btn-primary !px-6 !py-3 text-base inline-flex items-center gap-2" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20ICFES%20de%20Nivytek." target="_blank" rel="noopener">Escríbenos por WhatsApp para conocer horarios y valores</a>
-          </div>
-        </div>
-      </section>
-
-      {/* ¿Es posible? */}
-      <section id="como" className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <p className="titulo-contorno text-3xl md:text-4xl font-extrabold">¿ES POSIBLE?</p>
-        <h2 className="text-3xl md:text-4xl font-bold">Mejores puntajes</h2>
-        <p className="mt-3 text-gray-400 max-w-2xl mx-auto">Un programa de seis meses con práctica diaria, retroalimentación de cada error y simulacros con la estructura real del examen.</p>
-        <div className="mt-10 grid md:grid-cols-3 gap-5 text-left">
-          {[
-            { i: BookOpenCheck, t: 'Aprende de cada error', d: 'Cada opción incorrecta tiene su explicación: qué debías identificar y qué repasar.' },
-            { i: Timer, t: 'Simulacros reales', d: 'Prueba diagnóstica, mini-pruebas y simulacros por sesión de 4 h 30 min, a la escala que necesites.' },
-            { i: LineChart, t: 'Progreso con tu docente', d: 'Tu docente ve los errores más frecuentes del grupo y te asigna la práctica que necesitas.' },
-          ].map(({ i: I, t, d }) => (
-            <div key={t} className="card !p-6 text-center">
-              <div className="mx-auto -mt-12 mb-4 w-14 h-14 rounded-2xl bg-brand-blue text-[#fff] flex items-center justify-center shadow-lg shadow-sky-200"><I size={26} /></div>
-              <p className="text-lg font-semibold text-brand-navy">{t}</p>
-              <p className="mt-2 text-sm text-gray-400">{d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Materias */}
-      <section id="materias" className="bg-dark-900 py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center">Las cinco pruebas del Saber 11</h2>
-          <p className="mt-3 text-gray-400 text-center">Banco de preguntas explicadas, organizado por materia, competencia y habilidad.</p>
-          <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {MATERIAS.map(m => {
-              const I = ICONO_PRUEBA[m.id]
-              return (
-                <div key={m.id} className="card !p-5 hover:-translate-y-1 transition-transform">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: m.fondo, color: m.color }}><I size={24} /></div>
-                  <p className="mt-3 font-semibold text-brand-navy">{m.nombre}</p>
-                  <p className="text-xs text-gray-400 mt-1">{m.frase}</p>
-                  <p className="mt-3 text-sm font-semibold" style={{ color: m.color }}>Preguntas explicadas</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Acceso */}
-      <section className="max-w-6xl mx-auto px-4 py-16 grid md:grid-cols-2 gap-10 items-center">
+      <main className="max-w-6xl mx-auto px-4 py-10 md:py-16 grid md:grid-cols-2 gap-10 items-center">
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold">Entra a tu cuenta</h2>
-          <p className="mt-3 text-gray-400">Los estudiantes entran con el usuario y el PIN que les entrega su docente. Los docentes, con su correo.</p>
+          <h1 className="text-3xl md:text-4xl font-bold">Entra a tu cuenta</h1>
+          <p className="mt-3 text-gray-400">Los estudiantes entran con su usuario y su PIN. Los docentes, con su correo y su contraseña.</p>
           <ul className="mt-5 space-y-2 text-sm text-gray-300">
-            <li className="flex gap-2"><Star size={16} className="text-brand-amber mt-0.5" /> Empieza por la <b>prueba diagnóstica</b>: en 40 minutos sabrás dónde estás.</li>
-            <li className="flex gap-2"><Star size={16} className="text-brand-amber mt-0.5" /> Practica 5 preguntas al día con explicación completa.</li>
-            <li className="flex gap-2"><Star size={16} className="text-brand-amber mt-0.5" /> Revisa "Mis errores" antes de cada simulacro.</li>
+            <li className="flex gap-2"><Star size={16} className="text-brand-amber mt-0.5 shrink-0" /> Si aún no tienes cuenta, regístrate aquí mismo: tu docente debe aprobarla antes de que puedas empezar.</li>
+            <li className="flex gap-2"><Star size={16} className="text-brand-amber mt-0.5 shrink-0" /> Si olvidaste tu usuario o tu PIN, pídele a tu docente que lo restablezca.</li>
+            <li className="flex gap-2"><Star size={16} className="text-brand-amber mt-0.5 shrink-0" /> Tu progreso se guarda en tu cuenta: puedes practicar desde el celular y desde el computador.</li>
           </ul>
+          <p className="mt-6 text-xs text-gray-500">¿Todavía no has hablado con nosotros? <a className="underline text-brand-blue" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20Saber%2011%20de%20Nivytek." target="_blank" rel="noopener">Escríbenos por WhatsApp</a> antes de registrarte.</p>
         </div>
-        <div ref={acceso}><FormularioAcceso tipo={tipo} setTipo={setTipo} /></div>
-      </section>
+        <FormularioAcceso tipo={tipo} setTipo={setTipo} />
+      </main>
 
-      <footer className="border-t border-dark-700 py-8 text-center text-xs text-gray-500">
-        Plataforma de preparación Saber 11° · Preguntas de elaboración propia en estilo ICFES (no oficiales) · Textos de dominio público con su fuente
+      <footer className="border-t border-dark-700 py-6 text-center text-xs text-gray-500">
+        <a className="underline" href="privacidad.html">Política de privacidad</a> · Nivytek es un servicio independiente de preparación.
       </footer>
-    </div>
-  )
-}
-
-function Celular() {
-  return (
-    <div className="relative w-60 md:w-64 rounded-[2.2rem] border-[10px] border-slate-200 bg-dark-800 shadow-2xl shadow-slate-300 rotate-6">
-      <span className="absolute -top-3 left-1/2 -translate-x-1/2 rotate-0 badge bg-amber-300 text-brand-navy text-[10px] font-bold px-2 py-0.5 rounded-full shadow">Ejemplo</span>
-      <div className="mx-auto mt-2 mb-3 w-16 h-1.5 rounded-full bg-slate-200" />
-      <div className="px-4 pb-5">
-        <div className="rounded-2xl h-28 bg-gradient-to-br from-sky-400 via-indigo-500 to-fuchsia-500 flex items-end p-3">
-          <span className="badge bg-emerald-400 text-[#fff]">ALTO</span>
-        </div>
-        <div className="flex items-center justify-between mt-3">
-          <ChevronLeft size={18} className="text-brand-blue" />
-          <div className="text-center"><p className="text-sm font-semibold text-brand-navy">Inglés</p><p className="text-xl font-bold text-brand-navy">78<span className="text-xs text-gray-500">/100</span></p></div>
-          <ChevronRight size={18} className="text-brand-blue" />
-        </div>
-        <div className="flex justify-center gap-1.5 mt-2">{[1, 2, 3, 4, 5].map(i => <Star key={i} size={16} className={i < 5 ? 'text-emerald-500 fill-emerald-500' : 'text-gray-600'} />)}</div>
-        <p className="text-[10px] text-center text-gray-500 mt-1">Ejemplo · Simulacros realizados: 2</p>
-        <div className="mt-3 rounded-xl bg-brand-blue text-[#fff] text-center text-sm font-semibold py-2">Ver</div>
-      </div>
     </div>
   )
 }
@@ -204,7 +55,7 @@ function FormularioAcceso({ tipo, setTipo }) {
   const [aviso, setAviso] = useState('')
   const [cargando, setCargando] = useState(false)
   const [registro, setRegistro] = useState(false)
-  const [reg, setReg] = useState({ nombre: '', apellido: '', pin: '', pin2: '', grupo_solicitado: '' })
+  const [reg, setReg] = useState({ nombre: '', apellido: '', pin: '', pin2: '', grupo_solicitado: '', acudiente_nombre: '', autorizacion: false })
   const [gruposAb, setGruposAb] = useState([])
   useEffect(() => { if (registro) gruposAbiertos().then(setGruposAb).catch(() => setGruposAb([])) }, [registro])
 
@@ -212,7 +63,7 @@ function FormularioAcceso({ tipo, setTipo }) {
     e.preventDefault(); setError('')
     if (reg.pin !== reg.pin2) { setError('Los dos PIN no coinciden'); return }
     setCargando(true)
-    try { await registrarEstudiante(reg) } catch (err) { setError(err.message) }
+    try { await registrarEstudiante(reg); try { window.nivytekEvento?.('Lead', { content_name: 'registro_icfes' }) } catch {} } catch (err) { setError(err.message) }
     finally { setCargando(false) }
   }
 
@@ -233,7 +84,7 @@ function FormularioAcceso({ tipo, setTipo }) {
   }
 
   return (
-    <div className="card !p-6 max-w-md mx-auto">
+    <div className="card !p-6 max-w-md mx-auto w-full">
       <div className="flex rounded-xl bg-dark-900 p-1 mb-5 text-sm font-medium">
         {['estudiante', 'docente'].map(t => (
           <button key={t} type="button" onClick={() => setTipo(t)}
@@ -246,41 +97,49 @@ function FormularioAcceso({ tipo, setTipo }) {
         <form onSubmit={registrar} className="space-y-4">
           <p className="text-sm text-gray-400">Regístrate con tu primer nombre y tu primer apellido. Tu docente debe aceptar el registro antes de que puedas empezar.</p>
           <div className="grid grid-cols-2 gap-2">
-            <div><label className="label">Primer nombre</label><input className="input" value={reg.nombre} onChange={e => setReg({ ...reg, nombre: e.target.value })} autoComplete="given-name" /></div>
-            <div><label className="label">Primer apellido</label><input className="input" value={reg.apellido} onChange={e => setReg({ ...reg, apellido: e.target.value })} autoComplete="family-name" /></div>
+            <div><label className="label" htmlFor="reg-nombre">Primer nombre</label><input id="reg-nombre" className="input" value={reg.nombre} onChange={e => setReg({ ...reg, nombre: e.target.value })} autoComplete="given-name" /></div>
+            <div><label className="label" htmlFor="reg-apellido">Primer apellido</label><input id="reg-apellido" className="input" value={reg.apellido} onChange={e => setReg({ ...reg, apellido: e.target.value })} autoComplete="family-name" /></div>
           </div>
           {baseUsuario(reg.nombre, reg.apellido).length >= 4 && <p className="text-xs text-gray-500">Tu usuario será <span className="font-mono font-semibold text-brand-blue">{baseUsuario(reg.nombre, reg.apellido)}</span> (si ya existe, se le agrega un número).</p>}
           <div className="grid grid-cols-2 gap-2">
-            <div><label className="label">PIN (4 a 8 dígitos)</label><input className="input" type="password" inputMode="numeric" value={reg.pin} onChange={e => setReg({ ...reg, pin: e.target.value })} autoComplete="new-password" /></div>
-            <div><label className="label">Repite el PIN</label><input className="input" type="password" inputMode="numeric" value={reg.pin2} onChange={e => setReg({ ...reg, pin2: e.target.value })} autoComplete="new-password" /></div>
+            <div><label className="label" htmlFor="reg-pin">PIN (4 a 8 dígitos)</label><input id="reg-pin" className="input" type="password" inputMode="numeric" value={reg.pin} onChange={e => setReg({ ...reg, pin: e.target.value })} autoComplete="new-password" /></div>
+            <div><label className="label" htmlFor="reg-pin2">Repite el PIN</label><input id="reg-pin2" className="input" type="password" inputMode="numeric" value={reg.pin2} onChange={e => setReg({ ...reg, pin2: e.target.value })} autoComplete="new-password" /></div>
           </div>
           {gruposAb.length > 0 && (
             <div>
-              <label className="label">¿A qué grupo quieres unirte?</label>
-              <select className="input" value={reg.grupo_solicitado} onChange={e => setReg({ ...reg, grupo_solicitado: e.target.value })}>
+              <label className="label" htmlFor="reg-grupo">¿A qué grupo quieres unirte?</label>
+              <select id="reg-grupo" className="input" value={reg.grupo_solicitado} onChange={e => setReg({ ...reg, grupo_solicitado: e.target.value })}>
                 <option value="">No sé / que lo decida el docente</option>
                 {gruposAb.map(g => <option key={g.id} value={g.id}>{g.nombre}{g.colegio ? ` · ${g.colegio}` : ''}</option>)}
               </select>
               <p className="text-xs text-gray-500 mt-1">Es una solicitud: el docente confirma el grupo al aceptarte.</p>
             </div>
           )}
-          {error && <p className="text-sm text-brand-red">{error}</p>}
+          <div className="rounded-xl border border-dark-600 bg-dark-900 p-3 space-y-2">
+            <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">Autorización del padre, madre o acudiente</p>
+            <div><label className="label" htmlFor="reg-acudiente">Nombre de quien autoriza</label><input id="reg-acudiente" className="input" value={reg.acudiente_nombre} onChange={e => setReg({ ...reg, acudiente_nombre: e.target.value })} autoComplete="off" placeholder="Nombre completo del padre, madre o acudiente" /></div>
+            <label className="flex items-start gap-2 text-xs text-gray-300">
+              <input type="checkbox" className="mt-0.5" checked={reg.autorizacion} onChange={e => setReg({ ...reg, autorizacion: e.target.checked })} />
+              <span>Como padre, madre o acudiente, autorizo el registro del estudiante y el tratamiento de sus datos (nombre, usuario y respuestas de práctica) para la preparación, según la <a className="underline text-brand-blue" href="privacidad.html" target="_blank" rel="noopener">política de privacidad</a> (Ley 1581 de 2012).</span>
+            </label>
+          </div>
+          {error && <p className="text-sm text-brand-red" role="alert">{error}</p>}
           <button className="btn-primary w-full !py-3 text-base" disabled={cargando}>{cargando ? 'Registrando…' : 'Registrarme'}</button>
           <button type="button" className="btn-ghost w-full text-sm" onClick={() => { setRegistro(false); setError('') }}>Ya tengo usuario, quiero entrar</button>
         </form>
       ) : (
       <form onSubmit={entrar} className="space-y-4">
         <div>
-          <label className="label">{NUBE_DISPONIBLE && tipo === 'docente' ? 'Correo' : 'Usuario'}</label>
-          <input className="input" value={usuario} onChange={e => setUsuario(e.target.value)} autoCapitalize="none" autoComplete="username"
+          <label className="label" htmlFor="acceso-usuario">{NUBE_DISPONIBLE && tipo === 'docente' ? 'Correo' : 'Usuario'}</label>
+          <input id="acceso-usuario" className="input" value={usuario} onChange={e => setUsuario(e.target.value)} autoCapitalize="none" autoComplete="username"
             placeholder={tipo === 'docente' ? (NUBE_DISPONIBLE ? 'correo@colegio.edu.co' : 'docente') : 'tu.usuario'} />
         </div>
         <div>
-          <label className="label">{NUBE_DISPONIBLE && tipo === 'docente' ? 'Contraseña' : 'PIN'}</label>
-          <input className="input" type="password" inputMode={NUBE_DISPONIBLE && tipo === 'docente' ? 'text' : 'numeric'} value={pin} onChange={e => setPin(e.target.value)} autoComplete="current-password" placeholder="••••••" />
+          <label className="label" htmlFor="acceso-pin">{NUBE_DISPONIBLE && tipo === 'docente' ? 'Contraseña' : 'PIN'}</label>
+          <input id="acceso-pin" className="input" type="password" inputMode={NUBE_DISPONIBLE && tipo === 'docente' ? 'text' : 'numeric'} value={pin} onChange={e => setPin(e.target.value)} autoComplete="current-password" placeholder="••••••" />
         </div>
-        {error && <p className="text-sm text-brand-red">{error}</p>}
-        {aviso && <p className="text-sm text-brand-green">{aviso}</p>}
+        {error && <p className="text-sm text-brand-red" role="alert">{error}</p>}
+        {aviso && <p className="text-sm text-brand-green" role="status">{aviso}</p>}
         <button className="btn-primary w-full !py-3 text-base" disabled={cargando}>{cargando ? 'Entrando…' : 'Iniciar sesión'}</button>
         {NUBE_DISPONIBLE && tipo === 'docente' && (
           <button type="button" className="btn-ghost w-full text-xs" onClick={async () => {

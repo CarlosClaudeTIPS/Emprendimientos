@@ -1,4 +1,4 @@
--- ═══ TODAS LAS MIGRACIONES PENDIENTES EN UN SOLO ARCHIVO (004 a 009) ═══
+-- ═══ TODAS LAS MIGRACIONES PENDIENTES EN UN SOLO ARCHIVO (004 a 010) ═══
 -- Pegar completo en Supabase → SQL Editor → New query → Run. Se puede ejecutar varias veces:
 -- cada política se borra antes de crearse y las columnas/funciones usan 'if not exists' / 'or replace'.
 -- Generado desde los archivos migracion-00X.sql; si cambian, regenerar.
@@ -120,3 +120,13 @@ language sql stable security definer set search_path = public as $$
 $$;
 grant execute on function grupos_abiertos() to anon, authenticated;
 
+-- ───────────────── migracion-010-acudiente.sql ─────────────────
+-- ─── Migración 010: autorización del padre, madre o acudiente (Ley 1581 de 2012) ───
+-- Ejecutar una vez en el SQL Editor de Supabase. Se puede volver a ejecutar sin daño.
+-- El registro de estudiantes (casi siempre menores de edad) guarda quién autoriza y cuándo.
+alter table perfiles add column if not exists acudiente_nombre text;
+alter table perfiles add column if not exists autorizacion_acudiente timestamptz;
+comment on column perfiles.acudiente_nombre is 'Nombre del padre, madre o acudiente que autorizó el registro (Ley 1581).';
+comment on column perfiles.autorizacion_acudiente is 'Fecha y hora en que se marcó la autorización en el formulario de registro.';
+-- La política de inserción del propio perfil (migración 002) no cambia: el estudiante solo crea
+-- su fila como pendiente y sin grupo; estas dos columnas viajan en ese mismo insert.

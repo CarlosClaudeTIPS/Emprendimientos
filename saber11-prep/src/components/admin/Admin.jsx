@@ -92,7 +92,7 @@ function Usuarios({ admin }) {
   // api/pin.js que cambia la contraseña real y comprueba el ingreso). Antes solo se cambiaba
   // el hash local y el estudiante seguía sin poder entrar.
   const resetPin = async (u) => {
-    const pin = prompt(`Nuevo PIN para ${u.nombre} (4 a 6 dígitos)`)
+    const pin = prompt(`Nuevo PIN para ${u.nombre} (4 a 8 dígitos)`)
     if (!pin) return
     if (u.rol !== 'estudiante') {
       if (NUBE_DISPONIBLE) return alert('Docentes y administradores cambian su contraseña desde «Olvidé mi contraseña» en la pantalla de ingreso.')

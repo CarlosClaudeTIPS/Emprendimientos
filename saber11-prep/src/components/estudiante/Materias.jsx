@@ -3,7 +3,7 @@ import { ChevronRight } from 'lucide-react'
 import { listarPreguntas } from '../../lib/banco'
 import { intentosDe } from '../../lib/datos'
 import { ir } from '../../lib/nav'
-import { MATERIAS, ICONO_PRUEBA } from '../Login'
+import { MATERIAS, ICONO_PRUEBA } from '../../lib/materias'
 import { Titulo, Barra, Badge } from '../ui'
 import { modoCarreraActivo, prioridadesDeUsuario, NOMBRE_NIVEL } from '../../lib/carreras'
 

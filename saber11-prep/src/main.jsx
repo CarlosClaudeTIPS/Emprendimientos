@@ -1,31 +1,26 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
 import './index.css'
-import { registerSW } from 'virtual:pwa-register'
 
-// PWA: cuando se instala una versión nueva de la app (service worker nuevo toma el
-// control), se recarga la página una vez para no seguir mostrando la versión vieja.
-// Solo si ya había un service worker activo: en la primera visita no recarga.
-if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-  let recargado = false
-  navigator.serviceWorker.addEventListener('controllerchange', () => { if (!recargado) { recargado = true; window.location.reload() } })
+// Arranque en dos tiempos:
+//  1. La portada pública es HTML estático (index.html). Quien solo la mira no descarga
+//     la aplicación (React, Supabase, Dexie…): este archivo pesa poco y solo trae el CSS.
+//  2. La app se descarga y arranca cuando hace falta: hay sesión en este navegador, la ruta
+//     es #/entrar (botón «Ingresar») o se llegó por un enlace de correo (invitación, recuperación).
+// El service worker (PWA) se registra desde App cuando hay sesión (src/lib/pwa.js).
+let arrancada = false
+function haySesion() {
+  try {
+    if (localStorage.getItem('nivytek_sesion') === '1') return true
+    return Object.keys(localStorage).some((k) => /^sb-.*-auth-token$/.test(k)) // sesión de Supabase ya guardada
+  } catch { return false }
 }
-// Además de la comprobación que hace el navegador al abrir la app, se busca una
-// versión nueva al volver a la pestaña y cada 30 minutos, para que una app que
-// se dejó abierta no se quede días con la versión vieja.
-registerSW({
-  immediate: true,
-  onRegisteredSW(_url, reg) {
-    if (!reg) return
-    const buscar = () => { if (navigator.onLine) reg.update().catch(() => {}) }
-    setInterval(buscar, 30 * 60 * 1000)
-    document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') buscar() })
-  },
-})
-
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+const necesitaApp = () => /^#\/entrar/.test(location.hash) || /type=(invite|recovery|magiclink)/.test(location.hash) || haySesion()
+async function arrancar() {
+  if (arrancada) return
+  arrancada = true
+  document.documentElement.classList.add('sin-portada')
+  const [{ default: React }, { default: ReactDOM }, { default: App }] = await Promise.all([import('react'), import('react-dom/client'), import('./App')])
+  // Sin JSX aquí a propósito: el JSX haría que React se descargue con la portada.
+  ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(React.StrictMode, null, React.createElement(App)))
+}
+if (necesitaApp()) arrancar()
+else window.addEventListener('hashchange', () => { if (necesitaApp()) arrancar() })

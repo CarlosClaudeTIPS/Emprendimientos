@@ -30,7 +30,7 @@ export default async function handler(req, res) {
 
   const { estudiante_id, pin } = req.body ?? {}
   const pinLimpio = String(pin ?? '').trim()
-  if (!estudiante_id || !/^\d{4,6}$/.test(pinLimpio)) return res.status(400).json({ error: 'El PIN debe tener 4 a 6 dígitos' })
+  if (!estudiante_id || !/^\d{4,8}$/.test(pinLimpio)) return res.status(400).json({ error: 'El PIN debe tener entre 4 y 8 dígitos' })
 
   const { data: est } = await admin.from('perfiles').select('id, rol, grupo_id, nombre').eq('id', estudiante_id).single()
   if (!est || est.rol !== 'estudiante') return res.status(404).json({ error: 'Estudiante no encontrado' })

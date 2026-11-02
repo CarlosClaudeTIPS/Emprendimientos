@@ -42,7 +42,7 @@ export default function EstudianteDetalle({ usuario, params }) {
   }
 
   const cambiarPin = async () => {
-    if (!/^\d{4,6}$/.test(pinNuevo)) return alert('El PIN debe tener 4 a 6 dígitos')
+    if (!/^\d{4,8}$/.test(pinNuevo)) return alert('El PIN debe tener entre 4 y 8 dígitos')
     setCambiandoPin(true)
     try {
       const r = await cambiarPinEstudiante(e, pinNuevo)
