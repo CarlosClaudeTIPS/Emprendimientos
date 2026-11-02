@@ -25,7 +25,7 @@ for (const f of htmls) {
   const html = readFileSync(f, 'utf8');
   const base = (html.match(/<base href="([^"]+)"/) || [])[1] || '';
   const dirBase = resolve(dirname(f), base || '.');
-  const refs = [...html.matchAll(/\b(?:href|src|srcset)="([^"]+)"/g)].map(m => m[1]).concat([...html.matchAll(/property="(?:og|twitter):image(?::secure_url)?" content="([^"]+)"/g), ...html.matchAll(/name="twitter:image" content="([^"]+)"/g)].map(m => m[1])).filter(u => u && !/^(#|mailto:|tel:|javascript:|data:)/.test(u));
+  const refs = [...html.matchAll(/\b(?:href|src)="([^"]+)"/g)].map(m => m[1]).concat([...html.matchAll(/\bsrcset="([^"]+)"/g)].flatMap(m => m[1].split(',').map(x => x.trim().split(/\s+/)[0]))).concat([...html.matchAll(/property="(?:og|twitter):image(?::secure_url)?" content="([^"]+)"/g), ...html.matchAll(/name="twitter:image" content="([^"]+)"/g)].map(m => m[1])).filter(u => u && !/^(#|mailto:|tel:|javascript:|data:)/.test(u));
   for (let u of refs) {
     if (/^https?:\/\//.test(u)) {
       if (/\.(jpe?g|png|webp|gif|svg)(\?|$)/i.test(u) && !u.startsWith('https://tienda.nivytek.com/') && !u.startsWith('https://nivytek.com/')) errores.push(`${rel}: imagen externa ${u}`);

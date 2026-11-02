@@ -250,8 +250,17 @@
   /* <picture> con WebP + JPG de respaldo para las fotos guardadas en img/productos/<slug>/N.jpg */
   T.picture = (p, i, attrs, alt) => {
     const src = T.imagenProducto(p, i);
-    const img = `<img src="${T.esc(src)}" alt="${T.esc(alt == null ? (p.nombre || '') : alt)}" ${attrs || ''}>`;
-    return /\/img\/productos\/[^/]+\/\d+\.jpg$|^img\/productos\/[^/]+\/\d+\.jpg$/.test(src) ? `<picture><source type="image/webp" srcset="${T.esc(src.replace(/\.jpg$/, '.webp'))}">${img}</picture>` : img;
+    attrs = attrs || '';
+    const alt_ = T.esc(alt == null ? (p.nombre || '') : alt);
+    if (!/(^|\/)img\/productos\/[^/]+\/\d+\.jpg$/.test(src)) return `<img src="${T.esc(src)}" alt="${alt_}" ${attrs}>`;
+    /* Tamaño pequeño (tarjetas, carrito, buscador) si el atributo width es ≤ 400; la galería usa la imagen completa */
+    const w = Number((attrs.match(/width="(\d+)"/) || [])[1]) || 0;
+    const chica = w && w <= 400;
+    const base = src.replace(/\.jpg$/, '');
+    const webp = chica ? `${base}-400.webp 400w, ${base}.webp 1200w` : `${base}.webp`;
+    const jpg = chica ? `${base}-400.jpg 400w, ${base}.jpg 1200w` : '';
+    const sizes = chica ? ` sizes="(max-width: 700px) 50vw, 300px"` : '';
+    return `<picture><source type="image/webp" srcset="${T.esc(webp)}"${sizes}><img src="${T.esc(chica ? base + '-400.jpg' : src)}"${jpg ? ` srcset="${T.esc(jpg)}"${sizes}` : ''} alt="${alt_}" ${attrs}></picture>`;
   };
 
   /* ---------- WhatsApp ---------- */
@@ -519,14 +528,14 @@
         <div><a class="logo" href="${T.ruta('index.html')}" style="color:#fff">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="Nivytek" width="32" height="32">` : ''}<span>${T.esc(n.nombre || 'Mi Tienda')}</span></a>
           <p style="margin-top:.6rem;font-size:.92rem">${T.esc(n.descripcion || '')}</p>
           ${redes ? `<div class="pie-redes">${redes}</div>` : ''}</div>
-        <div><h4>Categorías</h4><ul>${cats}</ul></div>
-        <div><h4>Ayuda</h4><ul>
+        <div><h3 class="pie-titulo">Categorías</h3><ul>${cats}</ul></div>
+        <div><h3 class="pie-titulo">Ayuda</h3><ul>
           <li><a href="${T.ruta('preguntas.html')}">Preguntas frecuentes</a></li>
           <li><a href="${T.ruta('politicas.html#entregas')}">Entregas</a></li>
           <li><a href="${T.ruta('politicas.html#pagos')}">Pagos</a></li>
           <li><a href="${T.ruta('politicas.html#cambios')}">Cambios y garantías</a></li>
           <li><a href="${T.ruta('politicas.html#privacidad')}">Privacidad y datos</a></li></ul></div>
-        <div><h4>Contacto</h4><ul>${contacto}</ul></div>
+        <div><h3 class="pie-titulo">Contacto</h3><ul>${contacto}</ul></div>
       </div>
       <div class="pie-bajo"><span>© ${new Date().getFullYear()} ${T.esc(n.nombre || '')}. Todos los derechos reservados.</span>
         <span>Abrir WhatsApp no confirma una compra ni garantiza inventario disponible.</span></div>

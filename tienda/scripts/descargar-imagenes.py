@@ -79,6 +79,10 @@ def optimizar(original, base_sin_ext):
         if im.width > ANCHO_MAX: im = im.resize((ANCHO_MAX, round(im.height * ANCHO_MAX / im.width)), Image.LANCZOS)
         im.save(base_sin_ext + '.jpg', 'JPEG', quality=CAL_JPG, optimize=True, progressive=True)
         im.save(base_sin_ext + '.webp', 'WEBP', quality=CAL_WEBP, method=6)
+        # versión pequeña para tarjetas, carrito y buscador (400 px de ancho)
+        chica = im.copy(); chica.thumbnail((400, 400), Image.LANCZOS)
+        chica.save(base_sin_ext + '-400.jpg', 'JPEG', quality=CAL_JPG, optimize=True)
+        chica.save(base_sin_ext + '-400.webp', 'WEBP', quality=CAL_WEBP, method=6)
         return im.width, im.height
 
 def imagen_og(original, destino):
@@ -109,7 +113,7 @@ def procesar(pid, nombre, origenes):
         w, h = optimizar(original, f'img/productos/{slug}/{n}')
         if n == 1: imagen_og(original, f'img/og/{slug}.jpg')
         print(f'  ✓ {slug}/{n}.jpg {w}x{h} ({estado})')
-        salida.append({'archivo': f'img/productos/{slug}/{n}.jpg', 'webp': f'img/productos/{slug}/{n}.webp', 'original': original,
+        salida.append({'archivo': f'img/productos/{slug}/{n}.jpg', 'webp': f'img/productos/{slug}/{n}.webp', 'chica': f'img/productos/{slug}/{n}-400.jpg', 'original': original,
                        'ancho': w, 'alto': h, 'origen': origen, 'descargado': HOY if estado.startswith('descargada') or estado.startswith('copiada') else prev.get(slug, {}).get('descargado', HOY)})
     return slug, salida
 
