@@ -81,7 +81,7 @@
     let aviso = $("#waAviso");
     if (!aviso) { aviso = document.createElement("div"); aviso.id = "waAviso"; aviso.className = "wa-aviso"; aviso.setAttribute("role", "status"); document.body.appendChild(aviso); }
     let copiado = false; try { await navigator.clipboard.writeText(a.dataset.waTexto || ""); copiado = true; } catch (_) { }
-    aviso.innerHTML = `<strong>El número de WhatsApp aún no está configurado.</strong> ${copiado ? "Copiamos el mensaje al portapapeles para que lo envíes por el medio que prefieras." : "Usa el formulario «Cuéntame qué necesitas» y copia el resumen."} <button type="button" class="btn btn-link btn-sm" data-cerrar-aviso>Cerrar</button>`;
+    aviso.innerHTML = `<strong>El número de WhatsApp aún no está configurado.</strong> ${copiado ? "Copiamos el mensaje al portapapeles para que lo envíes por el medio que prefieras." : "Usa el formulario «Cuéntanos qué necesitas» y copia el resumen."} <button type="button" class="btn btn-link btn-sm" data-cerrar-aviso>Cerrar</button>`;
     aviso.hidden = false; clearTimeout(aviso._t); aviso._t = setTimeout(() => { aviso.hidden = true; }, 7000);
   });
   document.addEventListener("click", (e) => { if (e.target.closest("[data-cerrar-aviso]")) $("#waAviso").hidden = true; });
@@ -309,7 +309,7 @@
   }
 
   /* ---------- Vistas: la portada muestra el mapa; cada sección se abre sola ---------- */
-  const VISTAS = { home: "Inicio", servicios: "Servicios", proceso: "Cómo trabajamos", portafolio: "Ejemplos", plantillas: "Cuéntame qué necesitas", cotizacion: "Cotización", faq: "Preguntas y condiciones" };
+  const VISTAS = { home: "Inicio", servicios: "Servicios", proceso: "Cómo trabajamos", portafolio: "Ejemplos", plantillas: "Cuéntanos qué necesitas", cotizacion: "Cotización", faq: "Preguntas y condiciones" };
   const ALIAS = { inicio: "home", mapa: "home", personalizado: "proceso", confianza: "faq", simulador: "proceso", summary: "plantillas", formulario: "plantillas", calculadora: "cotizacion" };
   function vistaDesdeHash() { const h = (location.hash || "").replace("#", ""); const v = ALIAS[h] || h; return VISTAS[v] ? v : "home"; }
   function setView(v) {
@@ -353,7 +353,7 @@
     pform.addEventListener("submit", (e) => {
       e.preventDefault();
       const d = datos(), faltan = P.validar(tipo, d);
-      if (d.detalles.trim().split(/\s+/).filter(Boolean).length < 6) faltan.push("Cuéntame un poco más en los detalles: con dos o tres frases basta.");
+      if (d.detalles.trim().split(/\s+/).filter(Boolean).length < 6) faltan.push("Cuéntanos un poco más en los detalles: con dos o tres frases basta.");
       if (!(d.nombre || "").trim()) faltan.push("Escribe tu nombre o una forma de contacto.");
       if (!$("#pl_consent").checked) faltan.push("Necesitamos tu autorización para usar los datos y responderte.");
       $$("[required]", pform).forEach((el) => el.classList.toggle("invalid", el.type === "checkbox" ? !el.checked : !el.value.trim()));

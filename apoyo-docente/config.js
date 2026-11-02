@@ -16,7 +16,7 @@ window.SITE_CONFIG = {
     lema: "Tu trabajo docente, organizado según tus necesidades.",
     profesional: "Nivytek",               // El servicio se presenta a nombre de la marca, no de una persona.
     ciudad: "Colombia",
-    // Foto o ilustración de la profesional. Si dejas "" se muestra la ilustración incluida.
+    // Foto o ilustración del equipo. Si dejas "" se muestra la ilustración incluida.
     // Ejemplo: "assets/img/perfil.png"
     foto: ""
   },

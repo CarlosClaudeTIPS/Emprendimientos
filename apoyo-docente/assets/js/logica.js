@@ -50,7 +50,7 @@
 
   function textoResumen(datos) {
     const lines = Object.entries(datos).map(([k, v]) => `• ${k}: ${v}`);
-    return `Hola, quisiera conocer más sobre el servicio de apoyo docente. Te comparto el resumen de mi solicitud:\n\n${lines.join("\n")}\n\nMe gustaría saber cómo podemos organizar una propuesta personalizada.`;
+    return `Hola, quisiera conocer más sobre el servicio de apoyo docente. Les comparto el resumen de mi solicitud:\n\n${lines.join("\n")}\n\nMe gustaría saber cómo podemos organizar una propuesta personalizada.`;
   }
 
   /** Validación de un paso del formulario. Devuelve "" si está bien o el mensaje de error. */
