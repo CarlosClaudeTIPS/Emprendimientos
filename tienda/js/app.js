@@ -98,6 +98,8 @@
       (enc.productos || []).forEach(p => { if (fotos[p.id]) p.foto = fotos[p.id]; });
     }
     if (enc) T.agregarEncargo(catalogo, enc);
+    /* Combos (kits) de la pestaña "Combos" de la hoja; se arman a partir de los productos que ya están en el catálogo */
+    try { const cRes = await fetch(T.ruta('data/combos.json'), { cache: 'no-cache' }); if (cRes.ok) T.agregarCombos(catalogo, await cRes.json()); } catch (e) { /* sin combos */ }
     catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto).map(p => Object.assign(p, { slug: p.slug || T.slugs[p.id] || String(p.id).replace(/^ya-/, '') }));
     catalogo.categorias = (catalogo.categorias || []).slice().sort((a, b) => (a.orden || 0) - (b.orden || 0));
     T.datos = { config, catalogo };
@@ -198,6 +200,38 @@
       });
     });
   };
+  /* Combos: cada kit es un producto más. Precio de la hoja; fotos, stock y disponibilidad se derivan de sus componentes. */
+  T.agregarCombos = (catalogo, datos) => {
+    const lista = (datos && Array.isArray(datos.combos)) ? datos.combos : [];
+    catalogo.productos = catalogo.productos || [];
+    lista.forEach((k, i) => {
+      if (!k.id || !k.nombre || !k.publicado || !(Number(k.precio) > 0)) return;
+      if (catalogo.productos.some(p => p.id === k.id)) return;
+      const comps = (k.componentes || []).map(id => catalogo.productos.find(p => p.id === id)).filter(Boolean);
+      if (comps.length < 2) return;
+      const n = (p) => T.normalizarProducto(p);
+      const todosStock = comps.every(p => n(p).modalidad !== 'encargo');
+      const stocks = comps.map(p => n(p).stock).filter(s => s != null);
+      const disponible = comps.every(p => n(p).disponible !== false);
+      const suma = comps.reduce((s, p) => s + (Number(p.precio) || 0), 0);
+      const cat = comps[0].categoria;
+      const nombres = comps.map(p => p.nombre);
+      const imagenes = k.imagenes && k.imagenes.length ? k.imagenes : comps.map(p => (p.imagenes && p.imagenes[0]) || (p.foto || '')).filter(Boolean);
+      catalogo.productos.push({
+        id: k.id, nombre: k.nombre, categoria: cat, precio: Number(k.precio), precioAnterior: suma > Number(k.precio) ? suma : null, oferta: suma > Number(k.precio),
+        imagenes, descripcionCorta: k.descripcionCorta || '', descripcion: k.descripcion || '',
+        beneficios: (k.beneficios && k.beneficios.length) ? k.beneficios : [`Ahorras ${T.formatoPrecio(suma - Number(k.precio))} frente a comprarlos por separado`].concat(comps.flatMap(p => (p.beneficios || []).slice(0, 1))),
+        especificaciones: Object.assign({ Incluye: nombres.join(' + ') }, k.especificaciones || {}),
+        incluye: nombres, instrucciones: k.instrucciones || [], precauciones: (k.precauciones && k.precauciones.length) ? k.precauciones : Array.from(new Set(comps.flatMap(p => (p.precauciones || []).slice(0, 2)))),
+        preguntas: k.preguntas || [], relacionados: comps.map(p => p.id), palabrasClave: ['combo', 'kit', 'rutina'].concat(comps.flatMap(p => p.palabrasClave || [])),
+        modalidad: todosStock ? 'stock' : 'encargo', esCombo: true, componentes: comps.map(p => p.id),
+        guia: todosStock ? '' : 'Este kit mezcla productos de entrega inmediata con otros por encargo: te confirmamos la fecha de entrega por WhatsApp.',
+        disponible, visible: true, nuevo: true, destacado: disponible, popular: false, orden: 300 + i,
+        stock: stocks.length ? Math.min.apply(null, stocks) : null, fechaCreacion: datos.actualizado || ''
+      });
+    });
+  };
+  T.esCombo = (p) => !!p.esCombo;
   T.esEncargo = (p) => p.modalidad === 'encargo';
   T.TEXTO_ENCARGO = 'Por encargo: llega en máximo 15 días. Lo separas con $20.000 o el 10% del valor.';
 

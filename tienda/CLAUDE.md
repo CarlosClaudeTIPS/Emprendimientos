@@ -26,3 +26,8 @@
 3. Guía en español que se envía (uso / instalación / no aplica) y la guía misma lista para mandar por WhatsApp.
 4. Costo, precio de referencia en Colombia (Mercado Libre y Google) y precio sugerido; preguntarle a Carlos el precio antes de marcar Publicar.
 5. Modalidad (Disponible ya / Por encargo), unidades y estado. Verificar que la oferta siga vigente y que se envíe a Colombia.
+
+## Combos (kits)
+- Fuente: pestaña **"Combos"** de la misma hoja (columnas: Publicar, ID combo, Nombre, Componente 1-3 (IDs de 'Publicado en tienda'), Suma individual, Descuento (10 % por defecto, editable por Carlos), Precio del combo (fórmula: suma menos descuento, redondeado a …900), Me cuesta y Ganancia (privadas, nunca salen), Unidades disponibles, Componentes (nombres), Publicado en la tienda (lo llena la rutina)).
+- Datos en `data/combos.json` (`{id, nombre, componentes, precio, descuento, publicado, descripcionCorta, descripcion, instrucciones, precauciones}`); `js/app.js` → `T.agregarCombos` arma el producto (precio de la hoja, precioAnterior = suma, fotos = montaje + componentes, stock = mínimo de los componentes, modalidad mixta si alguno es por encargo). `scripts/descargar-imagenes.py` genera el montaje `img/productos/<slug>/1.jpg` para los combos publicados.
+- La rutina: fila con Publicar = TRUE y columna N vacía → escribir/actualizar la entrada en combos.json con `publicado: true`, `precio` = columna I, textos de uso conjunto en español; luego imágenes, build, verificar, push, y escribir "Publicado <fecha>" en N. Publicar = FALSE → `publicado: false` y borrar N.

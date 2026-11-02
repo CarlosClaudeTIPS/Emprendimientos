@@ -140,6 +140,40 @@ for p in encargo['productos']:
         p['foto'] = imgs[0]['archivo']
         manifiesto['productos'].append({'slug': slug, 'id': p['id'], 'nombre': p['nombre'], 'og': f'img/og/{slug}.jpg', 'descargado': HOY, 'imagenes': imgs})
 
+# Combos: foto montada con los componentes lado a lado sobre blanco (1500x1500), luego el mismo tratamiento
+if os.path.exists('data/combos.json'):
+    combos = leer('data/combos.json')
+    print('Combos (data/combos.json)')
+    por_id = {p['id']: p for p in catalogo['productos']} | {p['id']: p for p in encargo['productos']}
+    for k in combos.get('combos', []):
+        if not k.get('publicado'): continue
+        slug = slug_de(k['id'])
+        fuentes = []
+        for cid in k.get('componentes', []):
+            c = por_id.get(cid)
+            if not c: continue
+            img = (c.get('imagenes') or [c.get('foto')])[0]
+            m = next((x for x in prev.get(slug_de(cid), {}).get('imagenes', []) + [i for mm in manifiesto['productos'] if mm['id'] == cid for i in mm['imagenes']] if x['archivo'] == img), None)
+            fuentes.append(m['original'] if m and os.path.exists(m['original']) else img)
+        if len(fuentes) < 2: print(f'  ✗ {k["id"]}: faltan componentes'); continue
+        original = f'img/originales/{slug}/1.jpg'
+        os.makedirs(os.path.dirname(original), exist_ok=True)
+        lienzo = Image.new('RGB', (1500, 1500), (255, 255, 255))
+        ancho = 1500 // len(fuentes)
+        for i, f in enumerate(fuentes):
+            with Image.open(f) as im:
+                im = ImageOps.exif_transpose(im).convert('RGBA'); im.thumbnail((ancho - 60, 1200), Image.LANCZOS)
+                fondo = Image.new('RGB', im.size, (255, 255, 255)); fondo.paste(im, mask=im.split()[-1])
+                lienzo.paste(fondo, (i * ancho + (ancho - im.width) // 2, (1500 - im.height) // 2))
+        lienzo.save(original, 'JPEG', quality=92)
+        os.makedirs(f'img/productos/{slug}', exist_ok=True)
+        w, h = optimizar(original, f'img/productos/{slug}/1'); imagen_og(original, f'img/og/{slug}.jpg')
+        k['imagenes'] = [f'img/productos/{slug}/1.jpg'] + [por_id[c].get('imagenes', [por_id[c].get('foto')])[0] for c in k['componentes'] if c in por_id]
+        manifiesto['productos'].append({'slug': slug, 'id': k['id'], 'nombre': k['nombre'], 'og': f'img/og/{slug}.jpg', 'descargado': HOY,
+            'imagenes': [{'archivo': f'img/productos/{slug}/1.jpg', 'webp': f'img/productos/{slug}/1.webp', 'chica': f'img/productos/{slug}/1-400.jpg', 'original': original, 'ancho': w, 'alto': h, 'origen': 'montaje: ' + ' + '.join(k['componentes']), 'descargado': HOY}]})
+        print(f'  ✓ {slug}/1.jpg montaje de {len(fuentes)} productos')
+    escribir('data/combos.json', combos)
+
 escribir('img/productos/manifiesto.json', manifiesto)
 escribir('data/catalogo.json', catalogo)
 escribir('data/encargo.json', encargo)

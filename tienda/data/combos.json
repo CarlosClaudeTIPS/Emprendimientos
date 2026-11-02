@@ -1,0 +1,116 @@
+{
+  "nota": "Combos (kits) de la pestaña 'Combos' del Google Sheet 'Catálogo Nivytek (tienda)'. La rutina automática los sincroniza. precio = el de la hoja (suma menos descuento). Solo salen en la tienda los que tienen publicado: true.",
+  "actualizado": "2026-11-02",
+  "combos": [
+    {
+      "id": "combo-noche-cerave",
+      "nombre": "Kit rutina de noche: Cetaphil + CeraVe PM",
+      "componentes": [
+        "ya-cetaphil-limpiador",
+        "ya-cerave-pm"
+      ],
+      "precio": 106900,
+      "descuento": 10,
+      "publicado": false,
+      "descripcionCorta": "Limpieza suave y hidratación nocturna para piel sensible, en un solo kit.",
+      "descripcion": "Rutina de noche en dos pasos para piel normal a sensible: limpias con Cetaphil y sellas la hidratación con CeraVe PM, que trabaja mientras duermes.",
+      "instrucciones": [
+        "Moja la cara y masajea una pequeña cantidad del limpiador Cetaphil; enjuaga y seca con toquecitos.",
+        "Aplica la loción CeraVe PM en rostro y cuello con la piel limpia.",
+        "Úsalo cada noche; en la mañana, protector solar."
+      ]
+    },
+    {
+      "id": "combo-piel-sensible",
+      "nombre": "Kit rutina completa piel sensible: Cetaphil + CeraVe PM + protector SPF 30",
+      "componentes": [
+        "ya-cetaphil-limpiador",
+        "ya-cerave-pm",
+        "ya-cerave-protector-mineral"
+      ],
+      "precio": 166900,
+      "descuento": 10,
+      "publicado": false,
+      "descripcionCorta": "Limpiador, hidratante de noche y protector solar mineral: la rutina básica completa.",
+      "descripcion": "Los tres pasos que recomiendan los dermatólogos para piel sensible: limpiar, hidratar y proteger del sol, con productos sin fragancia y no comedogénicos.",
+      "instrucciones": [
+        "Mañana: limpia con Cetaphil y aplica el protector solar mineral CeraVe SPF 30 15 minutos antes de salir; reaplica cada 2 horas al sol.",
+        "Noche: limpia con Cetaphil y aplica CeraVe PM en rostro y cuello."
+      ]
+    },
+    {
+      "id": "combo-poros-medicube",
+      "nombre": "Kit poros y grasa Medicube: Exosome Shot Zero + ácido azelaico",
+      "componentes": [
+        "ya-medicube-exosome-poros",
+        "ya-medicube-azelaico"
+      ],
+      "precio": 111900,
+      "descuento": 10,
+      "publicado": false,
+      "descripcionCorta": "Dos sérums coreanos para refinar poros, controlar la grasa y calmar los granitos.",
+      "descripcion": "Rutina coreana para piel grasa o con tendencia a granitos. Alterna los dos sérums: Exosome Shot Zero para poros y sebo, y el de ácido azelaico para calmar y mejorar las marcas.",
+      "instrucciones": [
+        "Úsalos en noches distintas (no los mezcles la misma noche): por ejemplo, lunes y jueves Exosome Shot Zero; martes y viernes ácido azelaico.",
+        "Con la cara limpia y seca, aplica 1 dosis con toques suaves; es normal un cosquilleo leve.",
+        "Termina con una crema hidratante a base de agua y, de día, protector solar."
+      ],
+      "precauciones": [
+        "No combinar la misma noche con retinol ni ácidos exfoliantes.",
+        "Si estás embarazada o en lactancia, consulta antes con tu médico."
+      ]
+    },
+    {
+      "id": "combo-luminosidad",
+      "nombre": "Kit luminosidad: Medicube vitamina C + CeraVe protector mineral SPF 30",
+      "componentes": [
+        "ya-medicube-vitamina-c",
+        "ya-cerave-protector-mineral"
+      ],
+      "precio": 130900,
+      "descuento": 10,
+      "publicado": false,
+      "descripcionCorta": "Vitamina C de día para dar luz al rostro, con el protector solar que la hace rendir.",
+      "descripcion": "La vitamina C ayuda a unificar el tono y dar luminosidad; el protector solar mineral evita las manchas nuevas y protege el resultado. Juntos son la rutina de mañana ideal.",
+      "instrucciones": [
+        "Mañana, con la cara limpia: rompe las cápsulas de la crema Medicube en la mano y aplícala en el rostro.",
+        "Espera unos minutos y aplica el protector solar mineral CeraVe SPF 30.",
+        "Reaplica el protector cada 2 horas si estás al sol."
+      ]
+    },
+    {
+      "id": "combo-dia-noche",
+      "nombre": "Kit día y noche: Medicube vitamina C + CeraVe PM",
+      "componentes": [
+        "ya-medicube-vitamina-c",
+        "ya-cerave-pm"
+      ],
+      "precio": 133900,
+      "descuento": 10,
+      "publicado": false,
+      "descripcionCorta": "Luminosidad de día y reparación de noche con dos cremas que se complementan.",
+      "descripcion": "Una crema para cada momento: Medicube con vitamina C en la mañana para iluminar y unificar el tono; CeraVe PM en la noche para hidratar y calmar con ceramidas y niacinamida.",
+      "instrucciones": [
+        "Mañana: crema Medicube vitamina C y después protector solar.",
+        "Noche: CeraVe PM en rostro y cuello con la piel limpia."
+      ]
+    },
+    {
+      "id": "combo-cuerpo-rostro",
+      "nombre": "Kit cuerpo y rostro: NIVEA loción corporal + Cetaphil limpiador",
+      "componentes": [
+        "ya-nivea-locion",
+        "ya-cetaphil-limpiador"
+      ],
+      "precio": 73900,
+      "descuento": 10,
+      "publicado": false,
+      "descripcionCorta": "Cuidado básico diario: limpieza facial suave e hidratación corporal de 72 horas.",
+      "descripcion": "Lo esencial para todos los días: limpiador facial Cetaphil para piel sensible y loción corporal NIVEA de larga duración para piel seca.",
+      "instrucciones": [
+        "Rostro: limpia con Cetaphil mañana y noche.",
+        "Cuerpo: aplica la loción NIVEA después del baño, con la piel aún un poco húmeda."
+      ]
+    }
+  ]
+}

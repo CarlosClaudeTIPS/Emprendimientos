@@ -48,6 +48,8 @@ vm.runInNewContext(readFileSync(join(raiz, 'js/app.js'), 'utf8'), sandbox);
 const T = sandbox.Tienda;
 T.slugs = slugs;
 T.agregarEncargo(catalogo, encargo);
+const combos = existsSync(join(raiz, 'data/combos.json')) ? leer('data/combos.json') : { combos: [] };
+T.agregarCombos(catalogo, combos);
 catalogo.productos = catalogo.productos.map(T.normalizarProducto).map(p => Object.assign(p, { slug: slugs[p.id] || String(p.id).replace(/^ya-/, '') }));
 catalogo.categorias = (catalogo.categorias || []).slice().sort((a, b) => (a.orden || 0) - (b.orden || 0));
 T.datos = { config, catalogo };
