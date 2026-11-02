@@ -119,8 +119,7 @@
     'videojuegos': { id: 'videojuegos', nombre: 'Videojuegos', icono: 'svg:etiqueta' },
     'herramientas': { id: 'herramientas', nombre: 'Herramientas', icono: 'svg:etiqueta' },
     'oficina y estudio': { id: 'oficina', nombre: 'Oficina y estudio', icono: 'svg:etiqueta' },
-    'navidad y fiestas': { id: 'navidad', nombre: 'Navidad y fiestas', icono: 'svg:estrella' },
-    'combos': { id: 'combos', nombre: 'Combos', icono: 'svg:estrella' }
+    'navidad y fiestas': { id: 'navidad', nombre: 'Navidad y fiestas', icono: 'svg:estrella' }
   };
 
   /* CSV publicado de la pestaña "Vitrina (pública)" -> lista de objetos por encabezado */
@@ -157,8 +156,6 @@
       }
       const agotado = estado.startsWith('agotado');
       const enStock = String(e.modalidad || '').toLowerCase().startsWith('disponible ya');
-      const esCombo = String(e.modalidad || '').toLowerCase() === 'combo';
-      const separado = Number(String(e.separado || '').replace(/[^\d]/g, '')) || 0;
       const unidades = parseInt(e.unidades, 10);
       /* Descripción completa (columna de la hoja). Formato:
          "Marca: X" -> especificaciones; párrafos -> descripción; "- ..." -> beneficios;
@@ -192,10 +189,9 @@
         descripcion: parrafos.join('\n'), beneficios, especificaciones, instrucciones, precauciones,
         incluye: textoGuia ? incluye.concat([textoGuia.replace(/^Con tu compra te enviamos por WhatsApp una /, '').replace(/\.$/, '').replace(/^./, c => c.toUpperCase())]) : incluye,
         guia: textoGuia,
-        modalidad: esCombo ? 'combo' : enStock ? 'stock' : 'encargo',
-        precioAnterior: esCombo && separado > precio ? separado : null, oferta: esCombo && separado > precio,
+        modalidad: enStock ? 'stock' : 'encargo',
         consultar: estado.startsWith('consultar'),
-        disponible: !agotado, visible: true, nuevo: !esCombo, destacado: (enStock || esCombo) && !agotado, orden: (esCombo ? 400 : enStock ? 500 : 1000) + i,
+        disponible: !agotado, visible: true, nuevo: true, destacado: enStock && !agotado, orden: (enStock ? 500 : 1000) + i,
         stock: enStock ? (agotado ? 0 : (unidades > 0 ? unidades : null)) : null,
         fechaCreacion: e.publicado || '', ofertaHasta: e.ofertaHasta || ''
       });
@@ -564,7 +560,6 @@
       p.disponible && p.oferta && d > 0 && `<span class="etiqueta etiqueta-oferta">-${d}%</span>`,
       p.disponible && p.oferta && d === 0 && '<span class="etiqueta etiqueta-oferta">Oferta</span>',
       T.esEncargo(p) && '<span class="etiqueta etiqueta-encargo">Por encargo</span>',
-      p.modalidad === 'combo' && '<span class="etiqueta etiqueta-encargo">Combo</span>',
       p.nuevo && !T.esEncargo(p) && '<span class="etiqueta etiqueta-nuevo">Nuevo</span>',
       p.popular && '<span class="etiqueta etiqueta-popular">Popular</span>'
     ].filter(Boolean).join('');
