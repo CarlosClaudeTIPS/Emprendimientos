@@ -22,3 +22,4 @@
 3. Guía en español que se envía (uso / instalación / no aplica) y la guía misma lista para mandar por WhatsApp.
 4. Costo, precio de referencia en Colombia (Mercado Libre y Google) y precio sugerido; preguntarle a Carlos el precio antes de marcar Publicar.
 5. Modalidad (Disponible ya / Por encargo), unidades y estado. Verificar que la oferta siga vigente y que se envíe a Colombia.
+- Combos: pestaña "Combos" del mismo Google Sheet (Publicar, precio con Bajar/Subir, Estado, Nombre, Producto 1-4 elegidos de una lista de "Publicado en tienda"; precio por separado, ahorro, foto, costo y ganancia son automáticos). La vitrina los agrega con modalidad "Combo", categoría "Combos" y columna `separado`; `app.js` los muestra con etiqueta "Combo" y "Por separado: $X · Ahorras $Y".
