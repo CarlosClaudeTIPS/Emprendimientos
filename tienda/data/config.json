@@ -172,7 +172,8 @@
     }
   ],
   "vitrina": {
-    "csv": "https://docs.google.com/spreadsheets/d/1m1vI1PVkYpc2KIuLPcT_rlCTLbAcxF7hPgxuHE19x5s/pub?gid=778&single=true&output=csv",
-    "nota": "Pestaña 'Vitrina (pública)' del Google Sheet 'Catálogo Nivytek (tienda)', publicada en la web como CSV. Solo trae los productos con la casilla Publicar marcada."
+    "csv": "",
+    "csvPendientePublicar": "https://docs.google.com/spreadsheets/d/1m1vI1PVkYpc2KIuLPcT_rlCTLbAcxF7hPgxuHE19x5s/pub?gid=778&single=true&output=csv",
+    "nota": "Lectura en vivo desactivada: la pestaña 'Vitrina (pública)' no está publicada en la web (Google devuelve la página de inicio de sesión y el navegador muestra un error en consola). La tienda usa data/encargo.json, que la rutina automática sincroniza desde la hoja 3 veces al día. Si publicas la pestaña en la web (Archivo → Compartir → Publicar en la web → esa pestaña, CSV), pasa la URL de csvPendientePublicar a csv."
   }
 }
