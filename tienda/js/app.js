@@ -77,7 +77,9 @@
     const csvVitrina = (config.vitrina || {}).csv;
     if (csvVitrina) {
       try {
-        const r = await fetch(csvVitrina, { cache: 'no-cache' });
+        /* Máximo 4 s: si Google no responde (pestaña sin publicar, sin internet), la tienda no se queda esperando */
+        const ctl = new AbortController(); const tiempo = setTimeout(() => ctl.abort(), 4000);
+        const r = await fetch(csvVitrina, { cache: 'no-cache', signal: ctl.signal }).finally(() => clearTimeout(tiempo));
         const txt = r.ok ? await r.text() : '';
         /* Si la pestaña no está publicada en la web, Google devuelve HTML: se ignora y se usa la copia local */
         if (txt && !/^\s*</.test(txt) && /^id,/i.test(txt.trim())) { const filas = T.leerCSV(txt); if (filas.length) enc = { productos: filas }; }
