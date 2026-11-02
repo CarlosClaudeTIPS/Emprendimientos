@@ -7,7 +7,7 @@
   --c-accent:#F4845F;  --c-accent-dark:#D96A46;
   --c-mint:#DDF3EA;    --c-green:#2BB58A;
   --c-yellow:#FFD166;
-  --c-wa:#128C45;      --c-wa-dark:#0F7A3E;
+  --c-wa:#0F7A3E;      --c-wa-dark:#0C6433;  /* blanco sobre este verde: contraste 4.9:1 */
   --c-ink:#1D2433; --c-ink-2:#4A5568; --c-ink-3:#5B6474;
   --c-bg:#FFFFFF; --c-bg-soft:#F6F8FC; --c-line:#E2E8F2;
   --radius:16px; --radius-sm:10px;

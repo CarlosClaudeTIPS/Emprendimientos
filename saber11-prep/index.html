@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#1FA9EC" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" /></noscript>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"EducationalOrganization","name":"Nivytek · Saber 11","url":"https://nivytek.com/icfes/","logo":"https://nivytek.com/shared/logo.svg","email":"nivytek@hotmail.com","telephone":"+573043134833","areaServed":{"@type":"City","name":"Bogotá"},"parentOrganization":{"@type":"Organization","name":"Nivytek","url":"https://nivytek.com/","logo":"https://nivytek.com/shared/logo.svg","email":"nivytek@hotmail.com"},
      "makesOffer":{"@type":"Offer","itemOffered":{"@type":"Service","name":"Preparación para la prueba Saber 11 (ICFES) y exámenes de admisión","serviceType":"Preparación Saber 11","description":"Plataforma de práctica con preguntas explicadas, simulacros y rutas para los exámenes de admisión de la Universidad Nacional y la Universidad de Antioquia, con acompañamiento docente en clases individuales o en grupos de hasta 5 estudiantes.","areaServed":"Bogotá, Colombia","provider":{"@type":"Organization","name":"Nivytek"}}}}
@@ -38,6 +38,13 @@
     </script>
     <style>
       .sin-portada #portada { display: none; }
+      /* Contraste en la portada (WCAG AA): el azul de marca #1FA9EC queda para fondos grandes;
+         los textos pequeños y los botones usan un azul más oscuro (blanco sobre él: 4.6:1). */
+      #portada .text-brand-blue, #portada .text-brand-blue * { color: #0B6FAF; }
+      #portada .btn-primary { background: #0B6FAF; box-shadow: 0 4px 14px rgba(11, 111, 175, .25); }
+      #portada .btn-primary:hover { background: #095C91; }
+      #portada .titulo-contorno { -webkit-text-stroke-color: #0B6FAF; }
+      #portada .text-gray-500 { color: #5A6275; }
       #portada details summary { cursor: pointer; list-style: none; }
       #portada details summary::-webkit-details-marker { display: none; }
       #portada details[open] summary .flecha { transform: rotate(180deg); }
