@@ -85,6 +85,150 @@
       "source": "/portal/:path*",
       "destination": "/:path*",
       "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "control-xbox-forza-horizon-6"
+        }
+      ],
+      "destination": "/p/control-xbox-forza-horizon-6.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "control-xbox-robot-white"
+        }
+      ],
+      "destination": "/p/control-xbox-robot-white.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "rastreadores-flyruit-tag-x4"
+        }
+      ],
+      "destination": "/p/rastreadores-flyruit-tag-x4.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-cargador-usbc-20w"
+        }
+      ],
+      "destination": "/p/cargador-stuffcool-usb-c-20w-iphone.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-camara-yoton-2k"
+        }
+      ],
+      "destination": "/p/camara-seguridad-yoton-2k-wifi.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-medicube-vitamina-c"
+        }
+      ],
+      "destination": "/p/medicube-crema-capsula-vitamina-c.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-medicube-azelaico"
+        }
+      ],
+      "destination": "/p/medicube-exosome-shot-acido-azelaico.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-medicube-exosome-poros"
+        }
+      ],
+      "destination": "/p/medicube-exosome-shot-zero-poros.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-cerave-pm"
+        }
+      ],
+      "destination": "/p/cerave-pm-locion-noche.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-cerave-protector-mineral"
+        }
+      ],
+      "destination": "/p/cerave-protector-solar-mineral-spf30.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-cetaphil-limpiador"
+        }
+      ],
+      "destination": "/p/cetaphil-limpiador-facial-473ml.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-nivea-locion"
+        }
+      ],
+      "destination": "/p/nivea-locion-corporal-piel-seca.html",
+      "permanent": true
     }
   ],
   "rewrites": [

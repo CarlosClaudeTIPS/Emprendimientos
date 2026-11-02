@@ -8,6 +8,8 @@
       main.innerHTML = `<div class="vacio" style="margin:2rem 0"><h1>Producto no disponible</h1><p>Es posible que haya sido retirado del catálogo.</p><a class="btn btn-primario" href="${T.ruta('catalogo.html')}">Ver el catálogo</a></div>`;
       return;
     }
+    /* Enlace viejo (producto.html?p=ID): llevar a la página estática del producto. vercel.json ya redirige en el servidor; esto es el respaldo. */
+    if (!document.body.dataset.producto && /producto\.html$/.test(location.pathname) && (config.sitio || {}).paginasEstaticas !== false) { location.replace(T.urlProducto(p) + location.hash); return; }
     T.registrar('view_item', { producto: p.id }); T.pixel('ViewContent', T.datosPixel(p));
     T.vistos.agregar(p.id);
     const cat = T.categoria(p.categoria);

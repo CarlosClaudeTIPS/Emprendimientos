@@ -5,7 +5,9 @@
   "description": "Tienda digital estática con pedidos por WhatsApp. La dependencia solo la usa la función serverless de Netlify.",
   "scripts": {
     "dev": "python3 -m http.server 8080",
-    "paginas": "node generar-paginas.mjs"
+    "imagenes": "python3 scripts/descargar-imagenes.py",
+    "build": "node scripts/generar-paginas.mjs",
+    "verificar": "node scripts/verificar.mjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0"
