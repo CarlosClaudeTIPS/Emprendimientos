@@ -206,7 +206,7 @@
   }, p, { precio: Number(p.precio) || 0, precioAnterior: p.precioAnterior ? Number(p.precioAnterior) : null, stock: (p.stock === '' || p.stock == null) ? null : Math.max(0, Math.round(Number(p.stock)) || 0) });
 
   T.vendido = (p) => !p.disponible && p.stock === 0 && !T.esEncargo(p);
-  T.textoStock = (p) => (p.disponible && p.stock != null && p.stock > 0) ? `Quedan ${p.stock} unidad${p.stock === 1 ? '' : 'es'}` : '';
+  T.textoStock = (p) => (p.disponible && p.stock != null && p.stock > 0) ? (p.stock === 1 ? 'Queda 1 unidad' : `Quedan ${p.stock} unidades`) : '';
   T.visibles = () => T.datos.catalogo.productos.filter(p => p.visible !== false).sort((a, b) => (a.orden || 0) - (b.orden || 0));
   T.categoria = (id) => T.datos.catalogo.categorias.find(c => c.id === id);
   T.producto = (id) => T.datos.catalogo.productos.find(p => p.id === id);
