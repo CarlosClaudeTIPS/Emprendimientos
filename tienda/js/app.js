@@ -57,12 +57,15 @@
 
   T.cargar = async function () {
     if (T.datos) return T.datos;
-    const [cfgRes, catRes] = await Promise.all([
+    const [cfgRes, catRes, slugRes] = await Promise.all([
       fetch(T.ruta('data/config.json'), { cache: 'no-cache' }),
-      fetch(T.ruta('data/catalogo.json'), { cache: 'no-cache' })
+      fetch(T.ruta('data/catalogo.json'), { cache: 'no-cache' }),
+      fetch(T.ruta('data/slugs.json'), { cache: 'no-cache' }).catch(() => null)
     ]);
     let config = await cfgRes.json();
     let catalogo = await catRes.json();
+    /* Nombre de la página estática de cada producto (p/<slug>.html); lo genera scripts/generar-paginas.mjs */
+    T.slugs = {}; try { if (slugRes && slugRes.ok) T.slugs = await slugRes.json(); } catch (e) { /* sin slugs: se usa el id */ }
     T.modoBorrador = false;
     if (T.previsualizando()) {
       const bc = T.leerLS(LS.borradorCatalogo, null);
@@ -95,7 +98,7 @@
       (enc.productos || []).forEach(p => { if (fotos[p.id]) p.foto = fotos[p.id]; });
     }
     if (enc) T.agregarEncargo(catalogo, enc);
-    catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto);
+    catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto).map(p => Object.assign(p, { slug: p.slug || T.slugs[p.id] || String(p.id).replace(/^ya-/, '') }));
     catalogo.categorias = (catalogo.categorias || []).slice().sort((a, b) => (a.orden || 0) - (b.orden || 0));
     T.datos = { config, catalogo };
     T.aplicarMarca(config);
@@ -233,7 +236,7 @@
   /* ---------- URL del producto y compartir ---------- */
   T.urlProducto = (p, absoluta) => {
     const cfg = T.datos.config.sitio || {};
-    const rel = (cfg.paginasEstaticas && !p.modalidad) ? ('p/' + encodeURIComponent(p.id) + '.html') : ('producto.html?p=' + encodeURIComponent(p.id));
+    const rel = cfg.paginasEstaticas !== false ? ('p/' + encodeURIComponent(p.slug || p.id) + '.html') : ('producto.html?p=' + encodeURIComponent(p.id));
     if (!absoluta) return T.ruta(rel);
     const base = new URL(T.ruta(rel), location.href);
     return base.href;
@@ -242,6 +245,13 @@
   T.imagenProducto = (p, i) => {
     const src = (p.imagenes && p.imagenes[i || 0]) || 'img/sin-imagen.svg';
     return /^https?:\/\//.test(src) ? src : T.ruta(src);
+  };
+
+  /* <picture> con WebP + JPG de respaldo para las fotos guardadas en img/productos/<slug>/N.jpg */
+  T.picture = (p, i, attrs, alt) => {
+    const src = T.imagenProducto(p, i);
+    const img = `<img src="${T.esc(src)}" alt="${T.esc(alt == null ? (p.nombre || '') : alt)}" ${attrs || ''}>`;
+    return /\/img\/productos\/[^/]+\/\d+\.jpg$|^img\/productos\/[^/]+\/\d+\.jpg$/.test(src) ? `<picture><source type="image/webp" srcset="${T.esc(src.replace(/\.jpg$/, '.webp'))}">${img}</picture>` : img;
   };
 
   /* ---------- WhatsApp ---------- */
@@ -279,6 +289,8 @@
   T.abrirWA = (mensaje, evento, extra) => {
     if (!T.hayWA()) { T.toast('El número de WhatsApp aún no está configurado (admin → Configuración).'); return false; }
     T.registrar(evento || 'whatsapp_click', extra || {});
+    const pp = extra && extra.producto && T.producto(extra.producto);
+    T.pixel('Contact', pp ? T.datosPixel(pp) : { content_name: (extra && extra.origen) || evento || 'whatsapp' });
     window.open(T.enlaceWA(mensaje), '_blank', 'noopener');
     return true;
   };
@@ -293,12 +305,17 @@
       window.gtag = function () { window.dataLayer.push(arguments); };
       window.gtag('js', new Date()); window.gtag('config', a.ga4);
     }
-    if (a.metaPixel && !window.fbq) {
+    const pixelId = String((window.TIENDA_CONFIG || {}).META_PIXEL_ID || a.metaPixel || '').trim();
+    if (pixelId && !window.fbq) {
       /* Carga estándar de Meta Pixel */
       !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-      window.fbq('init', a.metaPixel); window.fbq('track', 'PageView');
+      window.fbq('init', pixelId); window.fbq('track', 'PageView');
     }
   };
+
+  /* Evento estándar de Meta Pixel (ViewContent, AddToCart, Contact...). No hace nada si el píxel no está cargado. */
+  T.pixel = (evento, datos) => { try { if (window.fbq) window.fbq('track', evento, datos || {}); } catch (e) { } };
+  T.datosPixel = (p, cantidad) => ({ content_ids: [p.id], content_name: p.nombre, content_type: 'product', value: Number(p.precio) * (cantidad || 1), currency: 'COP' });
 
   T.registrar = (evento, datos) => {
     datos = datos || {};
@@ -334,7 +351,7 @@
       if (ex && ex.cantidad + cant > tope) { T.toast(`Solo hay ${tope} unidad${tope === 1 ? '' : 'es'} disponible${tope === 1 ? '' : 's'}.`); ex.cantidad = tope; this.guardar(); return; }
       if (ex) ex.cantidad = Math.min(tope, ex.cantidad + cant);
       else this.items.push({ clave: k, id: p.id, variantes: variantes || {}, cantidad: Math.min(tope, cant) });
-      this.guardar(); T.registrar('add_to_cart', { producto: p.id });
+      this.guardar(); T.registrar('add_to_cart', { producto: p.id }); T.pixel('AddToCart', T.datosPixel(p, cant));
       T.toast('Agregado al carrito');
     },
     cambiar(k, delta) {
@@ -372,7 +389,7 @@
         const p = T.producto(i.id); if (!p) return '';
         const v = Object.entries(i.variantes).map(([k, val]) => `${T.esc(k)}: ${T.esc(val)}`).join(' · ');
         return `<div class="carrito-item">
-          <img src="${T.esc(T.imagenProducto(p))}" alt="" loading="lazy">
+          ${T.picture(p, 0, 'loading="lazy" width="64" height="64"')}
           <div><strong>${T.esc(p.nombre)}</strong>${v ? `<small>${v}</small>` : ''}<small>${T.formatoPrecio(p.precio)}</small>
             <button class="quitar" data-quitar="${T.esc(i.clave)}">Quitar</button></div>
           <div class="cantidad"><button data-menos="${T.esc(i.clave)}" aria-label="Menos">−</button><span>${i.cantidad}</span><button data-mas="${T.esc(i.clave)}" aria-label="Más">+</button></div>
@@ -466,7 +483,7 @@
       <div class="contenedor">
         <div class="encabezado-barra">
           <button class="icono-btn solo-movil" id="btn-menu" aria-label="Abrir menú" aria-expanded="false">${T.ico.menu}</button>
-          <a class="logo" href="${T.ruta('index.html')}">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="">` : T.ico.tienda}<span class="logo-texto">${T.esc(n.nombre || 'Mi Tienda')}</span></a>
+          <a class="logo" href="${T.ruta('index.html')}">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="Nivytek" width="32" height="32">` : T.ico.tienda}<span class="logo-texto">${T.esc(n.nombre || 'Mi Tienda')}</span></a>
           <nav class="nav" aria-label="Principal">${enlaces}</nav>
           ${buscador('buscar-escritorio')}
           <button class="icono-btn" id="btn-carrito" aria-label="Abrir carrito">${T.ico.carrito}<span class="contador"></span></button>
@@ -499,7 +516,7 @@
     ].join('');
     el.innerHTML = `<div class="contenedor">
       <div class="pie-grid">
-        <div><a class="logo" href="${T.ruta('index.html')}" style="color:#fff">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="">` : ''}<span>${T.esc(n.nombre || 'Mi Tienda')}</span></a>
+        <div><a class="logo" href="${T.ruta('index.html')}" style="color:#fff">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="Nivytek" width="32" height="32">` : ''}<span>${T.esc(n.nombre || 'Mi Tienda')}</span></a>
           <p style="margin-top:.6rem;font-size:.92rem">${T.esc(n.descripcion || '')}</p>
           ${redes ? `<div class="pie-redes">${redes}</div>` : ''}</div>
         <div><h4>Categorías</h4><ul>${cats}</ul></div>
@@ -537,14 +554,14 @@
       $('#capa').addEventListener('click', () => T.abrirCarrito(false));
       $('#cerrar-carrito').addEventListener('click', () => T.abrirCarrito(false));
       $('#carrito-vaciar').addEventListener('click', () => T.carrito.vaciar());
-      $('#carrito-enviar').addEventListener('click', () => { if (T.carrito.items.length) T.abrirWA(T.carrito.mensaje(), 'whatsapp_carrito', { items: T.carrito.cantidad() }); });
+      $('#carrito-enviar').addEventListener('click', () => { if (T.carrito.items.length) { T.pixel('InitiateCheckout', { value: T.carrito.total(), currency: 'COP', num_items: T.carrito.cantidad(), content_ids: T.carrito.items.map(i => i.id) }); T.abrirWA(T.carrito.mensaje(), 'whatsapp_carrito', { items: T.carrito.cantidad() }); } });
       $('#carrito-lista').addEventListener('click', (e) => {
         const b = e.target.closest('button'); if (!b) return;
         if (b.dataset.mas) T.carrito.cambiar(b.dataset.mas, 1);
         else if (b.dataset.menos) T.carrito.cambiar(b.dataset.menos, -1);
         else if (b.dataset.quitar) T.carrito.quitar(b.dataset.quitar);
       });
-      $('#wa-flotante').addEventListener('click', (e) => { if (!T.hayWA()) { e.preventDefault(); T.toast('El número de WhatsApp aún no está configurado.'); } else T.registrar('whatsapp_click', { origen: 'flotante' }); });
+      $('#wa-flotante').addEventListener('click', (e) => { if (!T.hayWA()) { e.preventDefault(); T.toast('El número de WhatsApp aún no está configurado.'); } else { T.registrar('whatsapp_click', { origen: 'flotante' }); T.pixel('Contact', { content_name: 'flotante' }); } });
     }
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') T.abrirCarrito(false); });
   };
@@ -564,8 +581,8 @@
     const url = T.urlProducto(p);
     return `<article class="tarjeta aparece ${p.disponible ? '' : 'agotada'}" data-id="${T.esc(p.id)}">
       <a class="tarjeta-imagen" href="${url}" tabindex="-1" aria-hidden="true">
-        <img src="${T.esc(T.imagenProducto(p))}" alt="" loading="lazy" width="400" height="400">
-        ${p.imagenes && p.imagenes[1] ? `<img class="img-hover" src="${T.esc(T.imagenProducto(p, 1))}" alt="" loading="lazy" width="400" height="400">` : ''}
+        ${T.picture(p, 0, 'loading="lazy" width="400" height="400"')}
+        ${p.imagenes && p.imagenes[1] ? T.picture(p, 1, 'class="img-hover" loading="lazy" width="400" height="400"', p.nombre + ', segunda foto') : ''}
       </a>
       <div class="etiquetas">${etiquetas}</div>
       <div class="tarjeta-cuerpo">
@@ -651,7 +668,7 @@
         const cats = T.datos.catalogo.categorias.filter(c => c.visible !== false && T.slug(c.nombre).includes(T.slug(q))).slice(0, 2);
         if (!prods.length && !cats.length) { caja.innerHTML = `<div class="sug-vacio">Sin resultados para “${T.esc(q)}”. <a href="${T.ruta('catalogo.html')}">Ver todo el catálogo</a></div>`; caja.hidden = false; return; }
         caja.innerHTML = cats.map(c => `<a class="sug sug-cat" href="${T.ruta('catalogo.html?cat=' + encodeURIComponent(c.id))}"><span class="sug-ico">${T.icono(c.icono, 'svg:etiqueta')}</span><span>Categoría: <strong>${T.esc(c.nombre)}</strong></span></a>`).join('') +
-          prods.map(p => `<a class="sug" href="${T.urlProducto(p)}"><img src="${T.esc(T.imagenProducto(p))}" alt="" loading="lazy"><span><strong>${T.esc(p.nombre)}</strong><small>${T.formatoPrecio(p.precio)}${p.disponible ? '' : ' · Agotado'}</small></span></a>`).join('') +
+          prods.map(p => `<a class="sug" href="${T.urlProducto(p)}">${T.picture(p, 0, 'loading="lazy" width="40" height="40"')}<span><strong>${T.esc(p.nombre)}</strong><small>${T.formatoPrecio(p.precio)}${p.disponible ? '' : ' · Agotado'}</small></span></a>`).join('') +
           `<a class="sug sug-todos" href="${T.ruta('catalogo.html?q=' + encodeURIComponent(q))}">Ver todos los resultados para “${T.esc(q)}” →</a>`;
         caja.hidden = false;
       };
@@ -676,7 +693,7 @@
     document.body.appendChild(nav); document.body.classList.add('con-barra-inferior');
     $('#bi-buscar').addEventListener('click', (e) => { e.preventDefault(); const m = $('#menu-movil'); if (m) { m.classList.add('abierto'); window.scrollTo({ top: 0, behavior: 'smooth' }); const i = m.querySelector('input'); if (i) setTimeout(() => i.focus(), 250); } });
     $('#bi-carrito').addEventListener('click', (e) => { e.preventDefault(); T.abrirCarrito(true); });
-    $('#bi-wa').addEventListener('click', (e) => { if (!T.hayWA()) { e.preventDefault(); T.toast('El número de WhatsApp aún no está configurado.'); } else T.registrar('whatsapp_click', { origen: 'barra-inferior' }); });
+    $('#bi-wa').addEventListener('click', (e) => { if (!T.hayWA()) { e.preventDefault(); T.toast('El número de WhatsApp aún no está configurado.'); } else { T.registrar('whatsapp_click', { origen: 'barra-inferior' }); T.pixel('Contact', { content_name: 'barra-inferior' }); } });
     T.renderContador();
   };
 
