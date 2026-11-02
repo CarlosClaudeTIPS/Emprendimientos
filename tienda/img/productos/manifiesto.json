@@ -1,0 +1,267 @@
+{
+  "generado": "2026-11-02",
+  "nota": "Imágenes locales de los productos. \"origen\" es la URL o archivo del que se bajó; \"original\" es la copia intacta de respaldo.",
+  "productos": [
+    {
+      "slug": "control-xbox-forza-horizon-6",
+      "id": "control-xbox-forza-horizon-6",
+      "nombre": "Control Xbox Edición Limitada Forza Horizon 6 - Nuevo en caja",
+      "og": "img/og/control-xbox-forza-horizon-6.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/control-xbox-forza-horizon-6/1.jpg",
+          "webp": "img/productos/control-xbox-forza-horizon-6/1.webp",
+          "original": "img/originales/control-xbox-forza-horizon-6/1.jpg",
+          "ancho": 900,
+          "alto": 900,
+          "origen": "img/productos/control-xbox-forza-horizon-6.jpg",
+          "descargado": "2026-11-02"
+        },
+        {
+          "archivo": "img/productos/control-xbox-forza-horizon-6/2.jpg",
+          "webp": "img/productos/control-xbox-forza-horizon-6/2.webp",
+          "original": "img/originales/control-xbox-forza-horizon-6/2.jpg",
+          "ancho": 900,
+          "alto": 900,
+          "origen": "img/productos/control-xbox-forza-horizon-6-mesa.jpg",
+          "descargado": "2026-11-02"
+        },
+        {
+          "archivo": "img/productos/control-xbox-forza-horizon-6/3.jpg",
+          "webp": "img/productos/control-xbox-forza-horizon-6/3.webp",
+          "original": "img/originales/control-xbox-forza-horizon-6/3.jpg",
+          "ancho": 1000,
+          "alto": 1000,
+          "origen": "img/productos/control-xbox-forza-horizon-6-estudio.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "control-xbox-robot-white",
+      "id": "control-xbox-robot-white",
+      "nombre": "Control Xbox Inalámbrico Robot White - Nuevo y sellado",
+      "og": "img/og/control-xbox-robot-white.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/control-xbox-robot-white/1.jpg",
+          "webp": "img/productos/control-xbox-robot-white/1.webp",
+          "original": "img/originales/control-xbox-robot-white/1.jpg",
+          "ancho": 900,
+          "alto": 900,
+          "origen": "img/productos/control-xbox-robot-white.jpg",
+          "descargado": "2026-11-02"
+        },
+        {
+          "archivo": "img/productos/control-xbox-robot-white/2.jpg",
+          "webp": "img/productos/control-xbox-robot-white/2.webp",
+          "original": "img/originales/control-xbox-robot-white/2.jpg",
+          "ancho": 900,
+          "alto": 900,
+          "origen": "img/productos/control-xbox-robot-white-mesa.jpg",
+          "descargado": "2026-11-02"
+        },
+        {
+          "archivo": "img/productos/control-xbox-robot-white/3.jpg",
+          "webp": "img/productos/control-xbox-robot-white/3.webp",
+          "original": "img/originales/control-xbox-robot-white/3.jpg",
+          "ancho": 1024,
+          "alto": 765,
+          "origen": "img/productos/control-xbox-robot-white-caja.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "rastreadores-flyruit-tag-x4",
+      "id": "rastreadores-flyruit-tag-x4",
+      "nombre": "Rastreadores FLYRUIT Tag (paquete de 4) - Compatibles con Apple Buscar (MFi)",
+      "og": "img/og/rastreadores-flyruit-tag-x4.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/rastreadores-flyruit-tag-x4/1.jpg",
+          "webp": "img/productos/rastreadores-flyruit-tag-x4/1.webp",
+          "original": "img/originales/rastreadores-flyruit-tag-x4/1.jpg",
+          "ancho": 900,
+          "alto": 900,
+          "origen": "tienda/img/productos/flyruit-tag-x4.jpg",
+          "descargado": "2026-11-02"
+        },
+        {
+          "archivo": "img/productos/rastreadores-flyruit-tag-x4/2.jpg",
+          "webp": "img/productos/rastreadores-flyruit-tag-x4/2.webp",
+          "original": "img/originales/rastreadores-flyruit-tag-x4/2.jpg",
+          "ancho": 900,
+          "alto": 900,
+          "origen": "tienda/img/productos/flyruit-tag-x4-mesa.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "cargador-stuffcool-usb-c-20w-iphone",
+      "id": "ya-cargador-usbc-20w",
+      "nombre": "Cargador Stuffcool USB-C 20 W de carga rápida para iPhone, certificado MFi",
+      "og": "img/og/cargador-stuffcool-usb-c-20w-iphone.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/cargador-stuffcool-usb-c-20w-iphone/1.jpg",
+          "webp": "img/productos/cargador-stuffcool-usb-c-20w-iphone/1.webp",
+          "original": "img/originales/cargador-stuffcool-usb-c-20w-iphone/1.jpg",
+          "ancho": 1200,
+          "alto": 1204,
+          "origen": "https://m.media-amazon.com/images/I/618-MJqshTL._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "camara-seguridad-yoton-2k-wifi",
+      "id": "ya-camara-yoton-2k",
+      "nombre": "Cámara de seguridad YOTON 2K WiFi para interior, para bebé y mascotas",
+      "og": "img/og/camara-seguridad-yoton-2k-wifi.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/camara-seguridad-yoton-2k-wifi/1.jpg",
+          "webp": "img/productos/camara-seguridad-yoton-2k-wifi/1.webp",
+          "original": "img/originales/camara-seguridad-yoton-2k-wifi/1.jpg",
+          "ancho": 1032,
+          "alto": 1204,
+          "origen": "https://m.media-amazon.com/images/I/61tfGvrxoDL._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "medicube-crema-capsula-vitamina-c",
+      "id": "ya-medicube-vitamina-c",
+      "nombre": "Medicube crema cápsula con vitamina C profunda",
+      "og": "img/og/medicube-crema-capsula-vitamina-c.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
+          "webp": "img/productos/medicube-crema-capsula-vitamina-c/1.webp",
+          "original": "img/originales/medicube-crema-capsula-vitamina-c/1.jpg",
+          "ancho": 1200,
+          "alto": 1329,
+          "origen": "https://m.media-amazon.com/images/I/71m8aGBgXqL._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "medicube-exosome-shot-acido-azelaico",
+      "id": "ya-medicube-azelaico",
+      "nombre": "Medicube Exosome Shot ácido azelaico 2.000 PPM, sérum facial",
+      "og": "img/og/medicube-exosome-shot-acido-azelaico.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg",
+          "webp": "img/productos/medicube-exosome-shot-acido-azelaico/1.webp",
+          "original": "img/originales/medicube-exosome-shot-acido-azelaico/1.jpg",
+          "ancho": 1200,
+          "alto": 1302,
+          "origen": "https://m.media-amazon.com/images/I/71TFpArxslL._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "medicube-exosome-shot-zero-poros",
+      "id": "ya-medicube-exosome-poros",
+      "nombre": "Medicube Exosome Shot Zero 2.000 PPM, sérum para poros y grasa",
+      "og": "img/og/medicube-exosome-shot-zero-poros.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
+          "webp": "img/productos/medicube-exosome-shot-zero-poros/1.webp",
+          "original": "img/originales/medicube-exosome-shot-zero-poros/1.jpg",
+          "ancho": 1015,
+          "alto": 1500,
+          "origen": "https://m.media-amazon.com/images/I/71bfHCGMlEL._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "cerave-pm-locion-noche",
+      "id": "ya-cerave-pm",
+      "nombre": "CeraVe PM loción hidratante facial de noche",
+      "og": "img/og/cerave-pm-locion-noche.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/cerave-pm-locion-noche/1.jpg",
+          "webp": "img/productos/cerave-pm-locion-noche/1.webp",
+          "original": "img/originales/cerave-pm-locion-noche/1.jpg",
+          "ancho": 1172,
+          "alto": 1500,
+          "origen": "https://m.media-amazon.com/images/I/61TuwUQ-qvL._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "cerave-protector-solar-mineral-spf30",
+      "id": "ya-cerave-protector-mineral",
+      "nombre": "CeraVe protector solar mineral hidratante SPF 30 con tinte transparente",
+      "og": "img/og/cerave-protector-solar-mineral-spf30.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/cerave-protector-solar-mineral-spf30/1.jpg",
+          "webp": "img/productos/cerave-protector-solar-mineral-spf30/1.webp",
+          "original": "img/originales/cerave-protector-solar-mineral-spf30/1.jpg",
+          "ancho": 1200,
+          "alto": 1249,
+          "origen": "https://m.media-amazon.com/images/I/71zMpOIe51L._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "cetaphil-limpiador-facial-473ml",
+      "id": "ya-cetaphil-limpiador",
+      "nombre": "Cetaphil limpiador facial diario suave, 473 ml",
+      "og": "img/og/cetaphil-limpiador-facial-473ml.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
+          "webp": "img/productos/cetaphil-limpiador-facial-473ml/1.webp",
+          "original": "img/originales/cetaphil-limpiador-facial-473ml/1.jpg",
+          "ancho": 1168,
+          "alto": 1398,
+          "origen": "https://m.media-amazon.com/images/I/61wJk3BTsrL._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    },
+    {
+      "slug": "nivea-locion-corporal-piel-seca",
+      "id": "ya-nivea-locion",
+      "nombre": "NIVEA loción corporal de larga duración para piel seca a muy seca",
+      "og": "img/og/nivea-locion-corporal-piel-seca.jpg",
+      "descargado": "2026-11-02",
+      "imagenes": [
+        {
+          "archivo": "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
+          "webp": "img/productos/nivea-locion-corporal-piel-seca/1.webp",
+          "original": "img/originales/nivea-locion-corporal-piel-seca/1.jpg",
+          "ancho": 506,
+          "alto": 1500,
+          "origen": "https://m.media-amazon.com/images/I/61nIWVHSZzL._AC_SL500_.jpg",
+          "descargado": "2026-11-02"
+        }
+      ]
+    }
+  ]
+}

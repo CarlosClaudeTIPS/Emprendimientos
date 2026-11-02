@@ -56,9 +56,9 @@
       "visible": true,
       "orden": 1,
       "imagenes": [
-        "img/productos/control-xbox-forza-horizon-6.jpg",
-        "img/productos/control-xbox-forza-horizon-6-mesa.jpg",
-        "img/productos/control-xbox-forza-horizon-6-estudio.jpg"
+        "img/productos/control-xbox-forza-horizon-6/1.jpg",
+        "img/productos/control-xbox-forza-horizon-6/2.jpg",
+        "img/productos/control-xbox-forza-horizon-6/3.jpg"
       ],
       "video": "",
       "descripcionCorta": "Control inalámbrico Xbox edición especial Forza Horizon 6, nuevo y sellado en su caja original.",
@@ -134,7 +134,12 @@
         "control-xbox-robot-white"
       ],
       "fechaCreacion": "2026-10-15",
-      "stock": 1
+      "stock": 1,
+      "imagenesOrigen": [
+        "img/productos/control-xbox-forza-horizon-6.jpg",
+        "img/productos/control-xbox-forza-horizon-6-mesa.jpg",
+        "img/productos/control-xbox-forza-horizon-6-estudio.jpg"
+      ]
     },
     {
       "id": "control-xbox-robot-white",
@@ -150,9 +155,9 @@
       "visible": true,
       "orden": 2,
       "imagenes": [
-        "img/productos/control-xbox-robot-white.jpg",
-        "img/productos/control-xbox-robot-white-mesa.jpg",
-        "img/productos/control-xbox-robot-white-caja.jpg"
+        "img/productos/control-xbox-robot-white/1.jpg",
+        "img/productos/control-xbox-robot-white/2.jpg",
+        "img/productos/control-xbox-robot-white/3.jpg"
       ],
       "video": "",
       "descripcionCorta": "Control inalámbrico Xbox original color blanco (Robot White), nuevo y sellado de fábrica.",
@@ -237,7 +242,12 @@
         "control-xbox-forza-horizon-6"
       ],
       "fechaCreacion": "2026-10-19",
-      "stock": 1
+      "stock": 1,
+      "imagenesOrigen": [
+        "img/productos/control-xbox-robot-white.jpg",
+        "img/productos/control-xbox-robot-white-mesa.jpg",
+        "img/productos/control-xbox-robot-white-caja.jpg"
+      ]
     },
     {
       "id": "rastreadores-flyruit-tag-x4",
@@ -253,8 +263,8 @@
       "visible": true,
       "orden": 3,
       "imagenes": [
-        "tienda/img/productos/flyruit-tag-x4.jpg",
-        "tienda/img/productos/flyruit-tag-x4-mesa.jpg"
+        "img/productos/rastreadores-flyruit-tag-x4/1.jpg",
+        "img/productos/rastreadores-flyruit-tag-x4/2.jpg"
       ],
       "video": "",
       "descripcionCorta": "4 localizadores inteligentes nuevos y sellados, certificados por Apple (MFi) para la red Buscar.",
@@ -320,7 +330,11 @@
       ],
       "relacionados": [],
       "fechaCreacion": "2026-10-28",
-      "stock": 1
+      "stock": 1,
+      "imagenesOrigen": [
+        "tienda/img/productos/flyruit-tag-x4.jpg",
+        "tienda/img/productos/flyruit-tag-x4-mesa.jpg"
+      ]
     }
   ]
 }
