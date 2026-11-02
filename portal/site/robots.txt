@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
+# La tienda vive en tienda.nivytek.com y tiene su propio sitemap.
 Sitemap: https://nivytek.com/sitemap.xml

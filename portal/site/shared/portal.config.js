@@ -12,6 +12,12 @@ window.PORTAL_CONFIG = {
     lema: "Servicios y productos, en un solo lugar.",
     pregunta: "¿Qué estás buscando hoy?"
   },
+  // Medición (mismo esquema que la tienda): si el ID está vacío no se carga nada.
+  // Píxel de Meta para la parte educativa (portal, /icfes y /docentes). La tienda usa el suyo
+  // (tienda/data/config.json → analitica.metaPixel) y aquí no se vuelve a cargar.
+  // Eventos: PageView al abrir; Contact al tocar un enlace de WhatsApp; Lead al enviar la
+  // cotización (docentes) o el registro (ICFES), vía window.nivytekEvento('Lead', {...}).
+  analitica: { metaPixel: "" },
   secciones: [
     {
       id: "icfes", carpeta: "icfes/", nombre: "Saber 11 (ICFES)", color: "#2F4D8C",

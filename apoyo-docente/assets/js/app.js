@@ -224,6 +224,7 @@
     else { waBtn.hidden = true; $("#summaryWaPendiente").hidden = false; }
     const status = $("#summaryStatus"); status.hidden = true; status.className = "summary-status";
     const sum = $("#summary"); sum.hidden = false; sum.scrollIntoView({ behavior: "smooth", block: "start" });
+    try { window.nivytekEvento && window.nivytekEvento("Lead", { content_name: "pedido_docentes" }); } catch (_) { }
     // Envío opcional por correo (solo si hay endpoint configurado). Nunca afirmamos envío sin confirmación real.
     const endpoint = get("formulario.endpoint");
     if (endpoint) {
@@ -419,6 +420,7 @@
       $("#calcDesglose").innerHTML = filas.join("");
       $("#calcNota").textContent = r.minimoAplicado ? `El pedido mínimo es ${C.cop(C.PRECIOS.minimo)}.` : "Los valores se redondean hacia arriba a los mil siguientes. Una revisión va incluida.";
       const texto = C.mensaje(get("marca.profesional") || "Nivytek", pedido, r);
+      try { window.nivytekEvento && window.nivytekEvento("Lead", { content_name: "cotizacion_docentes" }); } catch (_) { }
       $("#calcTexto").textContent = texto;
       const wa = $("#calcWa"); wa.classList.remove("disabled");
       if (WA_OK) { wa.href = waUrl(texto); wa.target = "_blank"; wa.rel = "noopener"; wa.classList.remove("wa-pendiente"); }
