@@ -64,7 +64,7 @@
           <span class="disponibilidad ${p.disponible ? '' : 'agotado'}">${T.esEncargo(p) ? (p.disponible ? (p.consultar ? '● Por encargo · consulta si la oferta sigue activa' : '● Disponible por encargo') : '○ Agotado por ahora') : p.disponible ? '● Disponible (sujeto a confirmación)' + (T.textoStock(p) ? ' · ' + T.textoStock(p) : '') : T.vendido(p) ? '○ Vendido' : '○ Agotado por ahora'}</span>
           ${p.guia ? `<p class="aviso-encargo">${T.esc(p.guia)}</p>` : ''}
           ${T.esEncargo(p) ? `<p class="aviso-encargo">${p.disponible ? T.esc(T.TEXTO_ENCARGO) + ' Te confirmamos el mismo día si la oferta sigue activa.' : 'Esta oferta se acabó. Escríbenos y te avisamos cuando vuelva.'}</p>` : ''}
-          ${T.vendido(p) ? '<p class="aviso-pendiente" style="margin:.5rem 0 0">Este producto ya se vendió. Si te interesa, dinos y buscamos conseguir otro igual.</p>' : ''}
+          ${T.vendido(p) ? '<p class="aviso-pendiente" style="margin:.5rem 0 0">Este producto ya se vendió. Si te interesa, pregúntanos: podemos conseguir otro igual o en otro color.</p>' : ''}
           ${p.variantes.length ? `<div class="variantes" id="variantes">${p.variantes.map(v => `<div class="variante"><label>${T.esc(v.nombre)}</label><div class="opciones" data-variante="${T.esc(v.nombre)}">${(v.opciones || []).map((o, i) => `<button type="button" class="opcion ${i === 0 ? 'activo' : ''}" data-opcion="${T.esc(o)}">${T.esc(o)}</button>`).join('')}</div></div>`).join('')}</div>` : ''}
           ${p.disponible ? `<div class="fila-cantidad"><span>Cantidad</span><div class="cantidad"><button type="button" id="cant-menos" aria-label="Menos">−</button><span id="cant-val">1</span><button type="button" id="cant-mas" aria-label="Más">+</button></div></div>` : ''}
           <div class="ficha-acciones">
@@ -72,7 +72,7 @@
               ? `<button class="btn btn-whatsapp" id="btn-pedir">${T.ico.wa} Pedir por WhatsApp</button>
                  <button class="btn btn-contorno" id="btn-consultar">Consultar disponibilidad</button>
                  <button class="btn btn-suave" id="btn-carrito-add">${T.ico.carrito} Agregar al carrito</button>`
-              : `<button class="btn btn-whatsapp" id="btn-consultar">${T.ico.wa} ${T.vendido(p) ? 'Quiero uno igual' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame cuando esté disponible'}</button>`}
+              : `<button class="btn btn-whatsapp" id="btn-consultar">${T.ico.wa} ${T.vendido(p) ? '¿Otro igual u otro color?' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame cuando esté disponible'}</button>`}
           </div>
           ${config.negocio.horario ? `<p class="horario">${T.icoCat.reloj} Atención: ${T.esc(config.negocio.horario)}</p>` : ''}
           <div class="micro-confianza">

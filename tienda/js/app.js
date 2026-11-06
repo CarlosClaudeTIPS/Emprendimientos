@@ -640,7 +640,7 @@
           ${p.disponible
             ? `<button class="btn btn-whatsapp" data-wa="${T.esc(p.id)}">${T.ico.wa} Pedir</button>
                <button class="icono-btn" data-carrito="${T.esc(p.id)}" aria-label="Agregar al carrito" title="Agregar al carrito">${T.ico.mas}</button>`
-            : `<button class="btn btn-suave" data-wa-disp="${T.esc(p.id)}">${T.ico.wa} ${T.vendido(p) ? 'Quiero uno igual' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame'}</button>`}
+            : `<button class="btn btn-suave" data-wa-disp="${T.esc(p.id)}">${T.ico.wa} ${T.vendido(p) ? '¿Otro igual u otro color?' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame'}</button>`}
         </div>
       </div>
     </article>`;
