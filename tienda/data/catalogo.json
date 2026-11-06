@@ -250,8 +250,8 @@
       ]
     },
     {
-      "id": "rastreadores-flyruit-tag-x4",
-      "nombre": "Rastreadores FLYRUIT Tag (paquete de 4) - Compatibles con Apple Buscar (MFi)",
+      "id": "rastreadores-apple-buscar-x4",
+      "nombre": "Rastreadores para Apple Buscar, paquete de 4 (certificados MFi)",
       "categoria": "tecnologia",
       "precio": 99000,
       "precioAnterior": null,
@@ -263,8 +263,8 @@
       "visible": true,
       "orden": 3,
       "imagenes": [
-        "img/productos/rastreadores-flyruit-tag-x4/1.jpg",
-        "img/productos/rastreadores-flyruit-tag-x4/2.jpg"
+        "img/productos/rastreadores-apple-buscar-x4/1.jpg",
+        "img/productos/rastreadores-apple-buscar-x4/2.jpg"
       ],
       "video": "",
       "descripcionCorta": "4 localizadores para tus llaves, maleta y mascota desde la app Buscar del iPhone, por menos que un AirTag.",
@@ -277,16 +277,15 @@
         "Nuevos y sellados"
       ],
       "especificaciones": {
-        "Marca": "FLYRUIT",
         "Contenido": "4 rastreadores",
         "Compatibilidad": "iPhone, iPad y Mac con la app «Buscar» (red Find My de Apple)",
-        "Certificación": "Apple MFi (Find My), según el fabricante",
+        "Certificación": "Apple MFi (red Buscar / Find My)",
         "Compatibilidad Android": "No usa la red de Apple en Android",
         "Batería": "Pendiente de confirmar",
         "Estado": "Nuevo, sellado"
       },
       "incluye": [
-        "4 rastreadores FLYRUIT Tag (uno con argolla para llaves)",
+        "4 rastreadores (uno con argolla para llaves)",
         "Contenido adicional del paquete: pendiente de confirmar"
       ],
       "instrucciones": [
@@ -302,7 +301,7 @@
       "preguntas": [
         {
           "p": "¿Es igual que un AirTag?",
-          "r": "Funciona en la misma red Buscar de Apple y se configura desde la misma app. Es de la marca FLYRUIT, con certificación MFi según el fabricante."
+          "r": "Funciona en la misma red Buscar de Apple y se configura desde la misma app. Tiene certificación Apple MFi, según el fabricante."
         },
         {
           "p": "¿Sirve con Android?",
@@ -325,8 +324,7 @@
         "mascota",
         "maleta",
         "gps",
-        "tag",
-        "flyruit"
+        "tag"
       ],
       "relacionados": [],
       "fechaCreacion": "2026-10-28",

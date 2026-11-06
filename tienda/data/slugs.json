@@ -1,9 +1,9 @@
 {
   "control-xbox-forza-horizon-6": "control-xbox-forza-horizon-6",
   "control-xbox-robot-white": "control-xbox-robot-white",
-  "rastreadores-flyruit-tag-x4": "rastreadores-flyruit-tag-x4",
-  "ya-cargador-usbc-20w": "cargador-stuffcool-usb-c-20w-iphone",
-  "ya-camara-yoton-2k": "camara-seguridad-yoton-2k-wifi",
+  "rastreadores-flyruit-tag-x4": "rastreadores-apple-buscar-x4",
+  "ya-cargador-usbc-20w": "cargador-usb-c-20w-iphone-mfi",
+  "ya-camara-yoton-2k": "camara-seguridad-wifi-2k-interior",
   "ya-medicube-vitamina-c": "medicube-crema-capsula-vitamina-c",
   "ya-medicube-azelaico": "medicube-exosome-shot-acido-azelaico",
   "ya-medicube-exosome-poros": "medicube-exosome-shot-zero-poros",
@@ -16,5 +16,6 @@
   "combo-poros-medicube": "combo-poros-medicube",
   "combo-luminosidad": "combo-luminosidad",
   "combo-dia-noche": "combo-dia-noche",
-  "combo-cuerpo-rostro": "combo-cuerpo-rostro"
+  "combo-cuerpo-rostro": "combo-cuerpo-rostro",
+  "rastreadores-apple-buscar-x4": "rastreadores-apple-buscar-x4"
 }

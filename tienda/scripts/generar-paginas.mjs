@@ -112,7 +112,7 @@ for (const p of visibles) {
   const marca = (p.especificaciones || {}).Marca || '';
   const disponibilidad = !p.disponible ? 'https://schema.org/OutOfStock' : T.esEncargo(p) ? 'https://schema.org/PreOrder' : 'https://schema.org/InStock';
   const ld = {
-    '@context': 'https://schema.org', '@type': 'Product', name: p.nombre, sku: p.id, url,
+    '@context': 'https://schema.org', '@type': 'Product', name: p.nombre, sku: p.slug, url,
     image: p.imagenes.length ? p.imagenes.map(abs) : [og], description: desc || p.nombre,
     ...(marca ? { brand: { '@type': 'Brand', name: marca.replace(/\s*\(.*\)$/, '') } } : {}),
     ...(cat ? { category: cat.nombre } : {}),
@@ -263,8 +263,16 @@ function inyectar(archivo, bloques) {
     const v = JSON.parse(readFileSync(f, 'utf8'));
     const esGenerada = (r) => r.source === '/producto.html' && (r.has || []).some(h => h.type === 'query' && h.key === 'p');
     v.redirects = (v.redirects || []).filter(r => !esGenerada(r));
+    v.redirects = v.redirects.filter(r => !(r.source.startsWith('/p/') && r.destination.startsWith('/p/')));
     for (const p of catalogo.productos) {
       v.redirects.push({ source: '/producto.html', has: [{ type: 'query', key: 'p', value: p.id }], destination: '/' + urlFicha(p), permanent: true });
+      if (p.slug !== p.id && !/^(ya|enc|combo)-/.test(p.id)) v.redirects.push({ source: '/p/' + p.id + '.html', destination: '/' + urlFicha(p), permanent: true });
+    }
+    // ids o slugs viejos que ya no existen (quedan en data/slugs.json apuntando al slug nuevo)
+    const actuales = new Set(catalogo.productos.map(p => p.id));
+    for (const [viejo, slug] of Object.entries(slugs)) if (!actuales.has(viejo) && viejo !== slug && catalogo.productos.some(p => p.slug === slug)) {
+      v.redirects.push({ source: '/producto.html', has: [{ type: 'query', key: 'p', value: viejo }], destination: '/p/' + slug + '.html', permanent: true });
+      v.redirects.push({ source: '/p/' + viejo + '.html', destination: '/p/' + slug + '.html', permanent: true });
     }
     writeFileSync(f, JSON.stringify(v, null, 2) + '\n');
     console.log(`vercel.json: ${catalogo.productos.length} redirecciones producto.html?p=… → p/<slug>.html`);

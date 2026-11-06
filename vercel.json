@@ -116,10 +116,10 @@
         {
           "type": "query",
           "key": "p",
-          "value": "rastreadores-flyruit-tag-x4"
+          "value": "rastreadores-apple-buscar-x4"
         }
       ],
-      "destination": "/p/rastreadores-flyruit-tag-x4.html",
+      "destination": "/p/rastreadores-apple-buscar-x4.html",
       "permanent": true
     },
     {
@@ -131,7 +131,7 @@
           "value": "ya-cargador-usbc-20w"
         }
       ],
-      "destination": "/p/cargador-stuffcool-usb-c-20w-iphone.html",
+      "destination": "/p/cargador-usb-c-20w-iphone-mfi.html",
       "permanent": true
     },
     {
@@ -143,7 +143,7 @@
           "value": "ya-camara-yoton-2k"
         }
       ],
-      "destination": "/p/camara-seguridad-yoton-2k-wifi.html",
+      "destination": "/p/camara-seguridad-wifi-2k-interior.html",
       "permanent": true
     },
     {
@@ -300,6 +300,23 @@
         }
       ],
       "destination": "/p/combo-cuerpo-rostro.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "rastreadores-flyruit-tag-x4"
+        }
+      ],
+      "destination": "/p/rastreadores-apple-buscar-x4.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/rastreadores-flyruit-tag-x4.html",
+      "destination": "/p/rastreadores-apple-buscar-x4.html",
       "permanent": true
     }
   ],
