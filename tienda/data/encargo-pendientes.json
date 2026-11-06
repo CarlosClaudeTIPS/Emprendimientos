@@ -1,0 +1,10 @@
+{
+  "nota": "Productos de la hoja 'Publicado en tienda' con Publicar = FALSE (por encargo, aún sin publicar). Los mantiene la rutina automática; se usan solo en la página de inventario.",
+  "productos": [
+    { "id": "ya-botella-powcan", "nombre": "POWCAN botella de agua delgada 24 oz con pitillo, a prueba de fugas", "categoria": "Hogar y cocina", "precio": "49900", "modalidad": "Disponible ya" },
+    { "id": "enc-ninja-blast-18oz", "nombre": "Ninja Blast licuadora portátil inalámbrica 18 oz", "categoria": "Hogar y cocina", "precio": "269900", "modalidad": "Por encargo" },
+    { "id": "enc-cargador-45w-gan", "nombre": "Cargador wegear USB-C 45 W GaN de 2 puertos, plegable", "categoria": "Tecnología", "precio": "49900", "modalidad": "Por encargo" },
+    { "id": "enc-nivea-muy-seca-500", "nombre": "NIVEA loción Essentially Enriched 500 ml para piel muy seca", "categoria": "Cuidado personal y belleza", "precio": "32900", "modalidad": "Por encargo" },
+    { "id": "enc-lisen-84w-carro", "nombre": "LISEN cargador retráctil para carro 84 W, 4 en 1", "categoria": "Carro y moto", "precio": "69900", "modalidad": "Por encargo" }
+  ]
+}
