@@ -5,7 +5,7 @@
     "descripcion": "Catálogo digital de tecnología, cuidado personal y más. Pedidos por WhatsApp.",
     "logo": "img/logo-nivytek.svg",
     "ciudad": "Bogotá, Colombia",
-    "horario": ""
+    "horario": "Atención por WhatsApp de 8:00 a. m. a 6:00 p. m."
   },
   "whatsapp": {
     "numero": "573000510910",
@@ -38,7 +38,7 @@
     {
       "icono": "svg:camion",
       "titulo": "Entregas",
-      "texto": "Entrega personal en Bogotá (Av. Américas con 68, día y hora por WhatsApp) o envío nacional por transportadora con pago previo. El tiempo de entrega te lo confirmamos por WhatsApp según tu ciudad."
+      "texto": "Recogida en Bogotá todos los días (antes de 11 a. m. o después de 7 p. m., cerca de Plaza de las Américas) o domicilio los lunes y jueves. Envíos nacionales por transportadora con pago previo."
     },
     {
       "icono": "svg:tarjeta",
@@ -57,7 +57,7 @@
     }
   ],
   "politicas": {
-    "entregas": "Entrega personal en Bogotá, en un punto de encuentro seguro en la Av. Américas con 68. Coordinamos día y hora por WhatsApp.\nEnvíos a otras zonas o ciudades por transportadora, únicamente con pago previo confirmado. El costo del envío lo asume el comprador y te lo cotizamos por WhatsApp antes de que decidas.",
+    "entregas": "Recogida en Bogotá: todos los días, antes de las 11:00 a. m. o después de las 7:00 p. m., en un punto cerca de Plaza de las Américas; la dirección exacta te la enviamos por WhatsApp al confirmar el pedido.\nEntrega a domicilio en Bogotá: dos días a la semana. Los pedidos confirmados el fin de semana se entregan el lunes y los de entre semana, el jueves. El costo del domicilio te lo confirmamos por WhatsApp.\nEnvíos a otras ciudades por transportadora, únicamente con pago previo confirmado. El costo del envío lo asume el comprador; te lo cotizamos por WhatsApp junto con el tiempo de entrega que indique la transportadora antes de que decidas.",
     "pagos": "Efectivo en la entrega personal, o transferencia por llave Bre-B o Nequi. Para envíos nacionales el pago se hace antes del despacho. Nunca te pediremos pagar sin antes confirmarte disponibilidad y valor total.",
     "cambios": "No aplican cambios ni devoluciones por cambio de opinión. Revisa el producto en el momento de la entrega; si llega por transportadora, revísalo al recibirlo y escríbenos ese mismo día con fotos si presenta algún daño.",
     "garantia": "Garantía del vendedor de 1 mes por defectos de fábrica, contada desde la entrega. No cubre golpes, caídas, humedad, mala manipulación, sobrecargas eléctricas, uso con cargadores o cables no adecuados, ni productos abiertos o intervenidos por terceros. Los productos nuevos y sellados conservan además la garantía del fabricante, que se gestiona directamente con él.",
@@ -111,7 +111,7 @@
       "grupo": "Envíos y entregas",
       "destacada": true,
       "p": "¿Hacen envíos a mi ciudad y cuánto tarda?",
-      "r": "En Bogotá hacemos entrega personal en un punto de encuentro seguro (Av. Américas con 68). A otras ciudades enviamos por transportadora con pago previo; el costo del envío lo asume el comprador y te lo cotizamos por WhatsApp junto con el tiempo estimado antes de que decidas."
+      "r": "En Bogotá puedes recoger tu pedido todos los días (antes de las 11:00 a. m. o después de las 7:00 p. m.) en un punto cerca de Plaza de las Américas, o recibirlo a domicilio: los pedidos del fin de semana se entregan el lunes y los de entre semana, el jueves. A otras ciudades enviamos por transportadora con pago previo; el costo lo asume el comprador y te lo cotizamos por WhatsApp junto con el tiempo de entrega antes de que decidas."
     },
     {
       "grupo": "Envíos y entregas",
@@ -168,7 +168,7 @@
     },
     {
       "titulo": "Recibe",
-      "texto": "Entrega personal en Bogotá o envío por transportadora; el tiempo te lo confirmamos por WhatsApp. Revisa el producto al recibirlo."
+      "texto": "Recoge en Bogotá cualquier día (antes de 11 a. m. o después de 7 p. m.), recibe a domicilio el lunes o el jueves, o por transportadora en otras ciudades. Revisa el producto al recibirlo."
     }
   ],
   "vitrina": {

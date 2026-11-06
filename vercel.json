@@ -229,6 +229,78 @@
       ],
       "destination": "/p/nivea-locion-corporal-piel-seca.html",
       "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-noche-cerave"
+        }
+      ],
+      "destination": "/p/combo-noche-cerave.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-piel-sensible"
+        }
+      ],
+      "destination": "/p/combo-piel-sensible.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-poros-medicube"
+        }
+      ],
+      "destination": "/p/combo-poros-medicube.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-luminosidad"
+        }
+      ],
+      "destination": "/p/combo-luminosidad.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-dia-noche"
+        }
+      ],
+      "destination": "/p/combo-dia-noche.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-cuerpo-rostro"
+        }
+      ],
+      "destination": "/p/combo-cuerpo-rostro.html",
+      "permanent": true
     }
   ],
   "rewrites": [

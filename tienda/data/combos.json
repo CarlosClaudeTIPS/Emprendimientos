@@ -1,6 +1,6 @@
 {
   "nota": "Combos (kits) de la pestaña 'Combos' del Google Sheet 'Catálogo Nivytek (tienda)'. La rutina automática los sincroniza. precio = el de la hoja (suma menos descuento). Solo salen en la tienda los que tienen publicado: true.",
-  "actualizado": "2026-11-02",
+  "actualizado": "2026-11-06",
   "combos": [
     {
       "id": "combo-noche-cerave",
@@ -11,13 +11,18 @@
       ],
       "precio": 106900,
       "descuento": 10,
-      "publicado": false,
+      "publicado": true,
       "descripcionCorta": "Limpieza suave y hidratación nocturna para piel sensible, en un solo kit.",
       "descripcion": "Rutina de noche en dos pasos para piel normal a sensible: limpias con Cetaphil y sellas la hidratación con CeraVe PM, que trabaja mientras duermes.",
       "instrucciones": [
         "Moja la cara y masajea una pequeña cantidad del limpiador Cetaphil; enjuaga y seca con toquecitos.",
         "Aplica la loción CeraVe PM en rostro y cuello con la piel limpia.",
         "Úsalo cada noche; en la mañana, protector solar."
+      ],
+      "imagenes": [
+        "img/productos/combo-noche-cerave/1.jpg",
+        "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
+        "img/productos/cerave-pm-locion-noche/1.jpg"
       ]
     },
     {
@@ -30,12 +35,18 @@
       ],
       "precio": 166900,
       "descuento": 10,
-      "publicado": false,
+      "publicado": true,
       "descripcionCorta": "Limpiador, hidratante de noche y protector solar mineral: la rutina básica completa.",
       "descripcion": "Los tres pasos que recomiendan los dermatólogos para piel sensible: limpiar, hidratar y proteger del sol, con productos sin fragancia y no comedogénicos.",
       "instrucciones": [
         "Mañana: limpia con Cetaphil y aplica el protector solar mineral CeraVe SPF 30 15 minutos antes de salir; reaplica cada 2 horas al sol.",
         "Noche: limpia con Cetaphil y aplica CeraVe PM en rostro y cuello."
+      ],
+      "imagenes": [
+        "img/productos/combo-piel-sensible/1.jpg",
+        "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
+        "img/productos/cerave-pm-locion-noche/1.jpg",
+        "img/productos/cerave-protector-solar-mineral-spf30/1.jpg"
       ]
     },
     {
@@ -47,7 +58,7 @@
       ],
       "precio": 111900,
       "descuento": 10,
-      "publicado": false,
+      "publicado": true,
       "descripcionCorta": "Dos sérums coreanos para refinar poros, controlar la grasa y calmar los granitos.",
       "descripcion": "Rutina coreana para piel grasa o con tendencia a granitos. Alterna los dos sérums: Exosome Shot Zero para poros y sebo, y el de ácido azelaico para calmar y mejorar las marcas.",
       "instrucciones": [
@@ -58,6 +69,11 @@
       "precauciones": [
         "No combinar la misma noche con retinol ni ácidos exfoliantes.",
         "Si estás embarazada o en lactancia, consulta antes con tu médico."
+      ],
+      "imagenes": [
+        "img/productos/combo-poros-medicube/1.jpg",
+        "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
+        "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg"
       ]
     },
     {
@@ -69,13 +85,18 @@
       ],
       "precio": 130900,
       "descuento": 10,
-      "publicado": false,
+      "publicado": true,
       "descripcionCorta": "Vitamina C de día para dar luz al rostro, con el protector solar que la hace rendir.",
       "descripcion": "La vitamina C ayuda a unificar el tono y dar luminosidad; el protector solar mineral evita las manchas nuevas y protege el resultado. Juntos son la rutina de mañana ideal.",
       "instrucciones": [
         "Mañana, con la cara limpia: rompe las cápsulas de la crema Medicube en la mano y aplícala en el rostro.",
         "Espera unos minutos y aplica el protector solar mineral CeraVe SPF 30.",
         "Reaplica el protector cada 2 horas si estás al sol."
+      ],
+      "imagenes": [
+        "img/productos/combo-luminosidad/1.jpg",
+        "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
+        "img/productos/cerave-protector-solar-mineral-spf30/1.jpg"
       ]
     },
     {
@@ -87,12 +108,17 @@
       ],
       "precio": 133900,
       "descuento": 10,
-      "publicado": false,
+      "publicado": true,
       "descripcionCorta": "Luminosidad de día y reparación de noche con dos cremas que se complementan.",
       "descripcion": "Una crema para cada momento: Medicube con vitamina C en la mañana para iluminar y unificar el tono; CeraVe PM en la noche para hidratar y calmar con ceramidas y niacinamida.",
       "instrucciones": [
         "Mañana: crema Medicube vitamina C y después protector solar.",
         "Noche: CeraVe PM en rostro y cuello con la piel limpia."
+      ],
+      "imagenes": [
+        "img/productos/combo-dia-noche/1.jpg",
+        "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
+        "img/productos/cerave-pm-locion-noche/1.jpg"
       ]
     },
     {
@@ -104,12 +130,17 @@
       ],
       "precio": 73900,
       "descuento": 10,
-      "publicado": false,
+      "publicado": true,
       "descripcionCorta": "Cuidado básico diario: limpieza facial suave e hidratación corporal de 72 horas.",
       "descripcion": "Lo esencial para todos los días: limpiador facial Cetaphil para piel sensible y loción corporal NIVEA de larga duración para piel seca.",
       "instrucciones": [
         "Rostro: limpia con Cetaphil mañana y noche.",
         "Cuerpo: aplica la loción NIVEA después del baño, con la piel aún un poco húmeda."
+      ],
+      "imagenes": [
+        "img/productos/combo-cuerpo-rostro/1.jpg",
+        "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
+        "img/productos/cetaphil-limpiador-facial-473ml/1.jpg"
       ]
     }
   ]
