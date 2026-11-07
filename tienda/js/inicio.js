@@ -12,7 +12,7 @@
           <a class="btn btn-contorno" href="catalogo.html?f=ofertas">Ver ofertas</a>
         </div>
       </div>
-      ${h.imagen ? `<div class="hero-imagen"><img src="${T.esc(T.ruta(h.imagen))}" alt="" width="380" height="380"></div>` : ''}`;
+      ${h.imagen ? `<div class="hero-imagen"><picture><source type="image/webp" srcset="${T.esc(T.ruta(h.imagen.replace(/\.png$/, '.webp')))}"><img src="${T.esc(T.ruta(h.imagen))}" alt="Productos de la tienda Nivytek" width="380" height="380" fetchpriority="high"></picture></div>` : ''}`;
 
     const vis = T.visibles();
     const conteo = (id) => vis.filter(p => p.categoria === id).length;

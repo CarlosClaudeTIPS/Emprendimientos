@@ -85,6 +85,239 @@
       "source": "/portal/:path*",
       "destination": "/:path*",
       "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "control-xbox-forza-horizon-6"
+        }
+      ],
+      "destination": "/p/control-xbox-forza-horizon-6.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "control-xbox-robot-white"
+        }
+      ],
+      "destination": "/p/control-xbox-robot-white.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "rastreadores-apple-buscar-x4"
+        }
+      ],
+      "destination": "/p/rastreadores-apple-buscar-x4.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-cargador-usbc-20w"
+        }
+      ],
+      "destination": "/p/cargador-usb-c-20w-iphone-mfi.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-camara-yoton-2k"
+        }
+      ],
+      "destination": "/p/camara-seguridad-wifi-2k-interior.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-medicube-vitamina-c"
+        }
+      ],
+      "destination": "/p/medicube-crema-capsula-vitamina-c.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-medicube-azelaico"
+        }
+      ],
+      "destination": "/p/medicube-exosome-shot-acido-azelaico.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-medicube-exosome-poros"
+        }
+      ],
+      "destination": "/p/medicube-exosome-shot-zero-poros.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-cerave-pm"
+        }
+      ],
+      "destination": "/p/cerave-pm-locion-noche.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-cerave-protector-mineral"
+        }
+      ],
+      "destination": "/p/cerave-protector-solar-mineral-spf30.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-cetaphil-limpiador"
+        }
+      ],
+      "destination": "/p/cetaphil-limpiador-facial-473ml.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-nivea-locion"
+        }
+      ],
+      "destination": "/p/nivea-locion-corporal-piel-seca.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-noche-cerave"
+        }
+      ],
+      "destination": "/p/combo-noche-cerave.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-piel-sensible"
+        }
+      ],
+      "destination": "/p/combo-piel-sensible.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-poros-medicube"
+        }
+      ],
+      "destination": "/p/combo-poros-medicube.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-luminosidad"
+        }
+      ],
+      "destination": "/p/combo-luminosidad.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-dia-noche"
+        }
+      ],
+      "destination": "/p/combo-dia-noche.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "combo-cuerpo-rostro"
+        }
+      ],
+      "destination": "/p/combo-cuerpo-rostro.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "rastreadores-flyruit-tag-x4"
+        }
+      ],
+      "destination": "/p/rastreadores-apple-buscar-x4.html",
+      "permanent": true
+    },
+    {
+      "source": "/p/rastreadores-flyruit-tag-x4.html",
+      "destination": "/p/rastreadores-apple-buscar-x4.html",
+      "permanent": true
     }
   ],
   "rewrites": [

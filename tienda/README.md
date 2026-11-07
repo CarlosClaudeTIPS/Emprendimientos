@@ -13,10 +13,28 @@ tienda/
 ├── data/config.json    Nombre, WhatsApp, colores, redes, políticas, analítica
 ├── data/catalogo.json  Categorías y productos
 ├── img/                Logo, portada y fotos de productos
-├── p/                  Páginas estáticas por producto (generadas, opcional)
-├── generar-paginas.mjs Genera p/ID.html con vista previa para redes
+├── data/encargo.json   Productos sincronizados desde la hoja de Google (rutina automática 3 veces al día)
+├── data/slugs.json     id del producto → nombre de su página (p/<slug>.html); no cambiar: romperías enlaces compartidos
+├── img/productos/<slug>/ Fotos optimizadas (N.jpg + N.webp) y manifiesto.json con el origen de cada una
+├── img/originales/     Copia intacta de cada foto descargada (respaldo, no se publica)
+├── img/og/<slug>.jpg   Imagen 1200x630 para la vista previa al compartir (WhatsApp, Facebook, Instagram)
+├── p/<slug>.html       Ficha estática de cada producto (GENERADA: no editar a mano)
+├── scripts/descargar-imagenes.py  Baja las fotos en alta resolución y genera las versiones optimizadas y OG
+├── scripts/generar-paginas.mjs    Build: fichas p/, contenido inicial, sitemap, robots y redirecciones
+├── scripts/verificar.mjs          Revisa enlaces rotos, imágenes externas, alt, h1, títulos, wa.me
+├── js/config.js        META_PIXEL_ID (vacío = el píxel no se carga)
 └── css/, js/           Estilos y lógica (sin frameworks)
 ```
+
+## 0. Cómo agregar un producto nuevo (resumen)
+
+1. **Editar datos**: producto propio → `data/catalogo.json` (o desde `admin.html` → Descargar archivos). Producto de la hoja de Google → marcar **Publicar** en la pestaña "Publicado en tienda"; la rutina automática actualiza `data/encargo.json`.
+2. **Descargar imágenes**: `python3 scripts/descargar-imagenes.py` (en `imagenes`/`imagenesOrigen` o `foto` puede ir una URL; el script la baja en alta resolución, guarda el original en `img/originales/`, crea JPG+WebP en `img/productos/<slug>/` y la imagen OG en `img/og/`, y deja las rutas locales en los datos).
+3. **Generar páginas**: `npm run build` (crea `p/<slug>.html`, actualiza el contenido inicial de inicio/catálogo/preguntas/políticas, `sitemap.xml`, `robots.txt` y las redirecciones en `../vercel.json`).
+4. **Verificar**: `npm run verificar` (debe terminar "Sin errores").
+5. Commit y push a `main`: Vercel publica solo (el build del sitio vuelve a ejecutar el paso 3).
+
+El slug (nombre de la página) se asigna una sola vez en `data/slugs.json`; si quieres uno más bonito para un producto nuevo, edítalo allí **antes** de compartir el enlace.
 
 ## 1. Probarla en tu computador
 

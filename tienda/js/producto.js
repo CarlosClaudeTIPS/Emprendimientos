@@ -8,7 +8,9 @@
       main.innerHTML = `<div class="vacio" style="margin:2rem 0"><h1>Producto no disponible</h1><p>Es posible que haya sido retirado del catálogo.</p><a class="btn btn-primario" href="${T.ruta('catalogo.html')}">Ver el catálogo</a></div>`;
       return;
     }
-    T.registrar('view_item', { producto: p.id });
+    /* Enlace viejo (producto.html?p=ID): llevar a la página estática del producto. vercel.json ya redirige en el servidor; esto es el respaldo. */
+    if (!document.body.dataset.producto && /producto\.html$/.test(location.pathname) && (config.sitio || {}).paginasEstaticas !== false) { location.replace(T.urlProducto(p) + location.hash); return; }
+    T.registrar('view_item', { producto: p.id }); T.pixel('ViewContent', T.datosPixel(p));
     T.vistos.agregar(p.id);
     const cat = T.categoria(p.categoria);
     const d = T.descuento(p);
@@ -26,7 +28,7 @@
     ld.textContent = JSON.stringify({ '@context': 'https://schema.org', '@type': 'Product', name: p.nombre, image: p.imagenes.map(i => new URL(/^https?:/.test(i) ? i : T.ruta(i), location.href).href), description: descMeta, url, offers: { '@type': 'Offer', priceCurrency: 'COP', price: p.precio, availability: p.disponible ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock' } });
     document.head.appendChild(ld);
 
-    const medios = p.imagenes.map(src => ({ tipo: 'img', src: T.imagenProducto({ imagenes: [src] }) }));
+    const medios = p.imagenes.map((src, i) => ({ tipo: 'img', src: T.imagenProducto({ imagenes: [src] }), i }));
     if (p.video) medios.push({ tipo: 'video', src: /^https?:/.test(p.video) ? p.video : T.ruta(p.video) });
     if (!medios.length) medios.push({ tipo: 'img', src: T.ruta('img/sin-imagen.svg') });
 
@@ -47,12 +49,12 @@
           <div class="galeria-wrap">
             <div class="etiquetas">${!p.disponible ? `<span class="etiqueta etiqueta-agotado">${T.vendido(p) ? 'Vendido' : 'Agotado'}</span>` : ''}${p.oferta && d > 0 ? `<span class="etiqueta etiqueta-oferta">-${d}%</span>` : ''}${T.esEncargo(p) ? '<span class="etiqueta etiqueta-encargo">Por encargo</span>' : p.nuevo ? '<span class="etiqueta etiqueta-nuevo">Nuevo</span>' : ''}</div>
             <div class="galeria-principal" id="galeria" aria-label="Galería de imágenes">
-              ${medios.map((m, i) => `<div class="slide" data-i="${i}">${m.tipo === 'video' ? `<video src="${T.esc(m.src)}" controls playsinline preload="metadata"></video>` : `<img src="${T.esc(m.src)}" alt="${T.esc(p.nombre)}${i ? ' ' + (i + 1) : ''}" width="800" height="800" ${i ? 'loading="lazy"' : ''}>`}</div>`).join('')}
+              ${medios.map((m, i) => `<div class="slide" data-i="${i}">${m.tipo === 'video' ? `<video src="${T.esc(m.src)}" controls playsinline preload="metadata"></video>` : T.picture(p, i, `width="800" height="800" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}`, p.nombre + (i ? `, foto ${i + 1}` : ''))}</div>`).join('')}
             </div>
             ${medios.length > 1 ? `<span class="galeria-contador" id="galeria-contador">1 / ${medios.length}</span>` : ''}
           </div>
           ${medios.length > 1 ? `<div class="galeria-puntos" id="galeria-puntos">${medios.map((m, i) => `<span class="${i === 0 ? 'activo' : ''}"></span>`).join('')}</div>
-          <div class="galeria-miniaturas" id="miniaturas">${medios.map((m, i) => `<button class="${i === 0 ? 'activo' : ''}" data-i="${i}" aria-label="Ver ${m.tipo === 'video' ? 'video' : 'imagen ' + (i + 1)}">${m.tipo === 'video' ? '<span class="mini-video">▶</span>' : `<img src="${T.esc(m.src)}" alt="" loading="lazy">`}</button>`).join('')}</div>` : ''}
+          <div class="galeria-miniaturas" id="miniaturas">${medios.map((m, i) => `<button class="${i === 0 ? 'activo' : ''}" data-i="${i}" aria-label="Ver ${m.tipo === 'video' ? 'video' : 'imagen ' + (i + 1)}">${m.tipo === 'video' ? '<span class="mini-video">▶</span>' : `<img src="${T.esc(m.src)}" alt="Miniatura ${i + 1}: ${T.esc(p.nombre)}" loading="lazy" width="80" height="80">`}</button>`).join('')}</div>` : ''}
         </div>
         <div class="ficha aparece">
           ${cat ? `<span class="tarjeta-categoria-txt">${T.esc(cat.nombre)}</span>` : ''}
@@ -62,7 +64,7 @@
           <span class="disponibilidad ${p.disponible ? '' : 'agotado'}">${T.esEncargo(p) ? (p.disponible ? (p.consultar ? '● Por encargo · consulta si la oferta sigue activa' : '● Disponible por encargo') : '○ Agotado por ahora') : p.disponible ? '● Disponible (sujeto a confirmación)' + (T.textoStock(p) ? ' · ' + T.textoStock(p) : '') : T.vendido(p) ? '○ Vendido' : '○ Agotado por ahora'}</span>
           ${p.guia ? `<p class="aviso-encargo">${T.esc(p.guia)}</p>` : ''}
           ${T.esEncargo(p) ? `<p class="aviso-encargo">${p.disponible ? T.esc(T.TEXTO_ENCARGO) + ' Te confirmamos el mismo día si la oferta sigue activa.' : 'Esta oferta se acabó. Escríbenos y te avisamos cuando vuelva.'}</p>` : ''}
-          ${T.vendido(p) ? '<p class="aviso-pendiente" style="margin:.5rem 0 0">Este producto ya se vendió. Si te interesa, dinos y buscamos conseguir otro igual.</p>' : ''}
+          ${T.vendido(p) ? '<p class="aviso-pendiente" style="margin:.5rem 0 0">Este producto ya se vendió. Si te interesa, pregúntanos: podemos conseguir otro igual o en otro color.</p>' : ''}
           ${p.variantes.length ? `<div class="variantes" id="variantes">${p.variantes.map(v => `<div class="variante"><label>${T.esc(v.nombre)}</label><div class="opciones" data-variante="${T.esc(v.nombre)}">${(v.opciones || []).map((o, i) => `<button type="button" class="opcion ${i === 0 ? 'activo' : ''}" data-opcion="${T.esc(o)}">${T.esc(o)}</button>`).join('')}</div></div>`).join('')}</div>` : ''}
           ${p.disponible ? `<div class="fila-cantidad"><span>Cantidad</span><div class="cantidad"><button type="button" id="cant-menos" aria-label="Menos">−</button><span id="cant-val">1</span><button type="button" id="cant-mas" aria-label="Más">+</button></div></div>` : ''}
           <div class="ficha-acciones">
@@ -70,7 +72,7 @@
               ? `<button class="btn btn-whatsapp" id="btn-pedir">${T.ico.wa} Pedir por WhatsApp</button>
                  <button class="btn btn-contorno" id="btn-consultar">Consultar disponibilidad</button>
                  <button class="btn btn-suave" id="btn-carrito-add">${T.ico.carrito} Agregar al carrito</button>`
-              : `<button class="btn btn-whatsapp" id="btn-consultar">${T.ico.wa} ${T.vendido(p) ? 'Quiero uno igual' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame cuando esté disponible'}</button>`}
+              : `<button class="btn btn-whatsapp" id="btn-consultar">${T.ico.wa} ${T.vendido(p) ? '¿Otro igual u otro color?' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame cuando esté disponible'}</button>`}
           </div>
           ${config.negocio.horario ? `<p class="horario">${T.icoCat.reloj} Atención: ${T.esc(config.negocio.horario)}</p>` : ''}
           <div class="micro-confianza">
@@ -104,7 +106,7 @@
 
       <div class="bloque">${T.encuesta('¿Necesitas algo más? Cuéntanos')}</div>
       <section class="seccion" id="sec-vistos" hidden><div class="seccion-cabecera"><h2>Vistos recientemente</h2></div><div class="grid-productos"></div></section>
-      <div class="lightbox" id="lightbox" role="dialog" aria-label="Imagen ampliada"><button type="button" id="lb-cerrar" aria-label="Cerrar">${T.ico.cerrar}</button><button type="button" class="lb-nav lb-prev" id="lb-prev" aria-label="Anterior">‹</button><img src="" alt=""><button type="button" class="lb-nav lb-next" id="lb-next" aria-label="Siguiente">›</button></div>
+      <div class="lightbox" id="lightbox" role="dialog" aria-label="Imagen ampliada"><button type="button" id="lb-cerrar" aria-label="Cerrar">${T.ico.cerrar}</button><button type="button" class="lb-nav lb-prev" id="lb-prev" aria-label="Anterior">‹</button><img src="" alt="${T.esc(p.nombre)} ampliada"><button type="button" class="lb-nav lb-next" id="lb-next" aria-label="Siguiente">›</button></div>
       ${p.disponible ? `<div class="barra-fija"><span class="precio-actual">${T.formatoPrecio(p.precio)}</span><button class="btn btn-whatsapp" id="btn-pedir-fijo">${T.ico.wa} Pedir por WhatsApp</button></div>` : ''}`;
     if (p.disponible) document.body.classList.add('con-barra-fija');
 

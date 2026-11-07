@@ -57,12 +57,15 @@
 
   T.cargar = async function () {
     if (T.datos) return T.datos;
-    const [cfgRes, catRes] = await Promise.all([
+    const [cfgRes, catRes, slugRes] = await Promise.all([
       fetch(T.ruta('data/config.json'), { cache: 'no-cache' }),
-      fetch(T.ruta('data/catalogo.json'), { cache: 'no-cache' })
+      fetch(T.ruta('data/catalogo.json'), { cache: 'no-cache' }),
+      fetch(T.ruta('data/slugs.json'), { cache: 'no-cache' }).catch(() => null)
     ]);
     let config = await cfgRes.json();
     let catalogo = await catRes.json();
+    /* Nombre de la página estática de cada producto (p/<slug>.html); lo genera scripts/generar-paginas.mjs */
+    T.slugs = {}; try { if (slugRes && slugRes.ok) T.slugs = await slugRes.json(); } catch (e) { /* sin slugs: se usa el id */ }
     T.modoBorrador = false;
     if (T.previsualizando()) {
       const bc = T.leerLS(LS.borradorCatalogo, null);
@@ -97,7 +100,9 @@
       (enc.productos || []).forEach(p => { if (fotos[p.id]) p.foto = fotos[p.id]; });
     }
     if (enc) T.agregarEncargo(catalogo, enc);
-    catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto);
+    /* Combos (kits) de la pestaña "Combos" de la hoja; se arman a partir de los productos que ya están en el catálogo */
+    try { const cRes = await fetch(T.ruta('data/combos.json'), { cache: 'no-cache' }); if (cRes.ok) T.agregarCombos(catalogo, await cRes.json()); } catch (e) { /* sin combos */ }
+    catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto).map(p => Object.assign(p, { slug: p.slug || T.slugs[p.id] || String(p.id).replace(/^ya-/, '') }));
     catalogo.categorias = (catalogo.categorias || []).slice().sort((a, b) => (a.orden || 0) - (b.orden || 0));
     T.datos = { config, catalogo };
     T.aplicarMarca(config);
@@ -197,6 +202,38 @@
       });
     });
   };
+  /* Combos: cada kit es un producto más. Precio de la hoja; fotos, stock y disponibilidad se derivan de sus componentes. */
+  T.agregarCombos = (catalogo, datos) => {
+    const lista = (datos && Array.isArray(datos.combos)) ? datos.combos : [];
+    catalogo.productos = catalogo.productos || [];
+    lista.forEach((k, i) => {
+      if (!k.id || !k.nombre || !k.publicado || !(Number(k.precio) > 0)) return;
+      if (catalogo.productos.some(p => p.id === k.id)) return;
+      const comps = (k.componentes || []).map(id => catalogo.productos.find(p => p.id === id)).filter(Boolean);
+      if (comps.length < 2) return;
+      const n = (p) => T.normalizarProducto(p);
+      const todosStock = comps.every(p => n(p).modalidad !== 'encargo');
+      const stocks = comps.map(p => n(p).stock).filter(s => s != null);
+      const disponible = comps.every(p => n(p).disponible !== false);
+      const suma = comps.reduce((s, p) => s + (Number(p.precio) || 0), 0);
+      const cat = comps[0].categoria;
+      const nombres = comps.map(p => p.nombre);
+      const imagenes = k.imagenes && k.imagenes.length ? k.imagenes : comps.map(p => (p.imagenes && p.imagenes[0]) || (p.foto || '')).filter(Boolean);
+      catalogo.productos.push({
+        id: k.id, nombre: k.nombre, categoria: cat, precio: Number(k.precio), precioAnterior: suma > Number(k.precio) ? suma : null, oferta: suma > Number(k.precio),
+        imagenes, descripcionCorta: k.descripcionCorta || '', descripcion: k.descripcion || '',
+        beneficios: (k.beneficios && k.beneficios.length) ? k.beneficios : [`Ahorras ${T.formatoPrecio(suma - Number(k.precio))} frente a comprarlos por separado`].concat(comps.flatMap(p => (p.beneficios || []).slice(0, 1))),
+        especificaciones: Object.assign({ Incluye: nombres.join(' + ') }, k.especificaciones || {}),
+        incluye: nombres, instrucciones: k.instrucciones || [], precauciones: (k.precauciones && k.precauciones.length) ? k.precauciones : Array.from(new Set(comps.flatMap(p => (p.precauciones || []).slice(0, 2)))),
+        preguntas: k.preguntas || [], relacionados: comps.map(p => p.id), palabrasClave: ['combo', 'kit', 'rutina'].concat(comps.flatMap(p => p.palabrasClave || [])),
+        modalidad: todosStock ? 'stock' : 'encargo', esCombo: true, componentes: comps.map(p => p.id),
+        guia: todosStock ? '' : 'Este kit mezcla productos de entrega inmediata con otros por encargo: te confirmamos la fecha de entrega por WhatsApp.',
+        disponible, visible: true, nuevo: true, destacado: disponible, popular: false, orden: 300 + i,
+        stock: stocks.length ? Math.min.apply(null, stocks) : null, fechaCreacion: datos.actualizado || ''
+      });
+    });
+  };
+  T.esCombo = (p) => !!p.esCombo;
   T.esEncargo = (p) => p.modalidad === 'encargo';
   T.TEXTO_ENCARGO = 'Por encargo: llega en máximo 15 días. Lo separas con $20.000 o el 10% del valor.';
 
@@ -208,7 +245,7 @@
   }, p, { precio: Number(p.precio) || 0, precioAnterior: p.precioAnterior ? Number(p.precioAnterior) : null, stock: (p.stock === '' || p.stock == null) ? null : Math.max(0, Math.round(Number(p.stock)) || 0) });
 
   T.vendido = (p) => !p.disponible && p.stock === 0 && !T.esEncargo(p);
-  T.textoStock = (p) => (p.disponible && p.stock != null && p.stock > 0) ? `Quedan ${p.stock} unidad${p.stock === 1 ? '' : 'es'}` : '';
+  T.textoStock = (p) => (p.disponible && p.stock != null && p.stock > 0) ? (p.stock === 1 ? 'Queda 1 unidad' : `Quedan ${p.stock} unidades`) : '';
   T.visibles = () => T.datos.catalogo.productos.filter(p => p.visible !== false).sort((a, b) => (a.orden || 0) - (b.orden || 0));
   T.categoria = (id) => T.datos.catalogo.categorias.find(c => c.id === id);
   T.producto = (id) => T.datos.catalogo.productos.find(p => p.id === id);
@@ -235,7 +272,7 @@
   /* ---------- URL del producto y compartir ---------- */
   T.urlProducto = (p, absoluta) => {
     const cfg = T.datos.config.sitio || {};
-    const rel = (cfg.paginasEstaticas && !p.modalidad) ? ('p/' + encodeURIComponent(p.id) + '.html') : ('producto.html?p=' + encodeURIComponent(p.id));
+    const rel = cfg.paginasEstaticas !== false ? ('p/' + encodeURIComponent(p.slug || p.id) + '.html') : ('producto.html?p=' + encodeURIComponent(p.id));
     if (!absoluta) return T.ruta(rel);
     const base = new URL(T.ruta(rel), location.href);
     return base.href;
@@ -244,6 +281,22 @@
   T.imagenProducto = (p, i) => {
     const src = (p.imagenes && p.imagenes[i || 0]) || 'img/sin-imagen.svg';
     return /^https?:\/\//.test(src) ? src : T.ruta(src);
+  };
+
+  /* <picture> con WebP + JPG de respaldo para las fotos guardadas en img/productos/<slug>/N.jpg */
+  T.picture = (p, i, attrs, alt) => {
+    const src = T.imagenProducto(p, i);
+    attrs = attrs || '';
+    const alt_ = T.esc(alt == null ? (p.nombre || '') : alt);
+    if (!/(^|\/)img\/productos\/[^/]+\/\d+\.jpg$/.test(src)) return `<img src="${T.esc(src)}" alt="${alt_}" ${attrs}>`;
+    /* Tamaño pequeño (tarjetas, carrito, buscador) si el atributo width es ≤ 400; la galería usa la imagen completa */
+    const w = Number((attrs.match(/width="(\d+)"/) || [])[1]) || 0;
+    const chica = w && w <= 400;
+    const base = src.replace(/\.jpg$/, '');
+    const webp = chica ? `${base}-400.webp 400w, ${base}.webp 1200w` : `${base}.webp`;
+    const jpg = chica ? `${base}-400.jpg 400w, ${base}.jpg 1200w` : '';
+    const sizes = chica ? ` sizes="(max-width: 700px) 50vw, 300px"` : '';
+    return `<picture><source type="image/webp" srcset="${T.esc(webp)}"${sizes}><img src="${T.esc(chica ? base + '-400.jpg' : src)}"${jpg ? ` srcset="${T.esc(jpg)}"${sizes}` : ''} alt="${alt_}" ${attrs}></picture>`;
   };
 
   /* ---------- WhatsApp ---------- */
@@ -281,6 +334,8 @@
   T.abrirWA = (mensaje, evento, extra) => {
     if (!T.hayWA()) { T.toast('El número de WhatsApp aún no está configurado (admin → Configuración).'); return false; }
     T.registrar(evento || 'whatsapp_click', extra || {});
+    const pp = extra && extra.producto && T.producto(extra.producto);
+    T.pixel('Contact', pp ? T.datosPixel(pp) : { content_name: (extra && extra.origen) || evento || 'whatsapp' });
     window.open(T.enlaceWA(mensaje), '_blank', 'noopener');
     return true;
   };
@@ -295,12 +350,17 @@
       window.gtag = function () { window.dataLayer.push(arguments); };
       window.gtag('js', new Date()); window.gtag('config', a.ga4);
     }
-    if (a.metaPixel && !window.fbq) {
+    const pixelId = String((window.TIENDA_CONFIG || {}).META_PIXEL_ID || a.metaPixel || '').trim();
+    if (pixelId && !window.fbq) {
       /* Carga estándar de Meta Pixel */
       !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s); }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-      window.fbq('init', a.metaPixel); window.fbq('track', 'PageView');
+      window.fbq('init', pixelId); window.fbq('track', 'PageView');
     }
   };
+
+  /* Evento estándar de Meta Pixel (ViewContent, AddToCart, Contact...). No hace nada si el píxel no está cargado. */
+  T.pixel = (evento, datos) => { try { if (window.fbq) window.fbq('track', evento, datos || {}); } catch (e) { } };
+  T.datosPixel = (p, cantidad) => ({ content_ids: [p.id], content_name: p.nombre, content_type: 'product', value: Number(p.precio) * (cantidad || 1), currency: 'COP' });
 
   T.registrar = (evento, datos) => {
     datos = datos || {};
@@ -336,7 +396,7 @@
       if (ex && ex.cantidad + cant > tope) { T.toast(`Solo hay ${tope} unidad${tope === 1 ? '' : 'es'} disponible${tope === 1 ? '' : 's'}.`); ex.cantidad = tope; this.guardar(); return; }
       if (ex) ex.cantidad = Math.min(tope, ex.cantidad + cant);
       else this.items.push({ clave: k, id: p.id, variantes: variantes || {}, cantidad: Math.min(tope, cant) });
-      this.guardar(); T.registrar('add_to_cart', { producto: p.id });
+      this.guardar(); T.registrar('add_to_cart', { producto: p.id }); T.pixel('AddToCart', T.datosPixel(p, cant));
       T.toast('Agregado al carrito');
     },
     cambiar(k, delta) {
@@ -374,7 +434,7 @@
         const p = T.producto(i.id); if (!p) return '';
         const v = Object.entries(i.variantes).map(([k, val]) => `${T.esc(k)}: ${T.esc(val)}`).join(' · ');
         return `<div class="carrito-item">
-          <img src="${T.esc(T.imagenProducto(p))}" alt="" loading="lazy">
+          ${T.picture(p, 0, 'loading="lazy" width="64" height="64"')}
           <div><strong>${T.esc(p.nombre)}</strong>${v ? `<small>${v}</small>` : ''}<small>${T.formatoPrecio(p.precio)}</small>
             <button class="quitar" data-quitar="${T.esc(i.clave)}">Quitar</button></div>
           <div class="cantidad"><button data-menos="${T.esc(i.clave)}" aria-label="Menos">−</button><span>${i.cantidad}</span><button data-mas="${T.esc(i.clave)}" aria-label="Más">+</button></div>
@@ -468,7 +528,7 @@
       <div class="contenedor">
         <div class="encabezado-barra">
           <button class="icono-btn solo-movil" id="btn-menu" aria-label="Abrir menú" aria-expanded="false">${T.ico.menu}</button>
-          <a class="logo" href="${T.ruta('index.html')}">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="">` : T.ico.tienda}<span class="logo-texto">${T.esc(n.nombre || 'Mi Tienda')}</span></a>
+          <a class="logo" href="${T.ruta('index.html')}">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="Nivytek" width="32" height="32">` : T.ico.tienda}<span class="logo-texto">${T.esc(n.nombre || 'Mi Tienda')}</span></a>
           <nav class="nav" aria-label="Principal">${enlaces}</nav>
           ${buscador('buscar-escritorio')}
           <button class="icono-btn" id="btn-carrito" aria-label="Abrir carrito">${T.ico.carrito}<span class="contador"></span></button>
@@ -501,17 +561,17 @@
     ].join('');
     el.innerHTML = `<div class="contenedor">
       <div class="pie-grid">
-        <div><a class="logo" href="${T.ruta('index.html')}" style="color:#fff">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="">` : ''}<span>${T.esc(n.nombre || 'Mi Tienda')}</span></a>
+        <div><a class="logo" href="${T.ruta('index.html')}" style="color:#fff">${n.logo ? `<img src="${T.esc(T.ruta(n.logo))}" alt="Nivytek" width="32" height="32">` : ''}<span>${T.esc(n.nombre || 'Mi Tienda')}</span></a>
           <p style="margin-top:.6rem;font-size:.92rem">${T.esc(n.descripcion || '')}</p>
           ${redes ? `<div class="pie-redes">${redes}</div>` : ''}</div>
-        <div><h4>Categorías</h4><ul>${cats}</ul></div>
-        <div><h4>Ayuda</h4><ul>
+        <div><h3 class="pie-titulo">Categorías</h3><ul>${cats}</ul></div>
+        <div><h3 class="pie-titulo">Ayuda</h3><ul>
           <li><a href="${T.ruta('preguntas.html')}">Preguntas frecuentes</a></li>
           <li><a href="${T.ruta('politicas.html#entregas')}">Entregas</a></li>
           <li><a href="${T.ruta('politicas.html#pagos')}">Pagos</a></li>
           <li><a href="${T.ruta('politicas.html#cambios')}">Cambios y garantías</a></li>
           <li><a href="${T.ruta('politicas.html#privacidad')}">Privacidad y datos</a></li></ul></div>
-        <div><h4>Contacto</h4><ul>${contacto}</ul></div>
+        <div><h3 class="pie-titulo">Contacto</h3><ul>${contacto}</ul></div>
       </div>
       <div class="pie-bajo"><span>© ${new Date().getFullYear()} ${T.esc(n.nombre || '')}. Todos los derechos reservados.</span>
         <span>Abrir WhatsApp no confirma una compra ni garantiza inventario disponible.</span></div>
@@ -539,14 +599,14 @@
       $('#capa').addEventListener('click', () => T.abrirCarrito(false));
       $('#cerrar-carrito').addEventListener('click', () => T.abrirCarrito(false));
       $('#carrito-vaciar').addEventListener('click', () => T.carrito.vaciar());
-      $('#carrito-enviar').addEventListener('click', () => { if (T.carrito.items.length) T.abrirWA(T.carrito.mensaje(), 'whatsapp_carrito', { items: T.carrito.cantidad() }); });
+      $('#carrito-enviar').addEventListener('click', () => { if (T.carrito.items.length) { T.pixel('InitiateCheckout', { value: T.carrito.total(), currency: 'COP', num_items: T.carrito.cantidad(), content_ids: T.carrito.items.map(i => i.id) }); T.abrirWA(T.carrito.mensaje(), 'whatsapp_carrito', { items: T.carrito.cantidad() }); } });
       $('#carrito-lista').addEventListener('click', (e) => {
         const b = e.target.closest('button'); if (!b) return;
         if (b.dataset.mas) T.carrito.cambiar(b.dataset.mas, 1);
         else if (b.dataset.menos) T.carrito.cambiar(b.dataset.menos, -1);
         else if (b.dataset.quitar) T.carrito.quitar(b.dataset.quitar);
       });
-      $('#wa-flotante').addEventListener('click', (e) => { if (!T.hayWA()) { e.preventDefault(); T.toast('El número de WhatsApp aún no está configurado.'); } else T.registrar('whatsapp_click', { origen: 'flotante' }); });
+      $('#wa-flotante').addEventListener('click', (e) => { if (!T.hayWA()) { e.preventDefault(); T.toast('El número de WhatsApp aún no está configurado.'); } else { T.registrar('whatsapp_click', { origen: 'flotante' }); T.pixel('Contact', { content_name: 'flotante' }); } });
     }
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') T.abrirCarrito(false); });
   };
@@ -566,8 +626,8 @@
     const url = T.urlProducto(p);
     return `<article class="tarjeta aparece ${p.disponible ? '' : 'agotada'}" data-id="${T.esc(p.id)}">
       <a class="tarjeta-imagen" href="${url}" tabindex="-1" aria-hidden="true">
-        <img src="${T.esc(T.imagenProducto(p))}" alt="" loading="lazy" width="400" height="400">
-        ${p.imagenes && p.imagenes[1] ? `<img class="img-hover" src="${T.esc(T.imagenProducto(p, 1))}" alt="" loading="lazy" width="400" height="400">` : ''}
+        ${T.picture(p, 0, 'loading="lazy" width="400" height="400"')}
+        ${p.imagenes && p.imagenes[1] ? T.picture(p, 1, 'class="img-hover" loading="lazy" width="400" height="400"', p.nombre + ', segunda foto') : ''}
       </a>
       <div class="etiquetas">${etiquetas}</div>
       <div class="tarjeta-cuerpo">
@@ -582,7 +642,7 @@
           ${p.disponible
             ? `<button class="btn btn-whatsapp" data-wa="${T.esc(p.id)}">${T.ico.wa} Pedir</button>
                <button class="icono-btn" data-carrito="${T.esc(p.id)}" aria-label="Agregar al carrito" title="Agregar al carrito">${T.ico.mas}</button>`
-            : `<button class="btn btn-suave" data-wa-disp="${T.esc(p.id)}">${T.ico.wa} ${T.vendido(p) ? 'Quiero uno igual' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame'}</button>`}
+            : `<button class="btn btn-suave" data-wa-disp="${T.esc(p.id)}">${T.ico.wa} ${T.vendido(p) ? '¿Otro igual u otro color?' : T.esEncargo(p) ? 'Avísame cuando vuelva' : 'Avísame'}</button>`}
         </div>
       </div>
     </article>`;
@@ -653,7 +713,7 @@
         const cats = T.datos.catalogo.categorias.filter(c => c.visible !== false && T.slug(c.nombre).includes(T.slug(q))).slice(0, 2);
         if (!prods.length && !cats.length) { caja.innerHTML = `<div class="sug-vacio">Sin resultados para “${T.esc(q)}”. <a href="${T.ruta('catalogo.html')}">Ver todo el catálogo</a></div>`; caja.hidden = false; return; }
         caja.innerHTML = cats.map(c => `<a class="sug sug-cat" href="${T.ruta('catalogo.html?cat=' + encodeURIComponent(c.id))}"><span class="sug-ico">${T.icono(c.icono, 'svg:etiqueta')}</span><span>Categoría: <strong>${T.esc(c.nombre)}</strong></span></a>`).join('') +
-          prods.map(p => `<a class="sug" href="${T.urlProducto(p)}"><img src="${T.esc(T.imagenProducto(p))}" alt="" loading="lazy"><span><strong>${T.esc(p.nombre)}</strong><small>${T.formatoPrecio(p.precio)}${p.disponible ? '' : ' · Agotado'}</small></span></a>`).join('') +
+          prods.map(p => `<a class="sug" href="${T.urlProducto(p)}">${T.picture(p, 0, 'loading="lazy" width="40" height="40"')}<span><strong>${T.esc(p.nombre)}</strong><small>${T.formatoPrecio(p.precio)}${p.disponible ? '' : ' · Agotado'}</small></span></a>`).join('') +
           `<a class="sug sug-todos" href="${T.ruta('catalogo.html?q=' + encodeURIComponent(q))}">Ver todos los resultados para “${T.esc(q)}” →</a>`;
         caja.hidden = false;
       };
@@ -678,7 +738,7 @@
     document.body.appendChild(nav); document.body.classList.add('con-barra-inferior');
     $('#bi-buscar').addEventListener('click', (e) => { e.preventDefault(); const m = $('#menu-movil'); if (m) { m.classList.add('abierto'); window.scrollTo({ top: 0, behavior: 'smooth' }); const i = m.querySelector('input'); if (i) setTimeout(() => i.focus(), 250); } });
     $('#bi-carrito').addEventListener('click', (e) => { e.preventDefault(); T.abrirCarrito(true); });
-    $('#bi-wa').addEventListener('click', (e) => { if (!T.hayWA()) { e.preventDefault(); T.toast('El número de WhatsApp aún no está configurado.'); } else T.registrar('whatsapp_click', { origen: 'barra-inferior' }); });
+    $('#bi-wa').addEventListener('click', (e) => { if (!T.hayWA()) { e.preventDefault(); T.toast('El número de WhatsApp aún no está configurado.'); } else { T.registrar('whatsapp_click', { origen: 'barra-inferior' }); T.pixel('Contact', { content_name: 'barra-inferior' }); } });
     T.renderContador();
   };
 

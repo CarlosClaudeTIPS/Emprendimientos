@@ -56,19 +56,19 @@
       "visible": true,
       "orden": 1,
       "imagenes": [
-        "img/productos/control-xbox-forza-horizon-6.jpg",
-        "img/productos/control-xbox-forza-horizon-6-mesa.jpg",
-        "img/productos/control-xbox-forza-horizon-6-estudio.jpg"
+        "img/productos/control-xbox-forza-horizon-6/1.jpg",
+        "img/productos/control-xbox-forza-horizon-6/2.jpg",
+        "img/productos/control-xbox-forza-horizon-6/3.jpg"
       ],
       "video": "",
-      "descripcionCorta": "Control inalámbrico Xbox edición especial Forza Horizon 6, nuevo y sellado en su caja original.",
-      "descripcion": "Control de Xbox edición especial Forza Horizon 6, completamente nuevo, en su caja original sin abrir. Diseño de edición limitada con los colores y gráficos del juego, como se aprecia en las fotos reales del producto.\n\nEntrega personal en Bogotá, con punto de encuentro en la Av. Américas con 68 (zona segura). También se hacen envíos a otras zonas o ciudades únicamente con pago previo confirmado; el costo del envío lo asume el comprador.",
+      "descripcionCorta": "Edición limitada Forza Horizon 6, sellada: la pieza que no se consigue en tiendas.",
+      "descripcion": "Control de Xbox edición especial Forza Horizon 6, completamente nuevo, en su caja original sin abrir. Diseño de edición limitada con los colores y gráficos del juego, como se aprecia en las fotos reales del producto.\n\nRecogida en Bogotá cerca de Plaza de las Américas (dirección por WhatsApp) o entrega a domicilio los lunes y jueves. También se hacen envíos a otras ciudades únicamente con pago previo confirmado; el costo del envío lo asume el comprador.",
       "problema": "Es un control de colección: ideal para quien busca una edición especial de Forza Horizon 6 nueva y sellada, difícil de conseguir en tiendas.",
       "beneficios": [
         "Edición limitada con diseño exclusivo de Forza Horizon 6",
         "Nuevo y sellado en su caja original (estado 10/10)",
         "Compatible con consola, PC y móviles, según indica el vendedor",
-        "Entrega personal en Bogotá en punto de encuentro seguro"
+        "Recogida en Bogotá o domicilio los lunes y jueves"
       ],
       "especificaciones": {
         "Marca": "Xbox (Microsoft)",
@@ -101,7 +101,7 @@
         },
         {
           "p": "¿Cómo es la entrega en Bogotá?",
-          "r": "Entrega personal en un punto de encuentro seguro en la Av. Américas con 68. Coordinamos día y hora por WhatsApp."
+          "r": "Puedes recogerlo cualquier día cerca de Plaza de las Américas (antes de las 11 a. m. o después de las 7 p. m.; la dirección te la damos por WhatsApp) o recibirlo a domicilio el lunes o el jueves."
         },
         {
           "p": "¿Hacen envíos a otras ciudades?",
@@ -134,7 +134,12 @@
         "control-xbox-robot-white"
       ],
       "fechaCreacion": "2026-10-15",
-      "stock": 1
+      "stock": 1,
+      "imagenesOrigen": [
+        "img/productos/control-xbox-forza-horizon-6.jpg",
+        "img/productos/control-xbox-forza-horizon-6-mesa.jpg",
+        "img/productos/control-xbox-forza-horizon-6-estudio.jpg"
+      ]
     },
     {
       "id": "control-xbox-robot-white",
@@ -142,7 +147,7 @@
       "categoria": "tecnologia",
       "precio": 189000,
       "precioAnterior": null,
-      "disponible": true,
+      "disponible": false,
       "nuevo": true,
       "oferta": false,
       "destacado": true,
@@ -150,20 +155,20 @@
       "visible": true,
       "orden": 2,
       "imagenes": [
-        "img/productos/control-xbox-robot-white.jpg",
-        "img/productos/control-xbox-robot-white-mesa.jpg",
-        "img/productos/control-xbox-robot-white-caja.jpg"
+        "img/productos/control-xbox-robot-white/1.jpg",
+        "img/productos/control-xbox-robot-white/2.jpg",
+        "img/productos/control-xbox-robot-white/3.jpg"
       ],
       "video": "",
-      "descripcionCorta": "Control inalámbrico Xbox original color blanco (Robot White), nuevo y sellado de fábrica.",
-      "descripcion": "Control original de Xbox en color blanco Robot White, completamente nuevo, sellado de fábrica y 100% funcional.\n\nNota importante: la caja de cartón exterior se maltrató un poco durante el transporte del envío, pero el control adentro está intacto, sin ningún uso, con sus sellos originales. Estado del control: 10/10. Estado de la caja: 7/10.\n\nEntrega personal en Bogotá, con punto de encuentro en la Av. Américas con 68 (zona segura). También se hacen envíos a otras zonas o ciudades únicamente con pago previo confirmado; el costo del envío lo asume el comprador.",
+      "descripcionCorta": "El control original de Xbox, nuevo y sellado, al precio del estándar: juega en consola, PC o celular.",
+      "descripcion": "Control original de Xbox en color blanco Robot White, completamente nuevo, sellado de fábrica y 100% funcional.\n\nNota importante: la caja de cartón exterior se maltrató un poco durante el transporte del envío, pero el control adentro está intacto, sin ningún uso, con sus sellos originales. Estado del control: 10/10. Estado de la caja: 7/10.\n\nRecogida en Bogotá cerca de Plaza de las Américas (dirección por WhatsApp) o entrega a domicilio los lunes y jueves. También se hacen envíos a otras ciudades únicamente con pago previo confirmado; el costo del envío lo asume el comprador.",
       "problema": "Para quien necesita un segundo control para jugar acompañado, reemplazar uno dañado o usar un control de Xbox en PC o celular, con la garantía de que es original y viene sellado.",
       "beneficios": [
         "Control original Xbox, nuevo y sellado de fábrica (10/10)",
         "Diseño clásico en blanco, el modelo estándar de Xbox Series",
         "Compatible con consola, PC y móviles, según indica el vendedor",
         "Precio inferior al de una edición especial por ser el modelo estándar",
-        "Entrega personal en Bogotá en punto de encuentro seguro"
+        "Recogida en Bogotá o domicilio los lunes y jueves"
       ],
       "especificaciones": {
         "Marca": "Xbox (Microsoft)",
@@ -202,7 +207,7 @@
         },
         {
           "p": "¿Cómo es la entrega en Bogotá?",
-          "r": "Entrega personal en un punto de encuentro seguro en la Av. Américas con 68. Coordinamos día y hora por WhatsApp."
+          "r": "Puedes recogerlo cualquier día cerca de Plaza de las Américas (antes de las 11 a. m. o después de las 7 p. m.; la dirección te la damos por WhatsApp) o recibirlo a domicilio el lunes o el jueves."
         },
         {
           "p": "¿Hacen envíos a otras ciudades?",
@@ -237,11 +242,16 @@
         "control-xbox-forza-horizon-6"
       ],
       "fechaCreacion": "2026-10-19",
-      "stock": 1
+      "stock": 0,
+      "imagenesOrigen": [
+        "img/productos/control-xbox-robot-white.jpg",
+        "img/productos/control-xbox-robot-white-mesa.jpg",
+        "img/productos/control-xbox-robot-white-caja.jpg"
+      ]
     },
     {
-      "id": "rastreadores-flyruit-tag-x4",
-      "nombre": "Rastreadores FLYRUIT Tag (paquete de 4) - Compatibles con Apple Buscar (MFi)",
+      "id": "rastreadores-apple-buscar-x4",
+      "nombre": "Rastreadores para Apple Buscar, paquete de 4 (certificados MFi)",
       "categoria": "tecnologia",
       "precio": 99000,
       "precioAnterior": null,
@@ -253,12 +263,12 @@
       "visible": true,
       "orden": 3,
       "imagenes": [
-        "tienda/img/productos/flyruit-tag-x4.jpg",
-        "tienda/img/productos/flyruit-tag-x4-mesa.jpg"
+        "img/productos/rastreadores-apple-buscar-x4/1.jpg",
+        "img/productos/rastreadores-apple-buscar-x4/2.jpg"
       ],
       "video": "",
-      "descripcionCorta": "4 localizadores inteligentes nuevos y sellados, certificados por Apple (MFi) para la red Buscar.",
-      "descripcion": "Paquete de 4 localizadores inteligentes, totalmente nuevos y sellados. Su principal ventaja es la certificación oficial Apple MFi para trabajar con la red Buscar (Find My): se enlazan de forma nativa a la app «Buscar» de tu iPhone, iPad o Mac y funcionan igual que un AirTag, sin descargar aplicaciones de terceros. La misma red de rastreo de Apple para tus llaves, maletas, mochila o mascotas, a una fracción del precio.\n\nProducto intacto y garantizado.\n\nEntrega personal en Bogotá, con punto de encuentro en la Av. Américas con 68, o envíos a otras ciudades con pago previo (el costo del envío lo asume el comprador).",
+      "descripcionCorta": "4 localizadores para tus llaves, maleta y mascota desde la app Buscar del iPhone, por menos que un AirTag.",
+      "descripcion": "Paquete de 4 localizadores inteligentes, totalmente nuevos y sellados. Su principal ventaja es la certificación oficial Apple MFi para trabajar con la red Buscar (Find My): se enlazan de forma nativa a la app «Buscar» de tu iPhone, iPad o Mac y funcionan igual que un AirTag, sin descargar aplicaciones de terceros. La misma red de rastreo de Apple para tus llaves, maletas, mochila o mascotas, a una fracción del precio.\n\nProducto intacto y garantizado.\n\nRecogida en Bogotá cerca de Plaza de las Américas (dirección por WhatsApp), domicilio los lunes y jueves, o envío a otras ciudades con pago previo (el costo del envío lo asume el comprador).",
       "problema": "Para quien pierde o teme perder llaves, billetera, maleta o mascota y quiere rastrearlas desde su iPhone sin pagar el precio de cuatro AirTag.",
       "beneficios": [
         "Funciona con la app «Buscar» de Apple, sin apps de terceros",
@@ -267,16 +277,15 @@
         "Nuevos y sellados"
       ],
       "especificaciones": {
-        "Marca": "FLYRUIT",
         "Contenido": "4 rastreadores",
         "Compatibilidad": "iPhone, iPad y Mac con la app «Buscar» (red Find My de Apple)",
-        "Certificación": "Apple MFi (Find My), según el fabricante",
+        "Certificación": "Apple MFi (red Buscar / Find My)",
         "Compatibilidad Android": "No usa la red de Apple en Android",
         "Batería": "Pendiente de confirmar",
         "Estado": "Nuevo, sellado"
       },
       "incluye": [
-        "4 rastreadores FLYRUIT Tag (uno con argolla para llaves)",
+        "4 rastreadores (uno con argolla para llaves)",
         "Contenido adicional del paquete: pendiente de confirmar"
       ],
       "instrucciones": [
@@ -292,7 +301,7 @@
       "preguntas": [
         {
           "p": "¿Es igual que un AirTag?",
-          "r": "Funciona en la misma red Buscar de Apple y se configura desde la misma app. Es de la marca FLYRUIT, con certificación MFi según el fabricante."
+          "r": "Funciona en la misma red Buscar de Apple y se configura desde la misma app. Tiene certificación Apple MFi, según el fabricante."
         },
         {
           "p": "¿Sirve con Android?",
@@ -315,12 +324,15 @@
         "mascota",
         "maleta",
         "gps",
-        "tag",
-        "flyruit"
+        "tag"
       ],
       "relacionados": [],
       "fechaCreacion": "2026-10-28",
-      "stock": 1
+      "stock": 1,
+      "imagenesOrigen": [
+        "tienda/img/productos/flyruit-tag-x4.jpg",
+        "tienda/img/productos/flyruit-tag-x4-mesa.jpg"
+      ]
     }
   ]
 }
