@@ -1,5 +1,5 @@
 {
-  "generado": "2026-11-06",
+  "generado": "2026-11-07",
   "nota": "Imágenes locales de los productos. \"origen\" es la URL o archivo del que se bajó; \"original\" es la copia intacta de respaldo.",
   "productos": [
     {
@@ -7,7 +7,7 @@
       "id": "control-xbox-forza-horizon-6",
       "nombre": "Control Xbox Edición Limitada Forza Horizon 6 - Nuevo en caja",
       "og": "img/og/control-xbox-forza-horizon-6.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/control-xbox-forza-horizon-6/1.jpg",
@@ -17,7 +17,7 @@
           "ancho": 900,
           "alto": 900,
           "origen": "img/productos/control-xbox-forza-horizon-6.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         },
         {
           "archivo": "img/productos/control-xbox-forza-horizon-6/2.jpg",
@@ -27,7 +27,7 @@
           "ancho": 900,
           "alto": 900,
           "origen": "img/productos/control-xbox-forza-horizon-6-mesa.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         },
         {
           "archivo": "img/productos/control-xbox-forza-horizon-6/3.jpg",
@@ -37,7 +37,7 @@
           "ancho": 1000,
           "alto": 1000,
           "origen": "img/productos/control-xbox-forza-horizon-6-estudio.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -46,7 +46,7 @@
       "id": "control-xbox-robot-white",
       "nombre": "Control Xbox Inalámbrico Robot White - Nuevo y sellado",
       "og": "img/og/control-xbox-robot-white.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/control-xbox-robot-white/1.jpg",
@@ -56,7 +56,7 @@
           "ancho": 900,
           "alto": 900,
           "origen": "img/productos/control-xbox-robot-white.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         },
         {
           "archivo": "img/productos/control-xbox-robot-white/2.jpg",
@@ -66,7 +66,7 @@
           "ancho": 900,
           "alto": 900,
           "origen": "img/productos/control-xbox-robot-white-mesa.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         },
         {
           "archivo": "img/productos/control-xbox-robot-white/3.jpg",
@@ -76,7 +76,7 @@
           "ancho": 1024,
           "alto": 765,
           "origen": "img/productos/control-xbox-robot-white-caja.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -85,7 +85,7 @@
       "id": "rastreadores-apple-buscar-x4",
       "nombre": "Rastreadores para Apple Buscar, paquete de 4 (certificados MFi)",
       "og": "img/og/rastreadores-apple-buscar-x4.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/rastreadores-apple-buscar-x4/1.jpg",
@@ -95,7 +95,7 @@
           "ancho": 900,
           "alto": 900,
           "origen": "tienda/img/productos/flyruit-tag-x4.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         },
         {
           "archivo": "img/productos/rastreadores-apple-buscar-x4/2.jpg",
@@ -105,7 +105,7 @@
           "ancho": 900,
           "alto": 900,
           "origen": "tienda/img/productos/flyruit-tag-x4-mesa.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -114,7 +114,7 @@
       "id": "ya-cargador-usbc-20w",
       "nombre": "Cargador USB-C 20 W de carga rápida para iPhone, certificado MFi",
       "og": "img/og/cargador-usb-c-20w-iphone-mfi.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/cargador-usb-c-20w-iphone-mfi/1.jpg",
@@ -124,7 +124,7 @@
           "ancho": 1200,
           "alto": 1204,
           "origen": "https://m.media-amazon.com/images/I/618-MJqshTL._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -133,17 +133,27 @@
       "id": "ya-camara-yoton-2k",
       "nombre": "Cámara de seguridad WiFi 2K para interior, bebé y mascotas",
       "og": "img/og/camara-seguridad-wifi-2k-interior.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/camara-seguridad-wifi-2k-interior/1.jpg",
           "webp": "img/productos/camara-seguridad-wifi-2k-interior/1.webp",
           "chica": "img/productos/camara-seguridad-wifi-2k-interior/1-400.jpg",
+          "original": "img/originales/camara-seguridad-wifi-2k-interior/1-es.jpg",
+          "ancho": 1032,
+          "alto": 1204,
+          "origen": "img/originales/camara-seguridad-wifi-2k-interior/1-es.jpg",
+          "descargado": "2026-11-07"
+        },
+        {
+          "archivo": "img/productos/camara-seguridad-wifi-2k-interior/2.jpg",
+          "webp": "img/productos/camara-seguridad-wifi-2k-interior/2.webp",
+          "chica": "img/productos/camara-seguridad-wifi-2k-interior/2-400.jpg",
           "original": "img/originales/camara-seguridad-wifi-2k-interior/1.jpg",
           "ancho": 1032,
           "alto": 1204,
           "origen": "https://m.media-amazon.com/images/I/61tfGvrxoDL._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -152,17 +162,27 @@
       "id": "ya-medicube-vitamina-c",
       "nombre": "Medicube crema cápsula con vitamina C profunda",
       "og": "img/og/medicube-crema-capsula-vitamina-c.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
           "webp": "img/productos/medicube-crema-capsula-vitamina-c/1.webp",
           "chica": "img/productos/medicube-crema-capsula-vitamina-c/1-400.jpg",
+          "original": "img/originales/medicube-crema-capsula-vitamina-c/1-es.jpg",
+          "ancho": 1200,
+          "alto": 1329,
+          "origen": "img/originales/medicube-crema-capsula-vitamina-c/1-es.jpg",
+          "descargado": "2026-11-07"
+        },
+        {
+          "archivo": "img/productos/medicube-crema-capsula-vitamina-c/2.jpg",
+          "webp": "img/productos/medicube-crema-capsula-vitamina-c/2.webp",
+          "chica": "img/productos/medicube-crema-capsula-vitamina-c/2-400.jpg",
           "original": "img/originales/medicube-crema-capsula-vitamina-c/1.jpg",
           "ancho": 1200,
           "alto": 1329,
           "origen": "https://m.media-amazon.com/images/I/71m8aGBgXqL._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -171,17 +191,27 @@
       "id": "ya-medicube-azelaico",
       "nombre": "Medicube Exosome Shot ácido azelaico 2.000 PPM, sérum facial",
       "og": "img/og/medicube-exosome-shot-acido-azelaico.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg",
           "webp": "img/productos/medicube-exosome-shot-acido-azelaico/1.webp",
           "chica": "img/productos/medicube-exosome-shot-acido-azelaico/1-400.jpg",
+          "original": "img/originales/medicube-exosome-shot-acido-azelaico/1-es.jpg",
+          "ancho": 1200,
+          "alto": 1302,
+          "origen": "img/originales/medicube-exosome-shot-acido-azelaico/1-es.jpg",
+          "descargado": "2026-11-07"
+        },
+        {
+          "archivo": "img/productos/medicube-exosome-shot-acido-azelaico/2.jpg",
+          "webp": "img/productos/medicube-exosome-shot-acido-azelaico/2.webp",
+          "chica": "img/productos/medicube-exosome-shot-acido-azelaico/2-400.jpg",
           "original": "img/originales/medicube-exosome-shot-acido-azelaico/1.jpg",
           "ancho": 1200,
           "alto": 1302,
           "origen": "https://m.media-amazon.com/images/I/71TFpArxslL._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -190,17 +220,27 @@
       "id": "ya-medicube-exosome-poros",
       "nombre": "Medicube Exosome Shot Zero 2.000 PPM, sérum para poros y grasa",
       "og": "img/og/medicube-exosome-shot-zero-poros.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
           "webp": "img/productos/medicube-exosome-shot-zero-poros/1.webp",
           "chica": "img/productos/medicube-exosome-shot-zero-poros/1-400.jpg",
+          "original": "img/originales/medicube-exosome-shot-zero-poros/1-es.jpg",
+          "ancho": 1015,
+          "alto": 1500,
+          "origen": "img/originales/medicube-exosome-shot-zero-poros/1-es.jpg",
+          "descargado": "2026-11-07"
+        },
+        {
+          "archivo": "img/productos/medicube-exosome-shot-zero-poros/2.jpg",
+          "webp": "img/productos/medicube-exosome-shot-zero-poros/2.webp",
+          "chica": "img/productos/medicube-exosome-shot-zero-poros/2-400.jpg",
           "original": "img/originales/medicube-exosome-shot-zero-poros/1.jpg",
           "ancho": 1015,
           "alto": 1500,
           "origen": "https://m.media-amazon.com/images/I/71bfHCGMlEL._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -209,17 +249,27 @@
       "id": "ya-cerave-pm",
       "nombre": "CeraVe PM loción hidratante facial de noche",
       "og": "img/og/cerave-pm-locion-noche.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/cerave-pm-locion-noche/1.jpg",
           "webp": "img/productos/cerave-pm-locion-noche/1.webp",
           "chica": "img/productos/cerave-pm-locion-noche/1-400.jpg",
+          "original": "img/originales/cerave-pm-locion-noche/1-es.jpg",
+          "ancho": 1172,
+          "alto": 1500,
+          "origen": "img/originales/cerave-pm-locion-noche/1-es.jpg",
+          "descargado": "2026-11-07"
+        },
+        {
+          "archivo": "img/productos/cerave-pm-locion-noche/2.jpg",
+          "webp": "img/productos/cerave-pm-locion-noche/2.webp",
+          "chica": "img/productos/cerave-pm-locion-noche/2-400.jpg",
           "original": "img/originales/cerave-pm-locion-noche/1.jpg",
           "ancho": 1172,
           "alto": 1500,
           "origen": "https://m.media-amazon.com/images/I/61TuwUQ-qvL._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -228,17 +278,27 @@
       "id": "ya-cerave-protector-mineral",
       "nombre": "CeraVe protector solar mineral hidratante SPF 30 con tinte transparente",
       "og": "img/og/cerave-protector-solar-mineral-spf30.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/cerave-protector-solar-mineral-spf30/1.jpg",
           "webp": "img/productos/cerave-protector-solar-mineral-spf30/1.webp",
           "chica": "img/productos/cerave-protector-solar-mineral-spf30/1-400.jpg",
+          "original": "img/originales/cerave-protector-solar-mineral-spf30/1-es.jpg",
+          "ancho": 1200,
+          "alto": 1249,
+          "origen": "img/originales/cerave-protector-solar-mineral-spf30/1-es.jpg",
+          "descargado": "2026-11-07"
+        },
+        {
+          "archivo": "img/productos/cerave-protector-solar-mineral-spf30/2.jpg",
+          "webp": "img/productos/cerave-protector-solar-mineral-spf30/2.webp",
+          "chica": "img/productos/cerave-protector-solar-mineral-spf30/2-400.jpg",
           "original": "img/originales/cerave-protector-solar-mineral-spf30/1.jpg",
           "ancho": 1200,
           "alto": 1249,
           "origen": "https://m.media-amazon.com/images/I/71zMpOIe51L._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -247,17 +307,27 @@
       "id": "ya-cetaphil-limpiador",
       "nombre": "Cetaphil limpiador facial diario suave, 473 ml",
       "og": "img/og/cetaphil-limpiador-facial-473ml.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
           "webp": "img/productos/cetaphil-limpiador-facial-473ml/1.webp",
           "chica": "img/productos/cetaphil-limpiador-facial-473ml/1-400.jpg",
+          "original": "img/originales/cetaphil-limpiador-facial-473ml/1-es.jpg",
+          "ancho": 1168,
+          "alto": 1398,
+          "origen": "img/originales/cetaphil-limpiador-facial-473ml/1-es.jpg",
+          "descargado": "2026-11-07"
+        },
+        {
+          "archivo": "img/productos/cetaphil-limpiador-facial-473ml/2.jpg",
+          "webp": "img/productos/cetaphil-limpiador-facial-473ml/2.webp",
+          "chica": "img/productos/cetaphil-limpiador-facial-473ml/2-400.jpg",
           "original": "img/originales/cetaphil-limpiador-facial-473ml/1.jpg",
           "ancho": 1168,
           "alto": 1398,
           "origen": "https://m.media-amazon.com/images/I/61wJk3BTsrL._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -266,17 +336,27 @@
       "id": "ya-nivea-locion",
       "nombre": "NIVEA loción corporal de larga duración para piel seca a muy seca",
       "og": "img/og/nivea-locion-corporal-piel-seca.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
           "webp": "img/productos/nivea-locion-corporal-piel-seca/1.webp",
           "chica": "img/productos/nivea-locion-corporal-piel-seca/1-400.jpg",
+          "original": "img/originales/nivea-locion-corporal-piel-seca/1-es.jpg",
+          "ancho": 506,
+          "alto": 1500,
+          "origen": "img/originales/nivea-locion-corporal-piel-seca/1-es.jpg",
+          "descargado": "2026-11-07"
+        },
+        {
+          "archivo": "img/productos/nivea-locion-corporal-piel-seca/2.jpg",
+          "webp": "img/productos/nivea-locion-corporal-piel-seca/2.webp",
+          "chica": "img/productos/nivea-locion-corporal-piel-seca/2-400.jpg",
           "original": "img/originales/nivea-locion-corporal-piel-seca/1.jpg",
           "ancho": 506,
           "alto": 1500,
           "origen": "https://m.media-amazon.com/images/I/61nIWVHSZzL._AC_SL500_.jpg",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -285,7 +365,7 @@
       "id": "combo-noche-cerave",
       "nombre": "Kit rutina de noche: Cetaphil + CeraVe PM",
       "og": "img/og/combo-noche-cerave.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/combo-noche-cerave/1.jpg",
@@ -295,7 +375,7 @@
           "ancho": 1200,
           "alto": 1200,
           "origen": "montaje: ya-cetaphil-limpiador + ya-cerave-pm",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -304,7 +384,7 @@
       "id": "combo-piel-sensible",
       "nombre": "Kit rutina completa piel sensible: Cetaphil + CeraVe PM + protector SPF 30",
       "og": "img/og/combo-piel-sensible.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/combo-piel-sensible/1.jpg",
@@ -314,7 +394,7 @@
           "ancho": 1200,
           "alto": 1200,
           "origen": "montaje: ya-cetaphil-limpiador + ya-cerave-pm + ya-cerave-protector-mineral",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -323,7 +403,7 @@
       "id": "combo-poros-medicube",
       "nombre": "Kit poros y grasa Medicube: Exosome Shot Zero + ácido azelaico",
       "og": "img/og/combo-poros-medicube.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/combo-poros-medicube/1.jpg",
@@ -333,7 +413,7 @@
           "ancho": 1200,
           "alto": 1200,
           "origen": "montaje: ya-medicube-exosome-poros + ya-medicube-azelaico",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -342,7 +422,7 @@
       "id": "combo-luminosidad",
       "nombre": "Kit luminosidad: Medicube vitamina C + CeraVe protector mineral SPF 30",
       "og": "img/og/combo-luminosidad.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/combo-luminosidad/1.jpg",
@@ -352,7 +432,7 @@
           "ancho": 1200,
           "alto": 1200,
           "origen": "montaje: ya-medicube-vitamina-c + ya-cerave-protector-mineral",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -361,7 +441,7 @@
       "id": "combo-dia-noche",
       "nombre": "Kit día y noche: Medicube vitamina C + CeraVe PM",
       "og": "img/og/combo-dia-noche.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/combo-dia-noche/1.jpg",
@@ -371,7 +451,7 @@
           "ancho": 1200,
           "alto": 1200,
           "origen": "montaje: ya-medicube-vitamina-c + ya-cerave-pm",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     },
@@ -380,7 +460,7 @@
       "id": "combo-cuerpo-rostro",
       "nombre": "Kit cuerpo y rostro: NIVEA loción corporal + Cetaphil limpiador",
       "og": "img/og/combo-cuerpo-rostro.jpg",
-      "descargado": "2026-11-06",
+      "descargado": "2026-11-07",
       "imagenes": [
         {
           "archivo": "img/productos/combo-cuerpo-rostro/1.jpg",
@@ -390,7 +470,7 @@
           "ancho": 1200,
           "alto": 1200,
           "origen": "montaje: ya-nivea-locion + ya-cetaphil-limpiador",
-          "descargado": "2026-11-06"
+          "descargado": "2026-11-07"
         }
       ]
     }

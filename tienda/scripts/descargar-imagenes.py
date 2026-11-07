@@ -98,13 +98,17 @@ def imagen_og(original, destino):
 def procesar(pid, nombre, origenes):
     slug = slug_de(pid)
     salida = []
+    # Foto con el empaque traducido (scripts/traducir-foto.py → img/originales/<slug>/1-es.jpg): va de primera y la original queda de segunda
+    es = f'img/originales/{slug}/1-es.jpg'
+    if os.path.exists(es):
+        origenes = [es] + [o for o in origenes if not o.endswith('1-es.jpg')]
     for n, origen in enumerate(origenes, 1):
         # Si el dato ya es la ruta local optimizada, el origen real está en el manifiesto anterior
         if re.match(rf'^img/productos/{re.escape(slug)}/\d+\.jpg$', origen):
             previo = next((x for x in prev.get(slug, {}).get('imagenes', []) if x['archivo'] == origen), None)
             origen = previo['origen'] if previo else origen
         ext = '.png' if origen.lower().endswith('.png') else '.jpg'
-        original = f'img/originales/{slug}/{n}{ext}'
+        original = origen if origen.endswith('1-es.jpg') else f'img/originales/{slug}/{n - (1 if os.path.exists(es) else 0)}{ext}'
         try:
             estado = obtener_original(origen, original)
         except RuntimeError as e:
@@ -136,8 +140,9 @@ for p in encargo['productos']:
     if not origen: print('  (sin foto)'); continue
     slug, imgs = procesar(p['id'], p['nombre'], [origen])
     if imgs:
-        p['fotoOrigen'] = imgs[0]['origen']
+        p['fotoOrigen'] = next((i['origen'] for i in imgs if not i['origen'].endswith('1-es.jpg')), imgs[0]['origen'])
         p['foto'] = imgs[0]['archivo']
+        p['fotos'] = [i['archivo'] for i in imgs]  # todas las fotos locales (traducida primero, original después)
         manifiesto['productos'].append({'slug': slug, 'id': p['id'], 'nombre': p['nombre'], 'og': f'img/og/{slug}.jpg', 'descargado': HOY, 'imagenes': imgs})
 
 # Combos: foto montada con los componentes lado a lado sobre blanco (1500x1500), luego el mismo tratamiento

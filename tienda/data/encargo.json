@@ -15,7 +15,10 @@
       "foto": "img/productos/cargador-usb-c-20w-iphone-mfi/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de uso",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/618-MJqshTL._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/618-MJqshTL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/cargador-usb-c-20w-iphone-mfi/1.jpg"
+      ]
     },
     {
       "id": "ya-camara-yoton-2k",
@@ -30,7 +33,11 @@
       "foto": "img/productos/camara-seguridad-wifi-2k-interior/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de instalación",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/61tfGvrxoDL._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61tfGvrxoDL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/camara-seguridad-wifi-2k-interior/1.jpg",
+        "img/productos/camara-seguridad-wifi-2k-interior/2.jpg"
+      ]
     },
     {
       "id": "ya-medicube-vitamina-c",
@@ -45,7 +52,11 @@
       "foto": "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de uso",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/71m8aGBgXqL._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71m8aGBgXqL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
+        "img/productos/medicube-crema-capsula-vitamina-c/2.jpg"
+      ]
     },
     {
       "id": "ya-medicube-azelaico",
@@ -60,7 +71,11 @@
       "foto": "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de uso",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/71TFpArxslL._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71TFpArxslL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg",
+        "img/productos/medicube-exosome-shot-acido-azelaico/2.jpg"
+      ]
     },
     {
       "id": "ya-medicube-exosome-poros",
@@ -75,7 +90,11 @@
       "foto": "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de uso",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/71bfHCGMlEL._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71bfHCGMlEL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
+        "img/productos/medicube-exosome-shot-zero-poros/2.jpg"
+      ]
     },
     {
       "id": "ya-cerave-pm",
@@ -90,7 +109,11 @@
       "foto": "img/productos/cerave-pm-locion-noche/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de uso",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/61TuwUQ-qvL._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61TuwUQ-qvL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/cerave-pm-locion-noche/1.jpg",
+        "img/productos/cerave-pm-locion-noche/2.jpg"
+      ]
     },
     {
       "id": "ya-cerave-protector-mineral",
@@ -105,7 +128,11 @@
       "foto": "img/productos/cerave-protector-solar-mineral-spf30/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de uso",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/71zMpOIe51L._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71zMpOIe51L._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/cerave-protector-solar-mineral-spf30/1.jpg",
+        "img/productos/cerave-protector-solar-mineral-spf30/2.jpg"
+      ]
     },
     {
       "id": "ya-cetaphil-limpiador",
@@ -120,7 +147,11 @@
       "foto": "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de uso",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/61wJk3BTsrL._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61wJk3BTsrL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
+        "img/productos/cetaphil-limpiador-facial-473ml/2.jpg"
+      ]
     },
     {
       "id": "ya-nivea-locion",
@@ -135,7 +166,11 @@
       "foto": "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
       "ofertaHasta": "",
       "guia": "Guía de uso",
-      "fotoOrigen": "https://m.media-amazon.com/images/I/61nIWVHSZzL._AC_SL500_.jpg"
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61nIWVHSZzL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
+        "img/productos/nivea-locion-corporal-piel-seca/2.jpg"
+      ]
     }
   ]
 }

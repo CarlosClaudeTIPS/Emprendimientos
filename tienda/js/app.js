@@ -190,7 +190,7 @@
       const textoGuia = /^gu[ií]a/i.test(guia) ? `Con tu compra te enviamos por WhatsApp una ${guia.toLowerCase()} en español.` : '';
       catalogo.productos.push({
         id: e.id, nombre: e.nombre, categoria: c.id, precio,
-        imagenes: e.foto ? [e.foto] : [], descripcionCorta: e.descripcion || '',
+        imagenes: (e.fotos && e.fotos.length) ? e.fotos : (e.foto ? [e.foto] : []), descripcionCorta: e.descripcion || '',
         descripcion: parrafos.join('\n'), beneficios, especificaciones, instrucciones, precauciones,
         incluye: textoGuia ? incluye.concat([textoGuia.replace(/^Con tu compra te enviamos por WhatsApp una /, '').replace(/\.$/, '').replace(/^./, c => c.toUpperCase())]) : incluye,
         guia: textoGuia,
