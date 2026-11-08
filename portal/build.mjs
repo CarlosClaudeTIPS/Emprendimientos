@@ -26,7 +26,7 @@ cpSync(join(root, "apoyo-docente"), join(dist, "docentes"), { recursive: true, f
 // 3. Tienda → /tienda
 // El panel de administración (admin.html y sus archivos) es una herramienta privada: no se publica.
 execSync("node scripts/generar-paginas.mjs", { cwd: join(root, "tienda"), stdio: "inherit" });
-cpSync(join(root, "tienda"), join(dist, "tienda"), { recursive: true, filter: (p) => !/README\.md$|CLAUDE\.md$|AUDITORIA\.md$|package\.json$|netlify|_headers$|admin\.html$|admin\.css$|admin\.js$|generador\.js$|\/scripts(\/|$)|\/img\/originales(\/|$)|\/node_modules(\/|$)/.test(p) });
+cpSync(join(root, "tienda"), join(dist, "tienda"), { recursive: true, filter: (p) => !/README\.md$|CLAUDE\.md$|AUDITORIA\.md$|package\.json$|netlify|_headers$|admin\.html$|admin\.css$|admin\.js$|generador\.js$|img\/originales(\/|$)|\/scripts(\/|$)|\/img\/originales(\/|$)|\/node_modules(\/|$)/.test(p) });
 
 // 4. ICFES (app React) → /icfes  (se construye en una copia temporal para no tocar el proyecto)
 const src = join(root, "saber11-prep"), tmp = join(here, ".tmp-icfes");

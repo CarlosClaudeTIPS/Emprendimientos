@@ -28,9 +28,11 @@
       const s = T.$(idSec); if (!lista.length) { s.hidden = true; return; }
       s.hidden = false; T.renderGrid(idGrid, lista.slice(0, 8));
     };
-    seccion('#sec-destacados', '#destacados', vis.filter(p => p.destacado));
-    seccion('#sec-populares', '#populares', vis.filter(p => p.popular));
-    seccion('#sec-nuevos', '#nuevos', vis.filter(p => p.nuevo).sort((a, b) => (b.fechaCreacion || '').localeCompare(a.fechaCreacion || '')));
+    /* En la portada solo lo que se puede pedir. Un vendido vuelve a salir si tiene «recompra: true» (se repone y se vende bien). */
+    const comprable = p => p.disponible || p.recompra === true;
+    seccion('#sec-destacados', '#destacados', vis.filter(p => p.destacado && comprable(p)));
+    seccion('#sec-populares', '#populares', vis.filter(p => p.popular && comprable(p)));
+    seccion('#sec-nuevos', '#nuevos', vis.filter(p => p.nuevo && comprable(p)).sort((a, b) => (b.fechaCreacion || '').localeCompare(a.fechaCreacion || '')));
     seccion('#sec-ofertas', '#ofertas', vis.filter(p => p.oferta && p.disponible));
     const mostrados = new Set([...T.$$('.tarjeta')].map(t => t.dataset.id));
     seccion('#sec-recomendados', '#recomendados', vis.filter(p => p.disponible && !mostrados.has(p.id)).slice(0, 4));

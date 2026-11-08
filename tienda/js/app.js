@@ -197,7 +197,7 @@
         guia: textoGuia,
         modalidad: enStock ? 'stock' : 'encargo',
         consultar: estado.startsWith('consultar'),
-        disponible: !agotado, visible: true, nuevo: true, destacado: enStock && !agotado, orden: (enStock ? 500 : 1000) + i,
+        disponible: !agotado, visible: true, nuevo: T.esReciente(e.publicado), destacado: enStock && !agotado, orden: (enStock ? 500 : 1000) + i,
         stock: enStock ? (agotado ? 0 : (unidades > 0 ? unidades : null)) : null,
         fechaCreacion: e.publicado || '', ofertaHasta: e.ofertaHasta || ''
       });
@@ -254,7 +254,7 @@
         preguntas: k.preguntas || [], relacionados: comps.map(p => p.id), palabrasClave: ['combo', 'kit', 'rutina'].concat(comps.flatMap(p => p.palabrasClave || [])),
         modalidad: todosStock ? 'stock' : 'encargo', esCombo: true, componentes: comps.map(p => p.id),
         guia: todosStock ? '' : 'Este kit mezcla productos de entrega inmediata con otros por encargo: te confirmamos la fecha de entrega por WhatsApp.',
-        disponible, visible: true, nuevo: true, destacado: disponible, popular: false, orden: 300 + i,
+        disponible, visible: true, nuevo: T.esReciente(datos.actualizado), destacado: disponible, popular: false, orden: 300 + i,
         stock: stocks.length ? Math.min.apply(null, stocks) : null, fechaCreacion: datos.actualizado || ''
       });
     });
@@ -270,6 +270,8 @@
     variantes: [], palabrasClave: [], relacionados: [], fechaCreacion: '', stock: null
   }, p, { precio: Number(p.precio) || 0, precioAnterior: p.precioAnterior ? Number(p.precioAnterior) : null, stock: (p.stock === '' || p.stock == null) ? null : Math.max(0, Math.round(Number(p.stock)) || 0) });
 
+  /* «Nuevo» solo si se publicó en los últimos 30 días (fecha real; sin fecha, no es nuevo) */
+  T.esReciente = (fecha) => { const d = fecha ? new Date(fecha) : null; return !!(d && !isNaN(d) && Date.now() - d.getTime() < 30 * 24 * 3600 * 1000); };
   T.vendido = (p) => !p.disponible && p.stock === 0 && !T.esEncargo(p);
   T.textoStock = (p) => (p.disponible && p.stock != null && p.stock > 0) ? (p.stock === 1 ? 'Queda 1 unidad' : `Quedan ${p.stock} unidades`) : '';
   T.visibles = () => T.datos.catalogo.productos.filter(p => p.visible !== false).sort((a, b) => (a.orden || 0) - (b.orden || 0));
@@ -427,7 +429,10 @@
     },
     cambiar(k, delta) {
       const it = this.items.find(i => i.clave === k); if (!it) return;
-      it.cantidad = Math.min(MAX_CANT, it.cantidad + delta); if (it.cantidad <= 0) this.items = this.items.filter(i => i.clave !== k);
+      const p = T.producto(it.id);
+      const tope = (p && p.stock != null) ? Math.min(MAX_CANT, p.stock) : MAX_CANT;
+      if (delta > 0 && it.cantidad + delta > tope) { T.toast(`Solo hay ${tope} unidad${tope === 1 ? '' : 'es'} disponible${tope === 1 ? '' : 's'}.`); it.cantidad = tope; this.guardar(); T.renderCarrito(); return; }
+      it.cantidad = Math.min(tope, it.cantidad + delta); if (it.cantidad <= 0) this.items = this.items.filter(i => i.clave !== k);
       this.guardar(); T.renderCarrito();
     },
     quitar(k) { this.items = this.items.filter(i => i.clave !== k); this.guardar(); T.renderCarrito(); },

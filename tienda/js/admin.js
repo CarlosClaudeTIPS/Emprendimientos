@@ -287,7 +287,7 @@
       </fieldset>
       <fieldset><legend>Políticas reales del negocio (vacío = se muestra como pendiente, nunca se inventa)</legend>
         ${campo('politicas.entregas', 'Entregas y envíos', 'textarea', pol.entregas, { rows: 3 })}${campo('politicas.pagos', 'Métodos de pago', 'textarea', pol.pagos, { rows: 2 })}
-        ${campo('politicas.cambios', 'Cambios y devoluciones', 'textarea', pol.cambios, { rows: 2 })}${campo('politicas.garantia', 'Garantías', 'textarea', pol.garantia, { rows: 2 })}
+        ${campo('politicas.cambios', 'Cambios, retracto y devoluciones', 'textarea', pol.cambios, { rows: 4 })}${campo('politicas.reclamos', 'Reclamos y datos del responsable', 'textarea', pol.reclamos, { rows: 3 })}${campo('politicas.garantia', 'Garantías', 'textarea', pol.garantia, { rows: 2 })}
         ${campo('politicas.privacidad', 'Privacidad y tratamiento de datos', 'textarea', pol.privacidad, { rows: 4, ayuda: 'En Colombia aplica la Ley 1581 de 2012. Indica qué datos recibes por WhatsApp, para qué los usas y cómo puede el cliente pedir su eliminación.' })}
       </fieldset>
       <fieldset><legend>Preguntas frecuentes generales</legend>${listaEditable('faq', 'Preguntas', (config.preguntasFrecuentes || []).map(q => `${q.destacada ? '* ' : ''}${q.p} | ${q.r} | ${q.grupo || ''}`), 'Formato: Pregunta | Respuesta | Grupo. Empieza con * para destacarla en la portada y en las fichas de producto.')}</fieldset>

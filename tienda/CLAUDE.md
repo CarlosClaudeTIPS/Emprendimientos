@@ -14,6 +14,11 @@
 - **Slugs** (`data/slugs.json`): fijos una vez publicados. `npm run verificar` antes de cada push.
 - **Píxel de Meta**: `js/config.js` → `META_PIXEL_ID`. Vacío = no se carga.
 
+## Panel de administración (inventario, pedidos, clientes)
+- Se opera desde el artefacto https://claude.ai/artifact/1dgB2Y7iTa6hz7qWdPgNNt (pestañas Inventario, Combos, Por encargo, Ranking, Vendidos, Pedidos, Clientes). Unidades, costo y estado de cada producto se deciden ahí y luego se reflejan en `data/catalogo.json` / la hoja. No duplicar esa información en otros documentos.
+- Un producto vendido sale de la portada salvo que tenga `recompra: true` (se repone y se vende bien); en el catálogo sigue con la etiqueta «Vendido».
+- La etiqueta «Nuevo» solo aplica si `publicado`/`fechaCreacion` es de los últimos 30 días.
+
 ## Productos por encargo (hoja → tienda)
 - Fuente: pestaña **"Publicado en tienda"** del Google Sheet "Catálogo Nivytek (tienda)" (ID `1m1vI1PVkYpc2KIuLPcT_rlCTLbAcxF7hPgxuHE19x5s`). Columnas: ID, Estado en la tienda, Categoría, Producto, Descripción corta, Foto (URL), Precio de venta, Modalidad, Oferta válida hasta, Publicado el, Notas internas.
 - **Antes de publicar un producto, preguntarle a Carlos el precio de venta** y escribir en la hoja solo el que él confirme. Nunca publicar costos, ganancias ni links de compra.

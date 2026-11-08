@@ -49,7 +49,7 @@
       "precio": 289000,
       "precioAnterior": null,
       "disponible": true,
-      "nuevo": true,
+      "nuevo": false,
       "oferta": false,
       "destacado": true,
       "popular": false,
@@ -148,7 +148,7 @@
       "precio": 189000,
       "precioAnterior": null,
       "disponible": false,
-      "nuevo": true,
+      "nuevo": false,
       "oferta": false,
       "destacado": true,
       "popular": false,
@@ -247,7 +247,8 @@
         "img/productos/control-xbox-robot-white.jpg",
         "img/productos/control-xbox-robot-white-mesa.jpg",
         "img/productos/control-xbox-robot-white-caja.jpg"
-      ]
+      ],
+      "recompra": false
     },
     {
       "id": "rastreadores-apple-buscar-x4",
@@ -256,7 +257,7 @@
       "precio": 99000,
       "precioAnterior": null,
       "disponible": true,
-      "nuevo": true,
+      "nuevo": false,
       "oferta": false,
       "destacado": true,
       "popular": false,
@@ -268,7 +269,7 @@
       ],
       "video": "",
       "descripcionCorta": "4 localizadores para tus llaves, maleta y mascota desde la app Buscar del iPhone, por menos que un AirTag.",
-      "descripcion": "Paquete de 4 localizadores inteligentes, totalmente nuevos y sellados. Su principal ventaja es la certificación oficial Apple MFi para trabajar con la red Buscar (Find My): se enlazan de forma nativa a la app «Buscar» de tu iPhone, iPad o Mac y funcionan igual que un AirTag, sin descargar aplicaciones de terceros. La misma red de rastreo de Apple para tus llaves, maletas, mochila o mascotas, a una fracción del precio.\n\nProducto intacto y garantizado.\n\nRecogida en Bogotá cerca de Plaza de las Américas (dirección por WhatsApp), domicilio los lunes y jueves, o envío a otras ciudades con pago previo (el costo del envío lo asume el comprador).",
+      "descripcion": "Paquete de 4 localizadores inteligentes, totalmente nuevos y sellados. Su principal ventaja es la certificación oficial Apple MFi para trabajar con la red Buscar (Find My): se enlazan de forma nativa a la app «Buscar» de tu iPhone, iPad o Mac y funcionan igual que un AirTag, sin descargar aplicaciones de terceros. La misma red de rastreo de Apple para tus llaves, maletas, mochila o mascotas, a una fracción del precio.\n\nProducto intacto, con garantía del vendedor de 1 mes por defectos de fábrica.\n\nRecogida en Bogotá cerca de Plaza de las Américas (dirección por WhatsApp), domicilio los lunes y jueves, o envío a otras ciudades con pago previo (el costo del envío lo asume el comprador).",
       "problema": "Para quien pierde o teme perder llaves, billetera, maleta o mascota y quiere rastrearlas desde su iPhone sin pagar el precio de cuatro AirTag.",
       "beneficios": [
         "Funciona con la app «Buscar» de Apple, sin apps de terceros",

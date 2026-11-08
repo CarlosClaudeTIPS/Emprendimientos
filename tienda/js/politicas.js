@@ -8,6 +8,7 @@
       ${sec('entregas', 'Entregas y envíos', pol.entregas)}
       ${sec('pagos', 'Métodos de pago', pol.pagos)}
       ${sec('cambios', 'Cambios, devoluciones y garantías', [pol.cambios, pol.garantia].filter(Boolean).join('\n\n'))}
+      ${sec('reclamos', 'Reclamos y datos del responsable', pol.reclamos)}
       ${sec('privacidad', 'Privacidad y tratamiento de datos', pol.privacidad)}
       <section class="bloque"><h2 style="margin-top:0">Sobre los pedidos por WhatsApp</h2><p>Esta página es un catálogo. Los pedidos se gestionan por WhatsApp: abrir una conversación no constituye una compra confirmada ni garantiza inventario disponible. La disponibilidad, el precio final y el costo de envío se confirman en el chat antes de cerrar la venta.</p></section>`;
     if (location.hash) { const el = T.$(location.hash); if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 50); }
