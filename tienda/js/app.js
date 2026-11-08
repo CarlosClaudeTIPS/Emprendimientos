@@ -216,20 +216,25 @@
     // combos: la calificación de cada componente por separado (no se promedian)
     catalogo.productos.filter(p => p.esCombo).forEach(k => {
       k.resenasComponentes = (k.componentes || []).map(id => catalogo.productos.find(p => p.id === id)).filter(p => p && p.resenas).map(p => ({ id: p.id, nombre: p.nombre, resenas: p.resenas }));
-      if (k.resenasComponentes.length) { const r = k.resenasComponentes[0].resenas; k.resenasResumen = { min: Math.min(...k.resenasComponentes.map(c => c.resenas.calificacion)), max: Math.max(...k.resenasComponentes.map(c => c.resenas.calificacion)), fuente: r.fuente }; }
+      // solo cuando TODOS los componentes tienen calificación: promedio simple y total de calificaciones sumadas
+      if (k.resenasComponentes.length && k.resenasComponentes.length === (k.componentes || []).length) {
+        const cs = k.resenasComponentes; const prom = cs.reduce((a, c) => a + c.resenas.calificacion, 0) / cs.length;
+        k.resenasResumen = { promedio: Math.round(prom * 10) / 10, total: cs.reduce((a, c) => a + (c.resenas.opiniones || 0), 0), fuente: cs[0].resenas.fuente };
+      } else k.resenasComponentes = [];
     });
   };
   T.numOpiniones = (n) => n >= 1000 ? `más de ${T.formatoNumero(Math.floor(n / 1000) * 1000)}` : String(n);
   T.formatoNumero = (n) => Number(n).toLocaleString('es-CO');
   T.estrellas = (cal) => `<span class="estrellas" style="--cal:${(Math.max(0, Math.min(5, cal)) / 5 * 100).toFixed(1)}%" aria-label="${String(cal).replace('.', ',')} de 5 estrellas"><span>★★★★★</span><span class="estrellas-llenas">★★★★★</span></span>`;
   T.opinionesCortas = (n) => n >= 1000 ? `${Math.floor(n / 1000)} mil+` : String(n);
-  T.lineaResenas = (p, compacta) => (p.esCombo && p.resenasComponentes && p.resenasComponentes.length) ? `<span class="resenas-linea" title="Calificaciones de cada producto del combo en ${T.esc(p.resenasResumen.fuente)}">${T.estrellas(p.resenasResumen.min)} <b>${String(p.resenasResumen.min).replace('.', ',')}${p.resenasResumen.max > p.resenasResumen.min ? ' a ' + String(p.resenasResumen.max).replace('.', ',') : ''}</b> <span>${compacta ? `(${p.resenasComponentes.length} de ${(p.componentes || []).length} productos)` : `· calificación de ${p.resenasComponentes.length === (p.componentes || []).length ? 'cada producto' : p.resenasComponentes.length + ' de ' + (p.componentes || []).length + ' productos'} del combo`}</span></span>` : p.resenas ? `<span class="resenas-linea" title="Calificación de compradores en ${T.esc(p.resenas.fuente)}">${T.estrellas(p.resenas.calificacion)} <b>${String(p.resenas.calificacion).replace('.', ',')}</b>${p.resenas.opiniones ? (compacta ? ` <span>(${T.opinionesCortas(p.resenas.opiniones)})</span>` : ` · ${T.numOpiniones(p.resenas.opiniones)} opiniones`) : ''}</span>` : '';
+  T.lineaResenas = (p, compacta) => (p.esCombo && p.resenasResumen) ? `<span class="resenas-linea" title="Promedio de las calificaciones de los productos del combo en ${T.esc(p.resenasResumen.fuente)}">${T.estrellas(p.resenasResumen.promedio)} <b>${String(p.resenasResumen.promedio).replace('.', ',')}</b> <span>${compacta ? `(${T.opinionesCortas(p.resenasResumen.total)})` : `· promedio de sus ${p.resenasComponentes.length} productos · ${T.numOpiniones(p.resenasResumen.total)} calificaciones en total`}</span></span>` : p.resenas ? `<span class="resenas-linea" title="Calificación de compradores en ${T.esc(p.resenas.fuente)}">${T.estrellas(p.resenas.calificacion)} <b>${String(p.resenas.calificacion).replace('.', ',')}</b>${p.resenas.opiniones ? (compacta ? ` <span>(${T.opinionesCortas(p.resenas.opiniones)})</span>` : ` · ${T.numOpiniones(p.resenas.opiniones)} opiniones`) : ''}</span>` : '';
   T.bloqueResenas = (p) => {
     if (p.esCombo) {
       const cs = p.resenasComponentes || []; if (!cs.length) return '';
       const fuente = cs[0].resenas.fuente; const fechas = Array.from(new Set(cs.map(c => c.resenas.consultado).filter(Boolean)));
       return `<div class="bloque resenas-bloque"><h2>Lo que dicen los compradores de cada producto</h2>
-      <p style="color:var(--texto-suave);margin:0 0 .8rem">El combo lo armamos nosotros; estas son las calificaciones de cada producto por separado.</p>
+      <div class="resenas-cabecera">${T.estrellas(p.resenasResumen.promedio)}<strong>${String(p.resenasResumen.promedio).replace('.', ',')} de 5</strong><span>promedio de los ${cs.length} productos · ${T.numOpiniones(p.resenasResumen.total)} compradores calificaron estos productos en total</span></div>
+      <p style="color:var(--texto-suave);margin:0 0 .8rem">El combo lo armamos nosotros; abajo va la calificación de cada producto por separado.</p>
       ${cs.map(c => `<div class="resenas-comp"><a href="${T.urlProducto(T.producto(c.id) || { id: c.id, slug: c.id })}">${T.esc(c.nombre)}</a><div class="resenas-cabecera">${T.estrellas(c.resenas.calificacion)}<strong>${String(c.resenas.calificacion).replace('.', ',')} de 5</strong>${c.resenas.opiniones ? `<span>${T.numOpiniones(c.resenas.opiniones)} calificaciones</span>` : ''}</div>${c.resenas.destacan.length ? `<p class="resenas-mini"><b>Destacan:</b> ${T.esc(c.resenas.destacan.join(' · '))}</p>` : ''}${c.resenas.critican.length ? `<p class="resenas-mini"><b>Critican:</b> ${T.esc(c.resenas.critican.join(' · '))}</p>` : ''}</div>`).join('')}
       <p class="nota-legal">Calificaciones públicas de compradores en ${T.esc(fuente)}${fechas.length ? `, consultadas el ${T.esc(fechas.join(' y '))}` : ''}. No reproducimos reseñas textuales.</p></div>`;
     }
