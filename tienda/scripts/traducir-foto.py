@@ -60,10 +60,22 @@ for slug in slugs:
         if modo == 'inpaint': continue
         x0, y0, x1, y1 = c['box']; reg = orig_rgb[y0:y1, x0:x1].astype(float)
         if modo == 'relleno':
-            # interpolación vertical entre la franja de arriba y la de abajo (conserva el brillo horizontal del envase)
-            arriba = np.median(orig_rgb[max(0, y0 - 10):y0, x0:x1].astype(float), axis=0); abajo = np.median(orig_rgb[y1:y1 + 10, x0:x1].astype(float), axis=0)
+            # interpolación vertical entre la franja de arriba y la de abajo (conserva el brillo horizontal del envase);
+            # "margen" aleja las franjas de la caja (útil cuando el texto está dentro de una píldora con borde)
+            mg = c.get('margen', 0); ma, mb = mg if isinstance(mg, list) else (mg, mg)  # [arriba, abajo]; null = copiar la otra franja
+            arriba = np.median(orig_rgb[max(0, y0 - ma - 10):y0 - ma, x0:x1].astype(float), axis=0) if ma is not None else None
+            abajo = np.median(orig_rgb[y1 + mb:y1 + mb + 10, x0:x1].astype(float), axis=0) if mb is not None else None
+            if arriba is None: arriba = abajo
+            if abajo is None: abajo = arriba
             g = np.linspace(0, 1, y1 - y0)[:, None, None]
             parche = arriba[None, :, :] * (1 - g) + abajo[None, :, :] * g
+            parche = cv2.GaussianBlur(parche.astype(np.float32), (0, 0), 3)
+        elif modo == 'relleno-h':
+            # interpolación horizontal entre la franja izquierda y la derecha (conserva el degradado vertical)
+            mg = c.get('margen', 0)
+            izq = np.median(orig_rgb[y0:y1, max(0, x0 - mg - 10):x0 - mg].astype(float), axis=1); der = np.median(orig_rgb[y0:y1, x1 + mg:x1 + mg + 10].astype(float), axis=1)
+            g = np.linspace(0, 1, x1 - x0)[None, :, None]
+            parche = izq[:, None, :] * (1 - g) + der[:, None, :] * g
             parche = cv2.GaussianBlur(parche.astype(np.float32), (0, 0), 3)
         else:
             # color sólido de la etiqueta: mediana de la franja central (evita los bordes blancos fuera de la etiqueta)
