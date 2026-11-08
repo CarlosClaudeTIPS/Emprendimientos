@@ -50,6 +50,8 @@ T.slugs = slugs;
 T.agregarEncargo(catalogo, encargo);
 const combos = existsSync(join(raiz, 'data/combos.json')) ? leer('data/combos.json') : { combos: [] };
 T.agregarCombos(catalogo, combos);
+const resenas = existsSync(join(raiz, 'data/resenas.json')) ? leer('data/resenas.json') : { resenas: {} };
+T.agregarResenas(catalogo, resenas);
 catalogo.productos = catalogo.productos.map(T.normalizarProducto).map(p => Object.assign(p, { slug: slugs[p.id] || String(p.id).replace(/^ya-/, '') }));
 catalogo.categorias = (catalogo.categorias || []).slice().sort((a, b) => (a.orden || 0) - (b.orden || 0));
 T.datos = { config, catalogo };
@@ -173,6 +175,7 @@ ${fuentes}
       ${cat ? `<span class="tarjeta-categoria-txt">${esc(cat.nombre)}</span>` : ''}
       <h1>${esc(p.nombre)}</h1>
       ${p.descripcionCorta ? `<p class="descripcion-corta">${esc(p.descripcionCorta)}</p>` : ''}
+      ${T.lineaResenas(p)}
       <div class="precio"><span class="precio-actual">${precio(p.precio)}</span>${d > 0 ? `<span class="precio-anterior">${precio(p.precioAnterior)}</span>` : ''}</div>
       <span class="disponibilidad ${p.disponible ? '' : 'agotado'}">${estado}</span>
       ${p.guia ? `<p class="aviso-encargo">${esc(p.guia)}</p>` : ''}
@@ -198,6 +201,7 @@ ${fuentes}
   ${p.incluye.length ? `<div class="bloque"><h2>¿Qué incluye?</h2>${lista(p.incluye)}</div>` : ''}
   ${p.instrucciones.length ? `<div class="bloque"><h2>Cómo se usa</h2>${listaNum(p.instrucciones)}</div>` : ''}
   ${p.precauciones.length ? `<div class="bloque"><h2>Recomendaciones y precauciones</h2>${lista(p.precauciones)}</div>` : ''}
+  ${T.bloqueResenas(p)}
   ${p.preguntas.length ? `<div class="bloque"><h2>Preguntas frecuentes</h2>${p.preguntas.map(q => `<details class="faq"><summary>${esc(q.p)}</summary><p>${esc(q.r)}</p></details>`).join('')}</div>` : ''}
   ${faqsDest.length ? `<div class="bloque"><h2>Compra con tranquilidad</h2>${T.renderFaq(faqsDest)}<p style="margin:.8rem 0 0"><a href="preguntas.html">Ver todas las preguntas frecuentes →</a></p></div>` : ''}
   ${relacionados.length ? `<section class="seccion"><div class="seccion-cabecera"><h2>Productos relacionados</h2></div><div class="grid-productos">${relacionados.map(T.tarjeta).join('')}</div></section>` : ''}

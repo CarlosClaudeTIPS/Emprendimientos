@@ -102,6 +102,7 @@
     if (enc) T.agregarEncargo(catalogo, enc);
     /* Combos (kits) de la pestaña "Combos" de la hoja; se arman a partir de los productos que ya están en el catálogo */
     try { const cRes = await fetch(T.ruta('data/combos.json'), { cache: 'no-cache' }); if (cRes.ok) T.agregarCombos(catalogo, await cRes.json()); } catch (e) { /* sin combos */ }
+    try { const rRes = await fetch(T.ruta('data/resenas.json'), { cache: 'no-cache' }); if (rRes.ok) T.agregarResenas(catalogo, await rRes.json()); } catch (e) { /* sin reseñas */ }
     catalogo.productos = (catalogo.productos || []).map(T.normalizarProducto).map(p => Object.assign(p, { slug: p.slug || T.slugs[p.id] || String(p.id).replace(/^ya-/, '') }));
     catalogo.categorias = (catalogo.categorias || []).slice().sort((a, b) => (a.orden || 0) - (b.orden || 0));
     T.datos = { config, catalogo };
@@ -203,6 +204,31 @@
     });
   };
   /* Combos: cada kit es un producto más. Precio de la hoja; fotos, stock y disponibilidad se derivan de sus componentes. */
+  /* Opiniones de compradores (data/resenas.json): { resenas: { <id>: { calificacion, opiniones, fuente, consultado, destacan:[], critican:[] } } }.
+     Son calificaciones públicas de la tienda donde se consiguió el producto (normalmente Amazon EE. UU.), resumidas en español.
+     No se copian reseñas textuales ni se enlaza a la tienda de origen. Solo se muestra si hay calificación. */
+  T.agregarResenas = (catalogo, datos) => {
+    const r = (datos && datos.resenas) || {};
+    catalogo.productos.forEach(p => {
+      const x = r[p.id];
+      if (x && Number(x.calificacion) > 0) p.resenas = { calificacion: Number(x.calificacion), opiniones: Number(x.opiniones) || 0, fuente: x.fuente || 'Amazon Estados Unidos', consultado: x.consultado || '', destacan: x.destacan || [], critican: x.critican || [] };
+    });
+  };
+  T.numOpiniones = (n) => n >= 1000 ? `más de ${T.formatoNumero(Math.floor(n / 1000) * 1000)}` : String(n);
+  T.formatoNumero = (n) => Number(n).toLocaleString('es-CO');
+  T.estrellas = (cal) => `<span class="estrellas" style="--cal:${(Math.max(0, Math.min(5, cal)) / 5 * 100).toFixed(1)}%" aria-label="${String(cal).replace('.', ',')} de 5 estrellas"><span>★★★★★</span><span class="estrellas-llenas">★★★★★</span></span>`;
+  T.opinionesCortas = (n) => n >= 1000 ? `${Math.floor(n / 1000)} mil+` : String(n);
+  T.lineaResenas = (p, compacta) => p.resenas ? `<span class="resenas-linea" title="Calificación de compradores en ${T.esc(p.resenas.fuente)}">${T.estrellas(p.resenas.calificacion)} <b>${String(p.resenas.calificacion).replace('.', ',')}</b>${p.resenas.opiniones ? (compacta ? ` <span>(${T.opinionesCortas(p.resenas.opiniones)})</span>` : ` · ${T.numOpiniones(p.resenas.opiniones)} opiniones`) : ''}</span>` : '';
+  T.bloqueResenas = (p) => {
+    const r = p.resenas; if (!r) return '';
+    const lista = (t, arr, cls) => arr && arr.length ? `<div class="resenas-col ${cls}"><h3>${t}</h3><ul>${arr.map(x => `<li>${T.esc(x)}</li>`).join('')}</ul></div>` : '';
+    return `<div class="bloque resenas-bloque"><h2>Lo que dicen los compradores</h2>
+      <div class="resenas-cabecera">${T.estrellas(r.calificacion)}<strong>${String(r.calificacion).replace('.', ',')} de 5</strong>${r.opiniones ? `<span>${T.numOpiniones(r.opiniones)} compradores lo calificaron</span>` : ''}</div>
+      <div class="resenas-cols">${lista('Lo que más destacan', r.destacan, 'bien')}${lista('Lo que algunos critican', r.critican, 'mal')}</div>
+      <p class="nota-legal">Calificación pública de compradores en ${T.esc(r.fuente)}${r.consultado ? `, consultada el ${T.esc(r.consultado)}` : ''}. Resumen en español elaborado por ${T.esc((T.datos && T.datos.config && T.datos.config.negocio && T.datos.config.negocio.nombre) || 'Nivytek')}; no reproducimos reseñas textuales.</p>
+    </div>`;
+  };
+
   T.agregarCombos = (catalogo, datos) => {
     const lista = (datos && Array.isArray(datos.combos)) ? datos.combos : [];
     catalogo.productos = catalogo.productos || [];
@@ -633,6 +659,7 @@
       <div class="tarjeta-cuerpo">
         ${cat ? `<span class="tarjeta-categoria-txt">${T.esc(cat.nombre)}</span>` : ''}
         <h3 class="tarjeta-titulo"><a href="${url}">${T.esc(p.nombre)}</a></h3>
+        ${T.lineaResenas(p, true)}
         ${p.descripcionCorta ? `<p class="tarjeta-desc">${T.esc(p.descripcionCorta)}</p>` : ''}
         <div class="precio"><span class="precio-actual">${T.formatoPrecio(p.precio)}</span>${d > 0 ? `<span class="precio-anterior">${T.formatoPrecio(p.precioAnterior)}</span>` : ''}</div>
         ${T.textoStock(p) ? `<span class="stock-txt">${T.textoStock(p)}</span>` : ''}

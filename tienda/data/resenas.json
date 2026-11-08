@@ -1,0 +1,101 @@
+{
+ "nota": "Calificaciones públicas de compradores en la tienda de origen (normalmente Amazon EE. UU.). Carlos o la rutina llenan calificacion (0-5) y opiniones (cantidad); destacan/critican son resúmenes en español, nunca reseñas copiadas. Sin calificacion no se muestra nada. La rutina las copia de las columnas V-Y de 'Publicado en tienda'.",
+ "resenas": {
+  "control-xbox-forza-horizon-6": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "control-xbox-robot-white": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "rastreadores-apple-buscar-x4": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-cargador-usbc-20w": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-camara-yoton-2k": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-medicube-vitamina-c": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-medicube-azelaico": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-medicube-exosome-poros": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-cerave-pm": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-cerave-protector-mineral": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-cetaphil-limpiador": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  },
+  "ya-nivea-locion": {
+   "calificacion": null,
+   "opiniones": null,
+   "fuente": "Amazon Estados Unidos",
+   "consultado": "",
+   "destacan": [],
+   "critican": []
+  }
+ }
+}

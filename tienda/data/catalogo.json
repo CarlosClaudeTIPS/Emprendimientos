@@ -44,7 +44,7 @@
   "productos": [
     {
       "id": "control-xbox-forza-horizon-6",
-      "nombre": "Control Xbox Edición Limitada Forza Horizon 6 - Nuevo en caja",
+      "nombre": "Control Xbox edición limitada Forza Horizon 6: nuevo en caja, para coleccionar o jugar",
       "categoria": "tecnologia",
       "precio": 289000,
       "precioAnterior": null,
@@ -143,7 +143,7 @@
     },
     {
       "id": "control-xbox-robot-white",
-      "nombre": "Control Xbox Inalámbrico Robot White - Nuevo y sellado",
+      "nombre": "Control inalámbrico Xbox Robot White: nuevo y sellado, compatible con Xbox, PC y celular",
       "categoria": "tecnologia",
       "precio": 189000,
       "precioAnterior": null,
@@ -251,7 +251,7 @@
     },
     {
       "id": "rastreadores-apple-buscar-x4",
-      "nombre": "Rastreadores para Apple Buscar, paquete de 4 (certificados MFi)",
+      "nombre": "4 rastreadores para la app Buscar de Apple: llaves, maleta y mascota siempre ubicadas desde tu iPhone",
       "categoria": "tecnologia",
       "precio": 99000,
       "precioAnterior": null,
@@ -273,8 +273,8 @@
       "beneficios": [
         "Funciona con la app «Buscar» de Apple, sin apps de terceros",
         "4 unidades: llaves, maleta, mochila y mascota cubiertas",
-        "Certificación Apple MFi, según el fabricante",
-        "Nuevos y sellados"
+        "Nuevos y sellados",
+        "Certificados por Apple (MFi, programa «Works with Apple Find My»): Apple probó que funcionan con la red Buscar, igual que un AirTag"
       ],
       "especificaciones": {
         "Contenido": "4 rastreadores",
@@ -299,6 +299,14 @@
         "No se aceptan cambios por cambio de opinión; confirma tu compra antes de pagar."
       ],
       "preguntas": [
+        {
+          "p": "¿Qué significa que sean certificados MFi y sirven con iPhone?",
+          "r": "Sí. MFi es el programa de certificación de Apple («Made for iPhone/iPad»); para rastreadores se llama «Works with Apple Find My». Significa que Apple revisó el producto y autorizó que se conecte a la red Buscar del iPhone, iPad y Mac, sin apps de terceros. En Android no funcionan, porque la red Buscar es solo de Apple."
+        },
+        {
+          "p": "¿Son iguales a un AirTag?",
+          "r": "Usan la misma red Buscar de Apple y se configuran desde la misma app. La diferencia es la marca y el precio: aquí te llevas 4 por menos de lo que cuesta un solo AirTag."
+        },
         {
           "p": "¿Es igual que un AirTag?",
           "r": "Funciona en la misma red Buscar de Apple y se configura desde la misma app. Tiene certificación Apple MFi, según el fabricante."

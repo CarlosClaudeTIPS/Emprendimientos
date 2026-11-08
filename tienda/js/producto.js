@@ -60,6 +60,7 @@
           ${cat ? `<span class="tarjeta-categoria-txt">${T.esc(cat.nombre)}</span>` : ''}
           <h1>${T.esc(p.nombre)}</h1>
           ${p.descripcionCorta ? `<p class="descripcion-corta">${T.esc(p.descripcionCorta)}</p>` : ''}
+          ${T.lineaResenas(p)}
           <div class="precio"><span class="precio-actual">${T.formatoPrecio(p.precio)}</span>${d > 0 ? `<span class="precio-anterior">${T.formatoPrecio(p.precioAnterior)}</span><span class="precio-descuento">Ahorras ${T.formatoPrecio(p.precioAnterior - p.precio)}</span>` : ''}</div>
           <span class="disponibilidad ${p.disponible ? '' : 'agotado'}">${T.esEncargo(p) ? (p.disponible ? (p.consultar ? '● Por encargo · consulta si la oferta sigue activa' : '● Disponible por encargo') : '○ Agotado por ahora') : p.disponible ? '● Disponible (sujeto a confirmación)' + (T.textoStock(p) ? ' · ' + T.textoStock(p) : '') : T.vendido(p) ? '○ Vendido' : '○ Agotado por ahora'}</span>
           ${p.guia ? `<p class="aviso-encargo">${T.esc(p.guia)}</p>` : ''}
@@ -100,6 +101,7 @@
       ${p.incluye.length ? `<div class="bloque"><h2>¿Qué incluye?</h2>${lista(p.incluye)}</div>` : ''}
       ${p.instrucciones.length ? `<div class="bloque"><h2>Cómo se usa</h2>${listaNum(p.instrucciones)}</div>` : ''}
       ${p.precauciones.length ? `<div class="bloque"><h2>Recomendaciones y precauciones</h2>${lista(p.precauciones)}</div>` : ''}
+      ${T.bloqueResenas(p)}
       ${p.preguntas.length ? `<div class="bloque"><h2>Preguntas frecuentes</h2>${p.preguntas.map(q => `<details class="faq"><summary>${T.esc(q.p)}</summary><p>${T.esc(q.r)}</p></details>`).join('')}</div>` : ''}
       ${T.faqs().length ? `<div class="bloque"><h2>Compra con tranquilidad</h2><p style="color:var(--texto-suave)">Respuestas a lo que más preguntan antes de pedir.</p>${T.renderFaq((T.faqs().filter(q => q.destacada).length ? T.faqs().filter(q => q.destacada) : T.faqs()).slice(0, 4))}<p style="margin:.8rem 0 0"><a href="${T.ruta('preguntas.html')}">Ver todas las preguntas frecuentes →</a></p></div>` : ''}
       ${relFinal.length ? `<section class="seccion"><div class="seccion-cabecera"><h2>Productos relacionados</h2></div><div class="grid-productos">${relFinal.slice(0, 4).map(T.tarjeta).join('')}</div></section>` : '<div style="height:1.5rem"></div>'}
