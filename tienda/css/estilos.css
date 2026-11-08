@@ -502,3 +502,9 @@ main { min-height: calc(100vh - 64px); }
 .pie a{display:inline-block;padding:.35rem 0;font-size:.9rem}
 .barra-inferior a{min-height:44px;justify-content:center}
 .barra-inferior a{font-size:.75rem}
+.resenas-comp { padding: .6rem 0; border-top: 1px solid var(--borde); }
+.resenas-comp:first-of-type { border-top: 0; padding-top: 0; }
+.resenas-comp > a { font-weight: 700; color: var(--texto); text-decoration: none; }
+.resenas-comp .resenas-cabecera { margin: .25rem 0 .2rem; }
+.resenas-comp .resenas-cabecera .estrellas { font-size: 1.1rem; }
+.resenas-mini { font-size: .88rem; color: var(--texto-suave); margin: .15rem 0; }
