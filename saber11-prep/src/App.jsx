@@ -88,6 +88,8 @@ export default function App() {
   useEffect(() => { if (sesion.usuario) descargarDeNube(sesion.usuario) }, [sesion.usuario?.id])
   // Con sesión: se registra la PWA (caché para trabajar sin conexión) y se oculta la portada estática.
   useEffect(() => { if (sesion.usuario) { mostrarPortada(false); import('./lib/pwa').then(m => m.registrarPWA()).catch(() => {}) } }, [sesion.usuario?.id])
+  // Con sesión y portada abierta (logo), «Volver a mi panel» (#/entrar) regresa a la app.
+  useEffect(() => { if (sesion.usuario && ruta === 'entrar') { mostrarPortada(false); ir('inicio') } }, [sesion.usuario?.id, ruta])
   // Sin sesión: la portada pública (index.html) se ve en #/ y se oculta en #/entrar o al llegar por un enlace de correo.
   const sinSesion = listo && !sesion.cargando && !sesion.usuario
   const enAcceso = ruta === 'entrar' || LLEGO_POR_ENLACE

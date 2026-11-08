@@ -4,6 +4,7 @@ import { salir, solicitudesPendientes } from '../lib/sesion'
 import { useSync, sincronizar } from '../lib/sync'
 import { NUBE_DISPONIBLE } from '../lib/supabase'
 import { ir } from '../lib/nav'
+import { mostrarPortada } from '../lib/portada'
 import { esRevisor } from '../lib/roles'
 
 const MENU = {
@@ -49,14 +50,16 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
   const activo = (it) => ruta === it.ruta || (ruta === 'materia' && it.ruta === 'materias') || (it.agrupa ?? []).includes(ruta)
   const puedePrevisualizar = usuario.rol === 'admin' || usuario.rol === 'docente'
   // El logo siempre lleva al inicio del rol que se está viendo.
-  const irInicio = () => { ir('inicio', rol === 'docente' ? { vista: 'docente' } : {}); window.scrollTo({ top: 0 }) }
+  // El logo lleva a la portada pública (la misma que ve quien no ha entrado), aunque haya sesión.
+  // Desde allí, «Volver a mi panel» (#/entrar) regresa a la app sin cerrar sesión.
+  const irInicio = () => { mostrarPortada(true, { conSesion: true }); window.scrollTo(0, 0) }
   const enInicio = ruta === 'inicio' || ruta === '' || ruta == null
 
   return (
     <div className="min-h-screen md:flex">
       {/* Barra lateral (escritorio) */}
       <aside className="no-print hidden md:flex md:flex-col w-60 shrink-0 border-r border-dark-700 bg-dark-800 p-4">
-        <button onClick={irInicio} className="flex items-center gap-2 px-2 py-2 mb-4 rounded-xl hover:bg-dark-900 text-left" title="Ir al inicio" aria-label="Ir al inicio">
+        <button onClick={irInicio} className="flex items-center gap-2 px-2 py-2 mb-4 rounded-xl hover:bg-dark-900 text-left" title="Ver la portada de Nivytek · Saber 11" aria-label="Ver la portada de Nivytek · Saber 11">
           <img src="/icono.svg" alt="" className="w-9 h-9" />
           <span className="text-xl font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · Saber 11</span></span>
         </button>
@@ -103,7 +106,7 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
         )}
         {/* Barra superior (móvil) */}
         <header className="no-print md:hidden sticky top-0 z-20 bg-dark-800/95 backdrop-blur border-b border-dark-700 px-4 py-2.5 flex items-center justify-between">
-          <button onClick={irInicio} className="flex items-center gap-2" title="Ir al inicio" aria-label="Ir al inicio">
+          <button onClick={irInicio} className="flex items-center gap-2" title="Ver la portada de Nivytek · Saber 11" aria-label="Ver la portada de Nivytek · Saber 11">
             <img src="/icono.svg" alt="" className="w-7 h-7" />
             <span className="font-bold text-brand-navy">Nivytek<span className="text-brand-blue"> · Saber 11</span></span>
           </button>
