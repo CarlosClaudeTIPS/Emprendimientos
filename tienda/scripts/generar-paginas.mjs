@@ -26,6 +26,11 @@ const raiz = dirname(dirname(fileURLToPath(import.meta.url)));
 const SITIO = 'https://tienda.nivytek.com/';
 const leer = (f) => JSON.parse(readFileSync(join(raiz, f), 'utf8'));
 const escribir = (f, t) => writeFileSync(join(raiz, f), t);
+/* En las fichas (carpeta p/) los enlaces y recursos relativos se escriben desde la raíz del host (/catalogo.html,
+   /css/estilos.css…): los navegadores ya los resolvían con <base>, pero los rastreadores que ignoran <base> veían 404. */
+const absolutizar = (html) => html.replace(/\b(href|src|srcset)="(?!https?:|\/|#|mailto:|tel:|data:)([^"]+)"/g, (m, a, v) => a === 'srcset'
+  ? `${a}="${v.split(',').map(x => x.trim().replace(/^(?!https?:|\/)/, '/')).join(', ')}"`
+  : `${a}="/${v}"`);
 
 const config = leer('data/config.json');
 const catalogo = leer('data/catalogo.json');
@@ -132,7 +137,7 @@ for (const p of visibles) {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<base href="../">
+<base href="/">
 <title>${esc(titulo)}</title>
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${esc(url)}">
@@ -213,7 +218,7 @@ ${fuentes}
 </body>
 </html>
 `;
-  escribir(urlFicha(p), html);
+  escribir(urlFicha(p), absolutizar(html));
   nFichas++;
 }
 

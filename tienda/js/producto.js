@@ -39,8 +39,9 @@
     const pol = config.politicas || {};
     const polItem = (t, v, ancla) => `<li><strong>${t}:</strong> ${v ? T.esc(v) : `<span class="pendiente">pendiente de confirmar</span>`} <a href="${T.ruta('politicas.html#' + ancla)}">Ver más</a></li>`;
 
-    const rel = (p.relacionados || []).map(T.producto).filter(x => x && x.visible !== false);
-    const relFinal = rel.length ? rel : T.visibles().filter(x => x.id !== p.id && x.categoria === p.categoria).slice(0, 4);
+    const comprable = x => x.disponible || x.recompra === true;
+    const rel = (p.relacionados || []).map(T.producto).filter(x => x && x.visible !== false && comprable(x));
+    const relFinal = rel.length ? rel : T.visibles().filter(x => x.id !== p.id && x.categoria === p.categoria && comprable(x)).slice(0, 4);
 
     main.innerHTML = `
       <nav class="migas" aria-label="Ruta"><a href="${T.ruta('index.html')}">Inicio</a> › <a href="${T.ruta('catalogo.html')}">Catálogo</a> ${cat ? `› <a href="${T.ruta('catalogo.html?cat=' + encodeURIComponent(cat.id))}">${T.esc(cat.nombre)}</a>` : ''} › <span>${T.esc(p.nombre)}</span></nav>
