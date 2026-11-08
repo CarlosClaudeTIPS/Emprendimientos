@@ -13,7 +13,7 @@ function haySesion() {
     return Object.keys(localStorage).some((k) => /^sb-.*-auth-token$/.test(k)) // sesión de Supabase ya guardada
   } catch { return false }
 }
-const necesitaApp = () => /^#\/entrar/.test(location.hash) || /type=(invite|recovery|magiclink)/.test(location.hash) || haySesion()
+const necesitaApp = () => Boolean(import.meta.env.VITE_AUTOLOGIN) || /^#\/entrar/.test(location.hash) || /type=(invite|recovery|magiclink)/.test(location.hash) || haySesion()
 async function arrancar() {
   if (arrancada) return
   arrancada = true

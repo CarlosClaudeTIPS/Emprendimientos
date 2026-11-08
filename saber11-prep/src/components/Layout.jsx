@@ -117,7 +117,7 @@ export default function Layout({ usuario, rolVista, ruta, children, vistaEstudia
         </header>
 
         {puedePrevisualizar && !vistaEstudiante && <AvisoSolicitudes ruta={ruta} esAdmin={usuario.rol === 'admin'} />}
-        <main className="flex-1 p-4 md:p-8 pb-24 md:pb-8 max-w-5xl w-full mx-auto">{children}</main>
+        <main className="flex-1 p-4 md:p-8 pb-24 md:pb-8 max-w-5xl w-full mx-auto">{children}{rolVista === 'estudiante' && ruta !== 'sesion' && <LlamadoWhatsApp />}</main>
 
         {/* Navegación inferior (móvil) */}
         <nav className="no-print md:hidden fixed bottom-0 inset-x-0 z-20 bg-dark-800 border-t border-dark-700 flex shadow-[0_-4px_12px_rgba(15,23,42,0.06)]" style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}>
@@ -174,5 +174,20 @@ function EstadoSync({ compacto = false }) {
       </button>
       {!compacto && conError && <p className="text-[10px] text-brand-red mt-1 break-words">{s.error}</p>}
     </div>
+  )
+}
+
+// Llamado visible a WhatsApp también con sesión iniciada: quien ya usa la app puede
+// recomendar Nivytek a estudiantes de otros colegios (externos). No se muestra dentro de
+// una prueba para no distraer. El texto no habla de precios ni de «gratis».
+function LlamadoWhatsApp() {
+  return (
+    <aside className="no-print mt-10 rounded-2xl border border-dark-700 bg-dark-800 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3" aria-label="Escribir por WhatsApp">
+      <div className="flex-1">
+        <p className="font-semibold text-brand-navy">¿Conoces a alguien de otro colegio que quiera prepararse para el Saber 11 o un examen de admisión?</p>
+        <p className="text-sm text-gray-400 mt-1">Cualquier estudiante de 10.º u 11.º puede unirse a Nivytek. Pásale este contacto o escríbenos tú.</p>
+      </div>
+      <a className="btn !px-5 !py-3 bg-[#0F7A3E] hover:bg-[#0C6433] text-[#ffffff] shrink-0" href="https://wa.me/573043134833?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20preparaci%C3%B3n%20Saber%2011%20de%20Nivytek%20para%20un%20estudiante%20de%20otro%20colegio." target="_blank" rel="noopener" onClick={() => { try { window.nivytekEvento?.('Contact', { content_name: 'app_estudiante' }) } catch {} }}>Escribir por WhatsApp</a>
+    </aside>
   )
 }
