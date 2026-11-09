@@ -70,12 +70,12 @@ const seccion = (id, titulo, lista, vacio) => `<section id="sec-${id}" class="se
 /* Ranking: ofertas candidatas */
 const catsRk = [...new Set(ranking.filas.map(r => r.categoria).filter(Boolean))].sort();
 const rkFila = (r) => `<article class="it rk" data-cat="${esc(r.categoria)}" data-txt="${esc((r.producto + ' ' + r.categoria + ' ' + r.porque).toLowerCase())}" data-puntaje="${r.puntaje || 0}">
-  <div class="foto"><b class="punt">${r.puntaje ?? ''}</b><span class="sinfoto">puntaje</span></div>
+  <div class="foto"><b class="punt">${r.puntaje ?? ''}</b>${r.imagen ? `<img src="${esc(r.imagen)}" alt="" loading="lazy" width="120" height="120" referrerpolicy="no-referrer">` : '<span class="sinfoto">sin imagen</span>'}</div>
   <div class="info"><span class="cat">${esc(r.categoria)} · puesto ${r.puesto ?? ''}${r.semaforo ? ` · <span class="sem sem-${esc(r.semaforo.toLowerCase())}">${esc(r.semaforo)}</span>` : ''}</span><h3>${esc(r.producto)}</h3>
   <p class="comp">${esc(r.porque)}</p>
   <div class="meta"><span class="precio">Sugerido ${precio(r.sugerido)}</span><span class="costo">Costo ${precio(r.costo)}${r.sugerido && r.costo ? ` · Ganancia <b>${precio(r.sugerido - r.costo)}</b>` : ''}${r.precioCo ? ` · En Colombia ~${precio(r.precioCo)}` : ''}</span>
   ${r.link ? `<a class="lnk" href="${esc(r.link)}" target="_blank" rel="noopener">Ver oferta</a>` : ''}${r.estado ? `<span class="uni">${esc(r.estado)}</span>` : ''}${r.publicado ? `<span class="pill pend">${esc(r.publicado)}</span>` : ''}</div>
-  <div class="decision" data-tipo="ranking" data-key="rk-${slug(r.producto)}" data-fila="${r.fila}" data-nombre="${esc(r.producto)}"><label><input type="checkbox" class="d-pub"${r.publicar ? ' checked' : ''}> Publicar en la tienda</label><label>Lo ofrezco a $<input type="number" class="d-precio" min="0" step="100" value="${r.ofrezco ?? ''}" placeholder="${r.sugerido ?? ''}"></label><span class="d-estado"></span></div></div>
+  <div class="decision" data-tipo="ranking" data-key="rk-${slug(r.producto)}" data-fila="${r.fila}" data-nombre="${esc(r.producto)}"><label><input type="checkbox" class="d-pub"${r.publicar ? ' checked' : ''}> Publicar en la tienda</label><label>Lo ofrezco a $<input type="number" class="d-precio" min="0" step="100" value="${r.ofrezco ?? ''}" placeholder="${r.sugerido ?? ''}"></label><span class="modal"><label><input type="radio" name="m-${slug(r.producto)}" class="d-mod" value="encargo" checked> Por encargo</label><label><input type="radio" name="m-${slug(r.producto)}" class="d-mod" value="disponible"> Ya lo tengo</label><label class="d-uni-l" hidden>Unidades<input type="number" class="d-uni" min="1" value="1"></label></span><span class="d-estado"></span></div></div>
 </article>`;
 
 const cats = [...new Set(items.filter(f => f.estado !== 'vendido' && f.estado !== 'agotado').map(f => f.cat))].sort();
@@ -150,6 +150,10 @@ td button{font:inherit;font-size:.78rem;background:none;border:1px solid var(--l
 .aviso{background:var(--pendbg);color:var(--pend);border-radius:10px;padding:.6rem .8rem;font-size:.85rem;margin-bottom:.8rem}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .pie{margin-top:1.5rem;font-size:.8rem;color:var(--muted)}
+.actualizar{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.7rem .8rem;margin-bottom:.8rem;display:flex;flex-wrap:wrap;gap:.6rem .9rem;align-items:center}
+.actualizar button{background:var(--btn);color:var(--btnfg);border:0;border-radius:8px;padding:.55rem .9rem;font:inherit;font-weight:600;min-height:44px;cursor:pointer}
+.actualizar details{flex-basis:100%;font-size:.85rem}.actualizar textarea{display:block;width:100%;max-width:420px;margin:.3rem 0;font:inherit;padding:.4rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--fg)}
+.modal{display:flex;flex-wrap:wrap;gap:.4rem .8rem;font-size:.85rem}.modal input[type=number]{width:70px;margin-left:.3rem}
 @media (max-width:420px){.it{grid-template-columns:68px 1fr}.foto{width:68px;height:68px}}
 </style>
 <div class="wrap">
@@ -159,7 +163,7 @@ td button{font:inherit;font-size:.78rem;background:none;border:1px solid var(--l
 <nav class="tabs" aria-label="Secciones">${[['inventario', 'Inventario'], ['combos', 'Combos'], ['encargo', 'Por encargo'], ['ranking', 'Ranking de ofertas'], ['vendidos', 'Vendidos'], ['pedidos', 'Pedidos'], ['clientes', 'Clientes']].map(([k, t]) => `<a href="#${k}" data-tab="${k}">${t}</a>`).join('')}</nav>
 <div class="filtros" id="filtros"><select id="f-cat" aria-label="Categoría"><option value="">Todas las categorías</option></select><input id="q" type="search" placeholder="Buscar" aria-label="Buscar"></div>
 ${seccion('inventario', 'En stock (entrega inmediata)', items.filter(f => f.estado === 'stock'), 'No hay productos en stock.')}
-<section id="sec-combos" class="sec" data-sec="combos"><h2>Combos publicados</h2><p class="aviso">Cambia el descuento o desmarca «Publicado» y la rutina lo aplica en la hoja y en la tienda en su próxima pasada (7 am, 1 pm, 7 pm).</p><details class="nuevo"><summary>Armar un combo nuevo</summary>
+<section id="sec-combos" class="sec" data-sec="combos"><h2>Combos publicados</h2><p class="aviso">Cambia el descuento o desmarca «Publicado» y la rutina lo aplica en la hoja y en la tienda en su próxima pasada (cada hora, de 7 am a 9 pm).</p><details class="nuevo"><summary>Armar un combo nuevo</summary>
 <form class="pedido" id="f-combo">
   <label>Nombre del combo<input type="text" id="c-nombre" maxlength="70" placeholder="Ej. Rutina de mañana" required></label>
   <label>Categoría<select id="c-cat"><option value="">Elige…</option>${cats.map(c => `<option>${esc(c)}</option>`).join('')}</select></label>
@@ -170,7 +174,10 @@ ${seccion('inventario', 'En stock (entrega inmediata)', items.filter(f => f.esta
 </form><p class="estado-db" id="c-estado"></p></details>
 ${items.filter(f => f.estado === 'combo').length ? `<div class="lista">${items.filter(f => f.estado === 'combo').map(fila).join('\n')}</div>` : '<p class="vacio">No hay combos publicados.</p>'}</section>
 <section id="sec-encargo" class="sec" data-sec="encargo"><h2>Por encargo (llegan en máximo 15 días)</h2>${items.some(f => f.estado === 'encargo' || f.estado === 'pendiente') ? `<div class="lista">${items.filter(f => f.estado === 'encargo' || f.estado === 'pendiente').map(fila).join('\n')}</div>` : '<p class="vacio">Nada por encargo todavía.</p>'}</section>
-<section id="sec-ranking" class="sec" data-sec="ranking"><h2>Ranking de ofertas (de mayor a menor puntaje)</h2><p class="aviso">Marca «Publicar» y escribe el precio al que lo ofreces. La rutina lo pasa a la hoja y arma la ficha en su próxima pasada; sin precio no se publica.</p>${ranking.filas.length ? `<div class="lista">${ranking.filas.slice().sort((a, b) => (b.puntaje || 0) - (a.puntaje || 0)).map(rkFila).join('\n')}</div>` : '<p class="vacio">Sin datos del ranking.</p>'}</section>
+<section id="sec-ranking" class="sec" data-sec="ranking"><h2>Ranking de ofertas (de mayor a menor puntaje)</h2>
+<div class="actualizar"><button type="button" id="btn-actualizar">Actualizar ofertas de los canales</button><span class="estado-db" id="act-estado">Cargando…</span>
+<details><summary>Canales que se revisan</summary><label>Canales públicos de Telegram (uno por línea, el nombre que va después de t.me/)<textarea id="canales" rows="4" placeholder="promocajita&#10;DescuentosTech"></textarea></label><button type="button" id="btn-canales">Guardar canales</button><span class="estado-db" id="can-estado"></span></details></div>
+<p class="aviso">Marca «Publicar», escribe el precio y di si ya lo tienes o es por encargo. La rutina (cada hora, de 7 am a 9 pm) lo pasa a la hoja, trae las fotos y arma la ficha; sin precio no se publica.</p>${ranking.filas.length ? `<div class="lista">${ranking.filas.slice().sort((a, b) => (b.puntaje || 0) - (a.puntaje || 0)).map(rkFila).join('\n')}</div>` : '<p class="vacio">Sin datos del ranking.</p>'}</section>
 ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'vendido' || f.estado === 'agotado'), 'Todavía no hay ventas registradas en la tienda.')}
 <section id="sec-pedidos" class="sec" data-sec="pedidos"><h2>Pedidos</h2>
 <p class="estado-db" id="db-estado">Cargando pedidos…</p>
@@ -190,7 +197,7 @@ ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'ven
 <p class="estado-db" id="pedidos-total"></p>
 </section>
 <section id="sec-clientes" class="sec" data-sec="clientes"><h2>Clientes</h2><p class="estado-db">Se arma solo con los pedidos registrados.</p><div class="tabla"><table><thead><tr><th>Cliente</th><th>Pedidos</th><th>Total comprado</th><th>Último pedido</th><th>Qué ha comprado</th></tr></thead><tbody id="clientes-tbody"><tr><td colspan="5" class="estado-db">Sin pedidos todavía.</td></tr></tbody></table></div></section>
-<p class="pie">La rutina de la tienda actualiza esta página cada 2 horas entre 7 am y 9 pm y aplica las decisiones que marquen aquí. Los enlaces de la tienda abren la ficha pública en tienda.nivytek.com. Costos, ganancias y pedidos solo los ven las personas con acceso a esta página.</p>
+<p class="pie">La rutina de la tienda actualiza esta página cada hora entre 7 am y 9 pm y aplica las decisiones que marquen aquí. Los enlaces de la tienda abren la ficha pública en tienda.nivytek.com. Costos, ganancias y pedidos solo los ven las personas con acceso a esta página.</p>
 </div>
 <script>
 (function(){
@@ -211,9 +218,16 @@ ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'ven
   var timer=setTimeout(function(){if(!db){est.textContent='No se pudo conectar con el registro (inicia sesión en claude.ai o vuelve a abrir la página).';}},10000);
   function marcar(dec,txt,ok){var s=dec.querySelector('.d-estado');s.textContent=txt;s.classList.toggle('ok',!!ok);}
   function guardarDecision(dec){if(!db||!puedeEscribir)return;var data={tipo:dec.dataset.tipo,nombre:dec.dataset.nombre,publicar:dec.querySelector('.d-pub').checked,aplicado:false,cuando:Date.now()};
-    var p=dec.querySelector('.d-precio');if(p)data.precio=Number(p.value)||null;var d=dec.querySelector('.d-desc');if(d)data.descuento=Number(d.value);if(dec.dataset.fila)data.fila=Number(dec.dataset.fila);
+    var p=dec.querySelector('.d-precio');if(p)data.precio=Number(p.value)||null;var m=dec.querySelector('.d-mod:checked');if(m){data.modalidad=m.value;var u=dec.querySelector('.d-uni');data.unidades=m.value==='disponible'?(Number(u&&u.value)||1):null;}var d=dec.querySelector('.d-desc');if(d)data.descuento=Number(d.value);if(dec.dataset.fila)data.fila=Number(dec.dataset.fila);
     marcar(dec,'Guardando…');db.collection('decisiones').doc(dec.dataset.key).set(data).then(function(){marcar(dec,'Guardado: la rutina lo aplica en su próxima pasada.',true);}).catch(function(e){marcar(dec,'No se pudo guardar: '+(e&&e.message||e));});}
-  document.querySelectorAll('.decision').forEach(function(dec){dec.querySelectorAll('input').forEach(function(i){i.addEventListener('change',function(){guardarDecision(dec)});});});
+  document.querySelectorAll('.decision').forEach(function(dec){dec.querySelectorAll('input').forEach(function(i){i.addEventListener('change',function(){var l=dec.querySelector('.d-uni-l');if(l){var m=dec.querySelector('.d-mod:checked');l.hidden=!(m&&m.value==='disponible');}guardarDecision(dec)});});});
+  /* actualizar ofertas de los canales (solicitud que la rutina atiende en su próxima pasada) */
+  var ba=document.getElementById('btn-actualizar'),ae=document.getElementById('act-estado'),ta=document.getElementById('canales'),bc=document.getElementById('btn-canales'),ce2=document.getElementById('can-estado');
+  function fechaCorta(ms){return ms?new Date(ms).toLocaleString('es-CO',{timeZone:'America/Bogota',day:'numeric',month:'short',hour:'numeric',minute:'2-digit'}):''}
+  function pintarSolicitud(v){if(!v){ae.textContent='Nunca se ha actualizado desde aquí.';return;}ae.textContent=v.pendiente?'Solicitado el '+fechaCorta(v.cuando)+'. La rutina lo atiende en su próxima pasada (cada hora, 7 am a 9 pm).':(v.ultima?'Última actualización: '+fechaCorta(v.ultima)+(v.nuevas!=null?' · '+v.nuevas+' ofertas nuevas':''):'')+(v.error?' · '+v.error:'');ba.disabled=!!v.pendiente||!puedeEscribir;}
+  ba.addEventListener('click',function(){if(!db||!puedeEscribir)return;ba.disabled=true;db.collection('solicitudes').doc('actualizar-ranking').set({pendiente:true,cuando:Date.now()},{merge:true}).then(function(){ae.textContent='Solicitado. La rutina revisa los canales y actualiza el ranking en su próxima pasada.';}).catch(function(e){ae.textContent='No se pudo solicitar: '+(e&&e.message||e);ba.disabled=false;});});
+  bc.addEventListener('click',function(){if(!db||!puedeEscribir)return;var NL=String.fromCharCode(10);var lista=ta.value.split(NL).map(function(x){return x.trim().replace(/^https?:[/][/]t[.]me[/](s[/])?/,'').replace(/^@/,'')}).filter(Boolean);
+    db.collection('solicitudes').doc('canales').set({telegram:lista,cuando:Date.now()}).then(function(){ce2.textContent='Guardado: '+lista.length+' canales.';}).catch(function(e){ce2.textContent='No se pudo guardar: '+(e&&e.message||e);});});
   function precioCombo(suma,desc){return Math.floor(suma*(1-desc/100)/1000)*1000-100}
   document.querySelectorAll('.it[data-estado="combo"]').forEach(function(it){var d=it.querySelector('.d-desc');if(!d)return;d.addEventListener('input',function(){var suma=Number(it.querySelector('.p-suma').dataset.suma);it.querySelector('.p-desc').textContent=d.value;it.querySelector('.p-combo').textContent=fmt(precioCombo(suma,Number(d.value)||0));});});
   /* combo nuevo */
@@ -226,10 +240,10 @@ ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'ven
   cf.addEventListener('submit',function(e){e.preventDefault();if(!db||!puedeEscribir){ce.textContent='Sin permiso para guardar.';return;}if(partes.length<2){ce.textContent='Agrega al menos 2 productos.';return;}
     var nombre=document.getElementById('c-nombre').value.trim(),suma=partes.reduce(function(s,x){return s+x.p},0),desc=Number(cd.value)||0;
     db.collection('decisiones').doc('cbn-'+nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').slice(0,50)).set({tipo:'combo-nuevo',nombre:nombre,componentes:partes.map(function(x){return x.n}),suma:suma,descuento:desc,precio:precioCombo(suma,desc),publicar:true,aplicado:false,cuando:Date.now()})
-      .then(function(){ce.textContent='Guardado. La rutina arma la ficha y lo publica en su próxima pasada (7 am, 1 pm, 7 pm).';partes=[];pintarPartes();cf.reset();cd.value=10;}).catch(function(err){ce.textContent='No se pudo guardar: '+(err&&err.message||err);});});
+      .then(function(){ce.textContent='Guardado. La rutina arma la ficha y lo publica en su próxima pasada (cada hora, de 7 am a 9 pm).';partes=[];pintarPartes();cf.reset();cd.value=10;}).catch(function(err){ce.textContent='No se pudo guardar: '+(err&&err.message||err);});});
   pintarPartes();
   function pintarDecisiones(snap){snap.docs.forEach(function(d){var v=d.data(),dec=document.querySelector('.decision[data-key="'+d.id+'"]');if(!dec)return;
-    var pub=dec.querySelector('.d-pub');if(pub)pub.checked=!!v.publicar;var p=dec.querySelector('.d-precio');if(p&&v.precio)p.value=v.precio;var ds=dec.querySelector('.d-desc');if(ds&&v.descuento!=null)ds.value=v.descuento;
+    var pub=dec.querySelector('.d-pub');if(pub)pub.checked=!!v.publicar;var p=dec.querySelector('.d-precio');if(p&&v.precio)p.value=v.precio;if(v.modalidad){var r=dec.querySelector('.d-mod[value="'+v.modalidad+'"]');if(r)r.checked=true;var l=dec.querySelector('.d-uni-l');if(l)l.hidden=v.modalidad!=='disponible';var u=dec.querySelector('.d-uni');if(u&&v.unidades)u.value=v.unidades;}var ds=dec.querySelector('.d-desc');if(ds&&v.descuento!=null)ds.value=v.descuento;
     marcar(dec,v.aplicado?'Aplicado en la hoja':'Pendiente: la rutina lo aplica en su próxima pasada.',!!v.aplicado);});}
   /* pedidos */
   var tb=document.getElementById('pedidos-tbody'),tot=document.getElementById('pedidos-total'),form=document.getElementById('f-pedido'),btn=document.getElementById('p-guardar'),ctb=document.getElementById('clientes-tbody'),dl=document.getElementById('clientes-lista');
@@ -258,6 +272,8 @@ ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'ven
       document.querySelectorAll('.decision input').forEach(function(i){i.disabled=!puedeEscribir});});
     col.orderBy('fecha','desc').limit(300).onSnapshot(function(snap){pintar(snap.docs);},function(e){est.textContent='Error al leer pedidos: '+(e&&e.message||e);});
     db.collection('decisiones').limit(500).onSnapshot(pintarDecisiones,function(){});
+    db.collection('solicitudes').doc('actualizar-ranking').onSnapshot(function(d){pintarSolicitud(d.exists?d.data():null)},function(){ae.textContent='';});
+    db.collection('solicitudes').doc('canales').onSnapshot(function(d){if(d.exists&&!ta.value)ta.value=(d.data().telegram||[]).join(String.fromCharCode(10));},function(){});
   });}else{clearTimeout(timer);est.textContent='Registro no disponible en esta vista.';btn.disabled=true;}
   form.addEventListener('submit',function(e){e.preventDefault();if(!col||!puedeEscribir)return;btn.disabled=true;
     var prod=pc.value==='otro'?(po.value.trim()||'Otro producto'):pp.value;
