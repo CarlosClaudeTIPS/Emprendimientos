@@ -46,3 +46,8 @@ Estas reglas complementan el prompt de la rutina (corre cada hora, de 7 am a 9 p
 - **ranking.json** incluye `imagen` (columna H) en cada fila; el panel la muestra.
 - **Fotos al publicar**: siempre descargar las imágenes (Amazon `_AC_SL1500_` o, si no abre, la col. H del Ranking) con `scripts/descargar-imagenes.py` en la misma pasada en que se publica; nunca publicar una ficha sin foto local.
 - **Paso 5b (panel)**: regenerar y volver a publicar el panel en cada pasada, aunque no haya cambios en la tienda, para que refleje la hoja y la versión actual de `scripts/inventario-artefacto.mjs`. Si `ranking.json` no existe, crearlo primero desde la pestaña Ranking.
+
+## Regla de precios (Carlos, 9/11/2026)
+- Todo precio publicado **incluye $10.000 de envío a domicilio en Bogotá** ("Envío gratis en Bogotá"). El pago contra entrega en efectivo cuesta $10.000 adicionales; la recogida personal no tiene recargo.
+- Para productos nuevos: precio sugerido = costo total (producto + envío a Colombia + impuestos) con el margen habitual, redondeado a …900, **más $10.000** por el envío incluido. La columna N (Precio sugerido) del Ranking debe calcularse ya con esos $10.000; el precio que se publica es la columna O, que Carlos fija desde el panel. Si Carlos marca Publicar sin precio, la rutina deja "Falta precio" y no publica.
+- Los precios actuales ya tienen los $10.000 incluidos (subida del 9/11/2026 en catálogo, hoja 'Publicado en tienda' y combos).
