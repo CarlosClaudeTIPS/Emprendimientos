@@ -190,7 +190,7 @@ ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'ven
 <p class="estado-db" id="pedidos-total"></p>
 </section>
 <section id="sec-clientes" class="sec" data-sec="clientes"><h2>Clientes</h2><p class="estado-db">Se arma solo con los pedidos registrados.</p><div class="tabla"><table><thead><tr><th>Cliente</th><th>Pedidos</th><th>Total comprado</th><th>Último pedido</th><th>Qué ha comprado</th></tr></thead><tbody id="clientes-tbody"><tr><td colspan="5" class="estado-db">Sin pedidos todavía.</td></tr></tbody></table></div></section>
-<p class="pie">La rutina de la tienda actualiza esta página 3 veces al día (7 am, 1 pm y 7 pm) y aplica las decisiones que marquen aquí. Los enlaces de la tienda abren la ficha pública en tienda.nivytek.com. Costos, ganancias y pedidos solo los ven las personas con acceso a esta página.</p>
+<p class="pie">La rutina de la tienda actualiza esta página cada 2 horas entre 7 am y 9 pm y aplica las decisiones que marquen aquí. Los enlaces de la tienda abren la ficha pública en tienda.nivytek.com. Costos, ganancias y pedidos solo los ven las personas con acceso a esta página.</p>
 </div>
 <script>
 (function(){
