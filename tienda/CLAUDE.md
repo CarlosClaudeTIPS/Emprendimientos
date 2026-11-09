@@ -51,3 +51,8 @@ Estas reglas complementan el prompt de la rutina (corre cada hora, de 7 am a 9 p
 - Todo precio publicado **incluye $10.000 de envío a domicilio en Bogotá** ("Envío gratis en Bogotá"). El pago contra entrega en efectivo cuesta $10.000 adicionales; la recogida personal no tiene recargo.
 - Para productos nuevos: precio sugerido = costo total (producto + envío a Colombia + impuestos) con el margen habitual, redondeado a …900, **más $10.000** por el envío incluido. La columna N (Precio sugerido) del Ranking debe calcularse ya con esos $10.000; el precio que se publica es la columna O, que Carlos fija desde el panel. Si Carlos marca Publicar sin precio, la rutina deja "Falta precio" y no publica.
 - Los precios actuales ya tienen los $10.000 incluidos (subida del 9/11/2026 en catálogo, hoja 'Publicado en tienda' y combos).
+
+## ⚠ La pestaña Ranking es una fórmula (no escribir dentro de B:Z)
+- `Ranking!B2` tiene una fórmula matricial que arma todo el ranking (columnas B a Z) a partir de las pestañas por categoría. Escribir cualquier valor dentro de B:Z (por ejemplo el precio en O) rompe la fórmula y la pestaña queda vacía con `#REF!`. Solo son editables **A (Publicar)** y **AA (Publicado en la tienda)**.
+- El precio "Lo ofrezco a" (Ranking col. O) se escribe en la **pestaña de la categoría** (E de Ranking dice cuál), columna **L "Lo ofrezco a (escríbelo tú)"**, en la fila cuyo D (Producto) coincide con G de Ranking. La imagen (Ranking H) sale de la columna **E** de esa misma pestaña. Las decisiones del panel con `precio` se aplican ahí, nunca en Ranking!O.
+- Si Ranking aparece vacío con `#REF!` en B2: borrar lo que se haya escrito dentro de B:Z y la fórmula vuelve sola. No reconstruir a mano.
