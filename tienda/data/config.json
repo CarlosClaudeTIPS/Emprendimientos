@@ -9,12 +9,12 @@
   },
   "whatsapp": {
     "numero": "573000510910",
-    "mensajeProducto": "Hola, estoy interesado en el producto {nombre} ({precio}). ¿Me pueden confirmar disponibilidad y costo de envío?\n{variantes}{enlace}",
+    "mensajeProducto": "Hola, estoy interesado en el producto {nombre} ({precio}). ¿Me confirman disponibilidad?",
     "mensajeDisponibilidad": "Hola, ¿tienen disponible el producto {nombre}?\n{variantes}{enlace}",
     "mensajeGeneral": "Hola, quiero preguntar por un producto.",
     "mensajeEnvios": "Hola, ¿me pueden informar los costos y tiempos de envío?",
     "mensajePagos": "Hola, ¿qué métodos de pago aceptan?",
-    "mensajeCarrito": "Hola, quiero pedir estos productos:\n{items}\nTotal estimado: {total}\n¿Me confirman disponibilidad y costo de envío?",
+    "mensajeCarrito": "Hola, quiero pedir estos productos:\n{items}\nTotal estimado: {total}\n¿Me confirman disponibilidad y fecha de entrega?",
     "mensajeInteres": "Hola, vi que el producto {nombre} ya se vendió. ¿Tienen otro igual o en otro color?\n{enlace}",
     "mensajeSugerencia": "Hola, me gustaría que tuvieran en la tienda: {texto}"
   },
@@ -32,18 +32,18 @@
     "titulo": "Descubre productos que hacen tu día más fácil",
     "subtitulo": "Tecnología, cuidado personal y productos seleccionados para ti. Explora, compara y pide directamente por WhatsApp.",
     "imagen": "img/portada-nivytek.png",
-    "etiqueta": "Descubre. Elige. Disfruta."
+    "etiqueta": "Envío gratis en Bogotá"
   },
   "confianza": [
     {
       "icono": "svg:camion",
       "titulo": "Entregas",
-      "texto": "Recogida en Bogotá todos los días (antes de 11 a. m. o después de 7 p. m., cerca de Plaza de las Américas) o domicilio los lunes y jueves. Envíos nacionales por transportadora con pago previo."
+      "texto": "Envío gratis a domicilio en Bogotá (lunes y jueves) o recogida cerca de Plaza de las Américas. Pago contra entrega: +$10.000. Envíos nacionales por transportadora con pago previo."
     },
     {
       "icono": "svg:tarjeta",
       "titulo": "Pagos",
-      "texto": "Efectivo en la entrega personal, o transferencia por llave Bre-B o Nequi. Para envíos nacionales el pago se hace antes del despacho. Pagas solo después de confirmar disponibilidad y total."
+      "texto": "Transferencia por llave Bre-B o Nequi, o efectivo contra entrega en Bogotá (+$10.000). Para envíos nacionales el pago se hace antes del despacho. Pagas solo después de confirmar disponibilidad y total."
     },
     {
       "icono": "svg:chat",
@@ -57,8 +57,8 @@
     }
   ],
   "politicas": {
-    "entregas": "Recogida en Bogotá: todos los días, antes de las 11:00 a. m. o después de las 7:00 p. m., en un punto cerca de Plaza de las Américas; la dirección exacta te la enviamos por WhatsApp al confirmar el pedido.\nEntrega a domicilio en Bogotá: dos días a la semana. Los pedidos confirmados el fin de semana se entregan el lunes y los de entre semana, el jueves. El costo del domicilio te lo confirmamos por WhatsApp.\nEnvíos a otras ciudades por transportadora, únicamente con pago previo confirmado. El costo del envío lo asume el comprador; te lo cotizamos por WhatsApp antes de que decidas. Despachamos por transportadora con recogida en Bogotá en máximo 1 día hábil tras confirmar el pago; el tiempo de tránsito habitual a ciudades principales es de 2 a 5 días hábiles según la transportadora, y te compartimos el número de guía para que sigas el envío.",
-    "pagos": "Efectivo en la entrega personal, o transferencia por llave Bre-B o Nequi. Para envíos nacionales el pago se hace antes del despacho. Nunca te pediremos pagar sin antes confirmarte disponibilidad y valor total.",
+    "entregas": "Recogida en Bogotá: todos los días, antes de las 11:00 a. m. o después de las 7:00 p. m., en un punto cerca de Plaza de las Américas; la dirección exacta te la enviamos por WhatsApp al confirmar el pedido.\nEntrega a domicilio en Bogotá: gratis, dos días a la semana. Los pedidos confirmados el fin de semana se entregan el lunes y los de entre semana, el jueves, pagando por transferencia (Bre-B o Nequi) al confirmar. Si prefieres pagar contra entrega, en efectivo al recibir, el domicilio tiene un costo adicional de $10.000.\nEnvíos a otras ciudades por transportadora, únicamente con pago previo confirmado. El costo del envío lo asume el comprador; te lo cotizamos por WhatsApp antes de que decidas. Despachamos por transportadora con recogida en Bogotá en máximo 1 día hábil tras confirmar el pago; el tiempo de tránsito habitual a ciudades principales es de 2 a 5 días hábiles según la transportadora, y te compartimos el número de guía para que sigas el envío.",
+    "pagos": "Transferencia por llave Bre-B o Nequi, o efectivo contra entrega en Bogotá (con un costo adicional de $10.000 por el domicilio). En la recogida personal puedes pagar en efectivo sin recargo. Para envíos nacionales el pago se hace antes del despacho. Nunca te pediremos pagar sin antes confirmarte disponibilidad y valor total.",
     "cambios": "Derecho de retracto (Ley 1480 de 2011, art. 47): en compras cerradas a distancia (por WhatsApp o por esta página) puedes retractarte dentro de los 5 días hábiles siguientes a la entrega, devolviendo el producto en las mismas condiciones en que lo recibiste (sin uso, con empaque y accesorios completos). Asumes el costo del transporte de devolución y te reintegramos el dinero en máximo 30 días calendario. No aplica a productos de uso personal o higiene que hayan sido abiertos.\nFuera del retracto no aplican cambios por cambio de opinión. Si el producto llega dañado por el transporte: revísalo al recibirlo y escríbenos ese mismo día (máximo dentro de los 2 días hábiles siguientes) por WhatsApp con fotos del empaque y del producto. Nosotros gestionamos el reclamo con la transportadora; tú eliges entre reposición del mismo producto (si hay unidades) o devolución total del dinero, incluido el costo del envío que pagaste. La devolución se hace al mismo medio de pago en máximo 10 días hábiles desde que recibimos las fotos o el producto. El transporte de regreso, cuando sea necesario, lo asume Nivytek.",
     "garantia": "Garantía legal (Ley 1480 de 2011, arts. 7 a 17): todo producto nuevo tiene garantía por defectos de fábrica. Si el fabricante o importador no fija un plazo, la ley establece 1 año desde la entrega; para productos usados o reacondicionados, 3 meses. Durante ese tiempo tienes derecho a la reparación y, si no es posible, al cambio o a la devolución del dinero. Nivytek, como vendedor, recibe tu reclamo por WhatsApp y lo gestiona contigo ante el fabricante o importador; los productos nuevos y sellados conservan además la garantía del fabricante. La garantía no cubre daños por golpes, caídas, humedad, mala manipulación, sobrecargas eléctricas, uso con cargadores o cables no adecuados, ni productos abiertos o intervenidos por terceros.",
     "privacidad": "Responsable: Nivytek · Tienda, nivytek@hotmail.com, WhatsApp +57 300 051 0910.\nDatos que recogemos: los que nos escribes por WhatsApp para tu pedido (nombre, teléfono, dirección de entrega). Esta página no guarda datos en ningún servidor.\nPara qué: únicamente para confirmar, entregar y dar garantía a tu pedido. No los usamos para publicidad ni los compartimos con terceros distintos a la transportadora.\nCuánto tiempo: mientras dure la garantía legal del producto y luego se eliminan.\nTus derechos: puedes pedir corregir o borrar tus datos escribiendo por WhatsApp o al correo; se atiende en máximo 15 días hábiles, según la Ley 1581 de 2012.",
@@ -70,7 +70,7 @@
       "grupo": "Pedidos",
       "destacada": true,
       "p": "¿Cómo hago un pedido?",
-      "r": "Elige el producto, toca «Pedir por WhatsApp» y se abre un chat con nosotros con el nombre del producto ya escrito. Te confirmamos disponibilidad, precio final y costo de envío antes de que pagues nada. Abrir WhatsApp no te compromete a comprar."
+      "r": "Elige el producto, toca «Pedir por WhatsApp» y se abre un chat con nosotros con el nombre del producto ya escrito. Te confirmamos disponibilidad, precio final y fecha de entrega antes de que pagues nada. Abrir WhatsApp no te compromete a comprar."
     },
     {
       "grupo": "Pedidos",
@@ -91,7 +91,7 @@
     {
       "grupo": "Pedidos",
       "p": "¿El precio de la página es el precio final?",
-      "r": "Es el precio del producto. El costo de envío depende de tu ciudad y te lo confirmamos por WhatsApp antes de cerrar el pedido. Solo mostramos descuentos cuando son reales."
+      "r": "Es el precio del producto con envío gratis a domicilio en Bogotá incluido. Si pagas contra entrega en efectivo, el domicilio tiene $10.000 adicionales. Para otras ciudades el envío por transportadora se cotiza aparte. Solo mostramos descuentos cuando son reales."
     },
     {
       "grupo": "Pagos y seguridad",
@@ -102,7 +102,7 @@
     {
       "grupo": "Pagos y seguridad",
       "p": "¿Qué métodos de pago aceptan?",
-      "r": "Efectivo en la entrega personal, o transferencia por llave Bre-B o Nequi. En envíos a otras ciudades el pago se hace antes del despacho, y siempre después de confirmarte disponibilidad y valor total por WhatsApp."
+      "r": "Transferencia por llave Bre-B o Nequi, o efectivo contra entrega en Bogotá (con un costo adicional de $10.000 por el domicilio). En la recogida personal puedes pagar en efectivo sin recargo. Para envíos nacionales el pago se hace antes del despacho. Nunca te pediremos pagar sin antes confirmarte disponibilidad y valor total."
     },
     {
       "grupo": "Pagos y seguridad",
@@ -113,7 +113,7 @@
       "grupo": "Envíos y entregas",
       "destacada": true,
       "p": "¿Hacen envíos a mi ciudad y cuánto tarda?",
-      "r": "En Bogotá puedes recoger tu pedido todos los días (antes de las 11:00 a. m. o después de las 7:00 p. m.) en un punto cerca de Plaza de las Américas, o recibirlo a domicilio: los pedidos del fin de semana se entregan el lunes y los de entre semana, el jueves. A otras ciudades enviamos por transportadora con pago previo; el costo lo asume el comprador y te lo cotizamos por WhatsApp junto con el tiempo de entrega antes de que decidas."
+      "r": "En Bogotá el envío a domicilio es gratis: los pedidos del fin de semana se entregan el lunes y los de entre semana, el jueves (contra entrega en efectivo: +$10.000). También puedes recoger todos los días (antes de las 11:00 a. m. o después de las 7:00 p. m.) cerca de Plaza de las Américas. A otras ciudades enviamos por transportadora con pago previo; el costo lo asume el comprador y te lo cotizamos por WhatsApp antes de que decidas."
     },
     {
       "grupo": "Envíos y entregas",
@@ -166,11 +166,11 @@
     },
     {
       "titulo": "Confirmamos",
-      "texto": "Te confirmamos disponibilidad, total y costo de envío. Pagas en efectivo al recibir en Bogotá, o por Bre-B o Nequi antes del envío nacional."
+      "texto": "Te confirmamos disponibilidad y total. En Bogotá el envío es gratis pagando por Bre-B o Nequi; contra entrega en efectivo tiene +$10.000. Envíos nacionales se pagan antes del despacho."
     },
     {
       "titulo": "Recibe",
-      "texto": "Recoge en Bogotá cualquier día (antes de 11 a. m. o después de 7 p. m.), recibe a domicilio el lunes o el jueves, o por transportadora en otras ciudades. Revisa el producto al recibirlo."
+      "texto": "Recibe a domicilio en Bogotá el lunes o el jueves sin costo de envío, recoge cualquier día (antes de 11 a. m. o después de 7 p. m.) o por transportadora en otras ciudades. Revisa el producto al recibirlo."
     }
   ],
   "vitrina": {
