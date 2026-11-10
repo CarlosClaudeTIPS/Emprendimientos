@@ -292,6 +292,11 @@
   T.esReciente = (fecha) => { const d = fecha ? new Date(fecha) : null; return !!(d && !isNaN(d) && Date.now() - d.getTime() < 30 * 24 * 3600 * 1000); };
   T.vendido = (p) => !p.disponible && p.stock === 0 && !T.esEncargo(p);
   T.textoStock = (p) => (p.disponible && p.stock != null && p.stock > 0) ? (p.stock === 1 ? 'Queda 1 unidad' : `Quedan ${p.stock} unidades`) : '';
+  // Orden por defecto ("Relevancia"): disponibles, destacados, y dentro de cada categoría primero los combos y luego los productos individuales (regla de Carlos, 10/11/2026)
+  T.ordenRelevancia = (a, b) => {
+    const rc = (p) => { const c = T.categoria(p.categoria); return c && c.orden != null ? c.orden : 999; };
+    return (b.disponible - a.disponible) || (b.destacado - a.destacado) || (rc(a) - rc(b)) || ((b.esCombo ? 1 : 0) - (a.esCombo ? 1 : 0)) || ((a.orden || 0) - (b.orden || 0));
+  };
   T.visibles = () => T.datos.catalogo.productos.filter(p => p.visible !== false).sort((a, b) => (a.orden || 0) - (b.orden || 0));
   T.categoria = (id) => T.datos.catalogo.categorias.find(c => c.id === id);
   T.producto = (id) => T.datos.catalogo.productos.find(p => p.id === id);

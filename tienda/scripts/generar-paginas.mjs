@@ -245,7 +245,7 @@ function inyectar(archivo, bloques) {
   inyectar('index.html', { hero, categorias: cats, destacados, confianza, pasos, faq: T.renderFaq((dest.length ? dest : faqs).slice(0, 5)) });
 }
 { // catalogo.html
-  const orden = visibles.slice().sort((a, b) => (b.disponible - a.disponible) || (b.destacado - a.destacado) || ((a.orden || 0) - (b.orden || 0)));
+  const orden = visibles.slice().sort(T.ordenRelevancia);
   inyectar('catalogo.html', { grid: orden.map(T.tarjeta).join(''), sub: `${visibles.length} producto${visibles.length === 1 ? '' : 's'} con pedido por WhatsApp.` });
 }
 { // preguntas.html

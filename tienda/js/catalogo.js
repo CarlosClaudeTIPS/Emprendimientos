@@ -38,7 +38,7 @@
         case 'precio-desc': lista = lista.slice().sort((a, b) => b.precio - a.precio); break;
         case 'nuevos': lista = lista.slice().sort((a, b) => (b.fechaCreacion || '').localeCompare(a.fechaCreacion || '')); break;
         case 'nombre': lista = lista.slice().sort((a, b) => a.nombre.localeCompare(b.nombre, 'es')); break;
-        default: if (!estado.q) lista = lista.slice().sort((a, b) => (b.disponible - a.disponible) || (b.destacado - a.destacado) || ((a.orden || 0) - (b.orden || 0)));
+        default: if (!estado.q) lista = lista.slice().sort(T.ordenRelevancia);
       }
       const cat = T.categoria(estado.cat);
       T.$('#titulo-catalogo').textContent = estado.q ? `Resultados para “${estado.q}”` : cat ? cat.nombre : ({ nuevos: 'Novedades', ofertas: 'Ofertas', destacados: 'Destacados', populares: 'Populares', encargo: 'Por encargo' })[estado.f] || 'Catálogo';
