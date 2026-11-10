@@ -187,7 +187,7 @@ ul, ol { padding-left: 1.25rem; margin: 0 0 .75rem; }
 .aviso-encargo { margin: .5rem 0 0; padding: .6rem .8rem; border-radius: 10px; background: #E8F6F1; color: #14513F; font-size: .92rem; }
 .tarjeta-cuerpo { padding: .75rem .8rem .85rem; display: flex; flex-direction: column; gap: .35rem; flex: 1; }
 .tarjeta-categoria-txt { font-size: .78rem; color: var(--texto-suave); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
-.tarjeta-titulo { font-size: .95rem; font-weight: 700; line-height: 1.3; color: var(--texto); margin: 0; }
+.tarjeta-titulo { font-size: 1.05rem; font-weight: 700; line-height: 1.3; color: var(--texto); margin: 0; }
 .tarjeta-titulo a { color: inherit; }
 .tarjeta-titulo a:hover { color: var(--primario); text-decoration: none; }
 .tarjeta-titulo a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
@@ -374,7 +374,7 @@ details.faq p { margin: .5rem 0 0; color: var(--texto-suave); }
 /* Segunda imagen al pasar el cursor (escritorio) */
 .tarjeta-imagen .img-hover { position: absolute; inset: 0; opacity: 0; transition: opacity .25s ease; }
 @media (hover: hover) { .tarjeta:hover .img-hover { opacity: 1; } }
-.tarjeta-desc { font-size: .8rem; color: var(--texto-suave); margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.tarjeta-desc { font-size: .95rem; line-height: 1.4; color: #1f2937; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Sugerencias del buscador */
 .buscador { position: relative; }
@@ -496,7 +496,7 @@ main { min-height: calc(100vh - 64px); }
 .resenas-col ul { padding-left: 1.1rem; margin: 0; }
 
 /* Mínimo legible en celular: ningún texto por debajo de 13 px */
-@media (max-width: 640px){ .tarjeta-desc, .pie, .pie small, .micro-confianza div, .galeria-contador { font-size: max(.8125rem, 1em) !important; } .tarjeta-desc { font-size: .875rem !important; } }
+@media (max-width: 640px){ .tarjeta-desc, .pie, .pie small, .micro-confianza div, .galeria-contador { font-size: max(.8125rem, 1em) !important; } .tarjeta-desc { font-size: 1rem !important; } }
 
 /* Enlaces del pie y de la barra inferior con área táctil suficiente */
 .pie a{display:inline-block;padding:.35rem 0;font-size:.9rem}
@@ -508,3 +508,13 @@ main { min-height: calc(100vh - 64px); }
 .resenas-comp .resenas-cabecera { margin: .25rem 0 .2rem; }
 .resenas-comp .resenas-cabecera .estrellas { font-size: 1.1rem; }
 .resenas-mini { font-size: .88rem; color: var(--texto-suave); margin: .15rem 0; }
+
+/* Cinta "Envío gratis" sobre la foto (tarjetas y ficha) */
+.tarjeta-imagen { position: relative; display: block; }
+.cinta-envio { position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; display: flex; align-items: center; justify-content: center; gap: .35rem; padding: .4rem .5rem; background: var(--whatsapp); color: #fff; font-size: .95rem; white-space: nowrap; overflow: hidden; letter-spacing: .01em; text-shadow: 0 1px 1px rgba(0,0,0,.25); pointer-events: none; }
+.cinta-envio b { font-weight: 800; text-transform: uppercase; }
+.cinta-envio svg { width: 1.1em; height: 1.1em; flex: none; }
+.galeria-wrap .cinta-envio { font-size: 1.05rem; padding: .55rem .8rem; border-radius: 0 0 var(--radio) var(--radio); }
+@media (min-width: 641px){ .cinta-envio { font-size: .9rem; } }
+.galeria-wrap .galeria-contador { bottom: 3.4rem; }
+@media (max-width: 640px){ .tarjeta-titulo { font-size: 1.05rem; } .tarjeta .cinta-envio { font-size: .9rem; } .tarjeta .cinta-lugar { display: none; } .galeria-wrap .cinta-envio { font-size: 1rem; } .tarjeta-desc { -webkit-line-clamp: 3; } }

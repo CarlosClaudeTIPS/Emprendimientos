@@ -661,6 +661,8 @@
   };
 
   /* ---------- Tarjeta de producto ---------- */
+  // Cinta "Envío gratis en Bogotá" sobre la foto (el precio ya incluye el domicilio en Bogotá; regla de Carlos 9/11/2026)
+  T.cintaEnvio = (p) => p.disponible ? `<span class="cinta-envio">${T.icoCat.camion}<b>Envío gratis</b><span class="cinta-lugar"> en Bogotá</span></span>` : '';
   T.tarjeta = (p) => {
     const cat = T.categoria(p.categoria);
     const d = T.descuento(p);
@@ -677,6 +679,7 @@
       <a class="tarjeta-imagen" href="${url}" tabindex="-1" aria-hidden="true">
         ${T.picture(p, 0, 'loading="lazy" width="400" height="400"')}
         ${p.imagenes && p.imagenes[1] ? T.picture(p, 1, 'class="img-hover" loading="lazy" width="400" height="400"', p.nombre + ', segunda foto') : ''}
+        ${T.cintaEnvio(p)}
       </a>
       <div class="etiquetas">${etiquetas}</div>
       <div class="tarjeta-cuerpo">

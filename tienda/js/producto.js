@@ -49,7 +49,8 @@
         <div>
           <div class="galeria-wrap">
             <div class="etiquetas">${!p.disponible ? `<span class="etiqueta etiqueta-agotado">${T.vendido(p) ? 'Vendido' : 'Agotado'}</span>` : ''}${p.oferta && d > 0 ? `<span class="etiqueta etiqueta-oferta">-${d}%</span>` : ''}${T.esEncargo(p) ? '<span class="etiqueta etiqueta-encargo">Por encargo</span>' : p.nuevo ? '<span class="etiqueta etiqueta-nuevo">Nuevo</span>' : ''}</div>
-            <div class="galeria-principal" id="galeria" aria-label="Galería de imágenes">
+            ${T.cintaEnvio(p)}
+        <div class="galeria-principal" id="galeria" aria-label="Galería de imágenes">
               ${medios.map((m, i) => `<div class="slide" data-i="${i}">${m.tipo === 'video' ? `<video src="${T.esc(m.src)}" controls playsinline preload="metadata"></video>` : T.picture(p, i, `width="800" height="800" ${i ? 'loading="lazy"' : 'fetchpriority="high"'}`, p.nombre + (i ? `, foto ${i + 1}` : ''))}</div>`).join('')}
             </div>
             ${medios.length > 1 ? `<span class="galeria-contador" id="galeria-contador">1 / ${medios.length}</span>` : ''}

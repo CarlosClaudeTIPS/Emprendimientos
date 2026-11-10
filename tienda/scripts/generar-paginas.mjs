@@ -171,6 +171,7 @@ ${fuentes}
     <div>
       <div class="galeria-wrap">
         <div class="etiquetas">${!p.disponible ? `<span class="etiqueta etiqueta-agotado">${T.vendido(p) ? 'Vendido' : 'Agotado'}</span>` : ''}${p.oferta && d > 0 ? `<span class="etiqueta etiqueta-oferta">-${d}%</span>` : ''}${T.esEncargo(p) ? '<span class="etiqueta etiqueta-encargo">Por encargo</span>' : p.nuevo ? '<span class="etiqueta etiqueta-nuevo">Nuevo</span>' : ''}</div>
+        ${T.cintaEnvio(p)}
         <div class="galeria-principal" id="galeria" aria-label="Galería de imágenes">
           ${p.imagenes.length ? p.imagenes.map((src, i) => `<div class="slide" data-i="${i}">${imagenFicha(p, i)}</div>`).join('\n          ') : `<div class="slide" data-i="0"><img src="img/sin-imagen.svg" alt="${esc(p.nombre)}" width="800" height="800"></div>`}
         </div>
