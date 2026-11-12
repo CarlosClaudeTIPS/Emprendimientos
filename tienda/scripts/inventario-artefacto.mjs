@@ -15,6 +15,7 @@ const raiz = dirname(dirname(fileURLToPath(import.meta.url)));
 const salida = process.argv[2] || join(raiz, '..', 'inventario.html');
 const costosPath = process.argv[3] || '';
 const rankingPath = process.argv[4] || '';
+const candidatosPath = process.argv[5] || '';
 const leer = (f) => JSON.parse(readFileSync(join(raiz, f), 'utf8'));
 const config = leer('data/config.json');
 const catalogo = leer('data/catalogo.json');
@@ -23,6 +24,7 @@ const combos = existsSync(join(raiz, 'data/combos.json')) ? leer('data/combos.js
 const pendientes = existsSync(join(raiz, 'data/encargo-pendientes.json')) ? leer('data/encargo-pendientes.json') : { productos: [] };
 const privado = costosPath && existsSync(costosPath) ? JSON.parse(readFileSync(costosPath, 'utf8')) : { costos: {} };
 const ranking = rankingPath && existsSync(rankingPath) ? JSON.parse(readFileSync(rankingPath, 'utf8')) : { filas: [] };
+const candidatos = candidatosPath && existsSync(candidatosPath) ? JSON.parse(readFileSync(candidatosPath, 'utf8')) : [];
 const costoDe = (id) => { const c = (privado.costos || {})[id]; return typeof c === 'number' ? c : null; };
 
 const noop = () => { };
@@ -66,6 +68,17 @@ const fila = (f) => `<article class="it" data-estado="${f.estado}" data-cat="${e
   ${f.estado === 'combo' ? `<div class="decision" data-tipo="combo" data-key="cb-${esc(f.id)}" data-nombre="${esc(f.nombre)}"><label><input type="checkbox" class="d-pub" checked> Publicado</label><label>Descuento %<input type="number" class="d-desc" min="0" max="60" value="${f.descuento}"></label><span class="d-estado"></span></div>` : ''}</div>
 </article>`;
 const seccion = (id, titulo, lista, vacio) => `<section id="sec-${id}" class="sec" data-sec="${id}"><h2>${esc(titulo)}</h2>${lista.length ? `<div class="lista">${lista.map(fila).join('\n')}</div>` : `<p class="vacio">${esc(vacio)}</p>`}</section>`;
+
+/* Cuidado de la piel: ofertas leídas de los canales públicos de Telegram (candidatos.json, privado) */
+const cdFila = (c) => `<article class="it rk" data-txt="${esc((c.titulo + ' ' + c.canal).toLowerCase())}">
+  <div class="foto">${c.foto ? `<img src="${esc(c.foto)}" alt="" loading="lazy" width="120" height="120" referrerpolicy="no-referrer">` : '<span class="sinfoto">sin imagen</span>'}</div>
+  <div class="info"><span class="cat">${esc(c.canal)} · ${esc(c.fecha)}${c.cupon ? ` · cupón <b>${esc(c.cupon)}</b>` : ''}</span><h3>${esc(c.titulo)}</h3>
+  <div class="meta"><span class="precio">Sugerido ${precio(c.sugerido)}</span><span class="costo">Costo ${precio(c.costo)} (US$${c.precioLista} sin descuento${c.precioOferta !== c.precioLista ? `, oferta US$${c.precioOferta}` : ''}) · Ganancia <b>${precio(c.ganancia)}</b></span>
+  ${c.link ? `<a class="lnk" href="${esc(c.link)}" target="_blank" rel="noopener">Ver oferta</a>` : ''}</div></div>
+</article>`;
+const secPiel = `<section id="sec-piel" class="sec" data-sec="piel"><h2>Cuidado de la piel: ofertas recientes en Telegram</h2>
+<p class="aviso">Ofertas de cuidado de la piel y el cuerpo vistas en los canales públicos (ClubGratis, ReviuDescuentos, DescuentosHome, DescuentosTech) en las últimas tres semanas. El costo usa el precio sin descuento a $3.500 por dólar y el sugerido deja unos $30.000 por unidad. Para traer alguno, dímelo o anótalo en la pestaña de su categoría en la hoja.</p>
+${candidatos.length ? `<div class="lista">${candidatos.map(cdFila).join('\n')}</div>` : '<p class="vacio">Sin candidatos todavía.</p>'}</section>`;
 
 /* Ranking: ofertas candidatas */
 const catsRk = [...new Set(ranking.filas.map(r => r.categoria).filter(Boolean))].sort();
@@ -160,7 +173,7 @@ td button{font:inherit;font-size:.78rem;background:none;border:1px solid var(--l
 <h1>Administración Nivytek</h1>
 <p class="sub">Actualizado el ${esc(hoy)} · ${items.length} referencias en la tienda · ${ranking.filas.length} ofertas en el ranking</p>
 <div class="resumen">${resumen.map(([t, v]) => `<div><b>${esc(v)}</b><span>${esc(t)}</span></div>`).join('')}</div>
-<nav class="tabs" aria-label="Secciones">${[['inventario', 'Inventario'], ['combos', 'Combos'], ['encargo', 'Por encargo'], ['ranking', 'Ranking de ofertas'], ['vendidos', 'Vendidos'], ['pedidos', 'Pedidos'], ['clientes', 'Clientes']].map(([k, t]) => `<a href="#${k}" data-tab="${k}">${t}</a>`).join('')}</nav>
+<nav class="tabs" aria-label="Secciones">${[['inventario', 'Inventario'], ['combos', 'Combos'], ['encargo', 'Por encargo'], ['ranking', 'Ranking de ofertas'], ['piel', 'Cuidado de la piel'], ['vendidos', 'Vendidos'], ['pedidos', 'Pedidos'], ['clientes', 'Clientes']].map(([k, t]) => `<a href="#${k}" data-tab="${k}">${t}</a>`).join('')}</nav>
 <div class="filtros" id="filtros"><select id="f-cat" aria-label="Categoría"><option value="">Todas las categorías</option></select><input id="q" type="search" placeholder="Buscar" aria-label="Buscar"></div>
 ${seccion('inventario', 'En stock (entrega inmediata)', items.filter(f => f.estado === 'stock'), 'No hay productos en stock.')}
 <section id="sec-combos" class="sec" data-sec="combos"><h2>Combos publicados</h2><p class="aviso">Cambia el descuento o desmarca «Publicado» y la rutina lo aplica en la hoja y en la tienda en su próxima pasada (cada hora, de 7 am a 9 pm).</p><details class="nuevo"><summary>Armar un combo nuevo</summary>
@@ -178,6 +191,7 @@ ${items.filter(f => f.estado === 'combo').length ? `<div class="lista">${items.f
 <div class="actualizar"><button type="button" id="btn-actualizar">Actualizar ofertas de los canales</button><span class="estado-db" id="act-estado">Cargando…</span>
 <details><summary>Canales que se revisan</summary><label>Canales públicos de Telegram (uno por línea, el nombre que va después de t.me/)<textarea id="canales" rows="4" placeholder="promocajita&#10;DescuentosTech"></textarea></label><button type="button" id="btn-canales">Guardar canales</button><span class="estado-db" id="can-estado"></span></details></div>
 <p class="aviso">Marca «Publicar», escribe el precio y di si ya lo tienes o es por encargo. La rutina (cada hora, de 7 am a 9 pm) lo pasa a la hoja, trae las fotos y arma la ficha; sin precio no se publica.</p>${ranking.filas.length ? `<div class="lista">${ranking.filas.slice().sort((a, b) => (b.puntaje || 0) - (a.puntaje || 0)).map(rkFila).join('\n')}</div>` : '<p class="vacio">Sin datos del ranking.</p>'}</section>
+${secPiel}
 ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'vendido' || f.estado === 'agotado'), 'Todavía no hay ventas registradas en la tienda.')}
 <section id="sec-pedidos" class="sec" data-sec="pedidos"><h2>Pedidos</h2>
 <p class="estado-db" id="db-estado">Cargando pedidos…</p>
