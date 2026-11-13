@@ -1,176 +1,231 @@
 {
- "nota": "Copia de respaldo de la pestaña 'Vitrina (pública)' del Google Sheet 'Catálogo Nivytek (tienda)'. Se usa cuando la hoja no responde. No editar a mano.",
- "actualizado": "2026-10-31",
- "productos": [
-  {
-   "id": "ya-cargador-usbc-20w",
-   "precio": 39900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "6",
-   "categoria": "Tecnología",
-   "nombre": "Cargador rápido USB-C 20 W certificado por Apple (MFi): carga tu iPhone al 50 % en 30 minutos",
-   "descripcion": "iPhone al 50 % en 30 minutos. Certificado por Apple.",
-   "descripcionLarga": "Cargador de pared USB-C de 20 W con carga rápida (Power Delivery).\n- Carga rápida para iPhone 18, 17, 16 y modelos anteriores con puerto USB-C, iPad y celulares Android.\n- Certificación MFi (hecho para Apple).\n- ¿Qué es MFi? Es la certificación \"Made for iPhone/iPad\" de Apple: el fabricante pasó las pruebas de Apple y el cargador funciona con iPhone y iPad a su máxima velocidad, sin el aviso de \"accesorio no compatible\" y diseñado para proteger la batería.\n- Control de temperatura y protección contra sobrecarga, sobretensión y cortocircuito.\n- Detecta el equipo conectado y le entrega la potencia adecuada.\nCómo se usa:\n- Conecta el cargador a un tomacorriente (funciona de 100 a 240 V).\n- Usa un cable USB-C a USB-C, o USB-C a Lightning para iPhone 14 o anteriores.\n- Con un iPhone compatible, carga hasta 50% en unos 30 minutos.\nPrecauciones:\n- No lo uses en lugares húmedos ni lo cubras mientras carga.\n- Desconecta si se calienta en exceso.\n- Mantenlo fuera del alcance de los niños.",
-   "foto": "img/productos/cargador-usb-c-20w-iphone-mfi/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de uso",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/618-MJqshTL._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/cargador-usb-c-20w-iphone-mfi/1.jpg"
-   ]
-  },
-  {
-   "id": "ya-camara-yoton-2k",
-   "precio": 85900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "2",
-   "categoria": "Tecnología",
-   "nombre": "Cámara WiFi 2K que gira 360°: vigila tu casa, tu bebé o tu mascota desde el celular",
-   "descripcion": "Mira tu casa, tu bebé o tu mascota desde el celular, día y noche.",
-   "descripcionLarga": "Cámara de seguridad WiFi 2K para interior, ideal para vigilar al bebé, las mascotas o la casa.\n- Imagen 2K con giro de 360° para cubrir toda la habitación.\n- Funciona con WiFi de 2,4 y 5 GHz.\n- Detección de movimiento con seguimiento automático y alertas al celular.\n- Visión nocturna de hasta 10 metros.\n- Grabación continua las 24 horas.\nCómo se usa:\n- Descarga en el celular la app indicada en la caja o en el código QR del manual.\n- Conecta la cámara a la corriente y espera a que encienda.\n- En la app, agrega un dispositivo, escribe la clave de tu WiFi y escanea con la cámara el código QR que aparece en el celular.\n- Ubícala en una repisa o instálala en la pared o el techo con la base incluida.\n- Para grabar, inserta una tarjeta microSD o activa la nube en la app.\nPrecauciones:\n- Es para interiores: no la expongas a lluvia ni humedad.\n- Cambia la contraseña de la app y no la compartas.\n- Avisa a las personas que se graban en espacios compartidos.",
-   "foto": "img/productos/camara-seguridad-wifi-2k-interior/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de instalación",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/61tfGvrxoDL._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/camara-seguridad-wifi-2k-interior/1.jpg",
-    "img/productos/camara-seguridad-wifi-2k-interior/2.jpg"
-   ]
-  },
-  {
-   "id": "ya-medicube-vitamina-c",
-   "precio": 89900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "1",
-   "categoria": "Cuidado personal y belleza",
-   "nombre": "Medicube Deep Vita C: la crema popular en cápsulas de vitamina C que ilumina y unifica el tono",
-   "descripcion": "Cápsulas de vitamina C que iluminan y emparejan el tono.",
-   "descripcionLarga": "Marca: medicube (Corea)\nCrema hidratante facial Deep Vita C Golden Capsule: gel con cápsulas que se rompen al mezclarlo en la mano y liberan vitamina C pura protegida (no se oxida).\n- 50% extracto de espino amarillo, 5% niacinamida y vitamina C pura.\n- Ayuda a dar luminosidad y a unificar el tono de la piel.\n- Prueba de irritación en piel con resultado 0,00%; pH 5,8 a 7,8; sin colorantes artificiales.\nCómo se usa:\n- Después de limpiar la cara, toma una pequeña cantidad y frótala en la mano para romper las cápsulas.\n- Aplícala en el rostro con toques suaves hasta que se absorba.\n- Se puede usar de día y de noche. De día, aplica protector solar después.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos.\n- El fabricante recomienda hacer una prueba en una pequeña zona del cuerpo antes del primer uso.\n- Contiene fragancia y aceite de soya: no la uses si eres alérgico a alguno de estos.\n- Si aparece enrojecimiento, picazón o ardor que no pasa, suspende el uso.\n- Si estás embarazada, en lactancia o en tratamiento dermatológico, consulta antes con tu médico.\nIngredientes clave: vitamina C (ácido ascórbico y derivados), niacinamida, alfa-arbutina, extracto de espino amarillo, pantenol, ácido ferúlico, vitamina E.",
-   "foto": "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de uso",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/71m8aGBgXqL._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
-    "img/productos/medicube-crema-capsula-vitamina-c/2.jpg"
-   ]
-  },
-  {
-   "id": "ya-medicube-azelaico",
-   "precio": 84900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "1",
-   "categoria": "Cuidado personal y belleza",
-   "nombre": "Medicube Exosome Shot con ácido azelaico: el sérum coreano para granitos, marcas y piel reactiva",
-   "descripcion": "Calma granitos y marcas en piel reactiva.",
-   "descripcionLarga": "Marca: medicube (Corea)\nSérum Exosome Shot con ácido azelaico 2.000 PPM. Tiene microespículas (agujas microscópicas naturales) que ayudan a que los activos penetren; por eso produce un leve cosquilleo.\n- 15 millones de exosomas, ácido azelaico y 5% de niacinamida.\n- Ayuda a calmar la piel reactiva y con tendencia a granitos.\n- Ayuda a mejorar el tono desigual y la textura de las marcas que dejan los granitos.\nCómo se usa:\n- Con la cara limpia y seca, aplica 1 dosis (un bombeo) y distribúyela con toques suaves, sin frotar fuerte.\n- Es normal sentir un cosquilleo leve por unos minutos.\n- Termina con una crema hidratante. Si lo usas de día, aplica protector solar.\n- Empieza 2 o 3 veces por semana y aumenta si tu piel lo tolera.\nPrecauciones:\n- Solo uso externo. Evita los ojos, los labios y la piel lastimada, irritada, quemada por el sol o recién depilada.\n- No lo uses la misma noche que retinol, ácidos exfoliantes (AHA/BHA) o exfoliantes físicos.\n- Si el ardor es fuerte o dura mucho, lávate con agua y suspende el uso.\n- No recomendado si tienes rosácea activa o piel muy sensible sin consultar a un dermatólogo.\n- Si estás embarazada o en lactancia, consulta antes con tu médico.",
-   "foto": "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de uso",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/71TFpArxslL._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg",
-    "img/productos/medicube-exosome-shot-acido-azelaico/2.jpg"
-   ]
-  },
-  {
-   "id": "ya-medicube-exosome-poros",
-   "precio": 59900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "1",
-   "categoria": "Cuidado personal y belleza",
-   "nombre": "Medicube Exosome Shot Zero: el sérum popular para poros abiertos y piel grasa",
-   "descripcion": "Para poros visibles y exceso de grasa. 15 millones de exosomas.",
-   "descripcionLarga": "Marca: medicube (Corea)\nSérum Zero One Day Exosome Shot 2.000 PPM para poros y exceso de grasa. Tiene microespículas (agujas microscópicas naturales) recubiertas de exosomas; por eso produce un leve cosquilleo.\n- 15 millones de exosomas para llevar los activos dentro de los poros.\n- Ayuda a refinar los poros, controlar el sebo y mejorar la textura.\nCómo se usa:\n- Paso 1: limpia la cara (el fabricante sugiere un pad limpiador).\n- Paso 2: aplica el sérum con toques suaves, sin frotar.\n- Paso 3: termina con una crema hidratante a base de agua.\n- Es normal sentir un cosquilleo leve. Empieza 2 o 3 veces por semana, de noche.\n- Si lo usas de día, aplica protector solar.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos y los labios.\n- Mantenlo lejos del fuego o de fuentes de calor directo.\n- No lo apliques sobre piel lastimada, irritada, quemada por el sol o recién depilada.\n- No lo combines la misma noche con retinol, ácidos exfoliantes (AHA/BHA) o exfoliantes físicos.\n- Si el ardor es fuerte o dura mucho, lávate con agua y suspende el uso.\n- Si estás embarazada o en lactancia, consulta antes con tu médico.",
-   "foto": "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de uso",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/71bfHCGMlEL._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
-    "img/productos/medicube-exosome-shot-zero-poros/2.jpg"
-   ]
-  },
-  {
-   "id": "ya-cerave-pm",
-   "precio": 79900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "1",
-   "categoria": "Cuidado personal y belleza",
-   "nombre": "CeraVe PM: loción de noche con ceramidas y niacinamida, desarrollada con dermatólogos",
-   "descripcion": "Hidrata y calma toda la noche. Desarrollada con dermatólogos.",
-   "descripcionLarga": "Marca: CeraVe (EE. UU.)\nLoción hidratante facial de noche (PM), ligera y sin grasa. Presentación de 3 oz (89 ml).\n- Con 3 ceramidas esenciales (NP, AP, EOP), niacinamida y ácido hialurónico.\n- La niacinamida ayuda a calmar la piel.\n- Tecnología MVE de liberación prolongada: hidrata toda la noche.\n- Sin fragancia, libre de aceites y no comedogénica (no tapa los poros).\nCómo se usa:\n- En la noche, después de limpiar la cara, aplica una cantidad suficiente en rostro y cuello.\n- Se puede usar sola o después de tu sérum.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos; si entra, enjuaga con agua.\n- Suspende el uso si aparece irritación.",
-   "foto": "img/productos/cerave-pm-locion-noche/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de uso",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/61TuwUQ-qvL._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/cerave-pm-locion-noche/1.jpg",
-    "img/productos/cerave-pm-locion-noche/2.jpg"
-   ]
-  },
-  {
-   "id": "ya-cerave-protector-mineral",
-   "precio": 75900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "1",
-   "categoria": "Cuidado personal y belleza",
-   "nombre": "CeraVe protector solar mineral FPS 30 con tinte: protege sin dejar la cara blanca",
-   "descripcion": "Protección mineral con tinte: no deja la cara blanca.",
-   "descripcionLarga": "Marca: CeraVe (EE. UU.)\nProtector solar facial 100% mineral SPF 30 con tinte transparente: se adapta a la mayoría de tonos de piel y no deja la cara blanca.\n- Filtros minerales: óxido de zinc 10% y dióxido de titanio 5,5%. Protección de amplio espectro (UVA y UVB).\n- Con 3 ceramidas esenciales: hidrata todo el día y cuida la barrera de la piel.\n- Sin fragancia, sin parabenos, libre de aceites y no comedogénico.\nCómo se usa:\n- Aplícalo generosamente en la cara 15 minutos antes de salir al sol, solo o debajo del maquillaje.\n- Vuelve a aplicarlo por lo menos cada 2 horas, y después de nadar o sudar.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos; si entra, enjuaga con agua.\n- No lo apliques sobre piel lastimada o con heridas.\n- Suspende el uso si aparece sarpullido.\n- Niños menores de 6 meses: consulta con el pediatra.\n- Mantenlo fuera del alcance de los niños.",
-   "foto": "img/productos/cerave-protector-solar-mineral-spf30/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de uso",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/71zMpOIe51L._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/cerave-protector-solar-mineral-spf30/1.jpg",
-    "img/productos/cerave-protector-solar-mineral-spf30/2.jpg"
-   ]
-  },
-  {
-   "id": "ya-cetaphil-limpiador",
-   "precio": 59900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "1",
-   "categoria": "Cuidado personal y belleza",
-   "nombre": "Cetaphil limpiador facial diario 473 ml + loción hidratante de regalo: limpia sin resecar",
-   "descripcion": "Limpia sin resecar. Frasco grande de 473 ml + loción de regalo.",
-   "descripcionLarga": "Marca: Cetaphil (EE. UU.)\nKit de limpiador facial diario Cetaphil de 16 oz (473 ml) más loción hidratante Cetaphil de 2 oz (59 ml) de regalo en la misma caja.\n- Limpia la cara sin resecar ni irritar.\n- Apto para piel sensible y de uso diario, mañana y noche.\nCómo se usa:\n- Moja la cara, aplica una pequeña cantidad de limpiador y masajea suavemente.\n- Enjuaga con agua y seca con toquecitos.\n- Después aplica la loción hidratante.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos; si entra, enjuaga con abundante agua.\n- Suspende el uso si aparece irritación.",
-   "foto": "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de uso",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/61wJk3BTsrL._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
-    "img/productos/cetaphil-limpiador-facial-473ml/2.jpg"
-   ]
-  },
-  {
-   "id": "ya-nivea-locion",
-   "precio": 42900,
-   "estado": "Disponible",
-   "modalidad": "Disponible ya",
-   "unidades": "1",
-   "categoria": "Cuidado personal y belleza",
-   "nombre": "NIVEA loción corporal reparación intensa: 72 horas de hidratación para piel seca y muy seca",
-   "descripcion": "72 horas de hidratación para piel seca, sin sensación grasosa.",
-   "descripcionLarga": "Marca: NIVEA (Alemania)\nLoción corporal hidratante de larga duración para piel seca a muy seca.\n- 3 veces más cuidado: calma, nutre y fortalece la barrera de la piel.\n- Hidratación de hasta 72 horas.\n- Textura no grasosa de rápida absorción.\n- Probada dermatológicamente.\nCómo se usa:\n- Aplícala todos los días en todo el cuerpo, de preferencia después del baño, con la piel aún un poco húmeda.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos.\n- No la apliques sobre heridas abiertas.\n- Suspende el uso si aparece irritación.",
-   "foto": "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
-   "ofertaHasta": "",
-   "guia": "Guía de uso",
-   "fotoOrigen": "https://m.media-amazon.com/images/I/61nIWVHSZzL._AC_SL500_.jpg",
-   "fotos": [
-    "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
-    "img/productos/nivea-locion-corporal-piel-seca/2.jpg"
-   ]
-  }
- ]
+  "nota": "Copia de respaldo de la pestaña 'Vitrina (pública)' del Google Sheet 'Catálogo Nivytek (tienda)'. Se usa cuando la hoja no responde. No editar a mano.",
+  "actualizado": "2026-11-13",
+  "productos": [
+    {
+      "id": "ya-cargador-usbc-20w",
+      "precio": 39900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "6",
+      "categoria": "Tecnología",
+      "nombre": "Cargador rápido USB-C 20 W certificado por Apple (MFi): carga tu iPhone al 50 % en 30 minutos",
+      "descripcion": "iPhone al 50 % en 30 minutos. Certificado por Apple.",
+      "descripcionLarga": "Cargador de pared USB-C de 20 W con carga rápida (Power Delivery).\n- Carga rápida para iPhone 18, 17, 16 y modelos anteriores con puerto USB-C, iPad y celulares Android.\n- Certificación MFi (hecho para Apple).\n- ¿Qué es MFi? Es la certificación \"Made for iPhone/iPad\" de Apple: el fabricante pasó las pruebas de Apple y el cargador funciona con iPhone y iPad a su máxima velocidad, sin el aviso de \"accesorio no compatible\" y diseñado para proteger la batería.\n- Control de temperatura y protección contra sobrecarga, sobretensión y cortocircuito.\n- Detecta el equipo conectado y le entrega la potencia adecuada.\nCómo se usa:\n- Conecta el cargador a un tomacorriente (funciona de 100 a 240 V).\n- Usa un cable USB-C a USB-C, o USB-C a Lightning para iPhone 14 o anteriores.\n- Con un iPhone compatible, carga hasta 50% en unos 30 minutos.\nPrecauciones:\n- No lo uses en lugares húmedos ni lo cubras mientras carga.\n- Desconecta si se calienta en exceso.\n- Mantenlo fuera del alcance de los niños.",
+      "foto": "img/productos/cargador-usb-c-20w-iphone-mfi/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/618-MJqshTL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/cargador-usb-c-20w-iphone-mfi/1.jpg"
+      ]
+    },
+    {
+      "id": "ya-camara-yoton-2k",
+      "precio": 85900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "2",
+      "categoria": "Tecnología",
+      "nombre": "Cámara WiFi 2K que gira 360°: vigila tu casa, tu bebé o tu mascota desde el celular",
+      "descripcion": "Mira tu casa, tu bebé o tu mascota desde el celular, día y noche.",
+      "descripcionLarga": "Cámara de seguridad WiFi 2K para interior, ideal para vigilar al bebé, las mascotas o la casa.\n- Imagen 2K con giro de 360° para cubrir toda la habitación.\n- Funciona con WiFi de 2,4 y 5 GHz.\n- Detección de movimiento con seguimiento automático y alertas al celular.\n- Visión nocturna de hasta 10 metros.\n- Grabación continua las 24 horas.\nCómo se usa:\n- Descarga en el celular la app indicada en la caja o en el código QR del manual.\n- Conecta la cámara a la corriente y espera a que encienda.\n- En la app, agrega un dispositivo, escribe la clave de tu WiFi y escanea con la cámara el código QR que aparece en el celular.\n- Ubícala en una repisa o instálala en la pared o el techo con la base incluida.\n- Para grabar, inserta una tarjeta microSD o activa la nube en la app.\nPrecauciones:\n- Es para interiores: no la expongas a lluvia ni humedad.\n- Cambia la contraseña de la app y no la compartas.\n- Avisa a las personas que se graban en espacios compartidos.",
+      "foto": "img/productos/camara-seguridad-wifi-2k-interior/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de instalación",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61tfGvrxoDL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/camara-seguridad-wifi-2k-interior/1.jpg",
+        "img/productos/camara-seguridad-wifi-2k-interior/2.jpg"
+      ]
+    },
+    {
+      "id": "ya-medicube-vitamina-c",
+      "precio": 89900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Medicube Deep Vita C: la crema popular en cápsulas de vitamina C que ilumina y unifica el tono",
+      "descripcion": "Cápsulas de vitamina C que iluminan y emparejan el tono.",
+      "descripcionLarga": "Marca: medicube (Corea)\nCrema hidratante facial Deep Vita C Golden Capsule: gel con cápsulas que se rompen al mezclarlo en la mano y liberan vitamina C pura protegida (no se oxida).\n- 50% extracto de espino amarillo, 5% niacinamida y vitamina C pura.\n- Ayuda a dar luminosidad y a unificar el tono de la piel.\n- Prueba de irritación en piel con resultado 0,00%; pH 5,8 a 7,8; sin colorantes artificiales.\nCómo se usa:\n- Después de limpiar la cara, toma una pequeña cantidad y frótala en la mano para romper las cápsulas.\n- Aplícala en el rostro con toques suaves hasta que se absorba.\n- Se puede usar de día y de noche. De día, aplica protector solar después.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos.\n- El fabricante recomienda hacer una prueba en una pequeña zona del cuerpo antes del primer uso.\n- Contiene fragancia y aceite de soya: no la uses si eres alérgico a alguno de estos.\n- Si aparece enrojecimiento, picazón o ardor que no pasa, suspende el uso.\n- Si estás embarazada, en lactancia o en tratamiento dermatológico, consulta antes con tu médico.\nIngredientes clave: vitamina C (ácido ascórbico y derivados), niacinamida, alfa-arbutina, extracto de espino amarillo, pantenol, ácido ferúlico, vitamina E.",
+      "foto": "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71m8aGBgXqL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/medicube-crema-capsula-vitamina-c/1.jpg",
+        "img/productos/medicube-crema-capsula-vitamina-c/2.jpg"
+      ]
+    },
+    {
+      "id": "ya-medicube-azelaico",
+      "precio": 84900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Medicube Exosome Shot con ácido azelaico: el sérum coreano para granitos, marcas y piel reactiva",
+      "descripcion": "Calma granitos y marcas en piel reactiva.",
+      "descripcionLarga": "Marca: medicube (Corea)\nSérum Exosome Shot con ácido azelaico 2.000 PPM. Tiene microespículas (agujas microscópicas naturales) que ayudan a que los activos penetren; por eso produce un leve cosquilleo.\n- 15 millones de exosomas, ácido azelaico y 5% de niacinamida.\n- Ayuda a calmar la piel reactiva y con tendencia a granitos.\n- Ayuda a mejorar el tono desigual y la textura de las marcas que dejan los granitos.\nCómo se usa:\n- Con la cara limpia y seca, aplica 1 dosis (un bombeo) y distribúyela con toques suaves, sin frotar fuerte.\n- Es normal sentir un cosquilleo leve por unos minutos.\n- Termina con una crema hidratante. Si lo usas de día, aplica protector solar.\n- Empieza 2 o 3 veces por semana y aumenta si tu piel lo tolera.\nPrecauciones:\n- Solo uso externo. Evita los ojos, los labios y la piel lastimada, irritada, quemada por el sol o recién depilada.\n- No lo uses la misma noche que retinol, ácidos exfoliantes (AHA/BHA) o exfoliantes físicos.\n- Si el ardor es fuerte o dura mucho, lávate con agua y suspende el uso.\n- No recomendado si tienes rosácea activa o piel muy sensible sin consultar a un dermatólogo.\n- Si estás embarazada o en lactancia, consulta antes con tu médico.",
+      "foto": "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71TFpArxslL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/medicube-exosome-shot-acido-azelaico/1.jpg",
+        "img/productos/medicube-exosome-shot-acido-azelaico/2.jpg"
+      ]
+    },
+    {
+      "id": "ya-medicube-exosome-poros",
+      "precio": 59900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Medicube Exosome Shot Zero: el sérum popular para poros abiertos y piel grasa",
+      "descripcion": "Para poros visibles y exceso de grasa. 15 millones de exosomas.",
+      "descripcionLarga": "Marca: medicube (Corea)\nSérum Zero One Day Exosome Shot 2.000 PPM para poros y exceso de grasa. Tiene microespículas (agujas microscópicas naturales) recubiertas de exosomas; por eso produce un leve cosquilleo.\n- 15 millones de exosomas para llevar los activos dentro de los poros.\n- Ayuda a refinar los poros, controlar el sebo y mejorar la textura.\nCómo se usa:\n- Paso 1: limpia la cara (el fabricante sugiere un pad limpiador).\n- Paso 2: aplica el sérum con toques suaves, sin frotar.\n- Paso 3: termina con una crema hidratante a base de agua.\n- Es normal sentir un cosquilleo leve. Empieza 2 o 3 veces por semana, de noche.\n- Si lo usas de día, aplica protector solar.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos y los labios.\n- Mantenlo lejos del fuego o de fuentes de calor directo.\n- No lo apliques sobre piel lastimada, irritada, quemada por el sol o recién depilada.\n- No lo combines la misma noche con retinol, ácidos exfoliantes (AHA/BHA) o exfoliantes físicos.\n- Si el ardor es fuerte o dura mucho, lávate con agua y suspende el uso.\n- Si estás embarazada o en lactancia, consulta antes con tu médico.",
+      "foto": "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71bfHCGMlEL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/medicube-exosome-shot-zero-poros/1.jpg",
+        "img/productos/medicube-exosome-shot-zero-poros/2.jpg"
+      ]
+    },
+    {
+      "id": "ya-cerave-pm",
+      "precio": 79900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "CeraVe PM: loción de noche con ceramidas y niacinamida, desarrollada con dermatólogos",
+      "descripcion": "Hidrata y calma toda la noche. Desarrollada con dermatólogos.",
+      "descripcionLarga": "Marca: CeraVe (EE. UU.)\nLoción hidratante facial de noche (PM), ligera y sin grasa. Presentación de 3 oz (89 ml).\n- Con 3 ceramidas esenciales (NP, AP, EOP), niacinamida y ácido hialurónico.\n- La niacinamida ayuda a calmar la piel.\n- Tecnología MVE de liberación prolongada: hidrata toda la noche.\n- Sin fragancia, libre de aceites y no comedogénica (no tapa los poros).\nCómo se usa:\n- En la noche, después de limpiar la cara, aplica una cantidad suficiente en rostro y cuello.\n- Se puede usar sola o después de tu sérum.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos; si entra, enjuaga con agua.\n- Suspende el uso si aparece irritación.",
+      "foto": "img/productos/cerave-pm-locion-noche/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61TuwUQ-qvL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/cerave-pm-locion-noche/1.jpg",
+        "img/productos/cerave-pm-locion-noche/2.jpg"
+      ]
+    },
+    {
+      "id": "ya-cerave-protector-mineral",
+      "precio": 75900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "CeraVe protector solar mineral FPS 30 con tinte: protege sin dejar la cara blanca",
+      "descripcion": "Protección mineral con tinte: no deja la cara blanca.",
+      "descripcionLarga": "Marca: CeraVe (EE. UU.)\nProtector solar facial 100% mineral SPF 30 con tinte transparente: se adapta a la mayoría de tonos de piel y no deja la cara blanca.\n- Filtros minerales: óxido de zinc 10% y dióxido de titanio 5,5%. Protección de amplio espectro (UVA y UVB).\n- Con 3 ceramidas esenciales: hidrata todo el día y cuida la barrera de la piel.\n- Sin fragancia, sin parabenos, libre de aceites y no comedogénico.\nCómo se usa:\n- Aplícalo generosamente en la cara 15 minutos antes de salir al sol, solo o debajo del maquillaje.\n- Vuelve a aplicarlo por lo menos cada 2 horas, y después de nadar o sudar.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos; si entra, enjuaga con agua.\n- No lo apliques sobre piel lastimada o con heridas.\n- Suspende el uso si aparece sarpullido.\n- Niños menores de 6 meses: consulta con el pediatra.\n- Mantenlo fuera del alcance de los niños.",
+      "foto": "img/productos/cerave-protector-solar-mineral-spf30/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71zMpOIe51L._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/cerave-protector-solar-mineral-spf30/1.jpg",
+        "img/productos/cerave-protector-solar-mineral-spf30/2.jpg"
+      ]
+    },
+    {
+      "id": "ya-cetaphil-limpiador",
+      "precio": 59900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Cetaphil limpiador facial diario 473 ml + loción hidratante de regalo: limpia sin resecar",
+      "descripcion": "Limpia sin resecar. Frasco grande de 473 ml + loción de regalo.",
+      "descripcionLarga": "Marca: Cetaphil (EE. UU.)\nKit de limpiador facial diario Cetaphil de 16 oz (473 ml) más loción hidratante Cetaphil de 2 oz (59 ml) de regalo en la misma caja.\n- Limpia la cara sin resecar ni irritar.\n- Apto para piel sensible y de uso diario, mañana y noche.\nCómo se usa:\n- Moja la cara, aplica una pequeña cantidad de limpiador y masajea suavemente.\n- Enjuaga con agua y seca con toquecitos.\n- Después aplica la loción hidratante.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos; si entra, enjuaga con abundante agua.\n- Suspende el uso si aparece irritación.",
+      "foto": "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61wJk3BTsrL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/cetaphil-limpiador-facial-473ml/1.jpg",
+        "img/productos/cetaphil-limpiador-facial-473ml/2.jpg"
+      ]
+    },
+    {
+      "id": "ya-nivea-locion",
+      "precio": 42900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "NIVEA loción corporal reparación intensa: 72 horas de hidratación para piel seca y muy seca",
+      "descripcion": "72 horas de hidratación para piel seca, sin sensación grasosa.",
+      "descripcionLarga": "Marca: NIVEA (Alemania)\nLoción corporal hidratante de larga duración para piel seca a muy seca.\n- 3 veces más cuidado: calma, nutre y fortalece la barrera de la piel.\n- Hidratación de hasta 72 horas.\n- Textura no grasosa de rápida absorción.\n- Probada dermatológicamente.\nCómo se usa:\n- Aplícala todos los días en todo el cuerpo, de preferencia después del baño, con la piel aún un poco húmeda.\nPrecauciones:\n- Solo uso externo. Evita el contacto con los ojos.\n- No la apliques sobre heridas abiertas.\n- Suspende el uso si aparece irritación.",
+      "foto": "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61nIWVHSZzL._AC_SL500_.jpg",
+      "fotos": [
+        "img/productos/nivea-locion-corporal-piel-seca/1.jpg",
+        "img/productos/nivea-locion-corporal-piel-seca/2.jpg"
+      ]
+    },
+    {
+      "id": "enc-secador-ionico-difusor",
+      "precio": 282900,
+      "estado": "Disponible",
+      "modalidad": "Por encargo",
+      "unidades": "",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Secador iónico 1875 W con difusor para rizos: seca el doble de rápido y sin frizz",
+      "descripcion": "Seca el doble de rápido, deja brillo y controla el frizz. Incluye difusor para rizos, boquilla y peine.",
+      "descripcionLarga": "Secador de cabello iónico de 1875 W con tecnología de cerámica, 3 accesorios y acabado rosa.\n- Motor de 1875 W y diseño aerodinámico: flujo de aire potente que seca el cabello hasta 2 veces más rápido, con menos tiempo de calor sobre el pelo.\n- Iones negativos: neutralizan la estática, controlan el frizz y aumentan el brillo.\n- 3 accesorios: boquilla concentradora para peinar con precisión, difusor para definir rizos y ondas, y peine para alisar y manejar cabello grueso.\n- 3 temperaturas y 2 velocidades, con botón de aire frío para fijar el peinado.\n- Apagado automático por sobrecalentamiento y tecnología de baja radiación electromagnética.\n- Ligero (unos 620 g) y silencioso. Funciona a 110 V (el voltaje de Colombia).\nIncluye:\n- Secador, difusor, boquilla concentradora y accesorio de peine.\nCómo se usa:\n- Seca el exceso de agua con una toalla antes de empezar.\n- Encaja el accesorio que necesites: difusor para rizos, boquilla para alisar o peine para desenredar.\n- Elige la temperatura y la velocidad; empieza por la media si tu cabello es fino o está dañado.\n- Mueve el secador de forma continua a unos 15 cm del cabello.\n- Termina con el botón de aire frío para fijar el peinado y dar brillo.\nPrecauciones:\n- No lo uses cerca del agua ni con las manos mojadas.\n- No tapes la entrada de aire ni lo cubras con tela o papel mientras funciona: se apaga solo si se recalienta, pero deja que se enfríe antes de volver a usarlo.\n- Desconéctalo al terminar y guárdalo cuando esté frío.\n- Mantenlo fuera del alcance de los niños.\n- Por encargo: llega en máximo 15 días.",
+      "foto": "img/productos/secador-ionico-difusor-rizos/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61RBxtljGtL._AC_SL1500_.jpg",
+      "fotos": [
+        "img/productos/secador-ionico-difusor-rizos/1.jpg"
+      ]
+    },
+    {
+      "id": "enc-tira-led-rgbic",
+      "precio": 151900,
+      "estado": "Disponible",
+      "modalidad": "Por encargo",
+      "unidades": "",
+      "categoria": "Hogar y cocina",
+      "nombre": "Tira de luces LED RGBIC de 5 m con app y modo música: varios colores a la vez para tu cuarto o TV",
+      "descripcion": "Varios colores a la vez en una sola tira, se controla desde el celular y baila con la música.",
+      "descripcionLarga": "Tira de luces LED inteligente RGBIC de 16.4 pies (5 m) con control por Bluetooth desde el celular.\n- RGBIC: a diferencia de las tiras RGB comunes, muestra varios colores a la vez en la misma tira, con efectos de movimiento.\n- Control desde la app (Bluetooth): 16 millones de colores, brillo, temporizador y más de 64 escenas listas (fiesta, película, relax, Navidad).\n- Modo música: micrófono integrado con 11 modos que sincronizan las luces con el sonido.\n- Comunidad DIY: efectos creados por otros usuarios y temas que se actualizan en la app.\n- Cinta adhesiva 3M en la parte de atrás; se puede cortar en las marcas indicadas.\n- Para interiores. No es compatible con Alexa ni Google (se controla por Bluetooth desde el celular).\nIncluye:\n- Tira de 5 m, caja de control con micrófono, adaptador de corriente y clips de fijación.\nCómo se usa (instalación):\n- Limpia y seca bien la superficie donde la vas a pegar; el polvo y la grasa hacen que se despegue.\n- Mide y planea el recorrido antes de retirar el papel protector; si necesitas cortar, hazlo solo en las marcas de corte.\n- Pega la tira presionando unos segundos cada tramo y conecta el adaptador a la corriente.\n- Descarga la app indicada en la caja, activa el Bluetooth del celular y agrega el dispositivo.\n- Elige colores, escenas o el modo música desde la app.\nPrecauciones:\n- Solo para interiores: no la expongas a agua ni humedad.\n- No dobles la tira en ángulos cerrados ni la pegues sobre superficies calientes.\n- Usa únicamente el adaptador incluido y no la cubras mientras está encendida.\n- Mantén el controlador y el adaptador fuera del alcance de los niños.\n- Por encargo: llega en máximo 15 días.",
+      "foto": "img/productos/tira-luces-led-rgbic-5m-app/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de instalación",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/71tjdZg28vL._AC_SL1500_.jpg",
+      "fotos": [
+        "img/productos/tira-luces-led-rgbic-5m-app/1.jpg",
+        "img/productos/tira-luces-led-rgbic-5m-app/2.jpg"
+      ]
+    },
+    {
+      "id": "enc-plancha-revlon-ceramica",
+      "precio": 184900,
+      "estado": "Disponible",
+      "modalidad": "Por encargo",
+      "unidades": "",
+      "categoria": "Cuidado personal y belleza",
+      "nombre": "Plancha alisadora Revlon cerámica 1 pulgada: lista en 15 segundos, 10 temperaturas hasta 455 °F",
+      "descripcion": "Alisa o hace ondas sin frizz. Placas largas de cerámica, lista en 15 segundos. Amazon's Choice.",
+      "descripcionLarga": "Marca: Revlon (EE. UU.)\nPlancha alisadora Smooth Brilliance con placas de cerámica y turmalina de 1 pulgada.\n- Recubrimiento de cerámica con turmalina iónica: menos frizz y más brillo.\n- 10 temperaturas hasta 455 °F (235 °C) para todo tipo de cabello, con calentamiento en 15 segundos.\n- Placas extralargas: cubren más cabello en cada pasada y permiten alisar u ondular.\n- Diseño delgado y ligero; apagado automático a la hora; soporte integrado, botones empotrados e interruptor de bloqueo para guardarla o viajar.\n- Funciona a 110 V (el voltaje de Colombia).\nCómo se usa:\n- Úsala solo con el cabello limpio y seco; aplica un protector térmico.\n- Conéctala y espera unos 15 segundos a que caliente; elige la temperatura según tu tipo de cabello (más baja para cabello fino o teñido).\n- Divide el cabello en secciones y pasa la plancha desde la raíz hasta las puntas con presión uniforme, sin detenerte en un punto.\n- Para ondas, gira la plancha media vuelta mientras deslizas.\n- Al terminar, apágala, desconéctala y deja que se enfríe antes de guardarla.\nPrecauciones:\n- No toques las placas calientes ni la uses cerca del agua.\n- No la uses sobre cabello húmedo ni con productos inflamables.\n- Empieza con temperaturas bajas: el calor excesivo daña el cabello.\n- Desconéctala siempre después de usarla y guárdala en un lugar seco.\n- Mantenla fuera del alcance de los niños.\n- Por encargo: llega en máximo 15 días.",
+      "foto": "img/productos/plancha-alisadora-revlon-ceramica/1.jpg",
+      "ofertaHasta": "",
+      "guia": "Guía de uso",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/516MBTnxaaL._AC_SL1500_.jpg",
+      "fotos": [
+        "img/productos/plancha-alisadora-revlon-ceramica/1.jpg"
+      ]
+    }
+  ]
 }

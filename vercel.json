@@ -236,6 +236,42 @@
         {
           "type": "query",
           "key": "p",
+          "value": "enc-secador-ionico-difusor"
+        }
+      ],
+      "destination": "/p/secador-ionico-difusor-rizos.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "enc-tira-led-rgbic"
+        }
+      ],
+      "destination": "/p/tira-luces-led-rgbic-5m-app.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "enc-plancha-revlon-ceramica"
+        }
+      ],
+      "destination": "/p/plancha-alisadora-revlon-ceramica.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
           "value": "combo-noche-cerave"
         }
       ],

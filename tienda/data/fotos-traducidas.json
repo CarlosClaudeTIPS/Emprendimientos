@@ -953,5 +953,59 @@
     "pad": 6
    }
   ]
+ },
+ "tira-luces-led-rgbic-5m-app": {
+  "fuente": "1.jpg",
+  "cajas": [
+   {
+    "box": [
+     140,
+     168,
+     520,
+     226
+    ],
+    "lineas": [
+     "Tira LED RGBIC"
+    ],
+    "size": 40,
+    "font": "bold",
+    "align": "left",
+    "pad": 4,
+    "modo": "relleno"
+   },
+   {
+    "box": [
+     140,
+     232,
+     440,
+     282
+    ],
+    "lineas": [
+     "Luces inteligentes"
+    ],
+    "size": 30,
+    "font": "regular",
+    "align": "left",
+    "pad": 4,
+    "modo": "relleno"
+   },
+   {
+    "box": [
+     700,
+     1046,
+     822,
+     1102
+    ],
+    "lineas": [
+     "App",
+     "Govee Home"
+    ],
+    "size": 17,
+    "font": "semibold",
+    "align": "left",
+    "pad": 2,
+    "modo": "relleno"
+   }
+  ]
  }
 }
