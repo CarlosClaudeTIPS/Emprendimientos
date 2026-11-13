@@ -4,7 +4,7 @@
  * con inventario, costos y ganancia, combos, por encargo, vendidos, el Ranking de ofertas para
  * decidir qué traer, registro de pedidos y vista por cliente. Las decisiones (publicar, precio,
  * descuento) y los pedidos se guardan en la base de datos del artefacto; la rutina las aplica a la hoja.
- * Uso: node scripts/inventario-artefacto.mjs <salida.html> [costos.json] [ranking.json]
+ * Uso: node scripts/inventario-artefacto.mjs <salida.html> [costos.json] [ranking.json] [candidatos.json] [combos-sugeridos.json]
  */
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -25,6 +25,8 @@ const pendientes = existsSync(join(raiz, 'data/encargo-pendientes.json')) ? leer
 const privado = costosPath && existsSync(costosPath) ? JSON.parse(readFileSync(costosPath, 'utf8')) : { costos: {} };
 const ranking = rankingPath && existsSync(rankingPath) ? JSON.parse(readFileSync(rankingPath, 'utf8')) : { filas: [] };
 const candidatos = candidatosPath && existsSync(candidatosPath) ? JSON.parse(readFileSync(candidatosPath, 'utf8')) : [];
+const sugeridosPath = process.argv[6] || '';
+const sugeridos = sugeridosPath && existsSync(sugeridosPath) ? JSON.parse(readFileSync(sugeridosPath, 'utf8')) : [];
 const costoDe = (id) => { const c = (privado.costos || {})[id]; return typeof c === 'number' ? c : null; };
 
 const noop = () => { };
@@ -79,6 +81,15 @@ const cdFila = (c) => `<article class="it rk" data-txt="${esc((c.titulo + ' ' + 
 const secPiel = `<section id="sec-piel" class="sec" data-sec="piel"><h2>Cuidado de la piel: ofertas recientes en Telegram</h2>
 <p class="aviso">Ofertas de cuidado de la piel y el cuerpo vistas en los canales públicos (ClubGratis, ReviuDescuentos, DescuentosHome, DescuentosTech) en las últimas tres semanas. El costo usa el precio sin descuento a $3.500 por dólar y el sugerido deja unos $30.000 por unidad. Para traer alguno, dímelo o anótalo en la pestaña de su categoría en la hoja.</p>
 ${candidatos.length ? `<div class="lista">${candidatos.map(cdFila).join('\n')}</div>` : '<p class="vacio">Sin candidatos todavía.</p>'}</section>`;
+
+/* Combos sugeridos: filas de la pestaña Combos con Publicar = FALSE, nombre y sin "Publicado" en J */
+const sgFila = (c) => `<article class="it" data-estado="sugerido" data-cat="Combos" data-txt="${esc((c.nombre + ' ' + c.lleva).toLowerCase())}">
+  <div class="foto"><span class="sinfoto">combo</span></div>
+  <div class="info"><span class="cat">Combo sugerido</span><h3>${esc(c.nombre)}</h3><p class="comp">Incluye: ${esc(c.lleva)}</p>
+  <ul class="partes"><li class="suma"><span>Por separado</span><b class="p-suma" data-suma="${c.suma}">${precio(c.suma)}</b></li><li class="suma"><span>En combo (<span class="p-desc">${c.descuento}</span> % menos)</span><b class="p-combo">${precio(c.precio)}</b></li></ul>
+  <div class="meta"><span class="pill pend">Sugerido · sin publicar</span><span class="costo">Costo ${precio(c.costo)} · Ganancia <b>${precio(c.ganancia)}</b>${c.unidades != null ? ` · ${c.unidades} ${c.unidades === 1 ? 'unidad' : 'unidades'} disponibles` : ''}</span></div>
+  <div class="decision" data-tipo="combo" data-key="cb-${esc(c.id)}" data-nombre="${esc(c.nombre)}"><label><input type="checkbox" class="d-pub"> Publicar</label><label>Descuento %<input type="number" class="d-desc" min="0" max="60" value="${c.descuento}"></label><span class="d-estado"></span></div></div>
+</article>`;
 
 /* Ranking: ofertas candidatas */
 const catsRk = [...new Set(ranking.filas.map(r => r.categoria).filter(Boolean))].sort();
@@ -185,7 +196,8 @@ ${seccion('inventario', 'En stock (entrega inmediata)', items.filter(f => f.esta
   <ul class="partes" id="c-partes" style="grid-column:1/-1"></ul>
   <button type="submit" id="c-guardar">Publicar este combo</button>
 </form><p class="estado-db" id="c-estado"></p></details>
-${items.filter(f => f.estado === 'combo').length ? `<div class="lista">${items.filter(f => f.estado === 'combo').map(fila).join('\n')}</div>` : '<p class="vacio">No hay combos publicados.</p>'}</section>
+${items.filter(f => f.estado === 'combo').length ? `<div class="lista">${items.filter(f => f.estado === 'combo').map(fila).join('\n')}</div>` : '<p class="vacio">No hay combos publicados.</p>'}
+${sugeridos.length ? `<h2 style="margin-top:1.2rem">Combos sugeridos (sin publicar)</h2><p class="aviso">Armados con lo que ya tienes para dejar entre $50.000 y $60.000. Marca «Publicar» y la rutina arma la ficha y lo sube en su próxima pasada; el descuento se puede cambiar.</p><div class="lista">${sugeridos.map(sgFila).join('\n')}</div>` : ''}</section>
 <section id="sec-encargo" class="sec" data-sec="encargo"><h2>Por encargo (llegan en máximo 15 días)</h2>${items.some(f => f.estado === 'encargo' || f.estado === 'pendiente') ? `<div class="lista">${items.filter(f => f.estado === 'encargo' || f.estado === 'pendiente').map(fila).join('\n')}</div>` : '<p class="vacio">Nada por encargo todavía.</p>'}</section>
 <section id="sec-ranking" class="sec" data-sec="ranking"><h2>Ranking de ofertas (de mayor a menor puntaje)</h2>
 <div class="actualizar"><button type="button" id="btn-actualizar">Actualizar ofertas de los canales</button><span class="estado-db" id="act-estado">Cargando…</span>
@@ -243,7 +255,7 @@ ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'ven
   bc.addEventListener('click',function(){if(!db||!puedeEscribir)return;var NL=String.fromCharCode(10);var lista=ta.value.split(NL).map(function(x){return x.trim().replace(/^https?:[/][/]t[.]me[/](s[/])?/,'').replace(/^@/,'')}).filter(Boolean);
     db.collection('solicitudes').doc('canales').set({telegram:lista,cuando:Date.now()}).then(function(){ce2.textContent='Guardado: '+lista.length+' canales.';}).catch(function(e){ce2.textContent='No se pudo guardar: '+(e&&e.message||e);});});
   function precioCombo(suma,desc){return Math.floor(suma*(1-desc/100)/1000)*1000-100}
-  document.querySelectorAll('.it[data-estado="combo"]').forEach(function(it){var d=it.querySelector('.d-desc');if(!d)return;d.addEventListener('input',function(){var suma=Number(it.querySelector('.p-suma').dataset.suma);it.querySelector('.p-desc').textContent=d.value;it.querySelector('.p-combo').textContent=fmt(precioCombo(suma,Number(d.value)||0));});});
+  document.querySelectorAll('.it[data-estado="combo"],.it[data-estado="sugerido"]').forEach(function(it){var d=it.querySelector('.d-desc');if(!d)return;d.addEventListener('input',function(){var suma=Number(it.querySelector('.p-suma').dataset.suma);it.querySelector('.p-desc').textContent=d.value;it.querySelector('.p-combo').textContent=fmt(precioCombo(suma,Number(d.value)||0));});});
   /* combo nuevo */
   var cc=document.getElementById('c-cat'),cp=document.getElementById('c-prod'),cd=document.getElementById('c-desc'),cl=document.getElementById('c-partes'),cf=document.getElementById('f-combo'),ce=document.getElementById('c-estado'),partes=[];
   cc.addEventListener('change',function(){var c=cc.value;cp.disabled=!c;cp.innerHTML='<option value="">Elige…</option>'+((OPC[c]||[]).map(function(o){return '<option value="'+esc(o.n)+'" data-precio="'+o.p+'">'+esc(o.n)+'</option>'}).join(''));});
