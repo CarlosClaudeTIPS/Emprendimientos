@@ -29,6 +29,25 @@ const sugeridosPath = process.argv[6] || '';
 const sugeridos = sugeridosPath && existsSync(sugeridosPath) ? JSON.parse(readFileSync(sugeridosPath, 'utf8')) : [];
 const costoDe = (id) => { const c = (privado.costos || {})[id]; return typeof c === 'number' ? c : null; };
 
+/* Fotos externas (Amazon, Telegram) → data: URI. El visor de artefactos bloquea imágenes de otros sitios (CSP),
+ * así que se incrustan en miniatura (Amazon _AC_UL200_). Si una no baja, la tarjeta queda "sin imagen". */
+const cacheImg = new Map();
+async function incrustar(url) {
+  if (!url || /^data:/.test(url)) return url || '';
+  const u = String(url).replace(/\._[A-Z0-9_,]+_\.(jpg|jpeg|png|webp)/i, '._AC_UL200_.$1').split('?')[0];
+  if (cacheImg.has(u)) return cacheImg.get(u);
+  let d = '';
+  try {
+    const r = await fetch(u, { headers: { 'user-agent': 'Mozilla/5.0', accept: 'image/*' }, signal: AbortSignal.timeout(15000) });
+    if (r.ok) { const b = Buffer.from(await r.arrayBuffer()); if (b.length && b.length <= 400000) d = 'data:' + (r.headers.get('content-type') || 'image/jpeg').split(';')[0] + ';base64,' + b.toString('base64'); }
+  } catch (e) { d = ''; }
+  cacheImg.set(u, d); return d;
+}
+async function incrustarTodo(lista, campo) { for (let i = 0; i < lista.length; i += 8) await Promise.all(lista.slice(i, i + 8).map(async (x) => { x[campo] = await incrustar(x[campo]); })); }
+await incrustarTodo(ranking.filas || [], 'imagen');
+await incrustarTodo(candidatos, 'foto');
+
+
 const noop = () => { };
 const el = () => ({ style: {}, classList: { add: noop, remove: noop, toggle: noop }, setAttribute: noop, removeAttribute: noop, appendChild: noop, addEventListener: noop, querySelector: () => null, querySelectorAll: () => [], innerHTML: '' });
 const sb = { console, setTimeout, clearTimeout, URL, URLSearchParams, encodeURIComponent, decodeURIComponent, Math, Date, JSON, Number, String, Object, Array, Promise, isNaN, parseInt,
@@ -311,4 +330,4 @@ ${seccion('vendidos', 'Vendidos y agotados', items.filter(f => f.estado === 'ven
 </script>
 `;
 writeFileSync(salida, html);
-console.log(`Administración: ${items.length} referencias, ${ranking.filas.length} ofertas → ${salida}`);
+console.log(`Fotos incrustadas: ${[...cacheImg.values()].filter(Boolean).length} de ${cacheImg.size} · `, `Administración: ${items.length} referencias, ${ranking.filas.length} ofertas → ${salida}`);

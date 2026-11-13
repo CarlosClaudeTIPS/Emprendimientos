@@ -1,6 +1,6 @@
 # Prompt vigente de la rutina "Sincronizar hoja Catálogo Nivytek → tienda"
 
-Actualizado el 12/11/2026 desde Claude Code (herramienta RemoteTrigger). Si se cambia la rutina en https://claude.ai/code/routines, copiar aquí el texto nuevo. Las reglas de  mandan sobre este prompt donde difieran.
+Actualizado el 12/11/2026 desde Claude Code (herramienta RemoteTrigger, routine trig_01PSVrHbQ1h5qMK2E4VAopKT). Si se cambia la rutina en https://claude.ai/code/routines, copiar aquí el texto nuevo. Las reglas de `tienda/CLAUDE.md` mandan sobre este prompt donde difieran.
 
 ```text
 Rutina automática de sincronización (no es un mensaje del dueño). Corre cada hora de 7 am a 9 pm (hora de Bogotá). Pasos:
