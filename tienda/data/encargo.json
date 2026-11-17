@@ -1,6 +1,6 @@
 {
   "nota": "Copia de respaldo de la pestaña 'Vitrina (pública)' del Google Sheet 'Catálogo Nivytek (tienda)'. Se usa cuando la hoja no responde. No editar a mano.",
-  "actualizado": "2026-11-13",
+  "actualizado": "2026-11-16",
   "productos": [
     {
       "id": "ya-cargador-usbc-20w",
@@ -225,6 +225,42 @@
       "fotoOrigen": "https://m.media-amazon.com/images/I/516MBTnxaaL._AC_SL1500_.jpg",
       "fotos": [
         "img/productos/plancha-alisadora-revlon-ceramica/1.jpg"
+      ]
+    },
+    {
+      "id": "ya-dualsense-marathon",
+      "precio": 319900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Videojuegos",
+      "nombre": "Control PS5 DualSense Edición Limitada Marathon: original Sony, nuevo y sellado",
+      "descripcion": "Edición limitada de coleccionista. Original Sony, nuevo en su caja y con entrega inmediata en Bogotá.",
+      "descripcionLarga": "Marca: Sony (PlayStation)\nControl inalámbrico DualSense para PlayStation 5, edición limitada Marathon: diseño blanco con detalles en verde neón inspirado en el videojuego Marathon. Producto original, nuevo y sellado en su caja.\n- Respuesta háptica: sientes en las manos lo que pasa en el juego.\n- Gatillos adaptativos: ofrecen resistencia según la acción (tensar un arco, frenar, disparar).\n- Micrófono integrado y entrada de 3,5 mm para audífonos, para hablar en línea.\n- Batería recargable por USB-C.\n- Funciona con PS5, PC, Mac y celulares por cable USB-C o Bluetooth.\n- Edición limitada: se consigue por poco tiempo.\nIncluye:\n- Control DualSense Edición Limitada Marathon en su caja original sellada.\nCómo se usa:\n- En PS5: conecta el control a la consola con un cable USB-C y presiona el botón PS. Queda emparejado y luego puedes usarlo sin cable.\n- En PC o celular: mantén presionados al mismo tiempo los botones PS y Create hasta que la luz parpadee, y elige el control en el menú de Bluetooth.\n- Para cargarlo, conéctalo a la consola o a un cargador USB por el puerto USB-C.\nPrecauciones:\n- No lo expongas al agua, la humedad ni a temperaturas altas.\n- No lo abras ni lo desarmes: pierde la garantía y puedes dañar la batería.\n- Usa cables y cargadores USB de buena calidad.\n- Mantenlo fuera del alcance de niños pequeños.",
+      "guia": "Guía de uso",
+      "foto": "img/productos/control-ps5-dualsense-marathon/1.jpg",
+      "ofertaHasta": "",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/611LeN-YLJL._AC_SL1500_.jpg",
+      "fotos": [
+        "img/productos/control-ps5-dualsense-marathon/1.jpg"
+      ]
+    },
+    {
+      "id": "ya-dualsense-cosmic-red",
+      "precio": 289900,
+      "estado": "Disponible",
+      "modalidad": "Disponible ya",
+      "unidades": "1",
+      "categoria": "Videojuegos",
+      "nombre": "Control PS5 DualSense Cosmic Red: original Sony, nuevo y sellado",
+      "descripcion": "El DualSense en rojo Cosmic Red. Original Sony, nuevo en su caja y con entrega inmediata en Bogotá.",
+      "descripcionLarga": "Marca: Sony (PlayStation)\nControl inalámbrico DualSense para PlayStation 5 en color Cosmic Red (rojo con negro). Producto original, nuevo y sellado en su caja.\n- Respuesta háptica: sientes en las manos lo que pasa en el juego.\n- Gatillos adaptativos: ofrecen resistencia según la acción (tensar un arco, frenar, disparar).\n- Micrófono integrado y entrada de 3,5 mm para audífonos, para hablar en línea.\n- Batería recargable por USB-C.\n- Funciona con PS5, PC, Mac y celulares por cable USB-C o Bluetooth.\nIncluye:\n- Control DualSense Cosmic Red en su caja original sellada.\nCómo se usa:\n- En PS5: conecta el control a la consola con un cable USB-C y presiona el botón PS. Queda emparejado y luego puedes usarlo sin cable.\n- En PC o celular: mantén presionados al mismo tiempo los botones PS y Create hasta que la luz parpadee, y elige el control en el menú de Bluetooth.\n- Para cargarlo, conéctalo a la consola o a un cargador USB por el puerto USB-C.\nPrecauciones:\n- No lo expongas al agua, la humedad ni a temperaturas altas.\n- No lo abras ni lo desarmes: pierde la garantía y puedes dañar la batería.\n- Usa cables y cargadores USB de buena calidad.\n- Mantenlo fuera del alcance de niños pequeños.",
+      "guia": "Guía de uso",
+      "foto": "img/productos/control-ps5-dualsense-cosmic-red/1.jpg",
+      "ofertaHasta": "",
+      "fotoOrigen": "https://m.media-amazon.com/images/I/61n1J5O9tpL._AC_SL1500_.jpg",
+      "fotos": [
+        "img/productos/control-ps5-dualsense-cosmic-red/1.jpg"
       ]
     }
   ]

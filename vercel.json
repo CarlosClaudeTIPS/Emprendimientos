@@ -272,6 +272,30 @@
         {
           "type": "query",
           "key": "p",
+          "value": "ya-dualsense-marathon"
+        }
+      ],
+      "destination": "/p/control-ps5-dualsense-marathon.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
+          "value": "ya-dualsense-cosmic-red"
+        }
+      ],
+      "destination": "/p/control-ps5-dualsense-cosmic-red.html",
+      "permanent": true
+    },
+    {
+      "source": "/producto.html",
+      "has": [
+        {
+          "type": "query",
+          "key": "p",
           "value": "combo-noche-cerave"
         }
       ],
